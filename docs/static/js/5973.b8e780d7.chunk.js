@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkbrewjs_for_react_router_example=self.webpackChunkbrewjs_for_react_router_example||[]).push([[5973],{5973:function(e,n,r){r.r(n);var t=r(2556);function s(e){const n=Object.assign({h1:"h1"},e.components);return(0,t.jsx)(n.h1,{children:"Page not found"})}n.default=function(e={}){const{wrapper:n}=e.components||{};return n?(0,t.jsx)(n,Object.assign({},e,{children:(0,t.jsx)(s,e)})):s(e)}}}]);
-//# sourceMappingURL=5973.b8e780d7.chunk.js.map
