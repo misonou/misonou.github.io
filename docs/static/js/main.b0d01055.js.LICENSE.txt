@@ -50,7 +50,7 @@
  */
 
 /*!
- * jQuery Scrollable v1.11.2
+ * jQuery Scrollable v1.11.3
  *
  * The MIT License (MIT)
  *
