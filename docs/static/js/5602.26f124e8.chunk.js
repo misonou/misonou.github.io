@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbrewjs_for_react_router_example=self.webpackChunkbrewjs_for_react_router_example||[]).push([[5602],{5602:function(e){e.exports=JSON.parse('{"Email":{"option":"email","email":"test@test.com"},"Phone":{"option":"phone","phone":{"countryCode":"1","phoneNumber":"0000000000"}}}')}}]);
