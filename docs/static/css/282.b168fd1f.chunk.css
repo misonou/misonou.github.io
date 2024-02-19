@@ -1,0 +1,1 @@
+#demo-wujq5.loading:before{-webkit-animation:loading-bar 1000s;animation:loading-bar 1000s;border-bottom:4px solid var(--color-highlight);content:"";left:0;position:absolute;top:0;z-index:1}#demo-wujq5.loading-complete:before{-webkit-animation:none;animation:none;opacity:0;right:0;transition:right .2s,opacity .2s ease-out}

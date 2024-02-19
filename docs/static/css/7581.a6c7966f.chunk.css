@@ -1,0 +1,1 @@
+#demo-rgxdp{display:flex;gap:20px;margin-top:1em}#demo-rgxdp>div{background-color:#d3d3d3;border:4px solid transparent;height:100px;width:100px}#demo-rgxdp>div.focused{border-color:red}#demo-rgxdp>div:after{content:"Click me"}#demo-rgxdp>div.focused:after{content:"I'm focused"}
