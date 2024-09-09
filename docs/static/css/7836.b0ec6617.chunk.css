@@ -1,0 +1,1 @@
+#example-flyout-containment{-webkit-column-gap:1em;column-gap:1em;display:flex;height:120px}#example-flyout-containment [is-flyout]{background:var(--page-bg);border-radius:var(--overlay-border-radius);box-shadow:var(--overlay-box-shadow);padding:1em;position:absolute}
