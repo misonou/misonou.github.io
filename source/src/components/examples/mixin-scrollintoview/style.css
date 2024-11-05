@@ -1,0 +1,13 @@
+.mixin-scrollintoview > div {
+    height: 100px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.mixin-scrollintoview > div > div {
+    height: 100px;
+}
+
+.mixin-scrollintoview > div > div:nth-child(even) {
+    background-color: lightgray;
+}

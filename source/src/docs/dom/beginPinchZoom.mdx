@@ -1,0 +1,74 @@
+import Example from "src/components/examples/dom-pinchzoom";
+
+<Module name="zeta-dom/dom" />
+
+# beginPinchZoom
+
+## Syntax
+
+```javascript
+beginPinchZoom(callback)
+```
+
+<ImportHint
+    name="beginPinchZoom"
+    module="zeta-dom/dom"
+    global="zeta.dom.beginPinchZoom"
+/>
+
+### Parameters
+
+<dl>
+    #### `callback`
+    A callback that receives four arguments `deg, scale, tx, ty` when pointer is moving where
+    - `deg`: angle of rotation in degrees
+    - `scale`: scaling factor
+    - `tx`: translation in X-direction in pixels
+    - `ty`: translation in Y-direction in pixels
+
+    A 2D transform matrix can be created by:
+
+    ```javascript
+    const rad = deg * Math.PI / 180;
+    const matrix = new DOMMatrix([
+      Math.cos(rad) * scale,
+      Math.sin(rad) * scale,
+      -Math.sin(rad) * scale,
+      Math.cos(rad) * scale,
+      tx,
+      ty,
+    ]);
+    ```
+    or equivalently:
+
+    ```javascript
+    new DOMMatrix()
+      .translateSelf(tx, ty)
+      .scaleSelf(scale)
+      .rotateSelf(0, 0, deg)
+    ```
+</dl>
+
+### Return value
+
+A promise object that fulfills when user completed the gesture.
+
+## Example
+
+Try drag, rotate and resize the square in touch device.
+
+<Example />
+
+> Note that how the transform matrix is multiplied in subsequent action:
+> the initial matrix (<math><msub><mi>M</mi><mn>0</mn></msub></math>) should be sandwiched between
+> translation (<math><msub><mi>M</mi><mn>Δx,y</mn></msub></math>) and rotation and scaling 
+> (<math><msub><mi>M</mi><mn>rθ</mn></msub></math>)
+>   <math display="block">
+>       <msub><mi>M</mi><mn>Δx,y</mn></msub>
+>       <msub><mi>M</mi><mn>0</mn></msub>
+>       <msub><mi>M</mi><mn>rθ</mn></msub>
+>   </math>
+
+## See also
+
+- [`beginDrag`](:)

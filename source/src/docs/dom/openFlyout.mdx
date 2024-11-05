@@ -1,0 +1,125 @@
+import ContainmentExample from "src/components/examples/flyout-containment";
+
+<Module name="brew-js/domAction" />
+
+# openFlyout
+
+Opens flyout and returns a promise that when resolved, receives the value passed to [`closeFlyout`](:).
+
+## Syntax
+
+```javascript
+openFlyout(selector)
+openFlyout(selector, source)
+openFlyout(selector, source, options)
+openFlyout(selector, states)
+openFlyout(selector, states, source)
+openFlyout(selector, states, source, options)
+openFlyout(selector, states, source, closeIfOpened)
+```
+
+<ImportHint
+    name="openFlyout"
+    module="brew-js/domAction"
+    global="brew.openFlyout"
+/>
+
+### Parameters
+
+<dl>
+    #### `selector`
+    A DOM element or a CSS selector that refers to a flyout.
+
+    #### `source` <Badge.Optional />
+    Source element which triggered the flyout.
+
+    #### `states` <Badge.Optional />
+    Any values that will be passed to `brew.setVar`, when the flyout opens.
+
+    #### `options` <Badge.Optional />
+    A dictionary containing options to alter flyout's behavior.
+
+    <dl>
+        #### `closeOnBlur` <Badge.Optional />
+        Whether the flyout should be closed when flyout, or source element if given, loses focus.
+        Default is `true` if flyout is not dismissible by swipe gesture.
+
+        #### `containment` <Badge.Optional /> <Badge.Version />
+        Specifies that the flyout should remain its state unless user is interacting
+        within the specified element.
+
+        This options is used in conjunction with `closeOnBlur`.
+        If a CSS selector is given, it will select the closest ancestor from the flyout element.
+
+        #### `focus` <Badge.Optional />
+        Whether flyout content will be initially focused.
+        Default is `true` if source element is not an text input element.
+
+        If a CSS selector is given, the first matched element will be focused; otherwise
+        the first focusable element will be focused.
+
+        #### `modal` <Badge.Optional />
+        Whether flyout element will be set as modal.
+        Default is `false`.
+
+        #### `tabThrough` <Badge.Optional />
+        Whether element outside flyout can be focused by pressing tab key.
+        Default is `false`.
+
+    </dl>
+
+    #### `closeIfOpened` <Badge.Deprecated />
+    Close the flyout if it is already opened.
+
+    > The `closeIfOpened` parameter is deprecated. Use [`closeIfOpened`](:) instead.
+
+</dl>
+
+## Events
+
+<MemberList
+    i="dom"
+    ev={['flyoutshow']}
+    noRoot noRender
+/>
+
+### `flyoutshow` event
+
+Triggered when the flyout element is shown.
+
+#### Event properties
+
+<dl>
+    #### `data`
+    Data passed by `states` parameter from [`openFlyout`](:).
+</dl>
+
+## CSS classes
+
+<dl>
+    #### `open`
+    When flyout is open, the `open` CSS class will be added.
+
+    > After flyout is completely hidden, both `open` and `closing` CSS classes will be removed.
+</dl>
+
+## Example: Flyout containment
+
+<ContainmentExample />
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.4.5** `flyoutshow` event
+- **0.5.8** `option` parameter
+- **0.6.1** `focus` parameter: `string` `Element`
+- **0.6.3** `flyoutshow` event: `data` property
+- **0.6.11** `containment` option
+</VersionTimeline>
+
+## See also
+
+- [`animateIn`](:)
+- [`closeFlyout`](:)
+- [`toggleFlyout`](:)

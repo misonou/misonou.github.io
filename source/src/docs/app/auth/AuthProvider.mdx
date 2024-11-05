@@ -1,0 +1,42 @@
+<Module name="@misonou/brew-extension-auth/provider" />
+
+# AuthProvider
+
+<ImportHint
+    name="AuthProvider"
+    module="@misonou/brew-extension-auth/provider"
+    import="default"
+    require="default.Auth.AuthProvider"
+    global="brew.Auth.AuthProvider"
+    expanded
+/>
+
+<MemberList
+    i="AuthProvider"
+    sm={['from()']}
+/>
+
+## Static methods
+
+### `AuthProvider.from()`
+
+```javascript
+from(key, client)
+```
+
+Creates an authentication provider from a stateless authentication client.
+
+### Parameters
+
+<dl>
+    #### `key`
+    A unique key identifying the provider.
+
+    #### `client`
+    A client that implements authentication request to server. The client should implements the [`AuthClient`](:) interface.
+
+</dl>
+
+### Return value
+
+An authentication provider which can be passed to [`app.useAuth`](:).

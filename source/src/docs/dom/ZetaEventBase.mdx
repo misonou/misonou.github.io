@@ -1,0 +1,74 @@
+<Module name="zeta-dom/events" />
+
+# ZetaEventBase interface
+
+<MemberList
+    i="ZetaEventBase"
+    ip={['context', 'currentTarget', 'eventName', 'type', 'target', 'source', 'sourceKeyName', 'data', 'timestamp', 'originalEvent']}
+    im={['preventDefault()', 'isDefaultPrevented()']}
+/>
+
+## Instance properties
+
+### `ZetaEventContext.context` <Badge.ReadOnly />
+
+Gets a custom object that represents a functional sub-component.
+
+### `ZetaEventContext.currentTarget` <Badge.ReadOnly />
+
+Gets the HTML element represented by the context object, or the context object itself.
+
+### `ZetaEventBase.data` <Badge.ReadOnly />
+
+Gets the data associated with this event.
+
+### `ZetaEventBase.eventName` <Badge.ReadOnly />
+
+Gets the event name.
+
+### `ZetaEventBase.originalEvent` <Badge.ReadOnly />
+
+Gets the native DOM event that triggers this event.
+
+### `ZetaEventBase.source` <Badge.ReadOnly />
+
+Gets the user action which triggers this event.
+If this event is not directly triggered from DOM events, i.e. it is fan out from other components, the value is always script.
+
+### `ZetaEventBase.sourceKeyName` <Badge.ReadOnly />
+
+Gets the key or key combinations if this event is triggered by keyboard.
+
+### `ZetaEventBase.target` <Badge.ReadOnly />
+
+Gets the DOM element that triggered this event.
+
+### `ZetaEventBase.timestamp` <Badge.ReadOnly />
+
+Gets a high precision timestamp indicating the time at which this event is fired.
+
+### `ZetaEventBase.type` <Badge.ReadOnly />
+
+Gets the event name.
+
+## Instance methods
+
+### `ZetaEventBase.isDefaultPrevented()`
+
+```javascript
+isDefaultPrevented()
+```
+
+Gets whether the default behavior by browser is suppressed.
+
+### Return value
+
+true if The the default behavior is suppressed.
+
+### `ZetaEventBase.preventDefault()`
+
+```javascript
+preventDefault()
+```
+
+Suppresses the default behavior by the browser.

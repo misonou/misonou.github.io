@@ -1,0 +1,91 @@
+<Module name="zeta-dom" />
+
+# Watchables
+
+Objects can have `watch` and `watchOnce` method attached.
+
+```typescript
+let obj = watchable({ prop: 1 });
+
+// equivalent to the following line
+// watch(obj, 'prop')
+obj.watch('prop', () => { /* ... */ });
+
+// equivalent to the following line
+// watchOnce(obj, 'prop')
+obj.watchOnce('prop');
+```
+
+`watchable` can also be called for prototype object to make a class watchable.
+
+```typescript
+import { watchable } from "zeta-dom/util"
+
+function MyClass() { }
+watchable(MyClass.prototype);
+
+let obj = new MyClass();
+obj.watch('myProp', () => { /* ... */ });
+obj.watchOnce('myProp');
+```
+
+> Normally handlers attached to an observable property are called asynchronously. Handlers will be called only once for multiple assignments to the property in each event loop.
+
+
+## Synchronous event firing
+
+By default, any handlers attached to an observable property are called asynchronously after the property has been changed.
+
+However, this behavior can be altered by calling `watchable` with `true` as the second argument:
+
+```typescript
+let obj = {};
+let handleChanges = watchable(obj, true);
+
+obj.watch('prop', () => {
+    console.log(2);
+});
+console.log(1);
+obj.prop = 'foo';
+console.log(3);
+
+// console outputs:
+// 1
+// 2
+// 3
+```
+
+## Defining read-only observable properties
+
+To achieve a read-only observable property, the property can be explicitly defined with `defineObservableProperty`, with the getter flag set to true:
+
+```typescript
+function createObject() {
+    let obj = {};
+    let setValue = defineObservableProperty(obj, 'value', 1, true);
+
+    // increate obj.value per second
+    setInteval(() => {
+        setValue(obj.value + 1);
+    }, 1000);
+
+    // setValue is kept private so that no other
+    // can update the property and hence read-only
+    return obj;
+}
+
+let obj = createObject();
+watch(obj, 'value', () => { /* ... */ });
+
+// following will raise exception as obj.value does not have setter
+obj.value = 2;
+```
+
+## Filtrating values
+
+The function `defineObservableProperty` can also be used to filtrate values being set to an observed property.
+
+
+## Defining alias observable properties
+
+Observable properties can be forwarded to another object by `defineAliasProperty`.

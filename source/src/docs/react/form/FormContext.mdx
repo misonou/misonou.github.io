@@ -1,0 +1,404 @@
+<Module name="zeta-dom-react" />
+
+# FormContext class
+
+<MemberList
+    i="FormContext"
+    ip={['isValid', 'data', 'ref', 'autoPersist', 'preventLeave', 'validateOnChange', 'enterKeyHint', 'formatError']}
+    im={['element()', 'focus()', 'on()', 'persist()', 'restore()', 'clear()', 'reset()', 'getValue()', 'setValue()', 'getErrors()', 'getError()', 'setError()', 'validate()', 'toJSON()']}
+    sp={['ERROR_FIELD', 'EMPTY_FIELD', 'formatError']}
+    sm={['get()']}
+    ev={['reset', 'dataChange', 'validate', 'validationChange', 'beforeLeave']}
+/>
+
+## Instance properties
+
+### `FormContext.autoPersist`
+
+Whether form data will be persisted in view state when component is unmounted.
+Default is `true`.
+
+### `FormContext.data` <Badge.ReadOnly />
+
+Gets a dictionary containing field values.
+
+### `FormContext.enterKeyHint`
+
+Sets the default action label (or icon) to present for the enter key on virtual keyboards.
+
+### `FormContext.formatError`
+
+Specifies a callback to generate custom error message for fields associated with this form context.
+
+The first argument will be the [`ValidationError`](:) instance returned from validation callback.
+Note that the callback will not be invoked for values other than [`ValidationError`](:).
+
+### `FormContext.isValid`
+
+Returns if all fields have passed validations.
+
+### `FormContext.preventLeave`
+
+Whether it should prompt user before leaving the page when form data has been entered.
+
+### `FormContext.validateOnChange`
+
+Whether validation will be triggered upon changes to form data.
+Default is `true`.
+
+## Instance methods
+
+### `FormContext.element()`
+
+```javascript
+element()
+element(path)
+```
+
+Gets the form element.
+
+This method only works when `FormContext.ref` is passed to HTML elements.
+
+### Parameters
+
+<dl>
+    #### `path`
+    A string containing dot-separated property names or an array containing property names.
+
+</dl>
+
+### `FormContext.focus()`
+
+```javascript
+focus()
+focus(kind)
+focus(path)
+```
+
+Focus the form element.
+This method only works when `FormContext.ref` is passed to HTML elements.
+
+### Parameters
+
+<dl>
+    #### `kind` <Badge.Version />
+    Bitwise combination of `FormContext.ERROR_FIELD` or `FormContext.EMPTY_FIELD`.
+
+    #### `path`
+    A string containing dot-separated property names or an array containing property names.
+
+</dl>
+
+### Return value
+
+Whether the given element is set focused.
+
+### `FormContext.on()`
+
+```javascript
+on(event, handler)
+```
+
+Registers event handlers.
+
+### Parameters
+
+<dl>
+    #### `event`
+    Name of the event.
+
+    #### `handler`
+    A callback function to be fired when the specified event is triggered.
+
+</dl>
+
+### Return value
+
+A function that will unregister the handlers when called.
+
+### `FormContext.persist()`
+
+```javascript
+persist()
+```
+
+Persists form data to view state.
+Calling to this method will set `FormContext.autoPersist` to `false`.
+
+### `FormContext.restore()`
+
+```javascript
+restore()
+```
+
+Restores form data from view state if any.
+
+### Return value
+
+Whether there was persisted data restored.
+
+### `FormContext.clear()`
+
+```javascript
+clear()
+```
+
+Clears all fields and validation errors.
+
+### `FormContext.reset()`
+
+```javascript
+reset()
+```
+
+Resets all fields to initial values and clear all validation errors.
+
+### `FormContext.getValue()`
+
+```javascript
+getValue(path)
+```
+
+Gets the value accessible by the specified path.
+
+### Parameters
+
+<dl>
+    #### `path`
+    A string containing dot-separated property names or an array containing property names.
+
+</dl>
+
+### `FormContext.setValue()`
+
+```javascript
+setValue(path, value)
+```
+
+Sets the value to the specified path.
+
+### Parameters
+
+<dl>
+    #### `path`
+    A string containing dot-separated property names or an array containing property names.
+
+    #### `value`
+    Any value.
+
+</dl>
+
+### `FormContext.getErrors()`
+
+```javascript
+getErrors()
+```
+
+Gets all validation errors.
+
+It returns an object which each key is the name of an invalid field, and value is the corresponding error; or `null` if there is no error.
+
+```typescript
+// log all errors in console if validation failed
+if (!await field.validate()) {
+    each(form.getErrors(), (field, error) => {
+        console.log(field, error);
+    });
+}
+```
+
+### `FormContext.getError()`
+
+```javascript
+getError(path)
+```
+
+Gets validation error for a specific field.
+If there is no error, an empty string is returned.
+
+### Parameters
+
+<dl>
+    #### `path`
+    A string containing dot-separated property names or an array containing property names.
+
+</dl>
+
+### `FormContext.setError()`
+
+```javascript
+setError(path, error)
+```
+
+Updates validation error for a specific field.
+The error will be cleared when validation is called, or when field value is modified when `validateOnChange` is `true`.
+
+### Parameters
+
+<dl>
+    #### `path`
+    A string containing dot-separated property names or an array containing property names.
+
+    #### `error`
+    A non-empty string or stringifiable object indicating error; or a falsy value to clear previous error.
+
+</dl>
+
+### `FormContext.validate()`
+
+```javascript
+form.validate()
+form.validate(field0)
+form.validate(field0, field1)
+form.validate(field0, field1 /* … ,*/ field1N)
+```
+
+Validates all or specific fields.
+
+#### Parameters
+
+<dl>
+    #### `field0` … `fieldN` <Badge.Optional />
+</dl>
+
+```typescript
+const form = useFormContext();
+
+async function checkAll() {
+    let isValid = await form.validate();
+}
+async function checkNameAndEmail() {
+    let isValid = await form.validate('name', 'email');
+}
+```
+
+### `FormContext.toJSON()`
+
+```javascript
+toJSON()
+```
+
+Returns a raw value object.
+
+## Static properties
+
+### `FormContext.ERROR_FIELD` <Badge.ReadOnly />
+
+### `FormContext.EMPTY_FIELD` <Badge.ReadOnly />
+
+### `FormContext.formatError`
+
+## Static methods
+
+### `FormContext.get()`
+
+```javascript
+FormContext.get(element)
+```
+
+Retrieve the associated `FormContext` object if a `<form>` element is rendered using `<Form>` component or
+manually assigned [`FormContext.ref`](:) to a `<form>` element.
+
+#### Parameters
+
+<dl>
+    #### `element`
+    A `<form>` element.
+</dl>
+
+#### Return value
+
+A `FormContext` object if the form element is associated to one; `null` otherwise.
+
+```tsx
+import { Form, useFormContext } from "zeta-dom-react";
+
+function MyForm() {
+    const form = useFormContext();
+    return (
+        <Form context={form}>
+            <Child />
+        </Form>
+    );
+}
+
+function Child() {
+    const ref = useRef();
+    useEffect(() => {
+        const formElement = ref.current.closest('form');
+        if (formElement) {
+            // this can retreive the `FormContext` object
+            // created by the parent `<MyForm>` component
+            const form = FormContext.get(formElement);
+        }
+    }, []);
+    return (
+        <div ref={ref}>{/* ... */}</div>
+    );
+}
+```
+
+## Events
+
+### `beforeLeave` event
+
+When [`FormContext.preventLeave`](:) is `true`, the `beforeLeave` event will be fired
+when user tries to navigate to other pages within the SPA.
+
+To prompt user for confirmation, returns a promise that will
+- resolved when user confirms to leave, or
+- rejected when user cancels navigation.
+
+If the event is not handled, navigation will be allowed.
+
+> Note that when user is quitting the website or closing browser tab, browser's
+  native confirmation dialog will be displayed instead.
+
+```typescript
+useEffect(()=> {
+    return form.on('beforeLeave', () => {
+        return prompt('Leave the page?');
+    });
+}, [form]);
+```
+
+### `dataChange` event
+
+Allow effects to apply when certain field has changed.
+
+```typescript
+useEffect(() => {
+    return form.on('dataChange', e => {
+        if (e.data.includes('item')) {
+            /* ... */
+        }
+    });
+}, [form])
+```
+
+### `reset` event
+
+### `validate` event
+
+### `validationChange` event <Badge.Deprecated />
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.1.0** Introduced
+- **0.1.5** `FormContext.element()`<br/>`FormContext.focus()`
+- **0.3.0** `FormContext.setError()`
+- **0.3.3** `FormContext.ref`
+- **0.3.4** `FormContext.toJSON()`
+- **0.3.5** `preventLeave` option<br/>`beforeLeave` event
+- **0.3.8** `FormContext.getError()`
+- **0.4.0** static `FormContext.get()`
+- **0.4.1** `FormContext.formatError()`
+- **0.4.2** `FormContext.focus(type)`
+- **0.4.4** `FormContext.getErrors()`
+- **0.4.5** `FormContext.clear()`
+</VersionTimeline>
+
+## See also
+
+- [`useFormContext`](:)

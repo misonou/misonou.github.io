@@ -1,0 +1,58 @@
+<Module name="brew-js/app" />
+
+# Creating app instance
+
+To initialize the application, the default export function `brew` must be called exactly once in your script's entry point:
+
+```typescript
+import brew from "brew-js/app";
+
+brew((app) => {
+    // app: Brew.AppInstance<{}>
+    // init code, implementing app logic
+});
+```
+
+## Enabling extensions
+
+To enable extensions, import the extensions by [`brew.with`](:) and configure them by `app.use*` methods:
+
+```typescript
+import brew from "brew-js/app";
+import Router from "brew-js/extension/router";
+
+// if you are using TypeScript, add Brew.With* interface to the generic type
+// this will mix in the app.use* method
+brew.with(Router)((app) => {
+    // the useRouter method is provided by Brew.WithRouter
+    app.useRouter({
+        /* ... */
+    });
+});
+```
+
+> Some extensions are already registered in UMD distribution.
+  There is no need to explicitly registered it with `brew.with` for those extensions.
+
+
+After defining the shape of app instance, you can write the HTML template.
+
+
+## Asynchronous init actions
+
+Postpones `ready` event until the promise is fulfilled.
+Some APIs or extensions may implicitly use [`app.beforeInit`](:).
+
+```typescript
+brew(app => {
+    app.beforeInit(() => {
+        return new Promise((resolve) => {
+            setTimeout(resolve, 1000);
+        });
+    });
+    app.on('ready', () => {
+        // this is delayed for 1 second by
+        // the promise of beforeInit
+    });
+});
+```

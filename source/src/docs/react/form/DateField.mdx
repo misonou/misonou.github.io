@@ -1,0 +1,70 @@
+<Module name="zeta-dom-react" />
+
+# DateField class
+
+The `DateField` class are not supposed to be instantiate manually. Instead it is used to
+augment extra functionalities when used with [`useFormField`](:).
+
+<ImportHint
+    name="DateField"
+    module="zeta-dom-react"
+    require="DateField"
+    global="zeta.react.DateField"
+    expanded />
+
+<MemberList i="DateField" />
+
+## DateFieldProps interface
+
+<MemberList
+    i="DateFieldProps"
+    extends={['FormFieldProps']}
+    ip={['min', 'max', 'formatDisplay']}
+/>
+
+### `DateFieldProps.min`
+
+Specifies the earliest date allowed.
+
+Supports relative dates in the following format:
+- A `+` or `-` sign, then number and unit (`y`, `m`, `w` and `d` for years, months, weeks and days), e.g. `+1d` or `-1y`.
+- Multiple number and unit pairs can be specified, e.g. `+1y1d` or `-1y1d` which is evaluated from left to right
+  (order matters because the months unit may result in different date due to various days in different month).
+- Different signs can also be specified for each number and unit pair, e.g. `+1y-1d`.
+
+### `DateFieldProps.max`
+
+Specifies the latest date allowed.
+For relative dates, see `min`.
+
+### `DateFieldProps.formatDisplay`
+
+Formats display text for a given date.
+
+## DateFieldState interface
+
+<MemberList
+    i="DateFieldState"
+    extends="FormFieldState"
+    ip={['min', 'max', 'displayText']}
+/>
+
+### `DateFieldState.min` <Badge.ReadOnly />
+
+Earliest allowed date in the standard format (YYYY-MM-DD),
+or an empty string if `min` is not specified or is invalid.
+
+### `DateFieldState.max` <Badge.ReadOnly />
+
+Latest allowed date in the standard format (YYYY-MM-DD),
+or an empty string if `max` is not specified or is invalid.
+
+### `DateFieldState.displayText` <Badge.ReadOnly />
+
+Formatted text returned by `formatDisplay` or the standard format (YYYY-MM-DD) by default.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.4.2** Introduced
+</VersionTimeline>

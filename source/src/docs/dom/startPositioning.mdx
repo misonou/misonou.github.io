@@ -1,0 +1,63 @@
+<Module name="@misonou/react-css-utils" />
+
+# startPositioning
+
+Places element in alignment to another element with auto re-positioning enabled.
+
+## Syntax
+
+```javascript
+startPositioning(element, to, dir)
+startPositioning(element, to, dir, options)
+```
+
+<ImportHint
+    name="startPositioning"
+    module="@misonou/react-css-utils"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    Element to be placed. It must be styled with `position: absolute` or `position: fixed`.
+
+    #### `to`
+    A DOM element, a `Rect`-like object or a point with x and y coordinates, as the reference to where the element should be placed.
+
+    #### `dir`
+    A space-delimited string specifying how element is aligned in x and y direction.
+
+    #### `options` <Badge.Optional />
+    A dictionary specifying extra options.
+
+</dl>
+
+### Return value
+
+A callback that stops auto re-positioning.
+
+## Comparison with Positioner
+
+The `startPositioning` is equivalent to the following using `Positioner`:
+
+```javascript
+const positioner = new Positioner(element, to, dir);
+positioner.observe();
+return function () {
+    positioner.disconnect();
+};
+```
+
+> It is recommended to use `startPositioning` for simpler case.
+
+## Version information
+
+<VersionTimeline module="@misonou/react-css-utils">
+- **1.5.0** Introduced
+</VersionTimeline>
+
+## See also
+
+- [`position`](:)
+- [`Positioner`](:)

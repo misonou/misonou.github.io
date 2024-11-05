@@ -1,0 +1,114 @@
+<Module name="zeta-dom" />
+
+# Disposables
+
+Disposables is a pattern that for undoable actions, or actions that require cleanups, an parameterless unregister callback is returned for such purpose.
+
+Instead of holding infomation required to undo the action, unregistering callbacks can be easily combined and be passed around.
+
+A common example would be `setTimeout` and `clearTimeout`.
+
+```typescript
+import { setTimeout } from "zeta-dom/util";
+
+const dispose = setTimeout(() => { /* ... */ });
+
+// somewhere else
+// calling clearTimeout under the hook
+dispose();
+```
+
+## Combining disposables
+
+Unregistering callback can be combined easily as the signature is identical:
+
+```typescript
+import { bind } from "zeta-dom/domUtil";
+import { combineFn, setTimeout } from "zeta-dom/util";
+
+const dispose = combineFn(
+    setTimeout(() => { /* ... */ }),
+    bind(window, 'click', () => { /* ... */ })
+);
+
+// somewhere else
+// clear scheduled timers and remove event listener together
+dispose();
+```
+
+## Timers
+
+### `setTimeout`
+
+Equivalent to `window.setTimeout`.
+
+```typescript
+import { setTimeout } from "zeta-dom/util";
+
+const dispose = setTimeout(() => { /* ... */ });
+
+// somewhere else
+// calling clearTimeout under the hook
+dispose();
+```
+
+### `setInteval`
+
+Equivalent to `window.setInteval`.
+
+> **Important:** It is recommand to use `setIntevalSafe` for async operation.
+
+
+```typescript
+import { setInteval } from "zeta-dom/util";
+
+const dispose = setInteval(() => { /* ... */ }, 1000);
+
+// somewhere else
+// calling clearInteval under the hook
+dispose();
+```
+
+### `setIntevalSafe`
+
+Like `window.setInteval`, but the next run is not scheduled until current operation completes.
+
+```typescript
+import { setIntevalSafe } from "zeta-dom/util";
+
+const dispose = setIntevalSafe(() => {
+    return longOperationReturningPromise();
+}, 1000);
+
+// somewhere else
+// calling clearTimeout under the hook
+dispose();
+```
+
+## Native DOM events
+
+```typescript
+const unbind = bind(window, {
+    click(e) { /* ... */ },
+    keypress(e) { /* ... */ },
+});
+
+doSomeLongTask().then(() => {
+    unbind();
+});
+```
+
+By such, when `unbind` is called, the two event listeners will be removed from DOM.
+
+## Property observer
+
+The `watch` function returns an unregistering callback that unwatches the property.
+
+```typescript
+// listen obj.prop until value becomes 2
+const unbind = watch(obj, 'prop', (value) => {
+    if (value === 2) {
+        unbind();
+    }
+});
+```

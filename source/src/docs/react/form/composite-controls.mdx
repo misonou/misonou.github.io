@@ -1,0 +1,24 @@
+<Module name="zeta-dom-react" />
+
+# Composite controls
+
+Some type of control requires multiple constituent controls to perform the logic, for example a multiple checkbox list:
+
+```tsx
+export function CheckboxList(props: MultiChoiceFieldProps<CheckboxItem>) {
+    const { items, value, error, toggleValue, elementRef } = useFormField(MultiChoiceField, props);
+    return (
+        <div ref={elementRef}>
+            <span>{props.label}</span>
+            {items.map((v, i) => (
+                <label key={i}>
+                    <Checkbox checked={value.includes(v.value)} onChange={() => toggleValue(v.value)} />
+                    <span>{v.label}</span>
+                </label>
+            ))}
+            {error && props.showErrorMessage !== false &&
+                <div className="error">{error}</div>}
+        </div>
+    );
+}
+```

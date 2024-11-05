@@ -1,0 +1,31 @@
+<Module name="brew-js-react" />
+
+# Customizing dialog
+
+## Dialog body wrapper
+
+Dialog UI structure can be encapsulated by a component and re-use by `wrapper` option:
+
+```tsx
+function DialogBody(props: React.PropsWithChildren<DialogRenderComponentProps<any, any>>) {
+    return (
+        <div>
+            {props.children}
+        </div>
+    );
+}
+
+createDialog({
+    wrapper: DialogBody
+});
+```
+
+## Opening and closing animation
+
+In addition to the `className` option, these CSS classes are added to dialog's root element in sequence:
+
+- `.visible`: dialog should be rendered from now on (i.e. should no longer be `display: none`)
+- `.open`: added to trigger transitions or animations from initial invisible state to visible state
+- `.loading`: added when operation in `onCommit` is in progress (since v0.4.4)
+- `.closing`: added when the dialog started to close; dialog will be destroyed until all transitions or animations triggered by the class has ended
+

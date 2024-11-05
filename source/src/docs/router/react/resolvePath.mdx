@@ -1,0 +1,66 @@
+<Module name="brew-js-react" />
+
+# resolvePath
+
+Returns the app path that will render the specified view.
+
+The pathname is resolved using route parameters given to [`registerView`](:),
+current route parameters, as well as any supplemeneted route parameters
+against registered routes in [`app.routes`](:).
+
+This is used by methods such as [`linkTo`](:) and [`navigateTo`](:).
+
+## Syntax
+
+```javascript
+resolvePath(view)
+resolvePath(view, params)
+```
+
+<ImportHint
+    name="resolvePath"
+    module="brew-js-react"
+    require="resolvePath"
+    global="brew.react.resolvePath" />
+
+### Parameters
+
+<dl>
+    #### `view`
+    A view component created by [`registerView`](:).
+
+    #### `params` <Badge.Optional />
+    Extra route parameters that supplements or overrides current route parameters,
+    or a tuple containing such route parameters as well as query string and hash.
+
+</dl>
+
+## Passing query and hash
+
+~~0.6.4~~
+
+It is able to pass query and hash directly to [`resolvePath`](:):
+
+```javascript
+resolvePath(MyView, [{ id: 1 }, '?filter=foo', '#hash']);
+```
+
+Any entries in the tuple can be omitted:
+
+```javascript
+resolvePath(MyView, [, , '#hash']);
+```
+
+It is also possible to provide object literal or `URLSearchParams` for query:
+
+```javascript
+resolvePath(MyView, [, { filter: 'foo' }]);
+resolvePath(MyView, [, new URLSearchParams({ filter: 'foo' })]);
+```
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.2** Introduced
+- **0.6.4** `params` parameter: accept tuple
+</VersionTimeline>

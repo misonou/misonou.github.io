@@ -1,0 +1,38 @@
+<Module name="brew-js/extensions" />
+
+# Scrollable extension
+
+Enables auto scrollable area initialization and scrolling events.
+Requires the [scrollable plugin](https://github.com/misonou/jquery-scrollable).
+
+> See [Enabling extension](/docs/app/create-app#s-enabling-extensions) on how to use
+  extension for brew.js app.
+
+<ImportHint
+    name="Scrollable"
+    module="brew-js/extension/scrollable"
+    import="default"
+    expanded
+/>
+
+## Syntax
+
+```javascript
+app.useScrollable()
+app.useScrollable(defaultOptions)
+```
+
+### Parameters
+
+<dl>
+    #### `defaultOptions` <Badge.Optional />
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.1.9** `useScrollable()`: `defaultOptions` parameter
+- **0.4.8** `scrollProgressChange` event
+- **0.5.6** `scrollIndexChange` event
+</VersionTimeline>

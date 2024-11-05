@@ -1,0 +1,79 @@
+import MetaKeyChangeExample from "src/components/examples/metakeychange";
+import KeystrokeExample from "src/components/examples/keystroke";
+
+<Module name="zeta-dom/dom" />
+
+# Keyboard events
+
+Instead of checking key combination during `keydown` or `keyup` events, Zeta additionally fires two types of keyboard events.
+
+## dom: metakeychange event
+
+Fired when user starts or stops pressing one of the meta keys, i.e. <kbd>Ctrl</kbd>, <kbd>Shift</kbd> and <kbd>Alt</kbd>.
+
+<MetaKeyChangeExample />
+
+## dom: keystroke event
+
+A `keystroke` event happens when user is pressing a combination of a normal key optinally with meta keys <kbd>Ctrl</kbd>, <kbd>Shift</kbd> and <kbd>Alt</kbd>.
+
+```typescript
+dom.on(textarea, 'keystroke', (e) => {
+    // printing the key combination, e.g. 'ctrlZ'
+    console.log(e.data);
+});
+```
+<KeystrokeExample />
+
+It can also happens when user is pressing a single character key without focusing an input.
+
+```typescript
+dom.on('keystroke', (e) => {
+    // e.data may also be a single character, e.g. 'a'
+    console.log(e.data);
+});
+```
+
+In addition to `keystroke` event and putting lots of checking what shortcut key user is pressing, all combinations of regconized keys can be listened directly.
+
+```typescript
+dom.on('ctrlZ', (e) => {
+    // undo something
+});
+```
+
+### Name of keystroke
+
+A listenable keystoke event can be one of the non-alphanumeric keys listed below or the combination of one or more modifier keys (<kbd>Ctrl</kbd>, <kbd>Shift</kbd> and <kbd>Alt</kbd>) with alphanumeric and non-alphanumeric keys.
+
+| Event       | Represented Keystroke                                                                 |
+| ----------- | ------------------------------------------------------------------------------------- |
+| `upArrow`   | <kbd>↑</kbd>                                                                          |
+| `backspace` | <kbd>⌫</kbd>                                                                          |
+| `ctrlA`     | <kbd>⌘</kbd>+<kbd>A</kbd> or <kbd>Ctrl</kbd>+<kbd>A</kbd>                             |
+| `ctrlAltA`  | <kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>A</kbd> or <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>A</kbd> |
+
+Below is the list or recognized keys:
+
+| Name             | ASCII Code | Name           | ASCII Code | Name           | ASCII Code |
+| ---------------- | ---------- | -------------- | ---------- | -------------- | ---------- |
+| `backspace`      | 8          | `numpad1`      | 97         | `f7`           | 118        |
+| `tab`            | 9          | `numpad2`      | 98         | `f8`           | 119        |
+| `enter`          | 13         | `numpad3`      | 99         | `f9`           | 120        |
+| `pause`          | 19         | `numpad4`      | 100        | `f10`          | 121        |
+| `capsLock`       | 20         | `numpad5`      | 101        | `f11`          | 122        |
+| `escape`         | 27         | `numpad6`      | 102        | `f12`          | 123        |
+| `pageUp`         | 33         | `numpad7`      | 103        | `numLock`      | 144        |
+| `pageDown`       | 34         | `numpad8`      | 104        | `scrollLock`   | 145        |
+| `end`            | 35         | `numpad9`      | 105        | `semiColon`    | 186        |
+| `home`           | 36         | `multiply`     | 106        | `equalSign`    | 187        |
+| `leftArrow`      | 37         | `add`          | 107        | `comma`        | 188        |
+| `upArrow`        | 38         | `subtract`     | 109        | `dash`         | 189        |
+| `rightArrow`     | 39         | `decimalPoint` | 110        | `period`       | 190        |
+| `downArrow`      | 40         | `divide`       | 111        | `forwardSlash` | 191        |
+| `insert`         | 45         | `f1`           | 112        | `backtick`     | 192        |
+| `delete`         | 46         | `f2`           | 113        | `openBracket`  | 219        |
+| `leftWindow`     | 91         | `f3`           | 114        | `backSlash`    | 220        |
+| `rightWindowKey` | 92         | `f4`           | 115        | `closeBracket` | 221        |
+| `select`         | 93         | `f5`           | 116        | `singleQuote`  | 222        |
+| `numpad0`        | 96         | `f6`           | 117        |                |            |

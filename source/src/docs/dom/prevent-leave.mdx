@@ -1,0 +1,40 @@
+<Module name="zeta-dom/domLock" />
+
+# Preventing from leaving
+
+In situation such as having pending operations need to be awaited, or a partially input form,
+confirmation might be needed before user leaving.
+
+## Confirmation for closing window
+
+To trigger browser's confirmation dialog when user tries to close the window or tab, use [`preventLeave`](:).
+
+```javascript
+const dispose = preventLeave();
+dispose(); // after some time
+```
+
+or by passing promise:
+
+```javascript
+preventLeave(promise); // enable confirmation until promise resolves
+```
+
+## In-app navigation
+
+For in-app scenario, use the locking mechanism with [`lock`](:) and [`cancelLock`](:).
+
+> For example `brew-js` router will check if any element invoke [`cancelLock`](:) when user tries to navigate within the page.
+
+```javascript
+const dispose = lock(element);
+dispose(); // after some time
+```
+
+or by passing promise:
+
+```javascript
+lock(element, promise); // enable confirmation until promise resolves
+```
+
+Be default, the lock is not cancallable unless [`cancelLock`](:) is called with the `force` flag.

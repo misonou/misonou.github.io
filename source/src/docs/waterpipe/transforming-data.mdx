@@ -1,0 +1,91 @@
+<Module name="waterpipe" />
+
+# Transforming data
+
+A pipe consists of a list of arguemnts separated by spaces, where the
+first arguemnt is typically inferred as input value.
+
+## Pipe function
+
+For any next argument, pipe function will be looked up by the name.
+
+A pipe function takes an input value and a fixed or dynamic number of arguments.
+
+<WaterpipeExample
+    data={{ values: [1,2,3,4] }}
+    examples={['values length', 'values where odd']}
+/>
+
+In the above example, `values` is the input and `length` and `where` are resolved to pipe functions, where `length` takes
+no arguments and `where` takes `odd` as argument.
+
+## Chaining pipe function
+
+Pipe functions can chain indefinitely:
+
+<WaterpipeExample
+    data={{ value: 1 }}
+    examples={['value + 1 concat foo upper']}
+/>
+
+Here `+`, `concat` and `upper` are resolved to pipe functions, each takes the previous value as input.
+
+## Arguments to pipe function
+
+There are four type of arguments in waterpipe:
+
+- inferred: `arg`
+- constant: `"arg"` or <code>`arg</code>
+- object path: `$arg`
+- lambda: `[ ... ]`
+
+When an argument is in inferred form, it follows the following steps:
+
+1. Numbers, booleans, undefined and null are always as constants
+1. If it is refers to an existing property or nested property of an existing property:
+   |  Input value  | Resolved value   | Accepted |
+   | ------------- | ---------------- | -------- |
+   | Object        | Scalar           |  ✓       |
+   | Object        | Object           |  ✓       |
+   | Scalar        | Scalar           |  ✓       |
+   | Scalar        | Object           |  Depends |   
+1. Constant string value
+
+
+<WaterpipeExample
+    data={{ scalar: "foo_", true: 1, object: {"a": 1} }}
+    examples={['scalar & scalar', 'scalar & true', 'scalar & object']}
+/>
+
+See how it differs when the argument is in constant or object path form:
+
+<WaterpipeExample
+    data={{ scalar: "foo_", true: 1, object: {"a": 1} }}
+    examples={['scalar & "scalar"', 'scalar & $true', 'scalar & $object']}
+/>
+
+
+> **Note**: Although constant argument are quoted by double quotes, they are coercied to booleans or Numbers
+  if there can be coercied.
+
+<WaterpipeExample
+    examples={['"1" + "2"']}
+/>
+
+## Implicit input value
+
+If the first argument is in inferred form and it does not resolve to a valid path,
+it will be inferred as pipe function, and it will take the current value as the input.
+
+<WaterpipeExample
+    data={[1, 2, 3, 4]}
+    examples={['sum', 'map [ + 1 ]']}
+/>
+
+## Constant or lambda as input value
+
+Any pipe can also be started by a constant value or a lambda:
+
+<WaterpipeExample
+    examples={['"foo" upper', '[ "foo" | "bar" ] join ,']}
+/>

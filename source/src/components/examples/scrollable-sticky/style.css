@@ -1,0 +1,62 @@
+.stickable {
+    position: relative;
+    height: 200px;
+    border: 1px solid #0003;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px #0003;
+    overflow: hidden;
+    color: black;
+    --jqs-scrollbar-color: black;
+}
+
+.stickable table {
+    max-width: none;
+    min-width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.stickable thead {
+    position: relative;
+    z-index: 2;
+}
+
+.stickable thead:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-bottom: 1px solid #0003;
+    z-index: 2;
+}
+
+.stickable.scrollable-y-u thead {
+    box-shadow: 0 4px 4px #0003;
+}
+
+.stickable th,
+.stickable td {
+    position: relative;
+    background-color: white;
+    padding: 0.25em 0.5em;
+    min-width: 200px;
+    text-align: left;
+}
+
+.stickable th:first-child,
+.stickable td:first-child {
+    z-index: 1;
+}
+
+.stickable th:first-child:after,
+.stickable td:first-child:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border-right: 1px solid #0003;
+    z-index: 2;
+}

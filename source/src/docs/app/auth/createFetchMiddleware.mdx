@@ -1,0 +1,66 @@
+<Module name="@misonou/brew-extension-auth/middleware" />
+
+# createFetchMiddleware
+
+Creates a middleware that sets authorization header and to renew access token automatically when needed.
+
+## Syntax
+
+```javascript
+createFetchMiddleware(app)
+createFetchMiddleware(app, filter)
+```
+
+<ImportHint
+    name="createFetchMiddleware"
+    module="@misonou/brew-extension-auth/middleware"
+    require="default.Auth.createFetchMiddleware"
+    global="brew.Auth.createFetchMiddleware"
+/>
+
+### Parameters
+
+<dl>
+    #### `app`
+    The app instance.
+
+    > Note that [`app.useAuth`](:) must be called before passing to `createFetchMiddleware`.
+
+    #### `filter` <Badge.Optional />
+    Optional filter to opt-in authorization header by condition.
+</dl>
+
+### Return value
+
+Returns a `fetch` function which can also be used as a middleware.
+
+## Example: Use as fetch
+
+```typescript
+import { createFetchMiddleware } from "@misonou/brew-extension-auth";
+
+// fetch without next middleware
+const fetch = createFetchMiddleware(app);
+fetch(new Request('https://example.org/api/v1'));
+fetch('https://example.org/api/v1', { /* ... */ });
+```
+
+## Example: Use as middleware
+
+With other utility such as [`fetch-run`](https://npmjs.com/package/fetch-run):
+
+```typescript
+import { Api } from "fetch-run";
+import { createFetchMiddleware } from "@misonou/brew-extension-auth";
+
+const fetch = createFetchMiddleware(app);
+const api = Api.create('https://example.org/api/v1');
+api.use(next => req => fetch(req, next));
+```
+
+## Version information
+
+<VersionTimeline module="@misonou/brew-extension-auth">
+- **0.1.0** Introduced
+- **0.3.0** `filter` parameter
+</VersionTimeline>

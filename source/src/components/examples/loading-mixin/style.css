@@ -1,0 +1,16 @@
+#demo-wujq5.loading:before {
+    position: absolute;
+    z-index: 1;
+    content: '';
+    top: 0;
+    left: 0;
+    border-bottom: 4px solid var(--color-highlight);
+    animation: loading-bar 1000s;
+}
+
+#demo-wujq5.loading-complete:before {
+    animation: none;
+    transition: right 0.2s, opacity 0.2s ease-out;
+    right: 0;
+    opacity: 0;
+}

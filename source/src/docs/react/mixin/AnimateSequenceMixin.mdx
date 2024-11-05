@@ -1,0 +1,39 @@
+<Module name="brew-js-react" />
+
+# AnimateSequenceMixin
+
+Enables animation sequence for descendant elements.
+
+## Syntax
+
+```javascript
+useAnimateSequenceMixin()
+useAnimateSequenceMixin(selector)
+```
+
+> If selector is not specified, it requires applying [`AnimateSequenceMixin.item`](:) mixin to target React elements.
+
+### Parameters
+
+<dl>
+    #### `selector` <Badge.Optional />
+    A CSS selector matching elements to be animated in sequence.
+
+</dl>
+
+
+## AnimateSequenceMixin class
+
+> Mixin should be created using [`useAnimateSequenceMixin`](:) and applied to element by [`Mixin.use`](:).
+
+<MemberList
+    i="AnimateSequenceMixin"
+    extends={['AnimateMixin']}
+    ip={['item']}
+/>
+
+## Instance properties
+
+### `AnimateSequenceMixin.item` <Badge.ReadOnly />
+
+Returns a mixin that marks element to be a target of this animate sequence.

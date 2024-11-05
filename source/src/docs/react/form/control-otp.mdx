@@ -1,0 +1,37 @@
+import { OTPField } from "src/components/controls";
+import { Form } from "zeta-dom-react";
+import React from "react";
+import tsx from "!raw-loader!src/components/controls/OTPField.tsx"
+
+<Module name="zeta-dom-react" />
+
+# One-time passcode
+
+<OTPField length={6} />
+
+```tsx
+<OTPField length={6} />
+```
+
+## Example: Masked input
+
+<OTPField length={6} masked />
+
+```tsx
+<OTPField length={6} masked />
+```
+
+## Example: Clear on error
+
+<Inline>
+{() => {
+    const [error, setError] = React.useState('');
+    return (
+        <OTPField length={6} error={error} onChange={() => setError('Incorrect')} />
+    );
+}}
+</Inline>
+
+## Source code
+
+<CodeBlock children={tsx} className="language-tsx" />

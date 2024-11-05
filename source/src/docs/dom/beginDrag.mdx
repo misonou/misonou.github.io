@@ -1,0 +1,38 @@
+import Example from "src/components/examples/dom-drag";
+
+<Module name="zeta-dom/dom" />
+
+# beginDrag
+
+## Syntax
+
+```javascript
+beginDrag(callback)
+```
+
+<ImportHint
+    name="beginDrag"
+    module="zeta-dom/dom"
+    global="zeta.dom.beginDrag"
+/>
+
+### Parameters
+
+<dl>
+    #### `callback`
+    A callback that receives four arguments `x, y, dx, dy` when pointer is moving where
+    - `x`: current X-coordinate of mouse pointer
+    - `y`: current Y-coordinate of mouse pointer
+    - `dx`: amount of pixels moved in X-direction compared to starting point
+    - `dy`: amount of pixels moved in Y-direction compared to starting point.
+</dl>
+
+### Return value
+
+A promise object that
+- fulfills when user completed dragging, or
+- rejects when user cancelled by `escape` key.
+
+## Example
+
+<Example />

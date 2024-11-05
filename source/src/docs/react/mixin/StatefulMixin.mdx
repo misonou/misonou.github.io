@@ -1,0 +1,163 @@
+<Module name="brew-js-react" />
+
+# StatefulMixin class
+
+The StatefulMixin` class serves as the base class for all mixins that need to persist states for
+each applied element.
+
+<ImportHint
+    name="StatefulMixin"
+    module="brew-js-react"
+    require="StatefulMixin"
+    global="brew.react.StatefulMixin"
+    expanded />
+
+<MemberList
+    i="StatefulMixin"
+    extends={['Mixin']}
+    ip={['ref', 'state']}
+    im={['elements()', 'onDispose()', 'initState()', 'initElement()', 'mergeState()', 'onLayoutEffect()', 'onBeforeUpdate()', 'clone()']}
+/>
+
+## Instance properties
+
+### `StatefulMixin.ref`
+
+Gets a [`MixinRef`](:) object that can be passed to child components.
+
+### `StatefulMixin.state`
+
+Gets a pending state object to store values before element is mounted.
+
+By default, existing values on the actual state object will be overwritten in subsequent update.
+To handle changes, overrides the [`StatefulMixin.mergeState`](:) method.
+
+## Instance methods
+
+### `StatefulMixin.clone()`
+
+```javascript
+clone()
+```
+
+### `StatefulMixin.elements()`
+
+```javascript
+elements()
+```
+
+Gets an array of mounted elements which this mixin has been applied.
+
+### `StatefulMixin.initElement()`
+
+```javascript
+initElement(element, state)
+```
+
+Override this method to initialize resources when the element is first mounted, e.g. attach event listeners.
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `state`
+    Persisted state object associated with the element.
+
+</dl>
+
+### `StatefulMixin.initState()` <Badge.Deprecated />
+
+```javascript
+initState()
+```
+
+Override this method to create state object with initial values.
+
+### `StatefulMixin.mergeState()` <Badge.Version />
+
+```javascript
+mergeState(element, state, newState)
+```
+
+Override this method to handle state changes.
+When overriden, new states are required to copied manually to the persisted state object.
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `state`
+    Persisted state object associated with the element.
+
+    #### `newState`
+    New states passed from [`StatefulMixin.state`](:).
+
+</dl>
+
+### `StatefulMixin.onDispose()`
+
+```javascript
+onDispose(callback)
+```
+
+Registers callback to clean up resources when the host component is unmounted.
+
+### Parameters
+
+<dl>
+    #### `callback`
+    A callback.
+
+</dl>
+
+### `StatefulMixin.onBeforeUpdate()` <Badge.Version />
+
+```javascript
+onBeforeUpdate(element, state)
+```
+
+Override this method to apply changes when element is about to be updated.
+It is analogous to `getSnapshotBeforeUpdate` for a `React.Component`.
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `state`
+    Persisted state object associated with the element.
+
+</dl>
+
+### `StatefulMixin.onLayoutEffect()` <Badge.Version />
+
+```javascript
+onLayoutEffect(element, state)
+```
+
+Override this method to apply changes to mounted element.
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `state`
+    Persisted state object associated with the element.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.0** Introduced
+- **0.5.0** `StatefulMixin.onLayoutEffect()` <br/> `StatefulMixin.mergeState()`
+- **0.5.3** `StatefulMixin.onBeforeUpdate()`
+- **0.6.0** Deprecated `StatefulMixin.initState()`
+</VersionTimeline>

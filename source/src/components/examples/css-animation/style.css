@@ -1,0 +1,32 @@
+.css-anim:before {
+    content: '';
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+    transition: background-color 1s;
+}
+
+.css-anim.anim:before {
+    background-color: aquamarine;
+}
+
+.css-anim > div {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: lightgray;
+}
+
+.css-anim.anim > div {
+    animation: css-anim 2s;
+}
+
+@keyframes css-anim {
+    0% {
+        transform: none;
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

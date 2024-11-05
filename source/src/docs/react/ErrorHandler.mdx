@@ -1,0 +1,170 @@
+<Module name="zeta-dom-react" />
+
+# ErrorHandler interface
+
+The `ErrorHandler` object is created by [`createErrorHandler`](:) or [`useErrorHandler`](:).
+
+<MemberList
+    i="ErrorHandler"
+    im={['emit()', 'catch()']}
+/>
+
+### `ErrorHandler.catch()`
+
+```javascript
+catch(handler)
+catch(code, handler)
+catch(type, handler)
+```
+
+Catches errors from promises registered to descandant elements by [`notifyAsync`](:).
+Unfiltered handlers are called after filtered handlers, registered by other overloads, regardless of order.
+
+If handler returns a value other than `undefined`, including promises resolving to whatever values,
+the error is marked as handled and no further handlers are called nor will be propagated up the DOM tree.
+
+### Parameters
+
+<dl>
+    #### `handler`
+    Callback to be invoked. It receives the following argument:
+
+    <dl>
+        #### `error`
+        Errors dispatched.
+
+        #### `context` <Badge.Version />
+        Additional information on the error event, see [`ErrorContext`](:).
+    </dl>
+
+    #### `code`
+    Value to be matched against.
+
+    #### `type`
+    Constructor of a specific error type.
+
+</dl>
+
+### `ErrorHandler.emit()`
+
+```javascript
+emit(error)
+```
+
+Emits error to handlers registered by [`ErrorHandler.catch`](:).
+If the error is not marked as handled, the error will propagate up the DOM tree.
+
+### Parameters
+
+<dl>
+    #### `error`
+    Error to handle.
+
+</dl>
+
+### Return value
+
+A promise that resolves to possible output returned from handlers.
+
+## ErrorContext interface
+
+The `ErrorContext` interface is passed to error handler callback as the second argument.
+
+<MemberList
+    i="ErrorContext"
+    ip={['source', 'sourceKeyName', 'sourceElement']}
+/>
+
+### `ErrorContext.source` <Badge.ReadOnly />
+
+Gets the type of user interaction that triggers the event.
+
+### `ErrorContext.sourceElement` <Badge.ReadOnly />
+
+Gets the element that has error dispatched on.
+
+### `ErrorContext.sourceKeyName` <Badge.ReadOnly />
+
+Gets the keystroke that triggers the event, or `null` if the event is not triggered by keyboard.
+
+## Handling specific errors
+
+Error handler also provides selective registration of handler callbacks, so that different error can be handled differently:
+
+> Note that an unselective handler callback are always invoked after all selective handler callbacks.
+
+
+```tsx
+function Component() {
+    const [data, state] = useAsync(() => { /* ... */ });
+    const errorHandler = useErrorHandler(state);
+
+    useEffect(() => {
+        return combineFn(
+            // this catches all errors of the type from CustomError
+            errorHandler.catch(CustomError, err => { /* ... */ }),
+            // this catches all errors with the specified code
+            errorHandler.catch('zeta/cancelled', err => { /* ... */ }),
+            // as the default case
+            errorHandler.catch(err => { /* ... */ })
+        );
+    }, [errorHandler]);
+
+    return (<div ref={errorHandler.ref}>{/* ... */}</div>);
+}
+```
+
+Sinve v0.4.2, it is possible to specify multiple codes or constructors in one `catch` call:
+
+```tsx
+useEffect(() => {
+    return errorHandler.catch(['zeta/cancelled', CustomError], err => { /* ... */ });
+}, [errorHandler]);
+```
+
+## Emitting errors
+
+~~0.4.4~~
+
+Asynchronous error can now be dispatched to error handler of the current or parent components using `errorHandler.emit`.
+
+```tsx
+function Component() {
+    const errorHandler = useErrorHandler(state);
+
+    useEffect(() => {
+        someAsyncAction().catch(err => errorHandler.emit(err));
+    }, []);
+
+    return (
+        <div ref={errorHandler.ref}>{/* ... */}</div>
+    );
+}
+```
+Prior to v0.4.4, The error can be emitted directly through `dom.emit`:
+
+```tsx
+function Component() {
+    const ref = useRef();
+
+    useEffect(() => {
+        someAsyncAction().catch(error => {
+            dom.emit('error', ref.current, { error }, true);
+        });
+    }, []);
+
+    return (
+        <div ref={ref}>{/* ... */}</div>
+    );
+}
+```
+
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.3.2** Introduced
+- **0.4.2** `ErrorHandler.catch()` overload
+- **0.4.4** `ErrorHandler.emit()`
+- **0.5.13** `context` argument
+</VersionTimeline>

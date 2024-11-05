@@ -1,0 +1,60 @@
+<Module name="brew-js-react" />
+
+# ClassNameToggleMixin
+
+Controls the presence of specified CSS classes on applied elements
+without re-rendering the host component.
+
+## Syntax
+
+```javascript
+useClassNameToggleMixin(dict)
+```
+
+<ImportHint
+    name="useClassNameToggleMixin"
+    module="brew-js-react"
+    require="useClassNameToggleMixin"
+    global="brew.react.useClassNameToggleMixin"
+/>
+
+### Parameters
+
+<dl>
+    #### `dict`
+    A dictionary specifying CSS classes to be initially added.
+
+</dl>
+
+## ClassNameToggleMixin class
+
+> Mixin should be created using [`useClassNameToggleMixin`](:) and applied to element by `Mixin.use`.
+
+<MemberList
+    i="ClassNameToggleMixin"
+    extends={['StatefulMixin']}
+    im={['set()']}
+/>
+
+### `ClassNameToggleMixin.set()`
+
+```javascript
+set(name, value)
+set(values)
+```
+
+Toggles specified CSS classes on elements.
+
+### Parameters
+
+<dl>
+    #### `name`
+    A CSS class.
+
+    #### `values`
+    A dictionary which each entry represents whether the CSS class will be added to or remove from elements.
+
+    #### `value`
+    A boolean that the CSS class is added to elements when `true`; or removed from elements when `false`.
+
+</dl>

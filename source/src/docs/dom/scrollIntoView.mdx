@@ -1,0 +1,222 @@
+import React from "react";
+import { scrollIntoView } from "zeta-dom/domUtil";
+import { Mixin, useScrollableMixin } from "brew-js-react";
+
+<Module name="zeta-dom/domUtil" />
+
+# scrollIntoView
+
+Scroll all ancestor container so that the specified element is in view.
+
+<Snippets
+    snippets={[
+        'scrollIntoView(element)',
+        'scrollIntoView(element, 50)',
+    ]}
+    render={(index, ref) => {
+        return (
+            <>
+                <div style={{border: '2px dotted', overflow: 'auto', height: '200px', padding: '1em', scrollBehavior: 'smooth'}}>
+                    <div style={{paddingTop: '300px', paddingBottom: '300px'}}>
+                        <input />
+                    </div>
+                </div>
+                <button onClick={() => {
+                    switch (index) {
+                        case 0:
+                            scrollIntoView(ref.current.querySelector('input'));
+                            return;
+                        case 1:
+                            scrollIntoView(ref.current.querySelector('input'), 50);
+                            return;
+                    }
+                }}>Show input</button>
+            </>
+        )
+    }} />
+
+## Syntax
+
+```javascript
+scrollIntoView(element)
+scrollIntoView(element, rect)
+scrollIntoView(element, rect, within)
+scrollIntoView(element, rect, within, behavior)
+scrollIntoView(element, margin)
+scrollIntoView(element, margin, within)
+scrollIntoView(element, margin, within, behavior)
+scrollIntoView(element, align, rect)
+scrollIntoView(element, align, rect, within)
+scrollIntoView(element, align, rect, within, behavior)
+scrollIntoView(element, align, margin)
+scrollIntoView(element, align, margin, within)
+scrollIntoView(element, align, margin, within, behavior)
+```
+
+<ImportHint
+    name="scrollIntoView"
+    module="zeta-dom/domUtil"
+    global="zeta.util.scrollIntoView"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    Element to be scrolled into view.
+
+    #### `rect` <Badge.Optional />
+    A rect represent a region inside the element to be scrolled into view.
+
+    #### `margin` <Badge.Optional />
+    Number of pixels away from the edge where element should be positioned.
+
+    #### `within` <Badge.Optional />
+    When specified, only this element and its descendants will be scrolled.
+
+    #### `align` <Badge.Optional /> <Badge.Version />
+    Alignment to viewport. It accepts the following keyword:
+
+    <dl>
+        #### `auto`
+        Default value. In each axis, element is scrolled into view with minimum amount of scrolling.
+        Content is not scrolled if element is fully in view. If element is has a larger size than the
+        viewport in the measuring exis, element will be aligned `left` horizontally or `top` vertically.
+
+        #### `center`
+        Element is aligned center in the viewport.
+
+        #### `left`
+        Left edge of the element is aligned to the left of the viewport.
+
+        #### `right`
+        Right edge of the element is aligned to the right of the viewport.
+
+        #### `top`
+        Top edge of the element is aligned to the top of the viewport.
+
+        #### `bottom`
+        Bottom edge of the element is aligned to the bottom of the viewport.
+
+        #### `<horizontal> <vertical>`
+        A combination of horizontal and vertical alignment.
+    </dl>
+
+    When `left`, `right`, `top` or `bottom` is used without specifying alignment for the counter-axis,
+    that counter-axis has the default value `auto`.
+
+    #### `behavior` <Badge.Optional /> <Badge.Version />
+    Whether the scrolling should animate smoothly (`smooth`), happen instantly in a single jump (`instant`), or let the browser choose (`auto`, default).
+</dl>
+
+### Return value
+
+<dl>
+    #### `{ x: number, y: number }`
+    Number of pixels in x and y direction actually scrolled.
+
+    #### `false`
+    Scrolling did not happened, either because the element or the region is already in view, or parent elements cannot be further scrolled.
+</dl>
+
+## Alignment to viewport
+
+~~0.4.0~~
+
+<Snippets
+    title="Example of alignments"
+    snippets={[
+        'auto',
+        'top',
+        'top center',
+        'left bottom',
+        'center',
+        'center auto',
+    ]}
+    render={(index, ref, value) => {
+        React.useEffect(() => {
+            ref.current.querySelector('.wrapper').scrollTo(0, 0);
+        }, [index]);
+        return (
+            <>
+                <div className="wrapper" style={{border: '2px dotted', overflow: 'scroll', height: 200, width: 200 }}>
+                    <div style={{ padding: 300 }}>
+                        <div className="element" style={{ width: 50, height: 50, background: 'blue' }}></div>
+                    </div>
+                </div>
+                <button onClick={() => scrollIntoView(ref.current.querySelector('.element'), value, 0, ref.current)}>Scroll</button>
+            </>
+        )
+    }} />
+
+## In conjuction with plugin
+
+<Snippets
+    snippets={[
+        'scrollIntoView(element)',
+        'scrollIntoView(element, 50)',
+    ]}
+    render={(index, ref) => {
+        const scrollable = useScrollableMixin();
+        return (
+            <>
+                <div {...Mixin.use(scrollable)} style={{border: '2px dotted', overflow: 'hidden', height: '200px', padding: '1em', scrollBehavior: 'smooth'}}>
+                    <div {...Mixin.use(scrollable.target)} style={{paddingTop: '300px', paddingBottom: '300px'}}>
+                        <input />
+                    </div>
+                </div>
+                <button onClick={() => {
+                    switch (index) {
+                        case 0:
+                            scrollIntoView(ref.current.querySelector('input'));
+                            return;
+                        case 1:
+                            scrollIntoView(ref.current.querySelector('input'), 50);
+                            return;
+                    }
+                }}>Show input</button>
+            </>
+        )
+    }} />
+
+To use inconjunction with scrolling plugins, bind `getContentRect` and `scrollBy` event on the container element.
+
+The following is an example from `brew-js` scrollable extension:
+
+```typescript
+dom.on(container, {
+    drag: function () {
+        dom.beginDrag();
+    },
+    getContentRect: function (e) {
+        if (e.target === container || $(e.target).closest('.' + childClass)[0]) {
+            var rect = getRect(container);
+            var padding = $(container).scrollable('scrollPadding');
+            rect.top += padding.top;
+            rect.left += padding.left;
+            rect.right -= padding.right;
+            rect.bottom -= padding.bottom;
+            return rect;
+        }
+    },
+    scrollBy: function (e) {
+        $(container).scrollable('stop');
+        var origX = $(container).scrollable('scrollLeft');
+        var origY = $(container).scrollable('scrollTop');
+        $(container).scrollable('scrollBy', e.x, e.y, 200);
+        return {
+            x: $(container).scrollable('scrollLeft') - origX,
+            y: $(container).scrollable('scrollTop') - origY
+        };
+    }
+})
+```
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.1.0** Introduced
+- **0.4.0** `align` option
+- **0.4.7** `center auto` `auto center` for `align`
+- **0.4.12** `scrollBehavior` option
+</VersionTimeline>

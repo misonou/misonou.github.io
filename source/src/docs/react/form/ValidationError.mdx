@@ -1,0 +1,57 @@
+<Module name="zeta-dom-react" />
+
+# ValidationError class
+
+<ImportHint
+    name="ValidationError"
+    module="zeta-dom-react"
+    require="ValidationError"
+    global="zeta.react.ValidationError"
+    expanded />
+
+<MemberList
+    i="ValidationError"
+    ip={['kind', 'message', 'args']}
+/>
+
+## Constructor
+
+```javascript
+new ValidationError(kind, message)
+new ValidationError(kind, message, args)
+```
+
+### Parameters
+
+<dl>
+    #### `kind`
+    Unique name identifying the kind of validation.
+
+    #### `message`
+    Default error message. The message can be overriden by `formatError` callback in field, form or global level.
+
+    #### `args` <Badge.Optional />
+    Arguments passed to the validator, usually an object containing dynamic constraints.
+
+</dl>
+
+## Instance properties
+
+### `ValidationError.kind` <Badge.ReadOnly />
+
+Gets the kind of validation.
+
+### `ValidationError.message` <Badge.ReadOnly />
+
+Gets the default error message.
+
+### `ValidationError.args` <Badge.ReadOnly />
+
+Gets the arguments passed to the validator, usually an object containing dynamic constraints.
+
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.4.1** Introduced
+</VersionTimeline>

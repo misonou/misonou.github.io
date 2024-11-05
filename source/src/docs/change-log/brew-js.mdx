@@ -1,0 +1,453 @@
+<Module name="brew-js" />
+
+# Change log
+
+## v0.6.14 (2024/10/29)
+
+#### Core
+
+- <kbd>fix</kbd> corrected type of [`ZetaEventBase.context`](:) to `this` for app events `app.on(eventName)`, a change from v0.6.0 <Badge.TS/>
+
+#### Router
+
+- Add common properties to `pageload` and `popstate` event
+- <kbd>fix</kbd> notify `asyncEnd` after operations awaited by [`beforepageload` event](/docs/router/beforepageload-event) have completed
+- <kbd>fix</kbd> encoded braces, `%7B` and `%7D`, should not trigger parameter subsitution in [`app.resolvePath`](:)
+- <kbd>fix</kbd> `navigate` and `beforepageload` event: `oldStateId` and `oldPathname` event properties can be `undefined` <Badge.TS/>
+
+#### Others
+
+- <kbd>fix</kbd> [`registerSimpleDirective`](:) failed to initialize for existing elements having the specified attribute
+
+## v0.6.13 (2024/10/16)
+
+#### Router
+
+- Add overload to [`Route.set`](:)
+- Add `keepQuery` parameter to [`Route.set`](:), [`Route.replace`](:)
+- <kbd>fix</kbd> [`Route.parse`](:) returns incorrect `remainingSegments` value when it contains URL-encoded characters
+- <kbd>fix</kbd> in URL mode `query` or `none`, query string and hash is altered when [`Route.replace`](:) is called
+  but did not trigger navigation
+
+#### I18n
+
+- <kbd>fix</kbd> setting language should cause navigation without replacing previous page in history stack
+- <kbd>fix</kbd> preserve query string and hash on language change
+
+#### Utilities
+
+- Add [`getQueryAndHash`](:)
+
+## v0.6.12 (2024/10/10)
+
+#### Utilities
+
+- Add [`toQueryString`](:)
+- Add overload of [`setCookie`](:) and [`cookie`](:) for cookie attributes
+- <kbd>fix</kbd> handle encoded characters in query parameter name and cookie
+- <kbd>fix</kbd> accept `0` as query parameter value for maximal compatibility
+
+## v0.6.11 (2024/09/08)
+
+#### Router
+
+- Prevents excessive navigation and redirect by count
+- <kbd>fix</kbd> encode path correctly into canonical form
+- <kbd>fix</kbd> corrupted state when query or hash contains escaped sequence
+
+#### Template
+
+- <kbd>fix</kbd> always evaluate from `method-args` attribute and pass arguments to context method
+
+#### Viewport
+
+- <kbd>fix</kbd> incorrect viewport size reported for legacy device without `VisualViewport` support
+
+#### Others
+
+- Add `containment` option for [`openFlyout`](:)
+- <kbd>fix</kbd> [`normalizePath`](:) should encode path correctly into canonical form
+
+## v0.6.10 (2024/08/29)
+
+#### Router
+
+- Add [`PageInfo.getSavedStates`](:)
+- <kbd>fix</kbd> unable to match route with no parameters
+- <kbd>fix</kbd> incorrect storage key when `explicitBaseUrl` option is set to `true`
+
+## v0.6.9 (2024/07/22)
+
+#### Router
+
+- <kbd>fix</kbd> reference to a history storage in another storage like [`app.cache`](:) may be deserialized as a seperate object
+- <kbd>fix</kbd> [`app.path`](:), [`app.page`](:) and [`app.historyStorage`](:) did not return meaningful value before app ready
+- <kbd>fix</kbd> [`PageInfo.clearHistoryStorage`](:) did not clear associated storage that is removed from history
+- <kbd>fix</kbd> continue navigation despite error is being thrown in `navigate` event
+
+#### Others
+
+- Allows registering custom types for deserialization using [`ObjectStorage.registerType`](:)
+- [`ObjectStorage.revive`](:) now only purges exsiting object if the target object is deserialized to a different type
+
+## v0.6.8 (2024/07/03)
+
+#### Router
+
+- <kbd>fix</kbd> [`Route.parse`](:) incorrectly returned empty object when there is no route matches given path
+
+#### Others
+
+- <kbd>fix</kbd> [`ObjectStorage.get`](:) deserializes circular reference to root object improperly
+- <kbd>fix</kbd> unhandled rejection from `[href]`, `[data-href]` and `[loading-class]` directive
+
+## v0.6.7 (2024/06/07)
+
+#### Router
+
+- [`PageInfo.data`](:) now returns `null` when data is not given, being consistent when
+  - router state is restored from storage
+  - data is cleared using [`PageInfo.clearNavigateData()`](:)
+- <kbd>fix</kbd> app starts with incorrect initial path when `urlMode` is `none` and the page is hosted at non-root path
+- <kbd>fix</kbd> unable to correctly restore pages with snapshots sharing the same history storage, due to bug in [`ObjectStorage`](:)
+
+#### Others
+
+- <kbd>fix</kbd> [`ObjectStorage`](:) was unable to persist multiple keys being set to the same object
+  - previous keys set to that object will have its value changed to `undefined`
+
+## v0.6.6 (2024/05/11)
+
+#### Router
+
+- Add [`app.backToPreviousPath`](:)
+- Deprecate overload of [`app.back`](:) with `defaultPath` parameter
+- <kbd>fix</kbd> [`app.previousPath`](:) should return `null` if session is different
+
+#### Others
+
+- <kbd>fix</kbd> compatibility issue with default settings of Webpack 5 and @rollup
+
+## v0.6.5 (2024/04/26)
+
+#### Router
+
+- <kbd>fix</kbd> [`app.path`](:) should have already updated in [`popstate`](/docs/router/popstate-event) event
+
+#### Others
+
+- <kbd>fix</kbd> animation sequence may not work if `zeta-dom` icd s older than `0.4.13`
+- <kbd>fix</kbd> viewport size may report `undefined` on app ready
+
+## v0.6.4 (2024/04/05)
+
+#### Router
+
+- <kbd>fix</kbd> unable to persist [`app.cache`](:) for the first visit in the same tab, due to bug in [`ObjectStorage`](:)
+
+#### Others
+
+- <kbd>fix</kbd> [`ObjectStorage`](:) unable to persist first saved object
+- <kbd>fix</kbd> issue with [`getQueryParam`](:) and [`setQueryParam`](:) when input contains hash
+- <kbd>fix</kbd> unable to update parameter that is oiginally empty by [`setQueryParam`](:)
+- <kbd>fix</kbd> normalize resulting query string from [`setQueryParam`](:) (no dangling `?` and `&`)
+
+## v0.6.3 (2024/03/25)
+
+#### Core
+
+- Report app init error in console
+
+#### Router
+
+- Always perform navigation when data is provided to [`app.navigate`](:)
+- <kbd>fix</kbd> [`app.back`](:) may leave current app when the same app is visited earlier in the same tab
+
+#### Others
+
+- Add `flyoutclose` event
+- Data passed to [`openFlyout`](:) is exposed by `data` property in `flyoutshow` event
+- Remove query param using [`setQueryParam`](:) when value is `false` or `null`
+- <kbd>fix</kbd> erreously using `location.search` when empty string passed to [`getQueryParam`](:) and [`setQueryParam`](:) as last argument
+- <kbd>fix</kbd> [`getQueryParam`](:) should return empty string if specified key is present in query string
+
+## v0.6.2 (2024/02/19)
+
+#### Core
+
+- Add [`registerSimpleDirective`](:) for boolean directives
+- Add [`app.halt`](:)
+
+#### Others
+
+- Add `loading-class` directive
+- <kbd>fix</kbd> blur before close flyout
+
+#### Router
+
+- <kbd>fix</kbd> keep query/hash when initialPath equals current path
+
+## v0.6.1 (2024/01/12)
+
+#### Others
+
+- Allow specifying focus target in [`openFlyout`](:)
+- Add `option` parameter for [`toggleFlyout`](:)
+
+## v0.6.0 (2023/12/11)
+
+#### Core
+
+- **Breaking**: app events will no longer be sent to root element
+- [`app.ready`](:) will reject when there is error thrown during initialization, instead of pending forever
+- <kbd>fix</kbd> error should be thrown when the same `use*` function for extension is called twice
+
+#### Animations
+
+- Support outro sequence when calling [`animateOut`](:)
+- Automatically start animation for newly added elements
+- Custom animation can be triggered when key appears in animate-in attr, e.g. `animate-in="fade-in custom-anim"`
+
+#### Template
+
+- <kbd>fix</kbd> apply renderers when element is mounted
+
+#### Viewport
+
+- `resize` and `orientationchange` events now includes the same properties
+
+## v0.5.14 (2023/11/24)
+
+#### HTML Router
+
+- <kbd>fix</kbd> animation with trigger `statechange` in nested `[match-path]` elements not working properly
+
+#### Scrollable
+
+- Handle `behavior` flag in `scrollBy` event
+- <kbd>fix</kbd> incorrect rect returned in `getContentRect` event
+
+#### Others
+
+- <kbd>fix</kbd> outro animation not triggered by `closeFlyout` if `animate-out` directive is not present on flyout element
+- <kbd>fix</kbd> incorrect module names in UMD packing
+
+## v0.5.13 (2023/11/10)
+
+- Add `unload` event
+- Add [`ObjectStorage.persistAll`](:) method
+
+#### Router
+
+- Add [`popstate` event](/router/popstate-event)
+- Add properties for [`beforepageload` event](/router/beforepageload-event)
+- <kbd>fix</kbd> persist all objects in history storage properly when page unloads
+
+## v0.5.12 (2023/10/30)
+
+#### HTML Router
+
+- Add `context` parameter for `evalAttr`
+- <kbd>fix</kbd> `mounted` event for root element should be emitted before `navigate` event
+- <kbd>fix</kbd> `template` directive should not process other directives
+- <kbd>fix</kbd> `data-src` and `data-bg-src` does not work correctly when value contains template syntax
+- <kbd>fix</kbd> `matchElement` called after app ready did not match already mounted elements
+
+## v0.5.11 (2023/10/16)
+
+#### Core
+
+- Map directives to context properties
+
+#### Scrollable
+
+- Reflect options when directive changes
+
+#### Utilities
+
+- Add [`openDeferredURL`](:)
+- Add [`IdleTimeout`](/docs/app/useIdleTimeout) extension
+
+## v0.5.10 (2023/09/11)
+
+#### Router
+
+- <kbd>fix</kbd> history entry of previous page got replaced after traversing back followed by a navigation
+- <kbd>fix</kbd> incorrect initial path when query or hash is present
+
+#### Scrollable
+
+- <kbd>fix</kbd> Error in `getContentRect` event
+
+## v0.5.9 (2023/09/04)
+
+#### Core
+
+- Add `registerDirective`
+
+#### Scrollable
+
+- Improve performance
+- Expose scrollable API in `getDirectiveComponent`
+
+## v0.5.8 (2023/08/21)
+
+#### Template
+
+- <kbd>fix</kbd> unset tab root when `tab-root` attribute is removed from element
+- <kbd>fix</kbd> boolean mapped attribute not properly set by template
+
+#### Others
+
+- Add overload and option for [`openFlyout`](:)
+- <kbd>fix</kbd> unset tab root when flyout is open with `tabThrough` option set to `true`
+- <kbd>fix</kbd> improve repaint performance when openFlyout
+
+## v0.5.7 (2023/08/14)
+
+#### HTML Router
+
+- <kbd>fix</kbd> URLs of inline background image should be prefixed with base URL
+
+#### Others
+
+- Add [`isFlyoutOpen`](:) and [`toggleFlyout`](:)
+- <kbd>fix</kbd> wait both outro animation by `.closing` class and `[animate-out]` directive in [`closeFlyout`](:)
+- <kbd>fix</kbd> handle reopen flyout while closing
+- <kbd>fix</kbd> unhandled rejection in [`openFlyout`](:)
+- <kbd>fix</kbd> promise not resolved when flyout is detached
+
+## v0.5.6 (2023/07/24)
+
+#### Router
+
+- <kbd>fix</kbd> [`app.resolvePath`](:) returned incorrect path when given pah or current path contains query string or query
+
+#### Others
+
+- Allow enabling `[scroller-page]` without using state variable
+- <kbd>fix</kbd> [`closeFlyout`](:) act on same element twice
+
+## v0.5.5 (2023/07/06)
+
+#### Router
+
+- <kbd>fix</kbd> path not saved in storage if query string or hash was changed
+- <kbd>fix</kbd> emit `pageload` event only when navigation occurred
+- <kbd>fix</kbd> state should be created when query string or hash was changed, so that it is aligned with browser's history
+- <kbd>fix</kbd> `hashchange` not properly handled when `urlMode` is `none`
+
+## v0.5.4 (2023/06/29)
+
+#### Router
+
+- Add `hashchange` event
+- <kbd>fix</kbd> [`app.page`](:) should return new page object after redirection
+- <kbd>fix</kbd> [`app.page`](:) should not change when navigation did not happen
+- <kbd>fix</kbd> should not keep cancelled navigation in history
+- <kbd>fix</kbd> `historyStorage.current` and [`app.page`](:) should change in sync with [`app.path`](:) at `beforepageload` event
+
+#### Others
+
+- <kbd>fix</kbd> `isSubPathOf` incorrectly returns full path when the result only contains query string or hash
+
+## v0.5.3 (2023/06/13)
+
+#### Router
+
+- Add [`app.sessionId`](:), [`app.sessionStorage`](:) and [`app.cache`](:) property [[link]](/docs/router/persisting-state#s-session-storage)
+- Add [`app.page`](:) property
+- <kbd>fix</kbd> corrupted state after reload with `urlMode` set to `none`
+
+## v0.5.2 (2023/06/06)
+
+#### App
+
+- Add [`app.readyState`](:)
+- Halt app ready when any init callback throws or rejects
+
+
+#### Router
+
+- Add `resumeOnReload` option [[link]](/docs/router/resume-journey#s-resume-journey-after-reload)
+- [`app.canNavigateBack`](:) and [`app.canNavigateForward`](:) now return `false` if the previous/next history entry will cause page reload
+
+#### Others
+
+- Add `has` method to object storage
+
+
+## v0.5.1 (2023/05/29)
+
+#### Router
+
+- <kbd>fix</kbd> unable to back/forward when lock cancelled immediately
+- <kbd>fix</kbd> current state id not persisted on back_forward action
+- <kbd>fix</kbd> should clone history storage when snapshot
+- <kbd>fix</kbd> tates misaligned with browser history after resumed
+- <kbd>fix</kbd> reload should land on initial path when urlMode is none
+
+## v0.5.0 (2023/05/24)
+
+#### Router
+
+- Add `resume` option [[link]](/docs/router/resume-journey)
+- add [`app.historyStorage`](:) [[link]](/docs/router/persisting-state#s-history-storage)
+- Persist data passed to [`app.navigate`](:) in session storage
+- Add `navigationType` to `navigate` and `beforepageload` event
+- <kbd>fix</kbd> unable to traverse between snapshot when dom locked
+- <kbd>fix</kbd> should carry data from previous state for snapshot
+- <kbd>fix</kbd> unable to resume path in history state when urlMode is none
+
+#### Others
+
+- Add [`createObjectStorage`](:)
+
+## v0.4.10 (2023/05/16)
+
+#### Router
+
+- Add [`app.toHref`](:) [[link]](/docs/router/WithRouter#s-app-tohref) and [`app.fromHref`](:) method [[link]](/docs/router/WithRouter#s-app-fromhref)
+- allow passing additional data to `navigate` and `beforepageload` event
+- Include pathname from toHref in query mode
+- <kbd>fix</kbd> `fromPathname` should convert input path in query mode
+- <kbd>fix</kbd> include query and hash to determine app path in popstate event
+- <kbd>fix</kbd> isAppPath incorrect result in implicit mode
+
+#### Others
+
+- <kbd>fix</kbd> error when init tree if root elm has attr to evaluate
+  > Error will occur when having variable in root element `<html var="...">`
+- <kbd>fix</kbd> incorrect sign of x, y values reported in `scrollBy` event
+- <kbd>fix</kbd> convert href before navigate
+
+## v0.4.9 (2023/04/24)
+
+#### Router
+
+- Add `canNavigateForward` property [[link]](/docs/router/WithRouter#s-app-cannavigateforward)
+- Add `snapshot` method [[link]](/docs/router/snapshots)
+
+## v0.4.8 (2023/03/30)
+
+#### Router
+
+- Add `urlMode` option [[link]](/docs/router/router-mode)
+- Add `isAppPath` method [[link]](/docs/router/WithRouter#s-app-isapppath)
+
+#### Scrollable
+
+- Add support for `scrollProgressChange` event
+
+#### I18n
+
+- Add `detectLanguage` option [[link]](/docs/react/i18n/index#s-detectlanguage)
+
+#### Others
+
+- Improve performance by delaying `tabindex` update
+- Add `parsePath` and `setQueryParam` util
+- <kbd>fix</kbd> compability issue with `react-refresh` plugin
+- <kbd>fix</kbd> bind event directly on `[async-action]` elements
+  > Default action and other handlerd may failed to be postponed
+- <kbd>fix</kbd> keep opened flyout at first page load

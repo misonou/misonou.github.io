@@ -1,0 +1,63 @@
+<Module name="brew-js-react" />
+
+# Persisting view state
+
+The router implements view state mechanism. Therefore a view component can persist states when navigating different views. 
+
+## useRouteState hook
+
+```tsx
+function View() {
+    const [searchText, setSearchText] = useRouteState('searchText', '');
+    /* ... */
+}
+```
+
+When user leave the current page and later navigate back, `searchText` will be initialized with the last value set by `setSearchText`.
+
+## Single view for different paths
+
+It is common to display different content depending on current path using the same component.
+
+For example, the page `/products/1` and `/products/2` may display detail of product with ID `1` and `2` respectively, using the same view component.
+
+If there are states isolated in different page that need to be persisted and restored in each page view, use the lower level `useViewState` hook:
+
+```tsx
+function ProductInfo() {
+    const id = useRouteParam('id');
+    const viewState = useViewState('myViewState');
+    const [searchText, setSearchText] = useState(viewState.get() ?? '');
+
+    // store current search text in view state
+    // so that when navigating back the last search text is restored
+    viewState.set(searchText);
+
+    useEffect(() => {
+        return viewState.onPopState((prevState) => {
+            // callback will be called when navigation occurred
+            // and rendering this same view component
+            setSearchText(prevState ?? '');
+        });
+    }, [viewState]);
+
+    /* ... */
+}
+```
+
+## Snapshot internal states
+
+~~0.3.3~~
+
+The library provides mechanism to snapshot internal view state so that user can traverse between internal states using browser's back and forward function.
+
+> It is always preferrable to use route parameters if such state is better conceptualized as a page, so that user can access directly by different URL.
+
+```tsx
+function Component() {
+    // pass `true` as third argument to enable snapshot
+    const [step, setStep] = useRouteState('step', 0, true);
+
+    /* ... */
+}
+```

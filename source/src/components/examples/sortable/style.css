@@ -1,0 +1,14 @@
+.sortable-item {
+    padding: 0.25em;
+    background-color: #0003;
+}
+
+.sortable-item + .sortable-item {
+    margin-top: 0.5em;
+}
+
+.sortable-item i {
+    padding-right: 1em;
+    cursor: move;
+    vertical-align: middle;
+}

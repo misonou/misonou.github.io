@@ -1,0 +1,411 @@
+#app {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-top: 5px solid transparent;
+    box-sizing: border-box;
+    scroll-padding-top: 3.5em;
+}
+
+#app:before,
+:root.loading #app:after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    width: 100%;
+    height: 5px;
+    background-color: var(--color-primary);
+    z-index: 2;
+}
+
+:root.loading #app:after {
+    background: linear-gradient(90deg, deeppink, royalblue, lightgreen, yellow, deeppink, royalblue, lightgreen, yellow, deeppink);
+    background-size: 500%;
+    animation: move-x 20s linear infinite;
+    opacity: 1;
+}
+
+:root.loading-complete #app:after {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+@keyframes move-x {
+    0% {
+        background-position: 500% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+nav {
+    position: relative;
+    display: flex;
+    width: 250px;
+    box-sizing: border-box;
+    font-size: 90%;
+    flex-direction: column;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+#app-nav-header {
+    position: relative;
+    padding: 1em;
+    background-color: var(--page-bg);
+    z-index: 1;
+}
+
+#app-nav-header > span {
+    display: block;
+    margin-bottom: 0.25em;
+    font-family: Zilla Slab, var(--font-default);
+    font-size: 200%;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+#app-nav-header .zui-toggle {
+    margin-top: 0.5em;
+}
+
+#app-nav-search {
+    position: relative;
+}
+
+#app-nav-search-result {
+    display: none;
+    position: absolute;
+    width: 100%;
+    max-height: calc(70vh - 100px);
+    border-bottom: 4px solid var(--color-highlight);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    box-sizing: border-box;
+    box-shadow: var(--overlay-box-shadow);
+    background-color: var(--color-background);
+    overflow: hidden;
+    z-index: 2;
+}
+
+.zui-field.focused + #app-nav-search-result {
+    display: block;
+}
+
+#app-nav-search-result a {
+    display: block;
+    padding: 0.5em 1em;
+}
+
+#app-nav-search-result a:hover,
+#app-nav-search-result a.active {
+    background-color: var(--color-highlight-bg);
+}
+
+#app-nav-search-result a > span {
+    display: block;
+}
+
+#app-nav-search-result a > span:first-child {
+    font-weight: 500;
+}
+
+#app-nav-search-result a > span:last-child {
+    margin-top: 0.25em;
+    font-size: 80%;
+}
+
+#app-nav-search-result a span.module {
+    color: var(--color-highlight);
+    white-space: nowrap;
+}
+
+#app-nav-search-result a span.module:after {
+    content: ' > ';
+}
+
+#app-nav-search-result a b {
+    background-color: var(--color-highlight-bg);
+}
+
+#app-nav-content {
+    position: relative;
+    padding: 0 1em 3em;
+    flex: 1 0 1px;
+    overflow: hidden;
+}
+
+#app-nav-content:not(:hover):not(.scrolling) {
+    --jqs-scrollbar-opacity: 0;
+}
+
+nav.search-open #app-nav-content {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+#app-nav-content .app-nav-section.hidden,
+#app-nav-content a.hidden {
+    display: none;
+}
+
+.app-nav-section {
+    position: relative;
+    margin: -1px -1em 0 -1em;
+    padding: 0.5em 1em 0.5em 2em;
+    color: var(--color-text);
+}
+
+a + .app-nav-section.root {
+    margin-top: 1em;
+}
+
+.app-nav-section:hover:before {
+    content: '';
+    position: absolute;
+    left: 1em;
+    top: 2.5em;
+    bottom: 0.5em;
+    border-left: 1px solid var(--color-text);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.app-nav-section.collapsed > :not(:first-child) {
+    display: none !important;
+}
+
+.nav-section-header {
+    display: block;
+    position: relative;
+    margin-left: -1em;
+    margin-bottom: 0.25em;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.nav-section-header:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    padding: 0.25em;
+    width: 16px;
+    height: 16px;
+    background: url('./icons/arrow.svg') no-repeat right center / contain;
+    line-height: 1;
+    text-align: center;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.app-nav-section:not(.collapsed) > .nav-section-header:after {
+    transform: rotate(90deg);
+}
+
+.app-nav-section .app-nav-section .nav-section-header:not(:hover):after {
+    opacity: 0;
+}
+
+nav a {
+    display: block;
+    position: relative;
+    padding: 0.25em 0;
+    transition: background-color 0.1s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+nav a:focus {
+    outline: none;
+}
+
+nav a.code,
+nav span.code {
+    font-family: Menlo, Consolas, Monaco, var(--font-monospace);
+    font-size: 90%;
+    white-space: nowrap;
+}
+
+nav a.current:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -10em;
+    right: 0;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    background-color: var(--color-highlight-bg);
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    nav {
+        position: absolute !important;
+        left: -250px;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        background-color: var(--color-background);
+        transition: left 0.2s, box-shadow 0.2s;
+    }
+
+    nav:before {
+        content: '';
+        position: absolute;
+        top: calc(1.25em + 5px);
+        left: calc(100% + 15px);
+        width: 20px;
+        height: 2px;
+        background-color: var(--color-aux);
+        box-shadow: 0 -5px var(--color-aux), 0 5px var(--color-aux);
+        z-index: 2;
+    }
+
+    nav:after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 100%;
+        width: 40px;
+        height: 40px;
+    }
+
+    :root:not(.is-touch) nav:hover,
+    nav.focused {
+        left: 0 !important;
+        box-shadow: 0 0 20px #0003;
+    }
+
+    :root:not(.is-touch) nav:hover:before,
+    nav.focused:before {
+        opacity: 0;
+    }
+
+    #app-nav-header {
+        background-color: var(--color-background);
+    }
+}
+
+.app-nav-dropdown-code button > span {
+    display: block;
+    margin: -0.5em 0;
+    padding: 0.35em 0.5em;
+    width: max-content;
+    border-radius: var(--border-radius);
+    background-color: var(--color-highlight-bg);
+    color: var(--color-highlight);
+    font-family: var(--font-monospace);
+    font-size: 80%;
+    font-weight: 500;
+    line-height: 1.333;
+    white-space: nowrap;
+}
+
+.app-nav-dropdown-code .zui-dropdown-flyout button > span {
+    background-color: transparent;
+}
+
+.app-toc {
+    position: relative;
+    margin-top: 6.5em;
+    width: 200px;
+    max-height: calc(100vh - 8em);
+    color: var(--color-aux);
+    align-self: stretch;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.app-toc:not(:hover):not(.scrolling) {
+    --jqs-scrollbar-opacity: 0;
+}
+
+.app-toc ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 80%;
+    font-weight: 500;
+}
+
+.app-toc ul::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: -1em;
+    border-radius: var(--border-radius);
+    background: var(--page-bg);
+    opacity: 0.7;
+    z-index: -1;
+    backdrop-filter: blur(10px);
+}
+
+.app-toc li {
+    padding: 0;
+    list-style: none;
+    cursor: pointer;
+}
+
+.app-toc li.h3 {
+    padding-left: 1.25em;
+}
+
+.app-toc li + li {
+    margin-top: 0.5em;
+}
+
+.app-toc a:link,
+.app-toc a:visited {
+    color: inherit;
+}
+
+@media (max-width: 1080px) {
+    .app-toc {
+        display: none;
+        position: absolute;
+        top: 3em;
+        left: 0;
+        right: 0;
+        width: auto;
+        padding: 1em;
+        background: white;
+        border-radius: var(--overlay-border-radius);
+        box-shadow: var(--overlay-box-shadow);
+    }
+}
+
+main {
+    position: relative;
+    display: flex;
+    padding: 2em;
+    overflow: hidden;
+    align-items: flex-start;
+    column-gap: 3em;
+    flex-grow: 1;
+    z-index: 0;
+}
+
+main > .app-scrollbar {
+    z-index: 10 !important;
+}
+
+main a:link,
+main a:visited {
+    color: var(--color-primary);
+}
+
+@media (max-width: 500px) {
+    main {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}
+
+.app-page-error {
+    text-align: center;
+    font-weight: 600;
+    font-size: 120%;
+    color: #666;
+}

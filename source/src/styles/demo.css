@@ -1,0 +1,118 @@
+.app-demo-view button:not(.zui-button),
+.app-demo-view table,
+.app-demo-view tr,
+.app-demo-view th,
+.app-demo-view td {
+    all: revert;
+}
+
+.app-demo-view button.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+table.app-demo-view-table {
+    margin: 1em 0;
+    max-width: none;
+    min-width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.app-demo-view-table th,
+.app-demo-view-table td {
+    position: relative;
+    padding: 0.25em 0.5em;
+    text-align: left;
+}
+
+.app-demo-view-table th:first-child,
+.app-demo-view-table td:first-child {
+    padding-left: 0;
+}
+
+
+.app-demo-view-table th.sort-asc:after,
+.app-demo-view-table th.sort-desc:after {
+    content: '';
+    display: inline-block;
+    margin-left: 0.5em;
+}
+
+.app-demo-view-table th.sort-asc:after {
+    border-bottom: 0.5em solid;
+    border-left: 0.4em solid transparent;
+    border-right: 0.4em solid transparent;
+}
+
+.app-demo-view-table th.sort-desc:after {
+    border-top: 0.5em solid;
+    border-left: 0.4em solid transparent;
+    border-right: 0.4em solid transparent;
+}
+
+.app-demo-form-col2 {
+    display: flex;
+    column-gap: 1em;
+}
+
+.app-demo-form-col2 > * {
+    width: 50%;
+}
+
+.app-demo-form-field-list:not(:empty) {
+    margin-bottom: 1em;
+}
+
+.app-demo-form-card {
+    position: relative;
+    padding: 1em;
+    border-radius: var(--border-radius);
+    background-color: var(--color-background);
+}
+
+.app-demo-form-card.dragging {
+    z-index: 1;
+}
+
+.app-demo-form-card + .app-demo-form-card {
+    margin-top: 1em;
+}
+
+.app-demo-form-card-sort {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    cursor: move;
+}
+
+.app-docs > .zui-field {
+    width: 300px;
+}
+
+.app-docs form .zui-field {
+    display: block;
+    margin: 1em 0;
+    max-width: 100%;
+}
+
+.app-docs form .zui-field-column .zui-field {
+    margin: 0 !important;
+}
+
+.app-docs form .zui-field:first-child {
+    margin-top: 0;
+}
+
+.app-docs form .zui-text-field:first-child {
+    margin-top: -0.5em;
+}
+
+.app-docs form .zui-field:last-child {
+    margin-bottom: 0;
+}
+
+.app-phone-field > label {
+    transform: scale(0.8);
+    transform-origin: left bottom;
+}

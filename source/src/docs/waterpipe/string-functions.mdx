@@ -1,0 +1,109 @@
+<Module name="waterpipe" />
+
+# String functions
+
+### `concat (&)`
+
+Concatenates the piped value with the given string.
+
+<WaterpipeExample
+    data={{ value: "foo" }}
+    examples={['value & bar']}
+/>
+
+### `replace`
+
+Replaces the matched substring.
+
+If a regular expression and a pipe is supplied as its arguments, the pipe will have access to the following:
+- `0` the matched substring,
+- `1`...`n` matched substrings of parenthesized sub-patterns in order,
+- `index` the position of the matched substring, and
+- `input` of the input string.
+
+<WaterpipeExample
+    data={{ value: "foo/bar/baz" }}
+    examples={['value replace / -', 'value replace /(\w)(\w*)/g [ $0 upper concat $1 ]']}
+/>
+
+### `substr`
+
+Extracts a substring of the piped value.
+
+<WaterpipeExample
+    data={{ value: "foo/bar/baz" }}
+    examples={['value substr 0 3']}
+/>
+
+### `trim`, `trimstart`, `trimend`
+
+Trims spaces from both start and end, or either end of a string.
+
+<WaterpipeExample
+    data={{ value: " foobar " }}
+    examples={['value trim', 'value trimstart', 'value trimend']}
+/>
+
+### `padstart`, `padend`, `removestart`, `removeend`
+
+Pads or removes the given substring to or from either end of a string.
+
+<WaterpipeExample
+    data={{ foo: "baz", bar: "/baz" }}
+    examples={['foo padstart /', 'bar padstart /', 'foo removestart /', 'bar removestart /']}
+/>
+
+### `cutbefore`, `cutbeforelast`, `cutafter`, `cutafterlast`
+
+Extracts a substring before or after the first or last occurrence of a given substring.
+
+<WaterpipeExample
+    data={{ value: "foo/bar/baz" }}
+    examples={['value cutbefore /', 'value cutbeforelast /', 'value cutafter /', 'value cutafterlast /']}
+/>
+
+### `split`
+
+Splits the string by the separater and removes empty entries.
+
+<WaterpipeExample
+    data={{ value: "foo/bar/baz" }}
+    examples={['value split /']}
+/>
+
+### `repeat`
+
+Repeats the string with the given number of times.
+
+<WaterpipeExample
+    data={{ count: 3 }}
+    examples={['count repeat foo']}
+/>
+
+### `upper`, `lower`, `ucfirst`, `lcfirst`
+
+Converts the string to an uppercased or lowercased string.
+
+<WaterpipeExample
+    data={{ foo: "foo", bar: "BAR" }}
+    examples={['foo upper', 'bar lower', 'foo ucfirst', 'bar lcfirst']}
+/>
+
+### `hyphenate`
+
+Converts camel-cased string to hyphenated form.
+
+<WaterpipeExample
+    data={{ value: "camelCaseString" }}
+    examples={['value hyphenate']}
+/>
+
+
+### `length`
+
+Gets the length of the array or string.
+
+<WaterpipeExample
+    data={{ value: "foo" }}
+    examples={['value length']}
+/>

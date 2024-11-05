@@ -1,0 +1,80 @@
+<Module name="brew-js/extensions" />
+
+# IdleTimeout extension
+
+Allows notifications or other actions when user has been idled for a certain period.
+
+> See [Enabling extension](/docs/app/create-app#s-enabling-extensions) on how to use
+  extension for brew.js app.
+
+<ImportHint
+    name="IdleTimeout"
+    module="brew-js/extension/idleTimeout"
+    import="default"
+    expanded
+/>
+
+## Syntax
+
+```javascript
+app.useIdleTimeout(options)
+```
+
+### Parameters
+
+<dl>
+    #### `options`
+    <dl>
+        #### `timeout`
+        Number of milliseconds of idle period before `idle` event is fired.
+
+        #### `crossFrame` <Badge.Optional />
+        Whether user interaction is counted across multiple frames.
+
+        #### `key` <Badge.Optional />
+        Storage key in local storage when `crossFrame` option is enabled.
+        Default is `app.lastInteract`.
+    </dl>
+</dl>
+
+## Example
+
+```typescript
+import brew from "brew-js";
+import IdleTimeout from "brew-js/extension/idleTimeout";
+
+brew.with(IdleTimeout)(app => {
+    app.useIdleTimeout({
+        timeout: 600000 /* 10 minutes */
+    });
+    app.on('idle', e => {
+        // returns a promise that is resolved when user close the dialog
+        return openAlertDialog({ /* ... */ });
+    });
+});
+```
+
+> The extension is included in UMD distribution.
+  There is no need to explicitly registered it with `brew.with`.
+
+## WithIdleTimeout interface
+
+Members of the `WithIdleTimeout` interface is injected to app instance by [`app.useIdleTimeout`](:).
+
+<MemberList
+    i="app" noRoot
+    ev={['idle']}
+/>
+
+### `idle` event
+
+The `idle` event will be fired after a specified amount time without any user interaction.
+
+> If the `idle` event is handled with a promise, the count down will not be restarted
+  until the promise is resolved. This prevents mulitple triggering of UI notifications.
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.5.11** Introduced
+</VersionTimeline>

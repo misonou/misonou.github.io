@@ -1,0 +1,54 @@
+<Module name="brew-js-react" />
+
+# renderView
+
+Renders view by matching current route state against registered route parameters of each supplied views.
+
+## Syntax
+
+```javascript
+renderView()
+renderView(args0)
+renderView(args0, args1)
+renderView(args0, args1, /* … ,*/ argsN)
+renderView(props)
+renderView(props, args0)
+renderView(props, args0, args1)
+renderView(props, args0, args1, /* … ,*/ argsN)
+```
+
+<ImportHint
+    name="renderView"
+    module="brew-js-react"
+    require="renderView"
+    global="brew.react.renderView" />
+
+### Parameters
+
+<dl>
+    #### `args0` … `argsN`
+    A list of view components created by [`registerView`](:).
+
+    #### `props` <Badge.Optional />
+    Optional parameters passed to the root element rendered by the function and the following extra parameters:
+
+    <dl>
+        #### `onError` <Badge.Optional /> <Badge.Experimental /> <Badge.Deprecated />
+        Specifies callback to handle error raised within the view.
+
+        #### `loader` <Badge.Optional /> <Badge.Version />
+        Specifies initial loader if the first matched view is lazy-loaded.
+
+        #### `ref` <Badge.Optional /> <Badge.Version />
+        Specifies a ref object that can retrieve the active view context.
+    </dl>
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.0** Introduced
+- **0.6.5** `onError` and `loader` option
+- **0.6.6** `ref` option
+</VersionTimeline>

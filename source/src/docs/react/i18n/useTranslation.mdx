@@ -1,0 +1,39 @@
+<Module name="brew-js-react" />
+
+# useTranslation
+
+> This function is returned from [`makeTranslation`](:).
+
+## Syntax
+
+```javascript
+useTranslation()
+useTranslation(prefix0)
+useTranslation(prefix0, prefix1)
+useTranslation(prefix0, prefix1, /* … ,*/ prefixN)
+```
+
+### Parameters
+
+<dl>
+    #### `prefix0` … `prefixN` <Badge.Optional />
+    Create translation callback which only looks up the given prefixes.
+
+    If no prefixes is given, prefix must be included in the key
+    supplied to translate callback.
+</dl>
+
+### Return value
+
+An object containing the following members:
+
+<dl>
+    #### `t`
+    A [`translate`](:) callback.
+
+    > Starting from v0.4.7, a unique callback will be returned for each language,
+      which can be used in dependency list such as `useEffect` and `useMemo`.
+
+    #### `language`
+    Current language.
+</dl>

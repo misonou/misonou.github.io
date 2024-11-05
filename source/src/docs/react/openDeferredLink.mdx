@@ -1,0 +1,37 @@
+<Module name="@misonou/react-app-utils" />
+
+# openDeferredLink
+
+Opens a new window with URL that is yet to be resolved asynchronously.
+
+## Syntax
+
+```javascript
+openDeferredLink(promise)
+openDeferredLink(promise, initialUrl)
+openDeferredLink(promise, initialUrl, target)
+openDeferredLink(promise, initialUrl, target, features)
+```
+
+### Parameters
+
+<dl>
+    #### `promise`
+    A promise that resolves the target URL.
+
+    #### `initialUrl` <Badge.Optional />
+    URL to show during loading, typically a loading screen. `about:blank` will be used if not specified.
+
+    #### `target` <Badge.Optional />
+    Name of target window.
+
+    #### `features` <Badge.Optional />
+    A string containing a comma-separated list of window features, same as `window.open()`.
+</dl>
+
+### Return value
+
+A promise that
+- resolves to `true` when the resolved URL is being loaded in target window;
+- resolved to `false` if the new window cannot be opened or the opened window is closed before URL is resolved.
+- forward rejection result if the given promise rejects.

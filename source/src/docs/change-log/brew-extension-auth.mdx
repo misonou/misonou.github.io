@@ -1,0 +1,83 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# Change log
+
+## v0.4.1 (2024/08/23)
+
+#### Msal.js provider
+
+- <kbd>fix</kbd> extra redirection after handling auth code in redirect login flow, which may prevent completion of login flow in Firefox
+
+## v0.4.0 (2024/07/22)
+
+**Breaking changes**
+- Provider are now required to implement `getActiveAccount` and `handleLoginRedirect` methods, see [link](/docs/upgrade-guide#s-upgrading-to-brew-extension-auth-0-4-x)
+- `user` property may be `null` for [`logout` event](/docs/app/auth/AuthContext#s-logout-event)
+
+#### Core
+
+- Fire `logout` event on app start if user was logged in in previously
+- Add `sessionResumed` and `sessionChanged` properties to [`login` event](/docs/app/auth/AuthContext#s-login-event)
+- Add optional `init` and `handleLoginRedirect` methods to [`AuthClient`](:) interface
+- [`AuthProviderContext`](:) argument is now passed to [`AuthClient`](:)
+
+## v0.3.3 (2024/07/11)
+
+#### Msal.js provider
+
+- <kbd>fix</kbd> incorrect state after session is refreshed by [`app.acquireToken`](:)
+
+## v0.3.2 (2024/07/05)
+
+#### Core
+
+- <kbd>fix</kbd> catch error thrown synchronously during provider init
+- <kbd>fix</kbd> app halted with error when `resolveUser` callback throws during nit
+
+#### Utilties
+
+- [`JSONClient`](:) now throws error with code `brew/auth-invalid-credential` when response status is `401`.
+
+## v0.3.1 (2024/06/28)
+
+#### Core
+
+- <kbd>fix</kbd> ignore error with code `brew/auth-invalid-credential` on provider initialization
+
+#### Utilties
+
+- Add `status` property to error thrown from [`JSONClient`](:)
+
+## v0.3.0 (2024/05/16)
+
+#### Core
+
+- Add `authType` and `providerType` options for [`app.resolveAuthProvider()`](:) and [`app.login()`](:)
+- Add shorthand option for single provider
+
+#### Middleware
+
+- Bypass middleware logic if authorization header is already set
+- Filters to opt-out authorization header
+- <kbd>fix</kbd> interceptors should not be called again during retry for axios
+
+#### Utilties
+
+- <kbd>fix</kbd> return error with code `brew/api-error` when [`JSONClient`](:) failed to parse response body
+
+## v0.2.1 (2024/04/12)
+
+#### MSAL.js provider
+
+- <kbd>fix</kbd> unable to handle redirect login when active account exists
+- <kbd>fix</kbd> remove active account when init failed
+
+## v0.2.0 (2024/03/15)
+
+- Allow default behavior of `sessionEnded` event be prevented
+- Add [`JSONClient`](:)
+- UMD release
+
+## v0.1.0 (2024/03/11)
+
+Initial release

@@ -1,0 +1,52 @@
+<Module name="brew-js/extension/router" />
+
+# NavigateResult interface
+
+The `NavigateResult` interface contains the outcome of [`app.navigate`](:) if navigation is completed.
+
+```typescript
+function onClick() {
+    app.navigate('/foo').then(result => { /* ... */ })
+}
+```
+
+<MemberList
+    i="NavigateResult"
+    ip={['id', 'path', 'navigated', 'redirected', 'originalPath']} />
+
+## Properties
+
+### `NavigateResult.id` <Badge.ReadOnly />
+
+A unique ID that can identify page load caused by navigation.
+
+> This is the same unique ID that is set to `history.state`.
+
+### `NavigateResult.path` <Badge.ReadOnly />
+
+Gets the path being navigated to.
+
+If redirection has occured, redirected path will be returned.
+
+```typescript
+app.on('navigate', e => {
+   if (e.newPathname === '/foo') {
+       return app.navigate('/bar', true);
+   }
+});
+
+const { path } = await app.navigate('/foo');
+assert(path === '/bar');
+```
+
+### `NavigateResult.navigated` <Badge.ReadOnly />
+
+Gets if navigation event has actually fired as caused a page load
+
+### `NavigateResult.redirected` <Badge.ReadOnly />
+
+Gets if the app landed on current path through redirection.
+
+### `NavigateResult.originalPath` <Badge.ReadOnly />
+
+Gets the original path that is passed to [`app.navigate`](:) if it has been redirected.

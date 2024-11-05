@@ -1,0 +1,304 @@
+<Module name="zeta-dom/events" />
+
+# ZetaEventContainer class
+
+<MemberList
+    i="ZetaEventContainer"
+    ip={['element', 'context', 'event', 'autoDestroy', 'normalizeTouchEvents', 'captureDOMEvents']}
+    im={['getContexts()', 'add()', 'delete()', 'destroy()', 'emit()', 'emitAsync()', 'tap()', 'flushEvents()']}
+/>
+
+## Constructor
+
+```javascript
+new ZetaEventContainer()
+new ZetaEventContainer(root)
+new ZetaEventContainer(root, context)
+new ZetaEventContainer(root, context, options)
+```
+
+### Parameters
+
+<dl>
+    #### `root` <Badge.Optional />
+    A DOM element of which DOM events fired on descedant elements will be captured.
+
+    #### `context` <Badge.Optional />
+    An object to be exposed through `dom.context` if the `captureDOMEvents` option is set to `true`.
+
+    #### `options` <Badge.Optional />
+    A dictionary containing options specifying the behavior of the container.
+
+    <dl>
+        #### `autoDestroy` <Badge.Optional />
+        Sets whether all event handlers are automatically removed when the root element is detached.
+
+        #### `captureDOMEvents` <Badge.Optional />
+        Sets whether DOM events will be captured.
+        If yes, DOM events will be dispatched to registered components within this container in prior to global event handlers registered by `dom.on`.
+
+        #### `initEvent` <Badge.Optional />
+        Process event object before event is dispatched to handlers registered on this container.
+
+        #### `willDestroy` <Badge.Optional /> <Badge.Version />
+        Sets whether [`ZetaEventContainer.destroy`](:) will be called to end its lifetime.
+
+        It ensures references to event targets are not held by the container even unregistering callbacks from `ZetaEventContainer.add` is still being referenced by consumer.
+        Setting `autoDestroy` will enable this flag automatically.
+
+    </dl>
+</dl>
+
+## Instance properties
+
+### `ZetaEventContainer.autoDestroy` <Badge.ReadOnly />
+
+Gets whether all event handlers are automatically removed when the root element is detached.
+
+### `ZetaEventContainer.captureDOMEvents` <Badge.ReadOnly />
+
+Gets whether DOM events will be captured.
+
+### `ZetaEventContainer.context` <Badge.ReadOnly />
+
+Gets the public interfacing object exposed through `dom.context` if the `captureDOMEvents` option is set to `true`.
+
+### `ZetaEventContainer.element` <Badge.ReadOnly />
+
+Gets the root element this container associates with.
+
+### `ZetaEventContainer.event` <Badge.ReadOnly />
+
+Gets the event currently being fired within this container.
+
+### `ZetaEventContainer.normalizeTouchEvents` <Badge.Deprecated />
+
+## Instance methods
+
+### `ZetaEventContainer.add()`
+
+```javascript
+add(target, handlers)
+add(target, event, handler)
+```
+
+Registers event handlers to a DOM element or a custom event target.
+
+### Parameters
+
+<dl>
+    #### `target`
+    An event target.
+
+    #### `handlers`
+    An object which each entry represent the handler to be registered on the event.
+
+    #### `event`
+    Name of the event.
+
+    #### `handler`
+    A callback function to be fired when the specified event is triggered.
+
+</dl>
+
+### Return value
+
+A function that will unregister the handler when called.
+
+### `ZetaEventContainer.delete()`
+
+```javascript
+delete(target)
+```
+
+Removes the DOM element or custom event target from the container.
+All event handlers are also removed.
+
+### Parameters
+
+<dl>
+    #### `target`
+    An event target.
+
+</dl>
+
+### `ZetaEventContainer.destroy()`
+
+```javascript
+destroy()
+```
+
+Defunct the container. Destroy event will be fired for all registered elements.
+
+### `ZetaEventContainer.emit()`
+
+```javascript
+emit(event)
+emit(event, target)
+emit(event, target, data)
+emit(event, target, data, options)
+emit(eventName)
+emit(eventName, target)
+emit(eventName, target, data)
+emit(eventName, target, data, options)
+emit(eventName, target, props)
+emit(eventName, target, props, options)
+```
+
+Re-emits an event to components.
+If the event is handled by component, a promise object is returned.
+
+### Parameters
+
+<dl>
+    #### `event`
+    An instance of ZetaEvent representing the event to be re-emitted.
+
+    #### `eventName`
+    Event name.
+
+    #### `target` <Badge.Optional />
+    Event target.
+
+    #### `data` <Badge.Optional />
+    Any data to be set on ZetaEvent#data property. If an object is given, the properties will be copied to the ZetaEvent object during dispatch.
+
+    #### `props` <Badge.Optional />
+    Properties that will be copied to the ZetaEvent object during dispatch.
+
+    #### `options` <Badge.Optional />
+    Specifies how the event should be emitted. If boolean is given, it specified fills the `bubbles` option.
+
+    <dl>
+        #### `clientX` <Badge.Optional />
+        Specifies x-coordinate of a point on screen associated with the event.
+        If specified, only elements at the point will receive the event.
+
+        #### `clientY` <Badge.Optional />
+        Specifies y-coordinate of a point on screen associated with the event.
+        If specified, only elements at the point will receive the event.
+
+        #### `bubbles` <Badge.Optional />
+        Specifies if the event should bubble up.
+        Default is `false`.
+
+        #### `handleable` <Badge.Optional />
+        Specifies whether the event can be handled, such that by returning a result value,
+        subsequent event handlers would be skipped and the returned value will be passed to
+        the caller of the emit function. Default is `true`.
+
+        This option is ignored and is forced to be false when `deferrable`
+        option is set to `true`.
+
+        #### `deferrable` <Badge.Optional /> <Badge.Version />
+        Specifies whether the event is deferrable by multiple handlers. Default is `false`.
+
+        When set to `true`, the emit function will always return a promise that resolves after
+        all promises registered to [`ZetaDeferrableEvent.waitFor`](:) has settled.
+
+        #### `asyncResult` <Badge.Optional />
+        Specifies if the emit function should wrap the return value from event handlers as a `Promise`.
+        Default is `true`.
+
+        #### `source` <Badge.Optional />
+        Specifies the event source that controls how the event should bubble up, as well as
+        the `source` and `sourceKeyName` properties of the event object that would be passed
+        to event handlers.
+
+        #### `originalEvent` <Badge.Optional />
+        Provides a native `Event` object the event is associated with.
+
+        #### `preventNative` <Badge.Optional /> <Badge.Version />
+        Whether to automatically prevent default behavior when event is handled.
+        This flag is used in conjunction to `originalEvent` option.
+
+        #### `postAlias` <Badge.Optional /> <Badge.Version />
+        Specifies additional events to be emitted after the main event for each target before propagating up.
+
+        #### `preAlias` <Badge.Optional /> <Badge.Version />
+        Specifies additional events to be emitted before the main event for each target before propagating up.
+    </dl>
+</dl>
+
+### `ZetaEventContainer.emitAsync()` <Badge.Deprecated />
+
+```javascript
+emitAsync(eventName)
+emitAsync(eventName, target)
+emitAsync(eventName, target, data)
+emitAsync(eventName, target, data, options)
+emitAsync(eventName, target, data, options, mergeData)
+```
+
+Emits an event to components asynchronously.
+
+### Parameters
+
+<dl>
+    #### `eventName`
+    Event name.
+
+    #### `target` <Badge.Optional />
+    Event target.
+
+    #### `data` <Badge.Optional />
+    Any data to be set on ZetaEvent#data property. If an object is given, the properties will be copied to the ZetaEvent object during dispatch.
+
+    #### `options` <Badge.Optional />
+    Specifies how the event should be emitted. If boolean is given, it specified fills the `bubbles` option.
+
+    #### `mergeData` <Badge.Optional />
+    A callback to aggregates data from the previous undispatched event of the same name on the same target.
+
+</dl>
+
+### `ZetaEventContainer.flushEvents()` <Badge.Deprecated />
+
+```javascript
+flushEvents()
+```
+
+Fire scheduled asynchronous events immediately.
+
+### `ZetaEventContainer.getContexts()`
+
+```javascript
+getContexts(target)
+```
+
+Gets context object associated with the event target.
+
+### Parameters
+
+<dl>
+    #### `target`
+    An event target, typically a DOM element.
+
+</dl>
+
+### `ZetaEventContainer.tap()`
+
+```javascript
+tap(handler)
+```
+
+Adds a handler to intercept event being fired within this container.
+
+### Parameters
+
+<dl>
+    #### `handler`
+    An event handler.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.1.0** Introduced
+- **0.1.4** `initEvent` option
+- **0.1.5** `ZetaEventContainer.getContexts()`
+- **0.5.0** `ZetaEventContainer.emit()`: `preventNative`, `preAlias` and `postAlias` option
+- **0.5.6** `ZetaEventContainer.emit()`: `deferrable` option
+- **0.5.9** `willDestroy` option
+</VersionTimeline>

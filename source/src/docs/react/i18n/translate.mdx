@@ -1,0 +1,70 @@
+<Module name="brew-js-react" />
+
+# translate
+
+Returns a translation string.
+
+Translate callback can be obtained by the following way:
+- directly from [`makeTranslation`](:) which accepts fully qualified resource keys
+- from [`getTranslation`](:) returned by [`makeTranslation`](:) which accepts resource keys under specific prefixes
+- as `t` from [`useTranslation`](:) returned by [`makeTranslation`](:) which accepts resource keys under specific prefixes
+
+## Syntax
+
+```javascript
+translate(key)
+translate(key, data)
+translate(key, data, lang)
+```
+
+<ImportHint
+    name="translate"
+    module="brew-js-react"
+    require="translate"
+    global="brew.react.translate" />
+
+### Parameters
+
+<dl>
+    #### `key`
+    Tranlsation key.
+
+    #### `data` <Badge.Optional />
+    Data object to be passed to template engine.
+
+    #### `lang` <Badge.Optional /> <Badge.Optional />
+    Default to current language. If translation is not available, translation from default language will be returned.
+</dl>
+
+## Translate interface
+
+<MemberList
+    i="Translate"
+    im={['lazy()', 'html()']} />
+
+### `Translate.html()`
+
+```javascript
+t.html(key)
+t.html(key, data)
+t.html(key, data, lang)
+```
+
+Returns a object containing the translated HTML content that can be passed to `dangerouslySetInnerHTML`.
+
+### `Translate.lazy()`
+
+```javascript
+t.lazy(key)
+t.lazy(key, data)
+t.lazy(key, data, lang)
+```
+
+Returns a string-coercible object that will convert to translation string when coerced.
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.0** Introduced
+- **0.4.7** `lang` parameter
+</VersionTimeline>

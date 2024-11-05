@@ -1,0 +1,87 @@
+<Module name="@misonou/brew-extension-auth/msal" />
+
+# MsalAuthProvider
+
+> Requires to install or include [`@azure/msal-browser`](https://www.npmjs.com/package/@azure/msal-browser).
+
+> Requires to include `dist/brew-auth-msal.min.js` for UMD environment.
+
+<ImportHint
+    name="MsalAuthProvider"
+    module="@misonou/brew-extension-auth/msal"
+    import="default"
+    requireModule="@misonou/brew-extension-auth/dist/brew-auth-msal"
+    require="default"
+    global="brew.Auth.MsalAuthProvider"
+    expanded
+/>
+
+<MemberList
+    i="MsalAuthProvider"
+    sp={['defaultConfig']}
+    sm={['setDefault()', 'create()']}
+/>
+
+## Static properties
+
+### `MsalAuthProvider.defaultConfig` <Badge.ReadOnly />
+
+## Static methods
+
+### `MsalAuthProvider.create()`
+
+```javascript
+create(key, clientId, authority)
+create(key, clientId, authority, scopes)
+create(key, client)
+create(key, client, options)
+create(key, options)
+```
+
+Creates an authentication provider using default configurations.
+
+### Parameters
+
+<dl>
+    #### `key`
+    A unique key.
+
+    #### `clientId`
+    Client ID of the app registered in Azure's application registration portal.
+
+    #### `client`
+    An MSAL client application.
+
+    #### `authority`
+    Authority URI, typically `https://login.microsoftonline.com/common` or one associated with the tenant.
+
+    #### `options` <Badge.Optional />
+    A dictionary containing options.
+
+    #### `scopes` <Badge.Optional />
+    Array of scopes the application is requesting access to.
+
+</dl>
+
+### Return value
+
+An authentication provider which can be passed to [`app.useAuth`](:).
+
+### `MsalAuthProvider.setDefault()`
+
+```javascript
+setDefault(config)
+```
+
+Sets default configurations for MSAL client application, which will be applied when
+an authentication provider is created without explicitly supplying a [`PublicClientApplication`](:) instance.
+
+> Note that it must be called before creating provider.
+
+### Parameters
+
+<dl>
+    #### `config`
+    A subset of configurations which is merged into [`MsalAuthProvider.defaultConfig`](:).
+
+</dl>

@@ -1,0 +1,97 @@
+<Module name="waterpipe" />
+
+# Scope and name visibility
+
+There is two type of scopes in which object path are resolved against.
+
+## Input object scope
+
+In iteration using `foreach` statement or a function argument is invoked,
+a new scope for input object is created.
+
+Each newly created scope is stacked on top of the outer one and each scope in 
+the stack can be retrieved through special variable starting with `@`:
+`@0` the current scope, `@1` one scope out, and way up to `@n`.
+
+In addition, the `@root` variable can access the input object supplied to the template.
+
+## Global object scope
+
+In template inclusion, there is a new scope for global variables.
+This affects where global variables are written to in template.
+
+Global variables are always written in the current global objects.
+Therefore in case of name collision, global variables declared outside the current global object scope
+will not be overwritten.
+
+## Name visibility
+
+The first segment of an object path are subject to visibility of objects in the stack and global objects.
+It is tested whether the property is defined on the input or global objects.
+
+To illustrate considering the following scenario:
+
+```javascript
+var input = {
+    data: {
+        items: [1, 2, 3]
+    }
+};
+
+waterpipe.pipes.myTemplate = '{{foreach items}}{{[ myVar | "=" | . ] join}}{{/foreach}}';
+waterpipe.globals.myGlobal = 'myGlobal';
+waterpipe.globals.myVar = 'myVar';
+
+waterpipe('{{data myTemplate}}', input, {
+    globals: {
+        myVar: 'myVar redefined'
+    }
+});
+```
+
+When the two object path is evaluated, the following objects are tested in sequence for property existence.
+
+For `data`
+1. Input object of `waterpipe()` (`@0` or `@root`)
+1. Global object supplied to `waterpipe()`
+1. Global object `waterpipe.globals`
+
+For `myVal`
+1. Input object scope created by function argument `[ myVal + 1 ]` (`@0`)
+1. Input object scope created by `foreach` (`@1`)
+1. Input object of `myTemplate`  (`@2` or `@root`)
+1. Global object scope for `myTemplate`
+1. Global object supplied to `waterpipe()`
+1. Global object `waterpipe.globals`
+
+And by the time`myVal` is evaluated for the first iteration, the following name is visible:
+
+<WaterpipeExample
+    data={{ data: { items: [1, 2, 3] } }}
+    pipes={{ myTemplate: '{{foreach items}}{{[ myVar | "=" | . ] join}}{{/foreach}}' }}
+    globals={{ myVar: 'myVar redefined' }}
+    template={`
+{{data myTemplate}}
+`}
+/>
+
+## Read-write scope
+
+Although global variables are readable everywhere even in template inclusion,
+they are only overwritable within the template which they are declared.
+
+```javascript
+waterpipe.pipes.innerTemplate = '{{tmpvar + 1 as tmpvar}}';
+```
+
+<WaterpipeExample
+    pipes={{ innerTemplate: '{{tmpvar + 1 as tmpvar}}' }}
+    template={`
+{{let tmpvar 1}}
+Outside: {{tmpvar}}
+Inside:  {{innerTemplate}}
+Outside: {{tmpvar}}`}
+/>
+
+Variables declared in the current global variable scope will mask out
+variable of the same name in outer scope. 

@@ -1,0 +1,68 @@
+<Module name="zeta-dom-react" />
+
+# Form component
+
+The [`<FormContextProvider>`](:) component is used by `<Form>` by default.
+
+```tsx
+import { Form, useFormContext } from "zeta-dom-react";
+
+function Component() {
+    const form = useFormContext();
+    return (
+        <Form context={form} className="my-form">{/* ... */}</Form>
+    );
+}
+```
+
+## Syntax
+
+```tsx
+<Form context={context}>{/* ... */}</Form>
+```
+
+<ImportHint
+    name="Form"
+    module="zeta-dom-react"
+    require="Form"
+    global="zeta.react.Form" />
+
+### Properties
+
+All properties of `<form>`, with these additional properties:
+
+<dl>
+    #### `context`
+    A [`FormContext`](:) object.
+
+    #### `enterKeyHint` <Badge.Optional />
+    Sets the default action label (or icon) to present for the enter key on virtual keyboards.
+    > When supplied, it will overwrite [`FormContext.enterKeyHint`](:).
+
+    #### `formatError` <Badge.Optional />
+    Specifies a callback to generate custom error message for fields associated with this form context.
+    > When supplied, it will overwrite [`FormContext.formatError`](:).
+
+    #### `preventLeave` <Badge.Optional />
+    Whether it should prompt user before leaving the page when form data has been entered.
+    > When supplied, it will overwrite [`FormContext.preventLeave`](:).
+</dl>
+
+## Wrap with common customization
+
+In scenario where common customization is wanted, the `Form` component can easily by wrapped.
+
+```tsx
+import { forwardRef } from "react";
+import { Form as WrappedForm, FormProps } from "zeta-dom-react";
+
+export const Form = forwardRef<HTMLFormElement, FormProps>((props, ref) => {
+    return <WrappedForm {...props} ref={ref} />
+});
+```
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.3.2** Introduced
+</VersionTimeline>

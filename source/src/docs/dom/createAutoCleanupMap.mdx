@@ -1,0 +1,38 @@
+<Module name="zeta-dom/observe" />
+
+# createAutoCleanupMap
+
+Creates a map with DOM element as keys.
+
+When an element is detached from the document or the specified root element, the element will be removed from the map.
+
+## Syntax
+
+```javascript
+createAutoCleanupMap()
+createAutoCleanupMap(root)
+createAutoCleanupMap(callback)
+createAutoCleanupMap(root, callback)
+```
+
+<ImportHint
+    name="createAutoCleanupMap"
+    module="zeta-dom/observe"
+    global="zeta.dom.createAutoCleanupMap"
+/>
+
+### Parameters
+
+<dl>
+    #### `root` <Badge.Optional />
+    A DOM element on which mutation is observed.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when an element is detached, receiving the following arguments:
+    - `element`: the element detached from document or the specified root element
+    - `value`: the value associated with the element previously stored on map.
+</dl>
+
+### Return value
+
+A map instance.

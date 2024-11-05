@@ -1,0 +1,47 @@
+<Module name="zeta-dom-react" />
+
+# useMediaQuery
+
+Triggers component update when the matching state of the given media query has changed.
+
+## Syntax
+
+```javascript
+useMediaQuery(query)
+```
+
+<ImportHint
+    name="useMediaQuery"
+    module="zeta-dom-react"
+    require="useMediaQuery"
+    global="zeta.react.useMediaQuery" />
+
+### Parameters
+
+<dl>
+    #### `query`
+    A valid media query.
+</dl>
+
+### Return value
+
+A boolean indicating whether the media query matches currently.
+
+## Example
+
+```tsx
+function Component(props) {
+    const isMobile = useMediaQuery('(max-width: 700px)');
+    /* ... */
+}
+```
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.2.3** Introduced
+</VersionTimeline>
+
+## See also
+
+- [`createBreakpointContext`](:)

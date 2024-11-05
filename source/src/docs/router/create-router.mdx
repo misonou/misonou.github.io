@@ -1,0 +1,57 @@
+<Module name="brew-js/extension/router" />
+
+# Configuring router
+
+```typescript
+import brew from "brew-js/app";
+import Router from "brew-js/extension/router";
+
+brew.with(Router)(app => {
+    app.useRouter({
+        baseUrl: '/',
+        routes: [
+            '/{view}',
+            '/'
+        ]
+    });
+});
+```
+
+## Syntax
+
+```javascript
+app.useRouter(options)
+```
+
+### Parameters
+
+<dl>
+    #### `options`
+    <dl>
+        #### `routes`
+        See [Defining routes](/docs/router/define-routes).
+
+        #### `urlMode` <Badge.Optional /> <Badge.Version />
+        Any of the following: `pathname`, `query`, `none`.
+
+        See [Router mode](/docs/router/router-mode).
+
+        #### `baseUrl` <Badge.Optional />
+        See [Router mode](/docs/router/router-mode).
+
+        #### `explicitBaseUrl` <Badge.Optional />
+        See [Router mode](/docs/router/router-mode).
+
+        #### `queryParam` <Badge.Optional />
+        Specifies the query param to retrieve or set the app path.
+
+        #### `initialPath` <Badge.Optional />
+    </dl>
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.4.8** `urlMode` option
+</VersionTimeline>

@@ -1,0 +1,72 @@
+<Module name="brew-js/extension/router" />
+
+# Router mode
+
+~~0.4.8~~
+
+Router supports several mode to accomodate different needs:
+
+```typescript
+urlMode: 'pathname' | 'query' | 'none';
+```
+
+For `pathname` mode, which is the default, there are additional options:
+
+```typescript
+explicitBaseUrl: boolean;
+baseUrl: string;
+```
+
+And for `query` mode, the following option is required:
+
+```typescript
+queryParam: string;
+```
+
+## Effects on app path and browser URL
+
+For a valid route `/views/home`:
+
+| `urlMode`  | `baseUrl` | `explicitBaseUrl` | Page URL      | App path                         | Browser path                       |
+| ---------- | --------- | ----------------- | ------------- | -------------------------------- | ---------------------------------- |
+| `pathname` | `/`       |                   | `/`           | `/views/home`                    | `/views/home`                      |
+| `pathname` | `/base`   | `false`           | `/base`       | `/views/home`                    | `/base/views/home`                 |
+| `pathname` | `/base`   | `true`            | `/base`       | `/base/views/home`<br/>(See note) | `/base/views/home`                 |
+| `query`    |           |                   | `/index.html` | `/views/home`                    | `/index.html?path=%2Fviews%2Fhome` |
+| `none`     |           |                   | `/index.html` | `/views/home`                    | `/index.html`                      |
+
+##### Note
+
+In the third case, i.e. when `explicitBaseUrl` is `true`, all API will only consider path beginning with `baseUrl` to be valid:
+
+```typescript
+const { path } = await app.navigate('/base/views/home');
+assert(path === '/base/views/home');
+```
+
+If the path is not start with `baseUrl`, it will treat it as root path (`/`):
+
+```typescript
+const { path } = await app.navigate('/views/home');
+assert(path === '/base');
+```
+
+## Query string and hash
+
+Query string and hash are allowed in app path, however changing query string or hash alone will not trigger navigation.
+
+For a valid route `/views/home?q=1#h`:
+
+| `urlMode`  | `baseUrl` | `explicitBaseUrl` | Page URL      | App path                 | Browser path                             |
+| ---------- | --------- | ----------------- | ------------- | ------------------------ | ---------------------------------------- |
+| `pathname` | `/`       |                   | `/`           | `/views/home?q=1#h`      | `/views/home?q=1#h`                      |
+| `pathname` | `/base`   | `false`           | `/base`       | `/views/home?q=1#h`      | `/base/views/home?q=1#h`                 |
+| `pathname` | `/base`   | `true`            | `/base`       | `/base/views/home?q=1#h` | `/base/views/home?q=1#h`                 |
+| `query`    |           |                   | `/index.html` | `/views/home?q=1#h`      | `/index.html?path=%2Fviews%2Fhome&q=1#h` |
+| `none`     |           |                   | `/index.html` | `/views/home?q=1#h`      | `/index.html?q=1#h`                      |
+
+## Generate link for browser handling
+
+Route provides methods to convert between app path and browser path.
+
+See [`app.toHref`](:) and [`app.fromHref`](:).

@@ -1,0 +1,64 @@
+<Module name="zeta-dom-react" />
+
+# FormArray component
+
+See [Data object and array](/docs/react/form/data-object-array) for usage.
+
+## Syntax
+
+```tsx
+<FormArray name={name} {...optionalProps}>
+    {children}
+</FormArray>
+
+<FormArray value={value} {...optionalProps}>
+    {children}
+</FormArray>
+```
+
+<ImportHint
+    name="FormArray"
+    module="zeta-dom-react"
+    require="FormArray"
+    global="zeta.react.FormArray" />
+
+### Properties
+
+<dl>
+    #### `name`
+    Specifies the name of property of which the data object is accessible in parent data object.
+
+    #### `value`
+    Specifies the data item contained in parent data array.
+
+    #### `children`
+    React node, or a callback that returns react node.
+
+    #### `clearWhenUnmount` <Badge.Optional />
+    See [`FormFieldProps.clearWhenUnmount`](:)
+
+    #### `disabled` <Badge.Optional />
+    See [`FormFieldProps.disabled`](:)
+
+    #### `isEmpty` <Badge.Optional />
+    See [`FormFieldProps.isEmpty`](:)
+
+    #### `required` <Badge.Optional />
+    See [`FormFieldProps.required`](:)
+
+    #### `onChange` <Badge.Optional />
+    See [`FormFieldProps.onChange`](:)
+
+    #### `onValidate` <Badge.Optional />
+    See [`FormFieldProps.onValidate`](:)
+
+    #### `validateOnChange` <Badge.Optional />
+    See [`FormFieldProps.validateOnChange`](:)
+</dl>
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.4.0** Introduced
+- **0.4.8** Use without form context
+</VersionTimeline>

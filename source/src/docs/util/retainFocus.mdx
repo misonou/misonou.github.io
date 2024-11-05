@@ -1,0 +1,33 @@
+<Module name="zeta-dom/dom" />
+
+# retainFocus
+
+Allows focus delegation to another element that is not a descenant of the source element.
+
+Once delegated, the target element can be focused while the source element remains in
+focused state (i.e. [`focused`](:) will still return true, and no `focusout` event will be fired.).
+
+Focus delegation can be cancelled by [`releaseFocus`](:).
+
+## Syntax
+
+```javascript
+retainFocus(source, target)
+```
+
+<ImportHint
+    name="retainFocus"
+    module="zeta-dom/dom"
+    global="zeta.dom.retainFocus"
+/>
+
+### Parameters
+
+<dl>
+    #### `source`
+    A DOM element to be remained in focused state.
+
+    #### `target`
+    A DOM element, usually a flyout.
+
+</dl>

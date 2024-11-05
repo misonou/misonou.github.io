@@ -1,0 +1,22 @@
+<Module name="waterpipe" />
+
+# Wildcard function
+
+If generic shorthand for a pipe function is desired, it can be registered through `waterpipe.pipes.__default__`.
+
+It catches any unresolved pipe function names and returns a pipe function on the fly.
+
+```javascript
+waterpipe.pipes.__default__ = (function (previous) {
+    return function (name) {
+        if (name.charAt(0) === ':') {
+            return function (value) {
+                // do your stuff
+            };
+        }
+        // pass the name to previous wildcard pipe function
+        // as we only accept name with a colon at the beginning
+        return previous(name);
+    };
+}(waterpipe.pipes.__default__));
+```

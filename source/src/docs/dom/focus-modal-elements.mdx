@@ -1,0 +1,44 @@
+import Example from "src/components/examples/modal-element";
+
+<Module name="zeta-dom/dom" />
+
+# Modal elements
+
+<Example />
+
+## Working with brew-js
+
+For flyouts, it will be modal if `is-modal` attribute:
+
+```html
+<div is-flyout is-modal></div>
+```
+
+or the `modal` option is present:
+
+```javascript
+openFlyout('#flyout', null, { modal: true });
+```
+
+## Working with brew-js-react
+
+The [`FlyoutMixin`](:) and [`createDialog`](:) also supports modal mode.
+
+```javascript
+useFlyoutMixin({
+    modal: true,
+    /* ... */
+});
+createDialog({
+    modal: true,
+    /* ... */
+});
+```
+
+## See also
+
+- [`createDialog`](:)
+- [`openFlyout`](:)
+- [`releaseModal`](:)
+- [`setModal`](:)
+- [`FlyoutMixin`](:)

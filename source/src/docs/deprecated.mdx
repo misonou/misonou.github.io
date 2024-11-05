@@ -1,0 +1,98 @@
+# Deprecated APIs
+
+These features are deprecated. They are likely to be removed in next major release.
+
+## Package: zeta-dom
+
+### `ZetaEventContainer.emitAsync`
+
+| Deprecated | Removed |
+| ---------- | ------- |
+| v0.4.5     | -       |
+
+### `registerCleanup(callback)`
+
+| Deprecated | Removed |
+| ---------- | ------- |
+| v0.2.2     | -       |
+
+[`registerCleanup`](:) no longer supports global callback. Use [`createAutoCleanupMap`](:) to keep track of elements.
+
+### `afterDetached`
+
+| Deprecated | Removed |
+| ---------- | ------- |
+| v0.3.1     | -       |
+
+Use [`registerCleanup`](:) or [`createAutoCleanupMap`](:).
+
+## Package: zeta-dom-react
+
+### `useFormField(string, ...)`
+
+| Deprecated | Removed |
+| ---------- | ------- |
+| v0.3.5     | -       |
+
+For better tree-shaking of unused code, the field type argument now requires a constructor function.
+
+For built-in field type, use the corresponding field type constructor:
+
+```typescript
+// ---------- old ----------
+import { useFormField } from 'zeta-dom-react';
+useFormField('text', { /* ... */ });
+useFormField('toggle', { /* ... */ });
+useFormField('choice', { /* ... */ });
+
+// ---------- new ----------
+import { useFormField, TextField, ToggleField, ChoiceField } from 'zeta-dom-react';
+useFormField(TextField, { /* ... */ });
+useFormField(ToggleField, { /* ... */ });
+useFormField(ChoiceField, { /* ... */ });
+```
+
+To add custom field type, create a constructor function or a class implementing [`FieldType`](:) interface:
+
+```typescript
+// ---------- old ----------
+import { registerFieldType } from 'zeta-dom-react';
+registerFieldType('custom', { /* ... */ });
+// use
+useFormField('custom', { /* ... */ });
+
+// ---------- new ----------
+class CustomField implements FieldType<CustomFieldProps, CustomFieldState> {
+    valueProperty?: string | undefined;
+    isEmpty(value: any): boolean {
+        /* ... */
+    }
+    postHook(state: FormFieldState<any>, props: CustomFieldProps): CustomState {
+        /* ... */
+    }
+}
+// use
+useFormField(CustomField, { /* ... */ });
+```
+
+### `useErrorHandlerRef`
+
+| Deprecated | Removed |
+| ---------- | ------- |
+| v0.3.2     | -       |
+
+Equivalent to 
+
+```typescript
+useErrorHandler(source).ref
+```
+
+## Package: brew-js-react
+
+### `useErrorHandlerMixin`
+
+| Deprecated | Removed |
+| ---------- | ------- |
+| v0.2.8     | v0.3.0  |
+
+The deprecated [`useErrorHandlerMixin`](:) and `ErrorHandlerMixin` is removed. Use [`useErrorHandler`](:) instead.

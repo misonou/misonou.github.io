@@ -1,0 +1,242 @@
+<Module name="zeta-dom-react" />
+
+# useAsync
+
+Gets asynchronous data and refreshes the components once data is ready or error has occurred.
+
+By default, the callback is called immediately when component is mounted,
+while the `state` object contains `loading` and `error` property for state control:
+
+```tsx
+function Component(props) {
+    const [content, state] = useAsync(someAsync);
+    return (
+        state.loading ?
+            <Loading /> :
+        state.error ?
+            <Error /> :
+            <div>{content}</div>
+    );
+}
+```
+
+## Syntax
+
+```javascript
+useAsync(callback)
+useAsync(callback, autoload)
+useAsync(callback, deps)
+useAsync(callback, deps, debounce)
+```
+
+### Parameters
+
+<dl>
+    #### `callback`
+    A callback that returns data asynchronously.
+
+    #### `autoload` <Badge.Optional />
+    Whether to autoload the data once the component is mounted, defaults to `true`.
+
+    #### `deps` <Badge.Optional />
+    Triggers reload if the values in the list change.
+
+    #### `debounce` <Badge.Optional /> <Badge.Version />
+    Debounce interval in milliseconds.
+</dl>
+
+### Return value
+
+<dl>
+    #### `[value, state]`
+    An array containing the data when available, and a state object, see [`AsyncContentState`](:).
+</dl>
+
+## Manual start or reload
+
+To suppress autoload, pass `false` as the second argument and trigger loading by `state.refresh` callback:
+
+```tsx
+function Component(props) {
+    const [content, state] = useAsync(someAsync, false);
+    return (
+        <button onClick={state.refresh}>Load</button>
+    );
+}
+```
+
+## Reload upon changes
+
+To auto-refresh upon state change, pass a dependency list as the second argument:
+
+
+```tsx
+function Component(props) {
+    const [value, setValue] = useState(0);
+    const [content, state] = useAsync(someAsync, [value]);
+    /* ... */
+}
+```
+
+## Debounce
+
+~~0.4.0~~
+
+A debounce parameter can be assigned to reduce calls caused by consecutive updates.
+
+```tsx
+function Component(props) {
+    // debounce by 500 milliseconds
+    const [content, state] = useAsync(someAsync, [value], 500);
+    /* ... */
+}
+```
+
+## Abort signal
+
+~~0.4.6~~
+
+Now the callback will receive a `AbortSignal` object and will notify abortion when:
+
+- the component has unmounted
+- `state.refresh()` is called while the current operation is still in progress
+- `state.abort()` is called
+
+```tsx
+function Component(props) {
+    const [content, state] = useAsync(async (signal) => {
+        const response = await fetch('...', { signal });
+        return response.json();
+    });
+    /* ... */
+}
+```
+
+## AsyncContentState interface
+
+<MemberList
+    i="AsyncContentState"
+    ip={['value', 'loading', 'error', 'elementRef']}
+    im={['refresh()', 'onError()', 'abort()', 'reset()', 'on()']}
+    ev={['load', 'error']} />
+
+### `AsyncContentState.elementRef` <Badge.ReadOnly />
+
+When suppied to the `ref` property of a React element, an `error` event is emitted from the rendered element,
+if the error is not handled by handlers registered by `AsyncContentState.onError`.
+
+### `AsyncContentState.error` <Badge.ReadOnly />
+
+Gets the error if the init callback has thrown error or returned a rejected promise.
+
+### `AsyncContentState.loading` <Badge.ReadOnly />
+
+Gets whether the promise returned from init callback is still pending.
+
+### `AsyncContentState.value` <Badge.ReadOnly />
+
+Gets the value returned by the init callback.
+
+> The value is identical to the first element of the returned array from `useAsync`,
+  and is `undefined` in initial state or when `AsyncContentState.error` is truthy.
+
+### `AsyncContentState.abort()` <Badge.Version />
+
+```javascript
+abort()
+abort(reason)
+```
+
+Aborts the async operation.
+
+The loading state will be set back to `false`, whereas the `AsyncContentState.value` is unchanged.
+
+#### Parameters
+
+<dl>
+    #### `reason` <Badge.Optional />
+</dl>
+
+### `AsyncContentState.on()`
+
+```javascript
+on(event, handler)
+on(handlers)
+```
+
+Register event handlers.
+
+#### Parameters
+
+<dl>
+    #### `event`
+    Event name.
+
+    #### `handler`
+    Callback to be invoked on such event.
+
+    #### `handlers`
+    A dictionary where each entry represents the event name and callback to be invoked on such event.
+
+</dl>
+
+### `AsyncContentState.onError()`
+
+```javascript
+onError(handler)
+```
+
+Registers a handler to handle errors thrown from the data init callback.
+
+#### Parameters
+
+<dl>
+    #### `handler`
+</dl>
+
+### `AsyncContentState.refresh()`
+
+```javascript
+refresh()
+```
+
+Sets loading state to `true` and loads the data again.
+
+### `AsyncContentState.reset()` <Badge.Version />
+
+```javascript
+reset()
+```
+
+Resets value, as well as loading and error state to initial state.
+
+### `error` event
+
+Fired when an error has occurred from the init callback.
+
+#### Event properties
+
+<dl>
+    #### `error`
+    Gets the error thrown.
+</dl>
+
+### `load` event
+
+Fired when value is resolved from the init callback.
+
+#### Event properties
+
+<dl>
+    #### `data`
+    Gets the data returned.
+</dl>
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.1.0** Introduced
+- **0.4.0** `debounce` parameter
+- **0.4.6** Abort signal <br/> `AsyncContentState.abort()`
+- **0.5.9** `AsyncContentState.reset()`
+</VersionTimeline>

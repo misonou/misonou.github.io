@@ -1,0 +1,194 @@
+<Module name="brew-js-react" />
+
+# ViewContext class
+
+The `ViewContext` class exposes information on the rendered view.
+
+It is not intended to be instantiated manually. Instead, it is available to view component
+by [`ViewProps.viewContext`](:) property or by [`useViewContext`](:) hook.
+
+<ImportHint
+    name="ViewContext"
+    module="brew-js-react"
+    require="ViewContext"
+    global="brew.react.ViewContext"
+    expanded
+/>
+
+<MemberList
+    i="ViewContext"
+    ip={['parent', 'container', 'view', 'active', 'page']}
+    im={['getChildren()', 'setErrorView()', 'on()']}
+    sp={['root']}
+    ev={['error', 'pagechange']}
+/>
+
+## Instance properties
+
+### `ViewContext.active` <Badge.ReadOnly />
+
+Gets whether the rendered view is still active.
+
+All rendered view is initially active, until navigation has occured that causes the rendered view to be unmounted.
+When the view is inactive, hooks such as [`useRouteParam`](:) and [`useRouteState`](:) will also be ineffective.
+
+> Note that rendered view might turn inactive for a brief time and later become active again, if redirection occurs such
+  that the current view matches again.
+
+### `ViewContext.container` <Badge.ReadOnly />
+
+Gets the DOM element that contains the rendered view.
+
+### `ViewContext.page` <Badge.ReadOnly />
+
+Gets information of current page that rendered the view.
+Unlike [`app.page`](:), it will not change when user has navigated away and the current view is going to unmount.
+
+### `ViewContext.parent` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the parent view context, or `null` if there is no parent context.
+
+### `ViewContext.view` <Badge.ReadOnly />
+
+Gets the view component rendered.
+
+> Note that it returns registered view component returned by [`registerView`](:), rather than the
+  actual view component.
+
+## Instance methods
+
+### `ViewContext.getChildren()` <Badge.Version />
+
+```javascript
+getChildren()
+```
+
+Gets view contexts rendered under this view container.
+
+### `ViewContext.on()`
+
+```javascript
+on(event, handler)
+on(handlers)
+```
+
+Register event handlers.
+
+#### Parameters
+
+<dl>
+    #### `event`
+    Event name.
+
+    #### `handler`
+    Callback to be invoked on such event.
+
+    #### `handlers`
+    A dictionary where each entry represents the event name and callback to be invoked on such event.
+
+</dl>
+
+### `ViewContext.setErrorView()` <Badge.Version />
+
+```javascript
+setErrorView(errorView, error)
+```
+
+Replaces rendered content with error information.
+
+### Parameters
+
+<dl>
+    #### `errorView`
+    A React component.
+
+    #### `error`
+    Value, typically an `Error` object, to be passed to error view as [`ErrorViewProps.error`](:).
+
+</dl>
+
+### Return value
+
+Returns `true` when error view is triggered; or `undefined` when called on root context.
+
+## Static properties
+
+### `ViewContext.root` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the root context.
+
+## Events
+
+### `error` event <Badge.Experimental /> <Badge.Deprecated />
+
+The `error` event is fired when error is dispatched to child elements by [`reportError`](:), [`ErrorHandler.emit`](:) or
+[`notifyAsync`](:).
+
+Event handlers registered are fired after `onError` callback passed to [`renderView`](:).
+
+> This event might be changed or removed in future release.
+
+> Root context will never fire `error` event.
+
+#### Event properties
+
+<dl>
+    #### `error` <Badge.ReadOnly />
+    Gets the dispatched error.
+</dl>
+
+### `pagechange` event
+
+The `pagechange` event is fired when the current view remains active after navigation occurs, meaning that
+[`ViewContext.page`](:) returns a new [`PageInfo`](:) object.
+
+#### Event properties
+
+<dl>
+    #### `navigationType` <Badge.ReadOnly />
+    Gets how user has triggered navigation.
+
+    #### `page` <Badge.ReadOnly />
+    Gets information of the current page.
+
+    #### `previousPage` <Badge.ReadOnly />
+    Gets the [`PageInfo`](:) object associated with the page before navigation.
+</dl>
+
+#### Event methods
+
+<dl>
+    #### `waitFor()`
+
+    ```javascript
+    waitFor()
+    waitFor(args0)
+    waitFor(args0, args1)
+    waitFor(args0, args1, /* … ,*/ argsN)
+    ```
+
+    Defers completion of navigation.
+
+    <dl>
+        #### Parameters
+
+        <dl>
+            #### `args0` … `argsN` <Badge.Optional />
+            One or more promises.
+
+        </dl>
+
+        #### Return value
+
+        Whether the supplied promises will be awaited.
+    </dl>
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.4.2** Introduced
+- **0.5.5** `ViewContext.parent` <br/> `ViewContext.getChildren()`
+- **0.5.7** `pagechange` event: `page`, `navigationType` and `waitFor()`
+- **0.6.5** `ViewContext.root` static property <br/> `ViewContext.setErrorView()` <br/> `error` event
+</VersionTimeline>

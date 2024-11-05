@@ -1,0 +1,62 @@
+<Module name="brew-js-react" />
+
+# ViewProps interface
+
+The `ViewProps` interface exposes information to the current view component.
+
+```tsx
+const MyView = registerView(MyViewImpl, { /* ... */ });
+
+function MyViewImpl(props: ViewProps) {
+    /* ... */
+}
+```
+
+<MemberList
+    i="ViewProps"
+    ip={['errorHandler', 'viewData', 'viewContext', 'navigationType']}
+/>
+
+## Instance properties
+
+### `ViewProps.errorHandler` <Badge.ReadOnly />
+
+Gets an [`ErrorHandler`](:) object that catches errors emitted from current view.
+
+### `ViewProps.navigationType` <Badge.ReadOnly />
+
+Gets how user landed on this view component. It has the following possible values:
+
+<dl>
+    #### `navigate`
+    Any case besides the following.
+
+    #### `resume`
+    Indicating that the previous journey has been resumed. See [Resuming journey](/docs/router/resume-journey).
+
+    #### `reload`
+    Indicating that the page is reloaded.
+
+    #### `back_forward`
+    Indicating that user has traversed back or forward through browser's history.
+</dl>
+
+### `ViewProps.viewContext` <Badge.ReadOnly />
+
+Gets information scoped to the rendered view. See the [`ViewContext`](:) interface.
+
+### `ViewProps.viewData` <Badge.ReadOnly />
+
+Gets the additional data passed from [`navigateTo`](:) or [`redirectTo`](:).
+
+The data object is read-only, to use incoming data as mutable view states,
+pass individual data to `React.useState` or [`useRouteState`](:).
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.3.4** Introduced
+- **0.4.0** `ViewProps.navigationType`
+- **0.4.2** `ViewProps.viewContext`
+- **0.6.4** `ViewProps.errorHandler`
+</VersionTimeline>

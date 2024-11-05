@@ -1,0 +1,198 @@
+<Module name="brew-js-react" />
+
+# Error handling
+
+When an `error` event is dispatched to descendant elements rendered by the current view through [`reportError`](:),
+(not to confused with the native `error` event), there are a few places such error can be caught in view-level.
+
+Within the view it can be handled via [`ErrorHandler`](:) object from [`ViewProps.errorHandler`](:).
+
+```tsx
+import { registerErrorView } from "brew-js-react";
+
+const MyView = registerView(({ viewContext, errorHandler }) => {
+    useEffect(() => {
+        return errorHandler.catch(e => console.log(e));
+    }, []);
+    /* ... */
+});
+```
+
+Outside the view, error can be handled by standard way:
+
+```tsx
+function App() {
+    // listening error event
+    const onError = (e: Zeta.ZetaErrorEvent) => {
+        console.log(e);
+    };
+    return (
+        <div ref={domEventRef({ error: onError })}>{renderView(MyView)}</div>
+    );
+
+    // or by creating own ErrorHandler
+    const errorHandler = useErrorHandler();
+    useEffect(() => {
+        return errorHandler.catch(e => console.log(e));
+    }, []);
+    return (
+        <div ref={errorHandler.ref}>{renderView(MyView)}</div>
+    );
+}
+```
+
+## Streaming errors to view container
+
+### Data loading
+
+[`useAsync`](:) already streams error to view container.
+
+```javascript
+registerView(({ viewContext, errorHandler }) => {
+    const [data] = useAsync(getSomeData, []);
+    useEffect(() => {
+        return errorHandler.catch(e => { /* ... */ });
+    }, []);
+    /* ... */
+});
+```
+
+> Prior to v0.6.4, error can be handled manually as [Asynchronous code](#s-asynchronous-code) below.
+
+### User interaction
+
+Wrapper callback by [`handleUserAction`](:) will stream error to the interacted element, which eventually
+bubbles up to the view container.
+
+See [Handling user actions](/docs/dom/handling-user-actions).
+
+### Asynchronous code
+
+In view component, use [`ErrorHandler.emit`](:) if possible.
+
+```tsx
+registerView(({ errorHandler }) => {
+    useEffect(() => {
+        setTimeout(() => {
+            someAction().catch(e => errorHandler.emit(e));
+        });
+    }, []);
+});
+```
+
+Prior to v0.6.4, or for descendant (reusable) component where error handler is not directly available,
+error handler need to be set up manually created using a ref:
+
+```tsx
+registerView(() => {
+    const errorHandler = useErrorHandler();
+    /* ... */
+    return (
+        <div ref={errorHandler.ref}>
+            {/* ... */}
+        </div>
+    )
+});
+```
+
+If no element is rendered, use [`useViewContext`](:) and dispatcher error to [`ViewContext.container`](:) using [`reportError`](:).
+
+```tsx
+function Component() {
+    const viewContext = useViewContext();
+    useEffect(() => {
+        setTimeout(() => {
+            someAction().catch(e => reportError(e, viewContext.container));
+        });
+    }, []);
+}
+```
+
+## Bailing out from rendered view
+
+~~0.6.5~~
+
+It is possible to bail out from original view through [`ViewContext.setErrorView`](:).
+
+```tsx
+import { registerErrorView } from "brew-js-react";
+
+const MyView = registerView(({ viewContext, errorHandler }) => {
+    // handle error manually
+    const onClick = async () => {
+        try {
+            await someAction();
+        } catch (error) {
+            viewContext.setErrorView(MyErrorView, error);
+        }
+    };
+
+    // or in combination of strategy above:
+    useEffect(() => {
+        return errorHandler.catch(e => {
+            viewContext.setErrorView(MyErrorView, e);
+        });
+    }, []);
+    /* ... */
+});
+```
+
+or handle across different view at higher level:
+
+```tsx
+function App() {
+    const ref = useRef<ViewContext>(null);
+    useEffect(() => {
+        return dom.on('error', e => {
+            // check the source, we normally do not want to replace page content
+            // if the event is triggered by user interaction
+            if (e.source === 'script') {
+                const currentView = ref.current;
+                if (currentView.container.contains(e.target)) {
+                    currentView.setErrorView(MyErrorView, e.error);
+                }
+            }
+        });
+    }, []);
+    return renderView({ ref }, MyView);
+}
+
+function MyErrorView(props: ErrorViewProps) {
+    return (
+        <p>Oops!</p>
+    );
+}
+```
+
+
+## Uncaught error during rendering
+
+[`registerErrorView`](:) allows a fallback view to be rendered when view component failed to be imported or render.
+
+> View container itself is an error boundary. That means when view component failed to render, only content in view container is cleared.
+
+```tsx
+import { registerErrorView } from "brew-js-react";
+
+registerErrorView(({ error, reset }) => {
+    return (
+        <p>Oops!</p>
+    );
+});
+```
+
+
+## Recovering from error view
+
+The `reset` callback in `ErrorViewProps` allows rerendering of the original view that causes the error:
+
+```tsx
+function MyErrorView({ error, reset }: ErrorViewProps) {
+    return (
+        <div>
+            <p>Oops!</p>
+            <button onClick={reset}>Reload page</button>
+        </div>
+    );
+}
+```

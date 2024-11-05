@@ -1,0 +1,54 @@
+<Module name="zeta-dom-react" />
+
+# NumericField class
+
+The `NumericField` class are not supposed to be instantiate manually. Instead it is used to
+augment extra functionalities when used with [`useFormField`](:).
+
+<ImportHint
+    name="NumericField"
+    module="zeta-dom-react"
+    require="NumericField"
+    global="zeta.react.NumericField"
+    expanded />
+
+<MemberList i="NumericField" />
+
+## NumericFieldProps interface
+
+<MemberList
+    i="NumericFieldProps"
+    extends="FormFieldProps"
+    ip={['min', 'max', 'step', 'allowEmpty']} />
+
+### `NumericFieldProps.min`
+
+Specifies the minimum value allowed.
+Value will be automatically set to this value if a smaller value is entered.
+
+### `NumericFieldProps.max`
+
+Specifies the maximum value allowed.
+Value will be automatically set to this value if a larger value is entered.
+
+### `NumericFieldProps.step`
+
+Specifies that the field value must be a multiple of such number.
+If not specified or `0` is supplied, field value can have arbitary decimal places. Negative values will be ignored.
+
+### `NumericFieldProps.allowEmpty`
+
+Specifies whether the field can be empty.
+
+## NumericFieldState interface
+
+<MemberList
+    i="NumericFieldState"
+    extends="FormFieldState"
+/>
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.4.1** Introduced
+</VersionTimeline>

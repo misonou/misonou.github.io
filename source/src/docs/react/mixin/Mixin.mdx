@@ -1,0 +1,142 @@
+<Module name="brew-js-react" />
+
+# Mixin class
+
+> Mixin classes are not intended to be instantiated manually.
+
+<MemberList
+    i="Mixin"
+    im={['reset()', 'next()', 'getRef()', 'getClassNames()', 'getCustomAttributes()', 'dispose()', 'watch()', 'watchOnce()']}
+    sp={['scrollableTarget', 'tabRoot']}
+    sm={['use()']}
+/>
+
+## Instance methods
+
+### `Mixin.dispose()`
+
+```javascript        
+dispose()
+```
+
+### `Mixin.getClassNames()`
+
+```javascript
+getClassNames()
+```
+
+Override this method to apply class names to element.
+
+### `Mixin.getCustomAttributes()`
+
+```javascript
+getCustomAttributes()
+```
+
+Override this method to apply custom attributes to element.
+
+### `Mixin.getRef()`
+
+```javascript
+getRef()
+```
+
+### `Mixin.next()`
+
+```javascript
+next()
+```
+
+### `Mixin.reset()`
+
+```javascript
+reset()
+```
+
+### `Mixin.watch()`
+
+```javascript
+watch(prop)
+watch(prop, handler)
+watch(prop, handler, fireInit)
+```
+
+Watches a property on the object.
+
+### Parameters
+
+<dl>
+    #### `prop`
+    Property name.
+
+    #### `handler` <Badge.Optional />
+    Callback to be fired and the property is changed.
+
+    #### `fireInit` <Badge.Optional />
+    Optionally fire the handler immediately.
+
+</dl>
+
+### `Mixin.watchOnce()`
+
+```javascript
+watchOnce(prop)
+watchOnce(prop, handler)
+```
+
+Watches a property and resolves when the property is changed.
+
+### Parameters
+
+<dl>
+    #### `prop`
+    Property name.
+
+    #### `handler` <Badge.Optional />
+    Callback to be fired when the property is changed.
+
+</dl>
+
+## Static properties
+
+### `Mixin.scrollableTarget` <Badge.ReadOnly />
+
+### `Mixin.tabRoot` <Badge.ReadOnly />
+
+## Static methods
+
+### `Mixin.use()`
+
+```javascript
+use(ref)
+use(ref, args0)
+use(ref, args0, args1)
+use(ref, args0, args1, /* … ,*/ argsN)
+use(mixin)
+use(mixin, args0)
+use(mixin, args0, args1)
+use(mixin, args0, args1, /* … ,*/ argsN)
+use()
+use(mixins0)
+use(mixins0, mixins1)
+use(mixins0, mixins1, /* … ,*/ mixinsN)
+```
+
+Applies React ref and mixins to element.
+
+### Parameters
+
+<dl>
+    #### `ref`
+    A ref callback or ref object.
+
+    #### `mixin`
+    Mixin instance.
+
+    #### `mixins0` … `mixinsN` <Badge.Optional />
+    Mixin instances.
+
+    #### `args0` … `argsN` <Badge.Optional />
+    Mixin instances or string literals. String literals are applied to element as CSS classes.
+
+</dl>

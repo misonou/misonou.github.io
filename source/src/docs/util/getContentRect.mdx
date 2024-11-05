@@ -1,0 +1,43 @@
+<Module name="zeta-dom/domUtil" />
+
+# getContentRect
+
+Gets the content area of an element.
+
+By default, it will be the `padding-box` substracting `scroll-padding` from four sides.
+
+> It emits `getContentRect` event on `dom` object where result can be customized.
+  See [example](#s-example-overriding-default-content-rect) below.
+
+## Syntax
+
+```javascript
+getContentRect(element)
+```
+
+<ImportHint
+    name="getContentRect"
+    module="zeta-dom/domUtil"
+    global="zeta.util.getContentRect"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+</dl>
+
+### Return value
+
+A [`Rect`](:) object.
+
+## Example: Overriding default content rect
+
+```javascript
+dom.on(element, 'getContentRect', e => {
+    // inset the left side by 50 pixels
+    const rect = getRect(e.target, 'padding-box');
+    return rect.expand(-50, 0, 0, 0);
+});
+```

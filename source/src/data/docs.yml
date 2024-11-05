@@ -1,0 +1,1176 @@
+- title: Introduction
+  pages:
+    - title: Getting started
+      path: /index
+    - title: Change log
+      pages:
+        - title: zeta-dom
+          path: /change-log/zeta-dom
+          class: code
+          module: zeta-dom
+          pageTitle: "Change log: zeta-dom"
+        - title: zeta-dom-react
+          path: /change-log/zeta-dom-react
+          class: code
+          module: zeta-dom-react
+          pageTitle: "Change log: zeta-dom-react"
+        - title: brew-js
+          path: /change-log/brew-js
+          class: code
+          module: brew-js
+          pageTitle: "Change log: brew-js"
+        - title: brew-js-react
+          path: /change-log/brew-js-react
+          class: code
+          module: brew-js-react
+          pageTitle: "Change log: brew-js-react"
+        - title: brew-extension-auth
+          path: /change-log/brew-extension-auth
+          class: code
+          module: brew-extension-auth
+          pageTitle: "Change log: @misonou/brew-extension-auth"
+        - title: react-css-utils
+          path: /change-log/react-css-utils
+          class: code
+          module: react-css-utils
+          pageTitle: "Change log: @misonou/react-css-utils"
+    - title: Upgrading
+      pages:
+        - title: Upgrading guide
+          path: /upgrade-guide
+        - title: Deprecated APIs
+          path: /deprecated
+    - title: Troubleshooting
+      pages:
+        - title: Build-time issues
+          path: /troubleshoot/bundler
+        - title: TypeScript issues
+          path: /troubleshoot/typescript
+        - title: React runtime issues
+          path: /troubleshoot/react
+        - title: Other runtime issues
+          path: /troubleshoot/dom
+- title: Topics
+  pages:
+    - title: Patterns
+      pages:
+        - title: Watchables
+          path: /util/watchable
+          module: zeta-dom
+        - title: Disposables
+          path: /util/disposable
+          module: zeta-dom
+    - title: Events
+      pages:
+        - title: Dispatching events
+          path: /util/event-emitter
+          module: zeta-dom
+        - title: Event types
+          path: /util/event-types
+          module: zeta-dom
+    - title: Symantic DOM Events
+      pages:
+        - title: Overview
+          path: /dom/events
+          module: zeta-dom
+          pageTitle: Events
+        - title: Keyboard events
+          path: /dom/keyboard-events
+          module: zeta-dom
+        - title: Text input events
+          path: /dom/text-input-events
+          module: zeta-dom
+        - title: Pointer events
+          path: /dom/pointer-events
+          module: zeta-dom
+    - title: UI management
+      pages:
+        - title: Handling user actions
+          path: /dom/handling-user-actions
+          module: zeta-dom
+        - title: Preventing from leaving
+          path: /dom/prevent-leave
+          module: zeta-dom
+        - title: Modal elements
+          path: /dom/focus-modal-elements
+          module: zeta-dom
+        - title: Focus delegation
+          path: /dom/focus-delegation
+          module: zeta-dom
+        - title: Tab-focus container
+          path: /dom/tab-root
+          module: zeta-dom
+- title: Interactions
+  pages:
+    - title: User interactions
+      pages:
+        - title: beginDrag()
+          path: /dom/beginDrag
+          class: code
+          module: zeta-dom
+        - title: beginPinchZoom()
+          path: /dom/beginPinchZoom
+          class: code
+          module: zeta-dom
+        - title: handleUserAction()
+          path: /react/handleUserAction
+          class: code ext
+          module: react-app-utils
+        - title: insertText()
+          path: /dom/insertText
+          class: code
+          module: zeta-dom
+        - title: openDeferredURL()
+          path: /util/openDeferredURL
+          class: code
+          module: brew-js
+        - title: reportError()
+          path: /dom/reportError
+          class: code
+          module: zeta-dom
+    - title: Layouts and effects
+      pages:
+        - title: Positioner
+          path: /dom/Positioner
+          class: code ext
+          module: react-css-utils
+        - title: addAnimateIn()
+          path: /dom/addAnimateIn
+          class: code
+          module: brew-js
+        - title: animateIn()
+          path: /dom/animateIn
+          class: code
+          module: brew-js
+        - title: animateOut()
+          path: /dom/animateOut
+          class: code
+          module: brew-js
+        - title: closeFlyout()
+          path: /dom/closeFlyout
+          class: code
+          module: brew-js
+        - title: initSortable()
+          path: /dom/initSortable
+          class: code ext
+          module: react-css-utils
+        - title: initStickable()
+          path: /dom/initStickable
+          class: code ext depre
+          module: react-css-utils
+        - title: openFlyout()
+          path: /dom/openFlyout
+          class: code
+          module: brew-js
+        - title: position()
+          path: /dom/position
+          class: code ext
+          module: react-css-utils
+        - title: runCSSAnimation()
+          path: /dom/runCSSAnimation
+          class: code
+          module: zeta-dom
+        - title: scrollIntoView()
+          path: /dom/scrollIntoView
+          class: code
+          module: zeta-dom
+        - title: startPositioning()
+          path: /dom/startPositioning
+          class: code ext
+          module: react-css-utils
+        - title: toggleFlyout()
+          path: /dom/toggleFlyout
+          class: code
+          module: brew-js
+- title: App
+  pages:
+    - title: Create app
+      path: /app/create-app
+      module: brew-js
+      pageTitle: Creating app instance
+    - title: Extending app interface
+      path: /app/extending-app
+      module: brew-js
+    - title: References
+      pages:
+        - title: App
+          path: /app/App
+          class: code
+          module: brew-js
+    - title: Extensions
+      pages:
+        - title: I18n
+          path: /app/useI18n
+          module: brew-js
+          pageTitle: I18n extension
+        - title: IdleTimeout
+          path: /app/useIdleTimeout
+          module: brew-js
+          pageTitle: IdleTimeout extension
+        - title: Scrollable
+          path: /app/useScrollable
+          module: brew-js
+          pageTitle: Scrollable extension
+    - title: Authentication
+      pages:
+        - title: Overview
+          path: /app/auth/overview
+          module: brew-extension-auth
+          pageTitle: Auth extension
+        - title: Authentication providers
+          path: /app/auth/providers
+          module: brew-extension-auth
+        - title: Exposing user identity
+          path: /app/auth/user-object
+          module: brew-extension-auth
+        - title: Middleware
+          path: /app/auth/middleware
+          module: brew-extension-auth
+        - title: References
+          pages:
+            - title: AuthClient
+              path: /app/auth/AuthClient
+              class: code
+              module: brew-extension-auth
+            - title: AuthContext
+              path: /app/auth/AuthContext
+              class: code
+              module: brew-extension-auth
+            - title: AuthProvider
+              path: /app/auth/AuthProvider
+              class: code
+              module: brew-extension-auth
+            - title: AuthProviderContext
+              path: /app/auth/AuthProviderContext
+              class: code
+              module: brew-extension-auth
+            - title: AuthProviderResult
+              path: /app/auth/AuthProviderResult
+              class: code
+              module: brew-extension-auth
+            - title: MsalAuthProvider
+              path: /app/auth/MsalAuthProvider
+              class: code
+              module: brew-extension-auth
+            - title: JSONClient
+              path: /app/auth/JSONClient
+              class: code
+              module: brew-extension-auth
+            - title: createAxiosMiddleware
+              path: /app/auth/createAxiosMiddleware
+              class: code
+              module: brew-extension-auth
+            - title: createFetchMiddleware
+              path: /app/auth/createFetchMiddleware
+              class: code
+              module: brew-extension-auth
+- title: Router
+  pages:
+    - title: Configuring router
+      path: /router/create-router
+      module: brew-js
+    - title: Defining routes
+      path: /router/define-routes
+      module: brew-js
+    - title: Router mode
+      path: /router/router-mode
+      module: brew-js
+    - title: Resuming journey
+      path: /router/resume-journey
+      module: brew-js
+    - title: Persisting states
+      path: /router/persisting-state
+      module: brew-js
+    - title: Snapshots
+      path: /router/snapshots
+      module: brew-js
+    - title: References
+      pages:
+        - title: Interfaces
+          pages:
+            - title: NavigateResult
+              path: /router/NavigateResult
+              class: code
+              module: brew-js
+            - title: PageInfo
+              path: /router/PageInfo
+              class: code
+              module: brew-js
+            - title: Route
+              path: /router/Route
+              class: code
+              module: brew-js
+            - title: RoutePattern
+              path: /router/RoutePattern
+              class: code
+              module: brew-js
+            - title: WithRouter
+              path: /router/WithRouter
+              class: code
+              module: brew-js
+        - title: Events
+          pages:
+            - title: beforepageload
+              path: /router/beforepageload-event
+              class: code
+              module: brew-js
+              pageTitle: "Router: beforepageload event"
+            - title: hashchange
+              path: /router/hashchange-event
+              class: code
+              module: brew-js
+              pageTitle: "Router: hashchange event"
+            - title: navigate
+              path: /router/navigate-event
+              class: code
+              module: brew-js
+              pageTitle: "Router: navigate event"
+            - title: popstate
+              path: /router/popstate-event
+              class: code
+              module: brew-js
+              pageTitle: "Router: popstate event"
+    - title: Using in React
+      pages:
+        - title: Overview
+          path: /router/react/overview
+          module: brew-js-react
+          pageTitle: Using router in React
+        - title: Registering views
+          path: /router/react/register-view
+          module: brew-js-react
+        - title: Rendering views
+          path: /router/react/render-view
+          module: brew-js-react
+        - title: Error handling
+          path: /router/react/error-view
+          module: brew-js-react
+        - title: Rendering links
+          path: /router/react/link-to-other-views
+          module: brew-js-react
+        - title: Navigating to views
+          path: /router/react/navigate-programmatically
+          module: brew-js-react
+        - title: Passing data to views
+          path: /router/react/passing-data
+          module: brew-js-react
+        - title: Using route parameter
+          path: /router/react/using-route-parameter
+          module: brew-js-react
+        - title: Persisting view state
+          path: /router/react/persisting-state
+          module: brew-js-react
+        - title: View context
+          path: /router/react/view-context
+          module: brew-js-react
+        - title: Functions
+          pages:
+            - title: isViewMatched()
+              path: /router/react/isViewMatched
+              class: code
+              module: brew-js-react
+            - title: isViewRendered()
+              path: /router/react/isViewRendered
+              class: code
+              module: brew-js-react
+            - title: linkTo()
+              path: /router/react/linkTo
+              class: code
+              module: brew-js-react
+            - title: matchView()
+              path: /router/react/matchView
+              class: code
+              module: brew-js-react
+            - title: navigateTo()
+              path: /router/react/navigateTo
+              class: code
+              module: brew-js-react
+            - title: redirectTo()
+              path: /router/react/redirectTo
+              class: code
+              module: brew-js-react
+            - title: registerErrorView()
+              path: /router/react/registerErrorView
+              class: code
+              module: brew-js-react
+            - title: registerView()
+              path: /router/react/registerView
+              class: code
+              module: brew-js-react
+            - title: renderView()
+              path: /router/react/renderView
+              class: code
+              module: brew-js-react
+            - title: resolvePath()
+              path: /router/react/resolvePath
+              class: code
+              module: brew-js-react
+        - title: Hooks
+          pages:
+            - title: useQueryParam()
+              path: /router/react/useQueryParam
+              class: code
+              module: brew-js-react
+            - title: useRouteParam()
+              path: /router/react/useRouteParam
+              class: code
+              module: brew-js-react
+            - title: useRouteState()
+              path: /router/react/useRouteState
+              class: code
+              module: brew-js-react
+            - title: useViewContext()
+              path: /router/react/useViewContext
+              class: code
+              module: brew-js-react
+        - title: Interfaces
+          pages:
+            - title: ErrorViewProps
+              path: /router/react/ErrorViewProps
+              class: code
+              module: brew-js-react
+            - title: ViewContext
+              path: /router/react/ViewContext
+              class: code
+              module: brew-js-react
+            - title: ViewProps
+              path: /router/react/ViewProps
+              class: code
+              module: brew-js-react
+- title: React Utilities
+  pages:
+    - title: Utilities
+      pages:
+        - title: ErrorHandler
+          path: /react/ErrorHandler
+          class: code
+          module: zeta-dom-react
+        - title: combineRef()
+          path: /react/combineRef
+          class: code
+          module: zeta-dom-react
+        - title: createAsyncScope()
+          path: /react/createAsyncScope
+          class: code
+          module: zeta-dom-react
+        - title: createBreakpointContext()
+          path: /react/createBreakpointContext
+          class: code
+          module: zeta-dom-react
+        - title: createDependency()
+          path: /react/createDependency
+          class: code
+          module: zeta-dom-react
+        - title: createErrorHandler()
+          path: /react/createErrorHandler
+          class: code
+          module: zeta-dom-react
+        - title: domEventRef()
+          path: /react/domEventRef
+          class: code
+          module: zeta-dom-react
+        - title: partial()
+          path: /react/partial
+          class: code
+          module: zeta-dom-react
+    - title: Hooks
+      pages:
+        - title: useAnimatedIndicator()
+          path: /react/useAnimatedIndicator
+          class: code ext
+          module: react-css-utils
+        - title: useAsync()
+          path: /react/useAsync
+          class: code
+          module: zeta-dom-react
+        - title: useDependency()
+          path: /react/useDependency
+          class: code
+          module: zeta-dom-react
+        - title: useDispose()
+          path: /react/useDispose
+          class: code
+          module: zeta-dom-react
+        - title: useEagerReducer()
+          path: /react/useEagerReducer
+          class: code
+          module: zeta-dom-react
+        - title: useEagerState()
+          path: /react/useEagerState
+          class: code
+          module: zeta-dom-react
+        - title: useErrorHandler()
+          path: /react/useErrorHandler
+          class: code
+          module: zeta-dom-react
+        - title: useEventTrigger()
+          path: /react/useEventTrigger
+          class: code
+          module: zeta-dom-react
+        - title: useMediaQuery()
+          path: /react/useMediaQuery
+          class: code
+          module: zeta-dom-react
+        - title: useMemoizedFunction()
+          path: /react/useMemoizedFunction
+          class: code
+          module: zeta-dom-react
+        - title: useObservableProperty()
+          path: /react/useObservableProperty
+          class: code
+          module: zeta-dom-react
+        - title: useRefInitCallback()
+          path: /react/useRefInitCallback
+          class: code
+          module: zeta-dom-react
+        - title: useSingleton()
+          path: /react/useSingleton
+          class: code
+          module: zeta-dom-react
+        - title: useUnloadEffect()
+          path: /react/useUnloadEffect
+          class: code
+          module: zeta-dom-react
+        - title: useUpdateTrigger()
+          path: /react/useUpdateTrigger
+          class: code
+          module: zeta-dom-react
+        - title: useValueTrigger()
+          path: /react/useValueTrigger
+          class: code
+          module: zeta-dom-react
+    - title: Components
+      pages:
+        - title: <ViewStateProvider>
+          path: /react/ViewStateProvider
+          class: code
+          module: zeta-dom-react
+- title: React Data view
+  pages:
+    - title: Overview
+      path: /react/data-view/overview
+      module: zeta-dom-react
+    - title: Pagination
+      path: /react/data-view/pagination
+      module: zeta-dom-react
+    - title: Sorting
+      path: /react/data-view/sorting
+      module: zeta-dom-react
+    - title: Multiple data views
+      path: /react/data-view/multiple-data-view
+      module: zeta-dom-react
+    - title: References
+      pages:
+        - title: DataView
+          path: /react/data-view/DataView
+          class: code
+          module: zeta-dom-react
+        - title: useDataView()
+          path: /react/data-view/useDataView
+          class: code
+          module: zeta-dom-react
+- title: React Forms
+  pages:
+    - title: Overview
+      path: /react/form/overview
+      module: zeta-dom-react
+      pageTitle: Forms
+    - title: Using form context
+      pages:
+        - title: Accessing form data
+          path: /react/form/accessing-data
+          module: zeta-dom-react
+        - title: Data object and array
+          path: /react/form/data-object-array
+          module: zeta-dom-react
+        - title: Initial form data
+          path: /react/form/initial-data
+          module: zeta-dom-react
+        - title: Persisting form in history
+          path: /react/form/persist-form-data
+          module: zeta-dom-react
+        - title: Preventing from leaving
+          path: /react/form/prevent-leave
+          module: zeta-dom-react
+    - title: Form controls
+      pages:
+        - title: Form controls
+          path: /react/form/using-form-controls
+          module: zeta-dom-react
+        - title: Building form controls
+          path: /react/form/building-form-controls
+          module: zeta-dom-react
+        - title: Composite controls
+          path: /react/form/composite-controls
+          module: zeta-dom-react
+        - title: Parameterizing validations
+          path: /react/form/parameterizing-validations
+          module: zeta-dom-react
+        - title: Field types
+          path: /react/form/field-types
+          module: zeta-dom-react
+    - title: Validation
+      pages:
+        - title: Validation
+          path: /react/form/validation
+          module: zeta-dom-react
+          pageTitle: Form validation
+        - title: Validators
+          path: /react/form/validators
+          module: zeta-dom-react
+        - title: Forcing error state
+          path: /react/form/forcing-error-state
+          module: zeta-dom-react
+        - title: Error message
+          path: /react/form/error-message
+          module: zeta-dom-react
+    - title: Sample controls
+      pages:
+        - title: CheckboxList
+          path: /react/form/control-checkboxlist
+          module: zeta-dom-react
+        - title: DatePicker
+          path: /react/form/control-datepicker
+          module: zeta-dom-react
+        - title: Dropdown
+          path: /react/form/control-dropdown
+          module: zeta-dom-react
+        - title: Multi-select dropdown
+          path: /react/form/control-multidropdown
+          module: zeta-dom-react
+        - title: One-time passcode
+          path: /react/form/control-otp
+          module: zeta-dom-react
+        - title: Radio list
+          path: /react/form/control-radiolist
+          module: zeta-dom-react
+        - title: Slider
+          path: /react/form/control-slider
+          module: zeta-dom-react
+        - title: Suggestions
+          path: /react/form/control-suggestions
+          module: zeta-dom-react
+        - title: TextInput
+          path: /react/form/control-textinput
+          module: zeta-dom-react
+        - title: Toggle
+          path: /react/form/control-toggle
+          module: zeta-dom-react
+        - title: ToggleButtonGroup
+          path: /react/form/control-togglebuttongroup
+          module: zeta-dom-react
+    - title: References
+      pages:
+        - title: Hooks
+          pages:
+            - title: useFormContext()
+              path: /react/form/useFormContext
+              class: code
+              module: zeta-dom-react
+            - title: useFormField()
+              path: /react/form/useFormField
+              class: code
+              module: zeta-dom-react
+        - title: Components
+          pages:
+            - title: <Form>
+              path: /react/form/Form
+              class: code
+              module: zeta-dom-react
+            - title: <FormArray>
+              path: /react/form/FormArray
+              class: code
+              module: zeta-dom-react
+            - title: <FormContextProvider>
+              path: /react/form/FormContextProvider
+              class: code
+              module: zeta-dom-react
+            - title: <FormObject>
+              path: /react/form/FormObject
+              class: code
+              module: zeta-dom-react
+            - title: <HiddenField>
+              path: /react/form/HiddenField
+              class: code
+              module: zeta-dom-react
+        - title: Classes
+          pages:
+            - title: FormContext
+              path: /react/form/FormContext
+              class: code
+              module: zeta-dom-react
+            - title: ValidationError
+              path: /react/form/ValidationError
+              class: code
+              module: zeta-dom-react
+        - title: Interfaces
+          pages:
+            - title: FieldType
+              path: /react/form/FieldType
+              class: code
+              module: zeta-dom-react
+            - title: FormFieldProps
+              path: /react/form/FormFieldProps
+              class: code
+              module: zeta-dom-react
+            - title: FormFieldState
+              path: /react/form/FormFieldState
+              class: code
+              module: zeta-dom-react
+        - title: Field Types
+          pages:
+            - title: ChoiceField
+              path: /react/form/ChoiceField
+              class: code
+              module: zeta-dom-react
+            - title: DateField
+              path: /react/form/DateField
+              class: code
+              module: zeta-dom-react
+            - title: MultiChoiceField
+              path: /react/form/MultiChoiceField
+              class: code
+              module: zeta-dom-react
+            - title: NumericField
+              path: /react/form/NumericField
+              class: code
+              module: zeta-dom-react
+            - title: TextField
+              path: /react/form/TextField
+              class: code
+              module: zeta-dom-react
+            - title: ToggleField
+              path: /react/form/ToggleField
+              class: code
+              module: zeta-dom-react
+- title: React Dialogs
+  pages:
+    - title: Overview
+      path: /react/dialog/overview
+      module: brew-js-react
+      pageTitle: Dialogs
+    - title: Dialog result
+      path: /react/dialog/dialog-result
+      module: brew-js-react
+    - title: Foreground operation
+      path: /react/dialog/foreground-operation
+      module: brew-js-react
+    - title: Customizing dialog
+      path: /react/dialog/customizing
+      module: brew-js-react
+    - title: References
+      pages:
+        - title: createDialog()
+          path: /react/createDialog
+          class: code
+          module: brew-js-react
+        - title: DialogContext
+          path: /react/dialog/DialogContext
+          class: code
+          module: brew-js-react
+        - title: DialogState
+          path: /react/dialog/DialogState
+          class: code
+          module: brew-js-react
+- title: React Translation (i18n)
+  pages:
+    - title: Using I18n extension
+      path: /react/i18n/index
+      module: brew-js-react
+      pageTitle: I18n extension
+    - title: Getting translations
+      path: /react/i18n/getting-translation
+      module: brew-js-react
+    - title: Dynamic content
+      path: /react/i18n/interpolating-data
+      module: brew-js-react
+      pageTitle: Translate dynamic content
+    - title: HTML content
+      path: /react/i18n/html-content
+      module: brew-js-react
+      pageTitle: Translate HTML content
+    - title: Lazy evaluation
+      path: /react/i18n/lazy-evaluation
+      module: brew-js-react
+      pageTitle: Lazy evaluated string
+    - title: Functions
+      pages:
+        - title: makeTranslation()
+          path: /react/i18n/makeTranslation
+          class: code
+          module: brew-js-react
+        - title: useLanguage()
+          path: /react/i18n/useLanguage
+          class: code
+          module: brew-js-react
+    - title: Translation functions
+      pages:
+        - title: getTranslation()
+          path: /react/i18n/getTranslation
+          class: code
+          module: brew-js-react
+        - title: keys()
+          path: /react/i18n/keys
+          class: code
+          module: brew-js-react
+        - title: translate()
+          path: /react/i18n/translate
+          class: code
+          module: brew-js-react
+        - title: useTranslation()
+          path: /react/i18n/useTranslation
+          class: code
+          module: brew-js-react
+- title: React Mixins
+  pages:
+    - title: Using mixins
+      path: /react/mixin/overview
+      module: brew-js-react
+    - title: Passing to child component
+      path: /react/mixin/child-component
+      module: brew-js-react
+      pageTitle: Passing mixin to child component
+    - title: Using scrollable
+      pages:
+        - title: Sticky elements
+          path: /react/mixin/scrollable-sticky
+          module: brew-js-react
+          pageTitle: "ScrollableMixin: sticky elements"
+    - title: References
+      pages:
+        - title: Mixin
+          path: /react/mixin/Mixin
+          class: code
+          module: brew-js-react
+        - title: AnimateMixin
+          path: /react/mixin/AnimateMixin
+          class: code
+          module: brew-js-react
+        - title: AnimateSequenceMixin
+          path: /react/mixin/AnimateSequenceMixin
+          class: code
+          module: brew-js-react
+        - title: ClassNameMixin
+          path: /react/mixin/ClassNameMixin
+          class: code
+          module: brew-js-react
+        - title: ClassNameToggleMixin
+          path: /react/mixin/ClassNameToggleMixin
+          class: code
+          module: brew-js-react
+        - title: FlyoutMixin
+          path: /react/mixin/FlyoutMixin
+          class: code
+          module: brew-js-react
+        - title: FlyoutToggleMixin
+          path: /react/mixin/FlyoutToggleMixin
+          class: code
+          module: brew-js-react
+        - title: ScrollIntoViewMixin
+          path: /react/mixin/ScrollIntoViewMixin
+          class: code
+          module: brew-js-react
+        - title: ScrollableMixin
+          path: /react/mixin/ScrollableMixin
+          class: code
+          module: brew-js-react
+        - title: StatefulMixin
+          path: /react/mixin/StatefulMixin
+          class: code
+          module: brew-js-react
+        - title: StaticAttributeMixin
+          path: /react/mixin/StaticAttributeMixin
+          class: code
+          module: brew-js-react
+        - title: UnmanagedClassNameMixin
+          path: /react/mixin/UnmanagedClassNameMixin
+          class: code
+          module: brew-js-react
+- title: Utilities
+  pages:
+    - title: createApi()
+      path: /util/createApi
+      class: code ext
+      module: react-app-utils
+    - title: createObjectStorage()
+      path: /app/createObjectStorage
+      class: code
+      module: brew-js
+    - title: fuzzyMatch()
+      path: /util/fuzzyMatch
+      class: code ext
+      module: react-app-utils
+    - title: getQueryParam()
+      path: /util/getQueryParam
+      class: code
+      module: brew-js
+    - title: setQueryParam()
+      path: /util/setQueryParam
+      class: code
+      module: brew-js
+    - title: toQueryString()
+      path: /util/toQueryString
+      class: code
+      module: brew-js
+- title: Dev tools
+  pages:
+    - title: Form autofiller
+      path: /devtools/form-autofill
+      class: ext
+      module: react-app-utils
+    - title: In-page console
+      path: /devtools/html-console
+      class: ext
+      module: react-app-utils
+    - title: References
+      pages:
+        - title: FormDevToolMixin
+          path: /react/mixin/FormDevToolMixin
+          class: code ext
+          module: react-app-utils
+        - title: HTMLConsole
+          path: /devtools/HTMLConsole
+          class: code ext
+          module: react-app-utils
+        - title: promptForChoice
+          path: /devtools/promptForChoice
+          class: code ext
+          module: react-app-utils
+- title: Zeta DOM References
+  pages:
+    - title: Modules
+      pages:
+        - title: dom
+          path: /dom/dom-module
+          class: code
+          module: zeta-dom
+          pageTitle: DOM module
+    - title: Async operations
+      pages:
+        - title: cancelLock()
+          path: /util/cancelLock
+          class: code
+          module: zeta-dom
+        - title: lock()
+          path: /util/lock
+          class: code
+          module: zeta-dom
+        - title: locked()
+          path: /util/locked
+          class: code
+          module: zeta-dom
+        - title: notifyAsync()
+          path: /util/notifyAsync
+          class: code
+          module: zeta-dom
+        - title: preventLeave()
+          path: /util/preventLeave
+          class: code
+          module: zeta-dom
+        - title: runAsync()
+          path: /util/runAsync
+          class: code
+          module: zeta-dom
+        - title: subscribeAsync()
+          path: /util/subscribeAsync
+          class: code
+          module: zeta-dom
+    - title: Box model
+      pages:
+        - title: Rect
+          path: /util/Rect
+          class: code
+          module: zeta-dom
+        - title: getContentRect()
+          path: /util/getContentRect
+          class: code
+          module: zeta-dom
+        - title: getRect()
+          path: /util/getRect
+          class: code
+          module: zeta-dom
+    - title: DOM mutations
+      pages:
+        - title: createAutoCleanupMap()
+          path: /dom/createAutoCleanupMap
+          class: code
+          module: zeta-dom
+        - title: observe()
+          path: /dom/observe
+          class: code
+          module: zeta-dom
+        - title: watchAttributes()
+          path: /dom/watchAttributes
+          class: code
+          module: zeta-dom
+        - title: watchElements()
+          path: /dom/watchElements
+          class: code
+          module: zeta-dom
+        - title: watchOwnAttributes()
+          path: /dom/watchOwnAttributes
+          class: code
+          module: zeta-dom
+    - title: Events
+      pages:
+        - title: ZetaEventBase
+          path: /dom/ZetaEventBase
+          class: code
+          module: zeta-dom
+        - title: ZetaEventContainer
+          path: /util/EventContainer
+          class: code
+          module: zeta-dom
+    - title: Focus management
+      pages:
+        - title: blur()
+          path: /util/blur
+          class: code
+          module: zeta-dom
+        - title: focus()
+          path: /util/focus
+          class: code
+          module: zeta-dom
+        - title: focusable()
+          path: /util/focusable
+          class: code
+          module: zeta-dom
+        - title: focused()
+          path: /util/focused
+          class: code
+          module: zeta-dom
+        - title: releaseFocus()
+          path: /util/releaseFocus
+          class: code
+          module: zeta-dom
+        - title: releaseModal()
+          path: /util/releaseModal
+          class: code
+          module: zeta-dom
+        - title: retainFocus()
+          path: /util/retainFocus
+          class: code
+          module: zeta-dom
+        - title: setModal()
+          path: /util/setModal
+          class: code
+          module: zeta-dom
+        - title: setTabRoot()
+          path: /util/setTabRoot
+          class: code
+          module: zeta-dom
+        - title: unsetTabRoot()
+          path: /util/unsetTabRoot
+          class: code
+          module: zeta-dom
+    - title: Virtual DOM tree
+      pages:
+        - title: NodeTree
+          path: /util/NodeTree
+          class: code
+          module: zeta-dom
+        - title: InheritedNodeTree
+          path: /util/InheritedNodeTree
+          class: code
+          module: zeta-dom
+        - title: TraversableNodeTree
+          path: /util/TraversableNodeTree
+          class: code
+          module: zeta-dom
+        - title: TreeWalker
+          path: /util/TreeWalker
+          class: code
+          module: zeta-dom
+- title: Waterpipe References
+  pages:
+    - title: Using waterpipe
+      path: /waterpipe/using-waterpipe
+      module: waterpipe
+    - title: Cheat sheet
+      path: /waterpipe/cheat-sheet
+      module: waterpipe
+    - title: Basic concepts
+      pages:
+        - title: Pipe, statement and template
+          path: /waterpipe/basic-concepts
+          module: waterpipe
+        - title: Output mode
+          path: /waterpipe/output-mode
+          module: waterpipe
+    - title: Pipes
+      pages:
+        - title: Accessing data
+          path: /waterpipe/accessing-data
+          module: waterpipe
+        - title: Transforming data
+          path: /waterpipe/transforming-data
+          module: waterpipe
+        - title: Global variables
+          path: /waterpipe/global-variables
+          module: waterpipe
+        - title: Inline variables
+          path: /waterpipe/inline-variables
+          module: waterpipe
+        - title: Special variables
+          path: /waterpipe/special-variables
+          module: waterpipe
+    - title: Statements
+      pages:
+        - title: if
+          path: /waterpipe/if-statement
+          class: code
+          module: waterpipe
+          pageTitle: "Statement: if"
+        - title: foreach
+          path: /waterpipe/foreach-statement
+          class: code
+          module: waterpipe
+          pageTitle: "Statement: foreach"
+        - title: Comment
+          path: /waterpipe/comment
+          module: waterpipe
+    - title: Templates
+      pages:
+        - title: Defining template
+          path: /waterpipe/defining-template
+          module: waterpipe
+        - title: Scope and name visibility
+          path: /waterpipe/scope-and-name-visibility
+          module: waterpipe
+    - title: Built-in pipe functions
+      pages:
+        - title: Control functions
+          path: /waterpipe/control-functions
+          module: waterpipe
+        - title: Variable functions
+          path: /waterpipe/variable-functions
+          module: waterpipe
+        - title: Comparison functions
+          path: /waterpipe/comparison-functions
+          module: waterpipe
+        - title: Conditional functions
+          path: /waterpipe/conditional-functions
+          module: waterpipe
+        - title: Iterable functions
+          path: /waterpipe/iterable-functions
+          module: waterpipe
+        - title: Maths functions
+          path: /waterpipe/math-functions
+          module: waterpipe
+        - title: String functions
+          path: /waterpipe/string-functions
+          module: waterpipe
+        - title: Date functions
+          path: /waterpipe/date-functions
+          module: waterpipe
+        - title: Formatting functions
+          path: /waterpipe/formatting-functions
+          module: waterpipe
+    - title: Extensibility
+      pages:
+        - title: Writing pipe functions
+          path: /waterpipe/writing-pipe-functions
+          module: waterpipe
+        - title: Wildcard function
+          path: /waterpipe/wildcard-function
+          module: waterpipe

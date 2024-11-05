@@ -1,0 +1,55 @@
+import { SliderField } from "src/components/controls";
+import tsx from "!raw-loader!src/components/controls/SliderField.tsx";
+
+<Module name="zeta-dom-react" />
+
+# Slider
+
+<SliderField min={0} max={100} />
+
+```tsx
+<SliderField min={0} max={100} />
+```
+
+## Example: Show value
+
+<SliderField min={0} max={100} showValue />
+
+```tsx
+<SliderField min={0} max={100} showValue />
+```
+
+## Example: Steps
+
+<SliderField min={0} max={100} step={10} />
+
+```tsx
+<SliderField min={0} max={100} step={10} />
+```
+
+## Example: Custom label
+
+<SliderField min={0} max={100}
+    format={new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+    }).format} />
+
+```tsx
+<SliderField min={0} max={100}
+    format={new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+    }).format} />
+```
+
+
+## Source code
+
+<CodeBlock children={tsx} className="language-tsx" />
+
+## See also
+
+- [`NumericField`](:)

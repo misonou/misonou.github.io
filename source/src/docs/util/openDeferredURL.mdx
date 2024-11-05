@@ -1,0 +1,38 @@
+<Module name="brew-js/util" />
+
+# openDeferredURL
+
+Opens a new window with URL that is yet to be resolved asynchronously.
+
+## Syntax
+
+```javascript
+openDeferredURL(promise)
+openDeferredURL(promise, initialUrl)
+openDeferredURL(promise, initialUrl, target)
+openDeferredURL(promise, initialUrl, target, features)
+```
+
+### Parameters
+
+<dl>
+    #### `promise`
+    A promise that resolves the target URL.
+
+    #### `initialUrl` <Badge.Optional />
+    URL to show during loading, typically a loading screen. A blank page with text "Loading..." will be used if not specified.
+
+    #### `target` <Badge.Optional />
+    Name of target window.
+
+    #### `features` <Badge.Optional />
+    A string containing a comma-separated list of window features, same as `Window.open`.
+
+</dl>
+
+### Return value
+
+A promise that:
+- resolve to `true` when the resolved URL is being loaded in target window;
+- resolve to `false` if the new window cannot be opened or the opened window is closed before URL is resolved;
+- rejects if the given promise rejects.

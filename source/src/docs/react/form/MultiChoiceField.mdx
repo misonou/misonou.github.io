@@ -1,0 +1,96 @@
+<Module name="zeta-dom-react" />
+
+# MultiChoiceField class
+
+The `MultiChoiceField` class are not supposed to be instantiate manually. Instead it is used to
+augment extra functionalities when used with [`useFormField`](:).
+
+<ImportHint
+    name="MultiChoiceField"
+    module="zeta-dom-react"
+    require="MultiChoiceField"
+    global="zeta.react.MultiChoiceField"
+    expanded />
+
+<MemberList i="MultiChoiceField" />
+
+```tsx
+interface CheckboxItem extends ChoiceItem<string> {
+    disabled?: boolean;
+}
+
+function CheckboxList(props: MultiChoiceFieldProps<CheckboxItem>) {
+    const { items, value, error, toggleValue, elementRef } = useFormField(MultiChoiceField, props, []);
+    return (
+        <div ref={elementRef}>
+            <span>{props.label}</span>
+            {items.map((v, i) => (
+                <label key={i}>
+                    <input type="checkbox" checked={value.includes(v.value)} onChange={() => toggleValue(v.value)} />
+                    <span>{v.label}</span>
+                </label>
+            ))}
+            {error && props.showErrorMessage !== false &&
+                <div className="error">{error}</div>}
+        </div>
+    );
+}
+```
+
+## MultiChoiceFieldProps interface
+
+<MemberList
+    i="MultiChoiceFieldProps"
+    extends={['FormFieldProps']}
+    ip={['items', 'allowCustomValues']}
+/>
+
+### `MultiChoiceFieldProps.items`
+
+A list of items as choices.
+Primitive values in the list will be normalized as [`ChoiceItem`](:).
+If not specified, `allowCustomValues` will be set to `true`.
+
+### `MultiChoiceFieldProps.allowCustomValues`
+
+Whether values not in the list of items are allowed.
+
+## MultiChoiceFieldState interface
+
+<MemberList
+    i="MultiChoiceFieldState"
+    extends={['FormFieldState']}
+    ip={['items']}
+    im={['toggleValue()']}
+/>
+
+### `MultiChoiceFieldState.items` <Badge.ReadOnly />
+
+Returns a list of choices as normalized items.
+
+### `MultiChoiceFieldState.toggleValue()`
+
+```javascript
+toggleValue(value)
+toggleValue(value, selected)
+```
+
+Toggles the presence of the specified item in the value array associated with the field.
+If the item is already present, the item will be removed; otherwise the item will be added.
+
+### Parameters
+
+<dl>
+    #### `value`
+    Item value.
+
+    #### `selected` <Badge.Optional />
+    If true, the item is added to the array if it is not present; otherwise the item is removed from the array if it is present.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.3.5** Introduced
+</VersionTimeline>

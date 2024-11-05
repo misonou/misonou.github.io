@@ -1,0 +1,42 @@
+<Module name="zeta-dom/observe" />
+
+# watchOwnAttributes
+
+Registers a callback to be fired when specified attributes of the givne element has changed.
+
+## Syntax
+
+```javascript
+watchOwnAttributes(element, attributes, callback)
+```
+
+<ImportHint
+    name="watchOwnAttributes"
+    module="zeta-dom/observe"
+    global="zeta.dom.watchOwnAttributes"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element to observe.
+
+    #### `attributes`
+    A string or a list of string specifying attributes to observe.
+
+    #### `callback`
+    A callback to be fired when mutation occurs.
+
+</dl>
+
+### Return value
+
+A callback which collects mutation immediately and fires mutation handler if there is any mutations.
+
+> The callback has an additional property `dispose` that will disconnect the mutation observer.
+
+```javascript
+const collectChanges = watchOwnAttributes(element, ['class'], callback);
+collectChanges.dispose();
+```

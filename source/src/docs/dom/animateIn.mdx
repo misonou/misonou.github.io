@@ -1,0 +1,191 @@
+import SimpleExample from "src/components/examples/animate-simple";
+import SequenceExample from "src/components/examples/animate-sequence";
+import AutoStartExample from "src/components/examples/animate-autostart";
+
+<Module name="brew-js/anim" />
+
+# animateIn
+
+Starts intro animation for contents within the specified element.
+
+> Since element states are maintained with CSS classes, it is recommended to use [mixins](/docs/react/mixin/AnimateMixin) in React.
+
+## Syntax
+
+```javascript
+animateIn(element, trigger)
+animateIn(element, trigger, scope)
+animateIn(element, trigger, scope, autoStart)
+animateIn(element, trigger, scope, filterCallback)
+```
+
+<ImportHint
+    name="animateIn"
+    module="brew-js/anim"
+    global="brew.animateIn"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `trigger`
+    A string specifying the type of event, which is matched against whitespace-seperated list of values of the `animate-on` attribute.
+
+    The following two values has special usage:
+    - `show`: intro for page, when using [router](/docs/router/create-router)
+    - `open`: intro for flyouts and dialogs, when using with [`openFlyout`](:)
+
+    #### `scope` <Badge.Optional />
+    A CSS selector which when specified, any descendant elements which are also descendant of such elements will be excluded from animation.
+
+    #### `autoStart` <Badge.Optional /> <Badge.Version />
+    Whether newly matched elements should be animated automatically without needs for calling [`animateIn`](:) again.
+
+    #### `filterCallback` <Badge.Optional />
+    Optional callback to filter out target elements to be animated.
+
+</dl>
+
+### Return value
+
+A promise that resolves when all animations are completed, or after 1.5 seconds timeout.
+
+## Events
+
+<MemberList
+    i="dom"
+    ev={['animatein', 'animationstart', 'animationcomplete']}
+    noRoot noRender
+/>
+
+### `animatein` event
+
+The event is fired for the animated element. Promise returned from `animatein` event
+will be awaited.
+
+### `animationstart` event
+
+The event is fired when animation starts.
+
+#### Event properties
+
+<dl>
+    #### `animationTrigger`
+    Get the `trigger` parameter passed to [`animateIn`](:) or [`animateOut`](:).
+
+    #### `animationType`
+    Animation type can be `in` or `out`.
+</dl>
+
+### `animationcomplete` event
+
+The event is fired when animation ends.
+
+#### Event properties
+
+<dl>
+    #### `animationTrigger`
+    Get the `trigger` parameter passed to [`animateIn`](:) or [`animateOut`](:).
+
+    #### `animationType`
+    Animation type can be `in` or `out`.
+</dl>
+
+## DOM directives
+
+`animateIn` works together with a series of attributes defined on elements to be animated:
+
+<dl>
+    #### `animate-in`
+    Defines an element having intro animation.
+
+    It may contains a whitespace-seperated list of keywords that enables a set of default effect:
+
+    - `fade-in`
+    - `slide-down`
+    - `slide-up`
+    - `slide-left` or
+    - `slide-right`
+
+    #### `animate-out`
+    Enables outro animation for an element.
+
+    #### `animate-on`
+    A whitespace-seperated list of values, for which the element will be animated if one of them
+    matches the `trigger` parameter passed to `animateIn`. Default is `show`.
+
+    #### `animate-sequence`
+    Defines a selector to match descendant elements, to be animated in sequence.
+
+    #### `animate-sequence-type`
+    Same as `animate-in` but is applied to elements matched by `animate-sequence` attribute.
+
+    #### `animate-sequence-reverse`
+    If the attribute is present, elements matched by `animate-sequence` attribute are animated
+    in reversed order:
+
+    <dl>
+        #### `<empty-string>`
+        Both intro and outro sequence are animated in reversed order.
+
+        #### `in` <Badge.Version />
+        Only intro animation is in reversed order.
+
+        #### `out` <Badge.Version />
+        Only outro animation is in reversed order.
+    </dl>
+
+    #### `is-animate-sequence`
+    Marks an element to be animated in a sequence. The directive is optional when the animation sequence
+    is to be triggered manually.
+
+    #### `<custom-animate-in>`
+    Custom animation handler can be registered by [`addAnimateIn`](:) or [`addAnimateOut`](:),
+    where it can enabled by specifying a attribute of the same name of the registered animation.
+</dl>
+
+## CSS classes
+
+<dl>
+    #### ` tweening-in`
+    When animation starts, the animated element is added the `tweening-in` CSS class.
+    Any new CSS transitions or animations initiated by the  `tweening-in` CSS class
+    will be awaited.
+
+    > After outro animation is completed, both `tweening-in` and `tweening-out` CSS classes will be removed.
+</dl>
+
+## Example: Simple example
+
+<SimpleExample />
+
+## Example: Animate sequence
+
+> Outro sequence is supported since v0.6.0.
+
+<SequenceExample />
+
+## Example: Auto start for new elements
+
+~~0.6.0~~
+
+> For new elements of a animate sequence to be animated automatically,
+  new element should have `is-animate-sequence` attributes present.
+
+<AutoStartExample />
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.6.0** `autoStart` option <br/> `in` `out` for `[animate-sequence-reverse]` <br/> outro sequence
+</VersionTimeline>
+
+## See also
+
+- [`animateOut`](:)
+- [`addAnimateIn`](:)
+- [`addAnimateOut`](:)

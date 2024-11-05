@@ -1,0 +1,36 @@
+<Module name="zeta-dom-react" />
+
+# Forcing error state
+
+Field can be explicitly set to erroreous state by providing `error` property.
+
+```tsx
+function Component() {
+    const form = useFormContext();
+    return (
+        <Form context={form}>
+            <TextInput name="item" error="Custom error" />
+        </Form>
+    );
+}
+```
+
+## Using setError method
+
+Another way is to use [`FormContext.setError`](:) method.
+
+```tsx
+function Component() {
+    const form = useFormContext();
+    return (
+        <Form context={form}>
+            <TextInput name="item" />
+            <button onClick={setError}>Set error</button>
+        </Form>
+    );
+
+    function setError() {
+        form.setError('item', 'Custom error');
+    }
+}
+```

@@ -1,0 +1,39 @@
+import Example from "src/components/examples/stickable";
+
+<Module name="@misonou/react-css-utils" />
+
+# initStickable
+
+> This function is superceded by sticky functionality by new version of jQuery scrollable plugin.
+  See [Sticky elements](/docs/react/mixin/scrollable-sticky).
+
+Creates a handler to fix element in position when being scrolled out-of-sight.
+
+## Syntax
+
+```javascript
+initStickable(element)
+```
+
+## Example
+
+<Example />
+
+## Stickable interface
+
+<MemberList
+    i="Stickable"
+    im={['add()', 'dispose()']} />
+
+### `Stickable.add()`
+
+Fixes an element to the edge of a scrollable viewport when being scrolled out-of-sight.
+
+```javascript
+add(element, dir)
+add(element, dir, within)
+```
+
+### `Stickable.dispose()`
+
+Unregisters events and releases resources.

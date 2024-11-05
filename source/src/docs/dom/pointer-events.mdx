@@ -1,0 +1,49 @@
+<Module name="zeta-dom/dom" />
+
+# Pointer events
+
+## dom: mousedown event
+
+## dom: touchstart event
+
+## dom: click event
+
+## dom: dblclick event
+
+## dom: rightClick event
+
+## dom: drag event
+
+## dom: longPress event
+
+## dom: gesture event
+
+```typescript
+dom.on('gesture', (e) => {
+    // one of the gesture, e.g. swipeLeft
+    console.log(e.data);
+});
+```
+
+Recognized gesture:
+
+| Name         | Description |
+| ------------ | ----------- |
+| `swipeLeft`  | -           |
+| `swipeRight` |             |
+| `swipeUp`    | -           |
+| `swipeDown`  | -           |
+| `pinchZoom`  | -           |
+
+In addition to `gesture` event, instead of putting lots of checking what gesture user is doing, all recognized gestures can be listened directly.
+
+```typescript
+dom.on('swipeLeft', () => {
+    doSomethingWhenSwipeLeft();
+});
+```
+
+## See also
+
+- [`beginDrag`](:)
+- [`beginPinchZoom`](:)

@@ -1,0 +1,43 @@
+<Module name="zeta-dom/observe" />
+
+# observe
+
+Observe DOM child list mutations from the specified element.
+
+## Syntax
+
+```javascript
+observe(element, callback)
+observe(element, options, callback)
+```
+
+<ImportHint
+    name="observe"
+    module="zeta-dom/observe"
+    global="zeta.dom.observe"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element from which mutations are observed.
+
+    #### `options` <Badge.Optional />
+    A dictionary specifying what mutations to observe.
+
+    #### `callback`
+    A callback to be fired when mutation occurs.
+
+</dl>
+
+### Return value
+
+A callback which collects mutation immediately and fires mutation handler if there is any mutations.
+
+> The callback has an additional property `dispose` that will disconnect the mutation observer.
+
+```javascript
+const collectChanges = observe(element, callback);
+collectChanges.dispose();
+```

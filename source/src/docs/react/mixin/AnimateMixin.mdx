@@ -1,0 +1,92 @@
+<Module name="brew-js-react" />
+
+# AnimateMixin
+
+Enables intro and/or outro animation for applied elements.
+
+## Syntax
+
+```javascript
+useAnimateMixin()
+```
+
+## AnimateMixin class
+
+> Mixin should be created using [`useAnimateMixin`](:) and applied to element by [`Mixin.use`](:).
+
+<MemberList
+    i="AnimateMixin"
+    extends={['ClassNameMixin']}
+    im={['with()', 'withEffects()']}
+/>
+
+## Instance methods
+
+### `AnimateMixin.with()`
+
+```javascript
+with(props)
+```
+
+Specifies animation effects and trigger for rendered elements.
+
+### Parameters
+
+<dl>
+    #### `props`
+    A dictionary specifying animation effects and trigger. The default trigger is `show`.
+
+    <dl>
+        #### `effects` <Badge.Optional />
+        See [`AnimateMixin.withEffects`](:).
+        
+        #### `trigger` <Badge.Optional />
+        The predefined triggers are
+        - `show`: Run when entering or leaving a page
+        - `open`: Run when opening or closing a flyout.
+
+        Custom trigger can be triggered by
+
+        ```javascript
+        animateIn(element, 'custom-trigger')
+        ```
+    </dl>
+
+</dl>
+
+### `AnimateMixin.withEffects()`
+
+```javascript
+withEffects()
+withEffects(effects0)
+withEffects(effects0, effects1)
+withEffects(effects0, effects1, /* … ,*/ effectsN)
+```
+
+Specifies animation effects for rendered elements.
+
+### Parameters
+
+<dl>
+    #### `effects0` … `effectsN` <Badge.Optional />
+    One or more predefined effects.
+
+</dl>
+
+## Predefined effects
+
+To use predefined animation effects, import `brew-js/styles`.
+Effects can be controlled by `--transition-delay`, `--transition-duration` and `--slide-amount` custom CSS property.
+
+To create custom animation effects, write CSS rules for intro and outro animation like:
+
+```css
+[animate-in~="effect-name"] {
+}
+[animate-in~="effect-name"].tweening-in {
+}
+[animate-in~="effect-name"].tweening-out {
+}
+```
+
+Alternatively, more complex effects can be defined by [`addAnimateIn`](:) and [`addAnimateOut`](:).

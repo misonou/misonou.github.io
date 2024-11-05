@@ -1,0 +1,54 @@
+import Example from "src/components/examples/tab-root";
+
+<Module name="zeta-dom/dom" />
+
+# Tab-focus container
+
+By default, all focusable elements in the document can be focused sequentially by
+pressing <kbd>Tab</kbd> or <kbd>Shift</kbd>+<kbd>Tab</kbd> keys.
+
+However it is somtimes desirable to limit such behavior so only focusable elements
+within a component (e.g. dialog or form) are reachable, which is achievable by [`setTabRoot`](:).
+
+> [`setTabRoot`](:) will not focus element within container.
+
+<Example />
+
+## Working with brew-js
+
+### `tab-root` attribute
+
+When using `brew-js`, any element with ``tab-root`` attribute is automatically set as a tab-focus container.
+
+```html
+<div tab-root></dib>
+```
+
+### Flyouts
+
+For flyouts, by default it is a tab-focus container unless `tab-through` attribute:
+
+```html
+<div is-flyout tab-through></div>
+```
+
+or the `tabThrough` option is present:
+
+```javascript
+openFlyout('#flyout', null, { tabThrough: true });
+```
+
+## Working with brew-js-react
+
+~~brew-js-react >=0.5.3~~
+
+The [`Mixin.tabRoot`](:) mixin is introduced.
+
+```tsx
+<div {...Mixin.use(Mixin.tabRoot)}></div>
+```
+
+## See also
+
+- [`setTabRoot`](:)
+- [`unsetTabRoot`](:)

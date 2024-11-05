@@ -1,0 +1,102 @@
+import BasicExample from "src/components/examples/form-object-basic";
+import CompositeFieldExample from "src/components/examples/form-object-composite-field";
+import ArrayExample from "src/components/examples/form-array";
+import SimpleArrayExample from "src/components/examples/form-array-simple";
+
+<Module name="zeta-dom-react" />
+
+# Data object and array
+
+~~0.4.0~~
+
+Field components can be associated with nested data structure using [`<FormObject>`](:) and [`<FormArray>`](:) component.
+
+## Data object
+
+<BasicExample />
+
+## Data array
+
+Here is an example that use [`<FormArray>`](:) to create a form with dynamic cards.
+
+<ArrayExample />
+
+### Primitive values as array item
+
+[`<FormArray>`](:) also support primitive values as array items. Here is an example for a editable list of string
+without building a composite field component.
+
+> For better reusability, it is recommended to build composite field component to deal with complex data structure.
+
+<SimpleArrayExample />
+
+## Composite control
+
+It is very occasional to build a reusable component for a field that corresponds to a data object.
+
+The [`useFormField`](:) hook support objects and arrays as its value type.
+
+> Notice that in the `PhoneField` component, child components are wrapped by the [`<FormObject>`](:) component with `value` being passed.
+
+<CompositeFieldExample />
+
+## Dealing with nested data
+
+Events and operation like validations on nested data properties can be achieved like normal data properties with dot-separated data paths.
+
+```tsx
+function Form() {
+    const form = useFormContext<FormData>();
+    useEffect(() => {
+        return form.on('dataChange', function (e) {
+            console.log(e.data);
+        });
+    }, [form]);
+    return (
+        <Form context={form}>
+            <TextInput name="name" />
+            <FormObject name="phone">
+                <TextInput name="countryCode" />
+                <TextInput name="phoneNumber" />
+            </FormObject>
+        </Form>
+    );
+}
+```
+
+For instance, the above `dataChange` event handler will log `["phone.countryCode"]` when user fills in the country code.
+
+### Validating nested properties
+
+To validate a particular data property, provide the data path to that property like:
+
+```typescript
+form.validate('phone.countryCode')
+```
+
+You can also supply the root object data path to validate all child properties:
+
+
+```typescript
+form.validate('phone')
+```
+
+which is the same as:
+
+```typescript
+form.validate('phone.countryCode', 'phone.phoneNumber')
+```
+
+### Accessing nested properties
+
+Other than accessing like ordinary JavaScript objects, [`FormContext`](:) provides [`getValue`](:FormContext.getValue)
+and [`setValue`](:FormContext.setValue) method to access values providing a data path.
+
+```typescript
+const countryCode = form.getValue('phone.countryCode');
+form.setValue('phone.countryCode', '1');
+```
+
+> **Important:** Note that for data objects and array, [`FormContext.getValue`](:) will return a deeply-cloned object;
+  while [`FormContext.setValue`](:) will deeply clone the supplied object.
+

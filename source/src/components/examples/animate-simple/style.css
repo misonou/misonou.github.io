@@ -1,0 +1,43 @@
+.anim-item {
+    display: inline-flex;
+    width: 75px;
+    height: 75px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.anim-item:nth-child(1) {
+    background-color: lightgray;
+    opacity: 0;
+}
+
+.anim-item:nth-child(2) {
+    background-color: lightgray;
+}
+
+.anim-item:nth-child(2).tweening-in {
+    background-color: lightblue;
+    transition: background-color 0.2s;
+}
+
+.anim-item:nth-child(3) {
+    background-color: bisque;
+}
+
+.anim-item:nth-child(3).tweening-in {
+    animation: anim-item 1s linear 1;
+}
+
+@keyframes anim-item {
+    0% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}

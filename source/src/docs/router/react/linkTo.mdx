@@ -1,0 +1,38 @@
+<Module name="brew-js-react" />
+
+# linkTo
+
+Returns a link usable in `href` attribute or method such as `window.open`
+that when visiting the link through browser the specifed view will be rendered.
+
+This function wraps [`resolvePath`](:) with [`app.toHref`](:).
+The returned link will depend on `urlMode` and related options initializing the router.
+When `urlMode` is set to `none`, [`navigateTo`](:) should always be used instead as
+navigation through link is disabled in such case.
+
+## Syntax
+
+```javascript
+linkTo(view)
+linkTo(view, params)
+```
+
+### Parameters
+
+<dl>
+    #### `view`
+    A view component created by [`registerView`](:).
+
+    #### `params` <Badge.Optional />
+    Extra route parameters that supplements or overrides current route parameters,
+    or a tuple containing such route parameters as well as query string and hash.
+
+    > See [here](/docs/router/react/resolvePath#s-passing-query-and-hash) for usage of tuple.
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.2** Introduced
+- **0.6.4** `params` parameter: accept tuple
+</VersionTimeline>

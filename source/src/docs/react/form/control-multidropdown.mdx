@@ -1,0 +1,71 @@
+import { MultiDropdown } from "src/components/controls";
+import { countriesOptions } from "src/data/examples/countries";
+import tsx from "!raw-loader!src/components/controls/MultiDropdown.tsx";
+
+<Module name="zeta-dom-react" />
+
+# Multi-select dropdown
+
+<MultiDropdown
+    label="Countries/Regions"
+    items={countriesOptions} />
+
+```tsx
+<MultiDropdown
+    label="Countries/Regions"
+    items={countriesOptions} />
+```
+
+## Example: Select all
+
+<MultiDropdown
+    label="Countries/Regions"
+    items={countriesOptions}
+    showSelectAll />
+
+```tsx
+<MultiDropdown
+    label="Countries/Regions"
+    items={countriesOptions}
+    showSelectAll />
+```
+
+## Example: Search box
+
+<MultiDropdown
+    label="Countries/Regions"
+    items={countriesOptions}
+    showSearchBox
+    searchBoxPlaceholder="Type to search..." />
+
+```tsx
+<MultiDropdown
+    label="Countries/Regions"
+    items={countriesOptions}
+    showSearchBox
+    searchBoxPlaceholder="Type to search..." />
+```
+
+## Example: Forced error state
+
+<MultiDropdown
+    label="Countries/Regions"
+    items={countriesOptions}
+    error="Error" />
+
+```tsx
+<MultiDropdown
+    label="Countries/Regions"
+    items={countriesOptions}
+    error="Error" />
+```
+
+## Source code
+
+<CodeBlock children={tsx} className="language-tsx" />
+
+## See also
+
+- [`MultiChoiceField`](:)
+- [`MultiChoiceFieldProps`](:)
+- [`ChoiceItem`](:)

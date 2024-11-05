@@ -1,0 +1,79 @@
+import { CheckboxList } from "src/components/controls";
+import { countriesOptions } from "src/data/examples/countries";
+import tsx from "!raw-loader!src/components/controls/CheckboxList.tsx";
+
+<Module name="zeta-dom-react" />
+
+# CheckboxList
+
+<CheckboxList items={['Apple', 'Banana', 'Orange']} />
+
+```tsx
+<CheckboxList items={['Apple', 'Banana', 'Orange']} />
+```
+
+## Example: Vertical orientation
+
+<CheckboxList
+    items={['Apple', 'Banana', 'Orange']}
+    orientation="vertical" />
+
+```tsx
+<CheckboxList
+    items={['Apple', 'Banana', 'Orange']}
+    orientation="vertical" />
+```
+
+## Example: Header label
+
+<CheckboxList
+    label="Fruits"
+    items={['Apple', 'Banana', 'Orange']}
+    orientation="vertical" />
+
+```tsx
+<CheckboxList
+    label="Fruits"
+    items={['Apple', 'Banana', 'Orange']}
+    orientation="vertical" />
+```
+
+## Example: Item props
+
+<CheckboxList
+    items={[
+        { value: 'Apple', label: 'Apple',  description: 'This is an apple' }, 
+        { value: 'Banana', label: 'Banana', description: 'This is a banana' }, 
+        { value: 'Orange', label: 'Orange', description: 'This is an orange', disabled: true }, 
+    ]} />
+
+```tsx
+<CheckboxList
+    items={[
+        { value: 'Apple', label: 'Apple',  description: 'This is an apple' }, 
+        { value: 'Banana', label: 'Banana', description: 'This is a banana' }, 
+        { value: 'Orange', label: 'Orange', description: 'This is an orange', disabled: true }, 
+    ]} />
+```
+
+## Example: Forced error state
+
+<CheckboxList
+    items={['Apple', 'Banana', 'Orange']}
+    error="Error" />
+
+```tsx
+<CheckboxList
+    items={['Apple', 'Banana', 'Orange']}
+    error="Error" />
+```
+
+## Source code
+
+<CodeBlock children={tsx} className="language-tsx" />
+
+## See also
+
+- [`MultiChoiceField`](:)
+- [`MultiChoiceFieldProps`](:)
+- [`ChoiceItem`](:)

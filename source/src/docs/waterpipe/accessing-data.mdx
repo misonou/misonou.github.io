@@ -1,0 +1,47 @@
+<Module name="waterpipe" />
+
+# Accessing data
+
+An object path is basically Javascript's dot notation (`.`) except that array indices are also accepted.
+
+The following object path will be interpolated as:
+
+<WaterpipeExample
+    data={{ number: 0, string: "foo", array: [1, 2, 3, 4] }}
+    examples={['number', 'string', 'array', 'array.0', 'array.length']}
+/>
+
+> **Note**: All function property are not retrievable.
+
+<WaterpipeExample
+    data={{ number: 0, string: "foo", array: [1, 2, 3, 4] }}
+    examples={['number.toFixed', 'string.toUpperCase', 'array.concat']}
+/>
+
+## Higher order object path
+
+Any parts of the object path can be itself evaluated by a preceding dollar sign (`$`).
+
+<WaterpipeExample
+    data={{ zero: 0, array: [1, 2, 3, 4] }}
+    examples={['array.$zero', 'array.$(array.0)']}
+/>
+
+## Reverse array indexing
+
+~~2.4~~
+
+<WaterpipeExample
+    data={{ array: [1, 2, 3, 4] }}
+    examples={['array.^0', 'array.^1', 'array.^5']}
+/>
+
+## Nonexistent path
+
+When interpolating, it is short-circuited if at any step it evaluates to `undefined` or `null`.
+It is commonly equivalent to the `?.` operator by other languages or template engines:
+
+<WaterpipeExample
+    data={{ array: [1, 2, 3, 4] }}
+    examples={['blah', 'array.foo.bar']}
+/>

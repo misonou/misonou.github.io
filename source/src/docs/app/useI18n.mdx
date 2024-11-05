@@ -1,0 +1,150 @@
+<Module name="brew-js/extensions" />
+
+# I18n extension
+
+> See [Enabling extension](/docs/app/create-app#s-enabling-extensions) on how to use
+  extension for brew.js app.
+
+<ImportHint
+    name="I18n"
+    module="brew-js/extension/i18n"
+    import="default"
+    expanded
+/>
+
+## Syntax
+
+```javascript
+app.useI18n(options)
+```
+
+### Parameters
+
+<dl>
+    #### `options`
+    <dl>
+        #### `languages`
+        A list of available languages.
+
+        #### `detectLanguage` <Badge.Version />
+        Whether to detect language from browser preferences, default is `true`.
+
+        > For best interoperabilitiy, it is recommended to use standard BCP language code in the `languages` list.
+
+        #### `defaultLanguage` <Badge.Optional />
+
+        #### `routeParam` <Badge.Optional />
+        When defined, the current language will be reflected on the specified route parameters. Updating either [`app.language`](:) or `app.route[routeParam]` will cause the other to change.
+
+        If the route parameter resolves to a language not defined in the `languages` list, the defafult language will be set instead and will cause the app to redirect to the corresponding path.
+
+        > Note that the route parameter will subject to constraints given by the allowed routes. If constraint is needed on route parameter, be sure it matches the available languages.
+    </dl>
+</dl>
+
+## Example
+
+```typescript
+import brew from "brew-js-react";
+import i18n from "brew-js/extensions/i18n";
+
+brew.with(i18n)(app => {
+    app.useI18n({
+         languages: ['en', 'de']
+    });
+});
+```
+
+## Integration with router
+
+It is common to have (usually) the first path segment to specifiy the language of content being rendered.
+
+The i18n module is readily working with the router:
+
+```typescript
+import brew from "brew-js-react";
+import i18n from "brew-js/extensions/i18n";
+import router from "brew-js/extensions/router";
+
+brew.with(router, i18n)(app => {
+    app.useRouter({
+        routes: [
+            '/{language:[a-zA-z-]+}/{view}/*',
+            '/*'
+        ],
+        baseUrl: '/'
+    });
+    app.useI18n({
+        languages: ['en', 'de'],
+        routeParam: 'language'
+    });
+});
+```
+
+In the above example, the i18n module will monitor the `langauge` route parameter (the first segment, accessible through `app.route.language`),
+and either set current language ([`app.language`](:)) to the specified one, or redirects the SPA to a path starting with the allowed default language.
+
+## Listening for language change
+
+```typescript
+app.watch('language', (newLanguage) => {
+    /* ... */
+});
+```
+
+## WithI18n interface
+
+Members of the `WithI18n` interface is injected to app instance by [`app.useI18n`](:).
+
+<MemberList
+    i="app" noRoot
+    ip={['language']}
+    im={['setLanguage()', 'detectLanguage()', 'useI18n()']}
+/>
+
+### `app.language`
+
+Gets or sets the language.
+
+### `app.detectLanguage()`
+
+```javascript
+detectLanguage(languages)
+detectLanguage(languages, defaultLanguage)
+```
+
+Detects preferred language from browser's settings.
+
+#### Parameters
+
+<dl>
+    #### `languages`
+    A list of languages.
+
+    #### `defaultLanguage` <Badge.Optional />
+    Default langauge when none of the languages is in user's preference.
+
+</dl>
+
+### `app.setLanguage()`
+
+```javascript
+setLanguage(language)
+```
+
+Sets the language.
+
+#### Parameters
+
+<dl>
+    #### `language`
+    Language to set. If the language is not on the specified list, the language will not be changed.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.4.8** `useI18n()`: `detectLanguage` option
+</VersionTimeline>

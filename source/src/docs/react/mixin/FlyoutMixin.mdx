@@ -1,0 +1,291 @@
+<Module name="brew-js-react" />
+
+# FlyoutMixin
+
+Provides methods controlling the applied element as a flyout.
+
+```tsx
+function Menu() {
+    const flyout = useFlyoutMixin();
+    return (
+        <div>
+            <div {...Mixin.use(flyout.toggle, 'menu-toggle')}>Toggle</div>
+            <div {...Mixin.use(flyout, 'menu')}>
+                {/* ... */}
+            </div>
+        </div>
+    );
+}
+```
+
+> See [`openFlyout`](:) for real examples.
+
+## Syntax
+
+```javascript
+useFlyoutMixin()
+useFlyoutMixin(options)
+```
+
+<ImportHint
+    name="useFlyoutMixin"
+    module="brew-js-react"
+    require="useFlyoutMixin"
+    global="brew.react.useFlyoutMixin"
+/>
+
+### Parameters
+
+<dl>
+    #### `options` <Badge.Optional />
+    <dl>
+        #### `closeOnBlur` <Badge.Optional /> <Badge.Version />
+        Whether the flyout should be closed when flyout, or source element if given, loses focus.
+        Default is `true` if flyout is not dismissible by swipe gesture.
+
+        #### `containment` <Badge.Optional /> <Badge.Version />
+        Specifies that the flyout should remain its state unless user is interacting
+        within the specified element.
+
+        This options is used in conjunction with `closeOnBlur`.
+        If a CSS selector is given, it will select the closest ancestor from the flyout element.
+
+        #### `modal` <Badge.Optional />
+        Whether flyout is modal.
+
+        #### `swipeToDismiss` <Badge.Optional />
+        Enables swipe gesture to close the flyout.
+
+        #### `tabThrough` <Badge.Optional />
+        Whether flyout should lose focus when user presses `tab` key.
+    </dl>
+</dl>
+
+### Return value
+
+A [`FlyoutMixin`](:) instance.
+
+## Passing toggle
+
+To let other part of the app to toggle a flyout, the toggle mixin can be passed to child components.
+
+## FlyoutMixin class
+
+> Mixin should be created using [`useFlyoutMixin`](:) and applied to element by [`Mixin.use`](:).
+
+<MemberList
+    i="FlyoutMixin"
+    extends={['ClassNameMixin']}
+    ip={['element', 'isFlyoutOpened', 'animating', 'visible', 'toggle', 'modal']}
+    im={['withEffects()', 'onOpen()', 'onToggleState()', 'onVisibilityChanged()', 'open()', 'close()', 'toggleSelf()', 'whenVisible()']}
+/>
+
+### `FlyoutMixin.animating` <Badge.ReadOnly />
+
+Gets whether the flyout is animating.
+
+### `FlyoutMixin.element` <Badge.ReadOnly />
+
+Gets the flyout element.
+
+### `FlyoutMixin.isFlyoutOpened` <Badge.ReadOnly />
+
+Gets whether the flyout is open.
+
+### `FlyoutMixin.modal`
+
+Gets or sets whether the flyout is modal.
+
+### `FlyoutMixin.toggle` <Badge.ReadOnly />
+
+Gets a [`FlyoutToggleMixin`](:) object that when applied to an element,
+clicking that element will toggle the flyout.
+
+### `FlyoutMixin.visible` <Badge.ReadOnly />
+
+Gets whether the flyout is visible.
+Note that flyout is still considered visible before closing animation completes.
+
+
+### `FlyoutMixin.close()`
+
+```javascript
+close()
+close(state)
+```
+
+Closes the flyout.
+
+### Parameters
+
+<dl>
+    #### `state` <Badge.Optional />
+    Value to be sent to the promise returned by `FlyoutMixin.open`.
+
+</dl>
+
+### Return value
+
+A promise that resolves after closing animation completes.
+
+### `FlyoutMixin.onOpen()`
+
+```javascript
+onOpen(callback)
+```
+
+Adds a listener to handle the opening of the flyout.
+
+### Parameters
+
+<dl>
+    #### `callback`
+    Callback to be called, receiving value passed to `FlyoutMixin.open`.
+
+</dl>
+
+### `FlyoutMixin.onToggleState()`
+
+```javascript
+onToggleState(callback)
+```
+
+Adds a listener to monitor the opening and closing of the flyout.
+It differs from `FlyoutMixin.onVisibilityChanged` that the callback is called immediately when the flyout is being closed.
+
+### Parameters
+
+<dl>
+    #### `callback`
+    Callback to be called.
+
+</dl>
+
+### `FlyoutMixin.onVisibilityChanged()`
+
+```javascript
+onVisibilityChanged(callback)
+```
+
+Adds a listener to monitor the change of visibility of the flyout.
+It differs from `FlyoutMixin.onToggleState` that the callback is called after closing animation completes.
+
+### Parameters
+
+<dl>
+    #### `callback`
+    Callback to be called.
+
+</dl>
+
+### `FlyoutMixin.open()`
+
+```javascript
+open()
+open(state)
+open(state, source)
+```
+
+Opens the flyout.
+
+### Parameters
+
+<dl>
+    #### `state` <Badge.Optional />
+    Value to be sent to listener added by `FlyoutMixin.onOpen`.
+
+    #### `source` <Badge.Optional />
+    Source element that triggered the flyout.
+
+</dl>
+
+### Return value
+
+A promise that resolves when the flyout is being closed.
+
+### `FlyoutMixin.toggleSelf()`
+
+```javascript
+toggleSelf()
+toggleSelf(source)
+toggleSelf(flag)
+toggleSelf(flag, source)
+```
+
+Toggles the flyout.
+
+### Parameters
+
+<dl>
+    #### `source` <Badge.Optional />
+    Source element which triggered the flyout.
+
+    #### `flag` <Badge.Optional /> <Badge.Version />
+    Whether the flyout should be open or closed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when the flyout is being closed.
+
+### `FlyoutMixin.whenVisible()` <Badge.Version />
+
+```javascript
+whenVisible(effect)
+```
+
+Activates effects when flyout becomes visible.
+
+It is a shorthand for dispose callback pattern with visibility change,
+equivalent to the following:
+
+```javascript
+let dispose;
+flyout.watch('visible', visible => {
+    if (visible) {
+        dispose = effect();
+    } else if (dispose) {
+        dispose();
+    }
+}, true);
+```
+
+### Parameters
+
+<dl>
+    #### `effect`
+    Imperative function that can return a cleanup function.
+
+</dl>
+
+### `FlyoutMixin.withEffects()`
+
+```javascript
+withEffects()
+withEffects(effects0)
+withEffects(effects0, effects1)
+withEffects(effects0, effects1, /* … ,*/ effectsN)
+```
+
+Specifies animating effects for the flyout.
+
+### Parameters
+
+<dl>
+    #### `effects0` … `effectsN` <Badge.Optional />
+    One or more predefined effects.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.0** Introduced
+- **0.5.4** `useFlyoutMixin()`: `closeOnBlur` option <br/> `FlyoutMixin.open()`: `source` parameter
+- **0.5.7** `FlyoutMixin.toggleSelf()`
+- **0.6.0** `FlyoutMixin.element`
+- **0.6.1** `FlyoutMixin.toggleSelf()`: `flag` parameter
+- **0.6.2** `useFlyoutMixin()`: `containment` option
+- **0.6.3** `FlyoutMixin.whenVisible()`
+</VersionTimeline>

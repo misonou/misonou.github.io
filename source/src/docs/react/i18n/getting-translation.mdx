@@ -1,0 +1,41 @@
+<Module name="brew-js-react" />
+
+# Getting translations
+
+The [`useTranslation`](:) hook implicitly watches the [`app.language`](:) property, so that the component is refreshed once [`app.language`](:) has changed.
+
+```tsx
+/// Component.tsx
+import { useTranslation } from "./i18n";
+
+function Component() {
+    const { t } = useTranslation('prefix');
+    return (
+        <div>{t('key')}</div>
+    );
+}
+
+/// i18n.ts
+const resources = {
+    // first level are languages
+    en: {
+        // second level are prefixes
+        prefix: { key: 'Translation string' }
+    },
+    de: {
+        prefix: { key: 'Übersetzungszeichenfolge' }
+    }
+};
+
+const { translate, useTranslation } = makeTranslation(resources, 'en');
+```
+
+## Outside React component
+
+For global context, use [`translate`](:) returned from from [`makeTranslation()`](:) to get translated string.
+
+```typescript
+import { translate } from "./i18n";
+
+translate('prefix.key'); // -> "Translation string"
+```

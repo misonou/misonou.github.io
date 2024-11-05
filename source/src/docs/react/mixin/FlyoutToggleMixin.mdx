@@ -1,0 +1,120 @@
+<Module name="brew-js-react" />
+
+# FlyoutToggleMixin class
+
+> `FlyoutToggleMixin` is not intended to be instantiated manually. Instances are accessible by
+  [`FlyoutMixin.toggle`](:).
+
+<MemberList
+    i="FlyoutToggleMixin"
+    extends={['ClassNameMixin']}
+    im={['open()', 'close()', 'toggle()', 'on()']}
+/>
+
+## Instance methods
+
+### `FlyoutToggleMixin.close()`
+
+```javascript
+close()
+close(state)
+```
+
+Closes the associated flyout.
+
+### Parameters
+
+<dl>
+    #### `state` <Badge.Optional />
+    Value to be sent to the promise returned by `FlyoutMixin.open`.
+
+</dl>
+
+### Return value
+
+A promise that resolves after closing animation completes.
+
+### `FlyoutToggleMixin.on()`
+
+```javascript
+on(trigger)
+```
+
+Specifies the condition on when the flyout should open.
+
+### Parameters
+
+<dl>
+    #### `trigger`
+    Condition of trigger. It can be either:
+
+    <dl>
+        #### `click`
+        Flyout is toggled when applied element is clicked.
+
+        #### `focus`
+        Flyout is opened or closed when applied element has gained or lost focus respectively.
+    </dl>
+
+    Default behavior is `click`.
+</dl>
+
+### `FlyoutToggleMixin.open()`
+
+```javascript
+open()
+open(state)
+open(state, source)
+```
+
+Opens the associated flyout.
+
+### Parameters
+
+<dl>
+    #### `state` <Badge.Optional />
+    Value to be sent to listener added by `FlyoutMixin.onOpen`.
+
+    #### `source` <Badge.Optional /> <Badge.Version />
+    Source element that triggered the flyout.
+
+</dl>
+
+### Return value
+
+A promise that resolves when the flyout is being closed.
+
+### `FlyoutToggleMixin.toggle()`
+
+```javascript
+toggle()
+toggle(source)
+toggle(flag)
+toggle(flag, source)
+```
+
+Toggles the associated flyout.
+
+### Parameters
+
+<dl>
+    #### `source` <Badge.Optional />
+    Source element which triggered the flyout.
+
+    #### `flag` <Badge.Optional /> <Badge.Version />
+    Whether the flyout should be open or closed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when the flyout is being closed.
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.0** Introduced
+- **0.5.4** `FlyoutToggleMixin.open()`: `source` parameter
+- **0.5.7** `FlyoutToggleMixin.on()` <br/> `FlyoutToggleMixin.toggle()`
+- **0.6.1** `FlyoutToggleMixin.toggle()`: `flag` parameter
+</VersionTimeline>

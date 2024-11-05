@@ -1,0 +1,280 @@
+<Module name="brew-js/util" />
+
+# createObjectStorage
+
+Creates a storage that enables serializing and deserializing complex object structures.
+
+## Syntax
+
+```javascript
+createObjectStorage(storage, key)
+```
+
+<ImportHint
+    name="createObjectStorage"
+    module="brew-js/util/storage"
+    global="brew.createObjectStorage"
+/>
+
+### Parameters
+
+<dl>
+    #### `storage`
+    The `window.sessionStorage` or `window.localStorage` object.
+
+    #### `key`
+    Key used for saving data to backing storage.
+
+</dl>
+
+
+## Object and circular references
+
+Object references are maintained and circular references are supported.
+
+## Custom objects
+
+~~0.6.9~~
+
+Custom objects (object with non-trivial prototypes) can be deserialized automatically if its constructor is registered.
+
+```javascript
+class Bar {
+    constructor(data) {
+        if (data !== undefined) {
+            this.fromJSON(data);
+        }
+    }
+    fromJSON(data) {
+        /* ... */
+    }
+    toJSON() {
+        /* ... */
+    }
+}
+const store = createObjectStorage(window.localStorage, 'myStorage');
+store.registerType('Bar', Bar, (target, data) => target.fromJSON(data));
+```
+
+During deserialization, object will be constructed with:
+- deserialized data as the first argument;
+- or with no argument when data is not fully deserialized due to circular references.
+
+In the latter case, callback passed to [`ObjectStorage.registerType()`](:) will be invoked when data is fully deserialized.
+
+> Note that derived types must be registered explicitly.
+
+> Type registration is preferred over [`ObjectStorage.revive()`](:) as the latter only allows custom types on object directly set on storage;
+  and it may also break references.
+
+## Limitations
+
+All limitations with native JSON serialization applies (except for circular references):
+
+- Properties with symbols as keys are not serialized
+- Properties with functions as values are not serialized
+- Non-plain object is converted to plain object by enumerating its properties or value returned by `toJSON()` if it is defined on the object,
+  except (since v0.6.9) when the constructor is registered through [`ObjectStorage.registerType()`](:)
+
+In addition, properties with these values are also ignored, due to commonly large amount of data:
+
+- `Blob` objects
+- DOM nodes, i.e. elements and text nodes
+- the `window` object
+
+> It is recommended to only store strings, numbers and booleans values, as well as objects and arrays containing only these values.
+
+## Persisting nested object
+
+Any object deserialized from object storage can be passed to [`ObjectStorage.persist()`](:):
+
+```typescript
+const storage = app.historyStorage.current;
+const data = storage.get('data');
+const nested = data.obj;
+
+nested.a = 1;
+storage.persist(nested); // storage will be updated
+```
+
+## ObjectStorage interface
+
+<MemberList
+    i="ObjectStorage"
+    im={['keys()', 'has()', 'revive()', 'get()', 'set()', 'persist()', 'persistAll()', 'delete()', 'clear()', 'registerType()']}
+/>
+
+### `ObjectStorage.clear()`
+
+```javascript
+clear()
+```
+
+Clears all data present in storage.
+
+### `ObjectStorage.delete()`
+
+```javascript
+delete(key)
+```
+
+Removes data from storage.
+
+### Parameters
+
+<dl>
+    #### `key`
+    A key associated to specific data.
+
+</dl>
+
+### `ObjectStorage.get()`
+
+```javascript
+get(key)
+```
+
+Gets data from the storage.
+
+### Parameters
+
+<dl>
+    #### `key`
+    A key associated to specific data.
+
+</dl>
+
+### `ObjectStorage.has()` <Badge.Version />
+
+```javascript
+has(key)
+```
+
+Gets whether the specified key is present in storage.
+
+### Parameters
+
+<dl>
+    #### `key`
+</dl>
+
+### `ObjectStorage.keys()`
+
+```javascript
+keys()
+```
+
+Gets all keys present in storage.
+
+### `ObjectStorage.persist()`
+
+```javascript
+persist(obj)
+```
+
+Marks object as dirty and updates backing storage asynchronously.
+
+It has no effects for objects not restored by [`ObjectStorage.get`](:) or [`ObjectStorage.revive`](:),
+or persisted by [`ObjectStorage.set`](:).
+
+### Parameters
+
+<dl>
+    #### `obj`
+    Object needed to have updates persisted.
+
+</dl>
+
+### `ObjectStorage.persistAll()` <Badge.Version />
+
+```javascript
+persistAll()
+```
+
+Marks all living objects as dirty and updates backing storage asynchronously.
+
+### `ObjectStorage.registerType()` <Badge.Version />
+
+```javascript
+registerType(key, ctor, callback)
+```
+
+Enables deserialization of object as custom class.
+
+> Note that the constructor should instantiate with or without deserialized data, depending on whether data is fully deserialized.
+  Also inherited classes must be registered explicitly.
+
+### Parameters
+
+<dl>
+    #### `key`
+    A key identifying the class. It should be unique and contain only alphanumeric characters.
+
+    #### `ctor`
+    A constructible function or class.
+
+    #### `callback`
+    A callback to initialize object with deserialized data when data is not available during instantiation.
+
+</dl>
+
+### `ObjectStorage.revive()`
+
+```javascript
+revive(key, ctor)
+revive(key, callback)
+```
+
+Restores non-primitive objects from storage.
+
+> It will replace previous object of the same key if it was not stored with its constructor registered.
+  References to previous object are untouched, meaning that they will no longer point to the returned object.
+
+### Parameters
+
+<dl>
+    #### `key`
+    A key associated to specific data.
+
+    #### `ctor`
+    Constructor registered with [`ObjectStorage.registerType`](:).
+
+    #### `callback`
+    Callback to construct result object, receiving deserialized JSON data as the first argument.
+
+</dl>
+
+### `ObjectStorage.set()`
+
+```javascript
+set(key, value)
+```
+
+Persists data to storage.
+
+Objects are serialized to JSON notation, therefore it has the same limitations as `JSON.stringify` when
+storing non-primitive objects. This can partially overcome by having `toJSON` method on objects to serialize
+as JSON object structures and be later recovered by [`ObjectStorage.revive`](:).
+
+Circular references are supported and are maintained when deserialized back from storage.
+On the other hand, certain built-in objects are ignored, such as `Blob` data, DOM elements and the `window` object.
+
+### Parameters
+
+<dl>
+    #### `key`
+    A key associated to specific data.
+
+    #### `value`
+    Data to be stored.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.5.0** Introduced
+- **0.5.2** `ObjectStorage.has()`
+- **0.5.13** `ObjectStorage.persistAll()`
+- **0.6.9** `ObjectStorage.registerType()`
+</VersionTimeline>

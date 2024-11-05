@@ -1,0 +1,111 @@
+<Module name="zeta-dom-react" />
+
+# ViewStateProvider component
+
+```tsx
+<ViewStateProvider value={provider}>
+    {children}
+</ViewStateProvider>
+```
+
+## Properties
+
+<dl>
+    #### `value`
+    A object implemented the [`ViewStateProvider`](:) interface.
+</dl>
+
+## ViewStateProvider interface
+
+<MemberList
+    i="ViewStateProvider"
+    im={['getState()']} />
+
+### `ViewStateProvider.getState()`
+
+```javascript
+provider.getState(uniqueId, key)
+```
+
+Returns an object that can persist and restore view state uniquely identified by the ke
+
+View state consumers will request the [`ViewState`](:) object every time its host comp
+The same consumer, by logical mean, should be able to persist and restore the same view
+unmounting and re-creating the host component.
+
+#### Parameters
+
+<dl>
+    #### `uniqueId`
+    A random string which represents a unique consumer.
+
+    #### `key`
+    Key of the state.
+</dl>
+
+#### Return value
+
+The method should return an object implemented the [`ViewState`](:) interface.
+
+## ViewState interface
+
+<MemberList
+    i="ViewState"
+    im={['get()', 'set()', 'onPopState()', 'dispose()']} />
+
+### `ViewState.get()`
+
+```javascript
+viewState.get()
+```
+
+Gets the value persisted by `ViewState.set` previously. 
+
+### `ViewState.set()`
+
+```javascript
+viewState.set(data)
+viewState.set(data, snapshot)
+```
+
+Persists the value in view state.
+
+#### Parameters
+
+<dl>
+    #### `data`
+    Any serializable data.
+
+    #### `snapshot` <Badge.Optional />
+    Whether to create a snapshot for current value, so that it can be restored by navigating through history.
+
+    > Note that it is up to view state provider if such function is supported.
+</dl>
+
+### `ViewState.onPopState()`
+
+```javascript
+viewState.onPopState(callback)
+```
+
+Allows a consumer to react to swapping of view states.
+
+#### Parameters
+
+<dl>
+    #### `callback`
+    A callback that receives the new state that is going to be restored; and may persist existing state.
+
+</dl>
+
+#### Return value
+
+A callback that unlisten the event.
+
+### `ViewState.dispose()`
+
+```javascript
+viewState.dispose()
+```
+
+Marks the view state no longer be used.

@@ -1,0 +1,25 @@
+<Module name="brew-js-react" />
+
+# registerView
+
+Registers view component with specific route paramters.
+Route parameters will be matched against current route state by [`renderView`](:).
+
+## Syntax
+
+```javascript
+registerView(factory, params)
+registerView(component, params)
+```
+
+<dl>
+    #### `factory`
+    A callback that returns a promise resolving a React component, typically using async `import`.
+
+    #### `component`
+    A React component.
+
+    #### `params`
+    A dictionary containing route parameters.
+
+</dl>

@@ -1,0 +1,58 @@
+import Example from "src/components/examples/animated-indicator";
+
+<Module name="@misonou/react-css-utils" />
+
+# useAnimatedIndicator
+
+Attaches a animateable active state indicator element.
+
+## Syntax
+
+```javascript
+useAnimatedIndicator(options)
+```
+
+### Parameters
+
+<dl>
+    #### `options`
+    <dl>
+        #### `selector`
+        A CSS selector that selects the elements to which an active state indicator element will be attached to.
+    </dl>
+</dl>
+
+### Return value
+
+A [`AnimatedIndicator`](:) object.
+
+## Example
+
+<Example />
+
+## AnimatedIndicator interface
+
+<MemberList
+    i="AnimatedIndicator"
+    ip={['ref']}
+    im={['setActiveIndex()']} />
+
+### `AnimatedIndicator.ref` <Badge.ReadOnly />
+
+A ref callback apply to a React element which contains a collection of elements, usually tabs,
+to which an active state indicator element will be attached to.
+
+### `AnimatedIndicator.setActiveIndex()`
+
+Sets and animates the active state indicator element to attach to the n-th matched element, usually indicating the current tab.
+
+```javascript
+setActiveIndex(index)
+```
+
+#### Parameters
+
+<dl>
+    #### `index`
+    A zero-based index.
+</dl>

@@ -1,0 +1,24 @@
+<Module name="brew-js-react" />
+
+# useRouteParam
+
+Returns the value of specified route parameter, and
+refresh the component when the route parameter has changed.
+
+## Syntax
+
+```javascript
+useRouteParam(name)
+useRouteParam(name, defaultValue)
+```
+
+### Parameters
+
+<dl>
+    #### `name`
+    Name of route parameter.
+
+    #### `defaultValue` <Badge.Optional />
+    When given, an empty value in current route state will cause a redirection which set the route parameter to such value.
+
+</dl>

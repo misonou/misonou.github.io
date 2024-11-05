@@ -1,0 +1,95 @@
+<Module name="zeta-dom-react" />
+
+# FormFieldState interface
+
+<MemberList
+    i="FormFieldState"
+    ip={['elementRef', 'form', 'key', 'path', 'value', 'error', 'version']}
+    im={['setValue()', 'setError()', 'validate()']} />
+
+## Instance properties
+
+### `FormFieldState.elementRef` <Badge.ReadOnly />
+
+A callback to be passed to `ref` attribute to capture the rendered DOM element.
+
+The element can be retrieved by the `current` property on the callback or [`FormContext.element()`](:)
+if the field is named and is associated to a [`FormContext`](:) instance.
+
+### `FormFieldState.error` <Badge.ReadOnly />
+
+Gets current validation error.
+
+An empty string indicates the field is valid.
+If an object was set, it is always coerced to the stringified result.
+
+### `FormFieldState.form` <Badge.ReadOnly />
+
+Gets the parent form context if exists.
+
+### `FormFieldState.key` <Badge.ReadOnly />
+
+Gets a unique key identifying the field.
+
+> If there is no parent form context, or `name` is not supplied to `useFormField`,
+  an empty string will be returned.
+
+### `FormFieldState.path` <Badge.ReadOnly />
+
+Gets the current data path to the associated value on the data object.
+
+> If there is no parent form context, or `name` is not supplied to `useFormField`,
+  an empty string will be returned.
+
+### `FormFieldState.value` <Badge.ReadOnly />
+
+Gets current field value.
+
+### `FormFieldState.version` <Badge.ReadOnly /> <Badge.Version />
+
+Gets a version number that changes whenever value or nested values changes.
+
+## Instance methods
+
+### `FormFieldState.setError()`
+
+```javascript
+setError(error)
+setError(updateCallback)
+```
+
+Sets validation error.
+
+Falsy values like `null`, `undefined` or empty string indicates the field is valid.
+
+### `FormFieldState.setValue()`
+
+```javascript
+setValue(value)
+setValue(updateCallback)
+```
+
+Sets field value.
+
+### `FormFieldState.validate()` <Badge.Version />
+
+```javascript
+validate()
+```
+
+A callback to trigger validation of the field.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.1.0** Introduced
+- **0.1.5** `FormFieldState.elementRef`
+- **0.3.2** `FormFieldState.form`
+- **0.4.15** `FormFieldState.validate()`
+- **0.5.7** `FormFieldState.version`
+- **0.5.11** `FormFieldState.elementRef`: `current` property
+</VersionTimeline>
+
+## See also
+
+- [Field types](/docs/react/form/field-types)

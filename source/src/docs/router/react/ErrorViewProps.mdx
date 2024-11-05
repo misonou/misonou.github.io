@@ -1,0 +1,38 @@
+<Module name="brew-js-react" />
+
+# ErrorViewProps interface
+
+The `ErrorViewProps` interface exposes information to error view registered by [`registerErrorView`](:) or
+being passed to [`ViewContext.setErrorView`](:).
+
+<MemberList
+    i="ErrorViewProps"
+    ip={['view', 'error']}
+    im={['reset()']}
+/>
+
+## Instance properties
+
+### `ErrorViewProps.error`
+
+Gets the error thrown from the original view component.
+
+### `ErrorViewProps.view`
+
+Gets the original view component in which error has thrown.
+
+## Instance methods
+
+### `ErrorViewProps.reset()`
+
+```javascript
+reset()
+```
+
+Re-renders the original view component with initial state.
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.3.1** Introduced
+</VersionTimeline>

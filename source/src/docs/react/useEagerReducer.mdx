@@ -1,0 +1,39 @@
+<Module name="zeta-dom-react" />
+
+# useEagerReducer
+
+Similar to but unlike `React.useReducer`, it guarantees that reducer is called synchronously,
+and it will not cause component to re-render when state did not change.
+
+## Syntax
+
+```javascript
+useEagerReducer(reducer, initialState)
+```
+
+<ImportHint
+    name="useEagerReducer"
+    module="zeta-dom-react"
+    require="useEagerReducer"
+    global="zeta.react.useEagerReducer" />
+
+### Parameters
+
+<dl>
+    #### `reducer`
+    A callback computes the new state.
+
+    #### `initialState`
+    Initial state, or a function that returns the initial state.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.5.4** Introduced
+</VersionTimeline>
+
+## See also
+
+- [`useEagerState`](:)

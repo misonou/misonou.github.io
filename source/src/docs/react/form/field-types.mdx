@@ -1,0 +1,67 @@
+<Module name="zeta-dom-react" />
+
+# Field types
+
+~~0.3.2~~
+
+Field types abstracts logic away from the control component.
+
+It is useful for writing field with the same logic with different visual representation,
+for example a checkbox v.s. a toggle, or a dropdown v.s. tabs.
+
+When passed to [`useFormField`](:), it returns extra members that facilitate the working
+of such kind of fields.
+
+## Built-in field types
+
+There are six built-in field types:
+
+| Class                   | Usage                                |
+| ----------------------- | ------------------------------------ |
+| [`TextField`](:)        | Text box                             |
+| [`ToggleField`](:)      | Checkbox, toggle                     |
+| [`ChoiceField`](:)      | Dropdown, tabs                       |
+| [`MultiChoiceField`](:) | Checkbox list, multi-select dropdown |
+| [`NumericField`](:)     | Number input, slider                 |
+| [`DateField`](:)        | Date picker                          |
+
+## Writing field type
+
+To create new field type, one can derive from existing field types or 
+create a new class that implements the [`FieldType`](:) interface.
+
+```typescript
+class MyFieldType implements FieldType<MyFieldTypeProp, MyFieldTypeState> {
+    postHook(state) {
+        return state;
+    }
+}
+
+```
+
+```typescript
+useFormField(MyFieldType, props); // return MyFieldTypeState
+```
+
+## Hook-like helpers
+
+~~0.5.9~~
+
+Avoid using React hooks in the `postHook` method. Use method from hook helper instead, which enables switching of field type.
+
+```typescript
+class MyFieldType {
+    postHook(state, props, hook) {
+        // these are deprecated
+        const memoValue = useMemo(() => (/* ... */), []);
+        const callback = useMemoizedFunction(() => { /* ... */ });
+        useEffect(() => { /* ... */ })
+
+        // do these instead
+        const memoValue = hook.memo(() => (/* ... */), []);
+        const callback = hook.callback(() => { /* ... */ });
+        hook.effect(() => { /* ... */ })
+        /* ... */
+    }
+}
+```

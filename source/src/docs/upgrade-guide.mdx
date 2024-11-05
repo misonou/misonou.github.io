@@ -1,0 +1,123 @@
+# Upgrading guide
+
+## Upgrading to brew-extension-auth 0.4.x
+
+```javascript
+/* Before: */
+export const Provider = {
+    init() {
+        /* ... */
+        const isLoginRedirect = /* need to be determined manually */;
+        return isLoginRedirect ? handleLoginRedirect() : getActiveAccount();
+    }
+}
+/* After: */
+export const Provider = {
+    init() { /* ... */ }
+    handleLoginRedirect() { /* ... */ }
+    getActiveAccount() { /* ... */ }
+}
+```
+
+## Upgrading to brew-react-js 0.5.x
+
+If you have custom mixins extending [`StatefulMixin`](:) class:
+
+- [`StatefulMixin.state`](:) will be initially empty in every render, meaning that
+  previous state and default state from [`StatefulMixin.initState`](:)
+  will be unavailable. Use:
+  - [`StatefulMixin.mergeState`](:) when accessing or mutating states based on previous state,
+  - [`StatefulMixin.onLayoutEffect`](:) to apply attributes or classes based on current state.
+- `StatefulMixin.clone` are no longer required.
+
+## Upgrading to brew.js 0.6.x
+
+### Pure app event
+
+Event emitted to `app` itself no longer emit to `<html>` element.
+
+```typescript
+// this is treated as pure app event
+// only event handler registered as app.on('event', handler)
+// will receive pure app event
+app.emit('event');
+```
+
+I the event is intended to associates with the document root element, explicitly specifies as:
+
+```typescript
+app.emit('event', document.documentElement);
+```
+
+Event listener registered to `app` will still receive the event.
+```typescript
+// this still works
+app.on('event', () => {});
+```
+
+
+On the other hand, if you are listening pure app event with target set to, move the target:
+
+
+```typescript
+// before
+app.on(document.documentElement, 'event', () => {});
+// after
+app.on('event', () => {});
+```
+
+### Animation
+
+> Update stylesheet `brew-js/styles/base.css` for built-in animation effects.
+
+To ensure animate sequence to work properly, make sure transition and animation are not started
+before `.tweening-in` class is applied.
+
+```css
+[animate-in] {
+    transition-property: none;
+    transition-duration: var(--transition-duration);
+    transition-delay: var(--transition-delay);
+}
+```
+
+to
+
+```css
+[animate-in] {
+    transition-property: none;
+    transition-duration: 0s;
+    transition-delay: var(--transition-delay);
+}
+
+[animate-in].tweening-in {
+    transition-duration: var(--transition-duration);
+}
+```
+
+## Upgrading to brew.js 0.4.x ~~brew-js~~
+
+### Feature moved to HtmlRouter
+
+When using router with html template, change to `useHtmlRouter`.
+
+### Loading and error scope
+
+`loading` variable no longer automatically set when asynchronous operation is registered to DOM using `notifyAsync`.
+
+Add `loading-scope` to `<html>` to enable it.
+
+```tsx
+<html loading-scope set-class="{ loading: loading }">
+    {/* ... */}
+</html>
+```
+
+## Upgrading to brew.js 0.3.x ~~brew-js~~
+
+Starting v0.3, extensions must be loaded by `brew.with` in order to use when using Webpack.
+
+```typescript
+brew.with(Router)(app => {
+});
+```

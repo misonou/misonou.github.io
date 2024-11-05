@@ -1,0 +1,52 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# createAxiosMiddleware
+
+Creates a middleware that sets authorization header and to renew access token automatically when needed.
+
+## Syntax
+
+```javascript
+createAxiosMiddleware(app)
+createAxiosMiddleware(app, filter)
+```
+
+<ImportHint
+    name="createAxiosMiddleware"
+    module="@misonou/brew-extension-auth/middleware"
+    require="default.Auth.createAxiosMiddleware"
+    global="brew.Auth.createAxiosMiddleware"
+/>
+
+### Parameters
+
+<dl>
+    #### `app`
+    The app instance.
+
+    > Note that [`app.useAuth`](:) must be called before passing to `createFetchMiddleware`.
+
+    #### `filter` <Badge.Optional />
+    Optional filter to opt-in authorization header by condition.
+</dl>
+
+### Return value
+
+A function that register interceptors to an axios instance.
+
+## Example
+
+```typescript
+import axios from "axios";
+import { createAxiosMiddleware } from "@misonou/brew-extension-auth";
+
+const client = axios.create();
+createAxiosMiddleware(app)(client);
+```
+
+## Version information
+
+<VersionTimeline module="@misonou/brew-extension-auth">
+- **0.1.0** Introduced
+- **0.3.0** `filter` parameter
+</VersionTimeline>

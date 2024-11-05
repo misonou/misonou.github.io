@@ -1,0 +1,113 @@
+<Module name="waterpipe" />
+
+# Output mode
+
+The waterpipe template engine supports two output mode, HTML and verbatim.
+
+By default, waterpipe runs in HTML mode.
+
+## HTML mode
+
+In HTML mode, all reserved characters from evaluated outputs are automatically encoded.
+
+Meanwhile, raw content in the template are parsed as valid HTML with whitespaces being collapsed.
+
+<WaterpipeExample
+    data={{ className: 'foo', content: '<b>This is HTML.</b>'}}
+    template={`<p class="{{className}}">{{content}}</p>`}
+/>
+
+To output HTML without escaping, use the `{{&}}` statement.
+
+<WaterpipeExample
+    data={{ className: 'foo', content: '<b>This is HTML.</b>'}}
+    template={`<p class="{{className}}">{{&content}}</p>`}
+/>
+
+### Indentation
+
+By default, indentation is off, meaning all unnecessary whitespace and newlines are stripped:
+
+<WaterpipeExample
+    template={`
+<div>
+    <b> This is content </b>
+</div>`}
+/>
+
+Beautified HTML can be output by setting indentation, for example with options
+
+```javascript
+waterpipe(template, data, { indent: 4 })
+```
+
+<WaterpipeExample
+    options={{indent: 4}}
+    template={`
+<div>
+    <b> This is content </b>
+</div>`}
+/>
+
+### Broken and unmatched tags
+
+Broken and unmatched tags are properly fixed:
+
+<WaterpipeExample
+    template={`<div a=\"\" b\" c=><b></div></b>`}
+/>
+
+### Scripts, styles and comments
+
+Raw content within `<script>`, `<style>` and `<!-- -->` are touched:
+
+<WaterpipeExample
+    template={`
+<script>
+    console.log('');
+</script>
+<style>
+    .root { padding: 1em }
+</style>
+<!-- comments ->`}
+/>
+
+## Verbatim mode
+
+When template content has to be treated as-is without being parsed and HTML, set `html` options to `false`.
+
+```javascript
+waterpipe(template, data, { html: false });
+```
+
+For example,
+
+<WaterpipeExample
+    data={{ content: '<b>This is HTML.</b>'}}
+    options={{ html: false }}
+    template={`
+--------------------
+< This is not HTML >
+--------------------
+
+{{content}}
+
+--------------------
+`}
+/>
+
+### Line stripping
+
+In verbatim mode, whitespaces and indentations are preserved except for the lines containing only flow-control tags. For example,
+
+<WaterpipeExample
+    data={{ items: [1,2,3]}}
+    options={{ html: false }}
+    template={`
+Items:
+
+{{foreach items}}
+  - {{.}}
+{{/foreach}}
+`}
+/>

@@ -1,0 +1,129 @@
+<Module name="@misonou/brew-extension-auth/util" />
+
+# JSONClient class
+
+<ImportHint
+    name="JSONClient"
+    module="@misonou/brew-extension-auth/util"
+    require="default.Auth.JSONClient"
+    global="brew.Auth.JSONClient"
+    expanded
+/>
+
+<MemberList
+    i="JSONClient"
+    ip={['baseUrl']}
+    im={['request()', 'get()', 'post()', 'put()', 'patch()', 'delete()']}
+/>
+
+## Constructor
+
+```javascript
+new JSONClient(baseUrl)
+new JSONClient(baseUrl, middleware)
+```
+
+### Parameters
+
+<dl>
+    #### `baseUrl`
+    #### `middleware` <Badge.Optional />
+</dl>
+
+## Instance properties
+
+### `JSONClient.baseUrl` <Badge.ReadOnly />
+
+## Instance methods
+
+### `JSONClient.delete()`
+
+```javascript
+delete(path)
+delete(path, body)
+delete(path, body, options)
+```
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `body` <Badge.Optional />
+    #### `options` <Badge.Optional />
+</dl>
+
+### `JSONClient.get()`
+
+```javascript
+get(path)
+get(path, options)
+```
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `options` <Badge.Optional />
+</dl>
+
+### `JSONClient.patch()`
+
+```javascript
+patch(path)
+patch(path, body)
+patch(path, body, options)
+```
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `body` <Badge.Optional />
+    #### `options` <Badge.Optional />
+</dl>
+
+### `JSONClient.post()`
+
+```javascript
+post(path)
+post(path, body)
+post(path, body, options)
+```
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `body` <Badge.Optional />
+    #### `options` <Badge.Optional />
+</dl>
+
+### `JSONClient.put()`
+
+```javascript
+put(path)
+put(path, body)
+put(path, body, options)
+```
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `body` <Badge.Optional />
+    #### `options` <Badge.Optional />
+</dl>
+
+### `JSONClient.request()`
+
+```javascript
+request(request)
+request(request, options)
+```
+
+### Parameters
+
+<dl>
+    #### `request`
+    #### `options` <Badge.Optional />
+</dl>

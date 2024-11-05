@@ -1,0 +1,30 @@
+<Module name="brew-js-react" />
+
+# Using mixins
+
+Mixins are instances of objects that provides ref callbacks, CSS class names and custom DOM attributes.
+
+Plugins that do not fit the React component life cycle can make use of mixins to inject behaviors.
+
+Also multiple mixins can be injected to the same DOM element by `Mixin.use` which merges all the necessary properties.
+
+```tsx
+function Component() {
+    const flyoutMixin = useFlyoutMixin();
+    return (
+        <div {...Mixin.use(flyoutMixin)}>{/* ... */}</div>
+    );
+}
+```
+
+> **Important:** `Mixin.use` returns the `ref` and `className` properties of an intrinsic React element. If you need to specify `ref` and `className` along with mixins, put those within `Mixin.use`:
+
+```tsx
+function Component() {
+    const myRef = useRef();
+    const flyoutMixin = useFlyoutMixin();
+    return (
+        <div {...Mixin.use(myRef, flyoutMixin, 'my-class-name')}>{/* ... */}</div>
+    );
+}
+```

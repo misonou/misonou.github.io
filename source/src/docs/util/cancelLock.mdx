@@ -1,0 +1,34 @@
+<Module name="zeta-dom/domLock" />
+
+# cancelLock
+
+Requests cancellation of all asynchronous operations.
+
+## Syntax
+
+```javascript
+cancelLock()
+cancelLock(element)
+cancelLock(element, force)
+```
+
+<ImportHint
+    name="cancelLock"
+    module="zeta-dom/domLock"
+    global="zeta.dom.cancelLock"
+/>
+
+### Parameters
+
+<dl>
+    #### `element` <Badge.Optional />
+    A DOM element.
+
+    #### `force` <Badge.Optional />
+    Whether to disregard cancellation handler and forcibly release all locks.
+
+</dl>
+
+### Return value
+
+A promise which is fulfilled when all operations are cancelled; or is rejected otherwise.

@@ -1,0 +1,93 @@
+import Example from "src/components/examples/form-datachange";
+import UpdateDataExample from "src/components/examples/form-update-data";
+
+<Module name="zeta-dom-react" />
+
+# Accessing form data
+
+Field data is accessible by [`FormContext.data`](:) property.
+
+When using TypeScript, it can be benefited by specifying type argument for data shape:
+
+```tsx
+function Login() {
+    const form = useFormContext();
+    const onClick = () => {
+        // access field values through `FormContext.data`
+        login(form.data.username, form.data.password);
+    };
+
+    return (
+        <Form context={form}>
+            <TextInput name="username" required={true} label="Username" />
+            <TextInput name="password" required={true} type="password" label="Password" />
+            <Button label="Login" onClick={onClick} />
+        </Form>
+    );
+}
+```
+
+> **Important**: To pass form data as a whole to consumer, it is recommended to use [`FormContext.toJSON()`](:) to convert it to plain objects.
+
+## Effects on field update
+
+Every time field value is updated, either programmatically or by user actions, re-rendering is triggered.
+
+In the following example, the paragraph will always show the entered text:
+
+<Example />
+
+## Detecting change of specific field
+
+For any comnponent that accepts [`FormFieldProps`](:), callback can be assigned to `onChange` to listen
+changes of that field:
+
+```tsx
+<TextInput name="item" onChange={() => { /* ... */ }} />
+```
+
+The [`FormContext`](:) object also provides `dataChange` event if you needs logic depending on which fields were updated:
+
+```tsx
+useEffect(() => {
+    return form.on('dataChange', e => {
+        if (e.data.includes('item')) {
+            /* ... */
+        }
+    });
+}, []);
+```
+
+## Updating form data
+
+Form data can be directly updated on [`FormContext.data`](:) and they will be reflected on the rendered control:
+
+<UpdateDataExample />
+
+## Data shape as interface
+
+[`FormContext`](:) supports interface as type argument for the data shape, such that there will be type checking on accessing form data.
+
+```tsx
+import { Form, useFormContext } from "zeta-dom-react";
+
+interface FormData {
+    username: string;
+    password: string;
+}
+
+function login(data: FormData) {
+    /* ... */
+}
+
+function Login() {
+    const form = useFormContext<FormData>();
+    return (
+        <Form context={form}>
+            <TextInput name="username" required label="Username" />
+            <TextInput name="password" required type="password" label="Password" />
+            <Button label="Login" onClick={() => login(form.toJSON())} />
+        </Form>
+    );
+}
+```

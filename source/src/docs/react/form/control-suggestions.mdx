@@ -1,0 +1,26 @@
+import { MultiPicker, Suggestions } from "src/components/controls";
+import tsx from "!raw-loader!src/components/controls/Suggestions.tsx";
+import { countriesSuggestions } from "src/data/examples/countries"
+
+<Module name="zeta-dom-react" />
+
+# Suggestions
+
+<Suggestions
+    label="Countries"
+    getSuggestions={() => countriesSuggestions} />
+
+
+## Example: Multiple picker
+
+<MultiPicker
+    label="Countries"
+    getSuggestions={() => countriesSuggestions} />
+
+## Source code
+
+<CodeBlock children={tsx} className="language-tsx" />
+
+## See also
+
+- [`MultiChoiceField`](:)

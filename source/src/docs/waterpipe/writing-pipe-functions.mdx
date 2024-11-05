@@ -1,0 +1,79 @@
+<Module name="waterpipe" />
+
+# Writing pipe functions
+
+Pipe functions can be added to meet custom needs through waterpipe.pipes`.
+
+## Static functions
+
+A normal function takes the input value and a fixed number of arguments from the pipe.
+
+```javascript
+waterpipe.pipes.bark = function (name, pet) {
+    return name + '\'s ' + pet + ' barks!';
+};
+```
+
+<WaterpipeExample
+    pipes={{bark: (name,pet) => name + '\'s ' + pet + ' barks!'}}
+    data={{ name: "John", pet: "dog" }}
+    examples={['name bark pet']}
+/>
+
+## Higher order functions
+
+A higher order function have the ability to take any number of arguments from the pipe,
+perform conditional logic on the form of arguments, as well as resetting the pipe.
+
+It is signatured by setting `varargs` to `true` on a pipe function.
+
+```javascript
+waterpipe.pipes.printargs = function (value, varargs) {
+    var output = [];
+    var count = varargs.next();
+    for (var i = 0; i < count; i++) {
+        if (varargs.hasArgs()) {
+            output.push(varargs.next());
+        }
+    }
+    return output.join(' ');
+};
+waterpipe.pipes.printargs.varargs = true;
+```
+
+<WaterpipeExample
+    examples={['printargs 3 foo bar baz']}
+/>
+
+A variadic pipe function can also take a function argument by `varargs.fn()`. If there is no proper set of pipe arguments to form a function argument, it will return `undefined`.
+
+```javascript
+waterpipe.pipes.dosomething = function (value, varargs) {
+    var fn = varargs.fn();
+    return fn(value);
+};
+waterpipe.pipes.dosomething.varargs = true;
+```
+
+<WaterpipeExample
+    data={{ value: 1 }}
+    examples={['value dosomething [ + 1 ]']}
+/>
+
+## Template as functions
+
+Template strings are considered a static function which takes no arguments.
+
+To make a template available for inclusion, defined the template on `waterpipe.pipes`:
+
+```javascript
+waterpipe.pipes.myTemplate = 'The value is {{value}}.';
+```
+
+<WaterpipeExample
+    pipes={{myTemplate:'The value is {{value}}.'}}
+    data={{value: 'foo'}}
+    examples={['myTemplate']}
+/>
+
+See more on [Defining template](/docs/waterpipe/defining-template).

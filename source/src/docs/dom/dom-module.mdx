@@ -1,0 +1,164 @@
+<Module name="zeta-dom/dom" />
+
+# DOM module
+
+The default export from `zeta-dom/dom` provides functionalities that handles
+user interactions.
+
+<ImportHint
+    name="dom"
+    module="zeta-dom/dom"
+    import="default"
+    global="zeta.dom"
+    expanded
+/>
+
+<MemberList
+    i="dom"
+    ip={['event','pressedKey','metaKey','context','activeElement','modalElement','focusedElements','eventSource','root','ready']}
+    im={['on()']}
+/>
+
+## Instance properties
+
+### `dom.activeElement` <Badge.ReadOnly />
+
+Gets the current active element which is readily receiving user input.
+
+### `dom.context` <Badge.ReadOnly />
+
+Gets the active component registered through event container.
+
+### `dom.event` <Badge.ReadOnly />
+
+Gets the DOM event which triggers the current event loop:
+
+- `beforeinput`
+- `click`
+- `compositionstart`
+- `compositionupdate`
+- `compositionend`
+- `contextmenu`
+- `dblclick`
+- `keydown`
+- `keypress`
+- `keyup`
+- `mousedown`
+- `mousemove`
+- `textInput`
+- `touchstart`
+- `touchmove`
+- `touchend`
+- `wheel`
+
+### `dom.eventSource` <Badge.ReadOnly />
+
+Gets the type of user interaction that triggers the current event.
+
+- `copy`
+- `cut`
+- `drop`
+- `input`
+- `keyboard`
+- `mouse`
+- `paste`
+- `script`
+- `touch`
+
+### `dom.focusedElements` <Badge.ReadOnly />
+
+Gets the element, and also any ancestors, which are in focus.
+
+### `dom.metaKey` <Badge.ReadOnly />
+
+Gets the currently pressed key modifiers, can be one of the following values:
+
+- `alt`
+- `altShift`
+- `ctrl`
+- `ctrlShift`
+- `ctrlAlt`
+- `ctrlAltShift`
+- `shift`
+
+or the empty string (`''`).
+
+### `dom.modalElement` <Badge.ReadOnly />
+
+Gets the current modal element.
+
+### `dom.pressedKey` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the currently pressed key, prefixed by `dom.metaKey` when meta keys like `Ctrl` or `Shift` is also pressed.
+Empty string is returned if there are no keys being pressed.
+
+### `dom.ready` <Badge.ReadOnly />
+
+Gets a promise which is resolved when DOM is ready.
+
+### `dom.root` <Badge.ReadOnly />
+
+Gets the root element of the document, usually the `<html>` element.
+
+## Instance methods
+
+### `dom.on()`
+
+## Alias methods
+
+<div style={{ display: 'none '}}>
+<MemberList
+    i="dom"
+    im={['focusable()','focused()','setTabRoot()','unsetTabRoot()','setModal()','releaseModal()','retainFocus()','releaseFocus()','focus()','blur()','reportError()']}
+/>
+</div>
+
+The `dom` default export object also exposes the following methods that are aliases from other modules:
+
+`zeta-dom/dom`
+
+- [`beginDrag`](:)
+- [`beginPinchZoom`](:)
+- [`blur`](:)
+- [`focus`](:)
+- [`focusable`](:)
+- [`focused`](:)
+- [`insertText`](:)
+- [`releaseFocus`](:)
+- [`releaseModal`](:)
+- [`reportError`](:)
+- [`retainFocus`](:)
+- [`setModal`](:)
+- [`setTabRoot`](:)
+- [`unsetTabRoot`](:)
+
+`zeta-dom/domLock`
+
+- [`lock`](:)
+- [`locked`](:)
+- [`cancelLock`](:)
+- [`notifyAsync`](:)
+- [`subscribeAsync`](:)
+- [`preventLeave`](:)
+
+`zeta-dom/observe`
+
+- [`createAutoCleanupMap`](:)
+- [`observe`](:)
+- [`watchAttributes`](:)
+- [`watchElements`](:)
+- [`watchOwnAttributes`](:)
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.1.0** Introduced
+- **0.1.4** `dom.beginDrag` <br/> `dom.beginPinchZoom`
+- **0.1.16** `dom.releaseModal`
+- **0.2.1** `dom.iterateFocusPath`
+- **0.4.0** `dom.blur`
+- **0.4.2** `dom.setTabRoot`
+- **0.4.5** `dom.unsetTabRoot`
+- **0.5.0** `dom.pressedKey`
+- **0.5.1** `dom.reportError`
+</VersionTimeline>

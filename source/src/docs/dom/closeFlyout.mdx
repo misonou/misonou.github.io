@@ -1,0 +1,74 @@
+<Module name="brew-js/domAction" />
+
+# closeFlyout
+
+Closes flyout and optionally passes result to the caller.
+
+## Syntax
+
+```javascript
+closeFlyout()
+closeFlyout(flyout)
+closeFlyout(flyout, value)
+```
+
+<ImportHint
+    name="closeFlyout"
+    module="brew-js/domAction"
+    global="brew.closeFlyout"
+/>
+
+### Parameters
+
+<dl>
+    #### `flyout` <Badge.Optional />
+    A DOM element or a CSS selector that refers to a flyout.
+
+    If element or selector is not specified, all opened flyouts will be closed.
+
+    #### `value` <Badge.Optional />
+    Value that will be passed as the resolved value of the promise returned by [`openFlyout`](:).
+
+</dl>
+
+### Return value
+
+A promise object that is resolved after flyout is closed.
+
+## Events
+
+<MemberList
+    i="dom"
+    ev={['flyouthide', 'flyoutclose']}
+    noRoot noRender
+/>
+
+### `flyoutclose` event
+
+Triggered when the flyout element is going to be closed.
+
+### `flyouthide` event
+
+Triggered when the flyout element is completely hidden.
+
+## CSS classes
+
+<dl>
+    #### `closing`
+    When flyout is being closed, the `closing` CSS class will be added.
+
+    > After flyout is completely hidden, both `open` and `closing` CSS classes will be removed.
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.4.5** `flyouthide` event
+- **0.6.3** `flyoutclose` event
+</VersionTimeline>
+
+## See also
+
+- [`animateOut`](:)
+- [`openFlyout`](:)

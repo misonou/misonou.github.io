@@ -1,0 +1,30 @@
+<Module name="zeta-dom/domLock" />
+
+# locked
+
+Gets whether there are any pending operations associated, i.e. being locked.
+
+## Syntax
+
+```javascript
+locked()
+locked(element)
+locked(element, parents)
+```
+
+<ImportHint
+    name="locked"
+    module="zeta-dom/domLock"
+    global="zeta.dom.locked"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `parents` <Badge.Optional />
+    When given `true`, parent elements will be taken into account.
+
+</dl>

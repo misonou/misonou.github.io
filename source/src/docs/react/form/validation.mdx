@@ -1,0 +1,84 @@
+<Module name="zeta-dom-react" />
+
+# Form validation
+
+Field validations are accomplished by `onValidate` callback which returns:
+- A falsy value, i.e. empty string, `null` or `undefined` if valid
+- A non-empty string containing error message if invalid
+
+For example sample validaton would be:
+
+```tsx
+<TextInput name="item"
+    onValidate={value => value.length > 10 ? '' : 'Too short'} />
+```
+
+Again the `onValidate` callback support async operation:
+
+```tsx
+<TextInput name="item"
+    onValidate={async (value) => await asyncValidation(value) ? '' : 'Error'} />
+```
+
+> For more complex scenario or reuse of validating function, see [Validators](/docs/react/form/validators).
+
+
+## Automatic validation
+
+By default, all fields are automatically validated when value changes.
+
+It can be disabled globally by setting [`FormContext.validateOnChange`](:) options to `false`.
+It can also be enabled or disabled for each field.
+
+```tsx
+<TextInput name="item" validateOnChange={false} />
+```
+
+After validation completes, the [`FormContext.isValid`](:) property will reflect the validity of the form.
+
+> **Important:** Only field associated with a component will be validated. Therefore,
+  once component is unmounted, the field will considered be valid.
+
+
+## Triggering validation manually
+
+Validations can be triggered by calling [`FormContext.validate()`](:).
+
+It returns a promise which resolves to `true` if all fields are valid.
+
+The async nature of [`FormContext.validate()`](:) allows server validations.
+
+```tsx
+function Component() {
+    const form = useFormContext();
+    return (
+        <Form context={form}>
+            <TextInput name="item" required={true} />
+            <button onClick={async () => await form.validate() && doStuff(form.data.item)} />
+        </Form>
+    );
+}
+```
+
+The [`FormContext.validate`](:) method also allows validation of specific fields:
+
+```typescript
+await form.validate('item1', 'item2');
+```
+
+## Validation event
+
+```typescript
+useEffect(() => {
+    return form.on('validateChange', e => {
+        if (e.name === 'input') {
+            // gets whether the field is valid after validation
+            console.log(e.isValid);
+        }
+    });
+}, [form]);
+```
+
+## See also
+
+- [Parameterizing validations](/docs/react/form/parameterizing-validations)

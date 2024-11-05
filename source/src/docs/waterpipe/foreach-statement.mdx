@@ -1,0 +1,53 @@
+<Module name="waterpipe" />
+
+# Statement: foreach
+
+All objects in JavaScript are iterable by the `foreach` statement.
+
+<WaterpipeExample
+    data={{obj: {"foo":"a","bar":"b"}}}
+    template={`
+{{foreach obj}}
+{{.}}
+{{/foreach}}`}
+/>
+
+## Special variables within loops
+
+Special variables are available for information on the current iteration.
+
+Variable | Shorthand | Description
+| - | - | - |
+`{{#key}}` | `{{#}}` | Key of current iteration
+`{{#index}}` | `{{##}}` | Zero-based index of current iteration
+`{{#count}}` |  | Total iteration count
+
+> **Note:** Shorthand variable must be in evaluated mode (`$.`, `$_`, `&#` and `&##`) when placing for argument.
+
+<WaterpipeExample
+    data={{obj: {"foo":"a","bar":"b"}, arr: [1,2]}}
+    template={`
+Looping over array:
+{{foreach arr}}
+{{##}}. {{#}}={{.}}
+{{/foreach}}
+
+Looping over object:
+{{foreach obj}}
+{{##}}. {{#}}={{.}}
+{{/foreach}}`}
+/>
+
+## Name scopes
+
+Foreach control will push a new scope, so any object paths are resolved based on iterated object:
+
+<WaterpipeExample
+    data={{arr: [{"a":2}]}}
+    template={`
+{{foreach arr}}
+a = {{a}}
+@0 = {{&@0}}
+@1 = {{&@1}}
+{{/foreach}}`}
+/>

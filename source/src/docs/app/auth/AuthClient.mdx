@@ -1,0 +1,182 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# AuthClient interface
+
+The `AuthClient` inference defines a set of properties and methods to be used to
+create an authentication provider.
+
+To create authentication provider from a client, use [`AuthProvider.from`](:).
+
+> Client is designed to be stateless. Caching and refresh timing are handled by provider.
+
+<MemberList
+    i="AuthClient"
+    ip={['authType', 'providerType']}
+    im={['init()', 'handleLoginRedirect()', 'login()', 'logout()', 'refresh()', 'isHandleable()']}
+/>
+
+## Instance properties
+
+### `AuthClient.authType` <Badge.ReadOnly />
+
+Authentication method used by the provider. It can be one of the following value:
+
+<dl>
+    #### `federated`
+    Federated identity provider, like an OpenID connect provider.
+
+    #### `password`
+    Authentication using password.
+
+    #### `publicKey`
+    Passwordless authentication using key-pairs, commonly known as passkeys.
+</dl>
+
+### `AuthClient.providerType` <Badge.ReadOnly />
+
+Type of provider, e.g. `msal` for `MsalAuthProvider`.
+
+## Instance methods
+
+### `AuthClient.handleLoginRedirect()` <Badge.Optional />
+
+```javascript
+handleLoginRedirect(context)
+```
+
+Handles authentication result returned from external authentication provider during app initialization.
+
+### `AuthClient.init()` <Badge.Optional />
+
+```javascript
+init(context)
+```
+
+Performs initialization.
+
+### `AuthClient.isHandleable()`
+
+```javascript
+isHandleable(loginHint)
+```
+
+Returns whether the authentication provider can process the request given the login hint.
+
+### Parameters
+
+<dl>
+    #### `loginHint`
+    Login hint, ususally user email, provided by user.
+
+</dl>
+
+### `AuthClient.login()`
+
+```javascript
+login(params, context)
+```
+
+Performs login.
+
+### Parameters
+
+<dl>
+    #### `params`
+    An object with the following properties:
+
+    <dl>
+        #### `interaction` <Badge.ReadOnly />
+        Specifies the preferred way to login. It can be one of the following value:
+
+        <dl>
+            #### `redirect`
+            #### `popup`
+        </dl>
+
+        #### `loginHint` <Badge.ReadOnly />
+        Login hint, usually user email, to be passed to external authentication provider.
+
+        #### `password` <Badge.ReadOnly />
+        Password to be passed to authentication provider.
+    </dl>
+
+</dl>
+
+### Return value
+
+When implemented, it is expected to return a promise that fulfills with properties from
+[`AuthProviderResult`](:) interface.
+
+When performing login through redirection, a promise that never resolves can be returned.
+
+### `AuthClient.logout()`
+
+```javascript
+logout(params, context)
+```
+
+Performs logout.
+
+### Parameters
+
+<dl>
+    #### `params`
+    An object with the following properties:
+
+    <dl>
+        #### `accountId` <Badge.ReadOnly />
+        Account to logout.
+
+        #### `interaction` <Badge.ReadOnly />
+        Specifies the preferred way to logout. It can be one of the following value:
+
+        <dl>
+            #### `redirect`
+            #### `popup`
+        </dl>
+
+        #### `singleLogout` <Badge.ReadOnly />
+        Whether user should be logged out completely from other applications for the same single sign-on session.
+    </dl>
+
+</dl>
+
+### Return value
+
+When implemented, it is expected to return a promise that fulfills when user is logged out successfully.
+
+When performing logout through redirection, a promise that never resolves can be returned.
+
+### `AuthClient.refresh()`
+
+```javascript
+refresh(current, context)
+```
+
+Refreshes current login session.
+
+### Parameters
+
+<dl>
+    #### `current`
+    Last authentication result returned by this provider.
+
+    #### `context` <Badge.Version />
+    An [`AuthProviderContext`](:) object.
+</dl>
+
+### Return value
+
+When implemented, it is expected to return a promise that fulfills with properties from
+[`AuthProviderResult`](:) interface.
+
+## Example
+
+Examples are in use [`src/examples`](https://github.com/misonou/brew-extension-auth/tree/master/src/examples) folder.
+
+## Version information
+
+<VersionTimeline module="@misonou/brew-extension-auth">
+- **0.1.0** Introduced
+- **0.4.0** `AuthClient.handleLoginRedirect()` <br/> `AuthClient.init()` <br/> `AuthClient.login()`, `AuthClient.logout()`, `AuthClient.refresh()`: `context` argument
+</VersionTimeline>

@@ -1,0 +1,33 @@
+<Module name="brew-js-react" />
+
+# Lazy evaluated string
+
+In same occasion, a will-be-translated string has to be passed to another function or component in advance of rendering. The language when rendered may be changed aftwards.
+
+The such case, use `translate.lazy` or `t.lazy` from `useTranslation` hook.
+
+```tsx
+/// Component.tsx
+import { translate } from "i18n";
+
+const text = translate.lazy('prefix.key');
+
+function Component() {
+    useLanguage();
+    return <div>{String(text)}</div>;
+}
+
+/// i18n.ts
+const resources = {
+    // first level are languages
+    en: {
+        // second level are prefixes
+        prefix: { key: 'Translation string' }
+    },
+    de: {
+        prefix: { key: 'Übersetzungszeichenfolge' }
+    }
+};
+
+const { translate, useTranslation } = makeTranslation(resources, 'en');
+```

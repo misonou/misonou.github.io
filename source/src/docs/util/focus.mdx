@@ -1,0 +1,37 @@
+<Module name="zeta-dom/dom" />
+
+# focus
+
+Sets focus to the given element.
+
+## Syntax
+
+```javascript
+focus(element)
+focus(element, focusInput)
+```
+
+<ImportHint
+    name="focus"
+    module="zeta-dom/dom"
+    global="zeta.dom.focus"
+/>
+
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `focusInput` <Badge.Optional /> <Badge.Version />
+    Whether to focus the first focusable element within. Default is `true`.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.1.0** Introduced
+- **0.4.0** `focusInput` parameter
+</VersionTimeline>

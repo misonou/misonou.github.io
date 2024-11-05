@@ -1,0 +1,82 @@
+# React runtime issues
+
+Here listed major known issues over different versions, listing affected versions and possible workaround.
+
+## MultiChoice field does not re-render for changes
+
+~~zeta-dom-react 0.5.7-0.5.11~~
+
+When a field control using [`MultiChoiceField`](:), and is controlled using `value` property and not bound to a [`FormContext`](:),
+the control will not reflect changes to updated value.
+
+To fix the issue, upgrade `zeta-dom-react` to `0.5.12` or newer.
+
+## React app does not run in production build
+
+~~brew-js-react &lt;=0.6.2~~
+
+Due to optimization, modules may be concatenated in such a way that
+`brew-js-react` is not properly initialized, causing error like below
+when calling exported functions such as [`useAppReadyState`](:), [`useRouteParam`](:), [`renderView`](:) and etc.:
+
+```text
+Uncaught TypeError: Cannot read properties of undefined (reading 'readyState')
+```
+
+To fix the issue, upgrade `brew-js-react` to `0.6.3`.
+
+If upgrade is not plausible, import any exported functions from `brew-js-react`
+in the file where `brew()` is called.
+
+```javascript
+import brew from "brew-js-react";
+import { useAppReadyState } from "brew-js-react"; // add this line
+
+brew(app => { /* ... */ });
+```
+
+## Choice field causing parent component to update indefinitely
+
+~~zeta-dom-react 0.3.10-0.4.3~~
+
+When using [`ChoiceField`](:) (e.g. for dropdowns) and having `value` and `onChange` prop, the following error is logged in console:
+
+```text
+ReactJS: Maximum update depth exceeded error
+```
+
+A bug is introduced in `v0.3.10` that will cause `onChange` of an unselected controlled choice field to call every time component refreshes, which leads to infinite update when `onChange` sets new state every time.
+
+Problematic code:
+
+```tsx
+<Dropdown
+    value={value}
+    onChange={() => setValue(newValueEveryTime())} />
+```
+
+To fix the issue, upgrade `zeta-dom` to `0.4.4`.
+
+If upgrade is not plausible, add guarding condition like below:
+
+```tsx
+<Dropdown
+    value={value}
+    onChange={v => ensureValueIsUpdated(v) && setValue(newValueEveryTime())} />
+```
+
+## Unable for a controlled field to update its value
+
+~~zeta-dom-react 0.3.6-0.3.9~~
+
+A major bug was identified that affects `v0.3.6`-`0.3.9`.
+
+To fix the issue, upgrade `zeta-dom-react` to `0.3.10` or newer.
+
+## useAsync not working in React 18
+
+~~zeta-dom-react &lt;=0.3.9~~
+
+Before `v0.3.10`, there is known compatibility issue when strict mode is enabled.
+
+To fix the issue, upgrade `zeta-dom-react` to `0.3.10` or newer.

@@ -1,0 +1,45 @@
+<Module name="brew-js/extension/router" />
+
+# RoutePattern interface
+
+The `RoutePattern` object is returned by [`app.parseRoute`](:).
+
+
+<MemberList
+    i="RoutePattern"
+    ip={['pattern', 'params', 'exact', 'minLength', 'length']}
+    im={['has()', 'match()']} />
+
+## Properties
+
+### `RoutePattern.pattern`
+
+Gets the input route pattern.
+
+### `RoutePattern.params`
+
+Gets a dictionary that maps a route parameter name to a zero-based index.
+
+### `RoutePattern.exact`
+
+Gets whether the route accepts extra segments.
+
+### `RoutePattern.minLength`
+
+Gets the minimum number of segments.
+
+If the route is exact, the minimum length is the same as the number of segments of the input route pattern.
+
+### `RoutePattern.length`
+
+Gets the number of segments, including optional ones.
+
+## Methods
+
+### `RoutePattern.has()`
+
+Gets whether the route has the named route parameter.
+
+### `RoutePattern.match()`
+
+Tests whether a value matches the constraints of a named route parameter or the n-th segment.

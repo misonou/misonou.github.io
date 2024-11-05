@@ -1,0 +1,54 @@
+<Module name="waterpipe" />
+
+# Conditional functions
+
+### `or`
+
+Outputs the given argument instead of the piped value if it evaluates to false.
+
+<WaterpipeExample
+    data={{ zero: 0, falsy: false }}
+    examples={['zero or 1', 'falsy or 1', 'undefined or 1']}
+/>
+
+### `??`
+
+~~2.2~~
+
+Outputs the given argument instead of the piped value if it evaluates to `null` or `undefined`.
+
+<WaterpipeExample
+    data={{ falsy: false, nil: null }}
+    examples={['falsy ?? yes', 'nil ?? yes']}
+/>
+
+
+### `choose (?:)`
+
+Returns either one of the two arguments depends on the piped value.
+
+<WaterpipeExample
+    data={{ truthy: true, values: [2,4,6,8] }}
+    examples={['truthy ?: yes no', 'values any odd ?: yes no']}
+/>
+
+### `test (?)`
+
+Returns either one of the two arguments depends on the piped value.
+
+<WaterpipeExample
+    data={{ truthy: true, values: [2,4,6,8] }}
+    examples={['? truthy yes no', '? [ values any odd ] yes no']}
+/>
+
+
+### `in`
+
+~~2.1~~
+
+Returns whether a property exists on an object.
+
+<WaterpipeExample
+    data={{ obj: {a: 1} }}
+    examples={['"a" in obj']}
+/>

@@ -1,0 +1,296 @@
+<Module name="waterpipe" />
+
+# Cheat sheet
+
+This cheat sheet contains reference to the latest waterpipe 2.0 syntax.
+Some of the features are not available in 1.x versions.
+
+## Object path
+<table>
+<tr><td width="250px"><code>{'{{prop}}'}</code></td><td width="450px">Property or global variable</td></tr>
+<tr><td width="250px"><code>{'{{obj.prop}}'}</code></td><td width="450px">Property of descendent object</td></tr>
+<tr><td width="250px"><code>{'{{arr.0}}, {{arr.1}}, ...'}</code></td><td width="450px">First (and second ...) element in an array</td></tr>
+<tr><td width="250px"><code>{'{{arr.^0}}, {{arr.^1}}, ...'}</code></td><td width="450px"><kbd>v2.4</kbd> Last (and second last ...) element in an array</td></tr>
+<tr><td width="250px"><code>{'{{obj.$(name)}}'}</code></td><td width="450px">Evaluated property name</td></tr>
+</table>
+
+
+## Special variable
+<table>
+<tr><td width="250px"><code>{'{{@random}}'}</code></td><td width="450px"><kbd>v2.4</kbd> A random number between 0 and 1</td></tr>
+<tr><td width="250px"><code>{'{{@now}}'}</code></td><td width="450px"><kbd>v2.4</kbd> Timestamp of current time</td></tr>
+<tr><td width="250px"><code>{'{{@today}}'}</code></td><td width="450px"><kbd>v2.4</kbd> Timestamp of today's date</td></tr>
+<tr><td width="250px"><code>{'{{@global}}'}</code></td><td width="450px">Global object passed to waterpipe</td></tr>
+<tr><td width="250px"><code>{'{{@0}}'}</code> <code>{'{{.}}'}</code></td><td width="450px">Current object or value</td></tr>
+<tr><td width="250px"><code>{'{{@1}}'}</code> <code>{'{{@2}}'}</code>...</td><td width="450px">Object or value in outer scope</td></tr>
+<tr><td width="250px"><code>{'{{@root}}'}</code> <code>{'{{_}}'}</code></td><td width="450px">Object or value passed to waterpipe</td></tr>
+<tr><td width="250px"><code>{'{{#key}}'}</code> <code>{'{{#}}'}</code></td><td width="450px">Key of current iteration in <code>{'{{foreach}}'}</code></td></tr>
+<tr><td width="250px"><code>{'{{#index}}'}</code> <code>{'{{##}}'}</code></td><td width="450px">Zero-based index of current iteration in <code>{'{{foreach}}'}</code></td></tr>
+<tr><td width="250px"><code>{'{{#count}}'}</code></td><td width="450px">Total iteration count in <code>{'{{foreach}}'}</code></td></tr>
+</table>
+
+> **Note:** Shorthand `.`, `_`, `#` and `##` must be in evaluated mode (`$.`, `$_`, `&#` and `&##`) when placing for argument.
+
+## Statement
+<table>
+<tr><td width="250px"><code>{'{{if  <kbd>exp</kbd> }}'}</code><br/><code>{'{{if not  <kbd>exp</kbd> }}'}</code></td><td width="450px">Logic branching<br/>Support <code>{'{{elseif}}'}</code> <code>{'{{elseif not}}'}</code> and <code>{'{{else}}'}</code></td></tr>
+<tr><td width="250px"><code>{'{{foreach  <kbd>exp</kbd> }}'}</code></td><td width="450px">Iterate over an object or array</td></tr>
+<tr><td width="250px"><code>{'{{foreach}}'}</code></td><td width="450px">Iterate over the current object or array</td></tr>
+<tr><td width="250px"><code>{'{{!<kbd>comment</kbd>}}'}</code></td><td width="450px">Comment</td></tr>
+</table>
+
+
+## Output
+<table>
+<tr><td width="250px"><code>{'{{&amp;html}}'}</code></td><td width="450px">Turn off HTML character escaping<br/><code>{'{{html}}'}</code> <kbd>&#x279c;</kbd> <code>&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;</code><br/><code>{'{{&html}}'}</code> <kbd>&#x279c;</kbd> <code>&lt;p&gt;&lt;/p&gt;</code></td></tr>
+<tr><td width="250px"><code>{'{{objOrArray}}'}</code></td><td width="450px">Object is output as JSON<br/><code>{'{{&obj}}'}</code> <kbd>&#x279c;</kbd> <code>{'{"prop":true,"arr":[1,2,3]}'}</code></td></tr>
+</table>
+
+
+## Pipe
+<table>
+<tr><td width="250px"><code>{'{{value + 1}}'}</code></td><td width="450px">Call <code>+</code> with argument <code>1</code> on input <code>value</code></td></tr>
+<tr><td width="250px"><code>{'{{+ 1}}'}</code></td><td width="450px">Call pipe on current object or value in absence of name collision</td></tr>
+<tr><td width="250px"><code>{'{{str substr 0 1 upper}}'}</code></td><td width="450px">Chaining pipe functions (left-to-right evaluation)</td></tr>
+</table>
+
+## Input resolution
+<table>
+<tr><td width="250px"><code>{'{{[ value + 1 ] / 2}}'}</code></td><td width="450px">Pipe as input</td></tr>
+<tr><td width="250px"><code>{'{{"constant" length}}'}</code></td><td width="450px">Constant as input</td></tr>
+<tr><td width="250px"><code>{'{{$length length}}'}</code></td><td width="450px">Forced evaluation on input in case having name collision</td></tr>
+</table>
+
+## Argument resolution
+<table>
+<tr><td width="250px"><code>{'{{== [ 1 / 2 ]}}'}</code></td><td width="450px">Pipe as argument</td></tr>
+<tr><td width="250px"><code>{'{{arr map [ prop ]}}'}</code></td><td width="450px">Pipe as function argument</td></tr>
+<tr><td width="250px"><code>{'{{== 1}}'}</code><br/><code>{'{{== true}}'}</code></td><td width="450px">Numbers, booleans, <code>undefined</code> and <code>null</code> are always as is</td></tr>
+<tr><td width="250px"><code>{'{{== arg}}'}</code></td><td width="450px">Auto mode<br/> <kbd>=</kbd> <code>{'{{== $arg}}'}</code> if <code>arg</code> exists<br/> <kbd>=</kbd> <code>{'{{== "arg"}}'}</code> if <code>arg</code> does not exist</td></tr>
+<tr><td width="250px"><code>{'{{== $arg}}'}</code><br/><code>{'{{== $1}}'}</code></td><td width="450px">Forced evaluation</td></tr>
+<tr><td width="250px"><code>{'{{== "arg"}}'}</code></td><td width="450px">Forced constant value</td></tr>
+<tr><td width="250px"><code>{'{{value1 == value2}}'}</code><br/><code>{'{{object1 == value2}}'}</code><br/><code>{'{{object1 == object2}}'}</code></td><td width="450px">Permitted evaluation in auto mode</td></tr>
+<tr><td width="250px"><code>{'{{value1 == object2}}'}</code></td><td width="450px">Fallback to forced constant value<br/> <kbd>=</kbd> <code>{'{{value1 == "object2"}}'}</code></td></tr>
+</table>
+
+
+## Special functions
+<table>
+<tr><td width="250px"><code>{'{{arr1 | arr2}}'}</code></td><td width="450px">Concatenates arrays or values into new array</td></tr>
+<tr><td width="250px"><code>{'{{e1 &amp;&amp; e2}}'}</code><br/><code>{'{{e1 || e2}}'}</code><br/><code>{'{{e1 &amp;&amp; [ e2 || e3 ]}}'}</code></td><td width="450px">Boolean logic</td></tr>
+<tr><td width="250px"><code>{'{{let name value}}'}</code></td><td width="450px">Save <code>value</code> to global variable named <code>name</code></td></tr>
+<tr><td width="250px"><code>{'{{value as name}}'}</code></td><td width="450px">Save <code>value</code> to global variable named <code>name</code> and output the value</td></tr>
+</table>
+
+
+## Built-in functions
+
+<table width="700px">
+<tr>
+	<td width="125px" valign="top"><i>Comparison</i></td>
+	<td width="175px">
+		<code>==</code> <code>equals</code><br/>
+		<code>!=</code> <code>notequals</code><br/>
+		<code>{'~='}</code> <code>iequals</code><br/>
+		<code>!~=</code> <code>inotequals</code><br/>
+		<code>^=</code> <code>startswith</code><br/>
+		<code>$=</code> <code>endswith</code><br/>
+		<code>></code> <code>less</code><br/>
+		<code>&lt;</code> <code>orless</code><br/>
+		<code>>=</code> <code>more</code><br/>
+		<code>&lt;</code> <code>ormore</code><br/>
+		<code>between</code><br/>
+		<code>contains</code><br/>
+		<code>like</code>
+	</td>
+	<td width="425px">
+		<code>{'{{a == b}}'}</code> <kbd>&#x279c;</kbd> <code>true</code><br/>
+		<code>{'{{a != b}}'}</code> <kbd>&#x279c;</kbd> <code>true</code><br/>
+		<code>{'{{a ~= A}}'}</code> <kbd>&#x279c;</kbd> <code>true</code> <kbd>v2.1</kbd><br/>
+		<code>{'{{a !~= A}}'}</code> <kbd>&#x279c;</kbd> <code>false</code> <kbd>v2.1</kbd><br/>
+		<code>{'{{abc ^= a}}'}</code> <kbd>&#x279c;</kbd> <code>true</code> <kbd>v2.1</kbd><br/>
+		<code>{'{{abc $= c}}'}</code> <kbd>&#x279c;</kbd> <code>true</code> <kbd>v2.1</kbd><br/>
+		<code>{'{{a > b}}'}</code> <kbd>&#x279c;</kbd> <code>true</code><br/>
+		<code>{'{{a &lt; b}}'}</code> <kbd>&#x279c;</kbd> <code>true</code><br/>
+		<code>{'{{a >= b}}'}</code> <kbd>&#x279c;</kbd> <code>true</code><br/>
+		<code>{'{{a &lt;= b}}'}</code> <kbd>&#x279c;</kbd> <code>true</code><br/>
+		<code>{'{{a between 0 100}}'}</code> <kbd>&#x279c;</kbd> <code>true</code><br/>
+		<code>{'{{"foobar" contains foo}}'}</code> <kbd>&#x279c;</kbd> <code>true</code><br/>
+		<code>{'{{"foobar" like /^foo/}}'}</code> <kbd>&#x279c;</kbd> <code>true</code>
+	</td>
+</tr>
+<tr>
+	<td width="125px" valign="top"><i>Condition</i></td>
+	<td width="175px">
+		<code>!!</code><br/>
+		<code>!</code> <code>not</code><br/>
+		<code>or</code><br/>
+		<code>??</code> <kbd>v2.2</kbd><br/>
+		<code>?:</code> <code>choose</code><br/>
+		<code>?</code> <code>test</code><br/>
+		<code>in</code> <kbd>v2.1</kbd>
+	</td>
+	<td width="425px">
+		<code>{'{{[ !! 1 ]}}'}</code> <kbd>&#x279c;</kbd> <code>true</code><br/>
+		<code>{'{{[ ! 1 ]}}'}</code> <kbd>&#x279c;</kbd> <code>false</code><br/>
+		<code>{'{{falsy or default}}'}</code> <kbd>&#x279c;</kbd> <code>default</code><br/>
+		<code>{'{{null ?? default}}'}</code> <kbd>&#x279c;</kbd> <code>default</code><br/>
+		<code>{'{{falsy ?: yes no}}'}</code> <kbd>&#x279c;</kbd> <code>no</code><br/>
+		<code>{'{{? falsy yes no}}'}</code> <kbd>&#x279c;</kbd> <code>no</code><br/>
+		<code>{'{{"length" in [ 1 | 2 | 3 ]}}'}</code> <kbd>&#x279c;</kbd> <code>true</code>
+	</td>
+</tr>
+<tr>
+	<td width="125px" valign="top"><i>String</i></td>
+	<td width="175px">
+		<code>&</code> <code>concat</code><br/>
+		<code>replace</code><br/>	
+		<code>substr</code><br/>
+		<code>trim</code><br/>
+		<code>trimstart</code><br/>	
+		<code>trimend</code><br/>	
+		<code>padstart</code><br/>	
+		<code>padend</code><br/>	
+		<code>removestart</code><br/>	
+		<code>removeend</code><br/>	
+		<code>cutbefore</code><br/>	
+		<code>cutbeforelast</code><br/>	
+		<code>cutafter</code><br/>	
+		<code>cutafterlast</code><br/>	
+		<code>split</code><br/>	
+		<code>repeat</code><br/>	
+		<code>upper</code><br/>	
+		<code>lower</code><br/>	
+		<code>ucfirst</code><br/>	
+		<code>lcfirst</code> <kbd>v2.1</kbd><br/>
+		<code>hyphenate</code> <kbd>v2.1</kbd>	
+	</td>
+	<td width="425px">
+		<code>{'{{"foo" & bar}}'}</code> <kbd>&#x279c;</kbd> <code>foobar</code> (alias in <kbd>v2.4</kbd>)<br/>
+		<code>{'{{"foo" replace foo bar}}'}</code> <kbd>&#x279c;</kbd> <code>bar</code><br/>
+		<code>{'{{"foo" substr 0 2}}'}</code> <kbd>&#x279c;</kbd> <code>fo</code><br/>
+		<code>{'{{" foo " trim}}'}</code> <kbd>&#x279c;</kbd> <code>foo</code><br/>
+		<code>{'{{" foo " trimstart}}'}</code> <kbd>&#x279c;</kbd> <code>foo </code><br/>
+		<code>{'{{" foo " trimend}}'}</code> <kbd>&#x279c;</kbd> <code> foo</code><br/>
+		<code>{'{{"foo" padstart /}}'}</code> <kbd>&#x279c;</kbd> <code>/foo</code><br/>
+		<code>{'{{"foo" padend /}}'}</code> <kbd>&#x279c;</kbd> <code>foo/</code><br/>
+		<code>{'{{"/foo/" removestart /}}'}</code> <kbd>&#x279c;</kbd> <code>foo/</code><br/>
+		<code>{'{{"/foo/" removeend /}}'}</code> <kbd>&#x279c;</kbd> <code>/foo</code><br/>
+		<code>{'{{"a.b.c" cutbefore .}}'}</code> <kbd>&#x279c;</kbd> <code>a</code><br/>
+		<code>{'{{"a.b.c" cutbeforelast .}}'}</code> <kbd>&#x279c;</kbd> <code>a.b</code><br/>
+		<code>{'{{"a.b.c" cutafter .}}'}</code> <kbd>&#x279c;</kbd> <code>b.c</code><br/>
+		<code>{'{{"a.b.c" cutafterlast .}}'}</code> <kbd>&#x279c;</kbd> <code>c</code><br/>
+		<code>{'{{&amp;"a.b.c" split .}}'}</code> <kbd>&#x279c;</kbd> <code>["a","b","c"]</code><br/>
+		<code>{'{{2 repeat "foo"}}'}</code> <kbd>&#x279c;</kbd> <code>foofoo</code><br/>
+		<code>{'{{"foo" upper}}'}</code> <kbd>&#x279c;</kbd> <code>FOO</code><br/>
+		<code>{'{{"FOO" lower}}'}</code> <kbd>&#x279c;</kbd> <code>foo</code><br/>
+		<code>{'{{"foo" ucfirst}}'}</code> <kbd>&#x279c;</kbd> <code>Foo</code><br/>
+		<code>{'{{"FOO" lcfirst}}'}</code> <kbd>&#x279c;</kbd> <code>fOO</code><br/>
+		<code>{'{{"FooBar" hyphenate}}'}</code> <kbd>&#x279c;</kbd> <code>foo-bar</code>
+	</td>
+</tr>
+<tr>
+	<td width="125px" valign="top"><i>Maths</i></td>
+	<td width="175px">
+		<code>max</code><br/>
+		<code>min</code><br/>
+		<code>round</code><br/>
+		<code>floor</code><br/>
+		<code>ceil</code><br/>
+		<code>abs</code><br/>
+		<code>+</code> <code>plus</code><br/>
+		<code>-</code> <code>minus</code><br/>
+		<code>*</code> <code>multiply</code><br/>
+		<code>/</code> <code>divide</code><br/>
+		<code>%</code> <code>mod</code><br/>
+		<code>^</code> <code>pow</code>
+	</td>
+	<td width="425px">
+		<code>{'{{10 max 1}}'}</code> <kbd>&#x279c;</kbd> <code>1</code><br/>
+		<code>{'{{10 min 100}}'}</code> <kbd>&#x279c;</kbd> <code>100</code><br/>
+		<code>{'{{3.14 round}}'}</code> <kbd>&#x279c;</kbd> <code>3</code><br/>
+		<code>{'{{3.14 floor}}'}</code> <kbd>&#x279c;</kbd> <code>3</code><br/>
+		<code>{'{{3.14 ceil}}'}</code> <kbd>&#x279c;</kbd> <code>4</code><br/>
+		<code>{'{{-3.14 abs}}'}</code> <kbd>&#x279c;</kbd> <code>3.14</code><br/>
+		<code>{'{{10 + 2}}'}</code> <kbd>&#x279c;</kbd> <code>12</code><br/>
+		<code>{'{{10 - 2}}'}</code> <kbd>&#x279c;</kbd> <code>8</code><br/>
+		<code>{'{{10 * 2}}'}</code> <kbd>&#x279c;</kbd> <code>20</code><br/>
+		<code>{'{{10 / 2}}'}</code> <kbd>&#x279c;</kbd> <code>5</code><br/>
+		<code>{'{{10 % 2}}'}</code> <kbd>&#x279c;</kbd> <code>0</code><br/>
+		<code>{'{{10 ^ 2}}'}</code> <kbd>&#x279c;</kbd> <code>100</code>
+	</td>
+</tr>
+<tr>
+	<td width="125px" valign="top"><i>Iterable</i></td>
+	<td width="175px">
+		<code>..</code> <code>to</code><br/>
+		<code>join</code><br/>
+		<code>keys</code><br/>
+		<code>map</code><br/>
+		<code>where</code><br/>
+		<code>first</code><br/>
+		<code>any</code><br/>
+		<code>all</code><br/>
+		<code>sum</code><br/>
+		<code>slice</code><br/>
+		<code>unique</code><br/>
+		<code>sort</code><br/>
+		<code>sortby</code><br/>
+		<code>rsort</code> <kbd>v2.6</kbd><br/>
+		<code>rsortby</code> <kbd>v2.6</kbd><br/>
+		<code>reverse</code>
+	</td>
+	<td width="425px">
+		<code>{'{{0 .. 3}}'}</code> <kbd>&#x279c;</kbd> <code>[0,1,2,3]</code><br/>
+		<code>{'{{fib join ,}}'}</code> <kbd>&#x279c;</kbd> <code>1,1,2,3,5,8</code><br/>
+		<code>{'{{fib keys}}'}</code> <kbd>&#x279c;</kbd> <code>[0,1,2,3,4,5]</code><br/>
+		<code>{'{{fib map [ % 2 ]}}'}</code> <kbd>&#x279c;</kbd> <code>[0,0,1,0,0,1]</code><br/>
+		<code>{'{{fib where [ even ]}}'}</code> <kbd>&#x279c;</kbd> <code>[2,8]</code><br/>
+		<code>{'{{fib first [ even ]}}'}</code> <kbd>&#x279c;</kbd> <code>2</code><br/>
+		<code>{'{{fib any [ even ]}}'}</code> <kbd>&#x279c;</kbd> <code>true</code><br/>
+		<code>{'{{fib all [ even ]}}'}</code> <kbd>&#x279c;</kbd> <code>false</code><br/>
+		<code>{'{{fib sum}}'}</code> <kbd>&#x279c;</kbd> <code>20</code><br/>
+		<code>{'{{fib slice 0 2}}'}</code> <kbd>&#x279c;</kbd> <code>[1,1]</code><br/>
+		<code>{'{{fib unique}}'}</code> <kbd>&#x279c;</kbd> <code>[1,2,3,5,8]</code><br/>
+		<code>{'{{fib sort}}'}</code> <kbd>&#x279c;</kbd> <code>[1,1,2,3,5,8]</code><br/>
+		<code>{'{{fib sortby [ % 2 ]}}'}</code> <kbd>&#x279c;</kbd> <code>[2,8,1,1,3,5]</code><br/>
+		<code>{'{{fib rsort}}'}</code> <kbd>&#x279c;</kbd> <code>[8,5,3,2,1,1]</code><br/>
+		<code>{'{{fib rsortby [ % 2 ]}}'}</code> <kbd>&#x279c;</kbd> <code>[8,2,5,3,1,1]</code><br/>
+		<code>{'{{fib reverse}}'}</code> <kbd>&#x279c;</kbd> <code>[8,5,3,2,1,1]</code>
+	</td>
+</tr>
+<tr>
+	<td width="125px" valign="top"><i>Formatting</i></td>
+	<td width="175px">
+		<code>:printf</code><br/>
+		<code>:query</code><br/>
+		<code>:date</code>
+	</td>
+	<td width="425px">
+		<code>{'{{3.14 :printf %d}}'}</code> <kbd>&#x279c;</kbd> <code>3</code><br/>
+		<code>{'{{&amp;:query}}'}</code> <kbd>&#x279c;</kbd> <code>p1=value1&amp;p2=value2</code><br/>
+		<code>{'{{0 :date yyyy-MM-dd}}'}</code> <kbd>&#x279c;</kbd> <code>1970-01-01</code>
+	</td>
+</tr>
+<tr>
+	<td width="125px" valign="top"><i>Date</i></td>
+	<td width="175px">
+		<code>asdate</code> <kbd>v2.6</kbd><br/>
+                <code>addtime</code> <kbd>v2.6</kbd>
+	</td>
+	<td width="425px">
+		<code>{'{{"2019-01-01" asdate + 0}}'}</code> <kbd>&#x279c;</kbd> <code>1546300800000</code><br/>
+		<code>{'{{"2019-01-01" addtime 1M}}'}</code> <kbd>&#x279c;</kbd> <code>2019-02-01</code>
+	</td>
+</tr>
+<tr>
+	<td width="125px" valign="top"><i>Template</i></td>
+	<td width="175px">
+		<code>|&gt;</code> <code>eval</code> <kbd>v2.8</kbd>
+	</td>
+	<td width="425px">
+		<code>{'{{"foo" |&gt; template}}'}</code> <kbd>&#x279c;</kbd> <code>Value is foo</code>
+	</td>
+</tr>
+</table>
+

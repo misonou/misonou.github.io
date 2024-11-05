@@ -1,0 +1,68 @@
+<Module name="brew-js/extension/router" />
+
+# PageInfo interface
+
+The `PageInfo` object is exposed by the [`app.page`](:) property, containing information of the current page.
+
+<MemberList
+    i="PageInfo"
+    ip={['pageId', 'path', 'params', 'data']}
+    im={['getSavedStates()', 'clearNavigateData()', 'clearHistoryStorage()']}
+/>
+
+## Instance properties
+
+### `PageInfo.pageId` <Badge.ReadOnly />
+
+Gets a unique ID representing current visit to the path.
+
+### `PageInfo.path` <Badge.ReadOnly />
+
+Gets the navigated path.
+
+### `PageInfo.params` <Badge.ReadOnly />
+
+Gets the route parameters parsed from the navigated path.
+
+### `PageInfo.data` <Badge.ReadOnly />
+
+Gets data passed by [`app.navigate`](:).
+
+When no data is passed or is cleared by [`PageInfo.clearNavigateData`](:), `null` is returned.
+
+> Before v0.6.7, `undefined` may be returned.
+
+## Instance methods
+
+### `PageInfo.clearNavigateData()`
+
+```javascript
+clearNavigateData()
+```
+
+Deletes data passed by [`app.navigate`](:).
+
+### `PageInfo.clearHistoryStorage()`
+
+```javascript
+clearHistoryStorage()
+```
+
+Clears all data stored in history storage for this page.
+When there are multiple snapshots, all of them will be cleared.
+
+### `PageInfo.getSavedStates()`
+
+```javascript
+getSavedStates()
+```
+
+Gets the data stored in history storage for this page.
+When there are multiple snapshots, the last visited snapshot will be returned.
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.5.3** Introduced
+- **0.6.10** `PageInfo.getSavedStates()`
+</VersionTimeline>

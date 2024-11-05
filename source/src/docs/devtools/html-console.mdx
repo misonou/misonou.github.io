@@ -1,0 +1,181 @@
+import Example from "src/components/examples/html-console";
+import { extend } from "zeta-dom/util";
+
+<Module name="@misonou/react-app-utils" />
+
+# In-page console
+
+The utility creates a logging container within the HTML document that closely
+resembles the Chromium developer tool's console.
+
+> Currently only a subset of function is supported.
+
+## Overlay for mobile device
+
+To show a console overlay for mobile device, simply add the following import:
+
+```typescript
+/// dev.ts
+import "@misonou/react-app-utils/consoleOverlay";
+```
+
+The `log`, `warn`, `error` and `clear` methods of `window.console` are intercepted
+and will log or clear upon calling.
+
+To make sure the console overlay is not enabled with production build,
+apply the `false` alias in webpack configuration for those files:
+
+```typescript
+/// rewired.config.js
+module.exports = {
+    webpack: function (config, env) {
+        return {
+            resolve: {
+                alias: {
+                    ...(env === 'production' ? {
+                        [path.resolve('./dev.ts')]: false
+                    } : undefined),
+                }
+            }
+        }
+    }
+};
+```
+
+## Sample output
+
+### Primitive types
+
+<Example entries={[
+    [undefined],
+    [null],
+    [true],
+    ['foobar'],
+    [1],
+    ...(typeof BigInt !== 'undefined' ? [[BigInt(1)]] : []),
+    [Symbol('foo')],
+]} />
+
+### Built-in objects
+
+> Note that it is impossible to peek entries in `WeakMap` and `WeakSet`.
+
+<Example entries={[
+    [function () { 'foo'; }],
+    [class Custom { }],
+    [/\.+/gi],
+    [new Date()],
+    [Object.assign([1, 2, 3, , , new Map([[1, 1]])], { key: 1 })],
+    [new Map([[{}, 'foo']])],
+    [new Set([{}, 'foo'])],
+    [new Promise(function () { })],
+    [Promise.resolve(1)],
+]} />
+
+### Custom objects
+
+<Example entries={[
+    [{
+        foo: 'foo\r\nbar',
+        arr: [],
+        date: new Date(),
+        node: typeof document !== 'undefined' && document.body,
+        [Symbol()]: 'sym',
+        get getter() { return 1; },
+        set getter(v) { }
+    }],
+    [new (class Custom { })()],
+    [Object.create(null)],
+]} />
+
+### DOM nodes
+
+> Note that frames with different origin cannot be expanded.
+
+<Example entries={[
+    [typeof document !== 'undefined' && document],
+    [typeof document !== 'undefined' && document.body],
+    [typeof document !== 'undefined' && document.createTextNode('Text')],
+    [typeof document !== 'undefined' && document.createComment('This is comment')],
+    [typeof document !== 'undefined' && document.createAttribute('value')],
+]} />
+
+### Formatting
+
+<Example entries={[
+    ['%c%s', 'background-color:yellow;color:black', 'This is formatted text'],
+    { warn: ['Warning'] },
+    { error: [new Error()] }
+]} />
+
+## Color theme
+
+Console's color theme can be customized using following CSS variables:
+
+| CSS Variable                        | Default color            |
+|-------------------------------------|--------------------------|
+| `--console-color-background-log`    | <Color code="#ffffff" /> |
+| `--console-color-background-warn`   | <Color code="#fffbe6" /> |
+| `--console-color-background-error`  | <Color code="#fff0f0" /> |
+| `--console-color-border-log`        | <Color code="#f0f0f0" /> |
+| `--console-color-border-warn`       | <Color code="#fff4c5" /> |
+| `--console-color-border-error`      | <Color code="#fed6d7" /> |
+| `--console-color-log`               | <Color code="#000000" /> |
+| `--console-color-warn`              | <Color code="#000000" /> |
+| `--console-color-error`             | <Color code="#ff0000" /> |
+| `--console-color-default`           | <Color code="#000000" /> |
+| `--console-color-null`              | <Color code="#808080" /> |
+| `--console-color-undef`             | <Color code="#808080" /> |
+| `--console-color-bool`              | <Color code="#1c00cf" /> |
+| `--console-color-number`            | <Color code="#1c00cf" /> |
+| `--console-color-string`            | <Color code="#c51916" /> |
+| `--console-color-regexp`            | <Color code="#c51916" /> |
+| `--console-color-symbol`            | <Color code="#c51916" /> |
+| `--console-color-bigint`            | <Color code="#008000" /> |
+| `--console-color-property`          | <Color code="#ab0d90" /> |
+| `--console-color-property-inline`   | <Color code="#515151" /> |
+| `--console-color-internal`          | <Color code="#808080" /> |
+| `--console-color-keyword`           | <Color code="#1c00cf" /> |
+| `--console-color-element`           | <Color code="#8e004b" /> |
+| `--console-color-pseudoelm`         | <Color code="#0b57d0" /> |
+| `--console-color-doctype`           | <Color code="#8f8f8f" /> |
+| `--console-color-nodename`          | <Color code="#8e004b" /> |
+| `--console-color-attrname`          | <Color code="#9f4312" /> |
+| `--console-color-attrval`           | <Color code="#0842a0" /> |
+| `--console-color-comment`           | <Color code="#008000" /> |
+
+### Dark theme
+
+```css
+.dark {
+    --console-color-background-log: #222;
+    --console-color-background-warn: #403a2c;
+    --console-color-background-error: #4a3635;
+    --console-color-border-log: #4b4c4e;
+    --console-color-border-warn: #4b4c4e;
+    --console-color-border-error: #4b4c4e;
+    --console-color-default: white;
+    --console-color-warn: #e7ae47;
+    --console-color-error: #ef8784;
+    --console-color-null: #81868a;
+    --console-color-undef: #81868a;
+    --console-color-bool: #9480f5;
+    --console-color-number: #9480f5;
+    --console-color-bigint: #ababab;
+    --console-color-symbol: #6bd1c7;
+    --console-color-string: #6bd1c7;
+    --console-color-regexp: #6bd1c7;
+    --console-color-keyword: #e59b6f;
+    --console-color-property: #72aed3;
+    --console-color-property-inline: #ababab;
+    --console-color-element: #72aed3;
+    --console-color-nodename: #ababab;
+    --console-color-attrname: #a1bad9;
+    --console-color-attrval: #e59b6f;
+    --console-color-comment: #ababab;
+}
+```
+
+## See also
+
+- [`HTMLConsole`](:)

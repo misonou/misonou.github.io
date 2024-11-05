@@ -1,0 +1,59 @@
+<Module name="zeta-dom-react" />
+
+# useValueTrigger
+
+Creates a callback that forcibly triggers re-render of a component
+when it is called with a value different from that passed to the hook in last render.
+
+## Syntax
+
+```javascript
+useValueTrigger(value)
+useValueTrigger(value, comparer)
+```
+
+<ImportHint
+    name="useValueTrigger"
+    module="zeta-dom-react"
+    require="useValueTrigger"
+    global="zeta.react.useValueTrigger" />
+
+### Parameters
+
+<dl>
+    #### `value`
+    Value which returned callback will compare to.
+
+    #### `comparer` <Badge.Optional />
+    An optional callback that compares if two values are equal. Component will be updated only when it returns `false`. Default is `Object.is`.
+</dl>
+
+## Example: Case-insensitive string comparison
+
+Here is an example using the new `comparer` parameter:
+
+```typescript
+const compare = new Intl.Collator(undefined, { sensitivity: 'base' }).compare;
+
+function Component() {
+    const value = getSomeValue();
+    const notifyChange = useValueTrigger(value, (a, b) => compare(a, b) === 0);
+    useEffect(() => {
+        // won't trigger update when `value` is 'a'
+        notifyChange('A');
+    });
+    /* ... */
+}
+```
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.5.3** Introduced
+- **0.5.6** `comparer` parameter
+</VersionTimeline>
+
+## See also
+
+- [`useEventTrigger`](:)
+- [`useUpdateTrigger`](:)

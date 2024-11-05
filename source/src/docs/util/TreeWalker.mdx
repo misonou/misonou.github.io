@@ -1,0 +1,80 @@
+<Module name="zeta-dom/tree" />
+
+# TreeWalker class
+
+<MemberList
+    i="TreeWalker"
+    extends={['NodeIterator']}
+    ip={['root', 'whatToShow', 'filter', 'currentNode']}
+    im={['nextNode()', 'previousNode()', 'parentNode()', 'firstChild()', 'lastChild()', 'previousSibling()', 'nextSibling()']}
+/>
+
+## Constructor
+
+```javascript
+new TreeWalker(root)
+new TreeWalker(root, whatToShow)
+new TreeWalker(root, whatToShow, filter)
+```
+
+### Parameters
+
+<dl>
+    #### `root`
+    #### `whatToShow` <Badge.Optional />
+    #### `filter` <Badge.Optional />
+</dl>
+
+## Instance properties
+
+### `TreeWalker.currentNode`
+
+### `TreeWalker.filter` <Badge.ReadOnly />
+
+### `TreeWalker.root` <Badge.ReadOnly />
+
+### `TreeWalker.whatToShow` <Badge.ReadOnly />
+
+## Instance methods
+
+### `TreeWalker.firstChild()`
+
+```javascript
+firstChild()
+```
+
+### `TreeWalker.lastChild()`
+
+```javascript
+lastChild()
+```
+
+### `TreeWalker.nextNode()`
+
+```javascript
+nextNode()
+```
+
+### `TreeWalker.nextSibling()`
+
+```javascript
+nextSibling()
+```
+
+### `TreeWalker.parentNode()`
+
+```javascript
+parentNode()
+```
+
+### `TreeWalker.previousNode()`
+
+```javascript
+previousNode()
+```
+
+### `TreeWalker.previousSibling()`
+
+```javascript
+previousSibling()
+```

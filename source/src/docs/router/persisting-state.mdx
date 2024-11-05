@@ -1,0 +1,60 @@
+<Module name="brew-js/extension/router" />
+
+# Persisting states
+
+~~0.5.0~~
+
+Data can be restored even after leaving and revisit the app in the same tab.
+
+> **Important:** Session storage has a typical 5MB limitation. Although data is compressed, storing huge data should be avoided.
+
+
+> **Important:** Although session storage is scoped to the document's origin and is cleared when the tab is closed, do not store critically sensitive data.
+
+
+## History storage
+
+View states can be persisted through history storage so that when user revisit the app through browser history, the page can be restored .
+
+```typescript
+let storage = app.historyStorage.current;
+storage.set('data', {});
+```
+
+See [Snapshots](/docs/router/snapshots).
+
+### Getting for a specific state
+
+```typescript
+app.historyStorage.for(stateId)
+```
+
+## Session storage
+
+~~0.5.3~~
+
+> **Important:** Note that an app session is different from a browser session which typically associates to the lifetime of a tab.
+
+
+An app session is created for every unique visit to the single-page app, for example from a link. When the page is reloaded, or is restored by going forward or backward in browser history, previous app session is resumed.
+
+App sessions can also be explicitly resumed when `resume` option is specified when configuring the router.
+
+Thus it is most suitable for persisting global states in a single-page app.
+
+## Cache
+
+~~0.5.3~~
+
+The [`app.cache`](:) property provides additional storage slot that will persist in the same tab regardless of app sessions.
+
+Thus it is suitable for caching resources (likely from APIs) that do not depends on current session.
+
+
+## Storage interface
+
+It is a sub-class of `Map` object, therefore all `Map` method is callable.
+
+The map itself is stored using [`ObjectStorage`](:), therefore its limitations applies.
+
+> It is recommended to only store strings, numbers and booleans values, as well as objects and arrays containing only these values.

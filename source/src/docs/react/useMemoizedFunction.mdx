@@ -1,0 +1,38 @@
+<Module name="zeta-dom-react" />
+
+# useMemoizedFunction
+
+Creates a memoized callback that invokes the supplied callback when called.
+
+This reduces unnecessary `useEffect` cycles but at the same time the correct callback supplied in the last component cycle, which associates to the latest component state, can be called.
+
+## Syntax
+
+```javascript
+useMemoizedFunction(callback)
+```
+
+### Parameters
+
+<dl>
+    #### `callback`
+    A callback.
+</dl>
+
+### Return value
+
+A memoized callback that is unchanged throughout rendering cycles.
+
+## Example
+
+```tsx
+function Component(props) {
+    const cb = useMemoizedFunction(() => {
+        console.log(props.value);
+    });
+    useEffect(() => {
+        // prints latest props.value every 1s
+        setInterval(cb, 1000);
+    }, [cb]);
+}
+```

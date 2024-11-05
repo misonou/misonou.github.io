@@ -1,0 +1,24 @@
+<Module name="brew-js-react" />
+
+# Navigating to views
+
+There are two helper functions for navigating to views programatically: [`navigateTo`](:) and [`redirectTo`](:).
+
+```tsx
+import { redirectTo, navigateTo } from "brew-js-react";
+import { Home, ProductInfo } from "./views";
+
+function Component() {
+    return (
+        <div>
+            <button onClick={() => navigateTo(Home)}>Go to home</button>
+            <button onClick={() => redirectTo(ProductInfo, { id: 5 })}>Replace to product info</button>
+        </div>
+    );
+}
+```
+
+They accepts the same parameters as [`linkTo`](:), and are equivalent to calling [`app.navigate(linkTo(...), replace)`](:app.navigate).
+
+> Note that the view component passed to [`navigateTo`](:) and [`redirectTo`](:) should be the one returned by [`registerView`](:).
+

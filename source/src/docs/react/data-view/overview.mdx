@@ -1,0 +1,30 @@
+import Example from "src/components/examples/dataview-simple";
+
+<Module name="zeta-dom-react" />
+
+# Overview
+
+[`DataView`](:) provides a simple way to filter, sort and pagingate data.
+It provides interfaces for components to read and update the data view configuration.
+
+## Example
+
+<Example />
+
+When there is no applicable filters nor custom sorting, the callback can be omitted:
+
+```tsx
+function Component() {
+    const items = [/* ... */];
+    const dataView = useDataView({}, 'date', 'desc', 100);
+    const [pagedItmes] = dataView.getView(items);
+    /* ... */
+}
+```
+
+## Persistance through history
+
+If [`ViewStateProvider`](:) is implemented, and is provided through the [`<ViewStateProvider>`](:) component,
+the state of data view is automatically persisted through history.
+
+For example, using `brew-js-react`.

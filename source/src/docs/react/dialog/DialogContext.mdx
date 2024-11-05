@@ -1,0 +1,60 @@
+<Module name="brew-js-react" />
+
+# DialogContext interface
+
+The `DialogContext` interface provides utilities controlling the opened dialog
+for rendering components supplied as the [`onRender`](:) and [`wrapper`](:) options of [`createDialog`](:).
+
+```jsx
+createDialog({
+    /* ... */
+    onRender({ commitDialog }) {
+        return (
+            <div>
+                <button onClick={() => commitDialog()} />
+                {/* ... */}
+            </div>
+        );
+    }
+});
+```
+
+> `DialogContext` was previously mentioned as `DialogRenderComponentProps`.
+
+<MemberList
+    i="DialogContext"
+    ip={['errorHandler', 'closeDialog', 'commitDialog', 'dismissDialog']}
+/>
+
+## Instance properties
+
+### `DialogContext.closeDialog` <Badge.Deprecated />
+
+Commits the dialog with result value.
+
+When `DialogOptions.onCommit` is specified, it is invoked with the value passed in.
+Dialog will be closed when async operation is completed, or remain open if the operation failed.
+
+> Use [`DialogContext.commitDialog`](:) or [`DialogContext.dismissDialog`](:) for appropriate cases.
+
+### `DialogContext.commitDialog` <Badge.Version />
+
+Commits the dialog with result value.
+
+When `DialogOptions.onCommit` is specified, it is invoked with the value passed in.
+Dialog will be closed when async operation is completed, or remain open if the operation failed.
+
+### `DialogContext.dismissDialog` <Badge.Version />
+
+Closes the dialog without invoking `DialogOptions.onCommit`.
+
+### `DialogContext.errorHandler` <Badge.Version />
+
+Gets an [`ErrorHandler`](:) object that catches errors emitted from rendered content.
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.0** Introduced
+- **0.6.4** `DialogContext.errorHandler`<br/> `DialogContext.commitDialog()`<br/> `DialogContext.dismissDialog()`
+</VersionTimeline>

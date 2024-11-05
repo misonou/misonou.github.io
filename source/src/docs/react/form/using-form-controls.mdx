@@ -1,0 +1,100 @@
+<Module name="zeta-dom-react" />
+
+# Form controls
+
+Although arbitrary properties can be defined manually on [`FormContext.data`](:),
+those properties only associates to a field control when a component using the [`useFormField`](:) hook
+is mounted with the corresponding name.
+
+## Binding to form data
+
+```tsx
+function SimpleInput(props) {
+    // `useFormField` hook returns necessary properties and methods to deal with form data
+    const {
+        value,
+        setValue,
+        error,
+        setError,
+        form,
+        path,
+        key,
+    } = useFormField(props);
+
+    return (
+        <input value={value} onChange={e => setValue(e.target.value)} />
+    );
+}
+
+function Component() {
+    const form = useFormContext();
+    return (
+        <Form context={form}>
+            {/* this input will associate to the data path "item", i.e. form.data.item */}
+            <SimpleInput name="item" />
+        </Form>
+    );
+}
+```
+
+> For more complex scenario like nested data structure, see [Data object and array](/docs/react/form/data-object-array).
+
+## Controlling field value by React state
+
+Field value can be explicitly controlled via a form control for that field:
+
+```tsx
+function Component() {
+    const form = useFormContext();
+    const [value, setValue] = useState('');
+    return (
+        <Form context={form}>
+            <TextInput name="item" value={value} onChange={setValue} />
+        </Form>
+    );
+}
+```
+
+Under controlled mode, when user has updated value via rendered control or the associated property exposed
+on [`FormContext.data`](:) has changed, the `onChange` callback will be invoked.
+
+Only when the updated `value` was sent to the hook via component (`<TextInput>` in this case), the related
+`dataChange` and `validate` event will be triggered.
+
+## Using control without form context
+
+Any field, i.e. one using the [`useFormField`](:) hook, can be used as unnamed field.
+
+For an unnamed field:
+- value is solely controlled by the `value` prop, i.e. it must be used as a controlled field
+- no validation is triggered
+
+Therefore, any form controls can be used without a form context, or as constituent control of a composite control.
+
+### Use without form context
+
+For example a text field can serve as a search box without parent form:
+
+```tsx
+function SearchBox() {
+    const [value, setValue] = useState('');
+
+    useEffect(() => {
+        // perform search
+    }, [value]);
+
+    return (
+        <TextInput value={value} onChange={setValue} />
+    );
+}
+```
+
+> An unnamed field always behaves as if there is no form context.
+
+See [Composite controls](/docs/react/form/composite-controls) for use case of unnamed control.
+
+## See also
+
+- [Building form controls](/docs/react/form/building-form-controls)
+- [Data object and array](/docs/react/form/data-object-array)
+- [`FormFieldState`](:)

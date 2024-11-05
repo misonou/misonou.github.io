@@ -1,0 +1,48 @@
+.jq-scrollable-sticky {
+    margin: -1em;
+    padding: 1em;
+    height: 100%;
+    overflow: hidden;
+}
+
+.jq-scrollable-sticky-header {
+    position: relative;
+    margin: -1em -1em 0 -1em;
+    padding: 1em;
+    border-bottom: 1px solid var(--color-highlight);
+    background-color: var(--page-bg);
+    z-index: 1;
+}
+
+.jq-scrollable-sticky-item {
+    padding: 1em 0;
+}
+
+.jq-scrollable-sticky-item h4 {
+    position: relative;
+    margin: -1em -1em 1em;
+    padding: 1em;
+    border-bottom: 1px solid var(--color-border);
+    background-color: transparent;
+    transition: background-color 0.2s;
+    z-index: 1;
+}
+
+.jq-scrollable-sticky-item h4::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--page-bg);
+    backdrop-filter: blur(20px);
+    opacity: 0.9;
+    z-index: -1;
+}
+
+.jq-scrollable-sticky-float {
+    position: absolute;
+    right: -1em;
+    padding: 0.25em 0.75em;
+    width: max-content;
+    background-color: var(--color-highlight);
+    z-index: 2;
+}

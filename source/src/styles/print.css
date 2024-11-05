@@ -1,0 +1,17 @@
+@media print {
+
+    nav,
+    aside,
+    #app-content-header {
+        display: none !important;
+    }
+
+    #app {
+        border-top: none;
+    }
+
+    main {
+        padding: 0;
+        overflow: visible;
+    }
+}

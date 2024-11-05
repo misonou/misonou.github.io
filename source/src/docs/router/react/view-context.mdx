@@ -1,0 +1,29 @@
+<Module name="brew-js-react" />
+
+# View context
+
+View context allow child components to retrieve information on the current rendering view.
+
+## Accessing view context
+
+In view component, view context can be directly accessed by [`ViewProps.viewContext`](:).
+
+```tsx
+registerView(({ viewContext }) => {
+    /* ... */
+}, { /* ... */ });
+```
+
+For descendant components, parent view context can be retrieved by [`useViewContext`](:).
+
+```tsx
+function Suggestion() {
+    const { view } = useViewContext();
+
+    if (view === ProductInfo) {
+        /* ... */
+    } else {
+        /* ... */
+    }
+}
+```

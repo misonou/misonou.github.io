@@ -1,0 +1,18 @@
+import Example from "src/components/examples/form-prevent-leave";
+
+<Module name="zeta-dom-react" />
+
+# Preventing from leaving
+
+The `preventLeave` form option can be used to prevent user to navigate away unintentedly.
+
+By turning on the option, user will be prompted by browser when user is trying the leaving the page
+after updating any field.
+
+For in-app navigation, the application is required to handle the prompting manually.
+Register an event handler to `beforeLeave` event and return a promise that **resolved** when user has accepted to leave,
+or **rejected** when user has declined.
+
+The lock will be released when the form is reset.
+
+<Example />

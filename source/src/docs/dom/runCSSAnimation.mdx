@@ -1,0 +1,52 @@
+import Example from "src/components/examples/css-animation";
+
+<Module name="zeta-dom/css" />
+
+# runCSSAnimation
+
+One can get notifies when CSS transitions or animations finish.
+
+## Syntax
+
+```javascript
+runCSSAnimation(element, className)
+runCSSAnimation(element, className, callback)
+runCSSAnimation(element, className, removeAfterComplete)
+```
+
+<ImportHint
+    name="runCSSAnimation"
+    module="zeta-dom/css"
+    global="zeta.css.runCSSAnimation"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `className`
+    A string specifying the class name which triggers CSS animation or transition.
+
+    #### `callback` <Badge.Optional />
+    A callback that is synchronously called when animation or transition is completed.
+
+    #### `removeAfterComplete` <Badge.Optional />
+    A `boolean` that if set to `true`, the added CSS classes will be removed once the animation
+    has completed.
+</dl>
+
+### Return value
+
+A `Promise` object that is:
+- rejected if the class is removed before the animation or transition is completed
+- rejected if the element already has the given class
+- fulfilled immediately if there is no animation or transition triggered
+- fulfilled after animation or transition is completed otherwise.
+
+## Example
+
+Here CSS transitions or animations is triggered by adding a `className` to an element. Transitions or animations on the element and all its descendants will be listened and be waited for.
+
+<Example />

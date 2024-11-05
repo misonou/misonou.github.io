@@ -1,0 +1,42 @@
+<Module name="zeta-dom-react" />
+
+# Pagination
+
+By default the data is not paged. To enable pagination, pass a desired page size as the last argument:
+
+```tsx
+function Component() {
+    const dataView = useDataView({}, undefined, undefined, 10);
+
+    // pagedItems will be an array with at most 10 items
+    // also by default it starts from pageIndex 0
+    const [pagedItems] = dataView.getView(items);
+
+    /* ... */
+}
+```
+
+> To enable pagination by default, a global page size can be set through the static [`DataView.pageSize`](:) property.
+
+
+## Switching page
+
+To show different pages, often with a pagination component, set [`DataView.pageIndex`](:).
+
+
+For example, upon clicking the "Next page" button, it increments the page index by 1, and thus `pagedItems` will contains items in the next page:
+
+```tsx
+function Component() {
+    const dataView = useDataView({}, undefined, undefined, 10);
+    const [pagedItems] = dataView.getView(items);
+
+    return (
+        <>
+            {/* ... */}
+            <button onClick={() => dataView.pageIndex--}>Previous page</button>
+            <button onClick={() => dataView.pageIndex++}>Next page</button>
+        </>
+    );
+}
+```

@@ -1,0 +1,67 @@
+import Example from "src/components/examples/event-container";
+
+<Module name="zeta-dom/events" />
+
+# Dispatching events
+
+Below is an example on how to use [`ZetaEventContainer`](:) to listen and emit events on custom objects.
+
+```javascript
+import { ZetaEventContainer } from "zeta-dom/events";
+
+// in general container will be kept private
+const emitter = new ZetaEventContainer();
+
+export class MyObject {
+    // expose method for listening event
+    on(event, handler) {
+        return emitter.add(this, event, handler);
+    }
+}
+
+// emit event for some obj of class MyObject
+emitter.emit('myEvent', obj);
+```
+
+### Event map interface in TypeScript
+
+In TypeScript land, specifying an event map enables type hints for both emitter and listener.
+
+```TypeScript
+interface CustomEventMap {
+    myEvent: Zeta.ZetaEvent<MyObject>;
+}
+
+const container = new ZetaEventContainer<MyObject, CustomEventMap>();
+
+export class MyObject implements Zeta.ZetaEventDispatcher<CustomEventMap, MyObject> {
+    on(event, handler) {
+        return container.add(this, event, handler);
+    }
+}
+```
+
+## Delegating DOM events to custom target
+
+By passing `captureDOMEvents` options, any DOM events can be tapped by event container
+prior to normal event handlers.
+
+```javascript
+const container = new ZetaEventContainer(element, null, { captureDOMEvents: true });
+// add components with event handlers
+container.add(/* ... */);
+// re-emit DOM events to components added to this container
+container.tap(e => container.emit(e));
+```
+
+If the component has an property `element` which returns an actual DOM element,
+any event handlers added to an event container for that component will also be fired
+when event is raised for that DOM element.
+
+Here is an example on how to delegate DOM events to custom components.
+
+<Example />
+
+## See also
+
+- [`ZetaEventContainer`](:)

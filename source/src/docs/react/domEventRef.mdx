@@ -1,0 +1,57 @@
+<Module name="zeta-dom-react" />
+
+# domEventRef
+
+Allows binding listeners to Zeta DOM events.
+
+```tsx
+function Component(props) {
+    const [state, setState] = useState(0);
+
+    return (
+        <div ref={domEventRef({ focusin })}></div>
+    );
+
+    function focusin() {
+        // callback has access to latest props or state
+        console.log(props.value, state);
+    }
+}
+```
+
+## Syntax
+
+```javascript
+domEventRef(event, handler)
+domEventRef(handlers)
+```
+
+<ImportHint
+    name="domEventRef"
+    module="zeta-dom-react"
+    require="domEventRef"
+    global="zeta.react.domEventRef" />
+
+### Parameters
+
+<dl>
+    #### `event`
+    A case-sensitive string representing the event type to listen for.
+
+    #### `handler`
+    A callback that will be invoked when an event of the specified type occurs.
+
+    #### `handlers`
+    A dictionary which each entry associates to an event type and a callback for that event type.
+</dl>
+
+### Return value
+
+A react ref callback.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.4.4** Introduced
+</VersionTimeline>
+

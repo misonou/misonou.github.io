@@ -1,0 +1,38 @@
+<Module name="waterpipe" />
+
+# Dynamic functions
+
+
+A variadic pipe function can take any number of arguments from the pipe. It is signatured by setting `varargs` to `true` on a pipe function.
+
+```javascript
+waterpipe.pipes.printargs = function (value, varargs) {
+	var output = [];
+	var count = varargs.next();
+	for (var i = 0; i < count; i++) {
+		if (varargs.hasArgs()) {
+			output.push(varargs.next());
+		}
+	}
+	return output.join(' ');
+};
+waterpipe.pipes.printargs.varargs = true;
+
+{{printargs 3 foo bar baz}} -> "foo bar baz"
+{{printargs 3 foo bar baz upper}} -> "FOO BAR BAZ"
+```
+
+A variadic pipe function can also take a function argument by `varargs.fn()`. If there is no proper set of pipe arguments to form a function argument, it will return `undefined`.
+
+```javascript
+waterpipe.pipes.dosomething = function (value, varargs) {
+	var fn = varargs.fn();
+	return fn(value);
+};
+waterpipe.pipes.dosomething.varargs = true;
+
+Input:
+	{ value: 1 }
+
+{{value dosomething [ + 1 ]}} -> "2"
+```

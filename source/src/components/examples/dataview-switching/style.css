@@ -1,0 +1,28 @@
+.table-filter {
+    padding: 0.5em 1em;
+    border-radius: var(--border-radius);
+    background-color: var(--color-background);
+}
+
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-footer i {
+    display: inline-block;
+    padding: 0.15em 0.5em;
+    font-style: normal;
+    cursor: pointer;
+}
+
+.table-footer i.active {
+    border-radius: var(--border-radius);
+    background-color: var(--color-background);
+}
+
+.table-footer i.disabled {
+    opacity: 0.3;
+    cursor: default;
+}

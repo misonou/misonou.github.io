@@ -1,0 +1,110 @@
+import Example from "src/components/examples/notify-async";
+import LoadingMixinExample from "src/components/examples/loading-mixin";
+import CancellationExample from "src/components/examples/notify-async-cancellation";
+import ErrorExample from "src/components/examples/notify-async-error";
+
+<Module name="zeta-dom/domLock" />
+
+# Handling user actions
+
+Below is an example showing how to register and listen asynchronous operations with the
+use of [`runAsync`](:) and [`subscribeAsync`](:).
+
+<Example />
+
+For older version where [`runAsync`](:) is unavailable, use [`notifyAsync`](:).
+
+```typescript
+const promise = doLongOperation();
+notifyAsync(element, promise);
+```
+
+## Wrapper for event handler
+
+For common application like clicking button, the [`handleUserAction`](:) function can be used.
+
+```tsx
+function Button(props) {
+    return (
+        <button {...props} onClick={handleUserAction(props.onClick)} />
+    );
+}
+```
+
+## Background operations
+
+In the same way background operations can be notified. However when using `zeta-dom-react`, background
+operation can be better handled by [`useAsync`](:) hook.
+
+## Loading effect
+
+<LoadingMixinExample />
+
+## Cancellation
+
+Cancellation can be requested by calling [`cancelLock`](:) is called on target element or any ancestors.
+
+For example, when using Brew's router, cancellation is requested when user is trying to navigate
+within the single-paged app.
+
+> By default, operation registered by [`notifyAsync`](:) or [`runAsync`](:) is consider cancellable without confirmation.
+
+```tsx
+runAsync(currentTarget, ({ signal }) => {
+    // pass AbortSignal object to native API such as fetch
+    return fetch('...', { signal, /* ... */ });
+});
+```
+
+For older version, supply callback as thrid argument as follow.
+
+```typescript
+const promise = doLongOperation();
+notifyAsync(element, promise, () => {
+    // callback will be called when cancellation is accepted
+    /* ... */
+});
+```
+
+## Preventing cancellation
+
+To prevent cancellation at all, use [`lock`](:) without callbacks:
+
+```typescript
+const promise = doLongOperation();
+lock(element, promise); // locked until resolved
+```
+
+or
+
+```typescript
+const unlock = lock(element);
+doLongOperation().then(() => {
+    unlock();
+});
+```
+
+> Note that locks on an element will be forcibly cancelled if the element is detached.
+
+## Asking confirmation for cancellation
+
+To prompt user for cancellation, supply callback to [`lock`](:):
+
+<CancellationExample />
+
+## Error handling
+
+[`runAsync`](:) and [`notifyAsync`](:) will emit `error` event when the promise has rejected.
+
+<ErrorExample />
+
+When using `zeta-dom-react`, more sophisticated handling can be done, see [`useErrorHandler`](:).
+
+## See also
+
+- [Preventing from leaving](/docs/dom/prevent-leave)
+- [`cancelLock`](:)
+- [`notifyAsync`](:)
+- [`runAsync`](:)
+- [`useErrorHandler`](:)
+- [`LoadingStateMixin`](:)

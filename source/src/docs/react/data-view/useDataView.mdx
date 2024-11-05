@@ -1,0 +1,55 @@
+<Module name="zeta-dom-react" />
+
+# useDataView
+
+Creates a data view context with the items and filter values.
+
+## Syntax
+
+```javascript
+useDataView(filters)
+useDataView(filters, sortBy)
+useDataView(filters, sortBy, sortOrder)
+useDataView(filters, sortBy, sortOrder, pageSize)
+useDataView(persistKey, filters)
+useDataView(persistKey, filters, sortBy)
+useDataView(persistKey, filters, sortBy, sortOrder)
+useDataView(persistKey, filters, sortBy, sortOrder, pageSize)
+```
+
+<ImportHint
+    name="useDataView"
+    module="zeta-dom-react"
+    require="useDataView"
+    global="zeta.react.useDataView"
+/>
+
+### Parameters
+
+<dl>
+    #### `filters`
+    Initial filter.
+
+    #### `sortBy` <Badge.Optional />
+    Initial sorting field if any. See [Sorting](/docs/react/data-view/sorting) for more details.
+
+    #### `sortOrder` <Badge.Optional />
+    Initial sorting direction, can be either the following:
+
+    <dl>
+        #### `asc`
+        Items are sorted in ascending order.
+
+        #### `desc`
+        Items are sorted in descending order.
+    </dl>
+
+    #### `pageSize` <Badge.Optional />
+    Initial page size. Default is the global page size [`DataView.pageSize`](:).
+
+    #### `persistKey` <Badge.Optional />
+</dl>
+
+### Return value
+
+A [`DataView`](:) object.

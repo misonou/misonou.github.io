@@ -1,0 +1,13 @@
+{
+    "Email": {
+        "option": "email",
+        "email": "test@test.com"
+    },
+    "Phone": {
+        "option": "phone",
+        "phone": {
+            "countryCode": "1",
+            "phoneNumber": "0000000000"
+        }
+    }
+}

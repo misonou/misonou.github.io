@@ -1,0 +1,43 @@
+import { DatePicker } from "src/components/controls";
+import tsx from "!raw-loader!src/components/controls/DatePicker.tsx"
+
+<Module name="zeta-dom-react" />
+
+# DatePicker
+
+<DatePicker label="Date" />
+
+```tsx
+<DatePicker label="Date" />
+```
+
+## Example: Minimum and maximum Date
+
+<DatePicker label="Date" min="-1m" max="+1m" />
+
+```tsx
+<DatePicker label="Date" min="-1m" max="+1m" />
+```
+
+## Example: Custom formatting
+
+<DatePicker label="Date"
+    formatDisplay={new Intl.DateTimeFormat('en-US').format} />
+
+```tsx
+<DatePicker label="Date"
+    formatDisplay={new Intl.DateTimeFormat('en-US').format} />
+```
+
+## Example: Forced error state
+
+<DatePicker label="Date" error="Error" />
+
+```tsx
+<DatePicker label="Date" error="Error" />
+```
+
+## See also
+
+- [`DateField`](:)
+- [`DateFieldProps`](:)

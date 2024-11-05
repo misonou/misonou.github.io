@@ -1,0 +1,42 @@
+<Module name="zeta-dom/domLock" />
+
+# lock
+
+Enables listening of `asyncStart` and `asyncEnd` events that is triggered by descedant elements.
+
+## Syntax
+
+```javascript
+lock(element)
+lock(element, promise)
+lock(element, promise, cancellable)
+lock(element, oncancel)
+lock(element, promise, oncancel)
+```
+
+<ImportHint
+    name="lock"
+    module="zeta-dom/domLock"
+    global="zeta.dom.lock"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `promise`
+    A promise which resolves or rejects when operation is completed.
+
+    #### `oncancel`
+    A handler which handles request of cancellation by [`cancelLock`](:).
+
+    #### `cancellable` <Badge.Optional />
+    Whether the operation is cancellable.
+
+</dl>
+
+### Return value
+
+A promise which, when the operation was not cancelled, forwards the result of the given promise; or rejects if the operation was cancelled; or the DOM element was detached before the operation completed.

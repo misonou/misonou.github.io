@@ -1,0 +1,24 @@
+#demo-rgxdp {
+    display: flex;
+    margin-top: 1em;
+    gap: 20px;
+}
+
+#demo-rgxdp > div {
+    border: 4px solid transparent;
+    background-color: lightgray;
+    width: 100px;
+    height: 100px;
+}
+
+#demo-rgxdp > div.focused {
+    border-color: red;
+}
+
+#demo-rgxdp > div::after {
+    content: 'Click me';
+}
+
+#demo-rgxdp > div.focused::after {
+    content: 'I\'m focused';
+}

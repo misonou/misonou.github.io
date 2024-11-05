@@ -1,0 +1,44 @@
+import Example from "src/components/examples/eager-state";
+
+<Module name="zeta-dom-react" />
+
+# useEagerState
+
+Similar to but unlike `React.useState`, it guarantees that callback supplied to updating function is called synchronously,
+and it will not cause component to re-render when state did not change.
+
+## Syntax
+
+```javascript
+useEagerState()
+useEagerState(initialState)
+```
+
+<ImportHint
+    name="useEagerState"
+    module="zeta-dom-react"
+    require="useEagerState"
+    global="zeta.react.useEagerState" />
+
+### Parameters
+
+<dl>
+    #### `initialState` <Badge.Optional />
+    Initial state, or a function that returns the initial state.
+
+</dl>
+
+## Difference with useState
+
+<Example />
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.5.4** Introduced
+</VersionTimeline>
+
+
+## See also
+
+- [`useEagerReducer`](:)

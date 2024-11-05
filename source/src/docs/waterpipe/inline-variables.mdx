@@ -1,0 +1,24 @@
+<Module name="waterpipe" />
+
+# Inline variables
+
+Variables can also be declared within the template using `as` or `let` pipe function.
+They are also global in the sense that variables declared in one template
+are also visible for the template included.
+
+For example the template `innerTemplate` included can read the variable `tmpvar`
+declared on the calling template.
+
+```javascript
+waterpipe.pipes.innerTemplate = '{{tmpvar}}';
+```
+
+<WaterpipeExample
+    pipes={{ innerTemplate: '{{tmpvar}}' }}
+    template={`
+{{let tmpvar 1}}
+Outside: {{tmpvar}}
+Inside:  {{innerTemplate}}`}
+/>
+
+See more on [Scope and name visibility](/docs/waterpipe/scope-and-name-visibility) for more information.

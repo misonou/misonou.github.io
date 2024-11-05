@@ -1,0 +1,85 @@
+<Module name="zeta-dom/domUtil" />
+
+# getRect
+
+Gets a rect object referring the size of current window or the given element.
+
+## Syntax
+
+```javascript
+getRect()
+getRect(element)
+getRect(element, box)
+getRect(element, includeMargin)
+getRect(element, margin)
+```
+
+<ImportHint
+    name="getRect"
+    module="zeta-dom/domUtil"
+    global="zeta.util.getRect"
+/>
+
+### Parameters
+
+<dl>
+    #### `element` <Badge.Optional />
+    A DOM element, or other object that is associated to a DOM element.
+
+    > See [Special case](#s-special-case).
+
+    #### `box` <Badge.Optional /> <Badge.Version />
+    Type of box according to CSS box model:
+
+    <dl>
+        #### `margin-box`
+        #### `border-box`
+        #### `padding-box`
+        #### `content-box`
+    </dl>
+
+    See [here](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model#what_is_the_css_box_model) for explanation of
+    each keyword. Default is `border-box`.
+
+    > Prior to v0.5.4, the `box` parameter is ignored for root element, i.e. `document.documentElement` or `<html>`.
+
+    #### `includeMargin` <Badge.Optional /> <Badge.Deprecated />
+    Whether to extend to outer margin if a side has positive margin.
+
+    #### `margin` <Badge.Optional />
+    Number of pixels extended from the original bounding box, or retracted from when given negative value.
+
+</dl>
+
+### Return value
+
+A [`Rect`](:) object.
+
+## Special case
+
+Due to compatibility, there are two special case that does not refer to a box of an element:
+
+- If no argument or `window` object is supplied, it will return the viewport box,
+  as reported by [`visualViewport`](https://developer.mozilla.org/en-US/docs/Web/API/VisualViewport).
+
+  ```javascript
+  getRect()
+  getRect(window)
+  getRect(window, 10)
+  ```
+
+- If root element is supplied with an optional number as second argument,
+  it will return the box corresponding to a box render by the style `position: fixed; inset: 0`:
+
+  ```javascript
+  getRect(document.documentElement)
+  getRect(document.documentElement, 10)
+  ```
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.1.0** Introduced
+- **0.4.0** `box` parameter
+- **0.5.4** `box` parameter for `document.documentElement`
+</VersionTimeline>

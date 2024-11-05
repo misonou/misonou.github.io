@@ -1,0 +1,25 @@
+import BasicExample from "src/components/examples/form-initial-data";
+
+<Module name="zeta-dom-react" />
+
+# Forms
+
+The use of [`useFormContext`](:) and [`useFormField`](:) hooks allows easy implementation of any kind of form controls with high customizability, with validations and field values access.
+
+Below show a simple case that a [`FormContext`](:) object is created using [`useFormContext`](:),
+and by using [`<Form>`](:) component to give child components the form context.
+
+```tsx
+import { Form, useFormContext } from "zeta-dom-react";
+
+function Login() {
+    const form = useFormContext();
+    return (
+        <Form context={form}>
+            <TextInput name="username" required label="Username" />
+            <TextInput name="password" required type="password" label="Password" />
+            <Button type="submit" label="Login" onClick={() => login(form.toJSON())} />
+        </Form>
+    );
+}
+```

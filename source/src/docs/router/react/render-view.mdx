@@ -1,0 +1,55 @@
+<Module name="brew-js-react" />
+
+# Rendering views
+
+Use [`renderView`](:) to specify a list of views to render.
+
+The views are matched in the provided order, using the [`isViewMatched`](:) predicate. If there is no view matches current path, it will automicatically redirects the SPA to the proper path which renders the first view.
+
+```tsx
+import { renderView } from "brew-js-react";
+import { Home, Foo } from "./views";
+
+function App() {
+    return renderView(Home, Foo);
+}
+```
+
+## Restricting accessible views
+
+It is possible to restrict which views can be accessed under certain state:
+
+```tsx
+import { renderView } from "brew-js-react";
+import { Home, Login, ProductInfo, ProductEditor } from "./views";
+
+function App() {
+    const [role, setRole] = useState();
+    switch (role) {
+        case 'editor':
+            return renderView(Home, ProductInfo, ProductEditor, Admin);
+        case 'reader':
+            return renderView(Home, ProductInfo);
+        default:
+            return renderView(Login);
+    }
+}
+```
+
+## Initial loader
+
+~~0.6.5~~
+
+Now it is possible to show a loader screen before a `import()`-ed view component is loaded.
+
+```tsx
+import { renderView } from "brew-js-react";
+import { Home, Foo } from "./views";
+
+function App() {
+    return renderView({ loader: <div>Loading...</div> }, Home, Foo);
+}
+```
+
+> It will only be shown when [`renderView`] is first mounted. In subsequent navigation,
+  the current view will stay until the next view component is loaded.

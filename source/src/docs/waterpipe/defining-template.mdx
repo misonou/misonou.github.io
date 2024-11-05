@@ -1,0 +1,74 @@
+<Module name="waterpipe" />
+
+# Defining template
+
+Templates can be predefined elsewhere and be included on use.
+
+To make a template available for inclusion, defined the template on `waterpipe.pipes`:
+
+```javascript
+waterpipe.pipes.myTemplate = 'The value is {{value}}.';
+```
+
+In such sense a template is considered as a parameterless pipe function.
+Therefore it is the same to include the template than to invoke a pipe function.
+
+<WaterpipeExample
+    pipes={{myTemplate:'The value is {{value}}.'}}
+    data={{value:'foo',obj:{value:'bar'}}}
+    examples={['myTemplate', 'obj myTemplate']}
+/>
+
+
+## Define template in HTML document
+
+When using waterpipe in HTML document, any `<script>` tag with type `text/x-waterpipe`
+will be automatically setup on `waterpipe.pipes`.
+
+```html
+<script type="text/x-waterpipe" id="myTemplate">
+The value is {{value}}.
+</script>
+```
+
+## Single-valued template
+
+~~2.1~~
+
+A template is considered single-valued if there is
+- only one evaluated output throughout execution; and
+- only consist of whitespace characters in non-evaluated output.
+
+If such case, including these templates as pipe functions, 
+the evaluated value can be used for conditional testing, iteration, or 
+chained to the next pipe function without being stringified.
+
+```javascript
+waterpipe.pipes.positive = '{{value > 0}}';
+```
+
+<WaterpipeExample
+    pipes={{positive:'{{value > 0}}'}}
+    data={{value:-1}}
+    template={`
+{{if value positive}}
+    positive
+{{else}}
+    negative
+{{/if}}`}
+/>
+
+Prior to version 2.1, the first example outputs "positive" instead because `{{value positive}}` returns stringified `"false"` instead of boolean `false`.
+
+## Defining template in data
+
+~~2.8~~
+
+Since version 2.8, it is possible to evaluate template stored in data object using the `eval` pipe function.
+
+For example given the following data:
+
+<WaterpipeExample
+    data={{ value: 1, template: "The value is {{.}}." }}
+    examples={['value |> template']}
+/>

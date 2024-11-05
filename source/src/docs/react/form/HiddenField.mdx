@@ -1,0 +1,55 @@
+<Module name="zeta-dom-react" />
+
+# HiddenField component
+
+The `<HiddenField>` component can be used to define data on data objects declaratively.
+
+It can be useful for setting dynamic data without writing too many hooks or callbacks.
+
+## Syntax
+
+```tsx
+<HiddenField name={name} value={value} />
+```
+
+<ImportHint
+    name="HiddenField"
+    module="zeta-dom-react"
+    require="HiddenField"
+    global="zeta.react.HiddenField" />
+
+### Properties
+
+<dl>
+    #### `name`
+    Specifies field name.
+
+    #### `value`
+    Specifies field value to be reflected on `FormContext.data`,
+    or current data object if the component is under [`<FormObject>`](:) or [`<FormArray>`](:) element.
+
+</dl>
+
+## Example
+
+```tsx
+function Component() {
+    const form = useFormContext();
+    return (
+        <FormArray name="array">
+            {items => items.map(v =>
+                <FormObject key={FormObject.keyFor(v)} value={v}>
+                    <HiddenField name="key" value={v.foo || v.bar} />
+                    {/* ... */}
+                </FormObject>
+            )}
+        </FormArray>
+    );
+}
+```
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.4.15** Introduced
+</VersionTimeline>

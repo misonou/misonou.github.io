@@ -1,0 +1,45 @@
+import Example from "src/components/examples/sortable";
+
+<Module name="@misonou/react-css-utils" />
+
+# initSortable
+
+Creates a handler to enable ordering of child elements by mouse or touch events.
+
+## Syntax
+
+```javascript
+initSortable(element, options)
+```
+
+### Parameters
+
+<dl>
+    #### `element`
+    #### `options`
+    <dl>
+        #### `itemSelector`
+        A CSS selector that selects which elements are orderable.
+
+        #### `handleSelector`
+        A CSS selector that selects the element which, on dragging, will initate the reordering.
+
+        #### `onOrderChanged`
+        A callback which receives the index of an element before and after reordering.
+    </dl>
+</dl>
+
+### Return value
+
+Since v1.5.0, an unregistering callback is returned to disable the function.
+
+## Example
+
+<Example />
+
+## Version information
+
+<VersionTimeline module="@misonou/react-css-utils">
+- **1.0.0** Introduced
+- **1.5.0** Returns callback
+</VersionTimeline>

@@ -1,0 +1,35 @@
+<Module name="zeta-dom-react" />
+
+# Validators
+
+It may be more convenient to have validator factory that intake parameters and returns a validation callback:
+
+```tsx
+export function pattern(pattern: string) {
+    return (value: string) => {
+        return new RegExp(`^${pattern}$`).test(value) ? '' :  'Invalid pattern';
+    };
+}
+
+<TextInput onValidate={combineValidators(required, pattern('\\d'))}>
+```
+
+## Combining validators
+
+The returning value for validation success or failure makes it very easy to chain validations:
+
+```tsx
+function required() {
+    return (value: string) => value ? '' : 'Value required';
+}
+
+function minLength(len: number) {
+    return (value: string) => value.length >= len ? '' : 'Too short';
+}
+
+<TextInput onValidate={combineValidators(required(), minLength(10))} />
+```
+
+## See also
+
+- [Parameterizing validations](/docs/react/form/parameterizing-validations)

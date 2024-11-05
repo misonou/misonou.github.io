@@ -1,0 +1,36 @@
+<Module name="brew-js/util" />
+
+# setQueryParam
+
+Returns a query string that includes the specific parameter.
+
+## Syntax
+
+```javascript
+setQueryParam(name, value)
+setQueryParam(name, value, url)
+```
+
+<ImportHint
+    name="setQueryParam"
+    module="brew-js/util/common"
+    global="brew.setQueryParam"
+/>
+
+### Parameters
+
+<dl>
+    #### `name`
+    Name of the query parameter.
+
+    #### `value`
+    Value to set. When given `false` or `null`, the parameter will be removed from query string.
+
+    #### `url` <Badge.Optional />
+    A query string or a URL.
+
+    If `url` is not specified, `location.search` will be used.
+
+    > Prior to 0.6.4, it does not return expected result when `url` contains hash.
+
+</dl>

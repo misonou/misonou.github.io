@@ -1,0 +1,39 @@
+<Module name="brew-js-react" />
+
+# makeTranslation
+
+Creates translation callback and hook based on the given translation resource object.
+Type inference for translation keys is based on default language.
+
+## Syntax
+
+```javascript
+makeTranslation(resources, defaultLang)
+```
+
+### Parameters
+
+<dl>
+    #### `resources`
+    Translation resource object, see example for object structure.
+
+    #### `defaultLang`
+    Default language when translation string is unavailable in the current language.
+</dl>
+
+### Return value
+
+An object containing following members:
+
+<dl>
+    #### `keys`
+    #### `translate`
+    #### `getTranslation`
+    #### `useTranslation`
+</dl>
+
+## See also
+
+- [`translate`](/docs/react/i18n/translate)
+- [`getTranslation`](:)
+- [`useTranslation`](:)

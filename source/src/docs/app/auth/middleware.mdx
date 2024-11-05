@@ -1,0 +1,47 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# Middleware
+
+Middleware is available for DOM fetch and [axios](https://axios-http.com/) to which
+- automatically set `Authorization` header with bearer token when user is logged in
+- when necessary, the provider will try to renew access token.
+
+After creating app with auth extension, you can use the corresponding function
+to create middleware.
+
+## Using with fetch
+
+```typescript
+import { createFetchMiddleware } from "@misonou/brew-extension-auth";
+
+// fetch without next middleware
+const fetch = createFetchMiddleware(app);
+fetch(new Request('https://example.org/api/v1'));
+fetch('https://example.org/api/v1', { /* ... */ });
+```
+
+With other utility such as [`fetch-run`](https://npmjs.com/package/fetch-run):
+
+```typescript
+import { Api } from "fetch-run";
+import { createFetchMiddleware } from "@misonou/brew-extension-auth";
+
+const fetch = createFetchMiddleware(app);
+const api = Api.create('https://example.org/api/v1');
+api.use(next => req => fetch(req, next));
+```
+
+## Using with axios
+
+```typescript
+import axios from "axios";
+import { createAxiosMiddleware } from "@misonou/brew-extension-auth";
+
+const client = axios.create();
+createAxiosMiddleware(app)(client);
+```
+
+## See also
+
+- [`createAxiosMiddleware`](:)
+- [`createFetchMiddleware`](:)

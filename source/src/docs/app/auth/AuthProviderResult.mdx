@@ -1,0 +1,31 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# AuthProviderResult interface
+
+The `AuthProviderResult` represent the result of a successful authentication.
+
+Authentication related methods are expected to return a promise that resolves to
+object with these properties, such as [`AuthClient.login`](:) and [`AuthClient.refresh`](:).
+
+<MemberList
+    i="AuthProviderResult"
+    ip={['account', 'accountId', 'accessToken', 'expiresOn']}
+/>
+
+## Instance properties
+
+### `AuthProviderResult.accessToken` <Badge.Required />
+
+Access token returned from authentication provider.
+
+### `AuthProviderResult.account` <Badge.Required />
+
+Account info that will be passed to `resolveUser`.
+
+### `AuthProviderResult.accountId` <Badge.Required />
+
+A string representating the user, usually user ID, to be cached in local storage.
+
+### `AuthProviderResult.expiresOn` <Badge.Required />
+
+A `Date` object or a JavaScript timestamp indicating when the access token will expire.

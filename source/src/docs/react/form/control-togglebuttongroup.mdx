@@ -1,0 +1,48 @@
+import { ToggleButtonGroup } from "src/components/controls";
+import tsx from "!raw-loader!src/components/controls/ToggleButtonGroup.tsx"
+
+<Module name="zeta-dom-react" />
+
+# ToggleButtonGroup
+
+<ToggleButtonGroup
+    items={['Apple', 'Banana', 'Orange']} />
+
+```tsx
+<ToggleButtonGroup
+    items={['Apple', 'Banana', 'Orange']} />
+```
+
+## Example: Allow unselected
+
+<ToggleButtonGroup
+    items={['Apple', 'Banana', 'Orange']}
+    allowUnselect />
+
+```tsx
+<ToggleButtonGroup
+    items={['Apple', 'Banana', 'Orange']}
+    allowUnselect />
+```
+
+## Example: Vertical orientation
+
+<ToggleButtonGroup
+    items={['Apple', 'Banana', 'Orange']}
+    orientation="vertical" />
+
+```tsx
+<ToggleButtonGroup
+    items={['Apple', 'Banana', 'Orange']}
+    orientation="vertical" />
+```
+
+## Source code
+
+<CodeBlock children={tsx} className="language-tsx" />
+
+## See also
+
+- [`ChoiceField`](:)
+- [`ChoiceFieldProps`](:)
+- [`ChoiceItem`](:)

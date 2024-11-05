@@ -1,0 +1,41 @@
+<Module name="zeta-dom/domLock" />
+
+# subscribeAsync
+
+Enables listening of `asyncStart` and `asyncEnd` events that is triggered by descedant elements.
+
+## Syntax
+
+```javascript
+subscribeAsync(element)
+subscribeAsync(element, stopPropagation)
+subscribeAsync(element, callback)
+```
+
+<ImportHint
+    name="subscribeAsync"
+    module="zeta-dom/domLock"
+    global="zeta.dom.subscribeAsync"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `stopPropagation` <Badge.Optional /> <Badge.Version />
+    Optionally prevents `asyncStart` and `asyncEnd` events being bubbled up.
+
+    #### `callback` <Badge.Optional /> <Badge.Version />
+    A callback that will be invoked with a boolean indicating if there is asynchronous operation in progress.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.3.0** Introduced
+- **0.4.2** `callback` parameter
+- **0.4.10** `stopPropagation` parameter
+</VersionTimeline>

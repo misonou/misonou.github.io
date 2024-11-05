@@ -1,0 +1,43 @@
+<Module name="brew-js-react" />
+
+# DialogState interface
+
+<MemberList
+    i="DialogState"
+    ip={['root']}
+    im={['open()', 'close()']} />
+
+## Instance properties
+
+### `DialogState.root` <Badge.ReadOnly />
+
+Gets the dialog's root element.
+
+## Instance methods
+
+### `DialogState.open()`
+
+```javascript
+dialogState.open()
+```
+
+Open the dialog. A promise is returned, resolving to `undefined` or any values sent from `dialogState.close()`.
+
+### `DialogState.close()`
+
+```javascript
+dialogState.close()
+dialogState.close(returnValue)
+```
+
+Close the dialog. A promise is returned that is resolved after the dialog is destroyed.
+
+#### Parameters
+
+<dl>
+    #### `returnValue` <Badge.Optional />
+    Sending value to the promise returned by `DialogState.open()`.
+</dl>
+
+> **Important:** Note that `onCommit` callback passed to [`createDialog`](:) will not be invoked in this case. To invoke `onCommit`,
+  `closeDialog` callback passed to `onRender` or `wrapper` must be used.

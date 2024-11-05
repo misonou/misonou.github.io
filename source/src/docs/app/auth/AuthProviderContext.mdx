@@ -1,0 +1,37 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# AuthProviderContext interface
+
+<MemberList
+    i="AuthProviderContext"
+    ip={['redirectUri']}
+    im={['revokeSession()']}
+/>
+
+## Instance properties
+
+### `AuthProviderContext.redirectUri` <Badge.ReadOnly />
+
+Fully qualified URL for redirection after logging in or out through external authentication provider.
+
+## Instance methods
+
+### `AuthProviderContext.revokeSession()`
+
+```javascript
+revokeSession()
+revokeSession(accountId)
+```
+
+Revokes login session, typically when user has signed out elsewhere.
+
+It will emit a handleable `sessionEnd` event before logging out completely.
+It has no effect if user is not currently logged in with this provider or the `accountId` parameter does not match current one.
+
+### Parameters
+
+<dl>
+    #### `accountId` <Badge.Optional />
+    Account to logout. If not specified, the current account will be logged out.
+
+</dl>

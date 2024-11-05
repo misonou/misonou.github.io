@@ -1,0 +1,93 @@
+<Module name="zeta-dom-react" />
+
+# Sorting
+
+Sorting can be done manually or by calling [`DataView.sort()`](:).
+
+## Sort by property
+
+By default, [`DataView.sort`](:) will sort items by the property named by [`DataView.sortBy`](:):
+
+```tsx
+function Component() {
+    const items = [/* ... */];
+    const dataView = useDataView({}, 'date', 'desc');
+
+    const [pagedItmes] = dataView.getView(items, (items, filters) => {
+        // items are sorted as per data view settings
+        // i.e. by `date` property in descending order
+        return dataView.sort(items);
+    });
+    /* ... */
+}
+```
+
+When there is no applicable filters nor custom sorting, the callback can be omitted:
+
+```tsx
+function Component() {
+    const items = [/* ... */];
+    const dataView = useDataView({}, 'date', 'desc');
+
+    // without a custom getView callback, the items are sorted
+    // as if `dataView.sort(items)` is called
+    const [pagedItmes] = dataView.getView(items);
+    /* ... */
+}
+```
+
+## Sort by derived value
+
+Sometimes the sorting cannot be directly implied from a property of the data objects.
+In such case, a callback can be supplied to derive a sortable value associated for each item.
+
+```tsx
+function Component() {
+    const items = [/* ... */];
+    const dataView = useDataView({}, 'custom');
+
+    const [pagedItmes] = dataView.getView(items, (items, filters, sortBy) => {
+        if (sortBy === 'custom') {
+            return dataView.sort(items, v => {
+                return getCustomSortOrder(v);
+            });
+        }
+        return dataView.sort(items);
+    });
+    /* ... */
+}
+```
+
+## Multi-dimensional sorting
+
+The [`DataView.sort`](:) method supports multi-dimensional comparison in sorting when a custom callback returns an array.
+
+```tsx
+function Component() {
+    const items = [/* ... */];
+    const dataView = useDataView({}, 'custom');
+
+    const [pagedItmes] = dataView.getView(items, (items, filters, sortBy) => {
+        return dataView.sort(items, v => {
+            return [v.date, v.title];
+        });
+    });
+    /* ... */
+}
+```
+
+## Update sorting
+
+To change the sorting, assign a different sort key or sort direction:
+
+```tsx
+function Component() {
+    function onClick() {
+        dataView.sortBy = 'title';
+        dataView.sortOrder = 'asc';
+    }
+    /* ... */
+}
+```
+
+Updating sorting will trigger a `viewChange` event.

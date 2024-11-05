@@ -1,0 +1,41 @@
+<Module name="zeta-dom-react" />
+
+# useObservableProperty
+
+Listens and gets the value of a property of an object. The component is refreshed when the property has been updated.
+
+## Syntax
+
+```javascript
+useObservableProperty(obj, property)
+```
+
+### Parameters
+
+<dl>
+    #### `obj`
+    An object which its property will be listened.
+
+    #### `property`
+    Property name.
+</dl>
+
+### Return value
+
+Current value of the property.
+
+## Example
+
+```tsx
+const obj = { value: 1 };
+
+function Component() {
+    const value = useObservableProperty(obj, 'value');
+    return (<div>Value is {value}</div>);
+}
+
+// Component will print "Value is 2" when somewhere call update
+function update() {
+    obj.value = 2;
+}
+```

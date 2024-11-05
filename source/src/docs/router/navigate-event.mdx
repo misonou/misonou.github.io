@@ -1,0 +1,89 @@
+<Module name="brew-js/extension/router" />
+
+# Router: navigate event
+
+Fired when the app is about to navigate to a new path.
+
+> Note that [`app.path`](:) is not yet updated during `navigate` event.
+
+## Syntax
+
+```typescript
+app.on('navigate', callback)
+```
+
+### Parameters
+
+<dl>
+    #### `callback`
+    Event listener which the receives a `NavigateEvent` object as first argument.
+</dl>
+
+## Behavior on navigation
+
+If [`app.path`](:) is updated in this event, the app will redirect to the new path, skipping the current one.
+
+```typescript
+app.on('navigate', ({ oldPathname, pathname, route }) => {
+    if (pathname !== '/my-page') {
+        // both works the same
+        app.path = '/page-not-found';
+        app.navigate('/page-not-found');
+    }
+});
+```
+
+## NavigateEvent interface
+
+<MemberList
+    i="NavigateEvent"
+    ip={['pathname', 'oldPathname', 'oldStateId', 'newStateId', 'route', 'data', 'navigationType']} />
+
+### `NavigateEvent.data` <Badge.ReadOnly />
+
+Retreives the data passed to [`app.navigate`](:).
+
+### `NavigateEvent.navigationType` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the type of navigation. It has the following possible values:
+
+<dl>
+    #### `navigate`
+    Any case besides the following.
+
+    #### `resume`
+    Indicating that the previous journey has been resumed. See [Resuming journey](/docs/router/resume-journey).
+
+    #### `reload`
+    Indicating that the page is reloaded.
+
+    #### `back_forward`
+    Indicating that user has traversed back or forward through browser's history.
+</dl>
+
+### `NavigateEvent.newStateId` <Badge.ReadOnly />
+
+Gets the unique state ID for the page going to navigate.
+
+### `NavigateEvent.oldPathname` <Badge.ReadOnly />
+
+Gets the path where user is navigating from.
+
+### `NavigateEvent.oldStateId` <Badge.ReadOnly />
+
+Gets the unique state ID for the page about to leave.
+
+### `NavigateEvent.pathname` <Badge.ReadOnly />
+
+Retreives the app path being loaded.
+
+### `NavigateEvent.route` <Badge.ReadOnly />
+
+Gets the route parameters extracted from the path navigating to.
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.5.0** `navigationType`
+</VersionTimeline>

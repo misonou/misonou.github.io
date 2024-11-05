@@ -1,0 +1,39 @@
+<Module name="@misonou/react-app-utils" />
+
+# promptForChoice
+
+Displays a dropdown to select different outcomes.
+
+## Syntax
+
+```javascript
+promptForChoice(label, choices)
+promptForChoice(label, choices, options)
+```
+
+### Parameters
+
+<dl>
+    #### `label`
+    A user-friendly label to indicate what data is expected to be chosen.
+
+    #### `choices`
+    A dictionary which the keys will be displayed as options. If the associated value is an Error object, the error will be thrown, resulting in a rejected promise.
+
+    #### `options` <Badge.Optional />
+    A dictionary specifying options.
+
+    <dl>
+        #### `metaKey` <Badge.Optional />
+        Displays dropdown only while the specified keys are pressed.
+
+        #### `unknownError` <Badge.Optional />
+        Specifies whether an option of unknown error is appended to the dropdown.
+
+    </dl>
+
+</dl>
+
+### Return value
+
+A promise resolves to the chosen value, or rejects with the chosen error.

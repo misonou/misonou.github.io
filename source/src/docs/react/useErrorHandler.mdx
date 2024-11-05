@@ -1,0 +1,69 @@
+<Module name="zeta-dom-react" />
+
+# useErrorHandler
+
+Error handler provides an event-based mechanism to handle errors from async operation and user actions.
+
+```tsx
+function Component() {
+    const [data, state] = useAsync(() => { /* ... */ });
+    const errorHandler = useErrorHandler(state);
+
+    useEffect(() => {
+        return errorHandler.catch(err => {
+            // return a value indicating the error is handled
+            // won't propagate to other callbacks or parent elements
+            return true;
+        });
+    }, [errorHandler]);
+
+    return (<div ref={errorHandler.ref}>{/* ... */}</div>);
+}
+```
+
+> See [`ErrorHandler`](:) for more examples.
+
+## Syntax
+
+```javascript
+useErrorHandler()
+useErrorHandler(source0)
+useErrorHandler(source0, source1)
+useErrorHandler(source0, source1, /* … ,*/ sourceN)
+```
+
+### Parameters
+
+<dl>
+    #### `source0` … `sourceN` <Badge.Optional />
+    One or more error source. By supplying to the method, it is effectively the same as:
+
+```typescript
+useEffect(() => {
+    return source.onError((error) => {
+        return errorHandler.emit(error);
+    });
+}, []);
+```
+</dl>
+
+### Return value
+
+It returns an [`ErrorHandlerWithRef`](:) interface object.
+
+## ErrorHandlerWithRef interface
+
+<MemberList
+    extends={['ErrorHandler']}
+    i="ErrorHandlerWithRef"
+    ip={['ref']} />
+
+### `ErrorHandlerWithRef.ref` <Badge.ReadOnly />
+
+A React ref callback.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.3.2** Introduced
+</VersionTimeline>

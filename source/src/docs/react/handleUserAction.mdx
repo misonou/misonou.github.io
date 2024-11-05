@@ -1,0 +1,27 @@
+<Module name="@misonou/react-app-utils" />
+
+# handleUserAction
+
+Wraps handler to be invoked by user interaction.
+
+The wrapper callback will
+- send `asyncStart`, `asyncEnd` and `error` event through Zeta DOM
+- send `abort` signal when the same handler on the same element is invoked again while the last invocation is still in progress
+- send `abort` signal when the element is removed from document
+
+## Syntax
+
+```javascript
+handleUserAction()
+handleUserAction(callback)
+handleUserAction(callback, options)
+```
+
+### Parameters
+
+<dl>
+    #### `callback` <Badge.Optional />
+    #### `options` <Badge.Optional />
+</dl>
+
+### Return value

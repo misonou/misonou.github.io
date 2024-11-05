@@ -1,0 +1,318 @@
+<Module name="brew-js-react" />
+
+# Change log
+
+## v0.6.6 (2024/10/30)
+
+#### Views
+
+- Add `ref` option for [`renderView`](:)
+- Silence error from view that is going to be unmounted
+- <kbd>fix</kbd> issues with `onError` option for [`renderView`](:):
+  - when there is nested view containers, `onError` callback registered in parent got invoke multiple times
+  - earlier instance of `onError` callback is cached and invoked, rather than the one in last render
+
+## v0.6.5 (2024/10/29)
+
+#### Views
+
+- Add `loader` and `onError` option for [`renderView`](:)
+- Add [`ViewContext.root`](:) static property
+- Add [`ViewContext.setErrorView`](:)
+- ~~Add `error` event for [`ViewContext`](:)~~ [Redacted]
+- <kbd>fix</kbd> unload current view after `import()`-ed view component for the next page is imported to avoid blank screen
+- <kbd>fix</kbd> should not cache rejected result for `import()`-ed view component
+- <kbd>fix</kbd> [`isViewMatched`](:) erroneously returns `true` for view that will trigger redirection when rendered under current path
+- <kbd>fix</kbd> corrected type of [`ZetaEventBase.target`](:) for [`ViewContext`](:) events <Badge.TS/>
+
+## v0.6.4 (2024/10/10)
+
+#### Views
+
+- **Default scope for async operation:**
+  error and async events (`asyncStart` and `asyncEnd`) will be dispatched
+  to container element of the view by default
+- [`ViewProps.errorHandler`](:) to handle errors triggered by view content
+- Allows passing tuple containing router parameters, query string or query parameters and
+  hash to [`resolvePath`](:), [`linkTo`](:), [`navigateTo`](:) and [`redirectTo`](:) [[link]](/docs/router/react/resolvePath#s-passing-query-and-hash)
+- <kbd>fix</kbd> reset from error view on navigation
+
+#### Dialogs
+
+- **Default scope for async operation:**
+  error and async events (`asyncStart` and `asyncEnd`) will be dispatched
+  to container element of the view by default
+- [`DialogContext.errorHandler`](:) to handle errors triggered by dialog content
+- Add [`DialogContext.commitDialog`](:) and [`DialogContext.dismissDialog`](:)
+- Update type definition of [`createDialog`](:) for better type inference
+
+## v0.6.3 (2024/09/18)
+
+#### Mixins
+
+- Add [`FlyoutMixin.whenVisible`](:)
+
+#### Views
+
+- <kbd>fix</kbd> render view component after [`ViewContext.container`](:) is available
+- <kbd>fix</kbd> import error for lazy loaded view component being reported twice
+- <kbd>fix</kbd> root [`ViewContext.page`](:) returned `undefined` instead of initial page before app ready
+
+#### Miscellaneous
+
+- <kbd>fix</kbd> library failed to initialize properly due to module import order
+
+## v0.6.2 (2024/09/09)
+
+#### Mixins
+
+- `containment` option for [`useFlyoutMixin`](:)
+
+#### Hooks
+
+- <kbd>fix</kbd> [`useRouteState`](:) causes render issue after snapshot if `snapshotOnUpdate` is `true`
+- <kbd>fix</kbd> type definition of returned callback from [`useQueryParam`](:)
+
+## v0.6.1 (2024/08/30)
+
+#### Mixins
+
+- Add overload to [`FlyoutMixin.toggleSelf`](:) and [`FlyoutToggleMixin.toggle`](:)
+- Add type argument to [`FlyoutMixin`](:) and [`FlyoutToggleMixin`](:)
+
+#### Dialogs
+
+- Dialog content are now rendered in strict mode
+- <kbd>fix</kbd> improve focus restoration for dialog
+
+## v0.6.0 (2024/07/29)
+
+#### Views
+
+- View component now re-renders on every page load with new view Data
+- <kbd>fix</kbd> [`useQueryParam`](:) caused redirection to root path (`/`) when new query string is empty
+- <kbd>fix</kbd> [`useQueryParam`](:) did not update browser path and internal state properly when setting value multiple times in the same event loop
+
+#### Mixins
+
+- **Breaking change:** [`FlyoutMixin`](:) and [`ScrollableMixin`](:) will now throw if it is applied to multiple elements
+- Add [`FlyoutMixin.element`](:), [`ScrollableMixin.element`](:) and [`ScrollableMixin.contentElement`](:)
+- Add [`MixinState.onDispose`](:) for cleaning up resources for each applied element immediately after element is unmounted
+- Deprecated [`StatefulMixin.initState`](:)
+- <kbd>fix</kbd> connected `MutationObserver` are not disposed after use
+
+#### Dialogs
+
+- Dialog `onCommit` callback are supplied with `AbortSignal` [[link]](/docs/react/dialog/foreground-operation#s-abort-signal)
+
+## v0.5.7 (2024/06/12)
+
+#### Views
+
+- Add `page`, `navigationType` properties and `waitFor` method to [`ViewContext: pagechange` event](:)
+
+#### Mixins
+
+- Add [`FlyoutMixin.toggleSelf`](:) and [`FlyoutToggleMixin.toggle`](:) for toggling flyout
+- Add [`FlyoutToggleMixin.on`](:), allow toggling flyout by focusing applied element
+- <kbd>fix</kbd> [`StatefulMixin.state`](:) returned `undefined` before reset
+
+#### Miscellaneous
+
+- Officially support React 19
+
+## v0.5.6 (2024/04/26)
+
+#### Views
+
+- Add [`useQueryParam`](:)
+- Expose associated view component in `pageenter` and `pageleave` event
+- Fire `pageenter` event after effect callbacks in view component are invoked
+
+#### Mixins
+
+- Callback passed to [`FlyoutMixin.onOpen`](:) will receive data when flyout is opened directly using [`openFlyout`](:)
+
+## v0.5.5 (2024/04/12)
+
+#### Views
+
+- Add overload to [`matchView`](:)
+- Add [`isViewRendered`](:)
+- Add [`ViewContext.parent`](:) and [`ViewContext.getChildren`](:)
+- <kbd>fix</kbd> [`ViewContext.active`](:) should return `false` when container is unmounted
+
+#### Mixins
+
+- Allow tree shaking unused mixins
+
+## v0.5.4 (2024/03/18)
+
+#### Mixins
+
+- Add `closeOnBlur` option for [`useFlyoutMixin`](:)
+- Add `source` parameter for [`FlyoutMixin.open`](:) and [`FlyoutToggleMixin.open`](:)
+- <kbd>fix</kbd> flyout toggle mixin not disposed
+- <kbd>fix</kbd> handler registered with [`FlyoutMixin.onOpen`](:) incorrectly receives value
+  when flyout is opened by [`openFlyout`](:) or [`toggleFlyout`](:)
+
+#### Miscellaneous
+
+- <kbd>fix</kbd> type definition
+
+## v0.5.3 (2024/02/19)
+
+#### Mixins
+
+- Add [`LoadingStateMixin.loading`](:) property
+- Add [`StatefulMixin.onBeforeUpdate`](:)
+- Add [`Mixin.tabRoot`](:) static attribute  mixin
+- Add overload for [`StaticAttributeMixin`](:) constructor
+- <kbd>fix</kbd> unable to restore class names after synchronous update
+- <kbd>fix</kbd> incorrect base class in type definition for [`FocusStateMixin`](:)
+
+#### Miscellaneous
+
+- Support outro animation when loading completed
+
+## v0.5.2 (2024/01/12)
+
+#### Dialog
+
+- Add `focus` option for [`createDialog`](:)
+- Stop async state propagation
+
+#### Mixins
+
+- Add `initialFocus` option for [`FlyoutMixin`](:)
+
+## v0.5.1 (2023/12/13)
+
+- <kbd>fix</kbd> dependency version
+
+## v0.5.0 (2023/12/11)
+
+#### Views
+
+- Support `snapshot` flag for view state
+- Support automatically starting animation for new elements
+
+#### Mixins
+
+- Add overload for [`ScrollIntoViewMixin.when`](:)
+- Add mixins to manage class names: [`ClassNameToggleMixin`](:) and [`UnmanagedClassNameMixin`](:)
+- <kbd>fix</kbd> missing calling parent `initElement` method in [`ScrollableMixin`](:)
+
+#### Miscellaneous
+
+- <kbd>fix</kbd> external import in UMD build
+
+## v0.4.8 (2023/11/10)
+
+#### Views
+
+- <kbd>fix</kbd> allow [`useRouteState`](:) and [`renderView`](:) to be used before app ready
+- <kbd>fix</kbd> persist and restore route state correctly upon navigation
+
+## v0.4.7 (2023/10/27)
+
+#### Views
+
+- <kbd>fix</kbd> unable to update nested view container
+- <kbd>fix</kbd> should not redirect away from matched view in nested conta
+
+#### I18n
+
+- Add language parameter to translate callback
+- Return unique translate function for each language from [`useTranslation`](:)
+
+#### Mixins
+
+- Allow using selector for [`AnimateSequenceMixin`](:)
+- <kbd>fix</kbd> incorrect directives set by [`AnimateSequenceMixin`](:)
+
+## v0.4.6 (2023/09/04)
+
+#### Mixins
+
+- Add new methods to [`ScrollableMixin`](:)
+- <kbd>fix</kbd> some properties not aliased when mixin is cloned
+
+## v0.4.5 (2023/07/24)
+
+#### Mixins
+
+- <kbd>fix</kbd> `pagedItemSelector` option should work without `paged` enabled for [`ScrollableMixin`](:)
+
+## v0.4.4 (2023/07/14)
+
+#### Dialog
+
+- Set `.loading` class during onCommit
+- <kbd>fix</kbd> unable to focus dialog content on open
+- <kbd>fix</kbd> return result promise from [`closeDialog`](:)
+
+#### Mixins
+
+- Add [`FocusStateMixin.for`](:)
+- <kbd>fix</kbd> [`FocusStateMixin`](:) cannot retain `.focus-*` class
+
+## v0.4.3 (2023/06/29)
+
+#### Hooks
+
+- <kbd>fix</kbd> [`useRouteParam`](:) should not cause redirection when container is not active
+- <kbd>fix</kbd> [`useRouteParam`](:) should return previous value when container is not active
+
+#### Views
+
+- <kbd>fix</kbd> navigation pending forever when view switched twice
+- <kbd>fix</kbd> unexpected navigation due to nested view container
+- <kbd>fix</kbd> missing properties and methods for context object returned by [`useViewContext`](:) outside view container
+- <kbd>fix</kbd> update view at next beforepageload if redirection triggered
+- <kbd>fix</kbd> delay navigation completion until view rendered
+
+#### Mixins
+
+- Add `persistScroll` option to [`ScrollableMixin`](:)
+
+## v0.4.2 (2023/06/19)
+
+#### Views
+
+- Add `viewContext` to view component props
+- Add `pagechange` event to view context
+
+#### Mixins
+
+- Add [`ScrollIntoViewMixin`](:)
+
+## v0.4.1 (2023/06/07)
+
+#### Hooks
+
+- Add [`useAppReadyState`](:), deprecating `useAppReady`
+
+#### Views
+
+- [`renderView`](:) will now throw if supplied component is not registered
+
+## v0.4.0 (2023/05/24)
+
+#### Views
+
+- View states are now session storage by router
+- Add `navigationType` to view component props
+
+## v0.3.4 (2023/05/16)
+
+#### Views
+
+- Add [`resolvePath`](:) to resolve app path for a given view component
+- Allow passing additional data to view [[link]](/docs/router/react/passing-data)
+- <kbd>fix</kbd> [`linkTo`](:) should return correct browser path base on `urlMode` option
+- <kbd>fix</kbd> loading of view component may not be awaited by navigation promise
+
+#### Mixins
+
+- <kbd>fix</kbd> mixin got pre-disposed in dev strict mode

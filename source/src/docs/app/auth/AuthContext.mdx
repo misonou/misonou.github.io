@@ -1,0 +1,265 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# AuthContext interface
+
+Members of the `AuthContext` interface is injected to app instance by [`app.useAuth`](:).
+
+<MemberList
+    i="app" noRoot
+    ip={['user']}
+    im={['resolveAuthProvider()', 'acquireToken()', 'login()', 'logout()', 'on()']}
+    ev={['login', 'logout', 'sessionEnded']}
+/>
+
+## Instance properties
+
+### `app.user` <Badge.ReadOnly />
+
+Returns an object containing information of current user; or `null` when user is not logged in.
+
+## Instance methods
+
+### `app.acquireToken()`
+
+```javascript
+acquireToken()
+acquireToken(forceRefresh)
+acquireToken(callback)
+```
+
+Gets access token for the logged in user.
+It will try to refresh access token if the current one is already expired.
+
+### Parameters
+
+<dl>
+    #### `forceRefresh` <Badge.Optional />
+    Whether to refresh access token even if it is not expired.
+
+    #### `callback` <Badge.Optional />
+    A callback receiving access token, or `null` if user has not logged in, and a flag indicates whether a refresh could be tried.
+
+</dl>
+
+### Return value
+
+The access token, or `null` if user has not logged in.
+
+### `app.login()`
+
+```javascript
+login()
+login(options)
+```
+
+Logs in using one of the authentication providers.
+
+### Parameters
+
+<dl>
+    #### `options` <Badge.Optional />
+    Options for logging in. If multiple authentication providers exists, either `provider` or
+    combinations of `loginHint`, `authType` or `providerType` that can identify a unique provider must be provided.
+
+    <dl>
+        #### `authType` <Badge.Optional />
+        Authentication method used by the provider, to determine which authentication provider should be used when `provider` is not specified.
+
+        #### `loginHint` <Badge.Optional />
+        Login hint, usually user email, to determine which authentication provider should be used when `provider` is not specified.
+        Supplied value will be passed to authentication provider.
+
+        #### `password` <Badge.Optional />
+        Password to be passed to authentication provider.
+
+        #### `provider` <Badge.Optional />
+        A string as the key to identify which authentication provider should be used.
+
+        #### `providerType` <Badge.Optional />
+        Type of provider, to determine which authentication provider should be used when `provider` is not specified.
+
+        #### `returnPath` <Badge.Optional />
+        Path to visit after logged in.
+
+    </dl>
+</dl>
+
+### Return value
+
+A promise which may resolve after logged in successfully.
+
+### `app.logout()`
+
+```javascript
+logout()
+logout(options)
+```
+
+Logs out the current user.
+
+### Parameters
+
+<dl>
+    #### `options` <Badge.Optional />
+    Options for logging out.
+
+    <dl>
+        #### `returnPath` <Badge.Optional />
+        Path to visit after logged out.
+
+        #### `singleLogout` <Badge.Optional />
+        Whether to also log out from other applications for the same single sign-on session.
+
+    </dl>
+</dl>
+
+### Return value
+
+A promise which may resolve after logged out successfully.
+
+### `app.on()`
+
+```javascript
+on(event, handler)
+on(handlers)
+```
+
+Register event handlers.
+
+### Parameters
+
+<dl>
+    #### `event`
+    Event name.
+
+    #### `handler`
+    Callback to be invoked on such event.
+
+    #### `handlers`
+    A dictionary where each entry represents the event name and callback to be invoked on such event.
+
+</dl>
+
+### `app.resolveAuthProvider()`
+
+```javascript
+resolveAuthProvider(hint)
+```
+
+Resolves which authentication provider would be used based on the input.
+
+### Parameters
+
+<dl>
+    #### `hint`
+    A set of criteria.
+
+    <dl>
+        #### `authType` <Badge.Optional />
+        Authentication method used by the provider, to determine which authentication provider should be used when `provider` is not specified.
+
+        #### `loginHint` <Badge.Optional />
+        Login hint, usually user email, to determine which authentication provider should be used when `provider` is not specified.
+        Supplied value will be passed to authentication provider.
+
+        #### `provider` <Badge.Optional />
+        A string as the key to identify which authentication provider should be used.
+
+        #### `providerType` <Badge.Optional />
+        Type of provider, to determine which authentication provider should be used when `provider` is not specified.
+
+    </dl>
+</dl>
+
+### Return value
+
+An object with the following properties:
+
+<dl>
+    #### `authType`
+    Authentication method used by the provider. It can be the following value:
+
+    <dl>
+        #### `federated`
+        Federated identity provider, like an OpenID connect provider.
+
+        #### `password`
+        Authentication using password.
+
+        #### `publicKey`
+        Passwordless authentication using key-pairs, commonly known as passkeys.
+    </dl>
+
+    #### `key`
+    A unique key identifying the provider.
+
+    #### `providerType`
+    Type of provider, e.g. `msal` for `MsalAuthProvider`.
+
+</dl>
+
+## Events
+
+### `login` event
+
+```javascript
+app.on('login', (e) => { /* ... */ })
+```
+
+Fired when user is logged in.
+
+#### Event properties
+
+<dl>
+    #### `sessionChanged` <Badge.ReadOnly /> <Badge.Version />
+    Gets whether the a different user was logged in in the same browser session.
+    It is always `false` when `login` event is not fired on app start.
+
+    #### `sessionResumed` <Badge.ReadOnly /> <Badge.Version />
+    Gets whether the user has been logged in in the same browser session.
+    It is always `false` when `login` event is not fired on app start.
+
+    #### `user` <Badge.ReadOnly />
+    Gets the user that is currently or has been logged in.
+</dl>
+
+### `logout` event
+
+```javascript
+app.on('logout', (e) => { /* ... */ })
+```
+
+Fired when user is logged out.
+
+#### Event properties
+
+<dl>
+    #### `user` <Badge.ReadOnly />
+    Gets the user that was logged in.
+
+    > Since 0.4.0, `null` is returned when `logout` event is fired on app start, in case like
+    user is logged out through external page and is then redirected back; or
+    previous session is expired at the time current page is loaded.
+</dl>
+
+### `sessionEnded` event
+
+```javascript
+app.on('sessionEnded', (e) => { /* ... */ })
+```
+
+Fired when the current user is logged out in other tabs or by single log-out.
+
+If the event is not handled, user will be logged out immediately.
+
+#### Event properties
+
+No additional properties.
+
+## Version information
+
+<VersionTimeline module="@misonou/brew-extension-auth">
+- **0.1.0** Introduced
+- **0.3.0** `app.resolveAuthProvider()` and `app.login()`: `authType` and `providerType` options
+- **0.4.0** `login` event: `sessionChanged` and `sessionResumed` properties
+</VersionTimeline>

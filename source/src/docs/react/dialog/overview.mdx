@@ -1,0 +1,21 @@
+import BasicExample from "src/components/examples/dialog-basic";
+import ModalExample from "src/components/examples/dialog-modal";
+
+<Module name="brew-js-react" />
+
+# Dialogs
+
+Dialog can be displayed easily by [`createDialog`](:).
+
+```tsx
+const dialog = createDialog(options);
+dialog.open();
+```
+
+<BasicExample />
+
+## Modal dialog
+
+It is possible to open dialog as modal, prevent in-app navigation, or to prompt user before leaving the page:
+
+<ModalExample />

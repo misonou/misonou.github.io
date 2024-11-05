@@ -1,0 +1,42 @@
+<Module name="brew-js/app" />
+
+# Extending app interface
+
+You can also define additional property members and methods as an instance and
+define it during app initializtion by [`app.define`](:).
+
+```typescript
+import brew from "brew-js/app";
+
+interface AppContext {
+    myProp: string;
+    myAction(): void;
+};
+
+brew<AppContext>.with(appContext)((app) => {
+    app.define({
+        myProp: '',
+        myAction() {
+            /* ... */
+        }
+    });
+});
+```
+
+You can also predefine the extra properties and method as a seperate object and supply it to `brew.with`.
+However it is more likely prone to circular type inference issue in TypeScript.
+
+```typescript
+import brew from "brew-js/app";
+
+const appContext = {
+    myProp: 'myValue'
+    myAction() {
+        /* ... */
+    }
+};
+
+brew.with(appContext)((app) => {
+    app.myAction();
+});
+```

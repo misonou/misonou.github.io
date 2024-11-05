@@ -1,0 +1,43 @@
+<Module name="zeta-dom-react" />
+
+# useUnloadEffect
+
+Registers a cleanup callback to be invoked when the component is being unmounted,
+or the document is being unloaded.
+
+## Syntax
+
+```javascript
+useUnloadEffect(callback)
+```
+
+<ImportHint
+    name="useUnloadEffect"
+    module="zeta-dom-react"
+    require="useUnloadEffect"
+    global="zeta.react.useUnloadEffect" />
+
+### Parameters
+
+<dl>
+    #### `callback`
+    Callback to be invoked, receiving a boolean indicating if the page is still cached.
+    The flag is always `false` if the component is being unmounted.
+
+    ```tsx
+    function Component() {
+        useUnloadEffect(persisted => {
+            if (persisted) {
+                // user is leaving the page and
+                // the page is cached in backword/forward cache
+            }
+        });
+    }
+    ```
+</dl>
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.4.8** Introduced
+</VersionTimeline>

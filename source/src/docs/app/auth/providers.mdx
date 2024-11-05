@@ -1,0 +1,99 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# Authentication providers
+
+Currently supported single sign-on providers:
+- Password authentication using fetch
+- MSAL.js (Microsoft Entra ID)
+
+## Password authentication
+
+Now it is easily implementable with [`AuthProvider`](:) and `JSONClient`.
+
+Examples are in use [`src/examples`](https://github.com/misonou/brew-extension-auth/tree/master/src/examples) folder.
+
+```typescript
+import { AuthProvider } from "@misonou/brew-extension-auth";
+import MyClient from "./MyClient";
+
+app.useAuth({
+    providers: [
+        AuthProvider.from('my', new MyClient())
+    ],
+    /* ... */
+});
+```
+
+## MSAL.js
+
+> Requires to install [`@azure/msal-browser`](https://www.npmjs.com/package/@azure/msal-browser).
+
+The simplest way to create a provider is to have your client ID, authority and scopes:
+
+```typescript
+import MsalAuthProvider from "@misonou/brew-extension-auth/msal";
+
+MsalAuthProvider.create('microsoft',
+    clientId, // Client ID on App registration
+    'https://login.microsoftonline.com/common', // can be organizations or your tenant's authority
+    ['openid', 'profile']);
+```
+
+The MSAL applications will be initialized with default configuration:
+
+```typescript
+// it must be before calling MsalAuthProvider.create
+MsalAuthProvider.setDefault({
+    auth: { /* ... */ },
+    cache: { /* ... */ },
+    logging: { /* ... */ },
+    telemetry: { /* ... */ }
+});
+```
+
+You can also create provider with more flexibility by creating PCA yourself:
+
+```typescript
+import { PublicClientApplication } from "@azure/msal-browser";
+import MsalAuthProvider from "@misonou/brew-extension-auth/msal";
+
+MsalAuthProvider.create('microsoft',
+    new PublicClientApplication({ /* ... */ }),
+    { scopes: ['openid', 'profile'] });
+```
+
+## Using multiple providers
+
+When there are multiple providers, either `provider` or `loginHint` must be provided to [`app.login`](:) so that
+the correct provider can be resolved.
+
+```typescript
+// setup
+app.useAuth({
+    providers: [
+        MsalAuthProvider.create('microsoft1', clientId1, authority1, scopes),
+        MsalAuthProvider.create('microsoft2', clientId2, authority2, scopes),
+    ],
+    /* ... */
+});
+
+// login
+app.login({ provider: 'microsoft1' }); //or
+app.login({ loginHint: 'test@tenant-domain1.com' });
+```
+
+> Note that the first suitable provider will be picked, therefore
+  provider that accept all login IDs should be put at last.
+
+You can also use [`app.resolveAuthProvider`](:) with `provider` or `loginHint`
+in other circumstances:
+
+```typescript
+app.resolveAuthProvider({ provider: 'microsoft1' }); //or
+app.resolveAuthProvider({ loginHint: 'test@tenant-domain1.com' });
+```
+
+## See also
+
+- [`AuthProvider`](:)
+- [`MsalAuthProvider`](:)

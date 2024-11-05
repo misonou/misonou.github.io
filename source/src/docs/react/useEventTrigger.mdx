@@ -1,0 +1,56 @@
+<Module name="zeta-dom-react" />
+
+# useEventTrigger
+
+Triggers re-render when specific event is emitted.
+
+## Syntax
+
+```javascript
+useEventTrigger(obj, event)
+useEventTrigger(obj, event, selector)
+useEventTrigger(obj, event, selector, initialState)
+```
+
+<ImportHint
+    name="useEventTrigger"
+    module="zeta-dom-react"
+    require="useEventTrigger"
+    global="zeta.react.useEventTrigger" />
+
+### Parameters
+
+<dl>
+    #### `obj`
+    An event target.
+
+    #### `event`
+    A whitespace separated list of event types.
+
+    #### `selector` <Badge.Optional />
+    A callback that derives state.
+
+    #### `initialState` <Badge.Optional />
+    Initial state, or a function that returns the initial state.
+
+</dl>
+
+### Return value
+
+If `selector` is not given, `undefined` is always returned.
+
+If `selector` is given, it returns
+- derived state returned from the `selector` callback if event has been fired; or
+- initial state if `initialState` is given and the event has never been fired; or
+- `undefined` if `initialState` is not given and the event has never been fired.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.5.3** Introduced
+</VersionTimeline>
+
+## See also
+
+- [`useUpdateTrigger`](:)
+- [`useValueTrigger`](:)

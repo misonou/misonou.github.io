@@ -1,0 +1,74 @@
+import Example from "src/components/examples/mixin-scrollintoview"
+
+<Module name="brew-js-react" />
+
+# ScrollIntoViewMixin
+
+Scroll the applied element into view on conditions.
+
+```tsx
+function View() {
+    const scrollIntoView = useScrollIntoViewMixin();
+    return (
+        <div {...Mixin.use(scrollIntoView.when([]))}>
+            {/* ... */}
+        </div>
+    );
+}
+```
+
+## Syntax
+
+```javascript
+useScrollIntoViewMixin()
+```
+
+<ImportHint
+    name="useScrollIntoViewMixin"
+    module="brew-js-react"
+    require="useScrollIntoViewMixin"
+    global="brew.react.useScrollIntoViewMixin" />
+
+
+### Return value
+
+A [`ScrollIntoViewMixin`](:) instance.
+
+## ScrollIntoViewMixin class
+
+> Mixin should be created using [`useScrollIntoViewMixin`](:) and applied to element by [`Mixin.use`](:).
+
+<MemberList
+    i="ScrollIntoViewMixin"
+    im={['when()']} />
+
+### `ScrollIntoViewMixin.when()`
+
+```javascript
+when(flag)
+when(deps)
+```
+
+Enables scrolling element into view in conditions.
+
+#### Parameters
+
+<dl>
+    #### `flag` <Badge.Version />
+    A boolean value that when it changes to `true`, the associated element will be scrolled into view.
+
+    #### `deps`
+    An array containing values that when one of them changes, the associated element will be scrolled into view.
+
+</dl>
+
+## Example: Scroll to target section
+
+<Example />
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.4.2** Introduced
+- **0.5.0** `ScrollIntoViewMixin.when(flag)`
+</VersionTimeline>

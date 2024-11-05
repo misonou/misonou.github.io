@@ -1,0 +1,98 @@
+<Module name="brew-js/extension/router" />
+
+# Router: beforepageload event
+
+It is similar to [`navigate` event](/docs/router/navigate-event) but is after the following router properties has been updated:
+
+- [`app.path`](:)
+- [`app.route`](:)
+- [`app.page`](:)
+- [`app.historyStorage.current`](:app.historyStorage)
+
+Also it is possible to delay the completion of navigation process:
+
+```typescript
+app.on('beforepageload', e => {
+    e.waitFor(someAsyncOperation());
+});
+```
+
+Similarly, any further navigation during this phase will cause the previous navigation to be cancelled.
+
+## BeforePageLoadEvent interface
+
+<MemberList
+    i="BeforePageLoadEvent"
+    extends={['ZetaEventBase']}
+    ip={['pathname', 'oldPathname', 'oldStateId', 'newStateId', 'route', 'data', 'navigationType']}
+    im={['waitFor()']} />
+
+### `BeforePageLoadEvent.data` <Badge.ReadOnly />
+
+Retreives the data passed to [`app.navigate`](:).
+
+### `BeforePageLoadEvent.navigationType` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the type of navigation. It has the following possible values:
+
+<dl>
+    #### `navigate`
+    Any case besides the following.
+
+    #### `resume`
+    Indicating that the previous journey has been resumed. See [Resuming journey](/docs/router/resume-journey).
+
+    #### `reload`
+    Indicating that the page is reloaded.
+
+    #### `back_forward`
+    Indicating that user has traversed back or forward through browser's history.
+</dl>
+
+### `BeforePageLoadEvent.newStateId` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the unique state ID for the page going to navigate.
+
+### `BeforePageLoadEvent.oldPathname` <Badge.ReadOnly /><Badge.Version />
+
+Gets the path where user is navigating from.
+
+### `BeforePageLoadEvent.oldStateId` <Badge.ReadOnly /><Badge.Version />
+
+Gets the unique state ID for the page about to leave.
+
+### `BeforePageLoadEvent.pathname` <Badge.ReadOnly />
+
+Retreives the app path being loaded.
+
+### `BeforePageLoadEvent.route` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the route parameters extracted from the path navigating to.
+
+### `BeforePageLoadEvent.waitFor()` <Badge.Version />
+
+```javascript
+e.waitFor(promise)
+```
+
+#### Parameters
+
+<dl>
+    #### `promise`
+    Defers the navigation so that the navigation result promise resolves after
+    the given promise.
+</dl>
+
+#### Return value
+
+A boolean indicating whether the operation is deferred.
+
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.3.11** Introduced
+- **0.3.12** `waitFor()`
+- **0.5.0** `navigationType`
+- **0.5.13** `newStateId`<br/>`oldPathname`<br/>`oldStateId`<br/>`route`
+</VersionTimeline>

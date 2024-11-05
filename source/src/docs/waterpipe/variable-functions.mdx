@@ -1,0 +1,55 @@
+<Module name="waterpipe" />
+
+# Variable functions
+
+### `as`
+
+Stores the input to global variable with the given name, and outputs the value.
+
+<WaterpipeExample
+    data={{value:'foo'}}
+    template={`
+{{value as tmpvar}}
+{{tmpvar}}`}
+/>
+
+
+### `let`
+
+Defines global variable(s) with given names and values.
+In contrast to `as`, `let` does not return values to output.
+
+<WaterpipeExample
+    data={{value:'foo'}}
+    template={`
+{{let tmpvar value}}
+{{tmpvar}}`}
+/>
+
+<WaterpipeExample
+    data={{value:'foo'}}
+    template={`
+{{let tmpvar1 [ value upper ] 
+      tmpvar2 [ value length ]}}
+{{tmpvar1}}
+{{tmpvar2}}`}
+/>
+
+
+## Global variable scope
+
+Global variables, although are readable everywhere even in template inclusion,
+are overwritable within the template which they are declared only.
+
+```javascript
+waterpipe.pipes.innerTemplate = '{{tmpvar + 1 as tmpvar}}';
+```
+
+<WaterpipeExample
+    pipes={{ innerTemplate: '{{tmpvar + 1 as tmpvar}}' }}
+    template={`
+{{let tmpvar 1}}
+Outside: {{tmpvar}}
+Inside:  {{innerTemplate}}
+Outside: {{tmpvar}}`}
+/>

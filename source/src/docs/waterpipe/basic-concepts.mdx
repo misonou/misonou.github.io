@@ -1,0 +1,20 @@
+<Module name="waterpipe" />
+
+# Pipe, statement and template
+
+From a simple waterpipe templating example:
+
+<WaterpipeExample
+    data={{ value: 1 }}
+    template={`
+{{if value odd}}
+    The value is {{value}}
+{{/if}}`}
+/>
+
+A **pipe** is a single expression that returns data, as `{{value}}` outputs `1` in the above example.
+
+A **statement**, on the other hand, provides flow controls, like the `{{if ...}}` statement above.
+
+A **template** consists of one or more pipes or statements, as well as raw output (such as the
+phrase `The value is` in the above example).

@@ -1,0 +1,91 @@
+<Module name="waterpipe" />
+
+# Special variables
+
+## Dynamic data
+
+~~2.4~~
+
+<WaterpipeExample
+    examples={['@random', '@now', '@today']}
+/>
+
+<dl>
+    #### `@random`
+    A random number between 0 and 1.
+
+    #### `@now`
+    Timestamp of current time.
+
+    #### `@today`
+    Timestamp of today's date.
+</dl>
+
+## Scopes
+
+There are several special variables to access outer scopes,
+which can be used to access variables or properties masked by
+properties from current scope.
+
+<dl>
+    #### `@global`
+    Global object passed to waterpipe.
+    <WaterpipeExample
+        data={{ data: 1 }}
+        globals={{ data: 2 }}
+        examples={['data', '@global.data']}
+    />
+
+    #### `@root` `_`
+    Object or value passed to waterpipe.
+
+    > The shorthand `_` must be in evaluated form (`$_`) unless at the start of a pipe.
+
+    <WaterpipeExample
+        data={{ data: 1, values: [{ data: 2 }] }}
+        template={`
+{{foreach values}}
+    {{data}}
+    {{_.data}}
+{{/foreach}}
+`}
+    />
+
+    #### `@0` `.`
+    Current object or value.
+
+    > The shorthand `.` must be in evaluated form (`$.`) unless at the start of a pipe.
+
+    #### `@1`, `@2`, ...
+    Object or value in outer scope.
+
+    <WaterpipeExample
+        data={{ data: 1, values: [{ data: 2 }] }}
+        template={`
+{{foreach values}}
+    @0.data = {{@0.data}}
+    @1.data = {{@1.data}}
+    @2.data = {{@2.data}}
+{{/foreach}}
+`}
+    />
+</dl>
+
+## Loops
+
+See [`foreach` statement](/docs/waterpipe/foreach-statement)
+
+<dl>
+    #### `#key` `#`
+    Key of current iteration, it is the same as `#index` for arrays.
+
+    > The shorthand `#` must be in evaluated form (`$#`) unless at the start of a pipe.
+
+    #### `#index` `##`
+    Zero-based index of current iteration.
+
+    > The shorthand `##` must be in evaluated form (`$##`) unless at the start of a pipe.
+
+    #### `#count`
+    Number of entries.
+</dl>

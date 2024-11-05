@@ -1,0 +1,51 @@
+<Module name="zeta-dom-react" />
+
+# ToggleField class
+
+The `ToggleField` class are not supposed to be instantiate manually. Instead it is used to
+augment extra functionalities when used with [`useFormField`](:).
+
+<ImportHint
+    name="ToggleField"
+    module="zeta-dom-react"
+    require="ToggleField"
+    global="zeta.react.ToggleField"
+    expanded />
+
+<MemberList i="ToggleField" />
+
+## ToggleFieldProps interface
+
+<MemberList
+    i="ToggleFieldProps"
+    extends="FormFieldProps"
+    ip={['checked']} />
+
+### `ToggleFieldProps.checked`
+
+Whether the field is checked.
+
+## ToggleFieldState interface
+
+<MemberList
+    i="ToggleFieldState"
+    extends={['FormFieldState']}
+    im={['toggleValue()']}
+/>
+
+## Instance methods
+
+### `ToggleFieldState.toggleValue()` <Badge.Version />
+
+```javascript
+toggleValue()
+```
+
+Toggles the checked state.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.3.5** Introduced
+- **0.4.12** `ToggleFieldState.toggleValue()`
+</VersionTimeline>

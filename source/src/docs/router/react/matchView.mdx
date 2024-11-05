@@ -1,0 +1,47 @@
+<Module name="brew-js-react" />
+
+# matchView
+
+Gets the view component that matches the specified path, within the given set of views.
+
+## Syntax
+
+```javascript
+matchView()
+matchView(views)
+matchView(views0)
+matchView(views0, views1)
+matchView(views0, views1, /* … ,*/ viewsN)
+matchView(path)
+matchView(path, views)
+matchView(path, views0)
+matchView(path, views0, views1)
+matchView(path, views0, views1, /* … ,*/ viewsN)
+```
+
+<ImportHint
+    name="matchView"
+    module="brew-js-react"
+    require="matchView"
+    global="brew.react.matchView" />
+
+### Parameters
+
+<dl>
+    #### `views`
+    A list of view components created by [`registerView`](:).
+
+    #### `views0` … `viewsN` <Badge.Version />
+    View component created by [`registerView`](:).
+
+    #### `path`
+    A valid path that could navigate to.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.2.4** Introduced
+- **0.5.5** Overloads `matchView(...views)` and `matchView(path, ...views)`
+</VersionTimeline>

@@ -1,0 +1,84 @@
+<Module name="@misonou/react-app-utils" />
+
+# fuzzyMatch
+
+Returns a list of matched items using fuzzy logic.
+
+## Syntax
+
+```javascript
+fuzzyMatch(haystack, needle)
+fuzzyMatch(haystack, needle, options)
+```
+
+<ImportHint
+    name="fuzzyMatch"
+    module="@misonou/react-app-utils"
+/>
+
+### Parameters
+
+<dl>
+    #### `haystack`
+    A list of items to match against.
+
+    #### `needle`
+    Keyword to be matched.
+
+    #### `options` <Badge.Optional />
+    A dictionary containing options specifying the matching behavior.
+
+    <dl>
+        #### `returnAll` <Badge.Optional /> <Badge.Version />
+        Whether to include all items in the returned list.
+        Items that have no matches will appear last when `sortByRelevancy` is set.
+
+        #### `sortByRelevancy` <Badge.Optional />
+        Whether to sort the list of matched items by relevancy.
+        Items with longest matched substring will appear first.
+
+    </dl>
+</dl>
+
+### Return value
+
+An array containing one or more [`MatchedItem`](:).
+
+## MatchableItem interface
+
+<MemberList
+    i="MatchableItem"
+    ip={['displayText', 'matchingText', 'value']}
+/>
+
+### `MatchableItem.displayText`
+
+Specifies primary text to match against search keyword.
+Primary text will have matched substring highlighted, accessible by [`MatchedItem.formattedText`](:).
+
+### `MatchableItem.matchingText` <Badge.Optional />
+
+Specifies additional texts to match against search keyword.
+
+### `MatchableItem.value`
+
+User defined value representing the item.
+
+## MatchedItem interface
+
+<MemberList
+    extends={['MatchableItem']}
+    i="MatchedItem"
+    ip={['displayText', 'formattedText', 'value']}
+/>
+
+### `MatchedItem.formattedText` <Badge.ReadOnly />
+
+Gets the formatted text where matched substring found in [`MatchableItem.displayText`](:) is highlighted.
+
+## Version information
+
+<VersionTimeline module="@misonou/react-app-utils">
+- **1.3.0** Introduced
+- **1.5.0** `returnAll` option
+</VersionTimeline>

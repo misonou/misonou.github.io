@@ -1,0 +1,35 @@
+<Module name="zeta-dom/domLock" />
+
+# notifyAsync
+
+Associates an asynchronous operation with the specified element.
+
+The element, and its parent elements that has been called with [`lock`](:) will receive `asyncStart` and `asyncEnd` events when    
+the promise is the first one associated to those elements and is the last one resolves.
+
+## Syntax
+
+```javascript
+notifyAsync(element, promise)
+notifyAsync(element, promise, oncancel)
+```
+
+<ImportHint
+    name="notifyAsync"
+    module="zeta-dom/domLock"
+    global="zeta.dom.notifyAsync"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `promise`
+    A promise which resolves or rejects when operation is completed.
+
+    #### `oncancel` <Badge.Optional />
+    An optional callback to be called when the operation is being cancelled.
+
+</dl>

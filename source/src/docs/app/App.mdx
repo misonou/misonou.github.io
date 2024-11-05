@@ -1,0 +1,190 @@
+<Module name="brew-js/app" />
+
+# App interface
+
+<MemberList
+    i="app" noRoot
+    ip={['element', 'ready', 'readyState']}
+    im={['define()', 'detect()', 'when()', 'matchElement()', 'beforeInit()', 'beforeUpdate()', 'emit()', 'isElementActive()', 'halt()']}
+    ev={['ready']}
+/>
+
+## Instance properties
+
+### `app.element` <Badge.ReadOnly />
+
+Gets the root element associated with the app.
+
+### `app.ready` <Badge.ReadOnly />
+
+Gets the promise which is resolved when app is ready.
+
+### `app.readyState` <Badge.ReadOnly />
+
+Gets the ready state of the app instance.
+
+## Instance methods
+
+### `app.beforeUpdate()`
+
+```javascript
+app.beforeUpdate(callback)
+```
+
+Registers handler to perform asychronous operations when DOM is about to change.
+If the handler returns a promise, DOM changes are delayed until the promise resolves.
+
+### Parameters
+
+<dl>
+    #### `callback`
+    A callback function which receives a list of updates.
+
+</dl>
+
+### `app.define()`
+
+```javascript
+app.define(props)
+```
+
+Defines properties and methods on the app instance.
+
+### Parameters
+
+<dl>
+    #### `props`
+</dl>
+
+### `app.detect()`
+
+```javascript
+app.detect(names)
+app.detect(names, callback)
+```
+
+Performs feature detections before the app starts.
+
+### Parameters
+
+<dl>
+    #### `names`
+    Names of feature.
+
+    #### `callback` <Badge.Optional />
+</dl>
+
+### `app.emit()`
+
+```javascript
+app.emit(event)
+app.emit(event, data)
+app.emit(event, data, options)
+app.emit(event, target)
+app.emit(event, target, data)
+app.emit(event, target, data, options)
+```
+
+### Parameters
+
+<dl>
+    #### `event`
+    #### `data` <Badge.Optional />
+    #### `target`
+    #### `options` <Badge.Optional />
+</dl>
+
+### `app.matchElement()`
+
+```javascript
+app.matchElement(selector, handler)
+```
+
+Registers handler to be fired when each matched element is being mounted.
+
+### Parameters
+
+<dl>
+    #### `selector`
+    A valid CSS selector identifying elements.
+
+    #### `handler`
+    A callback function which receives is the matched element.
+
+</dl>
+
+### `app.beforeInit()`
+
+```javascript
+app.beforeInit(promise)
+```
+
+Postpones app start until the promise is fulfilled.
+
+When all operations have completed, [`app.readyState`](:) will be set to `ready`
+and [`app.ready`](:) will resolve. When error is thrown in callback or a promise rejects,
+the app will halt and never be started, whereas [`app.readyState`](:) will be set to `error`.
+
+### Parameters
+
+<dl>
+    #### `promise`
+    A promise-like object or a callback that returns promise-like object when called.
+
+</dl>
+
+### `app.halt()`
+
+```javascript
+app.halt()
+```
+
+Postpones app start indefinitely.
+
+It is intended to avoid unnecessary rendering when the page is about to navigate away during app init.
+It has no effects if initialization has ended, i.e. `AppInstance.readyState` is `ready` or `error`.
+
+
+### `app.isElementActive()`
+
+```javascript
+app.isElementActive(element)
+```
+
+Gets whether a given element is part of the active layout of the current path.
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+</dl>
+
+### `app.when()`
+
+```javascript
+app.when(promise, callback)
+```
+
+Registers a callback that will be fired only when the promise resolves to a truthy value.
+App start is postponed until the promise is fulfilled.
+
+### Parameters
+
+<dl>
+    #### `promise`
+    A promise-like object.
+
+    #### `callback`
+    A callback to be fired.
+
+</dl>
+
+## Events
+
+### `ready` event
+
+Event is fired when [`app.readyState`](:) changed from `init` to `ready`, and the promise returned from [`app.ready`](:) is now resolved.
+
+All extensions are initialized by this time.

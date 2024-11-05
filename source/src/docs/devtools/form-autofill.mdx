@@ -1,0 +1,49 @@
+import Example from "src/components/examples/form-autofill";
+
+<Module name="@misonou/react-app-utils" />
+
+# Form autofiller
+
+Using autofiller, by <kbd>Ctrl</kbd> clicking form area, a select box will be shown,
+allowing selecting a set of form data to be filled.
+
+## Enabling enable autofiller
+
+```typescript
+/// dev.ts
+import "@misonou/react-app-utils/formAutofiller";
+```
+
+To make sure the autofiller and mock data are not bundled with production build,
+apply the `false` alias in webpack configuration for those files:
+
+```typescript
+/// rewired.config.js
+module.exports = {
+    webpack: function (config, env) {
+        return {
+            resolve: {
+                alias: {
+                    ...(env === 'production' ? {
+                        // exclude all dev and mock data from build
+                        [path.resolve('./__mock_data.json')]: false
+                        [path.resolve('./dev.ts')]: false
+                    } : undefined),
+                }
+            }
+        }
+    }
+};
+```
+
+## Example
+
+To use autofiller in a specific form, use the [`FormDevToolMixin`](:) mixin:
+
+<Example />
+
+> Only data entry associated to a visible form element will be filled.
+
+## See also
+
+- [`FormDevToolMixin.promptAutofill`](:)

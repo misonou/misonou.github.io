@@ -1,0 +1,87 @@
+import { TextInput } from "src/components/controls";
+import { FaMobileAlt, FaRegCopy } from "react-icons/fa";
+import tsx from "!raw-loader!src/components/controls/TextInput.tsx";
+
+<Module name="zeta-dom-react" />
+
+# TextInput
+
+<TextInput label="Name" />
+
+```tsx
+<TextInput label="Name" />
+```
+
+## Example: Placeholder
+
+<TextInput label="Price" placeholder="Enter price" />
+
+```tsx
+<TextInput label="Price" placeholder="Enter price" />
+```
+
+## Example: Adornment
+
+<TextInput label="Name" adornment="$" />
+
+```tsx
+<TextInput label="Name" adornment="$" />
+```
+
+## Example: Icon
+
+<TextInput label="Name" icon={FaMobileAlt} />
+
+```tsx
+<TextInput label="Name" icon={FaMobileAlt} />
+```
+
+## Example: Limit character and length
+
+<TextInput label="Digit only" allowChar="0-9" maxLength={8} />
+
+```tsx
+<TextInput label="Digit only" allowChar="0-9" maxLength={8} />
+```
+
+## Example: Native input type
+
+<TextInput label="Phone number" type="tel" />
+
+```tsx
+<TextInput label="Phone number" type="tel" />
+```
+
+## Example: Password with toggle
+
+<TextInput label="Password" type="password" />
+
+```tsx
+<TextInput label="Password" type="password" />
+```
+
+## Example: Readonly input
+
+<TextInput label="Readonly with action" readOnly toggle={FaRegCopy} />
+
+```tsx
+<TextInput label="Readonly with action" readOnly toggle={FaRegCopy} />
+```
+
+## Example: Forced error state
+
+<TextInput label="Field with error" error="Error" />
+
+```tsx
+<TextInput label="Field with error" error="Error" />
+```
+
+## Source code
+
+<CodeBlock children={tsx} className="language-tsx" />
+
+## See also
+
+- [`TextField`](:)
+- [`TextFieldProps`](:)
+- [`TextFieldState`](:)

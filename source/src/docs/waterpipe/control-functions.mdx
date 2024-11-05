@@ -1,0 +1,24 @@
+<Module name="waterpipe" />
+
+# Control functions
+
+
+### `|`
+
+Concatenates the piped value and the following evaluated values into an array. Array elements are flatten down. In addition, `undefined` and `null` elements are removed from the result array.
+
+<WaterpipeExample
+    data={{ value: 1, array: [2,3,4] }}
+    examples={['value | value', 'value | array', 'value | undefined']}
+/>
+
+### `&&`, `||`
+
+Performs short-circuited logical *AND* and *OR* operation. The two logical pipe functions, like any other pipe functions, no precedence over the other and are evaluated from left to right.
+
+Nested logical operations can be done by function arguments.
+
+<WaterpipeExample
+    data={{ value: 1, array: [2,3,4] }}
+    examples={['value == 1 && array any odd', 'value == 0 || array any odd']}
+/>

@@ -1,0 +1,29 @@
+<Module name="waterpipe" />
+
+# Statement: if
+
+The `if`, `elseif` and `else` statement is available for branching logics.
+
+<WaterpipeExample
+    data={{value: 1, array: [1,2,3]}}
+    template={`
+{{if value odd}}
+    Value is odd.
+{{elseif array any [ odd ]}} 
+    Some numbers in the array is odd.
+{{else}}
+    There is no odd numbers.
+{{/if}}`}
+/>
+
+## Compound logic
+
+The `&&` and `||` pipe functions are available for compound logic.
+
+<WaterpipeExample
+    data={{value: 1, array: [1,3,5]}}
+    template={`
+{{if value odd && array all [ odd ]}}
+    All numbers are odd.
+{{/if}}`}
+/>

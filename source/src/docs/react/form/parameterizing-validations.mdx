@@ -1,0 +1,48 @@
+<Module name="zeta-dom-react" />
+
+# Parameterizing validations
+
+By default [`useFormField`](:) only checks for `required` property. Any other validations have to be done through the `onValidate` option.
+
+However, it is useful to validators activated through meaningful props instead of having to passing
+validator functions to `onValidate` every time using the component.
+
+For example, you might want these props available for a text field:
+
+```typescript
+interface TextFieldProps extends FormFieldProps<string> {
+    required?: boolean;
+    maxLength?: number;
+    pattern?: string;
+}
+```
+
+By validator factory and combining validators, it will be easy to parameterize common validations:
+
+```tsx
+interface TextInputProps extends FormFieldProps<string> {
+    required?: boolean;
+    maxLength?: number;
+    pattern?: string;
+}
+
+function TextInput(props: TextInputProps) {
+    props = {
+        ...props,
+        onValidate: combineValidators(
+            props.required && validator.required(),
+            props.maxLength && validator.maxLength(props.maxLength),
+            props.pattern && validator.pattern(props.pattern),
+            props.onValidate
+        )
+    }
+    const { value, error } = useFormField(props, '');
+    /* ... */
+}
+```
+
+That consumer can simply do:
+
+```tsx
+<TextInput required minLength="10" pattern="\\d+" />
+```

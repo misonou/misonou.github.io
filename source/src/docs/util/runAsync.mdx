@@ -1,0 +1,48 @@
+<Module name="zeta-dom" />
+
+# runAsync
+
+Associates an asynchronous operation with the specified element.
+
+## Syntax
+
+```javascript
+runAsync(element, callback)
+```
+
+<ImportHint
+    name="runAsync"
+    module="zeta-dom/domLock"
+    global="zeta.dom.runAsync"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `callback`
+    A callback that perform asynchronous operation.
+
+    The callback receive a single argument with the following property:
+
+    <dl>
+        #### `signal`
+        An `AbortSignal` object, which will receive notification when cancellation is requested and
+        is not rejected.
+    </dl>
+
+</dl>
+
+### Return value
+
+A promise which
+- forwards result returned from callback, or
+- rejects if cancellation is requested and is not rejected.
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.5.0** Introduced
+</VersionTimeline>

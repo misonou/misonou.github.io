@@ -1,0 +1,44 @@
+<Module name="zeta-dom-react" />
+
+# FormContextProvider component
+
+Provides [`FormContext`](:) to field controls.
+
+## Syntax
+
+```tsx
+<FormContextProvider value={form}>
+    {children}
+</FormContextProvider>
+```
+
+<ImportHint
+    name="FormContextProvider"
+    module="zeta-dom-react"
+    require="FormContextProvider"
+    global="zeta.react.FormContextProvider" />
+
+### Properties
+
+<dl>
+    #### `value`
+    A [`FormContext`](:) object.
+
+    #### `children`
+    React node, or a callback that returns react node.
+</dl>
+
+## Example
+
+```tsx
+import { FormContextProvider, useFormContext } from "zeta-dom-react";
+
+function Component() {
+    const form = useFormContext();
+    return (
+        <FormContextProvider value={form}>{/* ... */}</FormContextProvider>
+    );
+}
+```
+
+> It is recommend to use the [`<Form>`](:) component.

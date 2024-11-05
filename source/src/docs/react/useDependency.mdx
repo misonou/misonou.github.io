@@ -1,0 +1,116 @@
+<Module name="zeta-dom-react" />
+
+# useDependency
+
+Gets data sent from producer or sends data to consumer.
+
+> Since v0.5.10, it is preferred to use [`Dependency.Consumer`](:) over the [`Dependency`](:) itself
+  for a consumer.
+
+```typescript
+const dependency = createDependency(defaultValue);
+
+function Provider() {
+    useDependency(dependency.Provider, produceSomeValue());
+    /* ... */
+}
+
+function Consumer() {
+    const value = useDependency(dependency.Consumer);
+    /* ... */
+}
+```
+
+## Syntax
+
+```javascript
+useDependency(dependency)
+useDependency(dependency, value)
+useDependency(dependency, value, deps)
+useDependency(dependency, factory)
+useDependency(dependency, factory, deps)
+```
+
+<ImportHint
+    name="useDependency"
+    module="zeta-dom-react"
+    require="useDependency"
+    global="zeta.react.useDependency" />
+
+### Parameters
+
+<dl>
+    #### `dependency`
+    A dependency consumer or provider object returned from [`createDependency`](:).
+
+    #### `value`
+    Data to be sent to consumer.
+
+    #### `factory`
+    A callback that computes data to be sent to consumer.
+
+    #### `deps` <Badge.Optional />
+    If present, new data is only sent to consumer if the values in the list change.
+</dl>
+
+### Return value
+
+Either the following is returned:
+- data sent from provider as consumer; or
+- [`DependencyProviderContext`](:) object as provider.
+
+## Using dependency list in provider
+
+By default, provider will notify consumer if the supplied value is a different value or object.
+
+When passing an object literal on the fly for composite state, it is recommended to also
+pass a dependency list to reduce re-rendering of the consumer component:
+
+```typescript
+function Producer() {
+    const data = useState(someData);
+    const action = () => { /* ... */};
+
+    // it is important to pass data in dependency list
+    // otherwise consumer will rerender every time after producer
+    useDependency(dependency.Provider, { data, action }, [data]);
+}
+```
+
+`useDependency` can also take a factory callback with dependency list like `useMemo`, e.g.:
+
+```typescript
+useDependency(dependency.Provider, () => someValue, [someDep]);
+```
+
+is the same as
+
+```typescript
+const value = useMemo(() => someValue, [someDep]);
+useDependency(dependency.Provider, value);
+```
+
+
+## DependencyProviderContext interface
+
+<MemberList
+    i="DependencyProviderContext"
+    ip={['value']}
+/>
+
+### `DependencyProviderContext.value` <Badge.ReadOnly />
+
+Gets the data passed to `useDependency`.
+
+> If there are multiple providers providing value at the same time,
+  only the one from earliest mounted component will be passed to consumer.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.5.6** Introduced
+</VersionTimeline>
+
+## See also
+
+- [`createDependency`](:)

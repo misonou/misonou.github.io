@@ -1,0 +1,52 @@
+<Module name="zeta-dom-react" />
+
+# useFormField hook
+
+Registers a field in the current [`FormContext`](:).
+
+## Syntax
+
+```typescript
+useFormField(props)
+useFormField(props, defaultValue)
+useFormField(fieldType, props)
+useFormField(fieldType, props, defaultValue)
+```
+
+<ImportHint
+    name="useFormField"
+    module="zeta-dom-react"
+    require="useFormField"
+    global="zeta.react.useFormField" />
+
+### Parameters
+
+<dl>
+    #### `props`
+    An object with properties [`FormFieldProps`](:).
+
+    #### `defaultValue` <Badge.Optional />
+    Initial value if when the field component is mounted:
+    - `value` is not set on `props`
+    - field is unnamed or value is not present in [`FormContext.data`](:).
+
+    If this is not specified, and `fieldType` is specified, `defaultValue` on such field type is used.
+
+    #### `fieldType` <Badge.Optional />
+    A field type constructor. See [Field types](/docs/react/form/field-types).
+</dl>
+
+### Return value
+
+An object with [`FormFieldState`](:) interface.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.1.0** Introduced
+- **0.3.5** `fieldType` parameter
+</VersionTimeline>
+
+## See also
+
+- [Field types](/docs/react/form/field-types)

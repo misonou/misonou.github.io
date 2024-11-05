@@ -1,0 +1,125 @@
+<Module name="zeta-dom" />
+
+# Rect class
+
+The `Rect` class represents a bounding region on the screen.
+
+It is returned by numerous helper functions:
+
+- [`getRect`](:)
+- [`getContentRect`](:)
+- [`mergeRect`](:)
+- [`toPlainRect`](:)
+
+<MemberList
+    i="Rect"
+    ip={['width', 'height', 'centerX', 'centerY', 'top', 'left', 'right', 'bottom']}
+    im={['collapse()', 'translate()', 'expand()']}
+/>
+
+## Instance properties
+
+### `Rect.bottom`
+
+### `Rect.centerX` <Badge.ReadOnly />
+
+### `Rect.centerY` <Badge.ReadOnly />
+
+### `Rect.height` <Badge.ReadOnly />
+
+### `Rect.left`
+
+### `Rect.right`
+
+### `Rect.top`
+
+### `Rect.width` <Badge.ReadOnly />
+
+## Instance methods
+
+### `Rect.collapse()`
+
+```javascript
+collapse(side)
+collapse(side, offset)
+```
+
+Returns a new rect that represent the specified side of this rect.
+
+### Parameters
+
+<dl>
+    #### `side`
+    A string referring one of the four side of a rect.
+
+    #### `offset` <Badge.Optional />
+</dl>
+
+### Return value
+
+A new rect object.
+
+### `Rect.expand()`
+
+```javascript
+expand(left)
+expand(left, top)
+expand(left, top, right)
+expand(left, top, right, bottom)
+expand(amount)
+expand(amount, factor)
+```
+
+Returns a new rect expanded or contracted by the specified pixels from each direction.
+
+### Parameters
+
+<dl>
+    #### `left`
+    Number of pixels to expand (contract for negative number) from the left edge.
+
+    #### `top` <Badge.Optional />
+    Number of pixels to expand (contract for negative number) from the top edge. If not supplied, this will be equal to `left` parameter.
+
+    #### `right` <Badge.Optional />
+    Number of pixels to expand (contract for negative number) from the right edge. If not supplied, this will be equal to `left` parameter.
+
+    #### `bottom` <Badge.Optional />
+    Number of pixels to expand (contract for negative number) from the bottom edge. If not supplied, this will be equal to `top` parameter.
+
+    #### `amount` <Badge.Version />
+    An object containing number of pixels to expand (contract for negative number) for each direction.
+
+    #### `factor` <Badge.Optional /> <Badge.Version />
+    Optional factor multiplied to value for each direction, default is 1.
+</dl>
+
+### `Rect.translate()`
+
+```javascript
+translate(x, y)
+```
+
+Returns a new rect that has the same size but at a different position.
+
+### Parameters
+
+<dl>
+    #### `x`
+    Number of pixels to move in X-axis.
+
+    #### `y`
+    Number of pixels to move in Y-axis.
+
+</dl>
+
+### Return value
+
+A new rect object.
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.1.0** Introduced
+- **0.4.12** `Rect.expand(amount, factor)`
+</VersionTimeline>

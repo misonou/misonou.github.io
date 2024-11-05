@@ -1,0 +1,29 @@
+<Module name="brew-js/extension/router" />
+
+# Router: popstate event
+
+The `popstate` event is after when user navigate between snapshots of history states within the same page.
+
+The `app.historyStorage.current` returns current snapshot at `popstate` event.
+
+## PopStateEvent interface
+
+<MemberList
+    i="PopStateEvent"
+    extends={['ZetaEventBase']}
+    ip={['oldStateId', 'newStateId']}
+/>
+
+### `PopStateEvent.newStateId` <Badge.ReadOnly />
+
+Gets the unique state ID for the current snapshot.
+
+### `PopStateEvent.oldStateId` <Badge.ReadOnly />
+
+Gets the unique state ID for the previous snapshot.
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.5.13** Introduced
+</VersionTimeline>

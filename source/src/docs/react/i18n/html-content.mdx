@@ -1,0 +1,34 @@
+<Module name="brew-js-react" />
+
+# Translate HTML content
+
+To render translated HTML content, use `translate.html` or `t.html` from `useTranslation` hook.
+
+It returns the formatted HTML in the shape that `dangerouslySetInnerHTML` requires.
+
+```tsx
+/// Component.tsx
+import { useTranslation } from "./i18n";
+
+function Component() {
+    const { t } = useTranslation('prefix');
+    return (
+        <div dangerouslySetInnerHTML={t.html('key')}></div>
+    );
+}
+
+/// i18n.ts
+const resources = {
+    en: {
+        prefix: { key: '<b>bold text</b>' }
+    }
+};
+
+const { translate, useTranslation } = makeTranslation(resources, 'en');
+```
+
+would render:
+
+```html
+<div><b>bold text</b></div>
+```

@@ -1,0 +1,138 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# Auth extension
+
+This is a preview extension for single sign-on in `brew.js` application.
+
+<ImportHint
+    name="Auth"
+    module="@misonou/brew-extension-auth"
+    import="default"
+    require="default"
+    global="brew.Auth"
+    expanded
+/>
+
+> See [`AuthContext`](/docs/app/auth/AuthContext) for injected app properties, methods and events.
+
+## Syntax
+
+```javascript
+app.useAuth(options)
+```
+
+### Parameters
+
+<dl>
+    #### `options`
+    A dictionary containing options.
+
+    <dl>
+        #### `interaction` <Badge.Optional />
+        Specifies the preferred way to login when authenticating through external providers.
+
+        It accepts the following values:
+
+        <dl>
+            #### `redirect`
+
+            #### `popup`
+        </dl>
+        Default is `redirect`.
+
+        #### `postLoginPath` <Badge.Optional />
+        Default path to visit after logged in.
+        If not specified, user will be redirected to current path.
+
+        #### `postLogoutPath` <Badge.Optional />
+        Default path to visit after logged out.
+        If not specified, user will be redirected to current path.
+
+        #### `provider` <Badge.Version />
+        An authentication provider.
+
+        > This option cannot be used with `providers`
+
+        #### `providers`
+        A list of authentication providers.
+
+        > This option cannot be used with `provider`
+
+        #### `resolveUser`
+        A callback that gather information about current user which will be exposed as [`app.user`](:).
+
+        The callback will receive an argument with following properties:
+
+        <dl>
+            #### `account` <Badge.ReadOnly />
+            Identity returned from the provider.
+
+            #### `provider` <Badge.ReadOnly />
+            A unique key identifying the provider.
+
+            #### `providerType` <Badge.ReadOnly />
+            Type of identity returned from provider, e.g. `msal` for `MsalAuthProvider`.
+        </dl>
+    </dl>
+</dl>
+
+
+## Example
+
+```typescript
+import brew from "brew-js/app";
+import Router from "brew-js/extension/router";
+import Auth from "@misonou/brew-extension-auth";
+import MsalAuthProvider from "@misonou/brew-extension-auth/msal";
+
+export const app = brew.with(Router, Auth)(app => {
+    app.useRouter({
+        /* ... */
+    });
+    app.useAuth({
+        providers: [
+            // create provider using factory method
+            MsalAuthProvider.create('microsoft', clientId, authority, scopes)
+        ],
+        resolveUser({ account }) {
+            // value will be exposed as `app.user`
+            return account;
+        }
+    });
+});
+```
+
+## Using UMD distribution
+
+Here is an example on how to include and access exported members in UMD environment:
+
+```html
+<!-- dependencies (not showing all) -->
+<script src="https://unkpg.com/brew-js"></script>
+<!-- main extension -->
+<script src="https://unkpg.com/@misonou/brew-extension-auth"></script>
+<!-- MSAL provider -->
+<script src="https://unpkg.com/@misonou/brew-extension-auth/dist/brew-auth-msal.min.js"></script>
+```
+
+Access API from global variable:
+
+```javascript
+brew.with(brew.Auth)(app => {
+    // access MSAL provider factory
+    const provider = brew.Auth.MsalAuthProvider.create(/* ... */);
+
+    // configure extension
+    app.useAuth({ /* ... */ });
+
+    // create middleware
+    const fetch = brew.Auth.createFetchMiddleware(app);
+});
+```
+
+## Version information
+
+<VersionTimeline module="@misonou/brew-extension-auth">
+- **0.1.0** Introduced
+- **0.3.0** `provider` option
+</VersionTimeline>

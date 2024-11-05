@@ -1,0 +1,388 @@
+import { useEffect } from "react";
+import { position } from "@misonou/react-css-utils";
+import PositionKeywordsExample from "src/components/examples/position-keywords";
+import PositionObserveExample from "src/components/examples/position-observe";
+
+<Module name="@misonou/react-css-utils" />
+
+# position
+
+Places element in alignment to another element.
+
+<Snippets
+    title="Example of alignments"
+    snippets={[
+        'left bottom',
+        'left bottom inset',
+        'left bottom inset-y',
+        'left center',
+        'left center inset',
+    ]}
+    render={(index, ref, value) => {
+        useEffect(() => {
+            const container = ref.current.querySelector('.wrapper');
+            const element = ref.current.querySelector('.element');
+            position(element, container, value, ref.current);
+        }, [index]);
+        return (
+            <div className="wrapper" style={{
+                position: 'relative',
+                width: 100,
+                height: 100,
+                margin: 50,
+                background: 'lightgray',
+                border: '2px dotted'
+            }}>
+                <div className="element" style={{
+                    position: 'absolute',
+                    width: 50,
+                    height: 50,
+                    background: 'blue'
+                }}></div>
+            </div>
+        )
+    }} />
+
+## Syntax
+
+```javascript
+position(element, to, dir)
+position(element, to, dir, within)
+position(element, to, dir, within, offset)
+position(element, to, dir, options)
+```
+
+<ImportHint
+    name="position"
+    module="@misonou/react-css-utils"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    Element to be placed. It must be styled with `position: absolute` or `position: fixed`.
+
+    > Prior to `v1.1.2`, only `position: fixed` is supported.
+
+    #### `to`
+    Target element where position is calculated against.
+
+    #### `dir`
+    A space-delimited string specifying how element is aligned in x and y direction. Possible keywords are:
+
+    <dl>
+        #### `left`
+        Element is aligned to the left edge of the reference position.
+
+        It is aligned left-to-left if vertical direction is aligned `top`, `bottom`, or either `inset` and `inset-x` is specified.
+        Otherwise it is aligned right-to-left.
+
+        #### `right`
+        Element is aligned to the right edge of the reference position.
+
+        It is aligned right-to-right if vertical direction is aligned `top`, `bottom`, or either `inset` and `inset-x` is specified.
+        Otherwise it is aligned left-to-right.
+
+        #### `top`
+        Element is aligned to the top edge of the reference position.
+
+        It is aligned bottom-to-top if unless either `inset` and `inset-y` is specified.
+
+        #### `bottom`
+        Element is aligned to the bottom edge of the reference position.
+
+        It is aligned top-to-bottom if unless either `inset` and `inset-y` is specified.
+
+        #### `center`
+        Element is center-aligned to the reference position. It is the default value for horizontal direction if neither `left` nor `right` is specified;
+        and for vertical direction if neither `top` nor `bottom` is specified.
+
+        #### `auto` <Badge.Version />
+        Keeps current position in a particular axis.
+
+        #### `inset`
+        Controls whether element is positioned inside the reference position.
+
+        #### `inset-x`
+        See `left` or `right` keyword.
+
+        #### `inset-y`
+        See `top` or `bottom` keyword.
+    </dl>
+
+    See [Positioning keywords](#s-positioning-keywords).
+
+    #### `within` <Badge.Optional />
+    When specified, element will be positioned inside the bounds of the specified element.
+
+    If there is not enough rooms, the element will be placed in the opposite side, or fit to the bound container.
+
+    #### `offset` <Badge.Optional />
+    Specifies how far the element is positioned away from the reference position in pixels.
+
+    #### `options` <Badge.Optional /> <Badge.Version />
+
+    <dl>
+        #### `axis` <Badge.Deprecated />
+        Aligns element only on a particular axis. Possible keywords are `x-only` and `y-only`.
+
+        > Use `auto` keyword or without keyword in such direction in `dir` parameter, i.e. `left auto` or `left` for `x-only`.
+
+        #### `basisHeight` <Badge.Optional /> <Badge.Version />
+        Specifies minimum basis height when positioning element.
+
+        #### `basisWidth` <Badge.Optional /> <Badge.Version />
+        Specifies minimum basis width when positioning element.
+
+        #### `offset` <Badge.Optional />
+        See `offset` parameter.
+
+        #### `scrollToFit` <Badge.Optional />
+        Whether to scroll the viewport in order to place element in desired position before trying to
+        place in the opposite direction (`flip`) or fit to viewport's boundaries (`fit`).
+
+        #### `strategy` <Badge.Optional /> <Badge.Version />
+        Specifies the positioning strategies when there is not enough space to place element in the primary alignment.
+        - `flip` means to position in the opposite side of the anchor element;
+        - `fit` means to justify to the viewport or the boundary of the `within` element.
+
+        Default is `flip fit`.
+
+        #### `within` <Badge.Optional />
+        See `within` parameter.
+    </dl>
+</dl>
+
+## Positioning keywords
+
+<PositionKeywordsExample />
+
+## Positioning strategy
+
+When there is not enough room to place the element in the desired position, `position` will try to place it in
+the opposite direction, and eventually fit it to the boundary of document window or the `within` element.
+
+<Snippets
+    title="Example of positioning strategy"
+    snippets={[
+        'normal',
+        'flip',
+        'fit'
+    ]}
+    render={(index, ref, value) => {
+        useEffect(() => {
+            const container = ref.current.querySelector('.wrapper');
+            const element = ref.current.querySelector('.element');
+            position(element, container, 'left bottom', ref.current);
+        }, [index]);
+        return (
+            <div className="wrapper" style={{
+                position: 'relative',
+                width: 100,
+                height: 100,
+                margin: 50,
+                marginBottom: 40,
+                background: 'lightgray',
+                border: '2px dotted'
+            }}>
+                <div className="element" style={{
+                    position: 'absolute',
+                    width: 50,
+                    height: 50,
+                    border: [0, 5, 10][index] + 'px solid',
+                    outlineOffset: -5,
+                    outline: index > 1 ? '5px yellow solid' : 'none',
+                    background: 'blue'
+                }}></div>
+            </div>
+        )
+    }} />
+
+> To opt-out either `flip` or `fit` strategy, use the `strategy` option.
+
+## Basis dimension
+
+By providing a basis dimension, target element can be positioned more stably
+when the size changes.
+
+## Positioning within a container
+
+<Snippets
+    title="Example of within constaint"
+    snippets={[
+        'position(..., "left bottom")',
+        'position(..., "left bottom", within)',
+    ]}
+    render={(index, ref, value) => {
+        useEffect(() => {
+            const container = ref.current.querySelector('.wrapper');
+            const within = ref.current.querySelector('.within');
+            const element = ref.current.querySelector('.element');
+            position(element, container, 'left bottom', index === 1 ? within : ref.current);
+        }, [index]);
+        return (
+            <div className="within" style={{
+                position: 'relative',
+                background: 'darkgray',
+                marginBottom: 50,
+                border: '2px dotted'
+            }}>
+                <div className="wrapper" style={{
+                    position: 'relative',
+                    width: 100,
+                    height: 100,
+                    margin: 25,
+                    background: 'lightgray',
+                    border: '2px dotted'
+                }}>
+                    <div className="element" style={{
+                        position: 'absolute',
+                        minWidth: 50,
+                        minHeight: 50,
+                        background: 'blue'
+                    }}></div>
+                </div>
+            </div>
+        )
+    }} />
+
+## Positioning in scrollable container
+
+<Snippets
+    title="Effects of scrollToFit option"
+    snippets={[
+        'position(..., "left bottom")',
+        'position(..., "left bottom", \n  { scrollToFit: true })',
+    ]}
+    render={(index, ref, value) => {
+        useEffect(() => {
+            const container = ref.current.querySelector('.wrapper');
+            const within = ref.current.querySelector('.within');
+            const element = ref.current.querySelector('.element');
+            within.scrollTop = 0;
+            position(element, container, 'left bottom', { scrollToFit: index === 1, within });
+        }, [index]);
+        return (
+            <div className="within" style={{
+                position: 'relative',
+                height: 100,
+                border: '2px dotted',
+                overflow: 'auto'
+            }}>
+                <div className="wrapper" style={{
+                    position: 'relative',
+                    width: 100,
+                    height: 100,
+                    margin: 0,
+                    marginBottom: 100,
+                    background: 'lightgray',
+                    border: '2px dotted'
+                }}>
+                    <div className="element" style={{
+                        position: 'absolute',
+                        minWidth: 50,
+                        minHeight: 50,
+                        background: 'blue'
+                    }}></div>
+                </div>
+            </div>
+        )
+    }} />
+
+## Positioning with offset
+
+The `offset` option specifies how far the element is positioned away from the reference position in pixels. Negative `offset` is accepted.
+
+<Snippets
+    title="Effects of offset option"
+    snippets={[
+        'position(..., "left bottom", \n  { offset: 10 })',
+        'position(..., "left bottom", \n  { offset: -10 })',
+        'position(..., "left bottom inset", \n  { offset: 10 })',
+        'position(..., "left bottom inset", \n  { offset: -10 })',
+    ]}
+    render={(index, ref, value) => {
+        useEffect(() => {
+            const container = ref.current.querySelector('.wrapper');
+            const element = ref.current.querySelector('.element');
+            position(element, container, ['left bottom', 'left bottom inset'][index>>1], { offset: [10,-10][index&1], within: ref.current });
+        }, [index]);
+        return (
+            <div className="wrapper" style={{
+                position: 'relative',
+                width: 100,
+                height: 100,
+                margin: 50,
+                background: 'lightgray',
+                border: '2px dotted'
+            }}>
+                <div className="element" style={{
+                    position: 'absolute',
+                    width: 50,
+                    height: 50,
+                    background: 'blue'
+                }}></div>
+            </div>
+        )
+    }} />
+
+## Positioning element with margin
+
+When the positioned element has margin, the element will be distanced that number of pixels from the boundary of either
+- the `within` element when supplied;
+- or the document window.
+
+In the latter case, there will always be a minimum of 10 pixels of margin when the element is fitted to the boundary of document window.
+
+<Snippets
+    title="Effects of element's margin"
+    snippets={[
+        'left bottom',
+        'left bottom inset',
+    ]}
+    render={(index, ref, value) => {
+        useEffect(() => {
+            const container = ref.current.querySelector('.wrapper');
+            const within = ref.current.querySelector('.within');
+            const element = ref.current.querySelector('.element');
+            position(element, container, value, within);
+        }, [index]);
+        return (
+            <div className="within" style={{
+                position: 'relative',
+                background: 'darkgray',
+                border: '2px dotted'
+            }}>
+                <div className="wrapper" style={{
+                    position: 'relative',
+                    width: 100,
+                    height: 100,
+                    margin: 25,
+                    background: 'lightgray',
+                    border: '2px dotted'
+                }}>
+                    <div className="element" style={{
+                        position: 'absolute',
+                        minWidth: 50,
+                        minHeight: 50,
+                        background: 'blue',
+                        margin: 10
+                    }}></div>
+                </div>
+            </div>
+        )
+    }} />
+
+## Version information
+
+<VersionTimeline module="@misonou/react-css-utils">
+- **1.0.0** Introduced
+- **1.2.0** Overload to supply `options` dictionary <br/> `scrollToFit` option
+- **1.3.1** `auto` keyword for `dir` option
+- **1.4.0** `strategy` `basisWidth` `basisHeight` options
+</VersionTimeline>
+
+## See also
+
+- [`Positioner`](:)

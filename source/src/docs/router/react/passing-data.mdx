@@ -1,0 +1,52 @@
+<Module name="brew-js-react" />
+
+# Passing data to views
+
+~~0.3.4~~
+
+Sometimes a view requires data that is too complex to put as route parameters.
+
+Additional data can be passed using [`navigateTo`](:) and [`redirectTo`](:), mimicking a form post.
+
+> Note that user can always navigate to the page without passing the data, so be sure have fallback handling if the data is not present.
+
+## Example
+
+```tsx
+const ResultPage = registerView(
+    function ResultPage(props: ViewProps<{ name: string; age: number }>) {
+        // data is passed by `viewData` prop
+        const { name, age } = props.viewData;
+
+        // always check if data is passed
+        if (!name || !age) {
+            redirectTo(InputFormPage);
+            return null;
+        }
+        /* ... */
+    },
+    { view: 'result' }
+);
+
+const InputFormPage = registerView(
+    function InputFormPage() {
+        const form = useFormContext<InputData>();
+
+        return (
+            <div>
+                {/* ... */}
+                <button onClick={submit}>Go</button>
+            </div>
+        );
+
+        function submit() {
+            // passing data to ResultPage
+            navigateTo(ResultPage, null, {
+                name: form.data.name,
+                age: form.data.age
+            });
+        }
+    },
+    { view: 'form' }
+);
+```

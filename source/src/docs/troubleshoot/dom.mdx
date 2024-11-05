@@ -1,0 +1,47 @@
+# Other runtime issues
+
+Here listed major known issues over different versions, listing affected versions and possible workaround.
+
+## Unable to trigger navigation when overriding route parameters on change
+
+~~zeta-dom &lt;=0.5.9~~
+
+```javascript
+app.route.watch('view', (value) => {
+    if (value === 'some_value') {
+        app.route.view = 'another';
+    }
+});
+
+// should be cancelled and trigger another navigation
+app.route.view = 'some_value';
+```
+
+If upgrade is not plausible, change the update to asynchronous:
+
+```javascript
+app.route.watch('view', (value) => {
+    if (value === 'some_value') {
+        setImmediate(() => {
+            app.route.view = 'another';
+        });
+    }
+});
+```
+
+## Animation sequence not working
+
+~~brew-js 0.6.0-0.6.4~~ ~~brew-js-react 0.5.0-0.5.5~~
+
+Animation sequence may not work if `zeta-dom` is installed with version prior to `0.4.13` because of out-dated dependency list.
+
+To fix the issue, upgrade `zeta-dom` to `0.4.13`.
+
+## Event listener bound to parent element not working after Chrome updated to version 117
+
+~~zeta-dom &lt;=0.3.14~~ ~~zeta-dom &lt;=0.4.6~~
+
+Chrome 117 introduced experimetal extension to the `Iterator` base type that affects
+event emitting mechanism.
+
+To fix the issue, upgrade `zeta-dom` to `0.3.15` or `0.4.7`.

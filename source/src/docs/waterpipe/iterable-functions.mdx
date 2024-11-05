@@ -1,0 +1,134 @@
+<Module name="waterpipe" />
+
+# Iterable functions
+
+
+### `join`
+
+Concatenates each element in an array by the given separator.
+
+<WaterpipeExample
+    data={{values: [1, 2, 3, 4]}}
+    examples={['values join ,']}
+/>
+
+### `keys`
+
+Gets all keys on an array or object.
+
+<WaterpipeExample
+    data={{ values: { foo: 1, bar: 2 }, array: [1, 2, 3, 4] }}
+    examples={['values keys', 'array keys']}
+/>
+
+### `map`
+
+Maps each element of an array or an object to another value. The original array or object is untouched.
+
+If the piped value is an object, the key of each mapped element is preserved.
+
+```text
+map keyOrFn
+```
+
+<WaterpipeExample
+    data={[
+        { key: 1, value: 5 },
+        { key: 2, value: 6 },
+        { key: 3, value: 7 },
+        { key: 4, value: 8 }
+    ]}
+    examples={['map value', 'map [ $value + 1 ]', 'map [ $key | $value ]']}
+/>
+
+### `sort`, `sortby`, `rsort`, `rsortby`
+
+Sorts the array. The original array is untouched.
+
+<WaterpipeExample
+    data={ { simple: [4, 2, 3, 1], complex: [
+        { key: 3 },
+        { key: 1 },
+        { key: 2 }
+    ] }}
+    examples={['simple sort', 'complex sortby key']}
+/>
+
+Sort by multiple values:
+
+<WaterpipeExample
+    data={ {complex: [
+        { key: 3, value: 2 },
+        { key: 3, value: 1 },
+        { key: 1, value: 4 },
+        { key: 2, value: 3 }
+    ] }}
+    examples={['complex sortby [ key | value ]']}
+/>
+
+### `isort`, `isortby`, `irsort`, `irsortby`
+
+<WaterpipeExample
+    data={ { simple: ['a', 'b', 'A', 'B'], complex: [
+        { key: 'a' },
+        { key: 'A' },
+        { key: 'B' }
+    ] }}
+    examples={['simple isort', 'complex isortby key']}
+/>
+
+Compare result with ordinary sort:
+
+<WaterpipeExample
+    data={ { simple: ['a', 'b', 'A', 'B'], complex: [
+        { key: 'a' },
+        { key: 'A' },
+        { key: 'B' }
+    ] }}
+    examples={['simple sort', 'complex sortby key']}
+/>
+
+### `reverse`
+
+Reverses the array. The original array is untouched.
+
+<WaterpipeExample
+    data={{values: [1, 2, 3, 4]}}
+    examples={['values reverse']}
+/>
+
+### `where`, `first`, `any`, `all`
+
+Performs operation over an array or object. The original array or object is untouched.
+
+For the `where` pipe function, if the piped value is an object, the key of each mapped element is preserved.
+
+<WaterpipeExample
+    data={{values: [1, 2, 3, 4]}}
+    examples={['values where [ odd ]', 'values first [ even ]', 'values any [ even ]', 'values all [ even ]']}
+/>
+
+### `sum`
+
+Reduces the array or object into a scalar value, optionally with a seed value.
+
+<WaterpipeExample
+    data={{values: [1, 2, 3, 4]}}
+    examples={['values sum', 'values sum 5', 'values sum foo']}
+/>
+
+Summing through objects:
+
+<WaterpipeExample
+    data={{values: [{ value: 1 }, { value: 2 }, { value: 3 }]}}
+    examples={['values sum [ value ]', 'values sum foo [ value ]']}
+/>
+
+### `length`
+
+Gets the length of the array or string.
+
+<WaterpipeExample
+    data={{ array: [1, 2, 3], string: "foobar" }}
+    examples={['array length', 'string length']}
+/>

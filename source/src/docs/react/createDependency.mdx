@@ -1,0 +1,122 @@
+<Module name="zeta-dom-react" />
+
+# createDependency
+
+Creates a dependency that components can provide to and read data from.
+
+> See [`useDependency`](:) for usage.
+
+## Syntax
+
+```javascript
+createDependency()
+createDependency(defaultValue)
+```
+
+<ImportHint
+    name="createDependency"
+    module="zeta-dom-react"
+    require="createDependency"
+    global="zeta.react.createDependency" />
+
+### Parameters
+
+<dl>
+    #### `defaultValue` <Badge.Optional />
+    Default value to return when there is no component providing data.
+
+</dl>
+
+### Return value
+
+A [`Dependency`](:) object is returned.
+
+## Dependency interface
+
+<MemberList
+    i="Dependency"
+    ip={['Consumer', 'Provider']}
+/>
+
+### `Dependency.Consumer` <Badge.ReadOnly />
+
+Gets the consumer object to be passed to [`useDependency`](:) for receiving data from producer.
+
+### `Dependency.Provider` <Badge.ReadOnly />
+
+Gets the provider object to be passed to [`useDependency`](:) for sending data to consumer.
+
+## Type safety
+
+The dependency, as well as provider and consumer are generic type that allows specifying the
+type of values provider is producing and consumer is expecting.
+
+```typescript
+declare const a: DependencyProvider<number>; // A provider producing numeric values
+declare const b: DependencyConsumer<string>; // A consumer expecting string values
+```
+
+> Before v0.5.10, the provider and dependency type have incorrect variance constraints, that may lead to
+  runtime issues after casting the provider or dependency type.
+
+### Consumer object
+
+Consumer is **covariant**, meaning that a consumer can be casted or assigned to variable with a looser type.
+
+```typescript
+const someDep = createDependency<number>(0);
+const a: DependencyConsumer<number> = someDep.Consumer;
+const b: DependencyConsumer<number | string> = a; // OK, but not vice versa
+```
+
+The value produced by the actual provider has a stricter type,
+therefore it always satisfies the looser type expected by the casted consumer:
+
+```typescript
+function Consumer() {
+    const value = useDependency(b); // value has type number | string
+}
+
+function Producer() {
+    useDependency(someDep.Provider, 1); // number must be provided
+}
+```
+
+### Provider object
+
+Provider is **contravariant**, meaning that a producer can be casted or assigned to variable with a stricter type.
+
+```typescript
+const someDep = createDependency<number | string>(0);
+const a: DependencyProducer<number | string> = someDep.Provider;
+const b: DependencyProducer<number> = a; // OK, but not vice versa
+```
+
+When producer are casted to a stricter type, it also forces value sent through [`useDependency`](:) is of a stricter type,
+therefore it always satisfies the type expected by the consumer:
+
+```typescript
+function Producer() {
+    useDependency(b, 1); // number must be provided
+}
+
+function Consumer() {
+    const value = useDependency(someDep.Consumer); // value has type number | string
+}
+```
+
+### Dependency object
+
+The `Dependency` object returned from `createDependency` is **bivariant**, meaning that the only one with
+the exact same type can be assigned to another, as it both needs to satisfy the constraints of producer and consumer.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.5.6** Introduced
+- **0.5.10** `Dependency.Consumer`
+</VersionTimeline>
+
+## See also
+
+- [`useDependency`](:)

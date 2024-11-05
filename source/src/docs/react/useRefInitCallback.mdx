@@ -1,0 +1,72 @@
+<Module name="zeta-dom-react" />
+
+# useRefInitCallback
+
+Creates a React ref callback, that will invoke the supplied callback only once for each a new DOM element created.
+
+> For simple use-case, it is recommended to use [`domEventRef`](:) instead.
+
+## Syntax
+
+```javascript
+useRefInitCallback(callback)
+```
+
+## Usage
+
+It is generally used for one-time setup for DOM element, for example binding Zeta DOM events:
+
+```tsx
+function Component(props) {
+    const initRef = useRefInitCallback((element: HTMLElement) => {
+        // this callback will execute exactly once for the <DIV> element
+        dom.on(element, 'focusreturn', (e) => { /* ... */ });
+    });
+    return (<div ref={initRef}></div>);
+}
+```
+
+> For simple use-case, it is recommended to use [`domEventRef`](:) instead.
+> ```tsx
+> <div ref={domEventRef({ focusreturn })}></div>
+> ```
+
+## Callback lifetime
+
+> **Important**: Since the callback is only called once for a DOM element in the component's lifetime,
+  any variables referenced in the callback must be unchanged throughout the lifetime, such as created from
+  [`React.useRef`](https://reactjs.org/docs/hooks-reference.html#useref). For functions,
+  it can be wrapped by [`useMemoizedFunction`](:).
+
+```tsx
+function Component(props) {
+    const [counter, setCounter] = useState(0);
+    const [singletionObject] = useState({ count: 0 });
+    const counterRef = useRef(0);
+    const memoizedCallback = useMemoizedFunction(props.callback);
+
+    const inlineCallback = () => { /* ... */ };
+    const memoizedInlineCallback = useMemoizedFunction(inlineCallback);
+
+    const initRef = useRefInitCallback((element: HTMLElement) => {
+        // OK
+        singletionObject.count++;
+        counterRef.current++;
+
+        // OK, see `useMemoizedFunction`
+        memoizedCallback();
+        memoizedInlineCallback();
+
+        // not OK: state might change over the lifetime
+        counter;
+
+        // not OK: anything on props might be changed over the lifetime
+        // also callback may be bound to previous states which results in memory leaks
+        props.callback();
+
+        // not OK: definitely memory leaks
+        inlineCallback();
+    });
+    return (<div ref={initRef}></div>);
+}
+```

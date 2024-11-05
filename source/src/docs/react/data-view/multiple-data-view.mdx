@@ -1,0 +1,50 @@
+import Example from "src/components/examples/dataview-switching";
+
+<Module name="zeta-dom-react" />
+
+# Multiple data views
+
+There are scenarios that multiple data sources are displayed in a single page.
+
+In such cases, assign a unique persisting key for each data source as the first argument
+when using [`useDataView`](:), such that it knows when to
+persist and restore the current view.
+
+## Multiple views
+
+Same data source can be splitted into different views:
+
+```tsx
+function Component() {
+    const items = [/* ... */];
+
+    const dv1 = useDataView('dv1', {});
+    const [pagedItems1] = dv1.getView(items);
+
+    const dv2 = useDataView('dv2', {});
+    const [pagedItems2] = dv2.getView(items);
+
+    /* ... */
+}
+```
+
+## Switching data in a single view
+
+By associating a unique persisting key to each data source, the switching of state associated to each data
+source are automatically handled.
+
+```tsx
+function Component() {
+    const items1 = [/* ... */];
+    const items2 = [/* ... */];
+    const [tab, setTab] = useState(0);
+
+    const dv = useDataView(`dv${tab}`, {});
+    const items = tab === 0 ? items1 : items2;
+    const [pagedItems] = dv.getView(items);
+
+    /* ... */
+}
+```
+
+<Example />

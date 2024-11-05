@@ -1,0 +1,70 @@
+import Example from "src/components/examples/dataview-qs";
+
+<Module name="brew-js-react" />
+
+# useQueryParam
+
+Returns value of the specified parameter in query string, and a function to update it.
+
+## Syntax
+
+```javascript
+useQueryParam(name, defaultValue)
+useQueryParam(name, defaultValue, snapshotOnUpdate)
+useQueryParam(dict)
+useQueryParam(dict, snapshotOnUpdate)
+```
+
+<ImportHint
+    name="useQueryParam"
+    module="brew-js-react"
+    require="useQueryParam"
+    global="brew.react.useQueryParam" />
+
+### Parameters
+
+<dl>
+    #### `name`
+    Name of the parameter.
+
+    #### `defaultValue`
+    Default value when the specified parameter is not present in query string.
+
+    #### `dict`
+    A dictionary containing parameter names and associated default values.
+
+    #### `snapshotOnUpdate` <Badge.Optional />
+    Whether to create snapshot in browser's history when query parameter is updated. Default is `false`.
+
+</dl>
+
+## Return value
+
+<dl>
+    #### `[value, updateValue]`
+    When `name` is supplied as argument, it returns the current value of the specified parameter in query string,
+    and a function to update that parameter.
+
+    #### `[readOnlyDict, updateValues]`
+    When `dict` is supplied as argument, it returns a read-only dictionary containing values of the specified parameter in query string,
+    and a function to update parameters.
+
+    The update function always performs partial update, meaning that unsupplied parameters are unchanged.
+</dl>
+
+> To clear a parameter in query string, pass empty string to that parameter.
+  It will be re-populated with default value in next render.
+
+> Update function has no effect when parent view container is going to unmount due to navigation.
+
+## Example
+
+The following example links data view to query string parameters.
+
+<Example />
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.5.6** Introduced
+</VersionTimeline>

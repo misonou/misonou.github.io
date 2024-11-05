@@ -1,0 +1,440 @@
+<Module name="zeta-dom-react" />
+
+# Change log
+
+## v0.5.13 (2024/10/29)
+
+- Add support for data path hinting for [`FormContext`](:) methods
+- Callback supplied to [`ErrorHandler`](:) receives a second argument `context`
+- <kbd>fix</kbd> type definition issue which may break existing code <Badge.TS/>
+  - corrected type of [`ZetaEventBase.target`](:) for [`FormContext`](:) and [`DataView`](:) events
+  - updated type argument of [`useRefInitCallback`](:) for correct type inference [[link]](/docs/troubleshoot/typescript#s-updated-type-argument-of-userefinitcallback)
+
+## v0.5.12 (2024/10/16)
+
+- <kbd>fix</kbd> [`useFormField`](:) using [`MultiChoiceField`](:) did not expose new value on
+  [`FormFieldState.value`](:) when the field is unbounded and controlled
+
+## v0.5.11 (2024/09/24)
+
+#### Utilities
+
+- Add [`createAsyncScope`](:)
+- Add [`createErrorHandler`](:)
+
+#### Forms
+
+- Expose element on [`FormFieldState.elementRef`](:) callback
+
+## v0.5.10 (2024/08/13)
+
+#### Utilities
+
+- Expose [`Dependency.Consumer`](:) from [`createDependency`](:)
+- <kbd>fix</kbd> variance of dependency type, particularly [`Dependency`](:) is now **bivariant**,
+  whereas [`Dependency.Provider`](:) is now **contravariant** [[link]](/docs/react/createDependency#s-type-safety)
+- <kbd>fix</kbd> prevent multiple calls when repeatedly reset/refreshing when using [`useAsync`](:)
+- <kbd>fix</kbd> debounced refresh was not properly aborted
+
+## v0.5.9 (2024/08/06)
+
+#### Forms
+
+- Pass hook helper as third argument for [`FieldType.postHook`](:)
+
+#### Utilities
+
+- Add [`AsyncContentState.reset`](:)
+- Add overload of [`useSingleton`](:) that accepts dependency list
+- Pass target object and additional parameters to dispose callback passed to [`useSingleton`](:)
+- <kbd>fix</kbd> error caused by [`useViewState`](:) in development strict mode
+
+## v0.5.8 (2024/07/05)
+
+#### Forms
+
+- Instantiate field type for each field and has methods called with correct `this`
+- <kbd>fix</kbd> [`useFormField`](:) issue when the first argument is an unknown type string
+- <kbd>fix</kbd> align behavior of [`useFormField`](:) for object type value whether it is a named field of not &mdash;
+  value is converted as data object and nested changes will trigger `onChange`
+- <kbd>fix</kbd> callback like `onValidate` and `onChange` failed to be invoked when [`<FormObject>`](:) and [`<FormArray>`](:)
+  is rendered with data object from different form context
+
+## v0.5.7 (2024/06/24)
+
+#### Forms
+
+- Add [`FormFieldState.version`](:) for detecting nested value update
+- <kbd>fix</kbd> unable to initialize or reset form data when there is a data property named `length`
+- <kbd>fix</kbd> [`MultiChoiceFieldState.value`](:) should return new array upon changes
+- <kbd>fix</kbd> type inference issue
+
+#### Utilities
+
+- <kbd>fix</kbd> `AbortSignal` from [`useAsync`](:) should not raise `abort` event after operation has completed
+
+## v0.5.6 (2024/06/03)
+
+- Officially support React 19
+- Add [`createDependency`](:) and [`useDependency`](:)
+- Add `comparer` parameter to [`useValueTrigger`](:)
+- Add overload to [`BreakpointContext.useBreakpoint`](:) to refresh component upon specific breakpoint
+- <kbd>fix</kbd> unnecessary rerender when multiple breakpoint state changes at the same time
+- <kbd>fix</kbd> incorrect signature of [`useEventTrigger`](:) where `initialState` is considered an initializing callback
+- <kbd>fix</kbd> discarded singleton not disposed in react 19 strict mode
+
+## v0.5.5 (2024/05/21)
+
+#### Data view
+
+- Add [`DataView.hasNextPage`](:) and [`DataView.hasPreviousPage`](:)
+
+#### Utilities
+
+- <kbd>fix</kbd> Bug introduced in `v0.5.4` that [`useUpdateTrigger`](:) was unable to trigger re-render correctly when called multiple times in one cycle
+
+## v0.5.4 (2024/04/30)
+
+#### Utilities
+
+- Add [`useEagerState`](:) and [`useEagerReducer`](:)
+- <kbd>fix</kbd> failed to equate `NaN` in [`useValueTrigger`](:) causing component to re-render
+
+#### Miscellanous
+
+- <kbd>fix</kbd> inference issue in type definitions
+
+## v0.5.3 (2024/04/22)
+
+#### Utilities
+
+- Add [`useAutoSetRef`](:), [`useEventTrigger`](:) and [`useValueTrigger`](:)
+- [`partial`](:) now returns the same object when no properties were updated to reduce component update
+- <kbd>fix</kbd> singleton may be disposed before effect causing error in development mode
+
+#### Forms
+
+- <kbd>fix</kbd> [`FormContext.validate`](:) erroneously triggers validations for all fields when empty string is given as first argument
+
+## v0.5.2 (2024/03/27)
+
+#### Data view
+
+- Add [`DataView.pageCount`](:) property
+- Normalize to valid page index on setting [`DataView.pageIndex`](:) as well as [`DataView.itemCount`](:) and [`DataView.pageSize`](:)
+- Reset page index when filter or sort changes
+
+#### Utilities
+
+- <kbd>fix</kbd> invoke unload effect callback in `pagehide` event as soon as possible
+- <kbd>fix</kbd> unload effect callback got invoked after mounting in dev strict mode
+
+## v0.5.1 (2024/02/26)
+
+- <kbd>fix</kbd> extra call after consecutive re-render when using [`useAsync`](:)
+
+## v0.5.0 (2024/02/23)
+
+- [`useErrorHandler`](:) now reports unhandled error to window `event` event
+- <kbd>fix</kbd> unhandled rejection from [`useAsync`](:) with debounce
+- <kbd>fix</kbd> possible error from [`FormContext.getErrors`](:) in listed compatible browsers
+- <kbd>fix</kbd> missing exported interface
+
+## v0.4.15 (2023/11/17)
+
+#### Forms
+
+- Return `validate` callback from [`useFormField`](:)
+- Add [`<HiddenField>`](:)
+
+#### Data view
+
+- Add [`DataView.toggleSort`](:)
+
+#### Utilities
+
+- <kbd>fix</kbd> singletons in-used may be incorrectly disposed in dev mode
+
+## v0.4.14 (2023/11/10)
+
+#### Utilities
+
+- Add `snapshot` parameter to [`ViewState.set`](:)
+- Add overload to [`useSingleton`](:)
+- <kbd>fix</kbd> handle discarded singletons in dev strict mode
+- <kbd>fix</kbd> dispose view state properly in dev strict mode
+
+## v0.4.13 (2023/10/31)
+
+#### Forms
+
+- <kbd>fix</kbd> [`useFormField`](:) should update component when nested data has changed
+- <kbd>fix</kbd> inconsistent empty logic when finding focus target using [`FormContext.focus`](:)
+- <kbd>fix</kbd> error caused by reassigning data object in dev strict mode
+- <kbd>fix</kbd> [`useFormContext`](:) should update component and emit `dataChange` event when data property is automatically created or deleted 
+  when field component is mounted or unmounted
+  > Note that auto creation with empty values will not trigger re-render nor `dataChange` event
+
+## v0.4.12 (2023/10/13)
+
+#### Forms
+
+- Add [`ToggleFieldState.toggleValue`](:)
+- [`TextField`](:) now accepts and returns `readOnly` attribute
+- <kbd>fix</kbd> nested object data corrupted when sorting array items
+- <kbd>fix</kbd> text field should normalize value to string
+- <kbd>fix</kbd> data change detection issue with `NaN`
+
+#### Utilities
+
+- Behavior change for [`classNames`](:):
+  > `classNames({ key: 0 })` now appends `key-0` to `class` attribute instead of considering falsy.
+
+## v0.4.11 (2023/9/11)
+
+#### Forms
+
+- <kbd>fix</kbd> [`DateField`](:) not working on iOS 15 and older
+
+## v0.4.10 (2023/9/4)
+
+Update deprecated function usage
+
+## v0.4.9 (2023/7/24)
+
+#### Utilities
+
+- <kbd>fix</kbd> [`domEventRef`](:) throws error and invoke incorrect handler after child component rerenders
+- <kbd>fix</kbd> [`domEventRef`](:) should handle changing of event types
+
+## v0.4.8 (2023/6/20)
+
+#### Utilities
+
+- Add [`useUnloadEffect`](:)
+
+#### Forms
+
+- [`useFormContext`](:) now accepts callback to generate initial data
+- [`<FormObject>`](:) and [`<FormArray>`](:) can now be used without form context
+- <kbd>fix</kbd> should set error when `onValidate` is not supplied for a required field
+
+## v0.4.7 (2023/6/13)
+
+#### Data view
+
+- <kbd>fix</kbd> latest state not persisted after leaving and traversing back
+
+#### Forms
+
+- <kbd>fix</kbd> [`DateField`](:) normalizes value to incorrect date or causes component to update indefinitely when selected date is not in the same timezone as current time due to daylight saving adjustment
+- <kbd>fix</kbd> latest statenot persisted after leaving and traversing back
+
+
+## v0.4.6 (2023/6/7)
+
+#### Utilties
+
+- Add [`useSingleton`](:) hook
+- Support `AbortSignal` and abortion in [`useAsync`](:) [[link]](/docs/react/useAsync#s-abort-signal)
+- <kbd>fix</kbd> Callback passed to [`useAsync`](:) got invoked twice when component is mounted
+
+#### Forms
+
+- <kbd>fix</kbd> Setting [`FormContext.preventLeave`](:) to `false` should unlock form element
+
+## v0.4.5 (2023/5/30)
+
+#### Forms
+
+- Add [`FormContext.clear`](:) method
+- Stricter condition for `preventLeave`
+- <kbd>fix</kbd> `toggleValue` from [`MultiChoiceField`](:) has incorrect behavior
+
+## v0.4.4 (2023/5/5)
+
+#### Utilties
+
+- Add [`domEventRef`](:)
+- Add [`ErrorHandlerWithRef.emit`](:) method
+
+#### Forms
+
+- Add [`FormContext.getErrors`](:) method [[link]](/docs/react/form/FormContext#s-formcontext-geterrors)
+- <kbd>fix</kbd> an bug that could cause page halted with [`ChoiceField`](:) [[link]](/docs/known-issues#s-choice-field-causing-parent-component-to-update-indefinitely)
+- <kbd>fix</kbd> `validateToChange` prop on field level should override form options
+
+## v0.4.3 (2023/4/28)
+
+#### Utilities
+
+- <kbd>fix</kbd> import error for [`useMemoizedFunction`](:) introduced in `v0.4.2`
+
+#### Forms
+
+- <kbd>fix</kbd> value in [`FormContext.data`](:) object are not synchronized when setting new value does not actually update the value
+- <kbd>fix</kbd> a property named `undefined` is created on [`FormContext.data`](:) if an unnamed field is associated to a form context
+
+## v0.4.2 (2023/4/24)
+
+#### Utilities
+
+- [`ErrorHandlerWithRef.catch`](:) now accepts multiple error codes or constructors [[link]](/docs/react/useErrorHandler#s-selective-handling)
+
+#### Forms
+
+- Add [`DateField`](:)
+- Allow focus to first erreous or empty field
+- <kbd>fix</kbd> `autoPersist` flag disabled in dev strict mode
+- <kbd>fix</kbd> missing `disabled` in `inputProps` for [`TextField`](:)
+
+
+## v0.4.1 (2023/4/13)
+
+#### Utilities
+
+- <kbd>fix</kbd> [`useMediaQuery`](:) did not trigger re-render in dev strict mode
+
+#### Forms
+
+- Add [`NumericField`](:)
+- Add `ValidationError` and `formatError` for customizing error messages [[link]](/docs/react/form/error-message)
+- <kbd>fix</kbd> normalize value to boolean for [`ToggleField`](:)
+
+## v0.4.0 (2023/3/29)
+
+#### Utilities
+
+- Add `debounce` param to [`useAsync`](:) [[link]](/docs/react/useAsync#s-debounce)
+
+#### Forms
+
+- Support nested data object and array [[link]](/docs/react/form/data-object-array)
+- Add static method [`FormContext.get`](:) [[link]](/docs/react/form/FormContext#s-formcontext-get)
+- Add overload [`FormContext.element`](:) and [`FormContext.focus`](:) method
+- [`FormContext.focus`](:) method now returns a boolean whether focus is set
+- <kbd>fix</kbd> field not working properly in dev strict mode
+- <kbd>fix</kbd> [`FormContext.validate`](:) method should return `false` when a required field is empty
+- <kbd>fix</kbd> [`FormContext.validate`](:) method should not validate disabled field
+
+## v0.3.11 (2023/2/18)
+
+#### Forms
+
+- Add `defaultValue` and `normalizeValue` to field type
+- <kbd>fix</kbd> `onChange` should be called with current value when resetting form
+- <kbd>fix</kbd> `onChange` are not called when no form context
+
+## v0.3.10 (2023/2/3)
+
+#### Utilities
+
+- <kbd>fix</kbd> Incorrect initial state for [`useAsync`](:) when `autoload` is false
+- <kbd>fix</kbd> Issue with strict mode in React 18
+
+#### Forms
+
+- <kbd>fix</kbd> Type inference issue
+- <kbd>fix</kbd> Value for controlled field cannot be updated
+
+## v0.3.8 (2023/1/17)
+
+#### Forms
+
+- <kbd>feat</kbd> Add [`FormContext.getError`](:) method
+- <kbd>fix</kbd>  Unable to create property on [`FormContext.data`](:) with `undefined` value
+- <kbd>fix</kbd>  Property being re-created for unrendered field after reset or property is deleted
+
+## v0.3.7 (2023/1/10)
+
+#### Forms
+
+- <kbd>fix</kbd> Rerender with correct value for [`useFormField`](:) when name is changed
+- <kbd>fix</kbd> Reset error state for [`useFormField`](:) when name is changed
+- <kbd>fix</kbd> Prevent from leaving if `beforeLeave` event is not handled
+
+## v0.3.6 (2022/12/21)
+
+#### Forms
+
+- <kbd>feat</kbd> Add [`FormFieldProps.clearWhenUnmount`](:)
+- <kbd>fix</kbd> Trigger `dataChange` event when property is created on or deleted from [`FormContext.data`](:)
+- <kbd>fix</kbd> Trigger `validationChange` event when passing error by field props
+- <kbd>fix</kbd> Prevent component update after unmount when using [`useFormContext`](:)
+
+## v0.3.5 (2022/11/19)
+
+#### Forms
+
+- <kbd>feat</kbd> Add `preventLeave` option
+- <kbd>feat</kbd> New way to define custom field types
+- <kbd>fix</kbd> `dataChange` event may report duplicated keys
+
+## v0.3.4 (2022/11/11)
+
+#### Utilities
+
+- <kbd>feat</kbd> Add [`useUpdateTrigger`](:)
+- <kbd>fix</kbd> Unnecessary effect execution in [`useBreakpoint`](:)
+
+#### Forms
+
+- <kbd>feat</kbd> Add [`FormContext.toJSON`](:) method
+- <kbd>feat</kbd> Handle native form `reset` event
+- <kbd>feat</kbd> Add optional [`FormFieldProps.label`](:) prop
+- <kbd>fix</kbd> Force component update after reset
+- <kbd>fix</kbd> Incorrect `isValid` state after reset
+- <kbd>fix</kbd> Setting error by `error` prop or [`FormContext.setError`](:) should invalidate form
+
+## v0.3.3 (2022/11/3)
+
+#### Forms
+
+- <kbd>feat</kbd> Add [`FormContext.ref`](:)
+- <kbd>feat</kbd> Update default `isEmpty` condition, and allow to override by field types
+
+### Miscellanous
+
+- <kbd>fix</kbd> Expose correct file in unpkg
+
+## v0.3.2 (2022/8/24)
+
+#### Utilities
+
+- <kbd>feat</kbd> Add [`useErrorHandler`](:) replacing `useErrorHandlerRef`
+- <kbd>feat</kbd> Emit `load` event from [`useAsync`](:)
+- <kbd>fix</kbd> Forward `error` event to `zeta.dom` from [`useAsync`](:) if it is not handled
+- <kbd>fix</kbd>  Component will be rerendered when loading starts 
+
+#### Forms
+
+- <kbd>feat</kbd> Add `Form` component for rendering `<form>` element
+- <kbd>feat</kbd> Add `enterKeyHint` options for [`FormContext`](:)
+- <kbd>feat</kbd> Add field type for extensibility
+- <kbd>feat</kbd> Expose current form object in [`FormFieldState.form`](:)
+
+## v0.3.1 (2022/8/4)
+
+#### Utilities
+
+- <kbd>feat</kbd> Add [`innerTextOrHTML`](:) and [`withSuspense`](:)
+- <kbd>fix</kbd>  Reduce component rerendering by [`useAsync`](:)
+
+#### Forms
+
+- <kbd>fix</kbd> `onChange` callback should be called for uncontrolled field
+
+## v0.3.0 (2022/7/18)
+
+#### Data view
+
+- **Breaking change:** [`DataView.getView`](:) no longer reverse item orderings for the array returned from callback when `sortOrder` is `desc`; the callback must handle the descending order manually 
+- <kbd>feat</kbd> Add [`DataView.sort`](:) method
+- <kbd>fix</kbd>  `viewChange` event was not emitted when [`DataView`](:) was not created in by [`useDataView`](:) hook
+- <kbd>fix</kbd>  Maintain previous order unchanged for items in the same order in new sorting logic
+  > For example given an array of items [A,B,C,D,E] that is currently sorted as [E,B,D,C,A], then for a new sorting logic that results in [E>B=C=D>A], the result ordering should be [E,B,D,C,A]; in the sense that [B,D,C] remains their order unchanged.
+- <kbd>fix</kbd> [`DataView.getView`](:) should sort items if callback is not supplied
+
+#### Forms
+
+- <kbd>feat</kbd> Add [`FormContext.setError`](:) method

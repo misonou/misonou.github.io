@@ -1,0 +1,81 @@
+<Module name="brew-js-react" />
+
+# Using router in React
+
+## Step 1: Setup router
+
+```typescript
+import brew from "brew-js-react";
+import router from "brew-js/extensions/router";
+
+brew.with(router)(app => {
+    app.useRouter({
+        routes: [
+            '/{view}/*',
+            '/*'
+        ]
+    });
+});
+```
+
+Now the application will accept any path with the first segment set to a route parameter named `view`, e.g. for a path `/foo`, `app.route.view` will be equal to `foo`.
+
+> For more details on configuring router, see [Defining routes](/docs/router/define-routes).
+
+## Step 2: Create view component
+
+Any React function component can be used as view.
+
+```tsx
+export default function Home() {
+    return (
+        <div>This is the home page</div>
+    );
+}
+```
+
+## Step 3: Register view component
+
+```typescript
+import { registerView } from "brew-js-react";
+
+export const Home = registerView(
+    () => import("./views/Home"),
+    { view: 'home' });
+
+export const Foo = registerView(
+    () => import("./views/foo"),
+    { view: 'foo' });
+```
+
+The second argument, which is matched against current route parameters (`app.route.*`), specifies when the view component are considered matched.
+
+## Step 4: Render view
+
+```tsx
+import React from "react";
+import ReactDOM from "react-dom";
+import { renderView } from "brew-js-react";
+import { Home, Foo } from "./views";
+
+function App() {
+    return renderView(Home, Foo);
+}
+
+const rootElement = document.getElementById('root');
+render(<App />, rootElement);
+```
+
+When component is being rendered, [`renderView`](:) will try to match current route parameters against the registered views.
+
+The page `/home` will have the component exported from `./views/Home` rendered, as the path `/home` matches the route `/{view}/*`, which the route parameter `view` is equal to `home`.
+
+> If none is matched, the first view is selected and cause a redirection to the URL which represents the view.
+
+For example, both the page `/` and `/bar` will redirect to `/home`.
+
+## See also
+
+- [Defining routes](/docs/router/define-routes)
+- [Register views](/docs/router/react/register-view)
+- [Render views](/docs/router/react/render-view)

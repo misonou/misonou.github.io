@@ -1,0 +1,69 @@
+<Module name="brew-js/extension/router" />
+
+# Resuming journey
+
+~~0.5.0~~
+
+Resuming application states upon new visit or reload in the same tab is now supported.
+
+By default, the router initiates with the initial path and empty application state when user visit the page through address bar, hyperlinks, or being redirected from other pages.
+
+| State           | `urlMode!='none'`                                 | `urlMode='none'` |
+| --------------- | ------------------------------------------------- | ---------------- |
+| App path        | Pathname or query, <br/> fallback to `initialPath` | `initialPath`    |
+| Navigation data | Empty                                             | Empty            |
+| History storage | Empty                                             | Empty            |
+
+## Resume journey on revisit
+
+In a common scenario when user choose to single sign-on, user will be presented with login screen. After the sign-on process is completed, user will be redirected back to the page with a token.
+
+Since it is a new visit, the states and history storage are not resumed by default. To resume application states, the `resume` option can be set to `true`, or more appropiately:
+
+```typescript
+const token = new URLSearchParams(location.search).get('token');
+app.useRouter({
+    // resume if "token" is in query string an
+    // the page is being redirected from other page
+    resume: !!token,
+    /* ... */
+})
+```
+
+In this settings, the router will resume with the path user has left from, with navigation data and history storage restored.
+
+## Resume journey after reload
+
+~~0.5.2~~
+
+Similar to a new visit, a page reload will still reset (part of) the application states by default:
+
+| State           | `urlMode!='none'` | `urlMode='none'` |
+| --------------- | ----------------- | ---------------- |
+| App path        | Maintained        | `initialPath`    |
+| Navigation data | Maintained        | Cleared          |
+| History storage | Cleared           | Cleared          |
+
+To resume all router states, use:
+
+```typescript
+app.useRouter({
+    resumeOnReload: true,
+    /* ... */
+})
+```
+
+## Resume journey after switching page
+
+Another common scenario is the app for different language is hosting in different path, which it cannot be controlled by in-app router:
+
+`/en/index.html` and `/de/index.html`.
+
+In order to resume journey after switching from `/en/index.html` to `/de/index.html`, init the router by:
+
+```typescript
+app.useRouter({
+    resume: '/en/index.html',
+    /* ... */
+})
+```

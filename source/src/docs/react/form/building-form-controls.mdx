@@ -1,0 +1,45 @@
+<Module name="zeta-dom-react" />
+
+# Building form controls
+
+The library does not ship built-in field components.
+
+Instead, components are built using the [`useFormField`](:) hook.
+
+The hook takes [`FormFieldProps`](:) as the first argument, where it looks for parent
+[`FormContext`](:) instance visible in the context, and handles validations and as well as emitting events.
+
+
+## Creating field component
+
+Here is an example of a simple input box:
+
+```tsx
+function TextField(props: FormFieldProps<string>) {
+    const { value, error, setValue, elementRef } = useFormField(props, '');
+    return (
+        {/* Provider ref so that form.element() and form.focus() helper methods will work */}
+        <label ref={elementRef}>
+            <input name={props.name}
+                   value={value}
+                   disabled={!!props.disabled}
+                   onChange={e => setValue(e.target.value)} />
+            {error && props.showErrorMessage !== false &&
+                <div className="error">{error}</div>}
+        </label>
+    );
+}
+```
+
+Value is updated through the `setValue` dispatcher where it will trigger `dataChange` and `validate` events on the [`FormContext`](:) instance.
+
+If `props.onValidate` is supplied, validation are executed and result is populated to `error` state.
+
+For some frequently used properties defined in [`FormFieldProps`](:), it is up to your implemention on how to handle:
+
+| Property           | Description                   |
+| ------------------ | ----------------------------- |
+| `label`            | Field label                   |
+| `disabled`         | Whether the input is disabled |
+| `required`         | Whether the input is required |
+| `showErrorMessage` | Show error message            |

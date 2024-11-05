@@ -1,0 +1,95 @@
+<Module name="brew-js-react" />
+
+# Registering views
+
+View components are associated to different paths using [`registerView`](:).
+
+In order to have route parameters recognized, router must be configured with known routes. For example if we defined the following routes:
+
+```typescript
+app.useRouter({
+    routes: [
+        '/{view:product}/{id?}'
+        '/{view}'
+    ]
+});
+```
+
+When resolving for views, first route parameters are resolved from current path using configured routes:
+
+| Path         | Route parameters          |
+| ------------ | ------------------------- |
+| `/home`      | `{view:'home'}`           |
+| `/product`   | `{view:'product'}`        |
+| `/product/1` | `{view:'product',id:'1'}` |
+
+Then route parameters are matched with those passed to [`registerView`](:).
+
+```typescript
+export const Home = registerView(() => import("./views/Home"), {
+    view: 'home'
+});
+export const Product = registerView(() => import("./views/Product"), {
+    view: 'product'
+});
+export const ProductInfo = registerView(() => import("./views/ProductInfo"), {
+    view: 'product',
+    id:   /.+/
+});
+```
+
+When combined, the view at `./views/Home` will be matched when visiting `/home`.
+
+| Path         | Matched views (in precendence) |
+| ------------ | ------------------------------ |
+| `/home`      | `Home`                         |
+| `/product`   | `Product`                      |
+| `/product/1` | `ProductInfo`, `Product`       |
+
+
+> When multiple views match, views registered with more parameters takes precedence. See [Render views](/docs/router/react/render-view).
+
+
+## Regex and callback
+
+Dynamic data in routes can be matches using regex or callback.
+
+For example, if `ProductInfo` is registered with:
+
+```typescript
+registerView(() => import("./views/ProductInfo"), {
+    view: 'product',
+    id:   /^\d+$/
+});
+```
+then it will match `/product/1` but not `/product/foo`.
+
+
+## Exclusion by null
+
+To match a route without a certain parameter, use `null`.
+
+For example, if `Product` is registered with:
+
+```typescript
+registerView(() => "./views/Product", {
+    view: 'product',
+    id:   null
+});
+```
+
+Then it will not match `/product/1` since resolved route parameter `id` is not empty.
+
+## Directly register component without import
+
+~~0.3.1~~
+
+It is possible to register components without async import:
+
+```tsx
+function MyViewImpl() {
+    return (<div>...</div>);
+}
+
+export const MyView = registerView(MyViewImpl, { view: 'foo' });
+```

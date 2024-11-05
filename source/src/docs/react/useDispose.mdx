@@ -1,0 +1,71 @@
+<Module name="zeta-dom-react" />
+
+# useDispose
+
+Creates a cleanup callback collector.
+
+## Syntax
+
+```javascript
+useDispose()
+```
+
+### Return value
+
+A callback which when invoked will invoke [pushed](:DisposeCallback) callbacks.
+
+## Example
+
+Callbacks pushed into the queue will be called when the component is unmounted.
+
+```tsx
+function Component(props) {
+    const dispose = useDispose();
+    useEffect(() => {
+        doSomeWork().then(() => {
+            dispose.push(() => console.log('Component unmounted'));
+        });
+    }, []]);
+    /* ... */
+}
+```
+
+Callbacks can also be called manually by calling the [`DisposeCallback`](:).
+Executed callbacks are removed from the queue so that they will not be called twice.
+
+```tsx
+function Component(props) {
+    const dispose = useDispose();
+    useEffect(() => {
+        setTimeout(() => {
+            dispose();  // cleanup manually
+        }, 1000);
+    }, []);
+    /* ... */
+}
+```
+
+## DisposeCallback interface
+
+<MemberList
+    i="DisposeCallback"
+    im={['push()']} />
+
+### `DisposeCallback.push()`
+
+```javascript
+dispose.push(callback0)
+dispose.push(callback0, callback1)
+dispose.push(callback0, callback1, /* … ,*/ callbackN)
+```
+
+#### Parameters
+
+<dl>
+    #### `callback0` … `callbackN`
+    One or more callbacks to be executed when
+    - React component is unmounted, or
+    - `DisposeCallback` is invoked.
+
+    Each pushed callback will be called exactly once, and will be removed from the queue.
+</dl>

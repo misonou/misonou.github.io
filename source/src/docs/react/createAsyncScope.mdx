@@ -1,0 +1,62 @@
+<Module name="zeta-dom-react" />
+
+# createAsyncScope
+
+Creates utilities that handles asynchronous operations in descendant components and associated DOM elements.
+
+## Syntax
+
+```javascript
+createAsyncScope(element)
+```
+
+<ImportHint
+    name="createAsyncScope"
+    module="zeta-dom-react"
+    require="createAsyncScope"
+    global="zeta.react.createAsyncScope" />
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+</dl>
+
+### Return value
+
+The function returns an object containing following properties:
+
+<dl>
+    #### `errorHandler`
+    An [`ErrorHandler`](:) object that catches errors emitted from descendant elements.
+
+    #### `Provider`
+    A provider component that when rendered, [`useAsync`](:) in descendant components
+    will notify loading state and emit unhandled error to the associated element by default.
+
+</dl>
+
+## Example
+
+The `createAsyncScope` is intended to be used in utility functions that provides
+default handling for asynchronous operation.
+
+```tsx
+function renderWithAsyncScope(element, Component) {
+    const { Provider, errorHandler } = createAsyncScope(element);
+    const root = ReactDOM.createRoot(element);
+    root.render(
+        <Provider>
+            <Component errorHandler={errorHandler} />
+        </Provider>
+    );
+}
+```
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.5.11** Introduced
+</VersionTimeline>

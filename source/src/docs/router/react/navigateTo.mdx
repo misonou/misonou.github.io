@@ -1,0 +1,44 @@
+<Module name="brew-js-react" />
+
+# navigateTo
+
+Navigates to path that will render the specified view.
+
+## Syntax
+
+```javascript
+navigateTo(view)
+navigateTo(view, params)
+navigateTo(view, params, data)
+```
+
+<ImportHint
+    name="navigateTo"
+    module="brew-js-react"
+    require="navigateTo"
+    global="brew.react.navigateTo" />
+
+### Parameters
+
+<dl>
+    #### `view`
+    A view component created by [`registerView`](:).
+
+    #### `params` <Badge.Optional />
+    Extra route parameters that supplements or overrides current route parameters,
+    or a tuple containing such route parameters as well as query string and hash.
+
+    > See [here](/docs/router/react/resolvePath#s-passing-query-and-hash) for usage of tuple.
+
+    #### `data` <Badge.Optional /> <Badge.Version />
+    Additional data to be passed to view component, analogous to making form post to server rendering page.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.2** Introduced
+- **0.3.4** `data` parameter
+- **0.6.4** `params` parameter: accept tuple
+</VersionTimeline>

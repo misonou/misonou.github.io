@@ -1,0 +1,61 @@
+
+<Module name="zeta-dom/events" />
+
+# Event types
+
+## Async handleable event
+
+An event is **asynchronously handleable**, when either
+- `handleable` option is unspecified or is `true`
+- `asyncResult` option is unspecified or is `true`
+
+Listener can:
+- return value or a `Promise` object, or;
+- pass value or a `Promise` object to [`ZetaEvent.handled`](:)
+
+The event will be marked as handled once a listener has return or pass a value, and
+subsequent event handlers for the same target, or event handlers for parent targets if the event bubbles up,
+will not be called.
+
+> Returning `undefined` is the same as being not handling the event, use `e.handled()` to return an `undefined` value.
+
+Emitter will receives:
+- A promise that resolves to the value or fulfilled value from the `Promise` object that listener has returned or passed; or
+- `undefined` if there is no listener has done so.
+
+## Sync handleable event
+
+An event is **synchronously handleable**, if
+- `handleable` option is unspecified or is `true`
+- `asyncResult` option is `false`
+
+Listener can return value as required by the emitter.
+
+Emitter will receives:
+- Value, other than `undefined`, returned from listener
+- `undefined` if there is no listener has done so.
+
+## Unhandleable event
+
+An event is **unhandleable**, if `handleable` option is `false`.
+
+Any returned value from listener will be discarded, and `e.handled()` will have no effects.
+
+Emitter will always received `undefined` as the result.
+
+## Deferrable event
+
+~~0.5.6~~
+
+An event is **deferrable**, if `deferrable` option is `true`.
+
+Listener can defer operation from emitter by passing promise(s) to `e.waitFor()`.
+
+Just like an unhandleable event, any returned value from listener will be discarded, and `e.handled()` will have no effects.
+
+However, emitter will always receive a `Promise` object that resolves after
+all promises passed to `e.waitFor()` has settled.
+
+## See also
+
+- [`ZetaEventBase`](:)

@@ -1,0 +1,50 @@
+<Module name="zeta-dom/observe" />
+
+# watchElements
+
+Registers a callback to be fired when descandent elements matching the selector is added or removed from the element.
+
+## Syntax
+
+```javascript
+watchElements(element, selector, callback)
+watchElements(element, selector, callback, fireInit)
+```
+
+<ImportHint
+    name="watchElements"
+    module="zeta-dom/observe"
+    global="zeta.dom.watchElements"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element to observe.
+
+    #### `selector`
+    A valid CSS selector.
+
+    #### `callback`
+    A callback to be fired when matching element is added or removed. The callback receives the following arugments:
+    - `addedNodes`: an array containing elements added as descandents to the observed element.
+    - `removedNodes` an array containing elements removed from the observed element.
+
+    #### `fireInit` <Badge.Optional />
+    Fire the supplied callback
+    - immediately when DOM is already ready; or
+    - when DOM is ready.
+
+</dl>
+
+### Return value
+
+A callback which collects mutation immediately and fires mutation handler if there is any mutations.
+
+> The callback has an additional property `dispose` that will disconnect the mutation observer.
+
+```javascript
+const collectChanges = watchElements(element, 'div', callback);
+collectChanges.dispose();
+```

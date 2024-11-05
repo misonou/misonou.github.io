@@ -1,0 +1,54 @@
+.app-dialog {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: #0009;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.app-dialog[is-modal] {
+    pointer-events: all;
+}
+
+.app-dialog.open {
+    opacity: 1;
+}
+
+.app-dialog.open.closing {
+    opacity: 0;
+}
+
+.app-dialog > div {
+    position: relative;
+    padding: 1em;
+    min-width: 10em;
+    background-color: var(--color-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--overlay-box-shadow);
+    pointer-events: all;
+}
+
+.app-dialog.loading > div:before {
+    position: absolute;
+    z-index: 1;
+    content: '';
+    bottom: 0;
+    left: 0;
+    animation: loading-bar 1000s;
+    border-bottom: 4px solid var(--color-highlight);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    transition: right 0.2s;
+}
+
+.app-dialog.closing > div:before {
+    animation-duration: 0.5s;
+    right: 0;
+}

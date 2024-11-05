@@ -1,0 +1,110 @@
+<Module name="zeta-dom-react" />
+
+# useFormContext hook
+
+Creates a singleton [`FormContext`](:) object which allows access to field values and to validate the fields.
+
+```tsx
+function Component() {
+    const form = useFormContext();
+    return (
+        <Form value={form}>
+            {/* ... */}
+        </Form>
+    );
+}
+```
+
+## Syntax
+
+```javascript
+useFormContext()
+useFormContext(initialData)
+useFormContext(initialData, validateOnChange)
+useFormContext(initialData, options)
+useFormContext(persistKey, initialData)
+useFormContext(persistKey, initialData, validateOnChange)
+useFormContext(persistKey, initialData, options)
+```
+
+<ImportHint
+    name="useFormContext"
+    module="zeta-dom-react"
+    require="useFormContext"
+    global="zeta.react.useFormContext" />
+
+
+### Parameters
+
+<dl>
+    #### `persistKey` <Badge.Optional />
+    A unique key for enabling the persisting of form data in view state.
+
+    #### `initialData` <Badge.Optional />
+    Initial form data, or a callback that returns initial form data.
+
+    #### `validateOnChange` <Badge.Optional />
+    Same effect as specifying `validateOnChange` in option object. Default is `true`.
+
+    #### `options` <Badge.Optional />
+    <dl>
+        #### `autoPersist` <Badge.Optional />
+        Whether form data will be persisted in view state when component is unmounted.
+        Default is `true`.
+
+        #### `enterKeyHint` <Badge.Optional />
+        Sets the default action label (or icon) to present for the enter key on virtual keyboards.
+
+        Accepts the following values:
+        - `enter`
+        - `done`
+        - `go`
+        - `next`
+        - `previous`
+        - `search`
+        - `send`
+
+        #### `formatError` <Badge.Optional />
+        Specifies a callback to generate custom error message for fields associated with this form context.
+
+        #### `preventLeave` <Badge.Optional />
+        Whether it should prompt user before leaving the page when form data has been entered.
+
+        #### `validateOnChange` <Badge.Optional />
+        Whether validation will be triggered upon changes to form data.
+        Default is `true`.
+    </dl>
+</dl>
+
+### Return value
+
+A [`FormContext`](:) object.
+
+## Initial data
+
+Default form data can be specified through [`useFormContext`](:).
+
+```tsx
+function Component() {
+    const form = useFormContext({ name: 'Joe' });
+    return (
+        <Form value={form}>
+            <TextInput name="name" />
+        </Form>
+    );
+}
+```
+
+Calling [`FormContext.reset()`](:) will reset all fields to initial values.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.1.0** Introduced
+- **0.3.2** `option` parameter
+- **0.4.8** Accept callback for `initialData` parameter
+</VersionTimeline>
+
+## See also
+
+- [`FormContext`](:)

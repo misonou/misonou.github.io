@@ -1,0 +1,48 @@
+<Module name="@misonou/react-css-utils" />
+
+# Change log
+
+## v1.5.0 (2024/09/16)
+
+- Add [`startPositioning`](:)
+- [`initSortable`](:) now returns an unregistering callback
+- Handles rejection from `onOrderChanged` and reverts order when error thrown
+- <kbd>fix</kbd> handle unsortable element filtered out by `itemSelector` option properly
+
+## v1.4.2 (2024/08/22)
+
+- <kbd>fix</kbd> error when disconnecting [`Positioner`](:) before observe is called
+
+## v1.4.1 (2024/06/13)
+
+- <kbd>fix</kbd> [`Positioner`](:) class methods are missing after build
+
+## v1.4.0 (2024/05/22)
+
+- Add [`Positioner`](:)
+- Add `strategy`, `basisWidth` and `basisHeight` options for [`position`](:)
+- <kbd>fix</kbd> unintentionally position in `fit` mode that otherwise be `normal`
+- <kbd>fix</kbd> max size calculation offseted by margin
+
+## v1.3.5 (2024/05/10)
+
+- Fix type definition
+
+## v1.3.4 (2024/02/21)
+
+- Improve `max-width/height` calculation
+- <kbd>fix</kbd> available room calculation with negative margin
+
+## v1.3.3 (2023/11/17)
+
+- <kbd>fix</kbd> position/max-size calculation issue with margin
+
+## v1.3.2 (2023/09/25)
+
+- Use percentage to position if possible
+- Allow `auto` keyword, replacing `axis` option
+
+## v1.3.1 (2023/09/11)
+
+- <kbd>fix</kbd> floating point error when positioning element
+- <kbd>fix</kbd> incorrect `position-anchor` attribute value

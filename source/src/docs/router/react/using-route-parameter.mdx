@@ -1,0 +1,73 @@
+<Module name="brew-js-react" />
+
+# Using route parameter
+
+Route parameters defined in routes can be accessed using the [`useRouteParam`](:) hook.
+
+> Although route parameters can be directly accessed through [`app.route`](:) object,
+  it is recommended not to be used inside view components. See [Different between app.route](#s-different-between-app-route).
+
+For example the below view will get product info based on the product `id`:
+
+```tsx
+export default function ProductInfo() {
+    const id = useRouteParam('id');
+    const productInfo = useAsync(() => {/* ... */}, [id]);
+    /* ... */
+}
+```
+
+The component will update if the `id` parameter changes, if the `Product` view is still active.
+
+## Setting route parameter
+
+Route parameter can be updated directly on [`app.route`](:) object.
+
+## Different between app.route
+
+The [`app.route`](:) object exposed the route parameter values that could be just updated and a navigation
+is being triggered. Unwanted component updates may occur if relying on [`app.route`](:).
+
+On the other hand, [`useRouteParam`](:) will only trigger component update only if the current view
+will be still active after navigation caused by the parameter change.
+
+For example, if the `id` parameter is shared between the route for product and news:
+
+```tsx
+/// index.ts
+brew.with(router)(app => {
+    app.useRouter({
+        routes: [
+            '/{view:product}/{id}',
+            '/{view:news}/{id}',
+            /* ... */
+        ]
+    })
+});
+
+/// views.ts
+export const ProductInfo = registerView(() => import("./views/ProductInfo"), {
+    view: 'product',
+    id:   /.+/
+});
+export const NewsInfo = registerView(() => import("./views/NewsInfo"), {
+    view: 'news',
+    id:   /.+/
+});
+```
+
+Current on `/product/1` where the following component is rendered for displaying the product:
+
+```tsx
+export default function ProductInfo() {
+    const id = useRouteParam('id');
+    const productInfo = useAsync(() => { /* ... */ }, [id]);
+    /* ... */
+}
+```
+
+When user navigates to `/news/2`, the `app.route.id` will immediately be updated to `2`.
+
+However since the `ProductInfo` no longer matched the new route, the view context will become inactive.
+Thus the `useRouteParam` will not receive any updates, and the returned `id` remains equal to `1` even
+when the component rerenders during the transition phase.

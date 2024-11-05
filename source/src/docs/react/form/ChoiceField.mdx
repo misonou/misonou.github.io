@@ -1,0 +1,73 @@
+<Module name="zeta-dom-react" />
+
+# ChoiceField class
+
+The `ChoiceField` class are not supposed to be instantiate manually. Instead it is used to
+augment extra functionalities when used with [`useFormField`](:).
+
+<ImportHint
+    name="ChoiceField"
+    module="zeta-dom-react"
+    require="ChoiceField"
+    global="zeta.react.ChoiceField"
+    expanded />
+
+<MemberList i="ChoiceField" />
+
+## ChoiceFieldProps interface
+
+<MemberList
+    i="ChoiceFieldProps"
+    extends={['FormFieldProps']}
+    ip={['items', 'allowUnselect']}
+/>
+
+### `ChoiceFieldProps.items`
+
+A list of items as choices.
+Primitive values in the list will be normalized as [`ChoiceItem`](:).
+
+### `ChoiceFieldProps.allowUnselect`
+
+Whether the field can be empty, i.e. none of the choices are selected.
+
+## ChoiceFieldState interface
+
+<MemberList
+    i="ChoiceFieldState"
+    extends={['FormFieldState']}
+    ip={['items', 'selectedIndex', 'selectedItem']}
+/>
+
+### `ChoiceFieldState.items` <Badge.ReadOnly />
+
+Returns a list of choices as normalized items.
+
+### `ChoiceFieldState.selectedIndex` <Badge.ReadOnly />
+
+Returns the index of selected item, `-1` if there's none.
+
+### `ChoiceFieldState.selectedItem` <Badge.ReadOnly />
+
+Returns the selected item.
+
+## ChoiceItem interface
+
+<MemberList
+    i="ChoiceItem"
+    ip={['value', 'label', 'hidden', 'disabled']}
+/>
+
+### `ChoiceItem.value`
+
+### `ChoiceItem.label`
+
+### `ChoiceItem.hidden`
+
+### `ChoiceItem.disabled`
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.3.5** Introduced
+</VersionTimeline>

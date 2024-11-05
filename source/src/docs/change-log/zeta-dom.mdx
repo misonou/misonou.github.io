@@ -1,0 +1,149 @@
+<Module name="zeta-dom" />
+
+# Change log
+
+## v0.5.11 (2024/10/29)
+
+- Add overload for [`reportError`](:) specifying event source
+- <kbd>fix</kbd> handle cross-realm error, e.g. from `<iframe>`, in [`isErrorWithCode`](:)
+- <kbd>fix</kbd> report event source as `keyboard` for `click` event triggered by space bar or enter key, likely on buttons
+
+## v0.5.10 (2024/10/16)
+
+- Allow action callback for observable object to return value to caller
+  ```javascript
+  let handleChanges = watch(obj, true);
+  let result = handleChanges(() => /* can return value */ 0);
+  ```
+- <kbd>fix</kbd> action callback for observable object should not be invoked again if further property updates are made
+  ```javascript
+  let handleChanges = watch(obj, true);
+  handleChanges(() => { /* only executes once */});
+  ```
+- <kbd>fix</kbd> [`watch`](:) and [`watchOnce`](:) incorrectly reports changes when property value remains `NaN`
+- <kbd>fix</kbd> [`watch`](:) invokes object-wise handler when no properties have after all been changed
+
+## v0.5.9 (2024/09/24)
+
+- Add `willDestroy` option for [`ZetaEventContainer`](:)
+- Allow target to be garbage-collected after it is remove from [`ZetaEventContainer`](:) by [`ZetaEventContainer.delete`](:)
+- <kbd>fix</kbd> unregister all handlers when [`ZetaEventContainer`](:) is destroyed
+- <kbd>fix</kbd> prevent registering new handlers after [`ZetaEventContainer`](:) is destroyed
+- <kbd>fix</kbd> missing type definition file for `zeta-dom/errorCode`
+
+## v0.5.8 (2024/09/08)
+
+- <kbd>fix</kbd> fire `focusin` event after new active element is set in case of delegated focus
+- <kbd>fix</kbd> incorrect rect returned for root/body when document is scrollable
+
+## v0.5.7 (2024/08/23)
+
+- <kbd>fix</kbd> `focuschange` event mis-fired on incorrect target elements
+- <kbd>fix</kbd> `focusout` event was not fired when blocked modal element has lost focus
+- <kbd>fix</kbd> [`setModal`](:) now always retains focus to current element
+- <kbd>fix</kbd> type definition for [`watch`](:), [`watchOnce`](:) and [`Watchable`](:) interface
+
+## v0.5.6 (2024/07/31)
+
+- Add `deferrable` option for emitting event [[link]](/docs/util/EventContainer#s-zetaeventcontainer-emit)
+- <kbd>fix</kbd> error when `null` is supplied to [`equal`](:)
+- <kbd>fix</kbd> report error instead of triggering `unhandledrejection` event when error thrown in event handlers
+- <kbd>fix</kbd> fallback implemenation for `window.reportError`
+- <kbd>fix</kbd> type inference issue: incorrect return type for [`catchAsync`](:) and missing declaration for [`dom.reportError`](:)
+
+## v0.5.5 (2024/06/24)
+
+- [`notifyAsync`](:) no longer sends events for immediately resolved promises
+- Elements with `position: fixed` can now be focused without being descendants of current modal element
+  to increase interoperability with other libraries
+
+## v0.5.4 (2024/05/29)
+
+Further fixes issues related to [`getRect`](:):
+
+- Accepts box kind (e.g. `margin-box`, `padding-box`, etc) for root element `<html>`
+- Incorrect position returned when root element `<html>` has margins
+- Avoids inifinite loop when `getRect` is exported to global as `window.getRect`
+- Ignores second parameter when element is invisible, meaning that returned rect is always a zero-sized rect at origin `(0, 0)`.
+
+
+## v0.5.3 (2024/05/23)
+
+Fixes several issues related to rect helpers:
+
+- [`getContentRect`](:)
+    - Handled `scroll-padding` correctly for root element `<html>`
+      when viewport is shifted because of virtual keyboard
+    - Handle variable scrollbar size set by CSS
+
+- [`getRect`](:)
+    - Scrollbar size should be deducted when calculating `padding-box` and `content-box`
+    - ~~Accepts box kind (e.g. `margin-box`, `padding-box`, etc) for root element `<html>`~~
+    - ~~Correct position when root element `<html>` has margins~~
+
+## v0.5.2 (2024/05/11)
+
+- Add [`sameValue`](:)
+- <kbd>fix</kbd> compatibility issue with default settings of Webpack 5 and @rollup
+- <kbd>fix</kbd> type inference issue
+
+## v0.5.1 (2024/02/23)
+
+- Add [`reportError`](:)
+- <kbd>fix</kbd> incorrect event source reported in native event handler
+- <kbd>fix</kbd> event source should be `mouse` in non-touch device
+
+## v0.5.0 (2024/01/31)
+
+**Breaking changes**
+- Event source are determined by trusted events only
+- [`iterateFocusPath`](:) now returns consistent paths for both focusable and non-focsuable targets
+  > DOM events, including `asyncStart` and `asyncEnd` will no longer emitted to non-focusable elements blocked by modal element
+    unless target is in the same modal scope
+- [`ZetaEventContainer.emitAsync`](:) no longer emits event to handlers removed thereafter
+- [`ZetaEventContainer.emit`](:) now uniformly propagates events to ancestors
+  > Previously, when emitting custom event to DOM element targets, event was propagated through focus delegation.
+- [`lock`](:) no longer triggers `error` event when given promise rejects
+- Correcting type definition for [`ZetaEventSource`](:) class which involves conflicting type changes
+
+**Other features and fixes**
+- Add [`runAsync`](:)
+- Add [`dom.pressedKey`](:) property to reflect currently pressed keys
+- Add [`ZetaEventContainer.getEventPath`](:) method
+- Improved event source detection for input and mouse events
+- <kbd>fix</kbd> supplied callback to [`notifyAsync`](:) got fired incorrectly before all locks are cancelled
+
+## v0.4.16 (2024/01/17)
+
+- <kbd>fix</kbd> should not focus element when `click` event is manually dispatched
+- <kbd>fix</kbd> should not send `error` event for error raised by [`cancelLock`](:)
+- <kbd>fix</kbd> ensure `tap` handlers are removed when event container is destroyed
+- <kbd>fix</kbd> missing `dblclick` event in type definition
+- <kbd>fix</kbd> `IS_IOS` flag for iPad device
+- <kbd>fix</kbd> duplicated text being inserted on latest Andriod system
+
+## v0.4.15 (2024/01/12)
+
+- Add `input` event
+- [`setModal`](:) always allow body's direct child element in to be modal even when it is blocked other modal element
+- <kbd>fix</kbd> prevent setting on root or body element as modal element
+- <kbd>fix</kbd> `keystroke` event fired twice when pressing `BackSpace` and `Delete` keys in text input
+- <kbd>fix</kbd> missing `clientX` and `clientY` information for `longPress` event
+
+## v0.4.14 (2023/12/23)
+
+- Add [`bindOnce`](:)
+- <kbd>fix</kbd> unregister callback returned from [`bind`](:) should execute once only when called multiple times
+- <kbd>fix</kbd> consistent targets for pointer events
+- <kbd>fix</kbd> should consider `Meta` key as modifier key
+- <kbd>fix</kbd> incorrect target for UI events when focused element has been detached
+- <kbd>fix</kbd> should not emit pointer events when target is not focusable
+
+## v0.4.13 (2023/11/24)
+
+- Add overload to [`delay`](:)
+- Add overload to returned function from [`observe`](:) and related functions
+- <kbd>fix</kbd> handle `AbortError` in [`runCSSTransition`](:), rejecting with error with code `zeta/cancelled` instead
+- <kbd>fix</kbd> [`observe`](:) and related functions should not invoke callback when there is no mutations
+- <kbd>fix</kbd> improve type definitions and fix issue reported by `check-dts`
+- <kbd>fix</kbd> incorrect module names in UMD header

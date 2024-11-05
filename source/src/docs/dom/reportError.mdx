@@ -1,0 +1,44 @@
+<Module name="zeta-dom/dom" />
+
+# reportError
+
+Reports error by emitting `error` event which bubbles up to parent elements.
+If the event is not handled, it will raise the error by `window.reportError`.
+
+## Syntax
+
+```javascript
+reportError(error)
+reportError(error, element)
+reportError(error, element, source)
+```
+
+<ImportHint
+    name="reportError"
+    module="zeta-dom/dom"
+    global="zeta.dom.reportError"
+/>
+
+### Parameters
+
+<dl>
+    #### `error`
+    Any value representing the error, preferrably an `Error` object.
+
+    #### `element` <Badge.Optional />
+    Specifies the DOM element associated with the error. Defaults to the root element.
+
+    #### `source` <Badge.Optional /> <Badge.Version />
+    Specifies original source of event for asynchronous operation.
+</dl>
+
+### Return value
+
+A promise if the error is handled.
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.5.1** Introduced
+- **0.5.11** `source` parameter
+</VersionTimeline>

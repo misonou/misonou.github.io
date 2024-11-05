@@ -1,0 +1,153 @@
+<Module name="brew-js/extension/router" />
+
+# Route interface
+
+The `Route` object is returned by [`app.route`](:).
+
+<MemberList
+    i="Route"
+    ip={['[key]', 'remainingSegments']}
+    im={['parse()', 'set()', 'replace()', 'getPath()', 'toJSON()', 'toString()']} />
+
+## Properties
+
+### `Route[key]`
+
+Gets and sets the route parameter.
+
+The available keys depends on the routes given when initializing the router.
+
+```typescript
+app.useRouter({
+    routes: [
+        '/{view:user}/{id}'
+        '/{view}',
+        '/'
+    ]
+});
+
+Object.keys(app.routes); // ['view', 'id', 'remainingSegments']
+```
+
+### `Route.remainingSegments`
+
+Gets or sets the path matched by the ending wildcard (`*`).
+
+## Instance methods
+
+### `Route.getPath()`
+
+```javascript
+route.getPath(params)
+```
+
+Gets the path represented by specified route parameters.
+If none of the routes matches, the root path `/` is returned.
+
+#### Parameters
+
+<dl>
+    #### `params`
+    A dictionary containing route parameters.
+
+</dl>
+
+### `Route.parse()`
+
+```javascript
+route.parse(path)
+```
+
+Parses a given string and returns route parameters if any route matches the path.
+
+#### Parameters
+
+<dl>
+    #### `path`
+    A string specifying a path.
+
+</dl>
+
+### `Route.replace()`
+
+```javascript
+replace(key, value)
+replace(key, value, keepQuery)
+replace(params)
+replace(params, keepQuery)
+```
+
+Updates router and cause the app to redirect to the newly resolved path.
+Visit of current page in the history stack will be replaced.
+
+#### Parameters
+
+<dl>
+    #### `key`
+    Name of route parameter.
+
+    #### `params`
+    A dictionary containing new parameter values. Unrecorgnized keys are omitted.
+
+    #### `value`
+    New value.
+
+    #### `keepQuery` <Badge.Optional /> <Badge.Version />
+    Whether to keep current query string and hash.
+
+</dl>
+
+```javascript
+set(key, value)
+set(key, value, keepQuery)
+set(params)
+set(params, keepQuery)
+set(path)
+```
+
+Updates router and cause the app to navigate to the newly resolved path.
+
+#### Parameters
+
+<dl>
+    #### `key` <Badge.Version />
+    Name of route parameter.
+
+    #### `value` <Badge.Version />
+    New value.
+
+    #### `params`
+    A dictionary containing new parameter values. Unrecorgnized keys are omitted.
+
+    #### `path` <Badge.Deprecated />
+    A string specifying a path.
+
+    #### `keepQuery` <Badge.Optional /> <Badge.Version />
+    Whether to keep current query string and hash.
+
+</dl>
+
+### `Route.toJSON()`
+
+```javascript
+route.toJSON()
+```
+
+Gets all route parameters as a plain JSON object.
+
+### `Route.toString()`
+
+```javascript
+route.toString()
+```
+
+Gets the path represented by current route parameters.
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.2.0** `Route.toJSON()` <br/> `Route.getPath()`
+- **0.2.3** `Route.replace()`
+- **0.6.13** `Route.set(key, value)` <br/> `Route.set()`: `keepQuery` parameter <br/>`Route.replace()`: `keepQuery` parameter
+</VersionTimeline>

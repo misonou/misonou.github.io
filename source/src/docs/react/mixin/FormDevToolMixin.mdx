@@ -1,0 +1,46 @@
+<Module name="@misonou/react-app-utils" />
+
+# FormDevToolMixin
+
+Creates a mixin that inject development tools related to forms.
+
+Currently it provides the following tool:
+
+- [Form autofiller](/docs/devtools/form-autofill)
+
+## Syntax
+
+```javascript
+useMixin(FormDevToolMixin)
+```
+
+### Return value
+
+A [`FormDevToolMixin`](:) instance.
+
+## FormDevToolMixin class
+
+<MemberList
+    i="FormDevToolMixin"
+    im={['promptAutofill()']} />
+
+### `FormDevToolMixin.promptAutofill()`
+
+```javascript
+promptAutofill(dataset)
+promptAutofill(callback)
+promptAutofill(asyncImport)
+```
+
+#### Parameters
+
+<dl>
+    #### `dataset`
+    A dictionary with each entry corresponds to different data to be auto-filled.
+
+    #### `callback`
+    A callback that returns dataset, or a promise that fulfills with dataset.
+
+    #### `asyncImport`
+    Async-import a dataset module.
+</dl>

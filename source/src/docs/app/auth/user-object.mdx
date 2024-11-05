@@ -1,0 +1,28 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# Exposing user identity
+
+By casting the extension with specific user object type, [`app.user`](:) will be enforced with the given type.
+
+> If there are multiple identity providers, it may be advantageous to unify the user object by `resolveUser`.
+
+```typescript
+import brew from "brew-js/app";
+import Router from "brew-js/extension/router";
+import Auth, { AuthExtension } from "@misonou/brew-extension-auth";
+
+interface User {
+    id: string;
+    /* ... */
+}
+
+brew.with(Router, Auth as AuthExtension<User>)(app => {
+    app.useAuth({
+        /* ... */
+        resolveUser() {
+            // require to return an object of type `User`
+            return createMyUserObject();
+        }
+    });
+});
+```

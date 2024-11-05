@@ -1,0 +1,31 @@
+<Module name="zeta-dom/dom" />
+
+# setModal
+
+Sets the given element as modal element.
+
+When a element is modal, only its descendant elements and elements to which focus can be delegated
+can be focused and receive events from user interaction.
+
+The modal state can be manually cancelled by [`releaseModal`](:); or
+automatically when the element is detached.
+
+## Syntax
+
+```javascript
+setModal(element)
+```
+
+<ImportHint
+    name="setModal"
+    module="zeta-dom/dom"
+    global="zeta.dom.setModal"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+</dl>

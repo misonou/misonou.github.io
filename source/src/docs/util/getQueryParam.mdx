@@ -1,0 +1,34 @@
+<Module name="brew-js/util" />
+
+# getQueryParam
+
+Gets the value of a query parameter from current location.
+If the parameter is not present in the query string, `false` will be returned.
+
+## Syntax
+
+```javascript
+getQueryParam(name)
+getQueryParam(name, url)
+```
+
+<ImportHint
+    name="getQueryParam"
+    module="brew-js/util/common"
+    global="brew.getQueryParam"
+/>
+
+### Parameters
+
+<dl>
+    #### `name`
+    Name of the query parameter.
+
+    #### `url` <Badge.Optional />
+    A query string or a URL.
+
+    If `url` is not specified, `location.search` will be used.
+
+    > Prior to 0.6.4, it does not return expected result when `url` contains hash.
+
+</dl>

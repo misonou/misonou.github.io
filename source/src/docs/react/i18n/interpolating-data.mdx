@@ -1,0 +1,32 @@
+<Module name="brew-js-react" />
+
+# Translate dynamic content
+
+Translate callback use [waterpipe](/docs/waterpipe/using-waterpipe) as template engine under the hood when supplied with data.
+
+```tsx
+/// Component.tsx
+import { useTranslation } from "./i18n";
+
+function Component() {
+    const { t } = useTranslation('prefix');
+    return (
+        <div>{t('key', { value: 1 })}</div>
+    );
+}
+
+/// i18n.ts
+const resources = {
+    en: {
+        prefix: { key: 'The value is {{value}}' }
+    }
+};
+
+const { translate, useTranslation } = makeTranslation(resources, 'en');
+```
+
+would render:
+
+```html
+<div>The value is 1</div>
+```

@@ -1,0 +1,82 @@
+<Module name="waterpipe" />
+
+# Using waterpipe
+
+The library is a UMD-module that support browsers, AMD and Node.js.
+
+For simplest case in HTML, include using `<script>` tags:
+
+```html
+<script type="text/javascript" src="https://unkpg.com/waterpipe"></script>
+```
+
+For Node.js, use `require()`:
+
+```javascript
+var waterpipe = require('waterpipe');
+```
+
+For ES module, use `import`:
+
+```javascript
+import waterpipe from 'waterpipe';
+```
+
+## Evaluating template
+
+```javascript
+waterpipe(template, data)
+waterpipe(template, data, options)
+```
+
+Returns string with every expression inside `{{ }}` get interpolated:
+
+```javascript
+// returns the string "The value is 1."
+waterpipe('The value is {{value}}.', { value: 1 });
+```
+
+## Evaluating expression
+
+```javascript
+waterpipe.eval(template, data)
+waterpipe.eval(template, data, options)
+```
+
+Returns values evaluated from the given expression:
+
+```javascript
+// returns the number 2
+waterpipe.eval('value + 1', { value: 1 });
+```
+
+## Options
+
+An additional object with the following options can be passed as the 3rd argument.
+
+<dl>
+    #### `globals`
+    Defines global variables readable in this evaluation.
+    Variables declared here will override those in `waterpipe.globals`.
+
+    #### `indent`
+    Sets indentation of resulting HTML markup.
+
+    Each level of nested elements will be indented by the specfied number of spaces or the specific sequence of characters.
+    If either `0` or an empty string is specified, indentation is turned off as if this option is absent.
+
+    #### `indentPadding`
+    Number of spaces or the specific sequence of characters that will be left padded to each line.
+    This option is only effective if the indent option is present and not equal to `0` or an empty string.
+
+    #### `noEncode`
+    Special HTML characters are **not** encoded, including `'`, `"`, `&`, `<` and `>`,
+    while whitespaces between text, expressions and flow control tags are collapsed.
+    Default is `false`. See [Output mode](/docs/waterpipe/output-mode).
+
+    #### `html`
+    Special HTML characters are encoded, including `'`, `"`, `&`, `<` and `>`,
+    while whitespaces between text, expressions and flow control tags are collapsed.
+    Default is `true`. When set to `false`, `noEncode` is automatically set to `true`.
+    See [Output mode](/docs/waterpipe/output-mode).
+</dl>

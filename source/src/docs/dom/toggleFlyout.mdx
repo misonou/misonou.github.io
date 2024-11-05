@@ -1,0 +1,43 @@
+<Module name="brew-js/domAction" />
+
+# toggleFlyout
+
+Toggles flyout and returns a promise that when resolved, receives the value passed to [`closeFlyout`](:).
+
+## Syntax
+
+```javascript
+toggleFlyout(selector)
+toggleFlyout(selector, source)
+toggleFlyout(selector, source, options)
+```
+
+<ImportHint
+    name="toggleFlyout"
+    module="brew-js/domAction"
+    global="brew.toggleFlyout"
+/>
+
+### Parameters
+
+<dl>
+    #### `selector`
+    A DOM element or a CSS selector that refers to a flyout.
+
+    #### `source` <Badge.Optional />
+    Source element which triggered the flyout.
+
+    #### `options` <Badge.Optional />
+    A dictionary containing options to alter flyout's behavior.
+
+</dl>
+
+## Events
+
+See [`openFlyout`](:) and [`closeFlyout`](:) for associated events.
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.5.7** Introduced
+</VersionTimeline>

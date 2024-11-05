@@ -1,0 +1,63 @@
+<Module name="zeta-dom-react" />
+
+# partial
+
+Returns a callback that set only part of a composite state.
+
+It allows correlated states to use a single `useState` while be able to update individual properties easily.
+
+```tsx
+function Component() {
+    const [count, setCount] = useState(0);
+    const [current,setCurrent] = useState(0);
+    const [state, setState] = useState({ count: 0, current: 0 });
+
+    function action() {
+        // trigger two update
+        setCount(1);
+        setCurrent(1);
+
+        // trigger single update
+        setState({ count: 1, current: 1});
+
+        // update one of the properties
+        partial(setState)('count', 1);
+    }
+    /* ... */
+}
+```
+
+## Syntax
+
+```javascript
+partial(setState)
+partial(setState, key)
+```
+
+### Parameters
+
+<dl>
+    #### `setState`
+    A state updating callback returned from `React.useState`.
+
+    #### `key` <Badge.Optional />
+    Property to update.
+
+</dl>
+
+### Return value
+
+A callback that
+
+- when `key` is given, accept:
+    ```typescript
+    partial(setState, prop)(value);
+    partial(setState, prop)(oldValue => newValue);
+    ```
+
+- when `key` is not given, accept:
+    ```typescript
+    partial(setState)({ prop1: val1, prop2: val2, /* ... */ })
+    partial(setState)('prop', value);
+    partial(setState)('prop', (oldValue, oldStates) => newValue);
+    ```

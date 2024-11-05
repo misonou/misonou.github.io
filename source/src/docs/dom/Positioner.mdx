@@ -1,0 +1,97 @@
+import PositionObserveExample from "src/components/examples/position-observe";
+
+<Module name="@misonou/react-css-utils" />
+
+# Positioner class
+
+<ImportHint
+    name="Positioner"
+    module="@misonou/react-css-utils"
+    expanded
+/>
+
+The `Positioner` class observes changes of viewport sizes and automatically
+re-position target element if necessary.
+
+> Requires [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) to work.
+
+```typescript
+const p = new Positioner(element, to, 'left bottom', { within });
+p.observe();
+```
+
+<PositionObserveExample />
+
+<MemberList
+    i="Positioner"
+    im={['refresh()', 'observe()', 'disconnect()', 'setOptions()']}
+/>
+
+## Constructor
+
+```javascript
+new Positioner(element, to, dir)
+new Positioner(element, to, dir, options)
+```
+
+> See [`position`](:) for detailed information for parameters and options.
+
+## Instance methods
+
+### `Positioner.disconnect()`
+
+```javascript
+disconnect()
+```
+
+Disables automatic re-positioning.
+
+### `Positioner.observe()`
+
+```javascript
+observe()
+```
+
+Enables automatic re-positioning when viewport size or
+the bounding size of `PositionOptions.within` has changed.
+
+### `Positioner.refresh()`
+
+```javascript
+refresh()
+```
+
+Triggers re-positioning manually.
+
+### `Positioner.setOptions()` <Badge.Experimental />
+
+```javascript
+setOptions(options)
+setOptions(dir)
+setOptions(dir, options)
+```
+
+Updates position.
+
+### Parameters
+
+<dl>
+    #### `options`
+    A dictionary specifying positioning options.
+
+    #### `dir`
+    A space-delimited string specifying how element is aligned in x and y direction.
+
+</dl>
+
+> See [`position`](:) for detailed information for parameters and options.
+
+## Version information
+
+<VersionTimeline module="@misonou/react-css-utils">
+- **1.4.0** Introduced
+</VersionTimeline>
+
+## See also
+
+- [`position`](:)

@@ -1,0 +1,29 @@
+<Module name="waterpipe" />
+
+# Global variables
+
+You can define global variables when calling `waterpipe()` or on the super global `waterpipe.globals`:
+
+For an object path if the first segment is not a property name on the current object or any visible objects in the stack, it will be evaluated against the visible global objects.
+
+```javascript
+// define global variables when calling `waterpipe()`
+waterpipe(template, data, {
+    globals: {
+        myGlobal: 'foobar'
+    }
+});
+
+// define variables on the super global `waterpipe.globals`
+waterpipe.globals.myGlobal = 'foobar';
+```
+
+In either case the following template will output the string `foobar` if
+there is no `myGlobal` property in the input data object.
+
+<WaterpipeExample
+    globals={{ myGlobal: 'foobar' }}
+    examples={['myGlobal']}
+/>
+
+> **Note:** Variables defined on `waterpipe.globals` will be shared across all template interpolation.

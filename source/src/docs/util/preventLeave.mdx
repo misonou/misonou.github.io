@@ -1,0 +1,38 @@
+<Module name="zeta-dom/domLock" />
+
+# preventLeave
+
+Prompts user before leaving the page.
+
+## Syntax
+
+```javascript
+preventLeave()
+preventLeave(promise)
+preventLeave(element, promise)
+preventLeave(element, promise, oncancel)
+```
+
+<ImportHint
+    name="preventLeave"
+    module="zeta-dom/domLock"
+    global="zeta.dom.preventLeave"
+/>
+
+### Parameters
+
+<dl>
+    #### `promise`
+    A promise object.
+
+    #### `element`
+    A DOM element.
+
+    #### `oncancel` <Badge.Optional />
+    A handler which handles request of cancellation by [`cancelLock`](:).
+
+</dl>
+
+### Return value
+
+A callback that cancels the prompt.

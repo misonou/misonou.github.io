@@ -1,0 +1,76 @@
+<Module name="brew-js/anim" />
+
+# animateOut
+
+Starts outro animation for contents within the specified element.
+
+## Syntax
+
+```javascript
+animateOut(element, trigger)
+animateOut(element, trigger, scope)
+animateOut(element, trigger, scope, filterCallback)
+animateOut(element, trigger, scope, filterCallback, excludeSelf) 
+```
+
+<ImportHint
+    name="animateOut"
+    module="brew-js/anim"
+    global="brew.animateOut"
+/>
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `trigger`
+    A string specifying the type of event, which is matched against whitespace-listed values of the `animate-on` attribute.
+
+    #### `scope` <Badge.Optional />
+    A CSS selector which when specified, any descendant elements which are also descendant of such elements will be excluded from animation.
+
+    #### `filterCallback` <Badge.Optional />
+    Optional callback to filter out target elements to be animated.
+
+    #### `excludeSelf` <Badge.Optional />
+    Whether the supplied element should be excluded from being animated.
+
+</dl>
+
+### Return value
+
+A promise that resolves when all animations are completed, or after 1.5 seconds timeout.
+
+## Events
+
+<MemberList
+    i="dom"
+    ev={['animateout']}
+    noRoot noRender
+/>
+
+### `animateout` event
+
+The event is fired for the animated element. Promise returned from `animateout` event
+will be awaited.
+
+### `animationstart` event
+
+See [`dom: animationstart event`](:)
+
+### `animationcomplete` event
+
+See [`dom: animationcomplete event`](:)
+
+## CSS classes
+
+<dl>
+    #### `tweening-out`
+    When animation starts, the animated element is added the `tweening-out` CSS class.
+    Any new CSS transitions or animations initiated by the  `tweening-out` CSS class
+    will be awaited.
+
+    > After outro animation is completed, both `tweening-in` and `tweening-out` CSS classes will be removed.
+</dl>

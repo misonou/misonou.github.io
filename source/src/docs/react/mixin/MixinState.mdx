@@ -1,0 +1,44 @@
+<Module name="brew-js-react" />
+
+# MixinState class
+
+The `MixinState` instance is used for persisting state for each applied element for any mixin
+inherits [`StatefulMixin`](:).
+
+<MemberList
+    i="MixinState"
+    ip={['element']}
+    im={['onDispose()']}
+/>
+
+## Instance properties
+
+### `MixinState.element` <Badge.ReadOnly />
+
+Gets the element associated to this state object.
+
+## Instance methods
+
+### `MixinState.onDispose()`
+
+```javascript
+onDispose(callback)
+```
+
+Registers callback to clean up resources when the element is unmounted.
+
+### Parameters
+
+<dl>
+    #### `callback`
+    A callback.
+
+</dl>
+
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.0** Introduced
+- **0.6.0** `MixinState.onDispose()`
+</VersionTimeline>

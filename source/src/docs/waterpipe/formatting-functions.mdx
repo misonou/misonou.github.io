@@ -1,0 +1,43 @@
+<Module name="waterpipe" />
+
+# Formatting functions
+
+
+Formatting functions are provided in a separate JavaScript file `waterpipe.format.js`.
+
+### `:printf`
+
+Formats the piped value by the specified format.
+The function uses [sprintf.js](https://github.com/alexei/sprintf.js).
+
+<WaterpipeExample
+    data={{ foo: 65530, bar: 0.5 }}
+    examples={['foo :printf %x', 'bar :printf %.2f']}
+/>
+
+A shorthand syntax is also supported where the pipe function name itself is the formatting expression starting with the percent character (`%`).
+
+<WaterpipeExample
+    data={{ foo: 65530, bar: 0.5 }}
+    examples={['foo %x', 'bar %.2f']}
+/>
+
+### `:query`
+
+Converts key-value pairs from an object to a query string, or to be specific an `application/x-www-form-urlencoded` encoded string.
+
+<WaterpipeExample
+    data={{ values: {foo:"baz",bar:1} }}
+    examples={['values :query']}
+/>
+
+### `:date`
+
+Converts the timestamp or string to the equivalent date in the specified format. The function uses the [standard](https://msdn.microsoft.com/en-us/library/az4se3k1.aspx) and [custom](https://msdn.microsoft.com/en-us/library/8kb3ddd4.aspx) date and time format strings of Microsoft .NET Framework.
+
+It is also useful to extract date and time components from the given timestamp or date string.
+
+<WaterpipeExample
+    data={{ timestamp: 1370000000000, date: '2013-05-31' }}
+    examples={['timestamp :date yyyy-MM-dd', 'timestamp :date f', 'date :date f', 'date :date M']}
+/>

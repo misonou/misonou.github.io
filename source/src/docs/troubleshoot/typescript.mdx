@@ -1,0 +1,56 @@
+# TypeScript issues
+
+Here listed major known issues over different versions, listing affected versions and possible workaround.
+
+> This may or may not be linted by the IDE depends on the TypeScript version used.
+
+## Updated type argument of useRefInitCallback
+
+~~zeta-dom-react >=0.5.13~~
+
+The type argument is updated to provide correct type inference.
+
+If you have specified the second type argument specified like below
+
+```typescript
+// TS2344: Type '(element: Element, arg: number) => void' does not satisfy the constraint 'any[]'.
+useRefInitCallback<Element, (element: Element, arg: number) => void>(elm => { /* ... */}, 1);
+```
+
+You can either change to the following ways:
+
+```typescript
+useRefInitCallback((elm: Element) => { /* ... */}, 1);
+useRefInitCallback<Element, [number]>(elm => { /* ... */}, 1);
+```
+
+## Unable to infer signature of closeDialog correctly
+
+~~brew-js-react >=0.6.4~~ ~~typescript &lt;5.3.2~~
+
+After updating `brew-js-react` to `0.6.4`, the signature of [`DialogContext.closeDialog`](:) may not be properly inferred if the `onCommit` callback is declared to have
+its first parameter optional:
+
+```tsx
+createDialog({
+    onCommit(value?: boolean) {
+        /* ... */
+    },
+    onRender({ closeDialog }) {
+        // TS2554: Expected 1 arguments, but got 0.
+        const onClick = () => closeDialog();
+        /* ... */
+    }
+});
+```
+
+To solve the linting error, change the first parameter of `onCommit` to explicitly typed with `undefined`:
+
+```tsx
+createDialog({
+    onCommit(value?: boolean | undefined) {
+        /* ... */
+    },
+    /* ... */
+});
+```

@@ -1,0 +1,44 @@
+<Module name="zeta-dom/dom" />
+
+# insertText
+
+Inserts text an input element, where text currently highlighted will be replaced.
+
+Note that if the input element does not support selection API, where it is the case for some input type in certain browsers,
+an `zeta/invalid-operation` error will be thrown. It can be verifed by whether `selectionStart` property of the input element is `null`.
+
+## Syntax
+
+```javascript
+insertText(element, text)
+insertText(element, text, startOffset)
+insertText(element, text, startOffset, endOffset)
+```
+
+<ImportHint
+    name="insertText"
+    module="zeta-dom/dom"
+    global="zeta.dom.insertText"
+/>
+
+
+### Parameters
+
+<dl>
+    #### `element`
+    An input element.
+
+    #### `text`
+    Text to be inserted.
+
+    #### `startOffset` <Badge.Optional />
+    Position to insert the text, `0` being at the start of current text. If it is larger than the length of current value, the text will be inserted at the end.
+
+    #### `endOffset` <Badge.Optional />
+    When specified, the substring between `startOffset` and `endOffset` will be replaced by the inserting text.
+
+</dl>
+
+### Return value
+
+Whether text is inserted and native `input` event is dispatched.

@@ -1,0 +1,13 @@
+#example-flyout-containment {
+    display: flex;
+    height: 120px;
+    column-gap: 1em;
+}
+
+#example-flyout-containment [is-flyout] {
+    position: absolute;
+    padding: 1em;
+    border-radius: var(--overlay-border-radius);
+    background: var(--page-bg);
+    box-shadow: var(--overlay-box-shadow);
+}

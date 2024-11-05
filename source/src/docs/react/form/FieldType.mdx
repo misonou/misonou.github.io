@@ -1,0 +1,85 @@
+<Module name="zeta-dom-react" />
+
+# FieldType interface
+
+For a class to be used as a field type to [`useFormField`](:), the class should
+implements the following properties or methods.
+
+<MemberList
+    i="FieldType"
+    ip={['defaultValue', 'valueProperty']}
+    im={['isEmpty()', 'normalizeValue()', 'postHook()']} />
+
+## Instance properties
+
+### `FieldType.defaultValue` <Badge.Optional />
+
+Specifies default value when there initial value has not been passed or set.
+
+### `FieldType.valueProperty` <Badge.Optional />
+
+Specifies the name of prop that will control [`FormFieldState.value`](:). Default is `value`.
+
+## Instance methods
+
+### `FieldType.isEmpty()` <Badge.Optional />
+
+```javascript
+isEmpty(value)
+```
+
+Overrides default behavior of empty field checking.
+
+The field is invalid when it is required and the `isEmpty` callback return `true`.
+
+### `FieldType.normalizeValue()` <Badge.Optional />
+
+```javascript
+normalizeValue(value, prop)
+```
+
+Normalizes value when being updated.
+
+### `FieldType.postHook()`
+
+```javascript
+postHook(state, prop, hook)
+```
+
+Applies additional logic and modification to field state.
+
+#### Parameters
+
+<dl>
+    #### `state`
+    Untouched field state returned from hook.
+
+    #### `props`
+    Props passed to [`useFormField`](:).
+
+    #### `hook` <Badge.Version />
+    A helper object that provides utitlies similar to React hooks with the following method:
+
+    <dl>
+        #### `callback(callback)`
+        Creates a stable callback.
+        Similar to [`useMemoizedFunction`](:).
+
+        #### `effect(effect, deps)`
+        Accepts a function that contains imperative, possibly effectful code.
+        Similar to `React.useEffect`, but does not accept cleanup function.
+
+        #### `memo(factory, deps)`
+        Recompute the memoized value when one of the deps has changed.
+        Similar to `React.useMemo`.
+    </dl>
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.3.5** Introduced
+- **0.3.11** `FieldType.defaultValue`<br/>`FieldType.normalizeValue()`
+- **0.5.9** `FieldType.postHook()`: `hook` parameter
+</VersionTimeline>

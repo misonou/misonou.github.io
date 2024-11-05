@@ -1,0 +1,76 @@
+<Module name="brew-js-react" />
+
+# createDialog
+
+## Syntax
+
+```javascript
+createDialog(options)
+```
+
+### Parameters
+
+<dl>
+    #### `options`
+    <dl>
+        #### `className` <Badge.Optional />
+        CSS class names to be set in dialog's root element.
+
+        #### `modal` <Badge.Optional />
+        A `boolean` indicating if the dialog is modal, i.e. blocking UI interaction outside the dialog.
+
+        #### `onClose` <Badge.Optional />
+        Callback to be invoked when dialog has closed, after outro animation and before React DOM is unmounted.
+
+        #### `onCommit` <Badge.Optional />
+        Callback to perform asynchronous action when user confirms the dialog.
+
+        The dialog will be held open until the returned promise resolves.
+        When the promise rejects, the dialog will remain open.
+
+        The callback receive a second argument with the following property:
+
+        <dl>
+            #### `signal` <Badge.Version />
+            An `AbortSignal` object, which will receive notification when cancellation is requested and
+            is not rejected.
+        </dl>
+
+        #### `onOpen` <Badge.Optional />
+        Callback to be invoked when dialog has opened.
+
+        #### `onRender`
+        A callback that render dialog contents. The callback should return valid React DOM content.
+        See [`DialogRenderComponentProps`](:) for incoming props.
+
+        #### `preventLeave` <Badge.Optional />
+        A `boolean` which when set, user will be prompt before leaving the page when the dialog is visible.
+
+        #### `preventNavigation` <Badge.Optional />
+        A `boolean` which when set, user will not be able to navigate within the single-pages app.
+
+        #### `showCloseButton` <Badge.Optional />
+        This option is not consumed by `createDialog`. It is added for common use, and should be handled in `wrapper` or `onRender`.
+
+        #### `title` <Badge.Optional />
+        This option is not consumed by `createDialog`. It is added for common use, and should be handled in `wrapper` or `onRender`.
+
+        #### `wrapper` <Badge.Optional />
+        React component where content returned by `onRender` is wrapped inside.
+        See [`DialogRenderComponentProps`](:) for incoming props.
+    </dl>
+</dl>
+
+### Return value
+
+A [`DialogState`](:) instance.
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.0** Introduced
+- **0.2.9** `wrapper` `preventLeave` option
+- **0.2.10** `preventNavigation` option
+- **0.5.2** `focus` option
+- **0.6.0** `onCommit` callback receive 2nd argument
+</VersionTimeline>

@@ -1,0 +1,50 @@
+import LoadingExample from "src/components/examples/dialog-loading";
+import ErrorExample from "src/components/examples/dialog-error";
+
+<Module name="brew-js-react" />
+
+# Foreground operation
+
+The `onCommit` option for [`createDialog`](:) allows performing operations in foreground,
+keeping the dialog open, when user confirms in a prompt.
+
+The callback will receive committed value sent from [`DialogRenderComponentProps.closeDialog`](:)
+in `onRender` callback.
+
+> If the dialog is closed due to lost of focus, or by calling [`DialogState.close`](:), the `onCommit` callback will not be invoked.
+
+```javascript
+createDialog({
+    /* ... */
+    // receive value from user input
+    onCommit(value) {
+        /* ... */
+    }
+});
+```
+
+<LoadingExample />
+
+If the operation fails, i.e. the promise returned by `onCommit` callback rejects, the dialog will remain open,
+allowing user to commit again or to cancel and close the dialog.
+
+## Abort signal
+
+~~0.6.0~~
+
+Since 0.6.0, the `onCommit` callback receive an `AbortSignal` object, which signals when dialog is closed during commit action:
+
+```javascript
+createDialog({
+    /* ... */
+    onCommit(value, { signal }) {
+        /* ... */
+    }
+});
+```
+
+## Error handling
+
+~~0.6.4~~
+
+<ErrorExample />

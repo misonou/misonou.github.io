@@ -1,0 +1,33 @@
+<Module name="brew-js-react" />
+
+# I18n extension
+
+The `makeTranslation` function is provided in conjunction to the i18n extension in brew.js.
+
+> The app must setup i18n in order to work, see [`app.useI18n`](:) for instructions.
+
+## Creating translation from JSON
+
+```typescript
+const resources = {
+    // first level are languages
+    en: {
+        // second level are prefixes
+        prefix: { key: 'Translation string' }
+    },
+    de: {
+        prefix: { key: 'Übersetzungszeichenfolge' }
+    }
+};
+
+const { translate, useTranslation } = makeTranslation(resources, 'en');
+```
+
+Now it is ready to [get the translations](/docs/react/i18n/getting-translation).
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.4.8** `detectLanguage` option
+</VersionTimeline>

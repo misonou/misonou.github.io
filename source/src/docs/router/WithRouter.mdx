@@ -1,0 +1,370 @@
+<Module name="brew-js/extension/router" />
+
+# WithRouter interface
+
+<MemberList
+    i="app" noRoot
+    ip={['path', 'basePath', 'initialPath', 'route', 'routes', 'canNavigateBack', 'canNavigateForward', 'previousPath', 'sessionId', 'sessionStorage', 'cache', 'page', 'historyStorage']}
+    im={['navigate()', 'back()', 'backToPreviousPath()', 'snapshot()', 'resolvePath()', 'parseRoute()', 'matchRoute()', 'isAppPath()', 'toHref()', 'fromHref()']}
+    ev={['beforepageload', 'navigate', 'pageload', 'hashchange', 'pageenter', 'pageleave', 'popstate']}/>
+
+## Instance properties
+
+### `app.basePath` <Badge.ReadOnly />
+
+Gets the base path of any valid app path.
+
+It is always `/` unless `explicitBaseUrl` options is set to `true`.
+
+### `app.cache` <Badge.ReadOnly />
+
+Gets the storage that persists over and gets restored in the current tab.
+
+It is essentially like storing items directly to `Window.sessionStorage`, but with the benefits that
+data is compressed, as well as that data will not be stored in duplication if it is also saved to [`app.sessionStorage`](:)
+or [`app.historyStorage`](:).
+
+### `app.canNavigateBack` <Badge.ReadOnly />
+
+Gets if user can move back to previous page (or screen) without leaving the app.
+
+### `app.canNavigateForward` <Badge.ReadOnly />
+
+Gets if user can move forward to next page (or screen) without leaving the app.
+
+### `app.historyStorage` <Badge.ReadOnly />
+
+See [Persisting states](/docs/router/persisting-state#s-history-storage).
+
+### `app.initialPath` <Badge.ReadOnly />
+
+Gets the initial path before the app is initialized.
+
+### `app.previousPath` <Badge.ReadOnly />
+
+Gets the path that will be navigated to if user click 'Back' on browser or by calling [`app.back()`](:).
+
+### `app.path`
+
+Gets or sets the current path.
+
+When setting a new path, the path will be resolved with [`app.resolvePath`](:) for path starting with `~/`, containing `.` or `..` and parameter substitutions.
+
+Setting this property has identical behavior to call [`app.navigate`](:) without the `replace` parameter.
+
+### `app.route` <Badge.ReadOnly />
+
+Gets the Route object for accessing route parameters.
+
+Setting unrecorgnized keys will have no effects. Also, setting one parameter may unset other parameters if the new matched route does not contains such parameters. Therefore, when setting multiple parameters at once, use `Route.set`.
+
+See [`Route`](:) object.
+
+### `app.routes` <Badge.ReadOnly />
+
+Gets a readonly copy of the routes supplied to [`app.useRouter`](:).
+
+### `app.sessionId` <Badge.ReadOnly />
+
+Gets a unique ID that represent an app session.
+
+Note that an app session is different from a browser session which typically associates to the lifetime of a tab.
+
+By constrast, an app session is created for every unique visit to the single-page app, for example from a link.
+When the page is reloaded, or is restored by going forward or backward in browser history, previous app session is resumed.
+App sessions can also be explicitly resumed when `resume` option is specified when configuring the router.
+
+### `app.sessionStorage` <Badge.ReadOnly />
+
+Gets the storage that persists over and gets restored in the same app session.
+
+### `app.page` <Badge.ReadOnly />
+
+Gets information of and performs actions on current page.
+
+See [`PageInfo`](:).
+
+
+## Instance methods
+
+### `app.back()`
+
+```typescript
+app.back()
+app.back(defaultPath)
+```
+
+Navigate to the previous path in history stack.
+
+#### Parameters
+
+<dl>
+    #### `defaultPath` <Badge.Optional /> <Badge.Deprecated />
+    Path to navigate when there is no previous path.
+
+</dl>
+
+#### Return value
+
+A promise that is fulfilled when navigation completes, or is rejected if navigation is cancelled;
+or `false` if there is no previous path or snapshot navigateable, i.e. when `WithRouter.canNavigateBack` is `false`.
+
+### `app.backToPreviousPath()` <Badge.Version />
+
+```javascript
+app.backToPreviousPath()
+```
+
+Navigate back to previous path in history stack, skipping all snapshots taken in current path.
+
+#### Return value
+
+A promise that is fulfilled when navigation completes or is rejected if navigation is cancelled;
+or `false` if there is no previous path navigateable, i.e. when [`app.previousPath`](:) is `null`.
+
+### `app.fromHref()`
+
+```typescript
+app.fromHref(path)
+```
+
+Converts a browser path, e.g. to be used in `href` attribute of an anchor element or be passed to `window.open`,
+to a path that can be processed by the app.
+
+This method is intended to be in junction with [`app.toHref`](:).
+It does not gurantee the return value if the given path is not a valid app path,
+thus it is recommended to check the input using [`app.isAppPath`](:) first.
+
+#### Parameters
+
+<dl>
+    #### `path`
+    A path to be converted. It must be an absolute path, i.e. starting with `/`.
+
+</dl>
+
+Behavior on different router mode:
+
+| `urlMode`                              | Page URL      | Input                      | Output       |
+| -------------------------------------- | ------------- | -------------------------- | ------------ |
+| `pathname`                             | `/`           | `/home`                    | `/home`      |
+| `pathname` (`baseUrl=/base`, implicit) | `/base`       | `/base/home`               | `/home`      |
+| `pathname` (`baseUrl=/base`, explicit) | `/base`       | `/base/home`               | `/base/home` |
+| `query`    (`queryParam=path`)         | `/index.html` | `/index.html?path=%2Fhome` | `/home`      |
+| `none`                                 | `/index.html` | -                          | -            |
+
+> It is internally used to navigate the app when clicking a link that corresponds to a valid app path.
+
+### `app.isAppPath()`
+
+```typescript
+app.isAppPath(path)
+```
+
+Determines whether a path should be processed by the router.
+The result is always false if an absolute URL (i.e. beginning with http: or https:) is given.
+
+### Parameters
+
+<dl>
+    #### `path`
+    A path or url.
+    > It expects the path to be absolute path. Giving a full URL will always return `false`.
+</dl>
+
+Behavior on different router mode:
+
+| `urlMode`                      | Page URL      | Is app path                | Not app path               |
+| ------------------------------ | ------------- | -------------------------- | -------------------------- |
+| `pathname`                     | `/`           | `/home`                    | -                          |
+| `pathname` (`baseUrl=/base`)   | `/base`       | `/base/home`               | `/home`                    |
+| `query`    (`queryParam=path`) | `/index.html` | `/index.html?path=%2Fhome` | `/other.html?path=%2Fhome` |
+| `none`                         | `/index.html` | (none)                      | (all)                      |
+
+> It is internally used to check whether the action of clicking a link should be intercepted.
+
+### `app.matchRoute()`
+
+```typescript
+app.matchRoute(route, path)
+app.matchRoute(route, path, ignoreExact)
+```
+
+Determines whether a route matches a given path.
+
+#### Parameters
+
+<dl>
+    #### `route`
+    #### `path`
+    Path to match.
+
+    #### `ignoreExact` <Badge.Optional />
+    Whether to match child paths even though there is no trailing wildcard character in the route.
+
+</dl>
+
+### `app.navigate()`
+
+```typescript
+app.navigate(path)
+app.navigate(path, replace)
+app.navigate(path, replace, data)
+```
+
+Navigate to the specified path.
+
+#### Parameters
+
+<dl>
+    #### `path`
+    Path to navigate.
+
+    #### `replace` <Badge.Optional />
+    If given true, visit of current page in the history stack will be replaced.
+
+    #### `data` <Badge.Optional />
+    Additional data to be passed to `navigate` and `beforepageload` events.
+
+</dl>
+
+#### Return value
+
+A promise that is
+- fulfilled with a [`NavigateResult`](:) object when the call has caused a page load, or is a no-op;
+- rejected if the navigation is cancelled due to another navigation or due to user actions.
+
+### `app.parseRoute()`
+
+```typescript
+app.parseRoute(pattern)
+```
+
+Parses a given route pattern and returns its information.
+
+#### Parameters
+
+<dl>
+    #### `pattern`
+    A valid route pattern.
+
+</dl>
+
+See [`RoutePattern`](:) object.
+
+### `app.resolvePath()`
+
+```javascript
+app.resolvePath(path)
+app.resolvePath(path, refPath)
+```
+
+Resolves given path by substituting current route parameters.
+
+Path starting with `~/` is resolved against the current route,
+without the trailing part matched by wildcard.
+Path containing any relative path segment (`.` or `..`) will also be correctly resolved.
+However, it will never resolve to path that is parent to the app's base path.
+
+#### Parameters
+
+<dl>
+    #### `path`
+    A relative or absolute path that may contains route parameters.
+
+    Path starting with `~/` is resolved against the current route, without the trailing part matched by wildcard.
+
+    Path containing any relative path segment (`.` or `..`) will also be correctly resolved.
+
+    However, it will never resolve to path that is parent to the app's base path.
+
+    #### `refPath` <Badge.Optional />
+    If specified, path will be resolved against supplied path instead of current path.
+
+</dl>
+
+### `app.snapshot()`
+
+```typescript
+app.snapshot()
+```
+
+Push a new state to history stack without navigation.
+Note that it only works when the app is not navigating.
+
+#### Return value
+
+Whether a new state is pushed to history stack.
+
+
+### `app.toHref()`
+
+```typescript
+app.toHref(path)
+```
+
+Converts an app path to a path that can be processed by the browser,
+e.g. to be used in `href` attribute of an anchor element or be passed to `window.open`.
+
+#### Parameters
+
+<dl>
+    #### `path`
+    A path to be converted. It must be an absolute path, i.e. starting with `/`.
+
+</dl>
+
+Behavior on different router mode:
+
+| `urlMode`                              | Page URL      | Input        | Output                     |
+| -------------------------------------- | ------------- | ------------ | -------------------------- |
+| `pathname`                             | `/`           | `/home`      | `/home`                    |
+| `pathname` (`baseUrl=/base`, implicit) | `/base`       | `/home`      | `/base/home`               |
+| `pathname` (`baseUrl=/base`, explicit) | `/base`       | `/base/home` | `/base/home`               |
+| `query`    (`queryParam=path`)         | `/index.html` | `/home`      | `/index.html?path=%2Fhome` |
+| `none`                                 | `/index.html` | -            | -                          |
+
+> It is internally used to update browser's current address when navigating.
+
+
+## Events
+
+### `beforepageload` event
+
+See [`beforepageload` event](/docs/router/beforepageload-event).
+
+### `hashchange` event
+
+See [`hashchange` event](/docs/router/hashchange-event).
+
+### `navigate` event
+
+See [`navigate` event](/docs/router/navigate-event).
+
+### `pageload` event
+
+### `pageenter` event
+
+### `pageleave` event
+
+### `popstate` event
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.1.11** `app.canNavigateBack` <br/>`app.previousPath` <br/>`app.back(defaultPath)` <br/> Promise result
+- **0.2.4** `explicitBaseUrl` option
+- **0.3.8** `app.parseRoute` <br/>`app.routes`
+- **0.3.11** `beforepageload` event<br/>`pageload` event
+- **0.4.4** `app.basePath`
+- **0.4.8** `app.isAppPath()`<br/> `urlMode` option
+- **0.4.9** `app.canNavigateForward`<br/>`app.snapshot()`
+- **0.4.10** `app.navigate()`: `data` parameter<br/> `app.fromHref()` <br/>`app.toHref()`
+- **0.5.0** `app.historyStorage`<br/>`resume` option
+- **0.5.2** `resumeOnReload` option
+- **0.5.3** `app.sessionId`<br/>`app.sessionStorage` <br/> `app.cache`<br/>`app.page`
+- **0.5.4** `hashchange` event
+- **0.5.13** `popstate` event
+- **0.6.6** `app.backToPreviousPath()`<br/>Deprecated `defaultPath` parameter of `app.back()`
+</VersionTimeline>

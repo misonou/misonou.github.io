@@ -1,0 +1,23 @@
+import Example from "src/components/examples/router-snapshot";
+
+<Module name="brew-js/extension/router" />
+
+# Snapshots
+
+~~0.4.9~~
+
+Snapshots can be taken for history storage by [`app.snapshot()`](:).
+
+When snapshot is taken, a new entry is pushed to browser history, where user can go back and forward.
+
+Entries in current [`app.historyStorage`](:) are cloned, and upon user navigation
+the previous history storage will be restored.
+
+## Example
+
+<Example />
+
+## See also
+
+- [`app.snapshot`](:)
+- [`useRouteState`](:)

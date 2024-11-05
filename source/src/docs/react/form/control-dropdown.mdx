@@ -1,0 +1,71 @@
+import { Dropdown } from "src/components/controls";
+import { countriesOptions, countriesOptionsTC } from "src/data/examples/countries";
+import tsx from "!raw-loader!src/components/controls/Dropdown.tsx";
+
+<Module name="zeta-dom-react" />
+
+# Dropdown
+
+<Dropdown
+    label="Countries/Regions"
+    items={countriesOptions} />
+
+```tsx
+<Dropdown
+    label="Countries/Regions"
+    items={countriesOptions} />
+```
+
+## Example: Allow empty state
+
+<Dropdown
+    label="Countries/Regions"
+    items={countriesOptions}
+    allowUnselect />
+
+```tsx
+<Dropdown
+    label="Countries/Regions"
+    items={countriesOptions}
+    allowUnselect />
+```
+
+## Example: Search box
+
+<Dropdown
+    label="Countries/Regions"
+    items={countriesOptions}
+    showSearchBox
+    searchBoxPlaceholder="Type to search..." />
+
+```tsx
+<Dropdown
+    label="Countries/Regions"
+    items={countriesOptions}
+    showSearchBox
+    searchBoxPlaceholder="Type to search..." />
+```
+
+## Example: Forced error state
+
+<Dropdown
+    label="Countries/Regions"
+    items={countriesOptionsTC}
+    error="Error" />
+
+```tsx
+<Dropdown
+    label="Countries/Regions"
+    items={countriesOptionsTC}
+    error="Error" />
+```
+
+## Source code
+
+<CodeBlock children={tsx} className="language-tsx" />
+
+## See also
+
+- [`ChoiceField`](:)
+- [`ChoiceFieldProps`](:)
+- [`ChoiceItem`](:)

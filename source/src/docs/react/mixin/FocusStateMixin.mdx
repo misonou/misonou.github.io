@@ -1,0 +1,40 @@
+<Module name="brew-js-react" />
+
+# FocusStateMixin
+
+Adds `focused` and `focused-*` CSS classes to applied elements when being focused.
+
+## Syntax
+
+```javascript
+useFocusStateMixin()
+```
+
+## FocusStateMixin class
+
+> Mixin should be created using [`useFocusStateMixin`](:) and applied to element by [`Mixin.use`](:).
+
+<MemberList
+    i="FocusStateMixin"
+    extends={['ClassNameMixin']}
+    im={['for()']}
+/>
+
+### `FocusStateMixin.for()`
+
+```javascript
+for(target)
+```
+
+Sets focus state based on another element.
+
+If the element with this mixin gain focus, the target element will also gain focus.
+Likewise, if the target element lost focus, the element with this mixin will also lose focus.
+
+### Parameters
+
+<dl>
+    #### `target`
+    A CSS selector or a ref object.
+
+</dl>

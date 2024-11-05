@@ -1,0 +1,20 @@
+<Module name="brew-js-react" />
+
+# Passing mixin to child component
+
+To maintain the correct mixin state, when passing mixin to child components, a `MixinRef` must be passed instead.
+
+```tsx
+function Component() {
+    const mixin = useFlyoutMixin();
+    return <ChildComponent mixinRef={mixin.ref} />;
+}
+```
+
+And use `useMixinRef` to get the mixin instance in child component:
+
+```tsx
+function ChildComponent(props) {
+    const mixin = useMixinRef(props.mixinRef);
+}
+```

@@ -1,0 +1,26 @@
+import ReturnValueExample from "src/components/examples/dialog-return-value";
+
+<Module name="brew-js-react" />
+
+# Dialog result
+
+[`DialogState.open`](:) returns a `Promise` object that will be resolved when the dialog closes,
+making it readily able to response to user input.
+
+```javascript
+const dialog = createDialog({ /* ... */ });
+const result = await dialog.open();
+```
+
+By default it will resolve with `undefined`, meaning that there is no specific result
+from the dialog.
+
+However, the dialog can be commited with return value using `closeDialog` property in `onRender` callback:
+
+<ReturnValueExample />
+
+> Note that the promise will always resolves to `undefined` if the dialog is forcibly
+  closed in cases like losing focus.
+
+> If the `onCommit` option is passed to [`createDialog`](:), the value will be sent to `onCommit`, and
+  the result will be forwarded to opener.

@@ -1,0 +1,84 @@
+import Example from "src/components/examples/breakpoint";
+
+<Module name="zeta-dom-react" />
+
+# createBreakpointContext
+
+Creates a state object and corresponding hook for multiple media queries.
+
+```typescript
+const { breakpoints, useBreakpoint } = createBreakpointContext({
+  isMobile: '(max-width: 700px)',
+  isTablet: '(max-width: 900px)'
+});
+```
+
+## Syntax
+
+```javascript
+createBreakpointContext(breakpoints)
+```
+
+<ImportHint
+    name="createBreakpointContext"
+    module="zeta-dom-react"
+    require="createBreakpointContext"
+    global="zeta.react.createBreakpointContext" />
+
+### Parameters
+
+<dl>
+    #### `breakpoints`
+    A dictionary which each key associates a media query.
+</dl>
+
+### Return value
+
+A [`BreakpointContext`](:) object.
+
+## Example
+
+<Example />
+
+## BreakpointContext interface
+
+<MemberList
+    i="BreakpointContext"
+    ip={['breakpoints']}
+    im={['useBreakpoint()']} />
+
+### `BreakpointContext.breakpoints`
+
+A dictionary which for each key returns whether the correspoding media query matches currently.
+
+### `BreakpointContext.useBreakpoint()`
+
+```javascript
+useBreakpoint()
+useBreakpoint(keys0)
+useBreakpoint(keys0, keys1)
+useBreakpoint(keys0, keys1, /* … ,*/ keysN)
+```
+
+Triggers component rendering upon changes of conditions.
+
+#### Parameters
+
+<dl>
+    #### `keys0` … `keysN` <Badge.Optional /> <Badge.Version />
+    A list of names of breakpoints that should trigger component rendering.
+
+    > Component will rerender at any breakpoints when no argument is given.
+
+</dl>
+
+#### Return value
+
+A dictionary which for each key returns whether the correspoding media query matches currently.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.2.3** Introduced
+- **0.5.6** `useBreakpoint()`: accept parameters
+</VersionTimeline>

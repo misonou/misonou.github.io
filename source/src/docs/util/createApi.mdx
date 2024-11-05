@@ -1,0 +1,129 @@
+<Module name="@misonou/react-app-utils" />
+
+# createApi
+
+Creates a wrapper that by condition executes mocked implementions.
+
+```typescript
+const api = createApi({
+    implementation: {
+        apiKey: '',
+        getData() {
+            return 'Real data';
+        }
+    },
+    // mock is only used when `REACT_APP_MOCK`
+    // environment variable is set to `true`
+    mock: {
+        apiKey: '',
+        getData() {
+            return 'Mock data';
+        }
+    }
+});
+
+// returned api object exposes the error event
+// for global error handling
+api.on('error', e => {
+    console.log(e.error);
+});
+
+// calling either implementation or mock depends on `REACT_APP_MOCK`
+// environment variable
+api.getData();
+
+// properties are also forwarded
+api.apiKey = 'xxxxx';
+```
+
+> It is recommended to define mock functions in a separate module
+  and exclude the mock module in production build by WebPack config.
+
+## Syntax
+
+```javascript
+createApi(options)
+```
+
+<ImportHint
+    name="createApi"
+    module="@misonou/react-app-utils"
+/>
+
+### Parameters
+
+<dl>
+    #### `options`
+    A dictionary specifying:
+
+    <dl>
+        #### `implementation`
+        Specifies real implemenations.
+
+        #### `mock` <Badge.Optional />
+        Specifies mocked implementions.
+        Mock is used when `REACT_APP_MOCK` environment variable is set to `true`.
+
+    </dl>
+</dl>
+
+### Return value
+
+An object forwarding all properties and methods from either `option.implementation`
+or `option.mock`, and with the additional method from the [`ApiEventListener`](:) interface.
+
+## ApiEventListener interface
+
+<MemberList
+    i="ApiEventListener"
+    im={['on()']}
+    ev={['error']}
+/>
+
+### `ApiEventListener.on()`
+
+```javascript
+on(event, handler)
+```
+
+Registers event handlers.
+
+#### Parameters
+
+<dl>
+    #### `event`
+    Name of the event.
+
+    #### `handler`
+    A callback function to be fired when the specified event is triggered.
+
+</dl>
+
+#### Return value
+
+A function that will unregister the handlers when called.
+
+### `error` event
+
+#### Event properties
+
+<dl>
+    #### `arguments` <Badge.Version />
+    Get the arguments passed to the callee.
+
+    #### `callee` <Badge.Version />
+    Gets the function that triggered the error.
+
+    Note that the callee returned will be the wrapper function returned from [`createApi`](:)
+    that forwards invocation to either real or mocked implementations.
+
+    #### `error`
+    Gets the error that triggers the event.
+</dl>
+
+## Version information
+
+<VersionTimeline module="@misonou/react-app-utils">
+- **1.0.0** Introduced
+- **1.5.3** `error` event: `arguments` and `callee` properties
+</VersionTimeline>

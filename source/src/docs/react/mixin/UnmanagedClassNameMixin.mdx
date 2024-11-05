@@ -1,0 +1,49 @@
+<Module name="brew-js-react" />
+
+# UnmanagedClassNameMixin
+
+Keeps track and preserves the presence of specified CSS classes on applied elements
+while the host component is re-rendered.
+
+## Syntax
+
+```javascript
+useUnmanagedClassNameMixin()
+```
+
+<ImportHint
+    name="useUnmanagedClassNameMixin"
+    module="brew-js-react"
+    require="useUnmanagedClassNameMixin"
+    global="brew.react.useUnmanagedClassNameMixin"
+/>
+
+## UnmanagedClassNameMixin class
+
+> Mixin should be created using [`useUnmanagedClassNameMixin`](:) and applied to element by `Mixin.use`.
+
+<MemberList
+    i="UnmanagedClassNameMixin"
+    extends={['ClassNameMixin']}
+    im={['memorize()']}
+/>
+
+### `UnmanagedClassNameMixin.memorize()`
+
+```javascript
+memorize()
+memorize(classes0)
+memorize(classes0, classes1)
+memorize(classes0, classes1, /* … ,*/ classesN)
+```
+
+Memorizes which specified CSS class names are present on the element,
+and re-apply them in the next render.
+
+### Parameters
+
+<dl>
+    #### `classes0` … `classesN` <Badge.Optional />
+    A list of CSS class names.
+
+</dl>

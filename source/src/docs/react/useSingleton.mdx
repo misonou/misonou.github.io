@@ -1,0 +1,86 @@
+<Module name="zeta-dom-react" />
+
+# useSingleton
+
+Makes sure side effects from object creation are properly cleaned up.
+
+In React development strict mode, additional diagnotics are done by executing component and hook repeatedly,
+meaning that
+1) `useState` or `useMemo` will create two copies of objects while one being discarded in each run,
+and
+2) cleanup function returned to `useEffect` will be invoked once before actual use.
+
+This can cause issues when
+1) there are side effects from object creation, and
+2) cleaning up using `useEffect`.
+
+This hook gurantees that, cleanup functions are always executed after object is replaced or parent component is unmounted,
+and any discarded objects are also disposed.
+
+```tsx
+const singleton = useState(factory)[0];
+// factory will be called twice in development strict mode
+// where the first singleton instance returned is discarded after second execution
+useEffect(() => {
+    return () => {
+        // the `dispose` method will actually be called
+        // when component is being first mounted in development strict mode,
+        // so the internal state will be invalid when component is rerendered.
+        singleton.dispose();
+    };
+}, [singleton]);
+```
+
+Instead the following will be safe in development strict mode:
+
+```tsx
+const singleton = useSingleton(factory, []);
+```
+
+## Syntax
+
+```javascript
+useSingleton(factory, deps)
+useSingleton(factory, deps, onDispose)
+useSingleton(factory)                  // deprecated
+useSingleton(factory, onDispose)       // deprecated
+useSingleton(target)                   // deprecated
+useSingleton(target, onDispose)        // deprecated
+```
+
+<ImportHint
+    name="useSingleton"
+    module="zeta-dom-react"
+    require="useSingleton"
+    global="zeta.react.useSingleton" />
+
+### Parameters
+
+<dl>
+    #### `factory`
+    A callback that return an object.
+
+    #### `deps` <Badge.Version />
+    Construct a new object when any values in the list changes.
+
+    #### `target` <Badge.Version /> <Badge.Deprecated />
+    A singleton object.
+
+    #### `onDispose` <Badge.Optional />
+    Callback to be invoked when target object is being disposed.
+    The callback will receive the target object and a flag indicating whether it is actually consumed by the component.
+
+    If unspecified, the `dispose` method on the target object will be invoked if there exists such method.
+</dl>
+
+### Return value
+
+The object returned from the `factory` callback.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.4.6** Introduced
+- **0.4.14** `target` parameter
+- **0.5.9** `deps` parameter
+</VersionTimeline>

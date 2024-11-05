@@ -1,0 +1,431 @@
+<Module name="brew-js-react" />
+
+# ScrollableMixin
+
+Enables scrollable plugin on the applied element.
+
+> Note that to use `ScrollableMixin`, app must be configured with [`app.useScrollable`](:).
+
+```tsx
+function View() {
+    const scrollable = useScrollableMixin();
+    return (
+        <div {...Mixin.use(scrollable)}>
+            <div {...Mixin.use(Mixin.scrollableTarget)}>
+                {/* ... */}
+            </div>
+        </div>
+    );
+}
+```
+
+## Syntax
+
+```javascript
+useScrollableMixin()
+useScrollableMixin(options)
+```
+
+### Parameters
+
+<dl>
+    #### `options` <Badge.Optional />
+    <dl>
+        #### `direction` <Badge.Optional />
+        Specifies in which direction can be scrolled.
+
+        Accepts the following keyword:
+
+        <dl>
+            #### `both`
+            Allows scroll on both direction if content is overflown.
+
+            #### `x-only`
+            Only allows scroll on horizontal direction.
+
+            #### `y-only`
+            Only allows scroll on vertical direction.
+        </dl>
+
+        Default is `both`.
+
+        #### `handle` <Badge.Optional />
+        Specifies which parts should initiate scrolling when
+        touch or mouse events is received.
+
+        Accepts the following keyword:
+
+        <dl>
+            #### `auto`
+            Dragging content area on touch devices or scroll bars on other devices.
+
+            #### `scrollbar`
+            only when dragging scroll bars
+
+            #### `content`
+            only when dragging contents.
+        </dl>
+
+        Default is `auto`.
+
+        #### `paged` <Badge.Optional />
+        Whether element matched by `ScrollableMixinOptions.pagedItemSelector`
+        should be snapped to the boundaries of scrollable area.
+
+        Accepts the following keyword:
+
+        <dl>
+            #### `landscape`
+            Only snaps when page orientation is landscape
+
+            #### `portrait`
+            Only snaps when page orientation is portrait
+
+            #### `always`
+            Always snaps for both page orientation.
+        </dl>
+
+        #### `pagedItemSelector` <Badge.Optional />
+        Enables `pageIndex`, which will be updated upon scrolling.
+
+        #### `persistScroll` <Badge.Optional />
+        Whether current scroll position will be persisted and be restored
+        when traversing back in browser's history.
+    </dl>
+</dl>
+
+### Return value
+
+A [`ScrollableMixin`](:) instance.
+
+## ScrollableMixin class
+
+> Mixin should be created using [`useScrollableMixin`](:) and applied to element by `Mixin.use`.
+
+<MemberList
+    i="ScrollableMixin"
+    extends={['ClassNameMixin']}
+    ip={['target', 'element', 'contentElement', 'pageIndex', 'scrolling']}
+    im={['withOptions()', 'onPageIndexChanged()', 'destroy()', 'enable()', 'disable()', 'setOptions()', 'setStickyPosition()', 'refresh()', 'scrollPadding()', 'stop()', 'scrollLeft()', 'scrollTop()', 'scrollBy()', 'scrollTo()', 'scrollByPage()', 'scrollToPage()', 'scrollToElement()']}
+/>
+
+### `ScrollableMixin.contentElement` <Badge.ReadOnly />
+
+Gets the element which its scrolling position is currently controlled.
+
+### `ScrollableMixin.element` <Badge.ReadOnly />
+
+Gets the element with scrollable plugin enabled.
+
+### `ScrollableMixin.pageIndex` <Badge.ReadOnly />
+
+Gets the index of the currently visible element matched by [`ScrollableMixinOptions.pagedItemSelector`](:) options.
+
+### `ScrollableMixin.scrolling` <Badge.ReadOnly />
+
+Gets whether the content area is being scrolled.
+
+### `ScrollableMixin.target` <Badge.ReadOnly />
+
+Gets a mixin object that when applied to descecant element
+the element will act as content to be scrolled.
+
+### `ScrollableMixin.onPageIndexChanged()`
+
+```javascript
+onPageIndexChanged(callback)
+```
+
+Adds an listener to be invoked when `ScrollableMixin.pageIndex` is updated.
+
+### Parameters
+
+<dl>
+    #### `callback`
+    A callback to be invoked.
+
+</dl>
+
+### `ScrollableMixin.destroy()`
+
+```javascript
+destroy()
+```
+
+Deactivates the scrollable plugin and release all resources.
+This method is intended for internal use.
+
+### `ScrollableMixin.enable()`
+
+```javascript
+enable()
+```
+
+Enables scrolling of content area.
+
+### `ScrollableMixin.disable()`
+
+```javascript
+disable()
+```
+
+Disables scrolling of content area.
+
+### `ScrollableMixin.setOptions()`
+
+```javascript
+setOptions(options)
+```
+
+Sets options for jQuery scrollable plugin.
+
+### Parameters
+
+<dl>
+    #### `options`
+    A dictionary specifying options. Must not pass `scrollStart`, `scrollMove`, `scrollStop` and `scrollEnd` options.
+
+</dl>
+
+### `ScrollableMixin.setStickyPosition()`
+
+```javascript
+setStickyPosition(element, dir)
+setStickyPosition(element, dir, fixed)
+setStickyPosition(element, dir, within)
+setStickyPosition(element, dir, within, fixed)
+```
+
+Sets sticky position for one or more elements.
+
+### Parameters
+
+<dl>
+    #### `element`
+    An element or a valid CSS selector.
+
+    #### `dir`
+    Which side(s) should the element be sticked onto to remain visible when the element is scrolled beyond visible area. When given `none` the element will no longer be sticky.
+
+    #### `fixed` <Badge.Optional />
+    Whether the element should be in fixed position, as if the content area is scrolled all the way in that direction.
+
+    #### `within` <Badge.Optional />
+    When specified, the element will only be sticked onto the side of this element or region.
+
+</dl>
+
+### `ScrollableMixin.refresh()`
+
+```javascript
+refresh()
+```
+
+Forces recalculation of internal states.
+
+### `ScrollableMixin.scrollPadding()`
+
+```javascript
+scrollPadding()
+```
+
+Returns the scroll padding
+
+### `ScrollableMixin.stop()`
+
+```javascript
+stop()
+```
+
+Stops scrolling immediately.
+
+### `ScrollableMixin.scrollLeft()`
+
+```javascript
+scrollLeft()
+```
+
+Gets horizontal scroll position.
+
+### `ScrollableMixin.scrollTop()`
+
+```javascript
+scrollTop()
+```
+
+Gets vertical scroll position.
+
+### `ScrollableMixin.scrollBy()`
+
+```javascript
+scrollBy(x, y)
+scrollBy(x, y, duration)
+scrollBy(x, y, duration, callback)
+```
+
+Scrolls content area by the specified number of pixels.
+
+### Parameters
+
+<dl>
+    #### `x`
+    Number of pixels in horizontal direction.
+
+    #### `y`
+    Number of pixels in vertical direction.
+
+    #### `duration` <Badge.Optional />
+    Duration of animated scrolling in milliseconds. Default is `0`, meaning for no animation.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when scrolling is completed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when scrolling is completed.
+
+### `ScrollableMixin.scrollTo()`
+
+```javascript
+scrollTo(x, y)
+scrollTo(x, y, duration)
+scrollTo(x, y, duration, callback)
+```
+
+Scrolls content area to the specific offsets meansured from top-left corner.
+
+### Parameters
+
+<dl>
+    #### `x`
+    Number of pixels in horizontal direction.
+
+    #### `y`
+    Number of pixels in vertical direction.
+
+    #### `duration` <Badge.Optional />
+    Duration of animated scrolling in milliseconds. Default is `0`, meaning for no animation.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when scrolling is completed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when scrolling is completed.
+
+### `ScrollableMixin.scrollByPage()`
+
+```javascript
+scrollByPage(x, y)
+scrollByPage(x, y, duration)
+scrollByPage(x, y, duration, callback)
+```
+
+Scrolls content area by the specified number of pages. It is identical to scroll by the number of pixels of the visible content area.
+
+### Parameters
+
+<dl>
+    #### `x`
+    Number of pages in horizontal direction.
+
+    #### `y`
+    Number of pages in vertical direction.
+
+    #### `duration` <Badge.Optional />
+    Duration of animated scrolling in milliseconds. Default is `0`, meaning for no animation.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when scrolling is completed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when scrolling is completed.
+
+### `ScrollableMixin.scrollToPage()`
+
+```javascript
+scrollToPage(x, y)
+scrollToPage(x, y, duration)
+scrollToPage(x, y, duration, callback)
+```
+
+Scrolls content area to a specified page. It is identical to scroll to the number of pixels of the visible content area times the page index.
+
+### Parameters
+
+<dl>
+    #### `x`
+    Page index in horizontal direction.
+
+    #### `y`
+    Page index in vertical direction.
+
+    #### `duration` <Badge.Optional />
+    Duration of animated scrolling in milliseconds. Default is `0`, meaning for no animation.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when scrolling is completed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when scrolling is completed.
+
+### `ScrollableMixin.scrollToElement()`
+
+```javascript
+scrollToElement(target, targetOrigin, duration)
+scrollToElement(target, targetOrigin, duration, callback)
+scrollToElement(target)
+scrollToElement(target, targetOrigin)
+scrollToElement(target, targetOrigin, wrapperOrigin)
+scrollToElement(target, targetOrigin, wrapperOrigin, duration)
+scrollToElement(target, targetOrigin, wrapperOrigin, duration, callback)
+```
+
+Scrolls content area so that the target element is aligned to a specific location.
+
+### Parameters
+
+<dl>
+    #### `target`
+    A element or a valid CSS selector.
+
+    #### `targetOrigin`
+    The coordinate of the target element to be aligned. It supports format likes `left top`, `left+50px top-10px`, or `left+10% top+10%`.
+
+    #### `duration`
+    Duration of animated scrolling in milliseconds. Default is `0`, meaning for no animation.
+
+    #### `wrapperOrigin` <Badge.Optional />
+    The coordinate of the visible content area that the target element is aligned to. It supports format likes `left top`, `left+50px top-10px`, or `left+10% top+10%`.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when scrolling is completed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when scrolling is completed.
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.0** Introduced
+- **0.1.8** `ScrollableMixin.scrolling`
+- **0.4.3** `persistScroll` option
+- **0.6.0** `ScrollableMixin.element` <br/> `ScrollableMixin.contentElement`
+</VersionTimeline>
+
+## See also
+
+- [Sticky elements](/docs/react/mixin/scrollable-sticky)

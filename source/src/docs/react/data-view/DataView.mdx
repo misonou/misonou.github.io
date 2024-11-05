@@ -1,0 +1,221 @@
+<Module name="zeta-dom-react" />
+
+# DataView class
+
+<ImportHint
+    name="DataView"
+    module="zeta-dom-react"
+    require="DataView"
+    global="zeta.react.DataView"
+    expanded />
+
+<MemberList
+    i="DataView"
+    ip={['filters', 'itemCount', 'sortBy', 'sortOrder', 'pageIndex', 'pageSize', 'pageCount', 'hasPreviousPage', 'hasNextPage']}
+    im={['on()', 'getView()', 'sort()', 'toJSON()', 'reset()', 'toggleSort()']}
+    sp={['pageSize']}
+    ev={['viewChange']} />
+
+## Instance properties
+
+### `DataView.filters`
+
+Gets the filter object.
+
+> Updating its property will trigger a component update, as well as `viewChange` event.
+
+### `DataView.hasNextPage` <Badge.ReadOnly /> <Badge.Version />
+
+Returns whether there is next page of data.
+
+### `DataView.hasPreviousPage` <Badge.ReadOnly /> <Badge.Version />
+
+Returns whether there is previous page of data.
+
+### `DataView.itemCount`
+
+Gets or sets the total number of items.
+
+The value is automatically updated by [`DataView.getView`](:).
+
+### `DataView.pageCount` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the number of page.
+
+### `DataView.pageIndex`
+
+Gets or sets the page index.
+
+> Updating its property will trigger a component update, as well as `viewChange` event.
+
+> Starting from 0.5.2, page index will be bound-checked upon setting, and will be
+  reset upon `viewChange` event.
+
+### `DataView.pageSize`
+
+Gets or sets the page size.
+
+> Updating its property will trigger a component update, as well as `viewChange` event.
+
+### `DataView.sortBy`
+
+Gets or sets the sorting field.
+
+> Updating its property will trigger a component update, as well as `viewChange` event.
+
+### `DataView.sortOrder`
+
+Gets or sets the sorting order, whether by ascending or descending of the specified field.
+
+It accepts the following values:
+
+<dl>
+    #### `asc`
+    Items are sorted in ascending order.
+
+    #### `desc`
+    Items are sorted in descending order.
+</dl>
+
+> Updating its property will trigger a component update, as well as `viewChange` event.
+
+## Instance methods
+
+### `DataView.getView()`
+
+```javascript
+dataView.getView(items)
+dataView.getView(items, callback)
+```
+
+Performs filtering and sorting of items.
+The callback is only called initially, or when the reference to the item array has changed, or filter values or sorting has changed.
+
+#### Parameters
+
+<dl>
+    #### `items`
+    #### `callback` <Badge.Optional />
+    A handler that returns a filtered and sorted array of items.
+
+</dl>
+
+#### Return value
+
+An array containing a list of filtered and sorted items in the current page, and the total number of filtered items.
+
+### `DataView.on()`
+
+```javascript
+dataView.on(event, handler)
+```
+
+Registers event handlers.
+
+#### Parameters
+
+<dl>
+    #### `event`
+    Name of the event.
+
+    #### `handler`
+    A callback function to be fired when the specified event is triggered.
+
+</dl>
+
+#### Return value
+
+A function that will unregister the handlers when called.
+
+### `DataView.reset()`
+
+```javascript
+dataView.reset()
+```
+
+Resets filters, sorting and paging to default values.
+
+### `DataView.sort()`
+
+```javascript
+dataView.sort(items)
+dataView.sort(items, property)
+dataView.sort(items, callback)
+```
+
+Creates a sorted list of item using the value of property named by `DataView.sortBy` from each object.
+Item order is reversed if `DataView.sortOrder` is set to `desc`.
+For items of the same order, they will preserve the previous order in the sorted list.
+
+#### Parameters
+
+<dl>
+    #### `items`
+    A list of items.
+
+    #### `property` <Badge.Optional />
+    The name of property of which values are used to determined ordering.
+
+    #### `callback` <Badge.Optional />
+    A callback which returns value or a list of values to determined ordering.
+
+</dl>
+
+### `DataView.toJSON()`
+
+```javascript
+dataView.toJSON()
+```
+
+Gets the data view properties as a plain object for persisting states.
+
+### `DataView.toggleSort()` <Badge.Version />
+
+```javascript
+dataView.toggleSort(sortBy)
+dataView.toggleSort(sortBy, sortOrder)
+```
+
+Toggles sort direction between ascending or descending.
+If the supplied sorting field is not currently active, it will be sorted according to `sortOrder` parameter or 'asc' by default.
+
+#### Parameters
+
+<dl>
+    #### `sortBy`
+    Specifies sorting field.
+
+    #### `sortOrder` <Badge.Optional />
+    Specifies sorting direction. It accepts the following values:
+
+    <dl>
+        #### `asc`
+        Items are sorted in ascending order.
+
+        #### `desc`
+        Items are sorted in descending order.
+    </dl>
+</dl>
+
+## Events
+
+### `viewChange` event
+
+```javascript
+dataView.on('viewChange', (e, self) => { /* ... */ })
+```
+
+The `viewChange` event is fired whenever `filters`, `sortBy`, `sortOrder` or `pageSize` has changed.
+
+#### Event properties
+
+The event has not additional properties.
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.2.0** Introduced
+- **0.4.15** `DataView.toggleSort()`
+- **0.5.2** `DataView.pageCount`
+- **0.5.5** `DataView.hasNextPage` <br/> `DataView.hasPreviousPage`
+</VersionTimeline>

@@ -1,0 +1,56 @@
+<Module name="waterpipe" />
+
+# Comparison functions
+
+### `equals (==)`, `notequals (!=)`
+
+Checks if the piped value is equal, or not equal, to the supplied argument.
+The comparison is done by its string representation.
+
+<WaterpipeExample
+    data={{ foo: "bar" }}
+    examples={['foo == bar', 'foo != baz']}
+/>
+
+### `more (>)`, `less (<)`, `ormore (>=)`, `orless (<=)`, `between`
+
+Checks if the piped value is more than, less than, more than or equal to, less than or equal to,
+or between the supplied argument(s).
+
+> **Note:** In constrast to the native comparison operator, `undefined` and `null` are always less than any other values; and arrays are compared element by element recursively.
+
+<WaterpipeExample
+    data={{ foo: 1 }}
+    examples={['foo < 3', 'foo between 0 2']}
+/>
+
+Comparison functions also work on arrays:
+
+<WaterpipeExample
+    data={{ foo: [1,3,5], bar: [1,3], baz: [2,4] }}
+    examples={['foo > bar', 'foo > baz']}
+/>
+
+### `contains (*=)`, `like`
+
+Checks if the string contains a substring or matches the given pattern.
+
+<WaterpipeExample
+    examples={['"foobar" contains foo', '"foobar" like /^foo/i']}
+/>
+
+### `startswith (^=)`, `endswith ($=)`
+
+Checks if the string starts or ends with the given substring.
+
+<WaterpipeExample
+    examples={['"foobar" ^= foo', '"foobar" $= bar']}
+/>
+
+### `iequals (~=)`, `inotequals (!~=)`
+
+Checks if the string is equal, or not equal, to the given string by case-insensitive comparison.
+
+<WaterpipeExample
+    examples={['"foobar" ~= Foobar', '"foobar" !~= Foobar']}
+/>

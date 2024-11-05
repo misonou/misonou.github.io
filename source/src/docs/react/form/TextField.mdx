@@ -1,0 +1,61 @@
+<Module name="zeta-dom-react" />
+
+# TextField class
+
+The `TextField` class are not supposed to be instantiate manually. Instead it is used to
+augment extra functionalities when used with [`useFormField`](:).
+
+<ImportHint
+    name="TextField"
+    module="zeta-dom-react"
+    require="TextField"
+    global="zeta.react.TextField"
+    expanded />
+
+<MemberList i="TextField" />
+
+## TextFieldProps interface
+
+<MemberList
+    i="TextFieldProps"
+    extends={['FormFieldProps']}
+    ip={['type']}
+/>
+
+### `TextFieldProps.type`
+
+Specifies the text input type.
+
+## TextFieldState interface
+
+<MemberList
+    i="TextFieldState"
+    extends={['FormFieldState']}
+    ip={['inputProps']}
+/>
+
+### `TextFieldState.inputProps` <Badge.ReadOnly />
+
+Returns HTML attributes to be applied to an input element.
+
+## Example
+
+```tsx
+function Textbox(props: TextFieldProps) {
+    const { value, error, setValue, elementRef, inputProps } = useFormField(TextField, props, '');
+    return (
+        <label ref={elementRef}>
+            <div>{props.label}</div>
+            <input {...inputProps} name={props.name} value={value} onChange={e => setValue(e.target.value)} />
+            {error && props.showErrorMessage !== false &&
+                <div className="error">{error}</div>}
+        </label>
+    );
+}
+```
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.3.5** Introduced
+</VersionTimeline>

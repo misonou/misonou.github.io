@@ -1,0 +1,83 @@
+<Module name="zeta-dom-react" />
+
+# Error message
+
+Often validation message are required to be customized or translated.
+
+To accomplish, it is recommended to return a `ValidationError` instance in validators.
+
+```typescript
+function required() {
+    return (value?: string) => {
+        return value ? '' : new ValidationError('required');
+    };
+}
+```
+
+The error then can be customized in 3 scopes:
+
+1. Field level:
+    ```tsx
+    <Textbox required formatError={(err, name, props, form) => 'My custom error'} />
+    ```
+2. Form level:
+    ```tsx
+    <Form formatError={(err, name, props, form) => 'My custom error'}>{/* ... */}</Form>
+    ```
+3. Global level:
+    ```tsx
+    FormContext.formatError = ((err, name, props, form) => 'My custom error'});
+    ```
+
+The `formatError` callback takes the following parameters:
+
+- `err`: The `ValidationError` instance returned from validator
+- `name`: The name of validated field
+- `props`: The props passed to the React component for that field
+- `form`: The associated [`FormContext`](:) object
+
+## Accessing validator arguments
+
+```typescript
+function range(min, max) {
+    return (value) => {
+        return value ? '' : new ValidationError('range', '...', { min, max });
+    };
+}
+```
+
+```typescript
+FormContext.formatError = (err, name, props, form) => {
+    switch (err.kind) {
+        case 'range':
+            return `Value must be between ${err.args.min} and ${err.args.max}`;
+    }
+};
+```
+
+
+## For 0.4.0 and before
+
+The return value of validators can be an object where it is implicitly converted to a string or a function that returns a string:
+
+```typescript
+function required() {
+    return (value?: string) => {
+        return value ? '' : (
+            /* props is whatever props passed to useFormField hook */
+            (props: any) => translate('required')
+        )
+    }
+}
+```
+
+In case the validation fails and the function is returned to form field's hook, the callback is called every time when the component re-rendered.
+
+```typescript
+function TextField(props: FormFieldProps<string>) {
+    // add hook to re-render whe language changes
+    useI18n();
+    useFormField(props, '');
+}
+```
+
