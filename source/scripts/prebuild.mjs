@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { basename } from 'node:path';
 import { promisify } from 'node:util';
 import { evaluate } from "@mdx-js/mdx";
 import glob from "glob";
@@ -72,6 +73,7 @@ async function processFiles(path) {
     let pageTitle;
     let moduleName;
     const tokens = [];
+    const basename = basename(path, '.mdx');
     try {
         const content = fixImport(await readFile(path, 'utf8'));
         const module = await evaluate(content, {
@@ -98,9 +100,13 @@ async function processFiles(path) {
                 }
                 case 'code': {
                     if (o.props.className && lastHash === '#s-syntax') {
-                        const name = o.props.children.match(/^([a-z0-9.]+)(?=\()/i);
+                        const [name] = o.props.children.match(/^([a-z0-9.]+)(?=\()/i) || [];
                         if (name) {
-                            tokens.push([name[0] + '()', ""]);
+                            if (name === basename) {
+                                tokens.push(name + '()');
+                            } else {
+                                tokens.push([name + '()', ""]);
+                            }
                         }
                         lastHash = '';
                     }
@@ -116,7 +122,7 @@ async function processFiles(path) {
                         ...im?.map(v => i + (v[0] !== '[' ? '.' : '') + v) || [],
                         ...sp?.map(v => i + (v[0] !== '[' ? '.' : '') + v) || [],
                         ...sm?.map(v => i + (v[0] !== '[' ? '.' : '') + v) || [],
-                        ...ev?.map(v => [o.props.i + ': ' + v + ' event', '#s-' + generateAnchor(v + ' event')]) || []
+                        ...ev?.map(v => o.props.i + ': ' + v + ' event') || []
                     );
                     break;
                 }

@@ -2,6 +2,26 @@
 
 Here listed major known issues over different versions, listing affected versions and possible workaround.
 
+## Elements in animation sequence with statechange trigger were reset to initial state
+
+~~brew-js 0.6.0-0.6.14~~
+
+When a animation sequence is defined with custom trigger like `statechange` as below:
+
+```html
+<div animate-sequence=".item" animate-on="statechange" animate-on-statechange="someVar">
+    <div class="item"><!-- ... --></div>
+    <div class="item"><!-- ... --></div>
+</div>
+```
+
+Outro animation triggered on parent elements will cause the elements in such animation sequence
+to lose `tweening-in` and `tweening-out` CSS classes, resetting them to initial state,
+even though `animateOut` did not the outro animation on them.
+
+To fix the issue, upgrade `brew-js` to `0.6.15`.
+
+
 ## Unable to trigger navigation when overriding route parameters on change
 
 ~~zeta-dom &lt;=0.5.9~~

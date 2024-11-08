@@ -29,6 +29,11 @@
           class: code
           module: brew-extension-auth
           pageTitle: "Change log: @misonou/brew-extension-auth"
+        - title: react-app-utils
+          path: /change-log/react-app-utils
+          class: code
+          module: react-app-utils
+          pageTitle: "Change log: @misonou/react-app-utils"
         - title: react-css-utils
           path: /change-log/react-css-utils
           class: code
@@ -902,6 +907,14 @@
       module: react-app-utils
     - title: getQueryParam()
       path: /util/getQueryParam
+      class: code
+      module: brew-js
+    - title: memoize()
+      path: /util/memoize
+      class: code ext
+      module: react-app-utils
+    - title: setCookie()
+      path: /util/setCookie
       class: code
       module: brew-js
     - title: setQueryParam()

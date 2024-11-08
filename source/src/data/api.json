@@ -12,10 +12,7 @@
         "app.emit()",
         "app.isElementActive()",
         "app.halt()",
-        [
-            "app: ready event",
-            "#s-ready-event"
-        ]
+        "app: ready event"
     ],
     "/app/auth/AuthClient": [
         "AuthClient",
@@ -35,18 +32,9 @@
         "app.login()",
         "app.logout()",
         "app.on()",
-        [
-            "app: login event",
-            "#s-login-event"
-        ],
-        [
-            "app: logout event",
-            "#s-logout-event"
-        ],
-        [
-            "app: sessionEnded event",
-            "#s-sessionended-event"
-        ]
+        "app: login event",
+        "app: logout event",
+        "app: sessionEnded event"
     ],
     "/app/auth/AuthProvider": [
         "AuthProvider",
@@ -65,16 +53,10 @@
         "AuthProviderResult.expiresOn"
     ],
     "/app/auth/createAxiosMiddleware": [
-        [
-            "createAxiosMiddleware()",
-            ""
-        ]
+        "createAxiosMiddleware()"
     ],
     "/app/auth/createFetchMiddleware": [
-        [
-            "createFetchMiddleware()",
-            ""
-        ]
+        "createFetchMiddleware()"
     ],
     "/app/auth/JSONClient": [
         "JSONClient",
@@ -99,10 +81,7 @@
         ]
     ],
     "/app/createObjectStorage": [
-        [
-            "createObjectStorage()",
-            ""
-        ],
+        "createObjectStorage()",
         [
             "ObjectStorage",
             "#s-objectstorage-interface"
@@ -133,10 +112,7 @@
             "app.useIdleTimeout()",
             ""
         ],
-        [
-            "app: idle event",
-            "#s-idle-event"
-        ]
+        "app: idle event"
     ],
     "/app/useScrollable": [
         [
@@ -153,76 +129,34 @@
         "HTMLConsole.clear()"
     ],
     "/devtools/promptForChoice": [
-        [
-            "promptForChoice()",
-            ""
-        ]
+        "promptForChoice()"
     ],
     "/dom/addAnimateIn": [
-        [
-            "addAnimateIn()",
-            ""
-        ]
+        "addAnimateIn()"
     ],
     "/dom/animateIn": [
-        [
-            "animateIn()",
-            ""
-        ],
-        [
-            "dom: animatein event",
-            "#s-animatein-event"
-        ],
-        [
-            "dom: animationstart event",
-            "#s-animationstart-event"
-        ],
-        [
-            "dom: animationcomplete event",
-            "#s-animationcomplete-event"
-        ]
+        "animateIn()",
+        "dom: animatein event",
+        "dom: animationstart event",
+        "dom: animationcomplete event"
     ],
     "/dom/animateOut": [
-        [
-            "animateOut()",
-            ""
-        ],
-        [
-            "dom: animateout event",
-            "#s-animateout-event"
-        ]
+        "animateOut()",
+        "dom: animateout event"
     ],
     "/dom/beginDrag": [
-        [
-            "beginDrag()",
-            ""
-        ]
+        "beginDrag()"
     ],
     "/dom/beginPinchZoom": [
-        [
-            "beginPinchZoom()",
-            ""
-        ]
+        "beginPinchZoom()"
     ],
     "/dom/closeFlyout": [
-        [
-            "closeFlyout()",
-            ""
-        ],
-        [
-            "dom: flyouthide event",
-            "#s-flyouthide-event"
-        ],
-        [
-            "dom: flyoutclose event",
-            "#s-flyoutclose-event"
-        ]
+        "closeFlyout()",
+        "dom: flyouthide event",
+        "dom: flyoutclose event"
     ],
     "/dom/createAutoCleanupMap": [
-        [
-            "createAutoCleanupMap()",
-            ""
-        ]
+        "createAutoCleanupMap()"
     ],
     "/dom/dom-module": [
         "dom",
@@ -254,16 +188,10 @@
         "dom.reportError()"
     ],
     "/dom/initSortable": [
-        [
-            "initSortable()",
-            ""
-        ]
+        "initSortable()"
     ],
     "/dom/initStickable": [
-        [
-            "initStickable()",
-            ""
-        ],
+        "initStickable()",
         [
             "Stickable",
             "#s-stickable-interface"
@@ -272,30 +200,18 @@
         "Stickable.dispose()"
     ],
     "/dom/insertText": [
-        [
-            "insertText()",
-            ""
-        ]
+        "insertText()"
     ],
     "/dom/keyboard-events": [
         "dom: metakeychange event",
         "dom: keystroke event"
     ],
     "/dom/observe": [
-        [
-            "observe()",
-            ""
-        ]
+        "observe()"
     ],
     "/dom/openFlyout": [
-        [
-            "openFlyout()",
-            ""
-        ],
-        [
-            "dom: flyoutshow event",
-            "#s-flyoutshow-event"
-        ]
+        "openFlyout()",
+        "dom: flyoutshow event"
     ],
     "/dom/pointer-events": [
         "dom: mousedown event",
@@ -308,10 +224,7 @@
         "dom: gesture event"
     ],
     "/dom/position": [
-        [
-            "position()",
-            ""
-        ]
+        "position()"
     ],
     "/dom/Positioner": [
         "Positioner",
@@ -321,55 +234,31 @@
         "Positioner.setOptions()"
     ],
     "/dom/reportError": [
-        [
-            "reportError()",
-            ""
-        ]
+        "reportError()"
     ],
     "/dom/runCSSAnimation": [
-        [
-            "runCSSAnimation()",
-            ""
-        ]
+        "runCSSAnimation()"
     ],
     "/dom/scrollIntoView": [
-        [
-            "scrollIntoView()",
-            ""
-        ]
+        "scrollIntoView()"
     ],
     "/dom/startPositioning": [
-        [
-            "startPositioning()",
-            ""
-        ]
+        "startPositioning()"
     ],
     "/dom/text-input-events": [
         "dom: textInput event"
     ],
     "/dom/toggleFlyout": [
-        [
-            "toggleFlyout()",
-            ""
-        ]
+        "toggleFlyout()"
     ],
     "/dom/watchAttributes": [
-        [
-            "watchAttributes()",
-            ""
-        ]
+        "watchAttributes()"
     ],
     "/dom/watchElements": [
-        [
-            "watchElements()",
-            ""
-        ]
+        "watchElements()"
     ],
     "/dom/watchOwnAttributes": [
-        [
-            "watchOwnAttributes()",
-            ""
-        ]
+        "watchOwnAttributes()"
     ],
     "/dom/ZetaEventBase": [
         "ZetaEventBase",
@@ -387,22 +276,13 @@
         "ZetaEventBase.isDefaultPrevented()"
     ],
     "/react/combineRef": [
-        [
-            "combineRef()",
-            ""
-        ]
+        "combineRef()"
     ],
     "/react/createAsyncScope": [
-        [
-            "createAsyncScope()",
-            ""
-        ]
+        "createAsyncScope()"
     ],
     "/react/createBreakpointContext": [
-        [
-            "createBreakpointContext()",
-            ""
-        ],
+        "createBreakpointContext()",
         [
             "BreakpointContext",
             "#s-breakpointcontext-interface"
@@ -411,10 +291,7 @@
         "BreakpointContext.useBreakpoint()"
     ],
     "/react/createDependency": [
-        [
-            "createDependency()",
-            ""
-        ],
+        "createDependency()",
         [
             "Dependency",
             "#s-dependency-interface"
@@ -423,16 +300,10 @@
         "Dependency.Provider"
     ],
     "/react/createDialog": [
-        [
-            "createDialog()",
-            ""
-        ]
+        "createDialog()"
     ],
     "/react/createErrorHandler": [
-        [
-            "createErrorHandler()",
-            ""
-        ]
+        "createErrorHandler()"
     ],
     "/react/data-view/DataView": [
         "DataView",
@@ -452,16 +323,10 @@
         "DataView.reset()",
         "DataView.toggleSort()",
         "DataView.pageSize",
-        [
-            "DataView: viewChange event",
-            "#s-viewchange-event"
-        ]
+        "DataView: viewChange event"
     ],
     "/react/data-view/useDataView": [
-        [
-            "useDataView()",
-            ""
-        ]
+        "useDataView()"
     ],
     "/react/dialog/DialogContext": [
         "DialogContext",
@@ -477,10 +342,7 @@
         "DialogState.close()"
     ],
     "/react/domEventRef": [
-        [
-            "domEventRef()",
-            ""
-        ]
+        "domEventRef()"
     ],
     "/react/ErrorHandler": [
         "ErrorHandler",
@@ -577,26 +439,11 @@
         "FormContext.EMPTY_FIELD",
         "FormContext.formatError",
         "FormContext.get()",
-        [
-            "FormContext: reset event",
-            "#s-reset-event"
-        ],
-        [
-            "FormContext: dataChange event",
-            "#s-datachange-event"
-        ],
-        [
-            "FormContext: validate event",
-            "#s-validate-event"
-        ],
-        [
-            "FormContext: validationChange event",
-            "#s-validationchange-event"
-        ],
-        [
-            "FormContext: beforeLeave event",
-            "#s-beforeleave-event"
-        ]
+        "FormContext: reset event",
+        "FormContext: dataChange event",
+        "FormContext: validate event",
+        "FormContext: validationChange event",
+        "FormContext: beforeLeave event"
     ],
     "/react/form/FormContextProvider": [
         "<FormContextProvider>"
@@ -693,16 +540,10 @@
         "ToggleFieldState.toggleValue()"
     ],
     "/react/form/useFormContext": [
-        [
-            "useFormContext()",
-            ""
-        ]
+        "useFormContext()"
     ],
     "/react/form/useFormField": [
-        [
-            "useFormField()",
-            ""
-        ]
+        "useFormField()"
     ],
     "/react/form/ValidationError": [
         "ValidationError",
@@ -711,28 +552,16 @@
         "ValidationError.args"
     ],
     "/react/handleUserAction": [
-        [
-            "handleUserAction()",
-            ""
-        ]
+        "handleUserAction()"
     ],
     "/react/i18n/getTranslation": [
-        [
-            "getTranslation()",
-            ""
-        ]
+        "getTranslation()"
     ],
     "/react/i18n/makeTranslation": [
-        [
-            "makeTranslation()",
-            ""
-        ]
+        "makeTranslation()"
     ],
     "/react/i18n/translate": [
-        [
-            "translate()",
-            ""
-        ],
+        "translate()",
         [
             "Translate",
             "#s-translate-interface"
@@ -741,16 +570,10 @@
         "Translate.html()"
     ],
     "/react/i18n/useLanguage": [
-        [
-            "useLanguage()",
-            ""
-        ]
+        "useLanguage()"
     ],
     "/react/i18n/useTranslation": [
-        [
-            "useTranslation()",
-            ""
-        ]
+        "useTranslation()"
     ],
     "/react/mixin/AnimateMixin": [
         [
@@ -944,22 +767,13 @@
         "UnmanagedClassNameMixin.memorize()"
     ],
     "/react/openDeferredLink": [
-        [
-            "openDeferredLink()",
-            ""
-        ]
+        "openDeferredLink()"
     ],
     "/react/partial": [
-        [
-            "partial()",
-            ""
-        ]
+        "partial()"
     ],
     "/react/useAnimatedIndicator": [
-        [
-            "useAnimatedIndicator()",
-            ""
-        ],
+        "useAnimatedIndicator()",
         [
             "AnimatedIndicator",
             "#s-animatedindicator-interface"
@@ -968,10 +782,7 @@
         "AnimatedIndicator.setActiveIndex()"
     ],
     "/react/useAsync": [
-        [
-            "useAsync()",
-            ""
-        ],
+        "useAsync()",
         [
             "AsyncContentState",
             "#s-asynccontentstate-interface"
@@ -985,20 +796,11 @@
         "AsyncContentState.abort()",
         "AsyncContentState.reset()",
         "AsyncContentState.on()",
-        [
-            "AsyncContentState: load event",
-            "#s-load-event"
-        ],
-        [
-            "AsyncContentState: error event",
-            "#s-error-event"
-        ]
+        "AsyncContentState: load event",
+        "AsyncContentState: error event"
     ],
     "/react/useDependency": [
-        [
-            "useDependency()",
-            ""
-        ],
+        "useDependency()",
         [
             "DependencyProviderContext",
             "#s-dependencyprovidercontext-interface"
@@ -1006,10 +808,7 @@
         "DependencyProviderContext.value"
     ],
     "/react/useDispose": [
-        [
-            "useDispose()",
-            ""
-        ],
+        "useDispose()",
         [
             "DisposeCallback",
             "#s-disposecallback-interface"
@@ -1017,22 +816,13 @@
         "DisposeCallback.push()"
     ],
     "/react/useEagerReducer": [
-        [
-            "useEagerReducer()",
-            ""
-        ]
+        "useEagerReducer()"
     ],
     "/react/useEagerState": [
-        [
-            "useEagerState()",
-            ""
-        ]
+        "useEagerState()"
     ],
     "/react/useErrorHandler": [
-        [
-            "useErrorHandler()",
-            ""
-        ],
+        "useErrorHandler()",
         [
             "ErrorHandlerWithRef",
             "#s-errorhandlerwithref-interface"
@@ -1040,58 +830,31 @@
         "ErrorHandlerWithRef.ref"
     ],
     "/react/useEventTrigger": [
-        [
-            "useEventTrigger()",
-            ""
-        ]
+        "useEventTrigger()"
     ],
     "/react/useMediaQuery": [
-        [
-            "useMediaQuery()",
-            ""
-        ]
+        "useMediaQuery()"
     ],
     "/react/useMemoizedFunction": [
-        [
-            "useMemoizedFunction()",
-            ""
-        ]
+        "useMemoizedFunction()"
     ],
     "/react/useObservableProperty": [
-        [
-            "useObservableProperty()",
-            ""
-        ]
+        "useObservableProperty()"
     ],
     "/react/useRefInitCallback": [
-        [
-            "useRefInitCallback()",
-            ""
-        ]
+        "useRefInitCallback()"
     ],
     "/react/useSingleton": [
-        [
-            "useSingleton()",
-            ""
-        ]
+        "useSingleton()"
     ],
     "/react/useUnloadEffect": [
-        [
-            "useUnloadEffect()",
-            ""
-        ]
+        "useUnloadEffect()"
     ],
     "/react/useUpdateTrigger": [
-        [
-            "useUpdateTrigger()",
-            ""
-        ]
+        "useUpdateTrigger()"
     ],
     "/react/useValueTrigger": [
-        [
-            "useValueTrigger()",
-            ""
-        ]
+        "useValueTrigger()"
     ],
     "/react/ViewStateProvider": [
         "<ViewStateProvider>",
@@ -1187,88 +950,46 @@
         "ErrorViewProps.reset()"
     ],
     "/router/react/isViewMatched": [
-        [
-            "isViewMatched()",
-            ""
-        ]
+        "isViewMatched()"
     ],
     "/router/react/isViewRendered": [
-        [
-            "isViewRendered()",
-            ""
-        ]
+        "isViewRendered()"
     ],
     "/router/react/linkTo": [
-        [
-            "linkTo()",
-            ""
-        ]
+        "linkTo()"
     ],
     "/router/react/matchView": [
-        [
-            "matchView()",
-            ""
-        ]
+        "matchView()"
     ],
     "/router/react/navigateTo": [
-        [
-            "navigateTo()",
-            ""
-        ]
+        "navigateTo()"
     ],
     "/router/react/redirectTo": [
-        [
-            "redirectTo()",
-            ""
-        ]
+        "redirectTo()"
     ],
     "/router/react/registerErrorView": [
-        [
-            "registerErrorView()",
-            ""
-        ]
+        "registerErrorView()"
     ],
     "/router/react/registerView": [
-        [
-            "registerView()",
-            ""
-        ]
+        "registerView()"
     ],
     "/router/react/renderView": [
-        [
-            "renderView()",
-            ""
-        ]
+        "renderView()"
     ],
     "/router/react/resolvePath": [
-        [
-            "resolvePath()",
-            ""
-        ]
+        "resolvePath()"
     ],
     "/router/react/useQueryParam": [
-        [
-            "useQueryParam()",
-            ""
-        ]
+        "useQueryParam()"
     ],
     "/router/react/useRouteParam": [
-        [
-            "useRouteParam()",
-            ""
-        ]
+        "useRouteParam()"
     ],
     "/router/react/useRouteState": [
-        [
-            "useRouteState()",
-            ""
-        ]
+        "useRouteState()"
     ],
     "/router/react/useViewContext": [
-        [
-            "useViewContext()",
-            ""
-        ]
+        "useViewContext()"
     ],
     "/router/react/ViewContext": [
         "ViewContext",
@@ -1281,14 +1002,8 @@
         "ViewContext.setErrorView()",
         "ViewContext.on()",
         "ViewContext.root",
-        [
-            "ViewContext: error event",
-            "#s-error-event"
-        ],
-        [
-            "ViewContext: pagechange event",
-            "#s-pagechange-event"
-        ]
+        "ViewContext: error event",
+        "ViewContext: pagechange event"
     ],
     "/router/react/ViewProps": [
         "ViewProps",
@@ -1342,61 +1057,28 @@
         "app.isAppPath()",
         "app.toHref()",
         "app.fromHref()",
-        [
-            "app: beforepageload event",
-            "#s-beforepageload-event"
-        ],
-        [
-            "app: navigate event",
-            "#s-navigate-event"
-        ],
-        [
-            "app: pageload event",
-            "#s-pageload-event"
-        ],
-        [
-            "app: hashchange event",
-            "#s-hashchange-event"
-        ],
-        [
-            "app: pageenter event",
-            "#s-pageenter-event"
-        ],
-        [
-            "app: pageleave event",
-            "#s-pageleave-event"
-        ],
-        [
-            "app: popstate event",
-            "#s-popstate-event"
-        ]
+        "app: beforepageload event",
+        "app: navigate event",
+        "app: pageload event",
+        "app: hashchange event",
+        "app: pageenter event",
+        "app: pageleave event",
+        "app: popstate event"
     ],
     "/util/blur": [
-        [
-            "blur()",
-            ""
-        ]
+        "blur()"
     ],
     "/util/cancelLock": [
-        [
-            "cancelLock()",
-            ""
-        ]
+        "cancelLock()"
     ],
     "/util/createApi": [
-        [
-            "createApi()",
-            ""
-        ],
+        "createApi()",
         [
             "ApiEventListener",
             "#s-apieventlistener-interface"
         ],
         "ApiEventListener.on()",
-        [
-            "ApiEventListener: error event",
-            "#s-error-event"
-        ]
+        "ApiEventListener: error event"
     ],
     "/util/EventContainer": [
         "ZetaEventContainer",
@@ -1416,28 +1098,16 @@
         "ZetaEventContainer.flushEvents()"
     ],
     "/util/focus": [
-        [
-            "focus()",
-            ""
-        ]
+        "focus()"
     ],
     "/util/focusable": [
-        [
-            "focusable()",
-            ""
-        ]
+        "focusable()"
     ],
     "/util/focused": [
-        [
-            "focused()",
-            ""
-        ]
+        "focused()"
     ],
     "/util/fuzzyMatch": [
-        [
-            "fuzzyMatch()",
-            ""
-        ],
+        "fuzzyMatch()",
         [
             "MatchableItem",
             "#s-matchableitem-interface"
@@ -1454,44 +1124,26 @@
         "MatchedItem.value"
     ],
     "/util/getContentRect": [
-        [
-            "getContentRect()",
-            ""
-        ]
+        "getContentRect()"
     ],
     "/util/getQueryParam": [
-        [
-            "getQueryParam()",
-            ""
-        ]
+        "getQueryParam()"
     ],
     "/util/getRect": [
-        [
-            "getRect()",
-            ""
-        ]
+        "getRect()"
     ],
     "/util/InheritedNodeTree": [
         "InheritedNodeTree",
         "InheritedNodeTree.descendants()"
     ],
     "/util/iterateFocusPath": [
-        [
-            "iterateFocusPath()",
-            ""
-        ]
+        "iterateFocusPath()"
     ],
     "/util/lock": [
-        [
-            "lock()",
-            ""
-        ]
+        "lock()"
     ],
     "/util/locked": [
-        [
-            "locked()",
-            ""
-        ]
+        "locked()"
     ],
     "/util/NodeTree": [
         "NodeTree",
@@ -1502,28 +1154,16 @@
         "NodeTree.removeNode()",
         "NodeTree.update()",
         "NodeTree.on()",
-        [
-            "NodeTree: update event",
-            "#s-update-event"
-        ]
+        "NodeTree: update event"
     ],
     "/util/notifyAsync": [
-        [
-            "notifyAsync()",
-            ""
-        ]
+        "notifyAsync()"
     ],
     "/util/openDeferredURL": [
-        [
-            "openDeferredURL()",
-            ""
-        ]
+        "openDeferredURL()"
     ],
     "/util/preventLeave": [
-        [
-            "preventLeave()",
-            ""
-        ]
+        "preventLeave()"
     ],
     "/util/Rect": [
         "Rect",
@@ -1540,58 +1180,34 @@
         "Rect.expand()"
     ],
     "/util/releaseFocus": [
-        [
-            "releaseFocus()",
-            ""
-        ]
+        "releaseFocus()"
     ],
     "/util/releaseModal": [
-        [
-            "releaseModal()",
-            ""
-        ]
+        "releaseModal()"
     ],
     "/util/retainFocus": [
-        [
-            "retainFocus()",
-            ""
-        ]
+        "retainFocus()"
     ],
     "/util/runAsync": [
-        [
-            "runAsync()",
-            ""
-        ]
+        "runAsync()"
+    ],
+    "/util/setCookie": [
+        "setCookie()"
     ],
     "/util/setModal": [
-        [
-            "setModal()",
-            ""
-        ]
+        "setModal()"
     ],
     "/util/setQueryParam": [
-        [
-            "setQueryParam()",
-            ""
-        ]
+        "setQueryParam()"
     ],
     "/util/setTabRoot": [
-        [
-            "setTabRoot()",
-            ""
-        ]
+        "setTabRoot()"
     ],
     "/util/subscribeAsync": [
-        [
-            "subscribeAsync()",
-            ""
-        ]
+        "subscribeAsync()"
     ],
     "/util/toQueryString": [
-        [
-            "toQueryString()",
-            ""
-        ]
+        "toQueryString()"
     ],
     "/util/TraversableNodeTree": [
         "TraversableNodeTree",
@@ -1613,9 +1229,6 @@
         "TreeWalker.nextSibling()"
     ],
     "/util/unsetTabRoot": [
-        [
-            "unsetTabRoot()",
-            ""
-        ]
+        "unsetTabRoot()"
     ]
 }

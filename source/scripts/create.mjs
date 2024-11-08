@@ -31,13 +31,22 @@ const output = {
 
 const lib = getPackage(filePath).name;
 const source = ts.createSourceFile(filePath, fs.readFileSync(filePath, 'utf8'), ts.ScriptTarget.Latest);
-const statements = source.getChildAt(0).getChildren().flatMap(v => v.kind === ts.SyntaxKind.ModuleDeclaration ? v.body.statements : v);
-const nodes = statements.filter(v => v.name?.escapedText === name);
+const statements = source.getChildAt(0).getChildren().flatMap(v => {
+    switch (v.kind) {
+        case ts.SyntaxKind.ModuleDeclaration:
+            return v.body.statements;
+        case ts.SyntaxKind.VariableStatement:
+            return v.declarationList?.declarations || [];
+    }
+    return v;
+});
 
+const nodes = statements.filter(v => v.name?.escapedText === name);
 if (nodes[0]) {
     switch (nodes[0].kind) {
         case ts.SyntaxKind.InterfaceDeclaration:
         case ts.SyntaxKind.ClassDeclaration: {
+            outputModule();
             processClassOrInterface(nodes[0]);
             break;
         }
@@ -51,10 +60,27 @@ if (nodes[0]) {
             outputParamsAndReturnValue(info);
             break;
         }
+        case ts.SyntaxKind.VariableDeclaration: {
+            const allNodes = nodes[0].type.members;
+            const fnNodes = allNodes.filter(v => v.kind === ts.SyntaxKind.CallSignature);
+            if (fnNodes[0]) {
+                const info = getFunctionInfo(...fnNodes);
+                outputModule();
+                output.h1(name);
+                outputDescription(fnNodes[0]);
+                output.h2('Syntax');
+                outputSignature(info);
+                outputParamsAndReturnValue(info);
+            }
+            if (allNodes.length !== fnNodes.length) {
+                processClassOrInterface(nodes[0], true, true);
+            }
+            break;
+        }
     }
 }
 
-function processClassOrInterface(node) {
+function processClassOrInterface(node, nested, treatAsStatic) {
     const result = { i: name, extends: [], ip: [], im: [], sp: [], sm: [], ev: [] };
     if (node.heritageClauses) {
         for (let v of node.heritageClauses) {
@@ -69,7 +95,7 @@ function processClassOrInterface(node) {
         }
     }
     const members = Object.create(null);
-    node.members.forEach(v => {
+    (node.members || node.type.members).forEach(v => {
         const isConstructor = v.kind === ts.SyntaxKind.Constructor;
         const isMethod = v.kind === ts.SyntaxKind.MethodDeclaration || v.kind === ts.SyntaxKind.MethodSignature;
         if (isConstructor || isMethod || v.kind === ts.SyntaxKind.PropertyDeclaration || v.kind == ts.SyntaxKind.PropertySignature || v.kind == ts.SyntaxKind.GetAccessor) {
@@ -97,7 +123,7 @@ function processClassOrInterface(node) {
             Object.assign(v, getFunctionInfo(...v.nodes));
         }
         if (!v.isConstructor) {
-            result[v.static ? (v.isMethod ? 'sm' : 'sp') : (v.isMethod ? 'im' : 'ip')].push(v);
+            result[treatAsStatic || v.static ? (v.isMethod ? 'sm' : 'sp') : (v.isMethod ? 'im' : 'ip')].push(v);
         }
     }
     if (result.ev[0] && !members.on) {
@@ -116,8 +142,7 @@ function processClassOrInterface(node) {
         });
     }
 
-    outputModule();
-    output.h1(name + ' ' + (node.kind === ts.SyntaxKind.InterfaceDeclaration ? 'interface' : 'class'));
+    output[nested ? 'h2' : 'h1'](name + ' ' + (node.kind === ts.SyntaxKind.InterfaceDeclaration || node.kind === ts.SyntaxKind.VariableDeclaration ? 'interface' : 'class'));
     outputDescription(node);
     console.log(`<MemberList`);
     console.log(`    i="${outname || name}"`);
@@ -134,13 +159,15 @@ function processClassOrInterface(node) {
         outputSignature(members['.ctor']);
         outputParamsAndReturnValue(members['.ctor']);
     }
-    outputProperties(result.ip, 'Instance properties');
-    outputMethods(result.im, 'Instance methods');
-    outputProperties(result.sp, 'Static properties');
-    outputMethods(result.sm, 'Static methods');
+    outputProperties(result.ip, 'Instance properties', nested);
+    outputMethods(result.im, 'Instance methods', nested);
+    outputProperties(result.sp, 'Static properties', nested);
+    outputMethods(result.sm, 'Static methods', nested);
 
     if (result.ev[0]) {
-        output.h2('Events');
+        if (!nested) {
+            output.h2('Events');
+        }
         for (let ev of new Set(result.ev.map(v => v.name))) {
             output.h3(`\`${ev}\` event`);
         }
@@ -162,6 +189,7 @@ function getFunctionInfo(...nodes) {
     const paramDocs = tags.filter(v => v.tagName.escapedText === 'param') || [];
 
     for (let node of nodes) {
+        const beginText = node.kind === ts.SyntaxKind.Constructor ? 'new ' + name : node.name?.escapedText || name;
         const params = node.parameters.map((v, i) => ({
             name: v.name.escapedText,
             index: i,
@@ -175,7 +203,7 @@ function getFunctionInfo(...nodes) {
         }
         for (let j = firstOptional; j <= params.length; j++) {
             let t = [];
-            t.push(node.kind === ts.SyntaxKind.Constructor ? 'new ' + name : node.name.escapedText, '(');
+            t.push(beginText, '(');
             for (let i = 0; i < j; i++) {
                 if (i > 0) t.push(', ');
                 if (params[i].spread) {
@@ -200,6 +228,7 @@ function getFunctionInfo(...nodes) {
         parameters.push(...params.filter(v => !parameters.some(w => v.name === w.name)));
     }
     parameters.sort((a, b) => a.index - b.index);
+    signature.sort();
     return {
         parameters,
         signature,
@@ -270,9 +299,11 @@ function outputParamsAndReturnValue({ parameters, returns }) {
     }
 }
 
-function outputProperties(arr, title) {
+function outputProperties(arr, title, nested) {
     if (arr[0]) {
-        output.h2(title);
+        if (!nested) {
+            output.h2(title);
+        }
         arr.sort((a, b) => a.name.localeCompare(b.name));
         arr.forEach(v => {
             output.h3(`\`${outname || name}.${v.name}\`` + (v.readonly ? ' ' + badge.readonly : '') + (v.optional ? ' ' + badge.optional : ''));
@@ -281,9 +312,11 @@ function outputProperties(arr, title) {
     }
 }
 
-function outputMethods(arr, title) {
+function outputMethods(arr, title, nested) {
     if (arr[0]) {
-        output.h2(title);
+        if (!nested) {
+            output.h2(title);
+        }
         arr.sort((a, b) => a.name.localeCompare(b.name));
         arr.forEach(v => {
             output.h3(`\`${outname || name}.${v.name}\``);

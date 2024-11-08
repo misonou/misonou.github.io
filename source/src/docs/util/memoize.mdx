@@ -1,0 +1,159 @@
+<Module name="@misonou/react-app-utils" />
+
+# memoize
+
+Creates memoized function that caches results for the given function.
+
+## Syntax
+
+```javascript
+memoize(fn)
+memoize(obj)
+memoize(obj, keys)
+```
+
+### Parameters
+
+<dl>
+    #### `fn`
+    A function.
+
+    #### `obj`
+    An object.
+
+    #### `keys` <Badge.Optional />
+    Lists of keys for which memoized functions will be generated.
+
+</dl>
+
+### Return value
+
+A new object containing the memoized functions.
+
+## Static members
+
+Here listed additional static members defined on the `memoize` function.
+
+<MemberList
+    i="memoize"
+    sm={['has()', 'put()', 'delete()', 'clear()']}
+/>
+
+### `memoize.clear()`
+
+```javascript
+clear()
+clear(fn0)
+clear(fn0, fn1)
+clear(fn0, fn1, /* … ,*/ fnN)
+clear(obj)
+```
+
+Clears cached results for all memoized function in the object.
+
+### Parameters
+
+<dl>
+    #### `obj`
+    Object containing memoized function returned by [`memoize`](:).
+
+    #### `fn0` … `fnN` <Badge.Optional />
+    One or more memoized functions returned by [`memoize`](:).
+
+</dl>
+
+### `memoize.delete()`
+
+```javascript
+delete(fn, args)
+```
+
+Deletes cached result for the given function when called with the specified arguments.
+
+### Parameters
+
+<dl>
+    #### `fn`
+    Memoized function returned by [`memoize`](:).
+
+    #### `args`
+    List of arguments.
+
+</dl>
+
+### `memoize.has()` <Badge.Version />
+
+```javascript
+has(fn, args)
+```
+
+Gets whether result is cached for a specific set of arguments.
+
+### Parameters
+
+<dl>
+    #### `fn`
+    Memoized function returned by [`memoize`](:).
+
+    #### `args`
+    List of arguments.
+
+</dl>
+
+### `memoize.put()`
+
+```javascript
+put(fn, args, value)
+```
+
+Updates cached result for the given function with specific arguments.
+
+### Parameters
+
+<dl>
+    #### `fn`
+    Memoized function returned by [`memoize`](:).
+
+    #### `args`
+    List of arguments.
+
+    #### `value`
+    Value to be returned as the cached result.
+
+</dl>
+
+## Example: Refresh after update
+
+```javascript
+const cached = memoize({
+    get(id) {
+        return fetch(/* ... */);
+    }
+});
+
+const store = {
+    get(id) {
+        return cached.get(id);
+    },
+    set(id, value) {
+        /* ... */
+        // (1) delete cached value for id
+        memoize.delete(cached.get, [id]);
+        // (2) directly update the cache
+        memoize.put(cached.get, [id], value);
+    }
+};
+
+store.get(1); // calling fetch
+store.get(1); // return from cache
+
+store.set(1, 'some value'); // purge cache with key 1
+store.get(1); // (1) calling fetch or (2) return from cache
+```
+
+## Version information
+
+<VersionTimeline module="@misonou/react-app-utils">
+- **1.1.0** Introduced
+- **1.5.2** `memoize.has()`
+</VersionTimeline>

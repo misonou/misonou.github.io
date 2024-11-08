@@ -2,6 +2,31 @@
 
 # Change log
 
+## v0.6.15 (2024/11/08)
+
+#### Router
+
+- Navigating method like [`app.navigate`](:) now does not trigger `unhandledrejection`  event in normal cases, except when
+  - returned promises are chained without rejection handler; or
+  - excessive navigation is stopped by router
+- <kbd>fix</kbd> route parameters should be reverted when navigation is cancelled or rejected
+
+#### I18n
+
+- Add `cookieOptions` option [[link]](/docs/app/useI18n)
+- Returns promise from [`app.setLanguage`](:) indicating whether operation is successful
+- <kbd>fix</kbd> update language in sync with router navigation lifecycle
+- <kbd>fix</kbd> [`app.detectLanguage`](:) returned uncanonicalized value
+- <kbd>fix</kbd> app may be initialized with unlisted language when falling back to default language
+
+#### Scrollable
+
+- <kbd>fix</kbd> unable to restore scroll position
+
+#### Animations
+
+- <kbd>fix</kbd> [`animateOut`](:) erroneously reset states for unanimated elements
+
 ## v0.6.14 (2024/10/29)
 
 #### Core

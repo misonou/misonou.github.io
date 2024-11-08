@@ -5,6 +5,8 @@
 > See [Enabling extension](/docs/app/create-app#s-enabling-extensions) on how to use
   extension for brew.js app.
 
+> For best interoperabilitiy, it is recommended to use standard BCP language code in the `languages` list.
+
 <ImportHint
     name="I18n"
     module="brew-js/extension/i18n"
@@ -23,15 +25,29 @@ app.useI18n(options)
 <dl>
     #### `options`
     <dl>
-        #### `languages`
-        A list of available languages.
+        #### `cookie` <Badge.Optional />
+        Specifies the cookie name to which current language is saved.
 
-        #### `detectLanguage` <Badge.Version />
-        Whether to detect language from browser preferences, default is `true`.
+        #### `cookieOptions` <Badge.Optional /> <Badge.Version />
+        Specifies options for cookie.
+        Defaults to 1 year expiry with no additional flags.
 
-        > For best interoperabilitiy, it is recommended to use standard BCP language code in the `languages` list.
+        See [`setCookie`](:) for detail.
 
         #### `defaultLanguage` <Badge.Optional />
+        Specifies the default language if
+        there is cookie or route parameter that can infer the current language.
+
+        #### `detectLanguage` <Badge.Optional /> <Badge.Version />
+        Specifies whether to determine language by user's preference when other means are unavailable before falling back to default language.    
+        Default is `true`.
+
+        #### `languages`
+        Specifies the allowed list of languages.
+
+        #### `reloadOnChange` <Badge.Optional />
+        Specifies whether to reload the page when language is changed.
+        This is used when content on the page cannot reflect the new language by an ad hoc way.
 
         #### `routeParam` <Badge.Optional />
         When defined, the current language will be reflected on the specified route parameters. Updating either [`app.language`](:) or `app.route[routeParam]` will cause the other to change.
@@ -142,9 +158,19 @@ Sets the language.
 
 </dl>
 
+#### Return value
+
+A promise that when resolved indicates whether the operation is successful.
+
+It will resolve to `false`, for example, when
+- the language is not on the specified list,
+- the operation is cancelled with subsequent calls, or
+- navigation triggered is cancelled or rejected.
+
 ## Version information
 
 <VersionTimeline module="brew-js">
 - **0.1.0** Introduced
 - **0.4.8** `useI18n()`: `detectLanguage` option
+- **0.6.15** `useI18n()`: `cookieOptions` option <br/> `app.setLanguage()`: return `Promise`
 </VersionTimeline>

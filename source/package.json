@@ -37,7 +37,7 @@
   "scripts": {
     "start": "cross-env PORT=3003 FAST_REFRESH=false craco start",
     "build": "dotenv craco build",
-    "prebuild": "node ./scripts/versions.mjs && node ./scripts/prebuild.mjs && node ./scripts/sitemap.mjs"
+    "prebuild": "node ./scripts/versions.mjs && node ./scripts/prebuild.mjs"
   },
   "browserslist": [
     ">0.2%",

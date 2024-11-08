@@ -70,7 +70,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/app/useI18n</loc>
-         <lastmod>2024-10-09</lastmod>
+         <lastmod>2024-11-05</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/app/useIdleTimeout</loc>
@@ -1015,6 +1015,10 @@
     <url>
          <loc>https://misonou.pages.dev/docs/util/runAsync</loc>
          <lastmod>2024-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/util/setCookie</loc>
+         <lastmod>2024-11-05</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/setModal</loc>

@@ -5,13 +5,30 @@ import apiIndex from "src/data/api.json";
 
 const apiLocation = Object.fromEntries(map(apiIndex, (v, i) => v.map(v => {
     const [name, hash] = makeArray(v);
-    return [name, '/docs' + i + (hash || '#s-' + generateAnchor(name))];
+    return [name, [i, hash]];
 })));
+
+const cache = Object.create(null);
+
+function getHref(text: string) {
+    let [path, hash] = apiLocation[text] || apiLocation[text + '()'] || [];
+    if (!path) {
+        return '';
+    }
+    if (!hash) {
+        if (/:(.+ event)$/.test(text)) {
+            hash = '#s-' + generateAnchor(RegExp.$1);
+        } else if (text.replace(/[^\w.]/g, '') !== path.split('/').pop()) {
+            hash = '#s-' + generateAnchor(text);
+        }
+    }
+    return '/docs' + path + (hash || '');
+}
 
 export function MDXAnchorElement({ href, children }: any) {
     if (href[0] === ':') {
         const codeContent = href.slice(1) || makeArray(children).map(v => v.props ? v.props.children : v).join('');
-        href = apiLocation[codeContent] || apiLocation[codeContent + '()'];
+        href = cache[codeContent] || (cache[codeContent] = getHref(codeContent));
         if (!href) {
             return children;
         }
