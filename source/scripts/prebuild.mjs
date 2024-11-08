@@ -73,7 +73,7 @@ async function processFiles(path) {
     let pageTitle;
     let moduleName;
     const tokens = [];
-    const basename = basename(path, '.mdx');
+    const filename = basename(path, '.mdx');
     try {
         const content = fixImport(await readFile(path, 'utf8'));
         const module = await evaluate(content, {
@@ -102,7 +102,7 @@ async function processFiles(path) {
                     if (o.props.className && lastHash === '#s-syntax') {
                         const [name] = o.props.children.match(/^([a-z0-9.]+)(?=\()/i) || [];
                         if (name) {
-                            if (name === basename) {
+                            if (name === filename) {
                                 tokens.push(name + '()');
                             } else {
                                 tokens.push([name + '()', ""]);
