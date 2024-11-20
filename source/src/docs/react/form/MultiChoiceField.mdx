@@ -45,15 +45,15 @@ function CheckboxList(props: MultiChoiceFieldProps<CheckboxItem>) {
     ip={['items', 'allowCustomValues']}
 />
 
+### `MultiChoiceFieldProps.allowCustomValues`
+
+Whether values not in the list of items are allowed.
+
 ### `MultiChoiceFieldProps.items`
 
 A list of items as choices.
 Primitive values in the list will be normalized as [`ChoiceItem`](:).
 If not specified, `allowCustomValues` will be set to `true`.
-
-### `MultiChoiceFieldProps.allowCustomValues`
-
-Whether values not in the list of items are allowed.
 
 ## MultiChoiceFieldState interface
 

@@ -221,7 +221,7 @@ nav a:focus {
 
 nav a.code,
 nav span.code {
-    font-family: Menlo, Consolas, Monaco, var(--font-monospace);
+    font-family: var(--font-monospace-nav);
     font-size: 90%;
     white-space: nowrap;
 }
@@ -307,7 +307,7 @@ nav a.current:before {
 
 .app-toc {
     position: relative;
-    margin-top: 6.5em;
+    margin-top: 6.25em;
     width: 200px;
     max-height: calc(100vh - 8em);
     color: var(--color-aux);
@@ -317,7 +317,8 @@ nav a.current:before {
 }
 
 .app-toc:not(:hover):not(.scrolling) {
-    --jqs-scrollbar-opacity: 0;
+    --jqs-scrollbar-opacity: 0.1;
+    --jqs-scrollbar-size: 2px;
 }
 
 .app-toc ul {
@@ -328,32 +329,31 @@ nav a.current:before {
     font-weight: 500;
 }
 
-.app-toc ul::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: -1em;
-    border-radius: var(--border-radius);
-    background: var(--page-bg);
-    opacity: 0.7;
-    z-index: -1;
-    backdrop-filter: blur(10px);
-}
-
 .app-toc li {
     padding: 0;
     list-style: none;
     cursor: pointer;
 }
 
+.app-toc li.h1 {
+    color: var(--color-notice);
+}
+
 .app-toc li.h3 {
     padding-left: 1.25em;
+    font-family: var(--font-monospace);
+    font-size: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .app-toc li + li {
     margin-top: 0.5em;
+}
+
+.app-toc li.h3 + li.h2 {
+    margin-top: 1em;
 }
 
 .app-toc a:link,
@@ -364,15 +364,6 @@ nav a.current:before {
 @media (max-width: 1080px) {
     .app-toc {
         display: none;
-        position: absolute;
-        top: 3em;
-        left: 0;
-        right: 0;
-        width: auto;
-        padding: 1em;
-        background: white;
-        border-radius: var(--overlay-border-radius);
-        box-shadow: var(--overlay-box-shadow);
     }
 }
 

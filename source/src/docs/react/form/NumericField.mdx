@@ -21,24 +21,24 @@ augment extra functionalities when used with [`useFormField`](:).
     extends="FormFieldProps"
     ip={['min', 'max', 'step', 'allowEmpty']} />
 
-### `NumericFieldProps.min`
+### `NumericFieldProps.allowEmpty`
 
-Specifies the minimum value allowed.
-Value will be automatically set to this value if a smaller value is entered.
+Specifies whether the field can be empty.
 
 ### `NumericFieldProps.max`
 
 Specifies the maximum value allowed.
 Value will be automatically set to this value if a larger value is entered.
 
+### `NumericFieldProps.min`
+
+Specifies the minimum value allowed.
+Value will be automatically set to this value if a smaller value is entered.
+
 ### `NumericFieldProps.step`
 
 Specifies that the field value must be a multiple of such number.
 If not specified or `0` is supplied, field value can have arbitary decimal places. Negative values will be ignored.
-
-### `NumericFieldProps.allowEmpty`
-
-Specifies whether the field can be empty.
 
 ## NumericFieldState interface
 

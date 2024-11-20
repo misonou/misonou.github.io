@@ -21,10 +21,11 @@ const packages = [
     'zeta-dom-react',
     'brew-js',
     'brew-js-react',
-    'waterpipe',
+    'brew-extension-auth',
     'react-app-utils',
     'react-css-utils',
-    'brew-extension-auth',
+    'jq-scrollable',
+    'waterpipe',
 ];
 
 

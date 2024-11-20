@@ -1,0 +1,74 @@
+export function Lipsum() {
+    return <>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+        culpa qui officia deserunt mollit anim id est laborum.
+    </>;
+}
+
+<Module name="jq-scrollable" />
+
+# Scrollable state
+
+By default the plugin adds several state classes on the container element for fine-tuning styles for different state.
+
+<Inline>
+{() => (
+    <DemoBlock id="demo-amswv" scrollable="auto" style={{ overflow: 'hidden' }}>
+        <div scrollable-target="" style={{ opacity: 0.1 }}>
+            <p><Lipsum /></p>
+            <p><Lipsum /></p>
+            <p><Lipsum /></p>
+            <p><Lipsum /></p>
+        </div>
+        <div style={{ position: 'absolute', left: 0, top: 0, backgroundColor: 'var(--color-background)', padding: '0.5em 1em' }}>
+            <div data-amswv="scrollable-x">scrollable-x: </div>
+            <div data-amswv="scrollable-x">scrollable-x-l: </div>
+            <div data-amswv="scrollable-x">scrollable-x-r: </div>
+            <div data-amswv="scrollable-y">scrollable-y: </div>
+            <div data-amswv="scrollable-y-u">scrollable-y-u: </div>
+            <div data-amswv="scrollable-y-d">scrollable-y-d: </div>
+            <div data-amswv="scrolling">scrolling: </div>
+        </div>
+        <style children={`
+            [data-amswv]:after { content: 'off' }
+            #demo-amswv.scrollable-x [data-amswv="scrollable-x"]:after,
+            #demo-amswv.scrollable-x-l [data-amswv="scrollable-x-l"]:after,
+            #demo-amswv.scrollable-x-r [data-amswv="scrollable-x-r"]:after,
+            #demo-amswv.scrollable-y [data-amswv="scrollable-y"]:after,
+            #demo-amswv.scrollable-y-u [data-amswv="scrollable-y-u"]:after,
+            #demo-amswv.scrollable-y-d [data-amswv="scrollable-y-d"]:after,
+            #demo-amswv.scrolling [data-amswv="scrolling"]:after { content: 'on'; font-weight: bold }
+        `} />
+    </DemoBlock>
+)}
+</Inline>
+
+<dl>
+    #### `scrollable-x`
+    Indicates if the content is scrollable in x-direction.
+
+    #### `scrollable-x-l`
+    Indicates if the content is scrollable in x-direction to the left (when [`Scrollable.scrollX`](:) is non-zero).
+
+    #### `scrollable-x-r`
+    Indicates if the content is scrollable in x-direction to the right (when [`Scrollable.scrollX`](:) is not at maximum).
+
+    #### `scrollable-y`
+    Indicates if the content is scrollable in y-direction.
+
+    #### `scrollable-y-d`
+    Indicates if the content is scrollable in y-direction downwards (when [`Scrollable.scrollY`](:) is non-zero).
+
+    #### `scrollable-y-u`
+    Indicates if the content is scrollable in y-direction upwards (when [`Scrollable.scrollY`](:) is not at maximum).
+
+    #### `scrolling`
+    Whether scrolling is in action.
+</dl>
+
+> The name of the CSS classes can be controlled by `scrollableXClass`, `scrollableYClass`, `scrollingClass` options.

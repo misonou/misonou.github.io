@@ -6,6 +6,10 @@
     all: revert;
 }
 
+.app-demo-view:not(:hover):not(.scrolling) {
+    --jqs-scrollbar-opacity: 0.2;
+}
+
 .app-demo-view button.loading {
     opacity: 0.5;
     pointer-events: none;
@@ -84,6 +88,47 @@ table.app-demo-view-table {
     right: 1em;
     top: 1em;
     cursor: move;
+}
+
+.app-demo-view {
+    counter-reset: placeholder-item;
+}
+
+.app-demo-view-floating {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+    background: var(--color-background);
+    border: 1px solid var(--color-aux);
+    border-radius: var(--border-radius);
+}
+
+.app-demo-placeholder-item {
+    min-width: 300px;
+    height: 300px;
+    font-size: 50px;
+    color: var(--color-aux);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    counter-increment: placeholder-item;
+}
+
+.app-demo-placeholder-item:before {
+    content: counter(placeholder-item);
+    display: block;
+}
+
+.app-demo-placeholder-item:nth-child(3n + 1) {
+    background: var(--color-text-bg);
+}
+
+.app-demo-placeholder-item:nth-child(3n + 2) {
+    background: var(--color-notice-bg);
+}
+
+.app-demo-placeholder-item:nth-child(3n + 3) {
+    background: var(--color-comment-bg);
 }
 
 .app-docs > .zui-field {

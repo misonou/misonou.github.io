@@ -15,14 +15,6 @@ Gets the dialog's root element.
 
 ## Instance methods
 
-### `DialogState.open()`
-
-```javascript
-dialogState.open()
-```
-
-Open the dialog. A promise is returned, resolving to `undefined` or any values sent from `dialogState.close()`.
-
 ### `DialogState.close()`
 
 ```javascript
@@ -41,3 +33,11 @@ Close the dialog. A promise is returned that is resolved after the dialog is des
 
 > **Important:** Note that `onCommit` callback passed to [`createDialog`](:) will not be invoked in this case. To invoke `onCommit`,
   `closeDialog` callback passed to `onRender` or `wrapper` must be used.
+
+### `DialogState.open()`
+
+```javascript
+dialogState.open()
+```
+
+Open the dialog. A promise is returned, resolving to `undefined` or any values sent from `dialogState.close()`.

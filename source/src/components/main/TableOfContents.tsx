@@ -1,15 +1,20 @@
 import { Mixin, useScrollableMixin } from "brew-js-react";
-import { scrollIntoView, tagName } from "zeta-dom/domUtil";
 
-export function TableOfContents(props: { sections: { title: string, element: Element }[] }) {
+export interface TableOfContentItem {
+    kind: string;
+    title: string;
+    hash: string;
+}
+
+export function TableOfContents(props: { list: TableOfContentItem[] }) {
     const scrollable = useScrollableMixin({ direction: 'y-only' });
 
     return (
         <aside {...Mixin.use(scrollable, "app-toc")}>
             <ul {...Mixin.use(scrollable.target)}>
-                {props.sections.map((v, i) => (
-                    <li key={i} className={tagName(v.element)} onClick={() => scrollToSection(i)}>
-                        <a href={'#' + v.element.id}>{v.title}</a>
+                {props.list.map((v, i) => (
+                    <li key={i} className={v.kind} onClick={() => scrollToSection(i)}>
+                        <a href={v.hash || '#'}>{v.title}</a>
                     </li>
                 ))}
             </ul>
@@ -17,6 +22,8 @@ export function TableOfContents(props: { sections: { title: string, element: Ele
     );
 
     function scrollToSection(i: number) {
-        scrollIntoView(props.sections[i].element, 'top', 50);
+        if (props.list[i].kind === 'h1') {
+            $('#app').scrollable('scrollTo', 0, 0, 50);
+        }
     }
 }

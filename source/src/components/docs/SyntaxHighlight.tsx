@@ -30,6 +30,8 @@ export function SyntaxHighlight(props: SyntaxHighlightProps) {
     }, [props.source, props.language]);
 
     useObservableProperty(app, 'darkMode');
+
+    const isNullComment = props.language === 'html' ? '<!-- ... -->' : '/* ... */';
     return (
         <Highlight code={code} language={props.language} theme={app.effectiveDarkMode ? themes.vsDark : themes.github}>
             {({ style, tokens, getLineProps, getTokenProps }) => (
@@ -49,7 +51,7 @@ export function SyntaxHighlight(props: SyntaxHighlightProps) {
                                     checkCommentNeighbor(line[index + 1], '}');
                                 }
                             }
-                            if (line.some(v => v.types.includes('comment') && v.content != '/* ... */') &&
+                            if (line.some(v => v.types.includes('comment') && v.content !== isNullComment) &&
                                 line.every(v => v.types.includes('comment') || v.types.includes('comment-hid') || ((/^\s*$/.test(v.content))))) {
                                 lineProps.className += ' is-comment';
                             }
@@ -66,7 +68,7 @@ export function SyntaxHighlight(props: SyntaxHighlightProps) {
                                             <span key={key} {...props}>
                                                 {!token.types.includes('comment') || children.startsWith('/**') ?
                                                     children :
-                                                    children === '/* ... */' ?
+                                                    children === isNullComment ?
                                                         <span className="comment-dot">...</span> :
                                                         <span className="comment-msg">{children.replace(/^\/(\*|\/+)\s*|\s*\*\/$/g, '')}</span>}
                                             </span>

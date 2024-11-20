@@ -48,6 +48,14 @@ Default is `true`.
 
 ## Instance methods
 
+### `FormContext.clear()`
+
+```javascript
+clear()
+```
+
+Clears all fields and validation errors.
+
 ### `FormContext.element()`
 
 ```javascript
@@ -59,7 +67,7 @@ Gets the form element.
 
 This method only works when `FormContext.ref` is passed to HTML elements.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `path`
@@ -78,7 +86,7 @@ focus(path)
 Focus the form element.
 This method only works when `FormContext.ref` is passed to HTML elements.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `kind` <Badge.Version />
@@ -89,102 +97,24 @@ This method only works when `FormContext.ref` is passed to HTML elements.
 
 </dl>
 
-### Return value
+#### Return value
 
 Whether the given element is set focused.
 
-### `FormContext.on()`
+### `FormContext.getError()`
 
 ```javascript
-on(event, handler)
+getError(path)
 ```
 
-Registers event handlers.
+Gets validation error for a specific field.
+If there is no error, an empty string is returned.
 
-### Parameters
-
-<dl>
-    #### `event`
-    Name of the event.
-
-    #### `handler`
-    A callback function to be fired when the specified event is triggered.
-
-</dl>
-
-### Return value
-
-A function that will unregister the handlers when called.
-
-### `FormContext.persist()`
-
-```javascript
-persist()
-```
-
-Persists form data to view state.
-Calling to this method will set `FormContext.autoPersist` to `false`.
-
-### `FormContext.restore()`
-
-```javascript
-restore()
-```
-
-Restores form data from view state if any.
-
-### Return value
-
-Whether there was persisted data restored.
-
-### `FormContext.clear()`
-
-```javascript
-clear()
-```
-
-Clears all fields and validation errors.
-
-### `FormContext.reset()`
-
-```javascript
-reset()
-```
-
-Resets all fields to initial values and clear all validation errors.
-
-### `FormContext.getValue()`
-
-```javascript
-getValue(path)
-```
-
-Gets the value accessible by the specified path.
-
-### Parameters
+#### Parameters
 
 <dl>
     #### `path`
     A string containing dot-separated property names or an array containing property names.
-
-</dl>
-
-### `FormContext.setValue()`
-
-```javascript
-setValue(path, value)
-```
-
-Sets the value to the specified path.
-
-### Parameters
-
-<dl>
-    #### `path`
-    A string containing dot-separated property names or an array containing property names.
-
-    #### `value`
-    Any value.
 
 </dl>
 
@@ -207,22 +137,73 @@ if (!await field.validate()) {
 }
 ```
 
-### `FormContext.getError()`
+### `FormContext.getValue()`
 
 ```javascript
-getError(path)
+getValue(path)
 ```
 
-Gets validation error for a specific field.
-If there is no error, an empty string is returned.
+Gets the value accessible by the specified path.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `path`
     A string containing dot-separated property names or an array containing property names.
 
 </dl>
+
+### `FormContext.on()`
+
+```javascript
+on(event, handler)
+```
+
+Registers event handlers.
+
+#### Parameters
+
+<dl>
+    #### `event`
+    Name of the event.
+
+    #### `handler`
+    A callback function to be fired when the specified event is triggered.
+
+</dl>
+
+#### Return value
+
+A function that will unregister the handlers when called.
+
+### `FormContext.persist()`
+
+```javascript
+persist()
+```
+
+Persists form data to view state.
+Calling to this method will set `FormContext.autoPersist` to `false`.
+
+### `FormContext.reset()`
+
+```javascript
+reset()
+```
+
+Resets all fields to initial values and clear all validation errors.
+
+### `FormContext.restore()`
+
+```javascript
+restore()
+```
+
+Restores form data from view state if any.
+
+#### Return value
+
+Whether there was persisted data restored.
 
 ### `FormContext.setError()`
 
@@ -233,7 +214,7 @@ setError(path, error)
 Updates validation error for a specific field.
 The error will be cleared when validation is called, or when field value is modified when `validateOnChange` is `true`.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `path`
@@ -243,6 +224,33 @@ The error will be cleared when validation is called, or when field value is modi
     A non-empty string or stringifiable object indicating error; or a falsy value to clear previous error.
 
 </dl>
+
+### `FormContext.setValue()`
+
+```javascript
+setValue(path, value)
+```
+
+Sets the value to the specified path.
+
+#### Parameters
+
+<dl>
+    #### `path`
+    A string containing dot-separated property names or an array containing property names.
+
+    #### `value`
+    Any value.
+
+</dl>
+
+### `FormContext.toJSON()`
+
+```javascript
+toJSON()
+```
+
+Returns a raw value object.
 
 ### `FormContext.validate()`
 
@@ -272,19 +280,11 @@ async function checkNameAndEmail() {
 }
 ```
 
-### `FormContext.toJSON()`
-
-```javascript
-toJSON()
-```
-
-Returns a raw value object.
-
 ## Static properties
 
-### `FormContext.ERROR_FIELD` <Badge.ReadOnly />
-
 ### `FormContext.EMPTY_FIELD` <Badge.ReadOnly />
+
+### `FormContext.ERROR_FIELD` <Badge.ReadOnly />
 
 ### `FormContext.formatError`
 

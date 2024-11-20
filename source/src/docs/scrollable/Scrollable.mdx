@@ -1,0 +1,341 @@
+<Module name="jq-scrollable" />
+
+# Scrollable interface
+
+The `Scrollable` interface exposes information and provides methods to control the scrollable instance.
+
+It can be obtained by each activated element by `$.scrollable`.
+
+```javascript
+const scrollable = $.scrollable(element)
+scrollable.scrollMaxX
+scrollable.scrollTo(100, 100)
+```
+
+All properties and methods can also be accessed by jQuery extension convention:
+
+```javascript
+$(element).scrollable('scrollMaxX')
+$(element).scrollable('scrollTo', 100, 100)
+```
+
+> When using jQuery extension convention, accessing property will return value fromt the first element in the jQuery set,
+  while method will be invoked for all elements in the set.
+
+<MemberList
+    i="Scrollable"
+    ip={['scrollTarget', 'scrollX', 'scrollY', 'scrollPercentX', 'scrollPercentY', 'scrollMaxX', 'scrollMaxY']} 
+    im={['destroy()', 'enable()', 'disable()', 'setOptions()', 'setStickyPosition()', 'refresh()', 'scrollPadding()', 'stop()', 'scrollLeft()', 'scrollTop()', 'scrollBy()', 'scrollTo()', 'scrollByPage()', 'scrollToPage()', 'scrollToElement()']}
+/>
+
+## Instance properties
+
+### `Scrollable.scrollMaxX` <Badge.ReadOnly />
+
+Gets the maximum number of pixels that the content can be scrolled horizontally.
+
+### `Scrollable.scrollMaxY` <Badge.ReadOnly />
+
+Gets the maximum number of pixels that the content can be scrolled vertically.
+
+### `Scrollable.scrollPercentX` <Badge.ReadOnly />
+
+Gets horizontal position in percentage with respect to full content width.
+
+### `Scrollable.scrollPercentY` <Badge.ReadOnly />
+
+Gets vertical position in percentage with respect to full content height.
+
+### `Scrollable.scrollTarget` <Badge.ReadOnly />
+
+Gets the content element of which scrolling is being controlled.
+
+### `Scrollable.scrollX` <Badge.ReadOnly />
+
+Gets horizontal scroll position.
+
+### `Scrollable.scrollY` <Badge.ReadOnly />
+
+Gets vertical scroll position.
+
+## Instance methods
+
+### `Scrollable.destroy()`
+
+```javascript
+destroy()
+```
+
+Deactivates the scrollable plugin and release all resources.
+
+### `Scrollable.disable()`
+
+```javascript
+disable()
+```
+
+Disables scrolling of content area.
+
+### `Scrollable.enable()`
+
+```javascript
+enable()
+```
+
+Enables scrolling of content area.
+
+### `Scrollable.refresh()`
+
+```javascript
+refresh()
+```
+
+Forces recalculation of internal states.
+
+### `Scrollable.scrollBy()`
+
+```javascript
+scrollBy(x, y)
+scrollBy(x, y, duration)
+scrollBy(x, y, duration, callback)
+```
+
+Scrolls content area by the specified number of pixels.
+
+### Parameters
+
+<dl>
+    #### `x`
+    Number of pixels in horizontal direction.
+
+    #### `y`
+    Number of pixels in vertical direction.
+
+    #### `duration` <Badge.Optional />
+    Duration of animated scrolling in milliseconds. Default is `0`, meaning for no animation.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when scrolling is completed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when scrolling is completed.
+
+### `Scrollable.scrollByPage()`
+
+```javascript
+scrollByPage(x, y)
+scrollByPage(x, y, duration)
+scrollByPage(x, y, duration, callback)
+```
+
+Scrolls content area by the specified number of pages. It is identical to scroll by the number of pixels of the 
+visible content area.
+
+### Parameters
+
+<dl>
+    #### `x`
+    Number of pages in horizontal direction.
+
+    #### `y`
+    Number of pages in vertical direction.
+
+    #### `duration` <Badge.Optional />
+    Duration of animated scrolling in milliseconds. Default is `0`, meaning for no animation.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when scrolling is completed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when scrolling is completed.
+
+### `Scrollable.scrollLeft()`
+
+```javascript
+scrollLeft()
+```
+
+Gets horizontal scroll position.
+Unlike `Scrollable.scrollX`, if content is being scrolled in animated manner, the final position is returned.
+
+### `Scrollable.scrollPadding()`
+
+```javascript
+scrollPadding()
+scrollPadding(target)
+```
+
+Returns the scroll padding
+
+### Parameters
+
+<dl>
+    #### `target` <Badge.Optional />
+</dl>
+
+### `Scrollable.scrollTo()`
+
+```javascript
+scrollTo(x, y)
+scrollTo(x, y, duration)
+scrollTo(x, y, duration, callback)
+```
+
+Scrolls content area to the specific offsets meansured from top-left corner.
+
+### Parameters
+
+<dl>
+    #### `x`
+    Number of pixels in horizontal direction.
+
+    #### `y`
+    Number of pixels in vertical direction.
+
+    #### `duration` <Badge.Optional />
+    Duration of animated scrolling in milliseconds. Default is `0`, meaning for no animation.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when scrolling is completed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when scrolling is completed.
+
+### `Scrollable.scrollToElement()`
+
+```javascript
+scrollToElement(target)
+scrollToElement(target, targetOrigin)
+scrollToElement(target, targetOrigin, duration)
+scrollToElement(target, targetOrigin, duration, callback)
+scrollToElement(target, targetOrigin, wrapperOrigin)
+scrollToElement(target, targetOrigin, wrapperOrigin, duration)
+scrollToElement(target, targetOrigin, wrapperOrigin, duration, callback)
+```
+
+Scrolls content area so that the target element is aligned to a specific location.
+
+### Parameters
+
+<dl>
+    #### `target`
+    A element or a valid CSS selector.
+
+    #### `targetOrigin`
+    The coordinate of the target element to be aligned. It supports format likes `left top`, `left+50px top-10px`, or `left+10% top+10%`.
+
+    #### `duration`
+    Duration of animated scrolling in milliseconds. Default is `0`, meaning for no animation.
+
+    #### `wrapperOrigin` <Badge.Optional />
+    The coordinate of the visible content area that the target element is aligned to. It supports format likes `left top`, `left+50px top-10px`, or `left+10% top+10%`.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when scrolling is completed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when scrolling is completed.
+
+### `Scrollable.scrollTop()`
+
+```javascript
+scrollTop()
+```
+
+Gets vertical scroll position.
+Unlike `Scrollable.scrollY`, if content is being scrolled in animated manner, the final position is returned.
+
+### `Scrollable.scrollToPage()`
+
+```javascript
+scrollToPage(x, y)
+scrollToPage(x, y, duration)
+scrollToPage(x, y, duration, callback)
+```
+
+Scrolls content area to a specified page. It is identical to scroll to the number of pixels of the visible content area times the page index.
+
+### Parameters
+
+<dl>
+    #### `x`
+    Page index in horizontal direction.
+
+    #### `y`
+    Page index in vertical direction.
+
+    #### `duration` <Badge.Optional />
+    Duration of animated scrolling in milliseconds. Default is `0`, meaning for no animation.
+
+    #### `callback` <Badge.Optional />
+    A callback to be invoked when scrolling is completed.
+
+</dl>
+
+### Return value
+
+A promise that resolves when scrolling is completed.
+
+### `Scrollable.setOptions()`
+
+```javascript
+setOptions(options)
+```
+
+Sets options for jQuery scrollable plugin.
+
+### Parameters
+
+<dl>
+    #### `options`
+    A dictionary specifying options.
+
+</dl>
+
+### `Scrollable.setStickyPosition()`
+
+```javascript
+setStickyPosition(element, dir)
+setStickyPosition(element, dir, fixed)
+setStickyPosition(element, dir, within)
+setStickyPosition(element, dir, within, fixed)
+```
+
+Sets sticky position for one or more elements.
+
+### Parameters
+
+<dl>
+    #### `element`
+    An element or a valid CSS selector.
+
+    #### `dir`
+    Which side(s) should the element be sticked onto to remain visible when the element is scrolled beyond visible area. When given `none` the element will no longer be sticky.
+
+    #### `fixed` <Badge.Optional />
+    Whether the element should be in fixed position, as if the content area is scrolled all the way in that direction.
+
+    #### `within`
+    When specified, the element will only be sticked onto the side of this element or region.
+
+</dl>
+
+### `Scrollable.stop()`
+
+```javascript
+stop()
+```
+
+Stops scrolling immediately.

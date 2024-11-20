@@ -1,0 +1,231 @@
+<Module name="jq-scrollable" />
+
+# Scrollable options
+
+Here lists out all available options.
+
+> All options can be passed when activating the plugin, whilst
+  **most** of the options can be set and be effective after plugin is activated by [`Scrollable.setOptions`](:).
+
+## Basic options
+
+### `cancel`
+
+A valid CSS selector matching elements that scroll action is avoided when mouse or touch acting on these target 
+This option has no effects when `handle` option is set to `scrollbar`.
+
+### `content`
+
+A valid CSS selector specifying which element to be scrolled
+only the first visible element will be scrolled if multiple elements are matched.
+Default is `>*`, i.e. the first visible child element will be scrolled.
+
+### `handle`
+
+Specifies which parts should initiate scrolling when
+touch or mouse events is received.
+
+<dl>
+    #### `auto`
+    Dragging content area on touch devices or scroll bars on other devices.
+
+    #### `scrollbar`
+    Only when dragging scrollbars.
+
+    #### `content`
+    Only when dragging contents.
+
+    #### `both`
+    When dragging scrollbars and contents.
+</dl>
+
+Default is `auto`.
+
+### `hScroll`
+
+Whether scrolling in horizontal direction is enabled.
+Default is `true`.
+
+### `inferWheelX`
+
+Whether vertical wheel scroll can infer horizontal scroll when appropriate.
+Default is `false`.
+
+### `lockDirection`
+
+Whether to lock the scrolling direction to either horizontal or vertical
+when scrolling in both direction is possible.
+Default is `true`.
+
+### `vScroll`
+
+Whether scrolling in vertical direction is enabled.
+Default is `true`.
+
+### `wheel`
+
+Whether scrolling by mouse wheel is enabled.
+Default is `true`.
+
+
+## Styling options
+
+### `scrollableXClass`
+
+CSS class applied to the container when horizontal scrolling is possible.
+Default is `scrollable-x`.
+
+### `scrollableYClass`
+
+CSS class applied to the container when vertical scrolling is possible.
+Default is `scrollable-y`.
+
+### `scrollbarClass`
+
+CSS class applied to the scrollbar elements.
+
+### `scrollbarInset`
+
+Specifying the distance of the scrollbar in pixels to the edge of the container.
+If negative number is supplied, the scrollbar will be placed at the distance outside the container.
+
+When option is not specified, it will fallback to `--jqs-scrollbar-inset` CSS variable.
+
+### `scrollbarSize`
+
+Specify the width of the scrollbar in pixels.
+
+When option is not specified, it will fallback to `--jqs-scrollbar-size` CSS variable.
+
+### `scrollbarStyle`
+
+CSS styles applied to the scrollbar element.
+
+When `backgroundColor`, `borderRadius` or `opacity` is not specified,
+it will fallback to `--jqs-scrollbar-color`, `--jqs-scrollbar-radius`, `--jqs-scrollbar-opacity`
+CSS variable correspondingly.
+
+### `scrollbarTrackStyle`
+
+CSS styles applied to the scrollbar track element.
+
+### `scrollingClass`
+
+CSS class applied to the container when scrolling is in action.
+Default is `scrollable`
+
+
+## Scrolling effect options
+
+### `bounce`
+
+Whether to allow content to be dragged beyond the boundaries when scrolling to the end.
+The content will be bounced back when mouse or touch is released.
+Default is `true`.
+
+### `bounceDuration`
+
+Specifying how long in milliseconds for the animated bounce back.
+
+### `hBounce`
+
+Same as `bounce` option but only activate on horizontal direction.
+This option has no effect when `bounce` is set to `false`.
+
+### `momentum`
+
+Whether to allow the content to continue scrolling when mouse or touch is released.
+Default is `true`.
+
+### `vBounce`
+
+Same as `bounce` option but only activate on vertical direction.
+This option has no effect when `bounce` is set to `false`.
+
+
+## Paging options
+
+### `pageDirection`
+
+Specifies content is paged horizontally or vertically.
+Default is `auto`.
+
+### `pageItem`
+
+A valid CSS selector specifying pages of scrolled content.
+This `pageItem` and `pageIndex` properties will update according to current scroll position.
+
+### `pageItemAlign`
+
+Specifies how a page is aligned when size of the current page element is smaller the container size.
+Default is `center`.
+
+### `snapToPage`
+
+Specifies whether it should align page to the container (i.e. never cross-page).
+
+
+## Sticky element options
+
+### `sticky`
+
+A valid CSS selector specifying sections of content of which sticky header will be shown for.
+
+### `stickyClass`
+
+CSS class applied to elements that are currently sticking to boundaries of parent container.
+
+### `stickyHandle`
+
+A valid CSS selector specifying which element inside sections of content matched by `sticky` option
+to become sticky.
+
+### `stickyToBottom`
+
+Whether the `stickyHandle` be placed at the top or ottom of scrolling area.
+
+
+## Hook options
+
+### `scrollEnd`
+
+Attach event listener that is invoked when the scrolling of content has stopped completely.
+
+### `scrollMove`
+
+Attach event listener that is invoked when the content has scrolled to a different offset.
+
+### `scrollProgressChange`
+
+Attach event listener that is invoked when the percentage of content scrolled has changed.
+The change can be either due to scrolling of content, or the change of size of the container or content.
+
+### `scrollStart`
+
+Attach event listener that is invoked when the scrolling of content has just started.
+
+### `scrollStop`
+
+Attach event listener that is invoked when the content has just stopped being scrolled actively.
+The content might continue to be scrolled when momentum or bounch back effect is on.
+
+### `touchMove`
+
+Attach event listener that is invoked when touch has been moved within scrollable area.
+
+
+## Advanced options
+
+### `getContentDimension` <Badge.Deprecated />
+
+Specifies a callback to calculate the dimension of the content.
+The function should return an object of with `width` and `height` properties.
+
+### `getWrapperDimension` <Badge.Deprecated />
+
+Specifies a callback to calculate the dimension of the container.
+The function should return an object of with `width` and `height` properties.
+
+### `scrollbar` <Badge.Deprecated />
+
+Specifies a callback to create scrollbar track and handle in DOM.

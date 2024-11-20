@@ -10,25 +10,26 @@ import JavascriptParser from 'webpack/lib/javascript/JavascriptParser.js';
 
 const customComponents = {
     Badge: {
-        TS: function () { return null },
-        ReadOnly: function () { return null },
-        Optional: function () { return null },
-        Required: function () { return null },
-        Version: function () { return null },
-        Deprecated: function () { return null },
-        Experimental: function () { return null },
+        TS: function () { return null; },
+        ReadOnly: function () { return null; },
+        Optional: function () { return null; },
+        Required: function () { return null; },
+        Version: function () { return null; },
+        Deprecated: function () { return null; },
+        Experimental: function () { return null; },
     },
-    Color: function () { return null },
-    Inline: function () { return null },
-    Snippets: function () { return null },
-    MemberList: function () { return null },
-    Module: function () { return null },
-    DemoWithSource: function () { return null },
-    MemberList: function () { return null },
-    CodeBlock: function () { return null },
-    ImportHint: function () { return null },
-    VersionTimeline: function () { return null },
-    WaterpipeExample: function () { return null },
+    Color: function () { return null; },
+    Inline: function () { return null; },
+    Snippets: function () { return null; },
+    MemberList: function () { return null; },
+    Module: function () { return null; },
+    DemoBlock: function () { return null; },
+    DemoWithSource: function () { return null; },
+    MemberList: function () { return null; },
+    CodeBlock: function () { return null; },
+    ImportHint: function () { return null; },
+    VersionTimeline: function () { return null; },
+    WaterpipeExample: function () { return null; },
 };
 
 function* iterateReactNodes(node) {
@@ -72,8 +73,17 @@ function generateAnchor(v) {
 async function processFiles(path) {
     let pageTitle;
     let moduleName;
-    const tokens = [];
+    const tokens = new Map();
     const filename = basename(path, '.mdx');
+
+    function addEntry(text, hash = null) {
+        let normalized = text.replace(/\(\)$/, '');
+        if (!tokens.has(normalized)) {
+            tokens.set(normalized, hash === null ? text : [text, hash]);
+            return true;
+        }
+    }
+
     try {
         const content = fixImport(await readFile(path, 'utf8'));
         const module = await evaluate(content, {
@@ -94,19 +104,15 @@ async function processFiles(path) {
                     const text = React.Children.toArray(o.props.children).filter(v => typeof v === 'string')[0];
                     lastHash = '#s-' + generateAnchor(text);
                     if (text.match(/^dom:.+ event$/)) {
-                        tokens.push(text);
+                        addEntry(text);
                     }
                     break;
                 }
                 case 'code': {
                     if (o.props.className && lastHash === '#s-syntax') {
-                        const [name] = o.props.children.match(/^([a-z0-9.]+)(?=\()/i) || [];
+                        const [name] = o.props.children.match(/^([a-z0-9.$]+)(?=\()/i) || [];
                         if (name) {
-                            if (name === filename) {
-                                tokens.push(name + '()');
-                            } else {
-                                tokens.push([name + '()', ""]);
-                            }
+                            addEntry(name + '()', name === filename ? null : '');
                         }
                         lastHash = '';
                     }
@@ -115,15 +121,13 @@ async function processFiles(path) {
                 case customComponents.MemberList: {
                     const { i, ip, im, sp, sm, ev } = o.props;
                     if (!o.props.noRoot) {
-                        tokens.push(lastHash ? [i, lastHash] : i);
+                        addEntry(i, lastHash || null);
                     }
-                    tokens.push(
-                        ...ip?.map(v => i + (v[0] !== '[' ? '.' : '') + v) || [],
-                        ...im?.map(v => i + (v[0] !== '[' ? '.' : '') + v) || [],
-                        ...sp?.map(v => i + (v[0] !== '[' ? '.' : '') + v) || [],
-                        ...sm?.map(v => i + (v[0] !== '[' ? '.' : '') + v) || [],
-                        ...ev?.map(v => o.props.i + ': ' + v + ' event') || []
-                    );
+                    ip?.map(v => i + (v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
+                    im?.map(v => i + (v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
+                    sp?.map(v => i + (v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
+                    sm?.map(v => i + (v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
+                    ev?.map(v => i + ': ' + v + ' event').forEach(v => addEntry(v));
                     break;
                 }
                 case customComponents.Module: {
@@ -135,7 +139,7 @@ async function processFiles(path) {
     } catch (e) {
         console.error(`Unable to process ${path}: ${e.message}`);
     }
-    return { moduleName, tokens, pageTitle };
+    return { moduleName, tokens: [...tokens.values()], pageTitle };
 }
 
 (async function () {

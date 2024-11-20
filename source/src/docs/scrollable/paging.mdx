@@ -1,0 +1,127 @@
+import { useLayoutEffect } from "react";
+import { getDirectiveComponent } from "brew-js/directive";
+
+<Module name="jq-scrollable" />
+
+# Page and scroll snap
+
+## Page items
+
+By setting a CSS selector the `pageItem` option, the plugin keeps track which "page"
+the scroller is currently showing.
+
+Zero-based index and corresponding element can be retrieved in plugin events.
+
+```javascript
+$('#container').scrollable({
+    pageItem: 'div',
+    scrollProgressChange: function (e) {
+        e.pageIndex;
+        e.pageItem;
+    }
+    /* ... */
+});
+```
+
+By default, the plugin will try to determine the page direction and deduce the current page accordingly. It can be
+override by the `pageDirection` option.
+
+<Snippets
+    snippets={[
+        'pageDirection: "auto"',
+        'pageDirection: "x"',
+        'pageDirection: "y"',
+    ]}
+    rootProps={{
+        scrollable: 'auto',
+        style: { maxHeight: 300, overflow: 'hidden' }
+    }}
+    render={(index, ref, value) => {
+        useLayoutEffect(() => {
+            const scrollable = getDirectiveComponent(ref.current).scrollable;
+            scrollable.setOptions({
+                pageItem: 'div',
+                pageDirection: ['auto', 'x', 'y'][index],
+                scrollProgressChange(e) {
+                    ref.current.querySelector('.app-demo-view-floating b').textContent = e.pageIndex;
+                }
+            });
+        }, [index]);
+        return (
+            <>
+                <div scrollable-target="">
+                    {[1, 2, 3].map(i => (
+                        <div key={i} className="app-demo-placeholder-item"></div>
+                    ))}
+                </div>
+                <div className="app-demo-view-floating" style={{ top: '1em', left: '1em' }}>
+                    <span>Current page: <b>0</b></span>
+                </div>
+            </>
+        );
+    }} />
+
+## Scroll snap
+
+It is analogous to the `scroll-snap` CSS property being set to `x mandatory` or `y mandatory` depending on page direction.
+
+<Snippets
+    snippets={[
+        'snapToPage: true',
+        'snapToPage: false',
+    ]}
+    rootProps={{
+        scrollable: 'auto',
+        style: { maxHeight: 300, overflow: 'hidden' }
+    }}
+    render={(index, ref, value) => {
+        useLayoutEffect(() => {
+            const scrollable = getDirectiveComponent(ref.current).scrollable;
+            scrollable.setOptions({
+                pageItem: 'div',
+                snapToPage: index === 0
+            });
+            scrollable.scrollTo(0, 0);
+        }, [index]);
+        return (
+            <div scrollable-target="">
+                {[1, 2, 3].map(i => (
+                    <div key={i} className="app-demo-placeholder-item" style={{ height: [300, 200, 400][i - 1] }}></div>
+                ))}
+            </div>
+        );
+    }} />
+
+## Scroll snap alignment
+
+Analogous to the `scroll-snap-align` CSS property, it controls the alignment of current page
+when the page does not fill the whole container.
+
+<Snippets
+    snippets={[
+        'pageItemAlign: "top"',
+        'pageItemAlign: "center"',
+        'pageItemAlign: "bottom"',
+    ]}
+    rootProps={{
+        scrollable: 'auto',
+        style: { maxHeight: 300, overflow: 'hidden' }
+    }}
+    render={(index, ref, value) => {
+        useLayoutEffect(() => {
+            const scrollable = getDirectiveComponent(ref.current).scrollable;
+            scrollable.setOptions({
+                pageItem: 'div',
+                snapToPage: true,
+                pageItemAlign: ['top', 'center', 'bottom'][index]
+            });
+            scrollable.scrollTo(0, 0);
+        }, [index]);
+        return (
+            <div scrollable-target="">
+                {[1, 2, 3].map(i => (
+                    <div key={i} className="app-demo-placeholder-item" style={{ height: [300, 200, 400][i - 1] }}></div>
+                ))}
+            </div>
+        );
+    }} />

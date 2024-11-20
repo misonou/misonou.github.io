@@ -2,13 +2,12 @@ import { Mixin, linkTo, useScrollableMixin } from "brew-js-react";
 import { each, makeArray, map } from "zeta-dom/util";
 import { Docs } from "src/views/Docs";
 import navData from "src/data/docs.yml";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import dom, { retainFocus } from "zeta-dom/dom";
-import { domEventRef } from "zeta-dom-react";
+import { domEventRef, useAsync } from "zeta-dom-react";
 import { fuzzyMatch, MatchableItem, useMenuKeystrokeMixin } from "@misonou/react-app-utils";
 import { TextInput } from "src/components/controls";
 import { generateAnchor } from "src/util";
-import apiIndex from "src/data/api.json";
 
 export interface NavSearchBoxProps {
     module: string;
@@ -19,7 +18,9 @@ interface PageSuggestion extends MatchableItem {
     breadcrumb: string;
 }
 
-function initSearchData() {
+let searchData: Promise<PageSuggestion[]>;
+
+async function initSearchData() {
     const flattened = map([navData], (function flatten(parent: string[], v: any): PageSuggestion[] {
         return map(v, function (v) {
             return v.pages ? flatten([...parent, v.title], v.pages) : {
@@ -34,7 +35,7 @@ function initSearchData() {
     for (const v of flattened) {
         docByPath[v.value.path] = v;
     }
-    each(apiIndex, (i, v) => {
+    each((await import("src/data/api.json")).default, (i, v) => {
         v.forEach(v => {
             const [name, hash] = makeArray(v);
             if (docByPath[i] && name !== docByPath[i].displayText) {
@@ -52,17 +53,21 @@ function initSearchData() {
     return flattened;
 }
 
+async function search(value: string, module?: string) {
+    if (!value) {
+        return [];
+    }
+    let filtered = await (searchData || (searchData = initSearchData()));
+    if (module) {
+        filtered = filtered.filter(v => !v.value.module || v.value.module === module);
+    }
+    return fuzzyMatch(filtered, value, { sortByRelevancy: true })
+}
+
 export function NavSearchBox(props: NavSearchBoxProps) {
     const scrollable = useScrollableMixin();
     const [value, setValue] = useState('');
-    const haystack = useMemo(initSearchData, []);
-    const matched = useMemo(() => {
-        let filtered = haystack;
-        if (props.module) {
-            filtered = filtered.filter(v => !v.value.module || v.value.module === props.module);
-        }
-        return fuzzyMatch(filtered, value, { sortByRelevancy: true });
-    }, [value, props.module]);
+    const [matched] = useAsync(() => search(value, props.module), [value, props.module]);
     const menuKeystroke = useMenuKeystrokeMixin('a');
 
     return (
@@ -70,7 +75,7 @@ export function NavSearchBox(props: NavSearchBoxProps) {
             <TextInput ref={domEventRef({ focusin, focusout: () => props.onToggle(false) })} value={value} onChange={setValue} placeholder="Search" />
             <div id="app-nav-search-result" {...Mixin.use(scrollable)}>
                 <div {...Mixin.use(scrollable.target)}>
-                    {matched.slice(0, 100).map((v, i) => (
+                    {matched?.slice(0, 100).map((v, i) => (
                         <a key={i} href={linkTo(Docs, { remainingSegments: v.value.path })}>
                             <span dangerouslySetInnerHTML={{ __html: v.formattedText }}></span>
                             <span>

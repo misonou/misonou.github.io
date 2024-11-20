@@ -10,10 +10,14 @@ interface MDXCodeElementProps {
 export function MDXCodeElement({ className, children }: MDXCodeElementProps) {
     const files = useMemo(() => {
         const matches = children && className ? Array.from(children.matchAll(/\/{3}\s?([^\r\n]+)\r?\n/g)) : [];
-        return matches.map((v, i) => ({
-            name: v[1],
-            content: children.slice((v.index || 0) + v[0].length, matches[i + 1]?.index ?? children.length).trim()
-        }));
+        return matches.map((v, i) => {
+            const [name, language] = v[1].split(' ');
+            return ({
+                name,
+                language,
+                content: children.slice((v.index || 0) + v[0].length, matches[i + 1]?.index ?? children.length).trim()
+            });
+        });
     }, [className, children]);
 
     if (!className) {

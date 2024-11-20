@@ -41,12 +41,22 @@ module.exports = async ({ env }) => {
                             },
                             {
                                 test: /\.mdx?$/,
-                                loader: '@mdx-js/loader',
                                 type: 'javascript/auto',
-                                /** @type {import('@mdx-js/loader').Options} */
-                                options: {
-                                    remarkPlugins: [RemarkGFM]
-                                }
+                                use: [
+                                    {
+                                        loader: 'babel-loader',
+                                        options: {
+                                            plugins: [path.resolve('./scripts/mdx-transform.js')]
+                                        }
+                                    },
+                                    {
+                                        loader: '@mdx-js/loader',
+                                        /** @type {import('@mdx-js/loader').Options} */
+                                        options: {
+                                            remarkPlugins: [RemarkGFM]
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     },

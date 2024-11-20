@@ -10,19 +10,15 @@ The `RoutePattern` object is returned by [`app.parseRoute`](:).
     ip={['pattern', 'params', 'exact', 'minLength', 'length']}
     im={['has()', 'match()']} />
 
-## Properties
-
-### `RoutePattern.pattern`
-
-Gets the input route pattern.
-
-### `RoutePattern.params`
-
-Gets a dictionary that maps a route parameter name to a zero-based index.
+## Instance properties
 
 ### `RoutePattern.exact`
 
 Gets whether the route accepts extra segments.
+
+### `RoutePattern.length`
+
+Gets the number of segments, including optional ones.
 
 ### `RoutePattern.minLength`
 
@@ -30,11 +26,15 @@ Gets the minimum number of segments.
 
 If the route is exact, the minimum length is the same as the number of segments of the input route pattern.
 
-### `RoutePattern.length`
+### `RoutePattern.params`
 
-Gets the number of segments, including optional ones.
+Gets a dictionary that maps a route parameter name to a zero-based index.
 
-## Methods
+### `RoutePattern.pattern`
+
+Gets the input route pattern.
+
+## Instance methods
 
 ### `RoutePattern.has()`
 

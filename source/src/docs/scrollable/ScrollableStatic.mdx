@@ -1,0 +1,84 @@
+<Module name="jq-scrollable" />
+
+# jQuery.scrollable
+
+## Syntax
+
+```javascript
+$.scrollable(element)
+$.scrollable(element, options)
+```
+
+### Parameters
+
+<dl>
+    #### `element`
+    A DOM element.
+
+    #### `options` <Badge.Optional />
+    When options is specified, it activates the plugin on the given element using the supplied options.
+    Otherwise, it returned the [`Scrollable`](:) plugin interface for the given element if
+    the plugin has been activated.
+</dl>
+
+### Return value
+
+The [`Scrollable`](:) plugin interface.
+
+## Static members
+
+<MemberList
+    i="$.scrollable"
+    sm={['hook()']}
+/>
+
+
+### `$.scrollable.hook()` <Badge.Version />
+
+```javascript
+hook(hooks)
+```
+
+Attaches global hooks on scrollable events.
+
+### Parameters
+
+<dl>
+    #### `hooks`
+
+    <dl>
+        #### `scrollEnd` <Badge.Optional />
+
+        Attach event listener that is invoked when the scrolling of content has stopped completely.
+
+        #### `scrollMove` <Badge.Optional />
+
+        Attach event listener that is invoked when the content has scrolled to a different offset.
+
+        #### `scrollProgressChange` <Badge.Optional />
+
+        Attach event listener that is invoked when the percentage of content scrolled has changed.
+        The change can be either due to scrolling of content, or the change of size of the container or content.
+
+        #### `scrollStart` <Badge.Optional />
+
+        Attach event listener that is invoked when the scrolling of content has just started.
+
+        #### `scrollStop` <Badge.Optional />
+
+        Attach event listener that is invoked when the content has just stopped being scrolled actively.
+        The content might continue to be scrolled when momentum or bounch back effect is on.
+
+        #### `touchMove` <Badge.Optional />
+
+        Attach event listener that is invoked when touch has been moved within scrollable area.
+    </dl>
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="jq-scrollable">
+- **1.7.0** `$.scrollable()`
+- **1.12.0** `$.scrollable.hook()`
+</VersionTimeline>

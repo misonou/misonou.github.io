@@ -22,14 +22,14 @@ augment extra functionalities when used with [`useFormField`](:).
     ip={['items', 'allowUnselect']}
 />
 
+### `ChoiceFieldProps.allowUnselect`
+
+Whether the field can be empty, i.e. none of the choices are selected.
+
 ### `ChoiceFieldProps.items`
 
 A list of items as choices.
 Primitive values in the list will be normalized as [`ChoiceItem`](:).
-
-### `ChoiceFieldProps.allowUnselect`
-
-Whether the field can be empty, i.e. none of the choices are selected.
 
 ## ChoiceFieldState interface
 
@@ -58,13 +58,13 @@ Returns the selected item.
     ip={['value', 'label', 'hidden', 'disabled']}
 />
 
-### `ChoiceItem.value`
+### `ChoiceItem.disabled` <Badge.Optional />
+
+### `ChoiceItem.hidden` <Badge.Optional />
 
 ### `ChoiceItem.label`
 
-### `ChoiceItem.hidden`
-
-### `ChoiceItem.disabled`
+### `ChoiceItem.value`
 
 ## Version information
 

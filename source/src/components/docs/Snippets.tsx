@@ -4,6 +4,7 @@ import { SyntaxHighlight } from "./SyntaxHighlight";
 import { Mixin, useFocusStateMixin } from "brew-js-react";
 
 export interface SnippetsProps {
+    rootProps?: React.ComponentProps<'div'>;
     title?: string;
     snippets: string[];
     render: (index: number, ref: React.RefObject<HTMLElement>, value: string) => React.ReactNode;
@@ -25,7 +26,7 @@ export function Snippets(props: SnippetsProps) {
                     </div>
                 ))}
             </div>
-            <div ref={ref} className="app-demo-snippets-view app-demo-view">
+            <div ref={ref} {...props.rootProps} className={classNames('app-demo-snippets-view app-demo-view', props.rootProps?.className)}>
                 {props.render(index, ref, props.snippets[index])}
             </div>
         </div>

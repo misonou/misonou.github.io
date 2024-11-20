@@ -1,0 +1,69 @@
+<Module name="jq-scrollable" />
+
+# ScrollableEvent interface
+
+The `ScrollableEvent` object is passed as the first argument to event listener,
+either supplied as plugin options, or as global hooks.
+
+```javascript
+$(element).scrollable({
+  scrollStart: function (e) {
+    /* ... */
+  }
+});
+
+$.scrollable.hook({
+  scrollStart: function (e) {
+    /* ... */
+  }
+});
+
+```
+
+<MemberList
+    i="ScrollableEvent"
+    extends={['ScrollableState']}
+    ip={['type', 'trigger']}
+/>
+
+## Instance properties
+
+### `ScrollableEvent.trigger` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the trigger the started the scrolling. Possible values are:
+
+<dl>
+    #### `auxclick`
+    Scrolling is triggered by clicking mouse wheel.
+
+    #### `gesture`
+    Scrolling is triggered by swipe gesture on touch device or dragging content by mouse.
+
+    #### `keydown`
+    Scrolling is triggered by keys like arrow keys, space or enter key.
+
+    #### `script`
+    Scrolling is triggered by calling plugin methods.
+
+    #### `scrollbar`
+    Scrolling is triggered by dragging scrollbar or holding mouse button on scrollbar tracks.
+
+    #### `wheel`
+    Scrolling is triggered by mouse wheel.
+    On Mac or iOS devices, it is possible that emulated wheel events are triggered by swipe gesture on touch pads.
+</dl>
+
+### `ScrollableEvent.type` <Badge.ReadOnly />
+
+Gets the event type.
+
+## Version information
+
+<VersionTimeline module="jq-scrollable">
+- **1.0.0** Introduced
+- **1.15.0** `ScrollableEvent.trigger`
+</VersionTimeline>
+
+## See also
+
+- [Scrollable events](/docs/scrollable/events)

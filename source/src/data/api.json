@@ -104,8 +104,7 @@
         ],
         "app.language",
         "app.setLanguage()",
-        "app.detectLanguage()",
-        "app.useI18n()"
+        "app.detectLanguage()"
     ],
     "/app/useIdleTimeout": [
         [
@@ -118,7 +117,12 @@
         [
             "app.useScrollable()",
             ""
-        ]
+        ],
+        "app: scrollStart event",
+        "app: scrollMove event",
+        "app: scrollStop event",
+        "app: scrollProgressChange event",
+        "app: scrollIndexChange event"
     ],
     "/devtools/HTMLConsole": [
         "HTMLConsole",
@@ -171,10 +175,6 @@
         "dom.root",
         "dom.ready",
         "dom.on()",
-        [
-            "dom",
-            "#s-alias-methods"
-        ],
         "dom.focusable()",
         "dom.focused()",
         "dom.setTabRoot()",
@@ -322,7 +322,6 @@
         "DataView.toJSON()",
         "DataView.reset()",
         "DataView.toggleSort()",
-        "DataView.pageSize",
         "DataView: viewChange event"
     ],
     "/react/data-view/useDataView": [
@@ -437,7 +436,6 @@
         "FormContext.toJSON()",
         "FormContext.ERROR_FIELD",
         "FormContext.EMPTY_FIELD",
-        "FormContext.formatError",
         "FormContext.get()",
         "FormContext: reset event",
         "FormContext: dataChange event",
@@ -1065,6 +1063,56 @@
         "app: pageleave event",
         "app: popstate event"
     ],
+    "/scrollable/Scrollable": [
+        "Scrollable",
+        "Scrollable.scrollTarget",
+        "Scrollable.scrollX",
+        "Scrollable.scrollY",
+        "Scrollable.scrollPercentX",
+        "Scrollable.scrollPercentY",
+        "Scrollable.scrollMaxX",
+        "Scrollable.scrollMaxY",
+        "Scrollable.destroy()",
+        "Scrollable.enable()",
+        "Scrollable.disable()",
+        "Scrollable.setOptions()",
+        "Scrollable.setStickyPosition()",
+        "Scrollable.refresh()",
+        "Scrollable.scrollPadding()",
+        "Scrollable.stop()",
+        "Scrollable.scrollLeft()",
+        "Scrollable.scrollTop()",
+        "Scrollable.scrollBy()",
+        "Scrollable.scrollTo()",
+        "Scrollable.scrollByPage()",
+        "Scrollable.scrollToPage()",
+        "Scrollable.scrollToElement()"
+    ],
+    "/scrollable/ScrollableEvent": [
+        "ScrollableEvent",
+        "ScrollableEvent.type",
+        "ScrollableEvent.trigger"
+    ],
+    "/scrollable/ScrollableState": [
+        "ScrollableState",
+        "ScrollableState.startX",
+        "ScrollableState.startY",
+        "ScrollableState.offsetX",
+        "ScrollableState.offsetY",
+        "ScrollableState.deltaX",
+        "ScrollableState.deltaY",
+        "ScrollableState.percentX",
+        "ScrollableState.percentY",
+        "ScrollableState.pageIndex",
+        "ScrollableState.pageItem"
+    ],
+    "/scrollable/ScrollableStatic": [
+        [
+            "$.scrollable()",
+            ""
+        ],
+        "$.scrollable.hook()"
+    ],
     "/util/blur": [
         "blur()"
     ],
@@ -1144,6 +1192,13 @@
     ],
     "/util/locked": [
         "locked()"
+    ],
+    "/util/memoize": [
+        "memoize()",
+        "memoize.has()",
+        "memoize.put()",
+        "memoize.delete()",
+        "memoize.clear()"
     ],
     "/util/NodeTree": [
         "NodeTree",

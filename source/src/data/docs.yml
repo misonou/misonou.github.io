@@ -39,6 +39,16 @@
           class: code
           module: react-css-utils
           pageTitle: "Change log: @misonou/react-css-utils"
+        - title: jq-scrollable
+          path: /change-log/jq-scrollable
+          class: code
+          module: jq-scrollable
+          pageTitle: "Change log: jq-scrollable"
+        - title: waterpipe
+          path: /change-log/waterpipe
+          class: code
+          module: waterpipe
+          pageTitle: "Change log: waterpipe"
     - title: Upgrading
       pages:
         - title: Upgrading guide
@@ -779,10 +789,9 @@
           module: brew-js-react
 - title: React Translation (i18n)
   pages:
-    - title: Using I18n extension
+    - title: Using I18n in React
       path: /react/i18n/index
       module: brew-js-react
-      pageTitle: I18n extension
     - title: Getting translations
       path: /react/i18n/getting-translation
       module: brew-js-react
@@ -891,6 +900,63 @@
           path: /react/mixin/UnmanagedClassNameMixin
           class: code
           module: brew-js-react
+- title: Scrollable
+  pages:
+    - title: Using scrollable
+      path: /scrollable/index
+      module: jq-scrollable
+    - title: Plugin options
+      path: /scrollable/options
+      module: jq-scrollable
+      pageTitle: Scrollable options
+    - title: Plugin events
+      path: /scrollable/events
+      module: jq-scrollable
+      pageTitle: Scrollable events
+    - title: Customizations
+      pages:
+        - title: Basic options
+          path: /scrollable/basic-options
+          module: jq-scrollable
+        - title: Overscroll behavior
+          path: /scrollable/overscroll-behavior
+          module: jq-scrollable
+        - title: Page and scroll snap
+          path: /scrollable/paging
+          module: jq-scrollable
+        - title: Sticky elements
+          path: /scrollable/sticky-elements
+          module: jq-scrollable
+        - title: Leading content
+          path: /scrollable/leading-content
+          module: jq-scrollable
+    - title: Styling
+      pages:
+        - title: Scrollbars
+          path: /scrollable/scrollbars
+          module: jq-scrollable
+        - title: Scrollable state
+          path: /scrollable/scrollable-state
+          module: jq-scrollable
+    - title: References
+      pages:
+        - title: $.scrollable
+          path: /scrollable/ScrollableStatic
+          class: code
+          module: jq-scrollable
+          pageTitle: jQuery.scrollable
+        - title: Scrollable
+          path: /scrollable/Scrollable
+          class: code
+          module: jq-scrollable
+        - title: ScrollableEvent
+          path: /scrollable/ScrollableEvent
+          class: code
+          module: jq-scrollable
+        - title: ScrollableState
+          path: /scrollable/ScrollableState
+          class: code
+          module: jq-scrollable
 - title: Utilities
   pages:
     - title: createApi()

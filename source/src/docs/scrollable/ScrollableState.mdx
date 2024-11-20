@@ -1,0 +1,71 @@
+<Module name="jq-scrollable" />
+
+# ScrollableState interface
+
+Members of `ScrollableState` interface are available on event object and promise returned from scrolling methods.
+
+```javascript
+$.scrollable.hook({
+    scrollMove(eventObj) {
+        eventObj.offsetX; // ScrollableState interface
+    }
+});
+
+let promise = $(element).scrollable('scrollTo', 100, 100);
+promise.offsetX; // ScrollableState interface
+```
+
+<MemberList
+    i="ScrollableState"
+    ip={['startX', 'startY', 'offsetX', 'offsetY', 'deltaX', 'deltaY', 'percentX', 'percentY', 'pageIndex', 'pageItem']}
+/>
+
+## Instance properties
+
+### `ScrollableState.deltaX` <Badge.ReadOnly />
+
+Different of horizontal position between this and the last `touchMove` or `scrollMove` event; or
+different between starting and final position returned by scroll method.
+
+### `ScrollableState.deltaY` <Badge.ReadOnly />
+
+Different of vertical position between this and the last `touchMove` or `scrollMove` event; or
+different starting and final position returned by scroll method.
+
+### `ScrollableState.offsetX` <Badge.ReadOnly />
+
+Current horizontal position in scrolling events; or
+final horizontal position returned by scroll method.
+
+### `ScrollableState.offsetY` <Badge.ReadOnly />
+
+Current vertical position in scrolling events; or
+final vertical position returned by scroll method.
+
+### `ScrollableState.pageIndex` <Badge.ReadOnly />
+
+Current page index if paging is turned on by `pageItem` option in scrolling events; or
+final page index returned by scroll method.
+
+### `ScrollableState.pageItem` <Badge.ReadOnly />
+
+Current page element if paging is turned on by `pageItem` option in scrolling events; or
+final page element returned by scroll method.
+
+### `ScrollableState.percentX` <Badge.ReadOnly />
+
+Current horizontal position in percentage to the content width in scrolling events; or
+final horizontal position returned by scroll method.
+
+### `ScrollableState.percentY` <Badge.ReadOnly />
+
+Current vertical position in percentage to the content width in scrolling events; or
+final vertical position returned by scroll method.
+
+### `ScrollableState.startX` <Badge.ReadOnly />
+
+Horizontal position when the scrolling is started.
+
+### `ScrollableState.startY` <Badge.ReadOnly />
+
+Vertical position when the scrolling is started

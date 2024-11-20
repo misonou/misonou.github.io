@@ -1,10 +1,8 @@
 import { map } from "zeta-dom/util";
-import { SyntaxHighlight } from "./SyntaxHighlight";
 import { RefObject, useRef, useState } from "react";
-import { classNames, useRefInitCallback } from "zeta-dom-react";
+import { useRefInitCallback } from "zeta-dom-react";
 import { Mixin, useFocusStateMixin } from "brew-js-react";
 import { HTMLConsole, IConsole } from "@misonou/react-app-utils";
-import { ReactComponent as Arrow } from "src/styles/icons/double-arrow.svg";
 import { ReactComponent as RubbishBin } from "src/styles/icons/rubbish-bin.svg";
 import { CodeBlockWithTab } from "./CodeBlockWithTab";
 

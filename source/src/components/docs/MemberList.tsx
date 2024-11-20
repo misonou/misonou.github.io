@@ -1,9 +1,8 @@
-import { makeArray, map } from "zeta-dom/util";
-import { MDXAnchorElement } from "./MDXAnchorElement";
+import { map } from "zeta-dom/util";
 
 interface MemberListProps {
     i: string;
-    extends?: string | string[];
+    extends?: string | string[] | string[][];
     sp?: string[];
     sm?: string[];
     ip?: string[];
@@ -43,9 +42,9 @@ export function MemberList(props: MemberListProps) {
         <div className="app-docs-member">
             {props.extends && (
                 <div className="app-docs-member-subclass">
-                    {map(props.extends, v => (
-                        <div key={v}>
-                            <MDXAnchorElement href={`:${v}`}>{v}</MDXAnchorElement>
+                    {map(props.extends, (v, i) => (
+                        <div key={i}>
+                            {Array.isArray(v) ? <a href={v[1]}>{v[0]}</a> : v}
                         </div>
                     ))}
                     <div>

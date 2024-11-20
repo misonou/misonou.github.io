@@ -1,0 +1,376 @@
+import { useLayoutEffect, useRef, useState } from "react";
+import { matchWord } from "zeta-dom/util";
+import { getRect } from "zeta-dom/domUtil";
+import { getDirectiveComponent } from "brew-js/directive";
+import { Toggle } from "src/components/controls";
+
+export function Lipsum() {
+    return <>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+        culpa qui officia deserunt mollit anim id est laborum.
+    </>;
+}
+
+<Module name="jq-scrollable" />
+
+# Sticky elements
+
+Elements within scrolled content can be positioned as sticky or fixed using [`Scrollable.setStickyPosition`](:).
+
+```javascript
+/// js javascript
+const element = document.getElementById('container');
+$(element).scrollable({ /* ... */ });
+$(element).scrollable('setStickyPosition', 'h4', 'top');
+
+/// html html
+<div id="container">
+    <div id="content">
+        <h4>Header</h4>
+        <!-- ... -->
+    </div>
+</div>
+```
+
+> For this use case, using [leading content](/docs/scrollable/leading-content) can be a simpler option.
+
+<Inline>
+{() => {
+    const ref = useRef();
+    useLayoutEffect(() => {
+        getDirectiveComponent(ref.current).scrollable.setStickyPosition('h4', 'top');
+    }, []);
+    return (
+        <DemoBlock ref={ref} scrollable="auto" style={{ overflow: 'hidden' }}>
+            <div scrollable-target="">
+                <h4 style={{
+                    position: 'relative',
+                    margin: '-1em -1em 1em',
+                    padding: '1em',
+                    borderBottom: '1px solid var(--color-border)',
+                    background: 'var(--page-bg)',
+                    zIndex: 1,
+                }}>
+                    Header
+                </h4>
+                <p><Lipsum /></p>
+                <p><Lipsum /></p>
+                <p><Lipsum /></p>
+            </div>
+        </DemoBlock>
+    );
+}}
+</Inline>
+
+## Section header and footer
+
+Section header can be set by the `within` parameter.
+
+```javascript
+/// js javascript
+const element = document.getElementById('container');
+$(element).scrollable({ /* ... */ });
+$(element).scrollable('setStickyPosition',
+    '.header', // header
+    'top',     // sticky direction
+    '.section' // within the closest .section element
+);
+
+/// html html
+<div id="container">
+    <div id="content">
+        <div class="section">
+            <h4 class="header">Section 1</h4>
+            <!-- ... -->
+        </div>
+        <div class="section">
+            <h4 class="header">Section 2</h4>
+            <!-- ... -->
+        </div>
+    </div>
+</div>
+```
+
+<Inline>
+{() => {
+    const ref = useRef();
+    useLayoutEffect(() => {
+        getDirectiveComponent(ref.current).scrollable.setOptions({
+            sticky: '.demo-bgqcp',
+            stickyHandle: 'h4'
+        });
+    }, []);
+    return (
+        <DemoBlock ref={ref} scrollable="auto" style={{ overflow: 'hidden' }}>
+            <div scrollable-target="">
+                <div className="demo-bgqcp">
+                    <h4>Section 1</h4>
+                    <Lipsum />
+                </div>
+                <div className="demo-bgqcp">
+                    <h4>Section 2</h4>
+                    <Lipsum />
+                </div>
+                <div className="demo-bgqcp">
+                    <h4>Section 3</h4>
+                    <Lipsum />
+                </div>
+            </div>
+            <style children={`
+                .demo-bgqcp { margin: 0 -1em; padding: 1em; border-top: 1px solid var(--color-border); }
+                .demo-bgqcp:first-child { border-top-style: none; margin-top: -1em; }
+                .demo-bgqcp h4 { margin: -1em -1em 1em; padding: 1em; background: var(--page-bg); border-bottom: 1px solid var(--color-border); }
+            `} />
+        </DemoBlock>
+    );
+}}
+</Inline>
+
+Similarly, section footer can be achieved with:
+
+```javascript
+$(element).scrollable('setStickyPosition', '.footer', 'bottom', '.section');
+```
+
+<Inline>
+{() => {
+    const ref = useRef();
+    useLayoutEffect(() => {
+        const scrollable = getDirectiveComponent(ref.current).scrollable;
+        scrollable.setOptions({
+            sticky: '.demo-wxdop',
+            stickyHandle: '.demo-wxdop-footer',
+            stickyToBottom: true
+        });
+    }, []);
+    return (
+        <DemoBlock ref={ref} scrollable="auto" style={{ overflow: 'hidden' }}>
+            <div scrollable-target="">
+                <div className="demo-wxdop">
+                    <h4>Section 1</h4>
+                    <Lipsum />
+                    <div className="demo-wxdop-footer">Section 1 Footer</div>
+                </div>
+                <div className="demo-wxdop">
+                    <h4>Section 2</h4>
+                    <Lipsum />
+                    <div className="demo-wxdop-footer">Section 2 Footer</div>
+                </div>
+                <div className="demo-wxdop">
+                    <h4>Section 3</h4>
+                    <Lipsum />
+                    <div className="demo-wxdop-footer">Section 3 Footer</div>
+                </div>
+            </div>
+            <style children={`
+                .demo-wxdop { margin: 0 -1em; padding: 0 1em; border-top: 1px solid var(--color-border); }
+                .demo-wxdop:first-child { border-top-style: none; margin-top: -1em; }
+                .demo-wxdop-footer { margin: 1em -1em 0; padding: 1em; background-color: var(--page-bg); border-top: 1px solid var(--color-border); }
+            `} />
+        </DemoBlock>
+    );
+}}
+</Inline>
+
+
+## Sticky direction
+
+A sticky element can stick to either X or Y direction, or to both directions,
+by specifying different values for the `dir` parameter.
+
+<Snippets
+    snippets={[
+        'top left',
+        'left',
+        'top',
+        'bottom'
+    ]}
+    rootProps={{
+        scrollable: 'auto',
+        style: { maxHeight: 300, overflow: 'hidden' }
+    }}
+    render={(index, ref, value) => {
+        useLayoutEffect(() => {
+            const scrollable = getDirectiveComponent(ref.current).scrollable;
+            scrollable.setStickyPosition('.app-demo-view-floating', value);
+        }, [index]);
+        return (
+            <div scrollable-target="" style={{ width: '200%', display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                {[1, 2, 3, 4].map(i => (
+                    <div key={i} className="app-demo-placeholder-item"></div>
+                ))}
+                <div className="app-demo-view-floating" style={{
+                    [matchWord(value, 'left right')]: 0,
+                    [matchWord(value, 'top bottom')]: 0,
+                    width: 100,
+                    height: 100,
+                }}>
+                    Sticky content
+                </div>
+            </div>
+        );
+    }} />
+
+## Fixed positioning
+
+Being analogous to `position: fixed` vs `position: sticky`, a boolean value can be specified
+for the `fixed` parameter.
+
+```javascript
+$(element).scrollable('setStickyPosition',
+    '.header',   // header
+    'top',       // sticky direction
+    true | false // fixed or sticky
+);
+```
+
+<Snippets
+    snippets={[
+        'fixed: true',
+        'fixed: false',
+    ]}
+    rootProps={{
+        scrollable: 'auto',
+        style: { maxHeight: 300, overflow: 'hidden' }
+    }}
+    render={(index, ref, value) => {
+        useLayoutEffect(() => {
+            const scrollable = getDirectiveComponent(ref.current).scrollable;
+            scrollable.setStickyPosition('.app-demo-view-floating', 'top left', index === 0);
+        }, [index]);
+        return (
+            <div scrollable-target="" style={{ width: '200%', display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                {[1, 2, 3, 4].map(i => (
+                    <div key={i} className="app-demo-placeholder-item"></div>
+                ))}
+                <div className="app-demo-view-floating" style={{ left: 0, top: 0, width: 100, height: 100 }}>
+                    {index ? 'Sticky element' : 'Fixed-position element'}
+                </div>
+            </div>
+        );
+    }} />
+
+## Bounding to a specific region
+
+For more advanced scenerio, element can be fixed to arbitary region in the container
+by supplying a callback that returns a `DOMRect` or [`Rect`](:) object as `within` parameter.
+
+```javascript
+$(element).scrollable('setStickyPosition',
+    '.header',   // header
+    'top',       // sticky direction
+    () => {      // return a react
+      /* ... */
+    },
+    true | false // fixed or sticky
+);
+```
+
+Below is an example of an element fixing or sticking to the first box (marked no. 1).
+
+<Snippets
+    snippets={[
+        'fixed: true',
+        'fixed: false',
+    ]}
+    rootProps={{
+        scrollable: 'auto',
+        style: { maxHeight: 300, overflow: 'hidden' }
+    }}
+    render={(index, ref, value) => {
+        useLayoutEffect(() => {
+            const scrollable = getDirectiveComponent(ref.current).scrollable;
+            const firstItem = scrollable.scrollTarget.querySelector('.app-demo-placeholder-item');
+            scrollable.setStickyPosition('.app-demo-view-floating', 'top left', () => getRect(firstItem), index === 0);
+        }, [index]);
+        return (
+            <div scrollable-target="" style={{ width: '200%', display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                {[1, 2, 3, 4].map(i => (
+                    <div key={i} className="app-demo-placeholder-item"></div>
+                ))}
+                <div className="app-demo-view-floating" style={{ left: 0, top: 0, width: 100, height: 100 }}>
+                    {index ? 'Sticky element' : 'Fixed-position element'}
+                </div>
+            </div>
+        );
+    }} />
+
+## Toggle stickiness
+
+It is possible to revert a sticky element back to normal by setting `dir` to `none`.
+
+```javascript
+// set an element to be sticky
+$(element).scrollable('setStickyPosition', target, 'top');
+
+// revert back to normal
+$(element).scrollable('setStickyPosition', target, 'none');
+```
+
+> If CSS selector was supplied, it is recommended to provide the same CSS selector when
+  reverting sticky elements.
+
+<Inline>
+{() => {
+    const [sticky, setSticky] = useState(true);
+    const ref = useRef();
+    useLayoutEffect(() => {
+        const scrollable = getDirectiveComponent(ref.current).scrollable;
+        scrollable.setStickyPosition('.app-demo-view-floating', sticky ? 'top left' : '');
+    }, [sticky]);
+    return (
+        <DemoBlock ref={ref} scrollable="auto" style={{ overflow: 'hidden' }}>
+            <div scrollable-target="">
+                {[1, 2, 3].map(i => (
+                    <div key={i} className="app-demo-placeholder-item"></div>
+                ))}
+                <div className="app-demo-view-floating" style={{ left: 0, top: 0 }}>
+                    <Toggle label="Sticky" checked={sticky} onChange={setSticky} />
+                </div>
+            </div>
+        </DemoBlock>
+    );
+}}
+</Inline>
+
+## Legacy options
+
+> The use of [`Scrollable.setStickyPosition`](:) is recommended for more flexibility.
+
+### `sticky`, `stickyHandle`
+
+```javascript
+$(element).scrollable({
+    sticky: '.section',
+    stickyHandle: 'h4'
+    /* ... */
+});
+```
+
+This is equivalent to the following:
+
+```javascript
+$(element).scrollable('setStickyPosition', 'h4', 'top', '.section');
+```
+
+### `stickyToBottom`
+
+```javascript
+$(element).scrollable({
+    sticky: '.section',
+    stickyHandle: 'h4',
+    stickyToBottom: true
+    /* ... */
+});
+```
+
+This is equivalent to the following:
+
+```javascript
+$(element).scrollable('setStickyPosition', 'h4', 'bottom', '.section');
+```

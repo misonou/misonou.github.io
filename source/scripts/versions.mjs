@@ -8,6 +8,7 @@ import { exec } from 'node:child_process';
         'zeta-dom-react',
         'brew-js',
         'brew-js-react',
+        'jq-scrollable',
         '@misonou/react-app-utils',
         '@misonou/react-css-utils',
         '@misonou/brew-extension-auth',

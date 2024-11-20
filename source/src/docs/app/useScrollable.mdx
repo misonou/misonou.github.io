@@ -3,7 +3,7 @@
 # Scrollable extension
 
 Enables auto scrollable area initialization and scrolling events.
-Requires the [scrollable plugin](https://github.com/misonou/jquery-scrollable).
+Requires the [scrollable plugin](/docs/scrollable/index).
 
 > See [Enabling extension](/docs/app/create-app#s-enabling-extensions) on how to use
   extension for brew.js app.
@@ -27,6 +27,43 @@ app.useScrollable(defaultOptions)
 <dl>
     #### `defaultOptions` <Badge.Optional />
 </dl>
+
+## WithScrollable interface
+
+Members of the `WithScrollable` interface is injected to app instance by [`app.useScrollable`](:).
+
+<MemberList
+    i="app" noRoot
+    ev={['scrollStart', 'scrollMove', 'scrollStop', 'scrollProgressChange', 'scrollIndexChange']}
+/>
+
+### `scrollIndexChange` event
+
+Fired when the [`ScrollableState.pageIndex`](:) changes, when the `pageItem` option is specified.
+
+### `scrollMove` event
+
+Fired when a mouse or touch move event is triggered on the content element and scrolling is triggered.
+
+Corresponds to `scrollMove` event in jQuery.
+
+### `scrollProgressChange` event
+
+Fired when the percentage of how far content has been scrolled changed, either due to scrolling, change of content, or change of container's dimensions.
+
+Corresponds to `scrollProgressChange` event in jQuery.
+
+### `scrollStart` event
+
+Fired when scrolling is started.
+
+Corresponds to `scrollStart` event in jQuery.
+
+### `scrollStop` event
+
+Fired when the scrolling action is complete. The content element has now stayed in the final position.
+
+Corresponds to `scrollEnd` event in jQuery.
 
 ## Version information
 

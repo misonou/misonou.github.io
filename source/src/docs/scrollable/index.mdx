@@ -1,0 +1,68 @@
+<Module name="jq-scrollable" />
+
+# Using scrollable
+
+The jQuery Scrollable plugin can be activated by two ways:
+
+```javascript
+// jQuery plugin convention
+$(element).scrollable(options)
+
+// standalone convention
+$.scrollable(element, options)
+```
+
+## Using with brew-js
+
+After enabling the [Scrollable extension](/docs/app/useScrollable), the scrollable plugin will be
+activated for element having the `[scrollable]` directive.
+
+By default it has the following option preset:
+
+```json
+{
+    "content": "[scrollable-target]:not(.disabled)",
+    "bounce": false
+}
+```
+
+```html
+<div scrollable="auto" id="my-scrollable">
+    <div scrollable-target>
+        <!-- ... -->
+    </div>
+</div>
+```
+
+To access the plugin interface, use [`getDirectiveComponent`](:).
+
+```javascript
+const plugin = getDirectiveComponent(document.getElementById('my-scrollable')).scrollable;
+```
+
+## Using with brew-js-react
+
+The scrollable plugin can be activated on React instrinsic element using [`ScrollableMixin`](:).
+
+> Note that it also requires enabling the [Scrollable extension](/docs/app/useScrollable).
+
+```tsx
+function Component() {
+    const scrollable = useScrollableMixin();
+    return (
+        <div {...Mixin.use(scrollable)}>
+            <div {...Mixin.use(scrollable.target)}>
+                {/* ... */}
+            </div>
+        </div>
+    );
+}
+```
+
+The [`ScrollableMixin`](:) object exposes most of the plugin methods.
+
+To access the full plugin interface, use [`getDirectiveComponent`](:).
+
+```javascript
+const plugin = getDirectiveComponent(scrollable.element).scrollable;
+```

@@ -1,0 +1,71 @@
+import { useLayoutEffect } from "react";
+import { getDirectiveComponent } from "brew-js/directive";
+
+<Module name="jq-scrollable" />
+
+# Overscroll behavior
+
+## Bouncing
+
+The scrollable plugin allows simulating bouncing behavior commonly found in iOS.
+
+When `bounce` option is set to `true`, bouncing will be applied when content is scrolled by touch gesture.
+
+<Snippets
+    snippets={[
+        'bounce: true',
+        'bounce: false',
+    ]}
+    rootProps={{
+        scrollable: 'auto',
+        style: { maxHeight: 300, overflow: 'hidden' }
+    }}
+    render={(index, ref, value) => {
+        useLayoutEffect(() => {
+            const scrollable = getDirectiveComponent(ref.current).scrollable;
+            scrollable.setOptions({
+                bounce: index === 0,
+                hBounce: index === 0,
+                vBounce: index === 0,
+            });
+        }, [index]);
+        return (
+            <div scrollable-target="">
+                {[1, 2, 3].map(i => (
+                    <div key={i} className="app-demo-placeholder-item" style={{ width: 300 }}></div>
+                ))}
+            </div>
+        );
+    }} />
+
+Overshooting for individual direction can be set by `hBounce` and `vBounce` option.
+
+## Supported CSS properties
+
+### `overscroll-behavior`
+
+The plugin respect `overscroll-behavior` property set on the container.
+
+> Unlike native behavior, it has the same effect for `contain` and `none`, while bouncing event is controlled by `bounce` option separately.
+
+<Snippets
+    snippets={[
+        'overscroll-behavior: auto',
+        'overscroll-behavior: none',
+    ]}
+    rootProps={{
+        scrollable: 'auto',
+        style: { maxHeight: 300, overflow: 'hidden' }
+    }}
+    render={(index, ref, value) => {
+        useLayoutEffect(() => {
+            ref.current.style.overscrollBehavior = ['auto', 'none'][index];
+        }, [index]);
+        return (
+            <div scrollable-target="">
+                {[1, 2, 3].map(i => (
+                    <div key={i} className="app-demo-placeholder-item" style={{ width: 300 }}></div>
+                ))}
+            </div>
+        );
+    }} />

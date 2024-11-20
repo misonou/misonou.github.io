@@ -24,6 +24,7 @@ const appContext = {
 export const app = brew.with(router, scrollable, appContext)((app) => {
     function setDarkMode() {
         setClass(dom.root, 'dark-mode', app.effectiveDarkMode);
+        document.querySelector('meta[name="theme-color"]')!.setAttribute('content', app.effectiveDarkMode ? 'green' : 'white');
     }
 
     app.useRouter({

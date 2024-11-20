@@ -358,6 +358,10 @@ pre > .app-demo-source > .app-demo-source-tab > div:first-child {
         align-items: stretch;
     }
 
+    .app-demo-snippets-view {
+        width: calc(100% - 2em);
+    }
+
     .app-demo-snippets-option.active:after {
         transform: rotate(90deg);
     }

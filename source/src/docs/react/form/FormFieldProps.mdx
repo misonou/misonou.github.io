@@ -11,31 +11,10 @@ Provides a common interface for interacting with field controls.
 
 ## Instance properties
 
-### `FormFieldProps.name`
+### `FormFieldProps.clearWhenUnmount`
 
-Specifies field name.
-When specified, and if there exists a form context, the field value
-will be reflected on `data`.
-
-### `FormFieldProps.label`
-
-Specifies field label.
-
-### `FormFieldProps.value`
-
-Specifies field value explicitly.
-The supplied value will be reflected on `data` if there is a parent form context
-and field name is specified.
-
-### `FormFieldProps.required`
-
-Specifies whether the field is required.
-A required field will be invalid if the field is empty.
-
-By default, the field is considered empty when the field value is `null`, `undefined`,
-an empty string, or an empty array (for multi-valued field). The default behavior can be either
-overriden by specifying callback through the `isEmpty` option;
-or the field type being passed to [`useFormField`](:) has a custom `isEmpty` callback.
+Specifies whether the associated value on form data object will be deleted
+when the field component is unmounted.
 
 ### `FormFieldProps.disabled`
 
@@ -50,6 +29,45 @@ visual clues and responsiveness to users on whether the field is disabled.
 Specifies validation error explicitly.
 Falsy values like `null`, `undefined` or empty string indicates the field is valid.
 
+### `FormFieldProps.formatError`
+
+Specifies a callback to generate custom error message for this particular field.
+
+The first argument will be the [`ValidationError`](:) instance returned from validation callback.
+Note that the callback will not be invoked for values other than [`ValidationError`](:).
+
+### `FormFieldProps.isEmpty`
+
+Specifies a custom handler to determine if the field is empty.
+
+### `FormFieldProps.label`
+
+Specifies field label.
+
+### `FormFieldProps.name`
+
+Specifies field name.
+When specified, and if there exists a form context, the field value
+will be reflected on `data`.
+
+### `FormFieldProps.onChange`
+
+Specifies a callback to be invoked with the current value upon changes.
+
+### `FormFieldProps.onValidate`
+
+Specifies validation handler.
+
+### `FormFieldProps.required`
+
+Specifies whether the field is required.
+A required field will be invalid if the field is empty.
+
+By default, the field is considered empty when the field value is `null`, `undefined`,
+an empty string, or an empty array (for multi-valued field). The default behavior can be either
+overriden by specifying callback through the `isEmpty` option;
+or the field type being passed to [`useFormField`](:) has a custom `isEmpty` callback.
+
 ### `FormFieldProps.showErrorMessage`
 
 Specifies whether the error message should be shown if the field is in invalid state.
@@ -60,29 +78,11 @@ Component using the [`useFormField`](:) hook should handle this flag.
 
 Specifies whether the value should be validated upon value changes.
 
-### `FormFieldProps.clearWhenUnmount`
+### `FormFieldProps.value`
 
-Specifies whether the associated value on form data object will be deleted
-when the field component is unmounted.
-
-### `FormFieldProps.isEmpty`
-
-Specifies a custom handler to determine if the field is empty.
-
-### `FormFieldProps.onValidate`
-
-Specifies validation handler.
-
-### `FormFieldProps.onChange`
-
-Specifies a callback to be invoked with the current value upon changes.
-
-### `FormFieldProps.formatError`
-
-Specifies a callback to generate custom error message for this particular field.
-
-The first argument will be the [`ValidationError`](:) instance returned from validation callback.
-Note that the callback will not be invoked for values other than [`ValidationError`](:).
+Specifies field value explicitly.
+The supplied value will be reflected on `data` if there is a parent form context
+and field name is specified.
 
 ## Version information
 

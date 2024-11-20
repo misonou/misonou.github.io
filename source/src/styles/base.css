@@ -1,6 +1,7 @@
 :root {
     --font-default: 'GitLab Sans', 'Source Sans Pro', 'Noto Sans', 'Open Sans', sans-serif;
     --font-monospace: 'Source Code Pro', 'Cascadia Mono', monospace;
+    --font-monospace-nav: Menlo, Consolas, Monaco, var(--font-monospace);
 
     --color-aux: #a0a3a8;
     --color-border: #e0e3e8;
@@ -272,7 +273,7 @@ h4 code {
     border-radius: 2px;
     background-color: var(--color-text-bg);
     font-size: 80%;
-    white-space: normal;
+    white-space: nowrap;
 }
 
 h3 code {
@@ -314,7 +315,7 @@ dl > h4 {
 }
 
 .app-scrollbar > div {
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, width 0.2s;
 }
 
 i.icon {
