@@ -45,7 +45,7 @@ function getHref(text) {
  * @param {babel.types.Expression} callee
  */
 function isJSX(callee) {
-    return callee.type === 'Identifier' && (callee.name === '_jsx' || callee.name == '_jsxDEV');
+    return callee.type === 'Identifier' && (callee.name === '_jsx' || callee.name === '_jsxs' || callee.name == '_jsxDEV');
 }
 
 /**
