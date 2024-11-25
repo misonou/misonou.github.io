@@ -12,7 +12,55 @@ augment extra functionalities when used with [`useFormField`](:).
     global="zeta.react.DateField"
     expanded />
 
-<MemberList i="DateField" />
+<MemberList
+    i="DateField"
+    sm={['toDateString()', 'toDateObject()']}
+/>
+
+## Static methods
+
+### `DateField.toDateObject()`
+
+```javascript
+toDateObject(str)
+```
+
+Converts a given string to its representated date, truncating time component to midnight in local time.
+
+If the string is in standard format (YYYY-MM-DD), the resulting date object will always have the represented date in local time.   
+Otherwise it is up to browser to determine the original timezone and perform timezone conversion if necessary.
+
+#### Parameters
+
+<dl>
+    #### `str`
+    Any string representation for a date.
+
+</dl>
+
+#### Return value
+
+A `Date` object or `null` if the input string was invalid.
+
+### `DateField.toDateString()`
+
+```javascript
+toDateString(date)
+```
+
+Converts a given date to its string representation.
+
+#### Parameters
+
+<dl>
+    #### `date`
+    A `Date` object.
+
+</dl>
+
+### Return value
+
+A string in standard format (YYYY-MM-DD), or an empty string if the date is invalid.
 
 ## DateFieldProps interface
 

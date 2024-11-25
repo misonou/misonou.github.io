@@ -47,11 +47,11 @@ Scrollbar can be styled by the following CSS variables:
     render={(index, ref, value) => {
         useLayoutEffect(() => {
             const style = ref.current.style;
-            each(style, (i, v) => {
-                if (v.startsWith('--jqs')) {
-                    style.removeProperty(v);
+            for (let i = style.length - 1; i>=0; i--) {
+                if (style[i].startsWith('--jqs')) {
+                    style.removeProperty(style[i]);
                 }
-            });
+            }
             const [_, name, val] = /^([^:]+):(.+)/.exec(value);
             style.setProperty(name, val);
         }, [index]);

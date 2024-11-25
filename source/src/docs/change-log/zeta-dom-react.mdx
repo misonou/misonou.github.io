@@ -2,15 +2,36 @@
 
 # Change log
 
+## v0.5.14 (2024/11/25)
+
+#### Forms
+
+- <kbd>fix</kbd> issue with controlled field
+  - callback passed to [`FormFieldState.setValue`](:) should be called with last value
+    when `setValue` is called consecutively
+  - [`FormFieldProps.onChange`](:) callback should be called with normalized value
+  - updating a controlled field via [`FormContext.data`](:) should trigger [`FormFieldProps.onChange`](:)
+- <kbd>fix</kbd> [`DateFieldState.displayText`](:) should be updated when [`DateFieldProps.formatDisplay`](:) changes
+- <kbd>fix</kbd> `effect` hook callbacks registered in [`FieldType.postHook`](:) are not executed in development strict mode
+- <kbd>fix</kbd> third argument `form` was not passed to validators by [`combineValidators`](:)
+- <kbd>fix</kbd> original data object was replaced after assigning non-object value before normalization
+
 ## v0.5.13 (2024/10/29)
 
-- Add support for data path hinting for [`FormContext`](:) methods
+#### Forms
+
+- Add support for data path hinting for [`FormContext`](:) methods <Badge.TS/>
+- <kbd>fix</kbd> corrected type of [`ZetaEventBase.target`](:) for [`FormContext`](:) and [`DataView`](:) events <Badge.TS/>
+
+#### Utilities
+
 - Callback supplied to [`ErrorHandler`](:) receives a second argument `context`
-- <kbd>fix</kbd> type definition issue which may break existing code <Badge.TS/>
-  - corrected type of [`ZetaEventBase.target`](:) for [`FormContext`](:) and [`DataView`](:) events
-  - updated type argument of [`useRefInitCallback`](:) for correct type inference [[link]](/docs/troubleshoot/typescript#s-updated-type-argument-of-userefinitcallback)
+- <kbd>fix</kbd> updated type argument of [`useRefInitCallback`](:) for correct type inference
+  [[link]](/docs/troubleshoot/typescript#s-updated-type-argument-of-userefinitcallback)  <Badge.TS/>
 
 ## v0.5.12 (2024/10/16)
+
+#### Forms
 
 - <kbd>fix</kbd> [`useFormField`](:) using [`MultiChoiceField`](:) did not expose new value on
   [`FormFieldState.value`](:) when the field is unbounded and controlled
@@ -32,7 +53,7 @@
 
 - Expose [`Dependency.Consumer`](:) from [`createDependency`](:)
 - <kbd>fix</kbd> variance of dependency type, particularly [`Dependency`](:) is now **bivariant**,
-  whereas [`Dependency.Provider`](:) is now **contravariant** [[link]](/docs/react/createDependency#s-type-safety)
+  whereas [`Dependency.Provider`](:) is now **contravariant** [[link]](/docs/react/createDependency#s-type-safety) <Badge.TS/>
 - <kbd>fix</kbd> prevent multiple calls when repeatedly reset/refreshing when using [`useAsync`](:)
 - <kbd>fix</kbd> debounced refresh was not properly aborted
 
