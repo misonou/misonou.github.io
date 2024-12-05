@@ -5,16 +5,14 @@ import { Docs } from "src/views/Docs";
 export default function App() {
     const { ready } = useAppReadyState();
     const scrollable = useScrollableMixin({ persistScroll: true });
-    if (!ready) {
-        return null;
-    }
-
     return (
         <div id="app" {...Mixin.use(scrollable)}>
-            <Nav />
-            <main>
-                {renderView({ className: 'app-content-container' }, Docs)}
-            </main>
+            {ready && <>
+                <Nav />
+                <main>
+                    {renderView({ className: 'app-content-container' }, Docs)}
+                </main>
+            </>}
         </div>
     );
 }

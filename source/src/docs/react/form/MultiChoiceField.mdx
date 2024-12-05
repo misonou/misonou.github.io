@@ -73,9 +73,11 @@ Returns a list of choices as normalized items.
 ```javascript
 toggleValue(value)
 toggleValue(value, selected)
+toggleValue(arrayOfValues)
+toggleValue(arrayOfValues, selected)
 ```
 
-Toggles the presence of the specified item in the value array associated with the field.
+Toggles the presence of the specified item(s) in the value array associated with the field.
 If the item is already present, the item will be removed; otherwise the item will be added.
 
 ### Parameters
@@ -83,6 +85,9 @@ If the item is already present, the item will be removed; otherwise the item wil
 <dl>
     #### `value`
     Item value.
+
+    #### `arrayOfValues` <Badge.Version />
+    An array of values.
 
     #### `selected` <Badge.Optional />
     If true, the item is added to the array if it is not present; otherwise the item is removed from the array if it is present.
@@ -93,4 +98,5 @@ If the item is already present, the item will be removed; otherwise the item wil
 
 <VersionTimeline module="zeta-dom-react">
 - **0.3.5** Introduced
+- **0.5.15** Support array for `MultiChoiceFieldState.toggleValue()`
 </VersionTimeline>

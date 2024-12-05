@@ -2,12 +2,14 @@
 
 # useObservableProperty
 
-Listens and gets the value of a property of an object. The component is refreshed when the property has been updated.
+Listens and gets the value of a property of an object.
+The component is refreshed when the property has been updated.
 
 ## Syntax
 
 ```javascript
-useObservableProperty(obj, property)
+useObservableProperty(obj, key)
+useObservableProperty(obj, key, comparer)
 ```
 
 ### Parameters
@@ -16,8 +18,12 @@ useObservableProperty(obj, property)
     #### `obj`
     An object which its property will be listened.
 
-    #### `property`
+    #### `key`
     Property name.
+
+    #### `comparer` <Badge.Optional /> <Badge.Version />
+    An optional callback that compares if two values are equal. Component will be updated only when it returns `false`. Default is `Object.is`.
+
 </dl>
 
 ### Return value
@@ -39,3 +45,10 @@ function update() {
     obj.value = 2;
 }
 ```
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.1.0** Introduced
+- **0.5.15** `comparer` parameter
+</VersionTimeline>

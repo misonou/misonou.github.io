@@ -17,7 +17,7 @@ export default function Component() {
                     onClick={() => app.snapshot() && setValue(v => v + 1)} />
             </div>
             <SyntaxHighlight
-                source={JSON.stringify(app.historyStorage.current)}
+                source={JSON.stringify(app.historyStorage.current, null, 4)}
                 language="json" />
         </FieldColumn>
     );

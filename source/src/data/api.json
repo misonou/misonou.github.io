@@ -381,6 +381,7 @@
     ],
     "/react/form/DateField": [
         "DateField",
+        "DateField.getDate()",
         "DateField.toDateString()",
         "DateField.toDateObject()",
         [

@@ -52,3 +52,9 @@
     animation-duration: 0.5s;
     right: 0;
 }
+
+.app-dialog-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}

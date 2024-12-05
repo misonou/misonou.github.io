@@ -14,10 +14,40 @@ augment extra functionalities when used with [`useFormField`](:).
 
 <MemberList
     i="DateField"
-    sm={['toDateString()', 'toDateObject()']}
+    sm={['getDate()', 'toDateString()', 'toDateObject()']}
 />
 
 ## Static methods
+
+### `DateField.getDate()` <Badge.Version />
+
+```javascript
+getDate(str)
+getDate(str, base)
+```
+
+Returns a date relative to another date.
+
+Supports relative dates in the following format:
+- A `+` or `-` sign, then number and unit (`y`, `m`, `w` and `d` for years, months, weeks and days), e.g. `+1d` 
+or `-1y`.
+- Multiple number and unit pairs can be specified, e.g. `+1y1d` or `-1y1d` which is evaluated from left to right(order matters because the months unit may result in different date due to various days in different month).    
+- Different signs can also be specified for each number and unit pair, e.g. `+1y-1d`.
+
+### Parameters
+
+<dl>
+    #### `str`
+    A string specifying the relative date.
+
+    #### `base` <Badge.Optional />
+    An optional base date which calculation is based on. Default to today.
+
+</dl>
+
+### Return value
+
+A string in standard format (YYYY-MM-DD), or an empty string if the base date is invalid.
 
 ### `DateField.toDateObject()`
 
@@ -77,17 +107,16 @@ Formats display text for a given date.
 ### `DateFieldProps.max`
 
 Specifies the latest date allowed.
-For relative dates, see `min`.
+It accepts `Date` object, timestamp in milliseconds, any parsable date string, or relative date from today.     
+
+> For relative date format, see [`DateField.getDate()`](:).
 
 ### `DateFieldProps.min`
 
 Specifies the earliest date allowed.
+It accepts `Date` object, timestamp in milliseconds, any parsable date string, or relative date from today.     
 
-Supports relative dates in the following format:
-- A `+` or `-` sign, then number and unit (`y`, `m`, `w` and `d` for years, months, weeks and days), e.g. `+1d` or `-1y`.
-- Multiple number and unit pairs can be specified, e.g. `+1y1d` or `-1y1d` which is evaluated from left to right
-  (order matters because the months unit may result in different date due to various days in different month).
-- Different signs can also be specified for each number and unit pair, e.g. `+1y-1d`.
+> For relative date format, see [`DateField.getDate()`](:).
 
 ## DateFieldState interface
 
@@ -115,4 +144,5 @@ or an empty string if `min` is not specified or is invalid.
 
 <VersionTimeline module="zeta-dom-react">
 - **0.4.2** Introduced
+- **0.5.15** `DateField.getDate()`
 </VersionTimeline>
