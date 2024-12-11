@@ -258,6 +258,10 @@ code {
     white-space: pre;
 }
 
+code {
+    font-size: 80%;
+}
+
 code:focus {
     outline: none;
 }

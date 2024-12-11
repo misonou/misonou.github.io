@@ -4,9 +4,9 @@
 
 <MemberList
     i="app" noRoot
-    ip={['path', 'basePath', 'initialPath', 'route', 'routes', 'canNavigateBack', 'canNavigateForward', 'previousPath', 'sessionId', 'sessionStorage', 'cache', 'page', 'historyStorage']}
+    ip={['path', 'basePath', 'initialPath', 'route', 'routes', 'canNavigateBack', 'canNavigateForward', 'previousPath', 'sessionId', 'sessionStorage', 'cache', 'page', 'navigationType', 'historyStorage']}
     im={['navigate()', 'back()', 'backToPreviousPath()', 'snapshot()', 'resolvePath()', 'parseRoute()', 'matchRoute()', 'isAppPath()', 'toHref()', 'fromHref()']}
-    ev={['beforepageload', 'navigate', 'pageload', 'hashchange', 'pageenter', 'pageleave', 'popstate']}/>
+    ev={['beforepageload', 'navigate', 'pageload', 'hashchange', 'pageenter', 'pageleave', 'popstate', 'pushstate']}/>
 
 ## Instance properties
 
@@ -39,6 +39,24 @@ See [Persisting states](/docs/router/persisting-state#s-history-storage).
 ### `app.initialPath` <Badge.ReadOnly />
 
 Gets the initial path before the app is initialized.
+
+### `app.navigationType` <Badge.ReadOnly /> <Badge.Version />
+
+Gets how the current page is navigated. It has the following possible values:
+
+<dl>
+    #### `navigate`
+    Any case besides the following.
+
+    #### `resume`
+    Indicating that the previous journey has been resumed. See [Resuming journey](/docs/router/resume-journey).
+
+    #### `reload`
+    Indicating that the page is reloaded.
+
+    #### `back_forward`
+    Indicating that user has traversed back or forward through browser's history.
+</dl>
 
 ### `app.previousPath` <Badge.ReadOnly />
 
@@ -333,7 +351,7 @@ Behavior on different router mode:
 
 See [`beforepageload` event](/docs/router/beforepageload-event).
 
-### `hashchange` event
+### `hashchange` event <Badge.Version />
 
 See [`hashchange` event](/docs/router/hashchange-event).
 
@@ -347,7 +365,11 @@ See [`navigate` event](/docs/router/navigate-event).
 
 ### `pageleave` event
 
-### `popstate` event
+### `popstate` event <Badge.Version />
+
+See [`popstate` event](/docs/router/popstate-event).
+
+### `pushstate` event <Badge.Version />
 
 ## Version information
 
@@ -367,4 +389,5 @@ See [`navigate` event](/docs/router/navigate-event).
 - **0.5.4** `hashchange` event
 - **0.5.13** `popstate` event
 - **0.6.6** `app.backToPreviousPath()`<br/>Deprecated `defaultPath` parameter of `app.back()`
+- **0.6.16** `app.navigationType`<br/>`pushstate` event
 </VersionTimeline>

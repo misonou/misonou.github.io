@@ -74,5 +74,8 @@ export function NavMenu() {
         if (parent.classList.contains('root')) {
             $(parent).siblings().addClass('collapsed');
         }
+        if (!$(parent).hasClass('collapsed')) {
+            scrollIntoView(parent, 'auto', 0, parent.closest('[scrollable]')!);
+        }
     }
 }

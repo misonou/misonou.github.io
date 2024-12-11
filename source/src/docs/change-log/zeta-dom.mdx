@@ -2,6 +2,22 @@
 
 # Change log
 
+## v0.5.13 (2024/12/11)
+
+- Expose `metakey` in `mousewheel` event
+- Export [`ZetaEventSource`](:) as `zeta.EventSource` in UMD distribution
+- <kbd>fix</kbd> more reliable check for event source (either `mouse` or `touch`) of pointer events triggered by pen
+- <kbd>fix</kbd> incorrect event source for `click` event induced by `<label>` element (issue introduced in v0.5.11)
+- <kbd>fix</kbd> return consistent event path from [`ZetaEventSource.path`](:) when focused element is changed during event
+- <kbd>fix</kbd> missing `metakey` in `mousedown` event when triggered by touch
+
+## v0.5.12 (2024/12/06)
+
+- Expose promise in [`runAsync`](:)
+- Allow preventing scroll when tracking pointer using [`beginDrag`](:)
+- <kbd>fix</kbd> [`equal`](:) should always equate generic object by enumerable props
+- <kbd>fix</kbd> [`ZetaEventBase.sourceKeyName`](:) should not be `null` when `source` is `keyboard`
+
 ## v0.5.11 (2024/10/29)
 
 - Add overload for [`reportError`](:) specifying event source
