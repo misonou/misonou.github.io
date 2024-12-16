@@ -6,10 +6,12 @@
 
 Data can be restored even after leaving and revisit the app in the same tab.
 
-> **Important:** Session storage has a typical 5MB limitation. Although data is compressed, storing huge data should be avoided.
+> **Important**
+  Session storage has a typical 5MB limitation. Although data is compressed, storing huge data should be avoided.
 
 
-> **Important:** Although session storage is scoped to the document's origin and is cleared when the tab is closed, do not store critically sensitive data.
+> **Important**
+  Although session storage is scoped to the document's origin and is cleared when the tab is closed, do not store critically sensitive data.
 
 
 ## History storage
@@ -33,7 +35,8 @@ app.historyStorage.for(stateId)
 
 ~~0.5.3~~
 
-> **Important:** Note that an app session is different from a browser session which typically associates to the lifetime of a tab.
+> **Important**
+  Note that an app session is different from a browser session which typically associates to the lifetime of a tab.
 
 
 An app session is created for every unique visit to the single-page app, for example from a link. When the page is reloaded, or is restored by going forward or backward in browser history, previous app session is resumed.

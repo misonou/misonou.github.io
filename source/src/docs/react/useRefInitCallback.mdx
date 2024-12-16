@@ -33,7 +33,8 @@ function Component(props) {
 
 ## Callback lifetime
 
-> **Important**: Since the callback is only called once for a DOM element in the component's lifetime,
+> **Important**
+  Since the callback is only called once for a DOM element in the component's lifetime,
   any variables referenced in the callback must be unchanged throughout the lifetime, such as created from
   [`React.useRef`](https://reactjs.org/docs/hooks-reference.html#useref). For functions,
   it can be wrapped by [`useMemoizedFunction`](:).

@@ -1,0 +1,40 @@
+<Module name="zeta-dom/events" />
+
+# ZetaEventSource class
+
+> CommonJS and UMD exports are only available since v0.5.13.
+
+<ImportHint
+    name="ZetaEventSource"
+    module="zeta-dom/events"
+    require="default.EventSource"
+    global="zeta.EventSource"
+    expanded
+/>
+
+<MemberList
+    i="ZetaEventSource"
+    ip={['source', 'sourceKeyName']}
+/>
+
+## Constructor
+
+```javascript
+new ZetaEventSource()
+```
+
+## Instance properties
+
+### `ZetaEventSource.source` <Badge.ReadOnly />
+
+Gets the type of user interaction that triggers the event.
+
+### `ZetaEventSource.sourceKeyName` <Badge.ReadOnly />
+
+Gets the keystroke that triggers the event, or `null` if the event is not triggered by keyboard.
+
+## Version information
+
+<VersionTimeline>
+- **0.1.0** Introduced
+</VersionTimeline>

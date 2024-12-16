@@ -53,7 +53,9 @@ export function NavMenu() {
                     return (
                         <div key={i} className={classNames('app-nav-section', { root: v.root })} data-module={keys(v.modules).join(' ')}>
                             <span onClick={onToggleSection} className={classNames('nav-section-header', v.class)}>{v.title}</span>
-                            {map(v.pages, recursive)}
+                            <div>
+                                {map(v.pages, recursive)}
+                            </div>
                         </div>
                     );
                 }

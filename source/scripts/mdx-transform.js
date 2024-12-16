@@ -159,25 +159,26 @@ function transformHeader(component, path, props, t, state) {
 
 /** @type {Transformer} */
 function transformMemberList(component, path, props, t) {
-    const pExtends = props.find(v => v.node.key.name === 'extends');
-    if (pExtends) {
-        const value = pExtends.node.value;
-        switch (value.type) {
-            case 'StringLiteral': {
-                const href = getHref(value.value);
-                if (href) {
-                    pExtends.get('value').replaceWith(t.arrayExpression([t.arrayExpression([value, t.stringLiteral(href)])]));
-                }
-                break;
-            }
-            case 'ArrayExpression': {
-                value.elements.forEach((v, i) => {
-                    const href = getHref(v.value);
+    for (let p of props) {
+        if (p.node.key.name === 'extends' || p.node.key.name === 'extendsTo') {
+            const value = p.node.value;
+            switch (value.type) {
+                case 'StringLiteral': {
+                    const href = getHref(value.value);
                     if (href) {
-                        pExtends.get(`value.elements.${i}`).replaceWith(t.arrayExpression([v, t.stringLiteral(href)]));
+                        p.get('value').replaceWith(t.arrayExpression([t.arrayExpression([value, t.stringLiteral(href)])]));
                     }
-                });
-                break;
+                    break;
+                }
+                case 'ArrayExpression': {
+                    value.elements.forEach((v, i) => {
+                        const href = getHref(v.value);
+                        if (href) {
+                            p.get(`value.elements.${i}`).replaceWith(t.arrayExpression([v, t.stringLiteral(href)]));
+                        }
+                    });
+                    break;
+                }
             }
         }
     }
@@ -206,18 +207,18 @@ const transform = {
 
 /** @type {(b: babel) => { visitor: babel.Visitor }} */
 module.exports = function ({ types: t }) {
-    const ms = statSync('src/data/api.json').mtimeMs;
-    if (getApiIndex.l !== ms) {
-        getApiIndex.d = null;
-        getApiIndex.l = ms;
-        for (let i in links) {
-            delete links[i];
-        }
-    }
     return {
         visitor: {
             FunctionDeclaration(path) {
                 if (path.node.id.name === '_createMdxContent') {
+                    const ms = statSync('src/data/api.json').mtimeMs;
+                    if (getApiIndex.l !== ms) {
+                        getApiIndex.d = null;
+                        getApiIndex.l = ms;
+                        for (let i in links) {
+                            delete links[i];
+                        }
+                    }
                     const state = {
                         tocList: [],
                         hashes: {}

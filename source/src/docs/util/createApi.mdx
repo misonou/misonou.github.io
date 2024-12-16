@@ -58,12 +58,14 @@ createApi(options)
 
     <dl>
         #### `implementation`
-        Specifies real implemenations.
+        Specifies real implementations.
 
         #### `mock` <Badge.Optional />
-        Specifies mocked implementions.
+        Specifies mocked implementations.
         Mock is used when `REACT_APP_MOCK` environment variable is set to `true`.
 
+        Since v1.6.0, it accepts partial implementations or a factory callback
+        that returns mocked implementations.
     </dl>
 </dl>
 
@@ -71,6 +73,91 @@ createApi(options)
 
 An object forwarding all properties and methods from either `option.implementation`
 or `option.mock`, and with the additional method from the [`ApiEventListener`](:) interface.
+
+## Example: Partial mock
+
+~~1.6.0~~
+
+```typescript
+const api = createApi({
+    implementation: {
+        apiKey: '',
+        getData() {
+            return 'Real data';
+        },
+        getDataWontMocked() {
+            return 'Real data';
+        }
+    },
+    mock: {
+        apiKey: '',
+        getData() {
+            return 'Mock data';
+        }
+    }
+});
+
+api.getData() // -> "Mock data"
+api.getDataWontMocked() // -> "Real data"
+```
+
+In the above example, when `apiKey` is set, the value will be forwarded to both actual and mocked implementations.
+
+## Example: Using factory callback for mock
+
+~~1.6.0~~
+
+When factory callback is supplied to `mock` option, the actual implementation will be
+passed as the first argument, so that result can be mocked upon dynamic conditions.
+
+```javascript
+/// mock.js
+export default function mock(implementation) {
+    return {
+        getData(value) {
+            if (value === '__no_mock__') {
+                return implementation.getData();
+            }
+            return 'Mock data';
+        }
+    };
+}
+
+/// api.js
+import mock from "./mock.js";
+
+const implementation = {
+    getData(value) {
+        return 'Real data';
+    }
+};
+
+const api = createApi({ implementation, mock });
+export default api;
+```
+
+will result in
+
+```javascript
+api.getData() // -> "Mock data"
+api.getData('__no_mock__') // -> "Real data"
+```
+
+This is useful when used in combination with [`promptForChoice`](:).
+
+```javascript
+export default function mock(implementation) {
+    return {
+        getData(value) {
+            return await promptForChoice('getData', {
+                'Use default': null,
+                'Use mock': 'Mock data',
+            }, options) ?? implementation.getData();
+        }
+    };
+}
+```
+
 
 ## ApiEventListener interface
 

@@ -70,7 +70,7 @@ export function SyntaxHighlight(props: SyntaxHighlightProps) {
                                                     children :
                                                     children === isNullComment ?
                                                         <span className="comment-dot">...</span> :
-                                                        <span className="comment-msg">{children.replace(/^\/(\*|\/+)\s*|\s*\*\/$/g, '')}</span>}
+                                                        <span className={children.startsWith('// ->') ? 'comment-res' : 'comment-msg'}>{children.replace(/^\/(\*|\/+)\s*(->\s)?|\s*\*\/$/g, '')}</span>}
                                             </span>
                                         );
                                     })}

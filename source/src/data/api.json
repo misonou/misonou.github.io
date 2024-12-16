@@ -214,14 +214,15 @@
         "dom: flyoutshow event"
     ],
     "/dom/pointer-events": [
-        "dom: mousedown event",
-        "dom: touchstart event",
         "dom: click event",
         "dom: dblclick event",
-        "dom: rightClick event",
         "dom: drag event",
+        "dom: gesture event",
         "dom: longPress event",
-        "dom: gesture event"
+        "dom: mousedown event",
+        "dom: mousewheel event",
+        "dom: rightClick event",
+        "dom: touchstart event"
     ],
     "/dom/position": [
         "position()"
@@ -274,6 +275,11 @@
         "ZetaEventBase.originalEvent",
         "ZetaEventBase.preventDefault()",
         "ZetaEventBase.isDefaultPrevented()"
+    ],
+    "/dom/ZetaEventSource": [
+        "ZetaEventSource",
+        "ZetaEventSource.source",
+        "ZetaEventSource.sourceKeyName"
     ],
     "/react/combineRef": [
         "combineRef()"
@@ -1047,6 +1053,7 @@
         "app.sessionStorage",
         "app.cache",
         "app.page",
+        "app.navigationType",
         "app.historyStorage",
         "app.navigate()",
         "app.back()",
@@ -1064,7 +1071,8 @@
         "app: hashchange event",
         "app: pageenter event",
         "app: pageleave event",
-        "app: popstate event"
+        "app: popstate event",
+        "app: pushstate event"
     ],
     "/scrollable/Scrollable": [
         "Scrollable",
@@ -1186,6 +1194,9 @@
     "/util/InheritedNodeTree": [
         "InheritedNodeTree",
         "InheritedNodeTree.descendants()"
+    ],
+    "/util/isArrayLike": [
+        "isArrayLike()"
     ],
     "/util/iterateFocusPath": [
         "iterateFocusPath()"

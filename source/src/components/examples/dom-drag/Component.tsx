@@ -5,11 +5,11 @@ import { containerStyle, squareStyle } from "./style";
 export default function Component() {
     return (
         <div style={containerStyle}>
-            <div ref={domEventRef({ touchstart: onMouseDown, mousedown: onMouseDown })} style={squareStyle}></div>
+            <div ref={domEventRef({ mousedown })} style={squareStyle}></div>
         </div>
     );
 
-    function onMouseDown(e: Zeta.ZetaPointerEvent<HTMLDivElement>) {
+    function mousedown(e: Zeta.ZetaPointerEvent<HTMLDivElement>) {
         const element = e.currentTarget;
         const style = getComputedStyle(element);
         const startX = parseFloat(style.left);

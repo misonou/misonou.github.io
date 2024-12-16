@@ -121,10 +121,6 @@ nav {
     white-space: nowrap;
 }
 
-#app-nav-search-result a span.module:after {
-    content: ' > ';
-}
-
 #app-nav-search-result a b {
     background-color: var(--color-highlight-bg);
 }
@@ -161,15 +157,18 @@ a + .app-nav-section.root {
     margin-top: 1em;
 }
 
-.app-nav-section:hover:before {
+.app-nav-section > div {
+    position: relative;
+}
+
+.app-nav-section:hover > div:before {
     content: '';
     position: absolute;
-    left: 1em;
-    top: 2.5em;
+    left: -1em;
+    top: 0.25em;
     bottom: 0.5em;
-    border-left: 1px solid var(--color-text);
-    opacity: 0.3;
-    z-index: 1;
+    border-left: 1px solid var(--color-aux);
+    opacity: 0.5;
 }
 
 .app-nav-section.collapsed > :not(:first-child) {
@@ -181,6 +180,7 @@ a + .app-nav-section.root {
     position: relative;
     margin-left: -1em;
     margin-bottom: 0.25em;
+    padding-right: 2em;
     font-weight: 600;
     color: var(--color-primary);
     cursor: pointer;

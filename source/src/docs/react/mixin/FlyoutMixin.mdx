@@ -75,7 +75,7 @@ To let other part of the app to toggle a flyout, the toggle mixin can be passed 
 
 <MemberList
     i="FlyoutMixin"
-    extends={['ClassNameMixin']}
+    extends={['Mixin', 'StatefulMixin', 'ClassNameMixin']}
     ip={['element', 'isFlyoutOpened', 'animating', 'visible', 'toggle', 'modal']}
     im={['withEffects()', 'onOpen()', 'onToggleState()', 'onVisibilityChanged()', 'open()', 'close()', 'toggleSelf()', 'whenVisible()']}
 />

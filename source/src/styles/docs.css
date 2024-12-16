@@ -124,6 +124,11 @@
     transition: opacity 0.2s;
 }
 
+.app-docs blockquote > p > strong:first-child {
+    display: block;
+    margin-bottom: 0.25em;
+}
+
 #app.scrollable-y-u .app-docs .app-module-badge,
 #app.scrollable-y-u .app-docs h1 {
     opacity: 0;
@@ -447,32 +452,65 @@ h2 + .app-docs-member,
 }
 
 .app-docs-member-subclass {
+    display: flex;
+    position: relative;
     margin: 1em 0;
+    flex-wrap: wrap;
+    row-gap: 0.5em;
+    z-index: 1;
 }
 
 .app-docs-member-subclass > div {
     display: inline-block;
+    position: relative;
 }
 
 .app-docs-member-subclass > div + div:before {
     content: '\0027f8';
     display: inline-block;
     width: 2em;
+    color: var(--color-aux);
     text-align: center;
-    color: var(--color-border);
 }
 
-.app-docs-member-subclass > div > * {
+.app-docs-member-subclass > div > :first-child {
     display: inline-block;
     padding: 0.5em 0.75em;
-    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-text-bg);
     font-family: var(--font-monospace);
     font-size: 80%;
     font-weight: 500;
 }
 
-.app-docs-member-subclass > div:last-child > * {
+.app-docs-member-subclass > div.cur > :first-child {
     background-color: var(--color-highlight-bg);
+}
+
+.app-docs-member-subclass ul {
+    display: none;
+    position: absolute;
+    left: 2em;
+    margin-top: -2px;
+    padding: 0.5em 1em;
+    border-radius: var(--overlay-border-radius);
+    background-color: var(--page-bg);
+    box-shadow: var(--overlay-box-shadow);
+    list-style: none;
+}
+
+.app-docs-member-subclass > div.sub:hover ul {
+    display: block;
+}
+
+.app-docs-member-subclass li {
+    font-family: var(--font-monospace);
+    font-size: 80%;
+    font-weight: 500;
+}
+
+.app-docs-member-subclass li + li {
+    margin-top: 0.5em;
 }
 
 .app-docs-member-badge {
@@ -731,7 +769,8 @@ button.app-docs-import-hint svg {
 
 .comment-hid,
 .comment-msg,
-.comment-dot {
+.comment-dot,
+.comment-res {
     font-style: normal;
     font-weight: normal;
     user-select: none;
@@ -749,6 +788,23 @@ button.app-docs-import-hint svg {
 
 .comment-msg {
     color: var(--color-comment);
+}
+
+.comment-res {
+    color: var(--color-aux);
+}
+
+.comment-res::before {
+    content: '=';
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 1.25em;
+    height: 1.25em;
+    border-radius: var(--border-radius);
+    background-color: var(--color-border);
+    line-height: 1.25;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .token-line:not(.is-comment) .comment-msg {

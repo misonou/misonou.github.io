@@ -25,7 +25,7 @@ async function initSearchData() {
         return map(v, function (v) {
             return v.pages ? flatten([...parent, v.title], v.pages) : {
                 displayText: v.pageTitle || v.title,
-                breadcrumb: parent.join(' > '),
+                breadcrumb: parent.join(' \u25b8 '),
                 value: v
             };
         });
@@ -79,7 +79,7 @@ export function NavSearchBox(props: NavSearchBoxProps) {
                         <a key={i} href={linkTo(Docs, { remainingSegments: v.value.path })}>
                             <span dangerouslySetInnerHTML={{ __html: v.formattedText }}></span>
                             <span>
-                                {v.value.module && <span className="module">{v.value.module}</span>}
+                                {v.value.module && <span className="module">{v.value.module} {'\u25b8'} </span>}
                                 {v.breadcrumb}
                             </span>
                         </a>

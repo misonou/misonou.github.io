@@ -1,0 +1,53 @@
+<Module name="zeta-dom/util" />
+
+# isArrayLike
+
+Tests whether the object should be treated as array and enumerate elements from numeric indexes instead.
+
+It is primarily used by [`makeArray`](:), [`each`](:) and related collection utilities.
+
+## Syntax
+
+```javascript
+isArrayLike(obj)
+```
+
+### Parameters
+
+<dl>
+    #### `obj`
+    An input value to be tested.
+
+</dl>
+
+### Return value
+
+`true` if value is an array, and `false` if it is a primitive value or the `window` object.
+
+Otherwise, the object must:
+1) contain `length` property with non-negative numeric value, and
+2) either contain `slice` method; or have value other than `[object Object]` being returned when called with `Object.prototype.toString`.
+
+Traditionally there are collection of host objects that is semantically a list of elements like an array but does not implement [`Array`](:) inferface,
+like `arguments` and `Node.childNodes`. The use of [`JQuery`](:) also demands test for array-like objects.
+
+```javascript
+isArrayLike(window) // -> false
+isArrayLike(() => {}) // -> false
+
+isArrayLike($('a')) // -> true
+isArrayLike(document.body.childNodes) // -> true
+
+const exoticObject = {
+    length: 0,
+    get [Symbol.toStringTag]() {
+        return 'Exotic';
+    }
+};
+isArrayLike(exoticObject) // -> true
+
+// returning `true` before v0.6.0
+isArrayLike("") // -> false
+isArrayLike({ length: 0 }) // -> false
+isArrayLike({ length: 1, 0: "str" }) // -> false
+```

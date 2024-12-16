@@ -1,8 +1,12 @@
+import { position } from "@misonou/react-css-utils";
+import { useRefInitCallback } from "zeta-dom-react";
+import { bind } from "zeta-dom/domUtil";
 import { map } from "zeta-dom/util";
 
 interface MemberListProps {
     i: string;
     extends?: string | string[] | string[][];
+    extendsTo?: string | string[] | string[][];
     sp?: string[];
     sm?: string[];
     ip?: string[];
@@ -34,22 +38,45 @@ function SubList(props: { i: string, title: string, list: string[], getHash?: (i
     );
 }
 
+function SubMenu(props: { extendsTo: MemberListProps['extendsTo'] }) {
+    return (
+        <div ref={useRefInitCallback(initSubMenu)} className="sub">
+            <span>...</span>
+            <ul className="sub-menu">
+                {map(props.extendsTo, (v, i) => (
+                    <li key={i}>
+                        {Array.isArray(v) ? <a href={v[1]}>{v[0]}</a> : v}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+
+    function initSubMenu(element: Element) {
+        bind(element, 'mouseenter', () => {
+            position(element.querySelector('ul')!, element.firstElementChild!, 'left bottom');
+        });
+    }
+}
+
 export function MemberList(props: MemberListProps) {
     if (props.noRender) {
         return null;
     }
     return (
         <div className="app-docs-member">
-            {props.extends && (
+            {(props.extends || props.extendsTo) && (
                 <div className="app-docs-member-subclass">
                     {map(props.extends, (v, i) => (
-                        <div key={i}>
+                        <div key={i} className="sup">
                             {Array.isArray(v) ? <a href={v[1]}>{v[0]}</a> : v}
                         </div>
                     ))}
-                    <div>
+                    <div className="cur">
                         <span>{props.i}</span>
                     </div>
+                    {props.extendsTo &&
+                        <SubMenu extendsTo={props.extendsTo} />}
                 </div>
             )}
             {(props.ip || props.im || props.sp || props.sm || props.ev) &&

@@ -16,7 +16,8 @@ useAnimateMixin()
 
 <MemberList
     i="AnimateMixin"
-    extends={['ClassNameMixin']}
+    extends={['Mixin', 'StatefulMixin', 'ClassNameMixin']}
+    extendsTo={['AnimateSequenceMixin']}
     im={['with()', 'withEffects()']}
 />
 

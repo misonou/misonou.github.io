@@ -31,7 +31,8 @@ Close the dialog. A promise is returned that is resolved after the dialog is des
     Sending value to the promise returned by `DialogState.open()`.
 </dl>
 
-> **Important:** Note that `onCommit` callback passed to [`createDialog`](:) will not be invoked in this case. To invoke `onCommit`,
+> **Important**
+  Note that `onCommit` callback passed to [`createDialog`](:) will not be invoked in this case. To invoke `onCommit`,
   `closeDialog` callback passed to `onRender` or `wrapper` must be used.
 
 ### `DialogState.open()`

@@ -97,6 +97,7 @@ const countryCode = form.getValue('phone.countryCode');
 form.setValue('phone.countryCode', '1');
 ```
 
-> **Important:** Note that for data objects and array, [`FormContext.getValue`](:) will return a deeply-cloned object;
+> **Important**
+  Note that for data objects and array, [`FormContext.getValue`](:) will return a deeply-cloned object;
   while [`FormContext.setValue`](:) will deeply clone the supplied object.
 

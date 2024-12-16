@@ -115,88 +115,6 @@
         - title: Tab-focus container
           path: /dom/tab-root
           module: zeta-dom
-- title: Interactions
-  pages:
-    - title: User interactions
-      pages:
-        - title: beginDrag()
-          path: /dom/beginDrag
-          class: code
-          module: zeta-dom
-        - title: beginPinchZoom()
-          path: /dom/beginPinchZoom
-          class: code
-          module: zeta-dom
-        - title: handleUserAction()
-          path: /react/handleUserAction
-          class: code ext
-          module: react-app-utils
-        - title: insertText()
-          path: /dom/insertText
-          class: code
-          module: zeta-dom
-        - title: openDeferredURL()
-          path: /util/openDeferredURL
-          class: code
-          module: brew-js
-        - title: reportError()
-          path: /dom/reportError
-          class: code
-          module: zeta-dom
-    - title: Layouts and effects
-      pages:
-        - title: Positioner
-          path: /dom/Positioner
-          class: code ext
-          module: react-css-utils
-        - title: addAnimateIn()
-          path: /dom/addAnimateIn
-          class: code
-          module: brew-js
-        - title: animateIn()
-          path: /dom/animateIn
-          class: code
-          module: brew-js
-        - title: animateOut()
-          path: /dom/animateOut
-          class: code
-          module: brew-js
-        - title: closeFlyout()
-          path: /dom/closeFlyout
-          class: code
-          module: brew-js
-        - title: initSortable()
-          path: /dom/initSortable
-          class: code ext
-          module: react-css-utils
-        - title: initStickable()
-          path: /dom/initStickable
-          class: code ext depre
-          module: react-css-utils
-        - title: openFlyout()
-          path: /dom/openFlyout
-          class: code
-          module: brew-js
-        - title: position()
-          path: /dom/position
-          class: code ext
-          module: react-css-utils
-        - title: runCSSAnimation()
-          path: /dom/runCSSAnimation
-          class: code
-          module: zeta-dom
-        - title: scrollIntoView()
-          path: /dom/scrollIntoView
-          class: code
-          module: zeta-dom
-        - title: startPositioning()
-          path: /dom/startPositioning
-          class: code ext
-          module: react-css-utils
-        - title: toggleFlyout()
-          path: /dom/toggleFlyout
-          class: code
-          module: brew-js
 - title: App
   pages:
     - title: Create app
@@ -957,40 +875,6 @@
           path: /scrollable/ScrollableState
           class: code
           module: jq-scrollable
-- title: Utilities
-  pages:
-    - title: createApi()
-      path: /util/createApi
-      class: code ext
-      module: react-app-utils
-    - title: createObjectStorage()
-      path: /app/createObjectStorage
-      class: code
-      module: brew-js
-    - title: fuzzyMatch()
-      path: /util/fuzzyMatch
-      class: code ext
-      module: react-app-utils
-    - title: getQueryParam()
-      path: /util/getQueryParam
-      class: code
-      module: brew-js
-    - title: memoize()
-      path: /util/memoize
-      class: code ext
-      module: react-app-utils
-    - title: setCookie()
-      path: /util/setCookie
-      class: code
-      module: brew-js
-    - title: setQueryParam()
-      path: /util/setQueryParam
-      class: code
-      module: brew-js
-    - title: toQueryString()
-      path: /util/toQueryString
-      class: code
-      module: brew-js
 - title: Dev tools
   pages:
     - title: Form autofiller
@@ -1015,7 +899,65 @@
           path: /devtools/promptForChoice
           class: code ext
           module: react-app-utils
-- title: Zeta DOM References
+- title: Utilties
+  pages:
+    - title: Collections
+      pages:
+        - title: isArrayLike()
+          path: /util/isArrayLike
+          class: code
+          module: zeta-dom
+    - title: Data handling
+      pages:
+        - title: createApi()
+          path: /util/createApi
+          class: code ext
+          module: react-app-utils
+        - title: fuzzyMatch()
+          path: /util/fuzzyMatch
+          class: code ext
+          module: react-app-utils
+        - title: memoize()
+          path: /util/memoize
+          class: code ext
+          module: react-app-utils
+    - title: Events
+      pages:
+        - title: ZetaEventBase
+          path: /dom/ZetaEventBase
+          class: code
+          module: zeta-dom
+        - title: ZetaEventContainer
+          path: /util/EventContainer
+          class: code
+          module: zeta-dom
+        - title: ZetaEventSource
+          path: /dom/ZetaEventSource
+          class: code
+          module: zeta-dom
+    - title: Location, cookie and storage
+      pages:
+        - title: createObjectStorage()
+          path: /app/createObjectStorage
+          class: code
+          module: brew-js
+        - title: getQueryParam()
+          path: /util/getQueryParam
+          class: code
+          module: brew-js
+        - title: setCookie()
+          path: /util/setCookie
+          class: code
+          module: brew-js
+        - title: setQueryParam()
+          path: /util/setQueryParam
+          class: code
+          module: brew-js
+        - title: toQueryString()
+          path: /util/toQueryString
+          class: code
+          module: brew-js
+- title: DOM utilties
   pages:
     - title: Modules
       pages:
@@ -1068,38 +1010,6 @@
           path: /util/getRect
           class: code
           module: zeta-dom
-    - title: DOM mutations
-      pages:
-        - title: createAutoCleanupMap()
-          path: /dom/createAutoCleanupMap
-          class: code
-          module: zeta-dom
-        - title: observe()
-          path: /dom/observe
-          class: code
-          module: zeta-dom
-        - title: watchAttributes()
-          path: /dom/watchAttributes
-          class: code
-          module: zeta-dom
-        - title: watchElements()
-          path: /dom/watchElements
-          class: code
-          module: zeta-dom
-        - title: watchOwnAttributes()
-          path: /dom/watchOwnAttributes
-          class: code
-          module: zeta-dom
-    - title: Events
-      pages:
-        - title: ZetaEventBase
-          path: /dom/ZetaEventBase
-          class: code
-          module: zeta-dom
-        - title: ZetaEventContainer
-          path: /util/EventContainer
-          class: code
-          module: zeta-dom
     - title: Focus management
       pages:
         - title: blur()
@@ -1142,14 +1052,116 @@
           path: /util/unsetTabRoot
           class: code
           module: zeta-dom
-    - title: Virtual DOM tree
+    - title: Layouts and effects
       pages:
-        - title: NodeTree
-          path: /util/NodeTree
+        - title: Positioner
+          path: /dom/Positioner
+          class: code ext
+          module: react-css-utils
+        - title: addAnimateIn()
+          path: /dom/addAnimateIn
+          class: code
+          module: brew-js
+        - title: animateIn()
+          path: /dom/animateIn
+          class: code
+          module: brew-js
+        - title: animateOut()
+          path: /dom/animateOut
+          class: code
+          module: brew-js
+        - title: closeFlyout()
+          path: /dom/closeFlyout
+          class: code
+          module: brew-js
+        - title: initSortable()
+          path: /dom/initSortable
+          class: code ext
+          module: react-css-utils
+        - title: initStickable()
+          path: /dom/initStickable
+          class: code ext depre
+          module: react-css-utils
+        - title: openFlyout()
+          path: /dom/openFlyout
+          class: code
+          module: brew-js
+        - title: position()
+          path: /dom/position
+          class: code ext
+          module: react-css-utils
+        - title: runCSSAnimation()
+          path: /dom/runCSSAnimation
           class: code
           module: zeta-dom
+        - title: scrollIntoView()
+          path: /dom/scrollIntoView
+          class: code
+          module: zeta-dom
+        - title: startPositioning()
+          path: /dom/startPositioning
+          class: code ext
+          module: react-css-utils
+        - title: toggleFlyout()
+          path: /dom/toggleFlyout
+          class: code
+          module: brew-js
+    - title: Mutations
+      pages:
+        - title: createAutoCleanupMap()
+          path: /dom/createAutoCleanupMap
+          class: code
+          module: zeta-dom
+        - title: observe()
+          path: /dom/observe
+          class: code
+          module: zeta-dom
+        - title: watchAttributes()
+          path: /dom/watchAttributes
+          class: code
+          module: zeta-dom
+        - title: watchElements()
+          path: /dom/watchElements
+          class: code
+          module: zeta-dom
+        - title: watchOwnAttributes()
+          path: /dom/watchOwnAttributes
+          class: code
+          module: zeta-dom
+    - title: User interactions
+      pages:
+        - title: beginDrag()
+          path: /dom/beginDrag
+          class: code
+          module: zeta-dom
+        - title: beginPinchZoom()
+          path: /dom/beginPinchZoom
+          class: code
+          module: zeta-dom
+        - title: handleUserAction()
+          path: /react/handleUserAction
+          class: code ext
+          module: react-app-utils
+        - title: insertText()
+          path: /dom/insertText
+          class: code
+          module: zeta-dom
+        - title: openDeferredURL()
+          path: /util/openDeferredURL
+          class: code
+          module: brew-js
+        - title: reportError()
+          path: /dom/reportError
+          class: code
+          module: zeta-dom
+    - title: Virtual DOM tree
+      pages:
         - title: InheritedNodeTree
           path: /util/InheritedNodeTree
+          class: code
+          module: zeta-dom
+        - title: NodeTree
+          path: /util/NodeTree
           class: code
           module: zeta-dom
         - title: TraversableNodeTree
