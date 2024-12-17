@@ -968,6 +968,10 @@
           pageTitle: DOM module
     - title: Async operations
       pages:
+        - title: CancellationRequest
+          path: /util/CancellationRequest
+          class: code
+          module: zeta-dom
         - title: cancelLock()
           path: /util/cancelLock
           class: code

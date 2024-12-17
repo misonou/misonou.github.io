@@ -1,0 +1,55 @@
+<Module name="zeta-dom/domLock" />
+
+# CancellationRequest class
+
+The `CancellationRequest` class is used to provide context from [`cancelLock`](:) to cancellation handler of [`lock`](:).
+
+<ImportHint
+    name="CancellationRequest"
+    module="zeta-dom/domLock"
+    global="zeta.CancellationRequest"
+    expanded
+/>
+
+<MemberList
+    i="CancellationRequest"
+    ip={['reason', 'source', 'sourceKeyName']}
+/>
+
+## Constructor
+
+```javascript
+new CancellationRequest(reason)
+new CancellationRequest(reason, eventSource)
+```
+
+### Parameters
+
+<dl>
+    #### `reason`
+    A canonical string that describes the reason.
+
+    #### `eventSource` <Badge.Optional />
+    When specified, it overrides current event source values.
+
+</dl>
+
+## Instance properties
+
+### `CancellationRequest.reason` <Badge.ReadOnly />
+
+A canonical string that describes the reason.
+
+### `CancellationRequest.source` <Badge.ReadOnly />
+
+Gets the type of user interaction that triggers the event.
+
+### `CancellationRequest.sourceKeyName` <Badge.ReadOnly />
+
+Gets the keystroke that triggers the event, or `null` if the event is not triggered by keyboard.
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.6.0** Introduced
+</VersionTimeline>

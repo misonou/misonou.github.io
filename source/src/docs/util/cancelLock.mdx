@@ -10,6 +10,7 @@ Requests cancellation of all asynchronous operations.
 cancelLock()
 cancelLock(element)
 cancelLock(element, force)
+cancelLock(element, reason)
 ```
 
 <ImportHint
@@ -27,8 +28,17 @@ cancelLock(element, force)
     #### `force` <Badge.Optional />
     Whether to disregard cancellation handler and forcibly release all locks.
 
+    #### `reason` <Badge.Optional /> <Badge.Version />
+    A [`CancellationRequest`](:) object that will be passed to cancellation handling callback.
 </dl>
 
 ### Return value
 
 A promise which is fulfilled when all operations are cancelled; or is rejected otherwise.
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.1.0** Introduced
+- **0.6.0** `reason` parameter
+</VersionTimeline>

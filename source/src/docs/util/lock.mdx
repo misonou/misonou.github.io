@@ -31,6 +31,12 @@ lock(element, promise, oncancel)
 
     #### `oncancel`
     A handler which handles request of cancellation by [`cancelLock`](:).
+    The callback will receive the following argument since v0.6.0:
+
+    <dl>
+        #### `reason`
+        A [`CancellationRequest`](:) object passed to [`cancelLock`](:).
+    </dl>
 
     #### `cancellable` <Badge.Optional />
     Whether the operation is cancellable.

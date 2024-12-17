@@ -1127,6 +1127,12 @@
     "/util/blur": [
         "blur()"
     ],
+    "/util/CancellationRequest": [
+        "CancellationRequest",
+        "CancellationRequest.reason",
+        "CancellationRequest.source",
+        "CancellationRequest.sourceKeyName"
+    ],
     "/util/cancelLock": [
         "cancelLock()"
     ],

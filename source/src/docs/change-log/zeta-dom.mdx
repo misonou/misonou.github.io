@@ -2,6 +2,26 @@
 
 # Change log
 
+## v0.6.0 (2024/12/17)
+
+**Breaking changes**
+
+- [`isArrayLike`](:) now returns `false` for strings and plain objects having numeric `length` property
+- When using [`ZetaEventContainer`](:), unless `captureDOMEvents` option is set to `true`:
+  - [`ZetaEventBase.target`](:) always returns object passed to [`ZetaEventContainer.emit`](:) instead of associated DOM element
+  - [`ZetaEventBase.currentTarget`](:) always returns object passed to [`ZetaEventContainer.add`](:) instead of associated DOM element
+  - [`ZetaEventContainer.add`](:) will not register event handlers to associated DOM element
+- [`dom.eventSource`](:) and [`ZetaEventBase.source`](:) now returns `wheel` during `wheel` event
+- `click` event is always fired when modifier keys (<kbd>Ctrl</kbd>, <kbd>Alt</kbd> and <kbd>Shift</kbd>) are pressed,
+  after prefixed event like `ctrlClick` or `ctrlShiftClick`
+- Returned sequence of elements from [`ZetaEventSource.path`](:) when no native event is being fired
+- Class declarations of [`ZetaEventSource`](:) and [`ZetaEventContainer`](:) are moved from ambient namespace to `zeta-dom/events` module <Badge.TS />
+
+**Other features and fixes**
+
+- Add [`CancellationRequest`](:) class and overload of [`cancelLock`](:)
+- [`dom.on`](:) and [`ZetaEventContainer.add`](:) now accepts whitespace delimited list of event names
+
 ## v0.5.13 (2024/12/11)
 
 - Expose `metakey` in `mousewheel` event
