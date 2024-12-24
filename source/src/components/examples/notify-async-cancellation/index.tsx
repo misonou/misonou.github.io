@@ -4,6 +4,6 @@ import { DemoWithSource } from "src/components/docs";
 
 export default function Example() {
     return (
-        <DemoWithSource component={Component} source={{ tsx }} />
+        <DemoWithSource component={Component} source={{ tsx }} console />
     );
 }

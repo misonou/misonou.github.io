@@ -2,6 +2,28 @@
 
 # Change log
 
+## v0.7.0 (2024/12/24)
+
+#### Core
+
+- Trigger `error` event when app failed to initialize
+
+#### HTML router
+
+- Match and mount active elements in `beforepageload` event instead of `navigate` event
+- Recognize dynamically inserted `[match-path]` elements after DOM ready
+
+#### Scrollable
+
+- Default mode change to `auto` when `[scrollable]` directive did not specify one of the mode (previously defaults to `content`)
+- <kbd>fix</kbd> flickering when scrolling is initiated by dragging content
+
+#### Others
+
+- Add [`createApiClient`](:)
+- Request lock cancellation with [`NavigationCancellationRequest`](:) on navigation
+- <kbd>fix</kbd> correct type definition of `destroy` event of `ComponentContext` <Badge.TS />
+
 ## v0.6.16 (2024/12/11)
 
 #### Router

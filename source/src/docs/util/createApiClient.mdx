@@ -1,0 +1,350 @@
+<Module name="brew-js/util/fetch" />
+
+# createApiClient
+
+Creates a fetch function that is interceptable with middlewares.
+
+## Syntax
+
+```javascript
+createApiClient(baseUrl)
+createApiClient(baseUrl, traps)
+```
+
+<ImportHint
+    name="createApiClient"
+    module="brew-js/util/fetch"
+    global="brew.createApiClient"
+/>
+
+### Parameters
+
+<dl>
+    #### `baseUrl`
+    Base URL prepend to relative request path.
+
+    #### `traps` <Badge.Optional />
+    A dictionary containing intercepting callback. Possible traps are:
+
+    <dl>
+        #### `data` <Badge.Optional />
+        Specifies callback to receives and transform data.
+
+        #### `error` <Badge.Optional />
+        Specifies callback to handle request error.
+
+        The trap is invoked when
+        - response status indicates an HTTP error (400-599), or
+        - failed to parse response payload,
+        - failed to execute request, for example, due to network or CORS issue.
+
+        If non-`undefined` value is returned, request will be treated as successful and
+        promise will be settled with the returned value. Otherwise the incoming error will be rethrown.
+
+        #### `request` <Badge.Optional />
+        Specifies callback to transform request or response.
+
+        The callback is invoked before fetch middlewares registered by [`ApiClient.use`](:),
+        and the promise returned from `next` callback
+
+    </dl>
+</dl>
+
+### Return value
+
+Return a function that also implement [`ApiClient`](:) interface.
+
+Returned client can be used as an object-oriented style:
+
+```javascript
+const client = createApiClient('/base', { /* ... */ });
+client.get('/path', options);
+client.post('/path', { /* ... */ }, options);
+```
+
+or as a pure function:
+
+```javascript
+const request = createApiClient('/base', { /* ... */ });
+request('get', '/path', null, options);
+request('post', '/path', { /* ... */ }, options);
+
+// compatible with fetch
+request('/path', options);
+request(new Request({ /* ... */ }));
+```
+
+## Execution order of traps and middlewares
+
+Below illustrates the invocation order of traps and middlewares.
+
+```text
+request()
+ |  Λ
+ V  |
+traps.request
+ |  Λ
+ |  |
+ |  traps.data (or traps.error)
+ |  Λ
+ V  |
+middleware (last)
+ |  Λ
+ :  :
+ V  |
+middleware (first)
+ |  Λ
+ V  |
+native fetch
+```
+
+With a concrete example:
+
+```javascript
+const arr = [];
+const client = createApiClient('/', {
+    async request(req, next) {
+        arr.push(1);
+        const data = await next(req); // parsed data
+        arr.push(7);
+        return data;
+    },
+    data(data) {
+        arr.push(6);
+        return data;
+    }
+});
+
+// middlewares are LIFO
+client.use((req, next) => {
+    arr.push(3);
+    const res = await next(req);
+    arr.push(4);
+    return res;
+});
+client.use((req, next) => {
+    arr.push(2);
+    const res = await next(req);
+    arr.push(5);
+    return res;
+});
+
+await client.get('/path');
+arr // -> [1, 2, 3, 4, 5, 6, 7]
+```
+
+## Response type
+
+Client will parse response body according to `Accept` header from request, and fallback to `Content-Type` header from response:
+
+<dl>
+    #### `application/json`
+    Deserialized JSON data.
+
+    #### `multipart/form-data` `application/x-www-form-urlencoded`
+    Deserialized data as a `FormData` object
+
+    #### `text/*`
+    Decoded string.
+
+    #### `application/octet-stream` `*`
+    Binary data as a `Blob` object otherwise.
+</dl>
+
+> **Important**
+  Note that native `fetch` only supports `UTF-8` encoding. If endpoint returns text and JSON response
+  in other encoding, you will need to convert manually using middlewares.
+
+
+## Example: Append custom header using middleware
+
+```javascript
+const client = createApiClient(baseUrl);
+client.use((req, next) => {
+    req.headers.append('x-custom-header', '1');
+    return next(req);
+});
+```
+
+## Example: Using traps
+
+```javascript
+const client = createApiClient(baseUrl, {
+    data(data, response, request) {
+        // perform transformation
+        return data;
+    },
+    error(e, response, request) {
+        if (e.status === 404) {
+            // throw meaningful error
+            throw errorWithCode('item-not-found');
+        }
+        if (e.status === 410) {
+            // treat 410 status as success
+            return { success: true };
+        }
+        // rethrow error, the next line is optional
+        throw e;
+    }
+});
+```
+
+## ApiClient interface
+
+<MemberList
+    i="ApiClient"
+    im={['use()', 'get()', 'head()', 'post()', 'put()', 'patch()', 'delete()']}
+/>
+
+### `ApiClient.delete()`
+
+```javascript
+delete(path)
+delete(path, body)
+delete(path, body, options)
+```
+
+Makes a `DELETE` request to an endpoint.
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `body` <Badge.Optional />
+    #### `options` <Badge.Optional />
+</dl>
+
+### `ApiClient.get()`
+
+```javascript
+get(path)
+get(path, options)
+```
+
+Makes a `GET` request to an endpoint.
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `options` <Badge.Optional />
+</dl>
+
+### `ApiClient.head()`
+
+```javascript
+head(path)
+head(path, options)
+```
+
+Makes a `HEAD` request to an endpoint.
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `options` <Badge.Optional />
+</dl>
+
+### `ApiClient.patch()`
+
+```javascript
+patch(path)
+patch(path, body)
+patch(path, body, options)
+```
+
+Makes a `PATCH` request to an endpoint.
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `body` <Badge.Optional />
+    #### `options` <Badge.Optional />
+</dl>
+
+### `ApiClient.post()`
+
+```javascript
+post(path)
+post(path, body)
+post(path, body, options)
+```
+
+Makes a `POST` request to an endpoint.
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `body` <Badge.Optional />
+    #### `options` <Badge.Optional />
+</dl>
+
+### `ApiClient.put()`
+
+```javascript
+put(path)
+put(path, body)
+put(path, body, options)
+```
+
+Makes a `PUT` request to an endpoint.
+
+### Parameters
+
+<dl>
+    #### `path`
+    #### `body` <Badge.Optional />
+    #### `options` <Badge.Optional />
+</dl>
+
+### `ApiClient.use()`
+
+```javascript
+use(middleware)
+```
+
+Pushes a middleware into fetch function.
+
+### Parameters
+
+<dl>
+    #### `middleware`
+    A callback that infiltrate the request to the last registered middleware.
+
+</dl>
+
+## ApiClientError interface
+
+<MemberList
+    i="ApiClientError"
+    ip={['code', 'status', 'data', 'error']}
+/>
+
+### `ApiClientError.code` <Badge.ReadOnly />
+
+Gets the type of error.
+
+Possible values include:
+ - `brew/network-error` (`ErrorCode.networkError`)
+ - `brew/api-error` (`ErrorCode.apiError`)
+
+### `ApiClientError.data` <Badge.ReadOnly />
+
+Gets data parsed from response body; or `undefined` when body cannot be parsed.
+
+### `ApiClientError.error` <Badge.ReadOnly />
+
+Gets error thrown when parsing response body; or `null` when body is parsed successfully.
+
+### `ApiClientError.status` <Badge.ReadOnly />
+
+Gets the HTTP status code responded from server.
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.7.0** Introduced
+</VersionTimeline>

@@ -1,19 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { openAlert, openConfirm } from "src/components/main";
+import { DemoComponentProps } from "src/components/docs";
+import { openConfirm } from "src/components/main";
 import { cancelLock, lock, runAsync, subscribeAsync } from "zeta-dom/domLock";
 import { delay } from "zeta-dom/util";
 
-async function doLongOperation(signal: AbortSignal) {
-    signal.addEventListener('abort', () => {
-        openAlert('Operation cancelled');
-    });
-    await delay(3000);
-    if (!signal.aborted) {
-        openAlert('Operation completed');
-    }
-}
-
-export default function Component() {
+export default function Component({ console }: DemoComponentProps) {
     const container = useRef<HTMLDivElement>(null);
     const [loading, setLoading] = useState(false);
 
@@ -22,12 +13,21 @@ export default function Component() {
     }, []);
 
     return (
-        <div ref={container}>
-            {loading ?
-                <button onClick={cancel}>Cancel</button> :
-                <button onClick={start}>Start</button>}
+        <div ref={container} className="app-demo-buttons">
+            <button onClick={start} disabled={loading}>Start</button>
+            <button onClick={cancel} disabled={!loading}>Cancel</button>
         </div>
     );
+
+    async function doLongOperation(signal: AbortSignal) {
+        signal.addEventListener('abort', () => {
+            console.log('Operation cancelled');
+        });
+        await delay(3000);
+        if (!signal.aborted) {
+            console.log('Operation completed');
+        }
+    }
 
     function start(e: React.UIEvent<HTMLElement>) {
         const promise = runAsync(e.currentTarget, async ({ signal }) => {

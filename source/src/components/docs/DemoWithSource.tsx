@@ -1,10 +1,11 @@
 import { map } from "zeta-dom/util";
-import { RefObject, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import { useRefInitCallback } from "zeta-dom-react";
 import { Mixin, useFocusStateMixin } from "brew-js-react";
 import { HTMLConsole, IConsole } from "@misonou/react-app-utils";
 import { ReactComponent as RubbishBin } from "src/styles/icons/rubbish-bin.svg";
 import { CodeBlockWithTab } from "./CodeBlockWithTab";
+import { subscribeAsync } from "zeta-dom/domLock";
 
 export interface DemoComponentProps {
     console: IConsole;
@@ -43,6 +44,10 @@ export function DemoWithSource(props: DemoWithSourceProps) {
     const consoleInitRef = useRefInitCallback<HTMLElement>((element) => {
         consoleRef.current = new HTMLConsole(element);
     });
+
+    useEffect(() => {
+        subscribeAsync(focusStateMixin.elements()[0], true);
+    }, [])
 
     return (
         <div {...Mixin.use(focusStateMixin, 'app-demo app-demo-block')}>

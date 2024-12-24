@@ -1,0 +1,57 @@
+<Module name="brew-js/domAction" />
+
+# NavigationCancellationRequest class
+
+A `NavigationCancellationRequest` object will be passed to callback handling cancellation request,
+when user tries to navigate within single-page application or to a different document.
+
+```javascript
+lock(root, promise, (reason) => {
+    if (reason instanceof NavigationCancellationRequest && reason.path === '/foo') {
+        // allow lock to be cancelled
+        // when user is navigating to a specific page
+        return;
+    }
+    throw new Error();
+});
+```
+
+<ImportHint
+    name="NavigationCancellationRequest"
+    module="brew-js/domAction"
+    global="brew.NavigationCancellationRequest"
+    expanded
+/>
+
+<MemberList
+    i="NavigationCancellationRequest"
+    extends={['CancellationRequest']}
+    ip={['reason', 'external', 'path', 'url']}
+/>
+
+## Instance properties
+
+### `NavigationCancellationRequest.external` <Badge.ReadOnly />
+
+Gets whether user is navigating to another document that would cause
+current document to unload.
+
+### `NavigationCancellationRequest.path` <Badge.ReadOnly />
+
+Gets the path user is navigating to within the single-page app.
+It always returns `null` when [`NavigationCancellationRequest.external`](:) is `true`.
+
+### `NavigationCancellationRequest.reason` <Badge.ReadOnly />
+
+Canonical string identifying type of the cancellation request.
+
+### `NavigationCancellationRequest.url` <Badge.ReadOnly />
+
+Gets the URL of document user is navigating to.
+It always returns `null` when [`NavigationCancellationRequest.external`](:) is `false`.
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.7.0** Introduced
+</VersionTimeline>

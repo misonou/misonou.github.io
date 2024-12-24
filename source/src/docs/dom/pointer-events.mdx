@@ -1,20 +1,40 @@
+import { domEventRef } from "zeta-dom-react";
+
 <Module name="zeta-dom/dom" />
 
 # Pointer events
 
-## dom: mousedown event
-
-## dom: touchstart event
+<Inline>
+{() => {
+    const cb = (e) => {
+        e.currentTarget.querySelector('code').innerText = `type: ${e.type}\nmetakey: ${e.metakey}\ndata: ${e.data}\nsource: ${e.source}`;
+        e.preventDefault();
+    };
+    const ref = domEventRef({
+        click: cb,
+        dblclick: cb,
+        drag: cb,
+        gesture: cb,
+        longPress: cb,
+        mousedown: cb,
+        mousewheel: cb,
+        rightClick: cb,
+        touchstart: cb,
+    });
+    return (
+        <DemoBlock ref={ref} style={{ height: 150 }}>
+            <p>Click or touch here. Also try with meta keys like <kbd>shift</kbd> or <kbd>ctrl</kbd></p>
+            <code></code>
+        </DemoBlock>
+    );
+}}
+</Inline>
 
 ## dom: click event
 
 ## dom: dblclick event
 
-## dom: rightClick event
-
 ## dom: drag event
-
-## dom: longPress event
 
 ## dom: gesture event
 
@@ -42,6 +62,16 @@ dom.on('swipeLeft', () => {
     doSomethingWhenSwipeLeft();
 });
 ```
+
+## dom: longPress event
+
+## dom: mousedown event
+
+## dom: mousewheel event
+
+## dom: rightClick event
+
+## dom: touchstart event
 
 ## See also
 

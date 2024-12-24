@@ -277,7 +277,8 @@ h4 code {
     border-radius: 2px;
     background-color: var(--color-text-bg);
     font-size: 80%;
-    white-space: nowrap;
+    white-space: normal;
+    box-decoration-break: clone;
 }
 
 h3 code {

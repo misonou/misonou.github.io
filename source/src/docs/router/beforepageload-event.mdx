@@ -23,7 +23,7 @@ Similarly, any further navigation during this phase will cause the previous navi
 
 <MemberList
     i="BeforePageLoadEvent"
-    extends={['ZetaEventBase']}
+    extends={['ZetaEventBase', 'RouterEvent']}
     ip={['pathname', 'oldPathname', 'oldStateId', 'newStateId', 'route', 'data', 'navigationType']}
     im={['waitFor()']} />
 
@@ -92,7 +92,7 @@ A boolean indicating whether the operation is deferred.
 
 <VersionTimeline module="brew-js">
 - **0.3.11** Introduced
-- **0.3.12** `waitFor()`
-- **0.5.0** `navigationType`
-- **0.5.13** `newStateId`<br/>`oldPathname`<br/>`oldStateId`<br/>`route`
+- **0.3.12** `BeforePageLoadEvent.waitFor()`
+- **0.5.0** `BeforePageLoadEvent.navigationType`
+- **0.5.13** Implement `RouterEvent` interface
 </VersionTimeline>

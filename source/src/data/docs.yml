@@ -237,6 +237,10 @@
               path: /router/RoutePattern
               class: code
               module: brew-js
+            - title: RouterEvent
+              path: /router/RouterEvent
+              class: code
+              module: brew-js
             - title: WithRouter
               path: /router/WithRouter
               class: code
@@ -913,6 +917,10 @@
           path: /util/createApi
           class: code ext
           module: react-app-utils
+        - title: createApiClient()
+          path: /util/createApiClient
+          class: code
+          module: brew-js
         - title: fuzzyMatch()
           path: /util/fuzzyMatch
           class: code ext
@@ -1134,6 +1142,10 @@
           module: zeta-dom
     - title: User interactions
       pages:
+        - title: NavigationCancellationRequest
+          path: /dom/NavigationCancellationRequest
+          class: code
+          module: brew-js
         - title: beginDrag()
           path: /dom/beginDrag
           class: code

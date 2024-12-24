@@ -37,6 +37,7 @@ app.on('navigate', ({ oldPathname, pathname, route }) => {
 
 <MemberList
     i="NavigateEvent"
+    extends={['ZetaEventBase', 'RouterEvent']}
     ip={['pathname', 'oldPathname', 'oldStateId', 'newStateId', 'route', 'data', 'navigationType']} />
 
 ### `NavigateEvent.data` <Badge.ReadOnly />

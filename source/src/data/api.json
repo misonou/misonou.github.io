@@ -206,6 +206,13 @@
         "dom: metakeychange event",
         "dom: keystroke event"
     ],
+    "/dom/NavigationCancellationRequest": [
+        "NavigationCancellationRequest",
+        "NavigationCancellationRequest.reason",
+        "NavigationCancellationRequest.external",
+        "NavigationCancellationRequest.path",
+        "NavigationCancellationRequest.url"
+    ],
     "/dom/observe": [
         "observe()"
     ],
@@ -1040,6 +1047,16 @@
         "RoutePattern.has()",
         "RoutePattern.match()"
     ],
+    "/router/RouterEvent": [
+        "RouterEvent",
+        "RouterEvent.pathname",
+        "RouterEvent.oldPathname",
+        "RouterEvent.oldStateId",
+        "RouterEvent.newStateId",
+        "RouterEvent.route",
+        "RouterEvent.data",
+        "RouterEvent.navigationType"
+    ],
     "/router/WithRouter": [
         "app.path",
         "app.basePath",
@@ -1144,6 +1161,28 @@
         ],
         "ApiEventListener.on()",
         "ApiEventListener: error event"
+    ],
+    "/util/createApiClient": [
+        "createApiClient()",
+        [
+            "ApiClient",
+            "#s-apiclient-interface"
+        ],
+        "ApiClient.use()",
+        "ApiClient.get()",
+        "ApiClient.head()",
+        "ApiClient.post()",
+        "ApiClient.put()",
+        "ApiClient.patch()",
+        "ApiClient.delete()",
+        [
+            "ApiClientError",
+            "#s-apiclienterror-interface"
+        ],
+        "ApiClientError.code",
+        "ApiClientError.status",
+        "ApiClientError.data",
+        "ApiClientError.error"
     ],
     "/util/EventContainer": [
         "ZetaEventContainer",

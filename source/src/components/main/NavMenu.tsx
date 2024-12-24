@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { Mixin, linkTo } from "brew-js-react";
 import { removeQueryAndHash } from "brew-js/util/path";
-import { each, extend, keys, map, matchWord } from "zeta-dom/util";
+import { each, extend, keys, map } from "zeta-dom/util";
 import { classNames } from "zeta-dom-react";
 import { Docs } from "src/views/Docs";
 import { app } from "src/init";
@@ -30,17 +30,17 @@ each(navData, function (i, v) {
 export function NavMenu() {
     const ref = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        function setActive(path: string) {
+    useLayoutEffect(() => {
+        function setActive(path: string, behavior: any = 'auto') {
             const cur = $('a[href="' + path + '"]', ref.current!)[0];
             $('.current', ref.current!).removeClass('current');
             if (cur) {
                 $(cur).closest('.app-nav-section.root').siblings().addClass('collapsed');
                 $(cur).addClass('current').parents('.app-nav-section').removeClass('collapsed');
-                scrollIntoView(cur, 'auto center', 0, cur.closest('[scrollable]')!);
+                scrollIntoView(cur, 'auto center', 0, cur.closest('[scrollable]')!, behavior);
             }
         }
-        setActive(app.initialPath);
+        setActive(app.initialPath, 'instant');
         return app.on('pageenter', e => {
             setActive(removeQueryAndHash(e.pathname));
         });
@@ -61,9 +61,7 @@ export function NavMenu() {
                 }
                 return (
                     <a key={i} className={classNames('nav-link', v.class)} data-module={v.module} href={linkTo(Docs, { remainingSegments: v.path })}>
-                        {v.title}
-                        {matchWord(v.class, 'ext') && <i className="ext"></i>}
-                        {matchWord(v.class, 'depre') && <i className="depre"></i>}
+                        <span>{v.title}</span>
                     </a>
                 );
             })}

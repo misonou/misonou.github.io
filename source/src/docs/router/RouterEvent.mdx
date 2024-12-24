@@ -1,0 +1,61 @@
+<Module name="brew-js/extension/router" />
+
+# RouterEvent interface
+
+<MemberList
+    i="RouterEvent"
+    extends={['ZetaEventBase']}
+    extendsTo={['BeforePageLoadEvent', 'NavigateEvent', 'PopStateEvent']}
+    ip={['pathname', 'oldPathname', 'oldStateId', 'newStateId', 'route', 'data', 'navigationType']}
+/>
+
+## Instance properties
+
+### `RouterEvent.data` <Badge.ReadOnly />
+
+Retreives the data passed to [`app.navigate`](:).
+
+### `RouterEvent.navigationType` <Badge.ReadOnly />
+
+Gets the type of navigation. It has the following possible values:
+
+<dl>
+    #### `navigate`
+    Any case besides the following.
+
+    #### `resume`
+    Indicating that the previous journey has been resumed. See [Resuming journey](/docs/router/resume-journey).
+
+    #### `reload`
+    Indicating that the page is reloaded.
+
+    #### `back_forward`
+    Indicating that user has traversed back or forward through browser's history.
+</dl>
+
+### `RouterEvent.newStateId` <Badge.ReadOnly />
+
+Gets the unique state ID for the page going to navigate.
+
+### `RouterEvent.oldPathname` <Badge.ReadOnly />
+
+Gets the path where user is navigating from.
+
+### `RouterEvent.oldStateId` <Badge.ReadOnly />
+
+Gets the unique state ID for the page about to leave.
+
+### `RouterEvent.pathname` <Badge.ReadOnly />
+
+Gets the path where user is navigating to.
+
+### `RouterEvent.route` <Badge.ReadOnly />
+
+Gets the route parameters extracted from the path navigating to.
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.1.0** Introduced
+- **0.5.0** `RouterEvent.navigationType`
+</VersionTimeline>

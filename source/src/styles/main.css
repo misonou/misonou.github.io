@@ -219,11 +219,16 @@ nav a:focus {
     outline: none;
 }
 
-nav a.code,
-nav span.code {
+nav a.code {
     font-family: var(--font-monospace-nav);
     font-size: 90%;
     white-space: nowrap;
+}
+
+nav a.code > span {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 nav a.current:before {

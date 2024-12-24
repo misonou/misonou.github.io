@@ -10,6 +10,12 @@
     --jqs-scrollbar-opacity: 0.2;
 }
 
+.app-demo-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
 .app-demo-view button.loading {
     opacity: 0.5;
     pointer-events: none;
