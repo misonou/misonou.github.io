@@ -1,6 +1,5 @@
 import BasicExample from "src/components/examples/dialog-basic";
 import ModalExample from "src/components/examples/dialog-modal";
-import ControllerExample from "src/components/examples/dialog-controller";
 
 <Module name="brew-js-react" />
 
@@ -20,12 +19,3 @@ dialog.open();
 It is possible to open dialog as modal, prevent in-app navigation, or to prompt user before leaving the page:
 
 <ModalExample />
-
-## Dialog controller
-
-~~0.6.7~~
-
-By using [`DialogController`](:), similar dialogs can be queued using the same actual dialog.
-Pending dialogs can also be skipped for purposes.
-
-<ControllerExample />
