@@ -4,6 +4,8 @@
 
 Creates a wrapper that by condition executes mocked implementions.
 
+> Support for Vite is introduced in v1.6.1.
+
 ```typescript
 const api = createApi({
     implementation: {
@@ -12,7 +14,7 @@ const api = createApi({
             return 'Real data';
         }
     },
-    // mock is only used when `REACT_APP_MOCK`
+    // mock is only used when `REACT_APP_MOCK` or `VITE_MOCK`
     // environment variable is set to `true`
     mock: {
         apiKey: '',
@@ -28,7 +30,7 @@ api.on('error', e => {
     console.log(e.error);
 });
 
-// calling either implementation or mock depends on `REACT_APP_MOCK`
+// calling either implementation or mock depends on `REACT_APP_MOCK` or `VITE_MOCK`
 // environment variable
 api.getData();
 
@@ -36,8 +38,9 @@ api.getData();
 api.apiKey = 'xxxxx';
 ```
 
-> It is recommended to define mock functions in a separate module
-  and exclude the mock module in production build by WebPack config.
+> **Important**
+  It is recommended to define mock functions in a separate module
+  and exclude the mock by bundler config or treeshaking. See [explanation below](#s-purging-mock-in-production-build).
 
 ## Syntax
 
@@ -74,7 +77,8 @@ createApi(options)
 An object forwarding all properties and methods from either `option.implementation`
 or `option.mock`, and with the additional method from the [`ApiEventListener`](:) interface.
 
-## Example: Partial mock
+
+## Partial mock
 
 ~~1.6.0~~
 
@@ -103,7 +107,7 @@ api.getDataWontMocked() // -> "Real data"
 
 In the above example, when `apiKey` is set, the value will be forwarded to both actual and mocked implementations.
 
-## Example: Using factory callback for mock
+## Using factory callback for mock
 
 ~~1.6.0~~
 
@@ -156,6 +160,47 @@ export default function mock(implementation) {
         }
     };
 }
+```
+
+## Purging mock in production build
+
+When treeshaking is enabled using WebPack or Vite, the simplest way to purge mock from production build
+is to add condition with environment variable.
+
+```javascript
+/// mock.js
+// in Vite
+const mock = function () {
+    if (!import.meta.env.VITE_MOCK) {
+        return;
+    }
+    return { /* ... */ };
+}();
+
+// in Create React App (CRA)
+const mock = function () {
+    if (!process.env.REACT_APP_MOCK) {
+        return;
+    }
+    return { /* ... */ };
+}();
+
+export default mock;
+```
+
+Another way is to exclude the entire mock module by bundler configuration:
+
+```javascript
+// WebPack configuration
+export default {
+    resolve: {
+        alias: {
+            ...(process.env.REACT_APP_MOCK ? {} : {
+                [process.resolve('mock.js')]: false
+            })
+        }
+    }
+};
 ```
 
 ## ApiEventListener interface

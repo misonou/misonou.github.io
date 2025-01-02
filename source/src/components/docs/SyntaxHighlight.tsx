@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import { Highlight, Prism, themes } from "prism-react-renderer";
 import { useObservableProperty } from "zeta-dom-react";
 import { Mixin, useScrollableMixin } from "brew-js-react";
@@ -10,7 +10,7 @@ interface SyntaxHighlightProps {
     className?: string;
 }
 
-export function SyntaxHighlight(props: SyntaxHighlightProps) {
+export const SyntaxHighlight = memo((props: SyntaxHighlightProps) => {
     const scrollable = useScrollableMixin();
     const isTS = props.language === 'tsx' || props.language === 'ts';
     const { code, collapsedLines, toggleCollapse } = useMemo(() => {
@@ -26,7 +26,7 @@ export function SyntaxHighlight(props: SyntaxHighlightProps) {
                 $(scrollable.elements()).find('.token-line').slice(0, collapsedLines).toggleClass('collapsed');
                 $(e.target).toggleClass('open');
             }
-        }
+        };
     }, [props.source, props.language]);
 
     useObservableProperty(app, 'darkMode');
@@ -82,7 +82,7 @@ export function SyntaxHighlight(props: SyntaxHighlightProps) {
             )}
         </Highlight>
     );
-}
+});
 
 Prism.languages.json = {
     'property': {
