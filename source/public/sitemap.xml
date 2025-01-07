@@ -86,7 +86,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/brew-js-react</loc>
-         <lastmod>2024-11-15</lastmod>
+         <lastmod>2025-01-07</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/brew-js</loc>
@@ -98,7 +98,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/react-app-utils</loc>
-         <lastmod>2024-12-16</lastmod>
+         <lastmod>2025-01-02</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/react-css-utils</loc>
@@ -301,10 +301,6 @@
          <lastmod>2024-08-22</lastmod>
     </url>
     <url>
-         <loc>https://misonou.pages.dev/docs/react/createDialog</loc>
-         <lastmod>2024-07-26</lastmod>
-    </url>
-    <url>
          <loc>https://misonou.pages.dev/docs/react/createErrorHandler</loc>
          <lastmod>2024-09-20</lastmod>
     </url>
@@ -333,6 +329,18 @@
          <lastmod>2024-03-27</lastmod>
     </url>
     <url>
+         <loc>https://misonou.pages.dev/docs/react/dialog/controller</loc>
+         <lastmod>2025-01-06</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/react/dialog/createDialog</loc>
+         <lastmod>2025-01-07</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/react/dialog/createDialogQueue</loc>
+         <lastmod>2025-01-07</lastmod>
+    </url>
+    <url>
          <loc>https://misonou.pages.dev/docs/react/dialog/customizing</loc>
          <lastmod>2023-11-11</lastmod>
     </url>
@@ -345,6 +353,10 @@
          <lastmod>2024-10-06</lastmod>
     </url>
     <url>
+         <loc>https://misonou.pages.dev/docs/react/dialog/DialogController</loc>
+         <lastmod>2025-01-07</lastmod>
+    </url>
+    <url>
          <loc>https://misonou.pages.dev/docs/react/dialog/DialogState</loc>
          <lastmod>2024-12-13</lastmod>
     </url>
@@ -353,8 +365,12 @@
          <lastmod>2024-10-28</lastmod>
     </url>
     <url>
+         <loc>https://misonou.pages.dev/docs/react/dialog/modal-dialog</loc>
+         <lastmod>2024-12-25</lastmod>
+    </url>
+    <url>
          <loc>https://misonou.pages.dev/docs/react/dialog/overview</loc>
-         <lastmod>2024-11-29</lastmod>
+         <lastmod>2024-12-25</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/domEventRef</loc>
@@ -622,7 +638,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/FormDevToolMixin</loc>
-         <lastmod>2023-09-19</lastmod>
+         <lastmod>2025-01-07</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/LoadingStateMixin</loc>
@@ -658,11 +674,15 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/StaticAttributeMixin</loc>
-         <lastmod>2024-02-21</lastmod>
+         <lastmod>2025-01-07</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/UnmanagedClassNameMixin</loc>
          <lastmod>2024-12-12</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/react/mixin/useMixin</loc>
+         <lastmod>2025-01-07</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/openDeferredLink</loc>
@@ -1002,7 +1022,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/createApi</loc>
-         <lastmod>2024-12-16</lastmod>
+         <lastmod>2024-12-24</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/createApiClient</loc>

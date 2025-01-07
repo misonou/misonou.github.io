@@ -1,0 +1,94 @@
+<Module name="brew-js-react" />
+
+# createDialogQueue
+
+Creates a controller that manage multiple dialogs.
+
+When specified as `controller` option using [`createDialog`](:),
+dialogs will be queued and be shown one after other.
+
+## Syntax
+
+```javascript
+createDialogQueue()
+createDialogQueue(options)
+```
+
+### Parameters
+
+<dl>
+    #### `options` <Badge.Optional />
+
+    <dl>
+        #### `className` <Badge.Optional />
+        CSS class names to be set in dialog's root element.
+
+        #### `container` <Badge.Optional />
+        Specifies container element where dialog's root element will be inserted to.
+
+        #### `concurrent` <Badge.Optional />
+        Specifies number of dialogs can be shown at the same time.
+        When limit is exceeded, dialog will be pended to open until any active dialog is closed.
+
+        By default there is no limit, and has no effect when `mode` is `shared`.
+
+        #### `focus` <Badge.Optional />
+        Whether flyout content will be initially focused.
+        Default is `true` if source element is not an text input element.
+
+        If a CSS selector is given, the first matched element will be focused; otherwise
+        the first focusable element will be focused.
+
+        #### `modal` <Badge.Optional />
+        A `boolean` indicating if the dialog is modal, i.e. blocking UI interaction outside the dialog.
+
+        #### `mode` <Badge.Optional />
+        Specifies how dialogs are queued and displayed.
+
+        <dl>
+            #### `multiple`
+            Multiple dialogs can be shown at the same time, as child elements of root dialog element associated with the controller.
+
+            #### `shared`
+            Content of subsequent dialogs are rendered in the same dialog element;
+
+        </dl>
+
+        #### `onClose` <Badge.Optional />
+        Callback to be invoked when dialog has closed, after outro animation and before React DOM is unmounted.
+
+        #### `onOpen` <Badge.Optional />
+        Callback to be invoked when dialog has opened.
+
+        #### `preventLeave` <Badge.Optional />
+        A `boolean` which when set, user will be prompt before leaving the page when the dialog is visible.
+
+        #### `preventNavigation` <Badge.Optional />
+        A `boolean` which when set, user will not be able to navigate within the single-pages app.
+
+    </dl>
+</dl>
+
+> Depends on the mode, some options has no effects.
+
+| Option              | Default | Shared | Multiple |
+|---------------------|---------|--------|----------|
+| `concurrent`        | ✗       | ✗      | ✓        |
+| `onClose`           | ✗       | ✓      | ✓        |
+| `onOpen`            | ✗       | ✓      | ✓        |
+| `preventLeave`      | ✗       | ✓      | ✓        |
+| `preventNavigation` | ✗       | ✓      | ✓        |
+
+### Return value
+
+A [`DialogController`](:) instance.
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.6.7** Introduced
+</VersionTimeline>
+
+## See also
+
+- [Dialog queue](/docs/react/dialog/controller)

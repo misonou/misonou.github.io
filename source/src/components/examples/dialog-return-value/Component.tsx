@@ -8,8 +8,10 @@ function openDialog() {
             return (
                 <div>
                     <p>Confirm?</p>
-                    <button type="button" onClick={() => closeDialog(true)}>OK</button>
-                    <button type="button" onClick={() => closeDialog(false)}>Cancel</button>
+                    <div className="app-dialog-buttons">
+                        <button type="button" onClick={() => closeDialog(true)}>OK</button>
+                        <button type="button" onClick={() => closeDialog(false)}>Cancel</button>
+                    </div>
                 </div>
             );
         }

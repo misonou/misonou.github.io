@@ -8,15 +8,16 @@ Currently it provides the following tool:
 
 - [Form autofiller](/docs/devtools/form-autofill)
 
-## Syntax
-
 ```javascript
-useMixin(FormDevToolMixin)
+function Component() {
+    const mixin = useMixin(FormDevToolMixin);
+    return (
+        <form {...Mixin.use(mixin)}>
+            {/* ... */}
+        </form>
+    );
+}
 ```
-
-### Return value
-
-A [`FormDevToolMixin`](:) instance.
 
 ## FormDevToolMixin class
 

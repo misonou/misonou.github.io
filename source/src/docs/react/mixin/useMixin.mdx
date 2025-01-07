@@ -1,0 +1,42 @@
+<Module name="brew-js-react" />
+
+# useMixin
+
+Creates a mixin of the specified type within the lifetime of current component.
+
+## Syntax
+
+```javascript
+useMixin(mixin)
+useMixin(mixin, options)
+```
+
+<ImportHint
+    name="useMixin"
+    module="brew-js-react"
+    require="useMixin"
+    global="brew.react.useMixin" />
+
+### Parameters
+
+<dl>
+    #### `mixin`
+    Constructor of the mixin type.
+
+    #### `options` <Badge.Optional /> <Badge.Version />
+    A dictionary specifying options.
+
+    It will be passed as the first argument if the instantiated mixin instances has `withOptions` method.
+
+</dl>
+
+### Return value
+
+Instantiated mixin instances.
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.4** Introduced
+- **0.6.7** `options` parameter
+</VersionTimeline>

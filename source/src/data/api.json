@@ -312,9 +312,6 @@
         "Dependency.Consumer",
         "Dependency.Provider"
     ],
-    "/react/createDialog": [
-        "createDialog()"
-    ],
     "/react/createErrorHandler": [
         "createErrorHandler()"
     ],
@@ -340,12 +337,24 @@
     "/react/data-view/useDataView": [
         "useDataView()"
     ],
+    "/react/dialog/createDialog": [
+        "createDialog()"
+    ],
+    "/react/dialog/createDialogQueue": [
+        "createDialogQueue()"
+    ],
     "/react/dialog/DialogContext": [
         "DialogContext",
         "DialogContext.errorHandler",
         "DialogContext.closeDialog",
         "DialogContext.commitDialog",
         "DialogContext.dismissDialog"
+    ],
+    "/react/dialog/DialogController": [
+        "DialogController",
+        "DialogController.pendingCount",
+        "DialogController.dismissPending()",
+        "DialogController.dismissAll()"
     ],
     "/react/dialog/DialogState": [
         "DialogState",
@@ -671,10 +680,6 @@
     ],
     "/react/mixin/FormDevToolMixin": [
         [
-            "useMixin()",
-            ""
-        ],
-        [
             "FormDevToolMixin",
             "#s-formdevtoolmixin-class"
         ],
@@ -779,6 +784,9 @@
             "#s-unmanagedclassnamemixin-class"
         ],
         "UnmanagedClassNameMixin.memorize()"
+    ],
+    "/react/mixin/useMixin": [
+        "useMixin()"
     ],
     "/react/openDeferredLink": [
         "openDeferredLink()"

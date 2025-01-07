@@ -1,0 +1,27 @@
+import Example from "src/components/examples/dialog-controller";
+import SharedExample from "src/components/examples/dialog-shared";
+import QueueExample from "src/components/examples/dialog-queue";
+
+<Module name="brew-js-react" />
+
+# Dialog queue
+
+~~0.6.7~~
+
+By using [`createDialogQueue`](:), dialogs can be queued and rendered in sequence.
+Pending dialogs can also be skipped for purposes.
+
+<Example />
+
+## Shared dialog
+
+Similar dialogs can be queued and rendered using the same dialog, without repeating
+intro and outro effects.
+
+<SharedExample />
+
+## Multiple notifications
+
+Messages can be queued and shown at a maximum number by any moment too.
+
+<QueueExample />

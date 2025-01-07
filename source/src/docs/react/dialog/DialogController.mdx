@@ -1,0 +1,50 @@
+<Module name="brew-js-react" />
+
+# DialogController interface
+
+The `DialogController` interface is returned by [`createDialogQueue`](:).
+
+<MemberList
+    i="DialogController"
+    ip={['pendingCount']}
+    im={['dismissPending()', 'dismissAll()']}
+/>
+
+## Instance properties
+
+### `DialogController.pendingCount` <Badge.ReadOnly />
+
+Gets the number of dialogs pending to be shown.
+
+## Instance methods
+
+### `DialogController.dismissAll()`
+
+```javascript
+dismissAll()
+dismissAll(value)
+```
+
+Cancels active and pending dialogs.
+
+### Parameters
+
+<dl>
+    #### `value` <Badge.Optional />
+    Value send to active dialog. It is ignored when `mode` is `multiple`.
+
+</dl>
+
+### `DialogController.dismissPending()`
+
+```javascript
+dismissPending()
+```
+
+Cancels pending dialogs, while currently open dialog will not be dismissed.
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.6.7** Introduced
+</VersionTimeline>

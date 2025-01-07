@@ -16,6 +16,19 @@ createDialog(options)
         #### `className` <Badge.Optional />
         CSS class names to be set in dialog's root element.
 
+        #### `container` <Badge.Optional /> <Badge.Version />
+        Specifies container element where dialog's root element will be inserted to.
+
+        #### `controller` <Badge.Optional /> <Badge.Version />
+        Specifies a controller to allow queueing similar dialogs.
+
+        #### `focus` <Badge.Optional />  <Badge.Version />
+        Whether flyout content will be initially focused.
+        Default is `true` if source element is not an text input element.
+
+        If a CSS selector is given, the first matched element will be focused; otherwise
+        the first focusable element will be focused.
+
         #### `modal` <Badge.Optional />
         A `boolean` indicating if the dialog is modal, i.e. blocking UI interaction outside the dialog.
 
@@ -61,6 +74,10 @@ createDialog(options)
     </dl>
 </dl>
 
+> When a controller with shared mode is specified, since there is not a designated element for individual dialog,
+  the following options will have no effects:
+  `container`, `className`, `focus`, `modal`, `preventLeave` and `preventNavigation`.
+
 ### Return value
 
 A [`DialogState`](:) instance.
@@ -73,4 +90,5 @@ A [`DialogState`](:) instance.
 - **0.2.10** `preventNavigation` option
 - **0.5.2** `focus` option
 - **0.6.0** `onCommit` callback receive 2nd argument
+- **0.6.7** `container` `controller` option
 </VersionTimeline>

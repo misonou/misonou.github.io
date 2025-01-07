@@ -686,6 +686,12 @@
       path: /react/dialog/overview
       module: brew-js-react
       pageTitle: Dialogs
+    - title: Modal dialog
+      path: /react/dialog/modal-dialog
+      module: brew-js-react
+    - title: Dialog queue
+      path: /react/dialog/controller
+      module: brew-js-react
     - title: Dialog result
       path: /react/dialog/dialog-result
       module: brew-js-react
@@ -698,11 +704,19 @@
     - title: References
       pages:
         - title: createDialog()
-          path: /react/createDialog
+          path: /react/dialog/createDialog
+          class: code
+          module: brew-js-react
+        - title: createDialogQueue()
+          path: /react/dialog/createDialogQueue
           class: code
           module: brew-js-react
         - title: DialogContext
           path: /react/dialog/DialogContext
+          class: code
+          module: brew-js-react
+        - title: DialogController
+          path: /react/dialog/DialogController
           class: code
           module: brew-js-react
         - title: DialogState
@@ -820,6 +834,10 @@
           module: brew-js-react
         - title: UnmanagedClassNameMixin
           path: /react/mixin/UnmanagedClassNameMixin
+          class: code
+          module: brew-js-react
+        - title: useMixin()
+          path: /react/mixin/useMixin
           class: code
           module: brew-js-react
 - title: Scrollable

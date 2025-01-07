@@ -58,3 +58,30 @@
     flex-wrap: wrap;
     gap: 0.5em;
 }
+
+.app-demo-notifications {
+    padding: 1em;
+    background-color: transparent;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.app-demo-notifications > div {
+    cursor: pointer;
+    max-width: 80vw;
+    width: 300px;
+    border-left: 4px solid var(--color-notice);
+    background-color: var(--color-notice-bg);
+    transition: transform 0.2s, opacity 0.2s;
+    transform: translate(400px);
+}
+
+.app-demo-notifications > div.open {
+    transform: none;
+}
+
+.app-demo-notifications > div.closing {
+    opacity: 0;
+}
