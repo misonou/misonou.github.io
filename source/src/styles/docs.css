@@ -546,8 +546,8 @@ button.app-docs-import-hint svg {
     vertical-align: bottom !important;
 }
 
-:is(h1, h2) + p > del:first-child,
-:is(h1, h2) + p > del:first-child ~ del {
+:is(h1, h2, h3) + p > del:first-child,
+:is(h1, h2, h3) + p > del:first-child ~ del {
     display: inline-block;
     position: relative;
     top: -0.25em;
@@ -559,8 +559,8 @@ button.app-docs-import-hint svg {
     text-decoration: none;
 }
 
-:is(h1, h2) + p > del:first-child:before,
-:is(h1, h2) + p > del:first-child ~ del:before {
+:is(h1, h2, h3) + p > del:first-child:before,
+:is(h1, h2, h3) + p > del:first-child ~ del:before {
     content: '';
     display: inline-block;
     margin-left: 0;
@@ -867,6 +867,7 @@ button.app-docs-import-hint svg {
 }
 
 .docs-waterpipe-example-l code {
+    font-size: inherit;
     white-space: pre-wrap;
 }
 

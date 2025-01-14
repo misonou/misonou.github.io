@@ -1,0 +1,22 @@
+<Module name="waterpipe" />
+
+# Template functions
+
+### `eval (|>)`
+
+~~2.8~~
+
+Evaluates template with the piped value.
+
+<WaterpipeExample
+    data={{ value: 1, template: "The value is {{.}}" }}
+    examples={['value |> template']}
+/>
+
+It follows the [single-valued template](/docs/waterpipe/defining-template#s-single-valued-template) rule
+when evaluating the given template:
+
+<WaterpipeExample
+    data={{ arr1: [1,2,3], arr2: [4,5,6], template: "{{arr1 | arr2}}" }}
+    examples={['|> template', '|> template sum']}
+/>

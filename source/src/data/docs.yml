@@ -1291,6 +1291,9 @@
         - title: Formatting functions
           path: /waterpipe/formatting-functions
           module: waterpipe
+        - title: Template functions
+          path: /waterpipe/template-functions
+          module: waterpipe
     - title: Extensibility
       pages:
         - title: Writing pipe functions

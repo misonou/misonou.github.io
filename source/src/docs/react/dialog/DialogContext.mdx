@@ -23,10 +23,17 @@ createDialog({
 
 <MemberList
     i="DialogContext"
-    ip={['errorHandler', 'closeDialog', 'commitDialog', 'dismissDialog']}
+    ip={['errorHandler']}
+    im={['closeDialog()', 'commitDialog()', 'dismissDialog()']}
 />
 
 ## Instance properties
+
+### `DialogContext.errorHandler` <Badge.Version />
+
+Gets an [`ErrorHandler`](:) object that catches errors emitted from rendered content.
+
+## Instance methods
 
 ### `DialogContext.closeDialog` <Badge.Deprecated />
 
@@ -47,10 +54,6 @@ Dialog will be closed when async operation is completed, or remain open if the o
 ### `DialogContext.dismissDialog` <Badge.Version />
 
 Closes the dialog without invoking `DialogOptions.onCommit`.
-
-### `DialogContext.errorHandler` <Badge.Version />
-
-Gets an [`ErrorHandler`](:) object that catches errors emitted from rendered content.
 
 ## Version information
 

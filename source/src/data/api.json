@@ -346,9 +346,9 @@
     "/react/dialog/DialogContext": [
         "DialogContext",
         "DialogContext.errorHandler",
-        "DialogContext.closeDialog",
-        "DialogContext.commitDialog",
-        "DialogContext.dismissDialog"
+        "DialogContext.closeDialog()",
+        "DialogContext.commitDialog()",
+        "DialogContext.dismissDialog()"
     ],
     "/react/dialog/DialogController": [
         "DialogController",
