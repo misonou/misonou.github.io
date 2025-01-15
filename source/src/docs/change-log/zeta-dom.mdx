@@ -2,6 +2,17 @@
 
 # Change log
 
+## v0.6.1 (2025/01/15)
+
+- Fix several issues with `textInput` event:
+  - `data` property now returns `\n` for `enter` key for practical use
+  - event should not be triggered by `enter` key for `<input>` element
+  - event was not fired when using certain IME in mac and iOS
+- <kbd>fix</kbd> manually dispatched `click` event was not fired after mouse movement
+- <kbd>fix</kbd> [`textInputAllowed`](:) returns `false` for `<select>` element and `<input>` element
+  that does not allow text edits (for type where `selectionStart` and `selectionEnd` returns `null`)
+- <kbd>fix</kbd> remove unreliable detection of input event source
+
 ## v0.6.0 (2024/12/17)
 
 **Breaking changes**

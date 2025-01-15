@@ -1,8 +1,53 @@
+import { domEventRef } from "zeta-dom-react";
+import { FieldColumn } from "src/components/controls";
+
 <Module name="zeta-dom/dom" />
 
 # Text input events
 
-## dom: textInput event
+<Inline>
+{() => {
+    const textInput = (e) => {
+        e.currentTarget.nextElementSibling.textContent = `
+            data: ${JSON.stringify(e.data)}
+            selectionStart: ${e.currentTarget.selectionStart}
+            selectionEnd: ${e.currentTarget.selectionEnd}
+            originalEvent: ${e.originalEvent?.constructor.name} ${e.originalEvent?.type}
+            source: ${e.source} ${e.sourceKeyName}
+        `.trim();
+    };
+    return (
+        <DemoBlock>
+            <FieldColumn columns="1fr 1fr">
+                <textarea ref={domEventRef({ textInput })} style={{ resize: 'none '}} placeholder="Type text here..."></textarea>
+                <pre style={{ whiteSpace: 'pre-line', fontSize: '80%' }}></pre>
+            </FieldColumn>
+        </DemoBlock>
+    );
+}}
+</Inline>
+
+## Event interfaces
+
+<MemberList
+    i="dom" noRoot noRender
+    ev={["textInput"]}
+/>
+
+### `textInput` event
+
+Fired when text edit is about to be made
+
+#### Event properties
+
+<dl>
+    #### `data` <Badge.ReadOnly />
+    The character(s) being input.
+
+    #### `originalEvent` <Badge.ReadOnly />
+    The native event that is triggering this event.
+    It can be `CompositionEvent`, `InputEvent` or `KeyboardEvent`.
+</dl>
 
 ## See also
 
