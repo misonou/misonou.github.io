@@ -4,7 +4,7 @@ import { combineFn, extend, isErrorWithCode } from "zeta-dom/util";
 import { scrollIntoView } from "zeta-dom/domUtil";
 import dom from "zeta-dom/dom";
 import { parsePath } from "brew-js/util/path";
-import { Badge, CodeBlock, Color, DemoBlock, DemoWithSource, ImportHint, Inline, MDXCodeElement, MDXTableElement, MemberList, Module, Snippets, VersionTimeline, WaterpipeExample } from "src/components/docs";
+import { Badge, CodeBlock, CodeBlockWithTab, Color, DemoBlock, DemoWithSource, ImportHint, Inline, MDXCodeElement, MDXTableElement, MemberList, Module, Snippets, SyntaxHighlight, VersionTimeline, WaterpipeExample } from "src/components/docs";
 import { PageSearch, TableOfContentItem, TableOfContents } from "src/components/main";
 import { app } from "src/init";
 
@@ -25,6 +25,8 @@ const mdxComponents = {
     Badge,
     Color,
     CodeBlock,
+    CodeBlockWithTab,
+    SyntaxHighlight,
     Inline,
     Module,
     Snippets,

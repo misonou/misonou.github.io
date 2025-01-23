@@ -1,10 +1,11 @@
 import waterpipe from "waterpipe";
-import { SyntaxHighlight } from "./SyntaxHighlight";
+import { Source, SyntaxHighlight } from "./SyntaxHighlight";
 import { useMemo } from "react";
 import { each } from "zeta-dom/util";
 
 export interface WaterpipeExampleProps {
     data?: any;
+    source?: Source;
     globals?: any;
     pipes?: any;
     options?: Omit<WaterpipeOptions, 'globals'>;
@@ -14,7 +15,7 @@ export interface WaterpipeExampleProps {
 
 export function WaterpipeExample(props: WaterpipeExampleProps) {
     const dataJson = useMemo(() => {
-        return JSON.stringify(props.data);
+        return props.source ?? JSON.stringify(props.data);
     }, []);
 
     const results = useMemo(() => {

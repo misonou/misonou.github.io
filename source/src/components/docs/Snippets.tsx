@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
 import { classNames } from "zeta-dom-react";
-import { SyntaxHighlight } from "./SyntaxHighlight";
+import { Source, SyntaxHighlight } from "./SyntaxHighlight";
 import { Mixin, useFocusStateMixin } from "brew-js-react";
 
 export interface SnippetsProps {
     rootProps?: React.ComponentProps<'div'>;
     title?: string;
     snippets: string[];
+    source?: Source[];
     render: (index: number, ref: React.RefObject<HTMLElement>, value: string) => React.ReactNode;
 }
 
@@ -22,7 +23,7 @@ export function Snippets(props: SnippetsProps) {
             <div className="app-demo-snippets-option-list">
                 {props.snippets.map((v, i) => (
                     <div key={i} className={classNames('app-demo-snippets-option', { active: index === i })} onClick={() => setIndex(i)}>
-                        <SyntaxHighlight source={v} language="typescript" />
+                        <SyntaxHighlight source={props.source?.[i] ?? v} language="typescript" />
                     </div>
                 ))}
             </div>

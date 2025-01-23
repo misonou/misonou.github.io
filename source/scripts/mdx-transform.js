@@ -1,8 +1,21 @@
+/// @ts-check
+
 /// <reference types="@babel/core" />
 /// <reference types="@babel/traverse" />
 /// <reference types="@babel/types" />
 
+/**
+ * @callback Transformer
+ * @param {string} component
+ * @param {babel.NodePath<babel.types.CallExpression>} path
+ * @param {babel.NodePath<babel.types.ObjectProperty>[]} props
+ * @param {babel.types} t
+ * @param {Record<string, any>} state
+ * @param {(component: string, props: babel.types.Node) => babel.types.Node} jsx
+ */
+
 const { readFileSync, statSync } = require('fs');
+const { getImportHintSource, getParsedSource, getDataObject, isJSXCall, getJSXComponent, getJSXFactory, getRawContentFromImport } = require('./util/transform-helpers');
 
 const links = Object.create(null);
 
@@ -42,32 +55,6 @@ function getHref(text) {
 }
 
 /**
- * @param {babel.types.Expression} callee
- */
-function isJSX(callee) {
-    return callee.type === 'Identifier' && (callee.name === '_jsx' || callee.name === '_jsxs' || callee.name == '_jsxDEV');
-}
-
-/**
- * @param {babel.NodePath<babel.types.CallExpression>} path
- */
-function getJSXComponent(path) {
-    const [component] = path.node.arguments;
-    switch (component.type) {
-        case 'Identifier':
-            return component.name;
-        case 'MemberExpression':
-            if (component.object.name === '_components') {
-                return component.property.name;
-            }
-            if (component.object.name === 'Badge') {
-                return component.object.name + '.' + component.property.name;
-            }
-    }
-    return '';
-}
-
-/**
  * @param {babel.NodePath<babel.types.Expression>} path
  */
 function getTextContent(path) {
@@ -78,7 +65,7 @@ function getTextContent(path) {
     /** @type {babel.Visitor} */
     const visitor = {
         CallExpression(path, state) {
-            if (isJSX(path.node.callee)) {
+            if (isJSXCall(path)) {
                 const component = getJSXComponent(path);
                 path.skip();
                 if (component !== 'del' || !component.startsWith('Badge.')) {
@@ -138,7 +125,7 @@ function transformHeader(component, path, props, t, state) {
     const pChildren = props.find(v => v.node.key.name === 'children');
     const { textContent, tocTitle, startWithCodeElement } = getTextContent(pChildren);
 
-    let finalSlug = '';
+    let finalSlug = '', i;
     if (component === 'h2' || component === 'h3') {
         let slug = generateAnchor(textContent);
         finalSlug = slug, i = 1;
@@ -184,13 +171,81 @@ function transformMemberList(component, path, props, t) {
     }
 }
 
-/**
- * @callback Transformer
- * @param {string} component
- * @param {babel.NodePath<babel.types.CallExpression>} path
- * @param {babel.NodePath<babel.types.ObjectProperty>[]} props
- * @param {babel.types} t
- */
+/** @type {Transformer} */
+function transformCode(component, path, props, t, state, jsx) {
+    const className = props.find(v => v.node.key.name === 'className')?.node.value.value;
+    const children = props.find(v => v.node.key.name === 'children')?.node.value.value;
+    if (!className) {
+        return;
+    }
+    const language = className.match(/language-(\w.*?)\b/)?.[1] || "javascript";
+    const matches = children && className ? Array.from(children.matchAll(/\/{3}\s?([^\r\n]+)\r?\n/g)) : [];
+    const files = matches.map((v, i) => {
+        const [name, lang] = v[1].split(' ');
+        return {
+            name,
+            language: lang || language || name.slice(name.lastIndexOf('.') + 1),
+            content: children.slice((v.index || 0) + v[0].length, matches[i + 1]?.index ?? children.length).trim()
+        };
+    });
+    if (files[0]) {
+        const source = files.map(v => {
+            v.content = getParsedSource(v.language, v.content);
+            return v;
+        });
+        path.replaceWith(jsx('CodeBlockWithTab', t.valueToNode({ language, source })));
+    } else {
+        const source = getParsedSource(language, children);
+        path.replaceWith(jsx('SyntaxHighlight', t.valueToNode({ language, source })));
+    }
+}
+
+/** @type {Transformer} */
+function transformCodeBlock(component, path, props, t, state, jsx) {
+    for (let o of props) {
+        if (o.node.key.name === 'children' && o.node.value.type === 'Identifier') {
+            const source = state.importSources[o.node.value.name];
+            if (!source) {
+                return;
+            }
+            o.get('value').replaceWith(t.stringLiteral(source));
+        }
+    }
+    path.replaceWith(jsx('pre', t.objectExpression([
+        t.objectProperty(t.identifier('children'), jsx('code', t.objectExpression(props.map(v => t.cloneNode(v.node)))))
+    ])));
+    transformCode('code', path.get('arguments.1.properties.0.value'), props, t, state, jsx);
+}
+
+/** @type {Transformer} */
+function transformWaterpipeExample(component, path, props, t) {
+    const pData = props.find(v => v.node.key.name === 'data');
+    if (pData) {
+        const value = getDataObject(pData);
+        const source = getParsedSource('json', JSON.stringify(value));
+        pData.insertAfter(t.objectProperty(t.identifier('source'), t.valueToNode(source)));
+    }
+}
+
+/** @type {Transformer} */
+function transformSnippets(component, path, props, t) {
+    const pSnippets = props.find(v => v.node.key.name === 'snippets');
+    if (pSnippets.node.value.type === 'ArrayExpression') {
+        const source = pSnippets.node.value.elements.map(v => {
+            return getParsedSource('typescript', v.value);
+        });
+        pSnippets.insertAfter(t.objectProperty(t.identifier('source'), t.valueToNode(source)));
+    }
+}
+
+/** @type {Transformer} */
+function transformImportHint(component, path, props, t) {
+    const source = getImportHintSource(Object.fromEntries(props.map(v => [v.node.key.name, v.node.value.value])));
+    source.forEach(v => {
+        v.content = getParsedSource('javascript', v.content);
+    });
+    props.at(-1).insertAfter(t.objectProperty(t.identifier('source'), t.valueToNode(source)));
+}
 
 /** @type {Record<string, Transformer>} */
 const transform = {
@@ -198,7 +253,12 @@ const transform = {
     h2: transformHeader,
     h3: transformHeader,
     a: transformLink,
+    code: transformCode,
+    CodeBlock: transformCodeBlock,
+    ImportHint: transformImportHint,
     MemberList: transformMemberList,
+    Snippets: transformSnippets,
+    WaterpipeExample: transformWaterpipeExample,
     Module(component, path, props, t, state) {
         const pName = props.find(v => v.node.key.name === 'name');
         state.module = pName.node.value.value;
@@ -209,17 +269,23 @@ const transform = {
 module.exports = function ({ types: t }) {
     return {
         visitor: {
-            FunctionDeclaration(path) {
+            ImportDeclaration(path, s) {
+                if (path.node.source.value.startsWith('!raw-loader!')) {
+                    getRawContentFromImport(path, s);
+                }
+            },
+            FunctionDeclaration(path, s) {
                 if (path.node.id.name === '_createMdxContent') {
-                    const ms = statSync('src/data/api.json').mtimeMs;
-                    if (getApiIndex.l !== ms) {
+                    const mtimeMs = statSync('src/data/api.json').mtimeMs;
+                    if (getApiIndex.l !== mtimeMs) {
                         getApiIndex.d = null;
-                        getApiIndex.l = ms;
+                        getApiIndex.l = mtimeMs;
                         for (let i in links) {
                             delete links[i];
                         }
                     }
                     const state = {
+                        importSources: s.importSources || Object.create(null),
                         tocList: [],
                         hashes: {}
                     };
@@ -228,30 +294,27 @@ module.exports = function ({ types: t }) {
                             path.skip();
                         },
                         CallExpression(path) {
-                            if (isJSX(path.node.callee)) {
+                            if (isJSXCall(path)) {
                                 const component = getJSXComponent(path);
                                 if (transform[component]) {
                                     path.skip();
-                                    (0, transform[component])(component, path, path.get('arguments.1.properties'), t, state);
+                                    (0, transform[component])(component, path, path.get('arguments.1.properties'), t, state, getJSXFactory(path, t));
                                 }
                             }
                         }
                     });
-                    path.insertAfter(t.exportNamedDeclaration(
-                        t.variableDeclaration('const', [
-                            t.variableDeclarator(t.identifier('meta'), t.objectExpression([
-                                t.objectProperty(t.identifier('module'), t.stringLiteral(state.module || '')),
-                                t.objectProperty(t.identifier('title'), t.stringLiteral(state.tocList[0]?.title || '')),
-                                t.objectProperty(t.identifier('tableOfContents'),
-                                    t.arrayExpression(state.tocList.map(v => (
-                                        t.objectExpression([
-                                            t.objectProperty(t.identifier('kind'), t.stringLiteral(v.kind)),
-                                            t.objectProperty(t.identifier('title'), t.stringLiteral(v.title)),
-                                            t.objectProperty(t.identifier('hash'), t.stringLiteral(v.slug && ('#s-' + v.slug))),
-                                        ])
-                                    ))))
-                            ]))
-                        ])));
+                    const meta = {
+                        module: state.module || '',
+                        title: state.tocList[0]?.title || '',
+                        tableOfContents: state.tocList.map(v => ({
+                            kind: v.kind,
+                            title: v.title,
+                            hash: v.slug && ('#s-' + v.slug)
+                        }))
+                    };
+                    path.insertAfter(t.exportNamedDeclaration(t.variableDeclaration('const', [
+                        t.variableDeclarator(t.identifier('meta'), t.valueToNode(meta))
+                    ])));
                 }
             }
         }

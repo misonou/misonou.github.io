@@ -32,12 +32,22 @@ module.exports = async ({ env }) => {
                             {
                                 test: /\.tsx?$/,
                                 exclude: /node_modules/,
-                                loader: 'ts-loader',
-                                options: {
-                                    compilerOptions: {
-                                        "noEmit": false
+                                use: [
+                                    {
+                                        loader: 'babel-loader',
+                                        options: {
+                                            plugins: [[path.resolve('./scripts/tsx-transform.js'), { include: path.join(process.cwd(), 'src/components/examples') }]]
+                                        }
+                                    },
+                                    {
+                                        loader: 'ts-loader',
+                                        options: {
+                                            compilerOptions: {
+                                                noEmit: false
+                                            }
+                                        }
                                     }
-                                }
+                                ]
                             },
                             {
                                 test: /\.mdx?$/,

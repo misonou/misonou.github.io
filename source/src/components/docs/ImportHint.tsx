@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CodeBlockWithTab } from "./CodeBlockWithTab";
 import { Mixin, useFocusStateMixin } from "brew-js-react";
 import { ReactComponent as Icon } from "src/styles/icons/hint.svg";
+import { Source } from "./SyntaxHighlight";
 
 export interface ImportHintProps {
     name: string;
@@ -11,6 +12,7 @@ export interface ImportHintProps {
     requireModule?: string;
     global?: string;
     expanded?: boolean;
+    source?: { name: string, content: Source }[];
 };
 
 function formatImport(name: string, defaults?: boolean) {
@@ -33,7 +35,7 @@ export function ImportHint(props: ImportHintProps) {
                 <div {...Mixin.use(focusStateMixin, 'app-demo app-demo-block app-docs-import')}>
                     <CodeBlockWithTab
                         language="javascript"
-                        source={[
+                        source={props.source ?? [
                             {
                                 name: 'module',
                                 content: `import ${formatImport(props.name, !!props.import)} from "${props.module}"`

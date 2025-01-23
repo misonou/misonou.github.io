@@ -1,13 +1,13 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { classNames } from "zeta-dom-react";
-import { SyntaxHighlight } from "./SyntaxHighlight";
+import { Source, SyntaxHighlight } from "./SyntaxHighlight";
 import { ReactComponent as Arrow } from "src/styles/icons/double-arrow.svg";
 import { scrollIntoView } from "zeta-dom/domUtil";
 
 export interface CodeBlockWithTabProps {
     source: {
         name: string;
-        content: string;
+        content: Source;
         language?: string;
     }[];
     language?: string;
