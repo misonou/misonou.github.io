@@ -43,21 +43,18 @@ export const SyntaxHighlight = memo((props: SyntaxHighlightProps) => {
 
     const tokensOrCode = tokens ?? code;
     const theme = app.effectiveDarkMode ? themes.vsDark : themes.github;
-    const children = useMemo(() => render(theme, language, tokensOrCode, collapsedLines), [theme, tokensOrCode]);
     return (
         <div {...Mixin.use(scrollable, 'app-code-block', props.className)}>
             <code {...Mixin.use(scrollable.target)} data-language={props.language}>
-                {children}
+                <Render {...{ theme, language, tokensOrCode, collapsedLines }} />
             </code>
         </div>
     );
 });
 
-function render(theme: PrismTheme, language: string, tokensOrCode: string | Token[][], collapsedLines: number) {
-    function toggleCollapse(e: React.UIEvent) {
-        $(e.currentTarget).parent().parent().find('.token-line').slice(0, collapsedLines).toggleClass('collapsed');
-        $(e.currentTarget).toggleClass('open');
-    }
+const Render = memo((props: { theme: PrismTheme, language: string, tokensOrCode: string | Token[][], collapsedLines: number }) => {
+    const { theme, language, tokensOrCode, collapsedLines } = props;
+
     return renderTokens(theme, language, tokensOrCode, ({ tokens, getLineProps, getTokenProps }) => {
         const isTS = language === 'tsx' || language === 'ts';
         const isNullComment = language === 'html' ? '<!-- ... -->' : '/* ... */';
@@ -106,4 +103,9 @@ function render(theme: PrismTheme, language: string, tokensOrCode: string | Toke
             </>
         );
     });
-}
+
+    function toggleCollapse(e: React.UIEvent) {
+        $(e.currentTarget).parent().parent().find('.token-line').slice(0, collapsedLines).toggleClass('collapsed');
+        $(e.currentTarget).toggleClass('open');
+    }
+});

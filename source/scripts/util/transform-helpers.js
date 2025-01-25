@@ -4,6 +4,16 @@
 /// <reference types="@babel/traverse" />
 /// <reference types="@babel/types" />
 
+/**
+ * @callback Transformer
+ * @param {string} component
+ * @param {babel.NodePath<babel.types.CallExpression>} path
+ * @param {babel.NodePath<babel.types.ObjectProperty>[]} props
+ * @param {babel.types} t
+ * @param {Record<string, any>} state
+ * @param {(component: string, props: babel.types.Node) => babel.types.Node} jsx
+ */
+
 const React = require('react');
 const ReactDOM = require('react-dom/server');
 const { Highlight, Prism } = require('prism-react-renderer');
@@ -13,7 +23,7 @@ const { readFileSync } = require('fs');
 /**
  * @param {babel.NodePath<babel.types.CallExpression>} path
  */
-function isJSXCall(path) {
+function isJSXComponent(path) {
     const callee = path.node.callee;
     return callee.type === 'Identifier' && (callee.name === '_jsx' || callee.name === '_jsxs' || callee.name == '_jsxDEV');
 }
@@ -53,6 +63,20 @@ function getJSXComponent(path) {
             break;
     }
     return '';
+}
+
+/**
+ * @param {babel.NodePath<babel.types.CallExpression>} path 
+ * @param {typeof babel.types} t 
+ * @param {*} state 
+ * @param {Record<string, Transformer>} transform
+ */
+function transformJSXComponent(path, t, state, transform) {
+    const component = getJSXComponent(path);
+    if (transform[component]) {
+        (0, transform[component])(component, path, path.get('arguments.1.properties'), t, state, getJSXFactory(path, t));
+        return true;
+    }
 }
 
 /**
@@ -163,12 +187,12 @@ function getRawContentFromImport(path, state) {
 }
 
 exports.getRawContentFromImport = getRawContentFromImport;
-exports.getJSXFactory = getJSXFactory;
 exports.getJSXComponent = getJSXComponent;
 exports.getParsedSource = getParsedSource;
 exports.getImportHintSource = getImportHintSource;
 exports.getDataObject = getDataObject;
-exports.isJSXCall = isJSXCall;
+exports.isJSXComponent = isJSXComponent;
+exports.transformJSXComponent = transformJSXComponent;
 
 Prism.languages.json = {
     'property': {

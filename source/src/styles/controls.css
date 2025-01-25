@@ -679,6 +679,7 @@ button.variant-outlined.loading:after {
 
 .zui-dropdown-flyout {
     display: flex;
+    contain: layout;
     position: absolute;
     top: 0;
     margin-left: -1em;

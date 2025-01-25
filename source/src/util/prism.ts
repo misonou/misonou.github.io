@@ -1,38 +1,34 @@
 
 import { Highlight, Prism, themes } from "prism-react-renderer";
 import React from "react";
+import { mapGet } from "zeta-dom/util";
 
 export type PrismTheme = typeof themes['dracula']
 export type RenderProps = Parameters<Parameters<typeof Highlight>[0]['children']>[0];
 export type Token = RenderProps['tokens'] extends (infer T)[][] ? T : any;
 
-export function renderTokens(theme: PrismTheme, language: string, code: string | Token[][], render: (props: RenderProps) => JSX.Element) {
-    if (typeof code === 'string') {
-        return React.createElement(Highlight, {
-            theme,
-            language,
-            code,
-            children: render
-        });
-    }
+const styleCache = new WeakMap<PrismTheme, { dict: ThemeDict, cache: any }>();
 
-    const themeDictionary = themeToDict(theme, language);
+export function renderTokens(theme: PrismTheme, language: string, code: string | Token[][], render: (props: RenderProps) => JSX.Element) {
+    const { dict, cache } = mapGet(styleCache, theme, () => ({
+        dict: themeToDict(theme, language),
+        cache: Object.create(null)
+    }));
     const styleForToken = ({ types, empty }: Token) => {
-        if (themeDictionary == null) return undefined;
-        else if (types.length === 1 && types[0] === "plain") {
+        if (types.length === 1 && types[0] === "plain") {
             return empty != null ? { display: "inline-block" } : undefined;
-        } else if (types.length === 1 && empty != null) {
-            return themeDictionary[types[0]];
         }
-        return Object.assign(
-            empty != null ? { display: "inline-block" } : {},
-            ...types.map(type => themeDictionary[type])
-        );
+        if (types.length === 1 && empty != null) {
+            return dict[types[0]];
+        }
+        const key = types.join(' ');
+        const style = cache[key] || (cache[key] = Object.assign({}, ...types.map(type => dict[type])));
+        return empty != null ? Object.assign({ display: "inline-block" }, style) : style;
     };
-    return render({
-        style: {},
+    const renderProps: RenderProps = {
+        style: dict.root,
         className: '',
-        tokens: code,
+        tokens: code as Token[][],
         getLineProps() {
             return {
                 className: 'token-line'
@@ -45,23 +41,34 @@ export function renderTokens(theme: PrismTheme, language: string, code: string |
                 style: styleForToken(input.token)
             };
         },
-    });
+    };
+    if (typeof code === 'string') {
+        return React.createElement(Highlight, {
+            theme,
+            language,
+            code,
+            children({ tokens }) {
+                return render({ ...renderProps, tokens })
+            }
+        });
+    }
+    return render(renderProps);
 }
 
+type PrismThemeEntry = PrismTheme['plain'];
 type ThemeDict = {
-    root: any
-    plain: any
-    [type: string]: any
+    root: PrismThemeEntry
+    plain: PrismThemeEntry
+    [type: string]: PrismThemeEntry
 }
 
 function themeToDict(theme: PrismTheme, language: string) {
     const { plain } = theme;
-    const themeDict = theme.styles.reduce<any>((acc, themeEntry) => {
+    const themeDict = theme.styles.reduce<Record<string, PrismThemeEntry>>((acc, themeEntry) => {
         const { languages, style } = themeEntry;
         if (languages && !languages.includes(language)) {
             return acc;
         }
-
         themeEntry.types.forEach((type) => {
             const accStyle = { ...acc[type], ...style };
             acc[type] = accStyle;

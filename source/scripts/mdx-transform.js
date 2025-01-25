@@ -15,7 +15,7 @@
  */
 
 const { readFileSync, statSync } = require('fs');
-const { getImportHintSource, getParsedSource, getDataObject, isJSXCall, getJSXComponent, getJSXFactory, getRawContentFromImport } = require('./util/transform-helpers');
+const { getImportHintSource, getParsedSource, getDataObject, isJSXComponent, getJSXComponent, getRawContentFromImport, transformJSXComponent } = require('./util/transform-helpers');
 
 const links = Object.create(null);
 
@@ -65,7 +65,7 @@ function getTextContent(path) {
     /** @type {babel.Visitor} */
     const visitor = {
         CallExpression(path, state) {
-            if (isJSXCall(path)) {
+            if (isJSXComponent(path)) {
                 const component = getJSXComponent(path);
                 path.skip();
                 if (component !== 'del' || !component.startsWith('Badge.')) {
@@ -294,12 +294,8 @@ module.exports = function ({ types: t }) {
                             path.skip();
                         },
                         CallExpression(path) {
-                            if (isJSXCall(path)) {
-                                const component = getJSXComponent(path);
-                                if (transform[component]) {
-                                    path.skip();
-                                    (0, transform[component])(component, path, path.get('arguments.1.properties'), t, state, getJSXFactory(path, t));
-                                }
+                            if (isJSXComponent(path) && transformJSXComponent(path, t, state, transform)) {
+                                path.skip();
                             }
                         }
                     });

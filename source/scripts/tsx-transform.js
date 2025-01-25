@@ -15,7 +15,7 @@
  */
 
 const { relative } = require('path');
-const { getJSXComponent, getParsedSource, isJSXCall, getJSXFactory, getRawContentFromImport } = require('./util/transform-helpers');
+const { getParsedSource, isJSXComponent, getRawContentFromImport, transformJSXComponent } = require('./util/transform-helpers');
 
 /** @type {Transformer} */
 function transformDemoWithSource(component, path, props, t, state) {
@@ -50,9 +50,8 @@ module.exports = function ({ types: t }) {
                 }
             },
             CallExpression(path, s) {
-                if (isJSXCall(path) && getJSXComponent(path) === 'DemoWithSource') {
+                if (isJSXComponent(path) && transformJSXComponent(path, t, s, { DemoWithSource: transformDemoWithSource })) {
                     path.skip();
-                    transformDemoWithSource('DemoWithSource', path, path.get('arguments.1.properties'), t, s, getJSXFactory(path, t));
                 }
             }
         }
