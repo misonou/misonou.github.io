@@ -34,9 +34,6 @@
     "zeta-dom": "^0.6.1",
     "zeta-dom-react": "^0.5.16"
   },
-  "overrides": {
-    "jq-scrollable": "1.16.0-beta.0"
-  },
   "scripts": {
     "start": "cross-env PORT=3003 FAST_REFRESH=false craco start",
     "build": "dotenv craco build",
