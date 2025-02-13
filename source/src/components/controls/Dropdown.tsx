@@ -7,6 +7,7 @@ import dom from "zeta-dom/dom";
 import { combineFn } from "zeta-dom/util";
 import { Button, Icon, TextInput, validators } from ".";
 import { startPositioning } from "@misonou/react-css-utils";
+import { useIdleSignal } from "src/util";
 
 export interface DropdownItem<T = string> {
     value: T;
@@ -40,6 +41,7 @@ export function Dropdown<T = string>(props: DropdownProps<T>) {
     const scrollable = useScrollableMixin({ direction: 'y-only' });
     const menuKeystroke = useMenuKeystrokeMixin('.zui-dropdown-flyout-container button', true);
     const [search, setSearch] = useState('');
+    const [idled, setIdled] = useIdleSignal();
     const { value, error, setValue, elementRef, items, selectedItem } = useFormField(ChoiceField, props, '');
 
     const displayItems = useMemo(() => {
@@ -51,7 +53,10 @@ export function Dropdown<T = string>(props: DropdownProps<T>) {
             flyout.onToggleState(v => rootClasses.set('active', v)),
             flyout.onVisibilityChanged(v => rootClasses.set('opened', v)),
             flyout.onOpen(() => {
-                scrollable.scrollToElement('.selected', 'center', 'center');
+                setIdled();
+                setTimeout(() => {
+                    scrollable.scrollToElement('.selected', 'center', 'center');
+                });
             }),
             flyout.whenVisible(() => {
                 return startPositioning(flyout.element!, elementRef.current!, 'left inset', {
@@ -71,25 +76,27 @@ export function Dropdown<T = string>(props: DropdownProps<T>) {
             <Button {...Mixin.use(flyout.toggle)} icon={props.icon} label={label} disabled={props.disabled} />
 
             <div {...Mixin.use(menuKeystroke, flyout.withEffects('fade-in'), 'zui-dropdown-flyout')}>
-                {props.showLabelInMenu && props.label &&
-                    <div className="zui-dropdown-flyout-title">
-                        <Button icon={props.icon} label={props.label} disabled />
-                    </div>}
-                {props.showSearchBox &&
-                    <TextInput placeholder={props.searchBoxPlaceholder} value={search} onChange={setSearch} />}
-                <div {...Mixin.use(scrollable, 'zui-dropdown-flyout-container')}>
-                    <div {...Mixin.use(scrollable.target)}>
-                        {displayItems.map(v => (
-                            <button key={String(v.value)} type="button" className={classNames('zui-button', { selected: v.value === value })} onClick={() => onClick(v.value)}>
-                                {v.icon &&
-                                    <Icon icon={v.icon} className="zui-button-icon" />}
-                                <span>{v.label}</span>
-                                {v.description &&
-                                    <span className="zui-button-description">{v.description}</span>}
-                            </button>
-                        ))}
+                {idled && <>
+                    {props.showLabelInMenu && props.label &&
+                        <div className="zui-dropdown-flyout-title">
+                            <Button icon={props.icon} label={props.label} disabled />
+                        </div>}
+                    {props.showSearchBox &&
+                        <TextInput placeholder={props.searchBoxPlaceholder} value={search} onChange={setSearch} />}
+                    <div {...Mixin.use(scrollable, 'zui-dropdown-flyout-container')}>
+                        <div {...Mixin.use(scrollable.target)}>
+                            {displayItems.map(v => (
+                                <button key={String(v.value)} tabIndex={-1} type="button" className={classNames('zui-button', { selected: v.value === value })} onClick={() => onClick(v.value)}>
+                                    {v.icon &&
+                                        <Icon icon={v.icon} className="zui-button-icon" />}
+                                    <span>{v.label}</span>
+                                    {v.description &&
+                                        <span className="zui-button-description">{v.description}</span>}
+                                </button>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                </>}
             </div>
             {error && props.showErrorMessage !== false &&
                 <div className="zui-field-error">{error}</div>}
