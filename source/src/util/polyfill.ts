@@ -22,8 +22,8 @@ if (!String.prototype.matchAll) {
         }
         // Clone the regex so we don't update the last index on the regex they pass us
         rx = new RegExp(rx);
-        var cap: RegExpMatchArray | null = null;
-        var all: RegExpMatchArray[] = [];
+        var cap: RegExpExecArray | null = null;
+        var all: RegExpExecArray[] = [];
         while ((cap = rx.exec(this as string)) !== null) {
             all.push(cap);
         }

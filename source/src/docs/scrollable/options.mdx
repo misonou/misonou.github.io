@@ -187,6 +187,25 @@ Whether the `stickyHandle` be placed at the top or ottom of scrolling area.
 
 ## Hook options
 
+### `beforeScrollStart`
+
+Attach event listener that is invoked before scrolling is started.
+
+Scroll action initiated by user can be cancelled in `beforeScrollStart` event.
+
+```javascript
+$elm.scrollable({
+    // ...
+    beforeScrollStart: function (e) {
+        if (someCondition()) {
+            e.cancelScroll();
+        }
+    }
+});
+```
+
+> Note that scrolling directly through methods will not triggered this hook.
+
 ### `scrollEnd`
 
 Attach event listener that is invoked when the scrolling of content has stopped completely.

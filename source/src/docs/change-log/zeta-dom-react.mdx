@@ -1,6 +1,21 @@
 <Module name="zeta-dom-react" />
 
 # Change log
+
+## v0.6.0 (2025/02/04)
+
+#### Forms
+
+- Forward cancellation reason to `beforeLeave` event as `reason` property
+- [`ChoiceFieldProps.items`](:) can now be initially undefined
+- [`FormContext.focus`](:) now focuses input element associated with nested data path
+- Add [`FormFieldState.meta`](:) for supplementary detail about current state, for example, soft validation result on current value
+- Pass meta info (same as [`FormFieldState.meta`](:)) as fourth argument to validation callback
+
+#### Utilities
+
+- **Breaking change** &mdash; `undefined` and `null` is now ignored when passed to dependency provider, actting like if it was not mounted
+
 ## v0.5.17 (2025/02/13)
 
 - <kbd>fix</kbd> uninitialized variable access due to `setValue` being called synchronously in field type's hook

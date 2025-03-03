@@ -47,6 +47,11 @@ Attaches global hooks on scrollable events.
     #### `hooks`
 
     <dl>
+        #### `beforeScrollStart` <Badge.Optional /> <Badge.Version/>
+
+        Attach event listener that is invoked before scrolling is started.
+        Scroll action initiated by user can be cancelled in `beforeScrollStart` event.
+
         #### `scrollEnd` <Badge.Optional />
 
         Attach event listener that is invoked when the scrolling of content has stopped completely.
@@ -81,4 +86,5 @@ Attaches global hooks on scrollable events.
 <VersionTimeline module="jq-scrollable">
 - **1.7.0** `$.scrollable()`
 - **1.12.0** `$.scrollable.hook()`
+- **1.17.0** `beforeScrollStart` event
 </VersionTimeline>
