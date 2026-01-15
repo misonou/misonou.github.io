@@ -1,6 +1,6 @@
 import { map } from "zeta-dom/util";
 import { RefObject, useEffect, useRef, useState } from "react";
-import { useRefInitCallback } from "zeta-dom-react";
+import { useErrorHandler, useRefInitCallback } from "zeta-dom-react";
 import { Mixin, useFocusStateMixin } from "brew-js-react";
 import { HTMLConsole, IConsole } from "@misonou/react-app-utils";
 import { ReactComponent as RubbishBin } from "src/styles/icons/rubbish-bin.svg";
@@ -38,6 +38,7 @@ function createConsoleProxy(consoleRef: RefObject<IConsole>): IConsole {
 
 export function DemoWithSource(props: DemoWithSourceProps) {
     const Component = props.component;
+    const errorHandler = useErrorHandler();
     const focusStateMixin = useFocusStateMixin();
     const consoleRef = useRef<IConsole>(window.console);
     const [console] = useState(createConsoleProxy(consoleRef));
@@ -47,10 +48,13 @@ export function DemoWithSource(props: DemoWithSourceProps) {
 
     useEffect(() => {
         subscribeAsync(focusStateMixin.elements()[0], true);
-    }, [])
+        return errorHandler.catch(e => {
+            console.error("Uncaught", e);
+        });
+    }, []);
 
     return (
-        <div {...Mixin.use(focusStateMixin, 'app-demo app-demo-block')}>
+        <div {...Mixin.use(errorHandler.ref, focusStateMixin, 'app-demo app-demo-block')}>
             {props.title &&
                 <div className="app-demo-block-title">{props.title}</div>}
             <div className="app-demo-view" style={{ maxHeight: props.maxHeight, overflow: props.maxHeight === 'none' ? 'visible' : 'auto' }}>

@@ -1,5 +1,6 @@
 import { TextInput } from "src/components/controls";
 import { FaMobileAlt, FaRegCopy } from "react-icons/fa";
+import { useState } from "react";
 import tsx from "!raw-loader!src/components/controls/TextInput.tsx";
 
 <Module name="zeta-dom-react" />
@@ -75,6 +76,17 @@ import tsx from "!raw-loader!src/components/controls/TextInput.tsx";
 ```tsx
 <TextInput label="Field with error" error="Error" />
 ```
+
+## Example: Custom validation
+
+<Inline>
+{() => {
+    const [value, setValue] = useState('');
+    return <TextInput label="Field with error" value={value} onChange={setValue}
+        onValidate={v => /^\w/.test(v) ? '' : 'Must be start with letter'} />
+}}
+</Inline>
+
 
 ## Source code
 

@@ -26,6 +26,8 @@ initSortable(element, options)
 
         #### `onOrderChanged`
         A callback which receives the index of an element before and after reordering.
+
+        > When the callback throws an error or returns a rejected promise, the reordering is reverted.
     </dl>
 </dl>
 

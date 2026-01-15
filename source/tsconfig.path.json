@@ -6,8 +6,8 @@
             "../@types"
         ],
         "paths": {
-            "@misonou/react-app-utils": ["../react-app-utils", "node_modules/react-app-utils"],
-            "@misonou/react-css-utils": ["../react-css-utils", "node_modules/react-css-utils"],
+            "@misonou/react-app-utils": ["../react-app-utils", "node_modules/@misonou/react-app-utils"],
+            "@misonou/react-css-utils": ["../react-css-utils", "node_modules/@misonou/react-css-utils"],
             "jq-scrollable": ["../jquery-scrollable", "node_modules/jq-scrollable"],
             "zeta-dom": ["../zeta-dom/src", "node_modules/zeta-dom"],
             "zeta-dom/*": ["../zeta-dom/src/*", "node_modules/zeta-dom/*"],

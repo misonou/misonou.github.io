@@ -20,6 +20,7 @@ interface MDXMetaData {
 
 const viewComponents: Zeta.Dictionary<MDXViewComponent> = {};
 const mdxComponents = {
+    pre: "pre",
     code: MDXCodeElement,
     table: MDXTableElement,
     Badge,

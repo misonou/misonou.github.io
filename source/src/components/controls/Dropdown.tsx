@@ -105,7 +105,7 @@ export function Dropdown<T = string>(props: DropdownProps<T>) {
 
     function onClick(value: T) {
         setValue(value);
-        if (dom.eventSource !== 'keyboard' || dom.pressedKey === 'enter') {
+        if ((dom.eventSource !== 'keyboard' && dom.eventSource !== 'input') || dom.pressedKey === 'enter') {
             flyout.close();
         }
     }
