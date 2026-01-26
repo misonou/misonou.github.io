@@ -1,9 +1,28 @@
 import ts from "typescript";
 import fs from "node:fs";
 import { EOL } from "node:os";
-import { resolve } from "node:path";
+import path from "node:path";
+import { spawnSync } from "node:child_process";
 
-const [, , filePath, name, outname] = process.argv;
+const [, scriptPath, filePath, name, outname] = process.argv;
+
+if (fs.lstatSync(filePath).isDirectory()) {
+    fs.globSync('**/*.ts', { cwd: filePath, absolute: true }).forEach(f => {
+        spawnSync(`node`, [scriptPath, path.join(filePath, f), '*'], { env: { OUTPUT_DIRECTORY: outname } });
+    });
+    process.exit(0);
+}
+
+let console = globalThis.console;
+if (process.env.OUTPUT_DIRECTORY) {
+    const outputDir = path.resolve(process.env.OUTPUT_DIRECTORY);
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+    const file = path.join(outputDir, `${outname || name}.mdx`);
+    const writeStream = fs.createWriteStream(file, { encoding: 'utf8' });
+    console = new console.Console(writeStream);
+}
 
 const badge = {
     optional: '<Badge.Optional />',
@@ -41,6 +60,14 @@ const statements = source.getChildAt(0).getChildren().flatMap(v => {
     return v;
 });
 
+if (name === '*') {
+    const groupedStatements = Object.groupBy(statements, v => v.name?.escapedText);
+    for (let name in groupedStatements) {
+        spawnSync(`node`, [scriptPath, filePath, name], { stdio: 'inherit' });
+    }
+    process.exit(0);
+}
+
 const nodes = statements.filter(v => v.name?.escapedText === name);
 if (nodes[0]) {
     switch (nodes[0].kind) {
@@ -48,6 +75,10 @@ if (nodes[0]) {
         case ts.SyntaxKind.ClassDeclaration: {
             outputModule();
             processClassOrInterface(nodes[0]);
+            break;
+        }
+        case ts.SyntaxKind.EnumDeclaration: {
+            processEnum(nodes[0]);
             break;
         }
         case ts.SyntaxKind.FunctionDeclaration: {
@@ -78,6 +109,41 @@ if (nodes[0]) {
             break;
         }
     }
+}
+
+/**
+ * @param {import("typescript").EnumDeclaration} node
+ * @param {*} nested
+ */
+function processEnum(node, nested) {
+    const result = { i: name, sp: [] };
+    node.members.forEach(v => {
+        result.sp.push({
+            name: v.name.escapedText,
+            jsDoc: [{ comment: v.initializer && `Integer value ${v.initializer.text || (v.initializer.getText(source))}.` }]
+        });
+    });
+    output[nested ? 'h2' : 'h1'](name + ' enum');
+    outputDescription(node);
+
+    console.log('The enum class support getting name from value and value from name.');
+    console.log('');
+    console.log('```javascript');
+    console.log(`${name}[${name}.${result.sp[0].name}] === '${result.sp[0].name}';`);
+    console.log('```');
+    console.log('');
+
+    console.log(`<MemberList`);
+    console.log(`    i="${outname || name}"`);
+    for (let i in result) {
+        if (i !== 'i' && result[i][0]) {
+            console.log(`    ${i}={[${result[i].map(v => `'${v.name}'`).join(', ')}]}`);
+        }
+    }
+    console.log(`/>`);
+    console.log('');
+
+    outputProperties(result.sp, 'Static properties', nested);
 }
 
 function processClassOrInterface(node, nested, treatAsStatic) {
@@ -175,9 +241,9 @@ function processClassOrInterface(node, nested, treatAsStatic) {
 }
 
 function getPackage(filePath) {
-    let folder = resolve(filePath, '..');
+    let folder = path.resolve(filePath, '..');
     while (!fs.existsSync(`${folder}/package.json`)) {
-        folder = resolve(folder, '..');
+        folder = path.resolve(folder, '..');
     }
     return JSON.parse(fs.readFileSync(`${folder}/package.json`, 'utf8'));
 }

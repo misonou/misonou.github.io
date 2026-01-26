@@ -33,7 +33,7 @@ export const SyntaxHighlight = memo((props: SyntaxHighlightProps) => {
             return { code: '', collapsedLines: 0 };
         }
         const isTS = language === 'tsx' || language === 'ts';
-        const code = props.source.trim().replace(/\n( {4,})/g, (v, a) => '\n' + a.slice(a.length / 2));
+        const code = language === 'text' ? props.source.trim() : props.source.trim().replace(/\n( {4,})/g, (v, a) => '\n' + a.slice(a.length / 2));
         const collapsedLines = isTS ? code.split('\n').findIndex(v => /^(export )?(const|(default )?(async )?function)/.test(v)) - 1 : 0;
         return {
             code,
@@ -42,7 +42,7 @@ export const SyntaxHighlight = memo((props: SyntaxHighlightProps) => {
     }, [language, props.source]);
 
     const tokensOrCode = tokens ?? code;
-    const theme = app.effectiveDarkMode ? themes.vsDark : themes.github;
+    const theme = themes[app.codeTheme];
     return (
         <div {...Mixin.use(scrollable, 'app-code-block', props.className)}>
             <code {...Mixin.use(scrollable.target)} data-language={props.language}>
@@ -56,52 +56,30 @@ const Render = memo((props: { theme: PrismTheme, language: string, tokensOrCode:
     const { theme, language, tokensOrCode, collapsedLines } = props;
 
     return renderTokens(theme, language, tokensOrCode, ({ tokens, getLineProps, getTokenProps }) => {
-        const isTS = language === 'tsx' || language === 'ts';
-        const isNullComment = language === 'html' ? '<!-- ... -->' : '/* ... */';
-        return (
-            <>
-                {tokens.map((line, i) => {
-                    const lineProps = getLineProps({ line });
-                    const checkCommentNeighbor = (token: Zeta.ArrayMember<typeof line>, match: string) => {
-                        if (token && token.types.includes('punctuation') && token.content === match && !token.types.includes('comment-hid')) {
-                            token.types.push('comment-hid');
+        const children = tokens.map((line, i) => {
+            const lineProps = getLineProps({ line });
+            if (line.some(v => v.types.includes('comment') && v.content !== '\u2026') &&
+                line.every(v => v.types.includes('comment') || /^\s*$/.test(v.content))) {
+                lineProps.className += ' is-comment';
+            }
+            if (i < collapsedLines) {
+                lineProps.className += ' collapsed';
+            }
+            return (
+                <div key={i} {...lineProps}>
+                    {i === 0 && collapsedLines > 0 &&
+                        <i className="app-code-block-toggle" onClick={toggleCollapse}></i>}
+                    {line.map((token, key) => {
+                        const { children, ...props } = getTokenProps({ token });
+                        if (token.types.includes('comment') && token.types.at(-1) !== 'comment') {
+                            props.style = {};
                         }
-                    };
-                    if (isTS) {
-                        let index = line.findIndex(v => v.types.includes('comment'));
-                        if (index >= 0) {
-                            checkCommentNeighbor(line[index - 1], '{');
-                            checkCommentNeighbor(line[index + 1], '}');
-                        }
-                    }
-                    if (line.some(v => v.types.includes('comment') && v.content !== isNullComment) &&
-                        line.every(v => v.types.includes('comment') || v.types.includes('comment-hid') || ((/^\s*$/.test(v.content))))) {
-                        lineProps.className += ' is-comment';
-                    }
-                    if (i < collapsedLines) {
-                        lineProps.className += ' collapsed';
-                    }
-                    return (
-                        <div key={i} {...lineProps}>
-                            {i === 0 && collapsedLines > 0 &&
-                                <i className="app-code-block-toggle" onClick={toggleCollapse}></i>}
-                            {line.map((token, key) => {
-                                const { children, ...props } = getTokenProps({ token });
-                                return (
-                                    <span key={key} {...props}>
-                                        {!token.types.includes('comment') || children.startsWith('/**') ?
-                                            children :
-                                            children === isNullComment ?
-                                                <span className="comment-dot">...</span> :
-                                                <span className={children.startsWith('// ->') ? 'comment-res' : 'comment-msg'}>{children.replace(/^\/(\*|\/+)\s*(->\s)?|\s*\*\/$/g, '')}</span>}
-                                    </span>
-                                );
-                            })}
-                        </div>
-                    );
-                })}
-            </>
-        );
+                        return (<span key={key} {...props}>{children}</span>);
+                    })}
+                </div>
+            );
+        })
+        return (<>{children}</>);
     });
 
     function toggleCollapse(e: React.UIEvent) {

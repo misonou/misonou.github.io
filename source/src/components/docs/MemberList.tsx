@@ -17,7 +17,7 @@ interface MemberListProps {
 }
 
 function getHashDefault(i: string, v: string) {
-    return `${i}-${v.toLowerCase().replace('()', '')}`;
+    return i + (i && '-') + v.toLowerCase().replace('()', '');
 }
 
 function SubList(props: { i: string, title: string, list: string[], getHash?: (i: string, v: string) => string }) {

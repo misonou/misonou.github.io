@@ -1245,8 +1245,14 @@ button.variant-outlined.loading:after {
  * Radio list
  ***********************************************/
 
- .zui-radio-list.orientation-vertical {
+.zui-radio-list {
     display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5em 1em;
+}
+
+.zui-radio-list.orientation-vertical {
     flex-direction: column;
 }
 
@@ -1261,23 +1267,6 @@ button.variant-outlined.loading:after {
     border: 1px solid var(--color-mono-40);
     border-radius: 4px;
     padding: 1em;
-}
-
-.zui-radio-list:not(.orientation-vertical) label + label {
-    margin-left: 1em;
-}
-
-.zui-radio-list.variant-outlined:not(.orientation-vertical) label + label {
-    margin-left: 1em;
-}
-
-.zui-radio-list.orientation-vertical label {
-    margin: 0.25em 0;
-    width: 50%;
-}
-
-.zui-radio-list.orientation-vertical label:first-child {
-    margin-top: unset;
 }
 
 @media (max-width: 800px) {

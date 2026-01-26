@@ -38,6 +38,8 @@ export function NavMenu() {
                 $(cur).closest('.app-nav-section.root').siblings().addClass('collapsed');
                 $(cur).addClass('current').parents('.app-nav-section').removeClass('collapsed');
                 scrollIntoView(cur, 'auto center', 0, cur.closest('[scrollable]')!, behavior);
+            } else if (path.endsWith('/index')) {
+                setActive(path.slice(0, -6), behavior);
             }
         }
         setActive(app.initialPath, 'instant');

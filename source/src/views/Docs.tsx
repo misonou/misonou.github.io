@@ -46,7 +46,12 @@ async function importMDXOrNotFound(path: string): Promise<any> {
         if (isErrorWithCode(e, 'MODULE_NOT_FOUND')) {
             if (!path.endsWith('/index')) {
                 await importMDXOrNotFound(path + '/index');
-                return redirectTo(Docs, { remainingSegments: path + '/index' });
+                return {
+                    default: () => {
+                        redirectTo(Docs, { remainingSegments: path + '/index' });
+                        return <></>;
+                    }
+                };
             }
             return await import('src/docs/not-found.mdx');
         }
@@ -104,6 +109,9 @@ function DocsView({ viewContext }: ViewProps<{}>) {
                     return;
                 }
                 const meta = (e.view! as MDXViewComponent).getMeta();
+                if (!meta) {
+                    return;
+                }
                 setState(meta);
                 document.title = meta.title + ' - misonou/docs';
 

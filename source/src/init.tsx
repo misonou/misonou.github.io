@@ -6,6 +6,7 @@ import scrollable from "brew-js/extension/scrollable";
 import dom from "zeta-dom/dom";
 import { bind, scrollIntoView, setClass } from "zeta-dom/domUtil";
 import { extend } from "zeta-dom/util";
+import type { PrismThemeNames } from "src/util/prism";
 
 const DARK_MODE = 'zeta-doc.dark-mode';
 const darkModeMQ = matchMedia('(prefers-color-scheme: dark)');
@@ -18,6 +19,9 @@ const appContext = {
             true: true,
             false: false
         })[this.darkMode] ?? darkModeMQ.matches;
+    },
+    get codeTheme(): PrismThemeNames {
+        return this.effectiveDarkMode ? 'vsDark' : 'github';
     }
 };
 

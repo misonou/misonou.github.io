@@ -84,7 +84,7 @@ function transformJSXComponent(path, t, state, transform) {
  * @param {string} code
  */
 function getParsedSource(language, code) {
-    code = code.trim().replace(/\n( {4,})/g, (v, a) => '\n' + a.slice(a.length / 2));
+    code = language === 'text' ? code.trim() : code.trim().replace(/\n( {4,})/g, (v, a) => '\n' + a.slice(a.length / 2));
     let result;
     ReactDOM.renderToStaticMarkup(React.createElement(Highlight, {
         language,
@@ -95,9 +95,51 @@ function getParsedSource(language, code) {
         }
     }));
     return {
-        tokens: result,
+        tokens: transformTokens(language, result),
         collapsedLines: language === 'tsx' || language === 'ts' ? code.split('\n').findIndex(v => /^(export )?(const|(default )?(async )?function)/.test(v)) - 1 : 0
     };
+}
+
+/**
+ * @param {string} language
+ * @param {{ types: string[]; content: string; empty?: boolean; }[][]} tokens
+ */
+function transformTokens(language, tokens) {
+    const isTSX = language === 'tsx';
+    const isNullComment = language === 'html' ? '<!-- ... -->' : '/* ... */';
+    const isNullComment2 = '/* \u2026 ,*/';
+
+    tokens.forEach(line => {
+        /**
+         * @param {(typeof tokens)[number][number]} token
+         * @param {string} match
+         */
+        const checkCommentNeighbor = (token, match) => {
+            if (token && token.types.includes('punctuation') && token.content === match) {
+                token.types.push('comment', 'comment-hid');
+            }
+        };
+        if (isTSX) {
+            // handle JSX comments {/* */}
+            let index = line.findIndex(v => v.types.includes('comment'));
+            if (index >= 0) {
+                checkCommentNeighbor(line[index - 1], '{');
+                checkCommentNeighbor(line[index + 1], '}');
+            }
+        }
+        line.forEach(token => {
+            if (token.types.includes('comment')) {
+                if (token.content === isNullComment || token.content === isNullComment2) {
+                    token.types.push('comment-dot');
+                    token.content = '\u2026';
+                } else if (!token.content.startsWith('/**') && !token.types.includes('comment-hid')) {
+                    token.types.push(token.content.startsWith('// ->') ? 'comment-res' : 'comment-msg');
+                    token.content = token.content.replace(/^(\/\*|\/+|<!--)\s*(->\s)?|\s*\*\/$|\s*-->$/g, '').replace(/\.{3}(?!\.)/g, '\u2026');
+                }
+            }
+        });
+    });
+    return tokens;
 }
 
 function formatImport(name, defaults) {

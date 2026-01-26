@@ -1,9 +1,10 @@
 :root {
     --font-default: 'GitLab Sans', 'Source Sans Pro', 'Noto Sans', 'Open Sans', sans-serif;
-    --font-monospace: 'Source Code Pro', 'Cascadia Mono', monospace;
+    --font-monospace: 'Cascadia Mono', 'Source Code Pro', monospace;
     --font-monospace-nav: Menlo, Consolas, Monaco, var(--font-monospace);
 
     --color-aux: #a0a3a8;
+    --color-aux-dark: #4c5360;
     --color-border: #e0e3e8;
     --color-background: #f9f9f9;
     --color-text: black;
@@ -14,6 +15,7 @@
     --color-notice: #66859d;
     --color-notice-bg: #deeaf3;
     --color-comment: #5f5625;
+    --color-comment-dark: #a9a06c;
     --color-comment-bg: #f2eab3;
 
     --page-bg: white;
@@ -253,8 +255,8 @@ pre {
 pre,
 code {
     font-family: var(--font-monospace);
-    line-height: 1.3333;
-    font-weight: 500;
+    line-height: 1.4;
+    font-weight: 400;
     white-space: pre;
 }
 
@@ -276,14 +278,14 @@ h4 code {
     padding: 0.15em 0.25em;
     border-radius: 2px;
     background-color: var(--color-text-bg);
-    font-size: 80%;
-    white-space: normal;
+    white-space: pre-wrap;
     box-decoration-break: clone;
 }
 
-h3 code {
+h3 code,
+h4 code {
     font-weight: 600;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
 }
 
 h1 del,

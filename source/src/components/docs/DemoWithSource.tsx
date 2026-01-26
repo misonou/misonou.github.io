@@ -15,7 +15,7 @@ export interface DemoWithSourceProps {
     title?: string;
     maxHeight?: number | 'none';
     component: React.FC<DemoComponentProps>;
-    source: Zeta.Dictionary<string>;
+    source?: Zeta.Dictionary<string>;
     console?: boolean;
 }
 
@@ -72,7 +72,8 @@ export function DemoWithSource(props: DemoWithSourceProps) {
                         <pre ref={consoleInitRef} className="app-demo-console active"></pre>
                     </div>
                 </div>}
-            <CodeBlockWithTab source={map(props.source, (v, i) => ({ name: i, content: v }))} expandable />
+            {props.source &&
+                <CodeBlockWithTab source={map(props.source, (v, i) => ({ name: i, content: v }))} expandable />}
         </div>
     );
 }

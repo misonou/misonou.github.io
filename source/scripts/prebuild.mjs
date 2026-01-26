@@ -123,11 +123,11 @@ async function processFiles(path) {
                     if (!o.props.noRoot) {
                         addEntry(i, lastHash || null);
                     }
-                    ip?.map(v => i + (v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
-                    im?.map(v => i + (v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
-                    sp?.map(v => i + (v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
-                    sm?.map(v => i + (v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
-                    ev?.map(v => i + ': ' + v + ' event').forEach(v => addEntry(v));
+                    ip?.map(v => i + (i && v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
+                    im?.map(v => i + (i && v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
+                    sp?.map(v => i + (i && v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
+                    sm?.map(v => i + (i && v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));
+                    ev?.map(v => i + (i && ': ') + v + ' event').forEach(v => addEntry(v));
                     break;
                 }
                 case customComponents.Module: {
@@ -168,7 +168,7 @@ async function processFiles(path) {
                 if (pageTitle === 'Change log' && moduleName) {
                     pageTitle += ': ' + moduleName;
                 }
-                if (v.title === pageTitle || v.title.replace(/^<|>$|\(\)$/g, '') === pageTitle.replace(/ (class|component|interface|hook)$/, '')) {
+                if (v.title === pageTitle || v.title.replace(/^<|>$|\(\)$/g, '') === pageTitle.replace(/ (class|component|interface|hook|enum)$/, '')) {
                     delete v.pageTitle;
                 } else {
                     v.pageTitle = pageTitle;

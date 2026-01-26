@@ -63,7 +63,8 @@ module.exports = async ({ env }) => {
                                         loader: '@mdx-js/loader',
                                         /** @type {import('@mdx-js/loader').Options} */
                                         options: {
-                                            remarkPlugins: [RemarkGFM]
+                                            remarkPlugins: [RemarkGFM],
+                                            rehypePlugins: [require('./scripts/util/rehype-jsxprops')],
                                         }
                                     }
                                 ]

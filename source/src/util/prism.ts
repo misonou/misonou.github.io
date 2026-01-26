@@ -4,7 +4,9 @@ import React from "react";
 import { mapGet } from "zeta-dom/util";
 
 export type PrismTheme = typeof themes['dracula']
-export type RenderProps = Parameters<Parameters<typeof Highlight>[0]['children']>[0];
+export type PrismThemeNames = keyof typeof themes;
+export type HighlightProps = React.ComponentProps<typeof Highlight>;
+export type RenderProps = Parameters<HighlightProps['children']>[0];
 export type Token = RenderProps['tokens'] extends (infer T)[][] ? T : any;
 
 const styleCache = new WeakMap<PrismTheme, { dict: ThemeDict, cache: any }>();

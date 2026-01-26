@@ -684,7 +684,6 @@ button.app-docs-import-hint svg {
     background-color: transparent !important;
     min-width: 100%;
     border-radius: var(--border-radius);
-    font-size: 80%;
     box-sizing: border-box;
 }
 
@@ -739,39 +738,32 @@ button.app-docs-import-hint svg {
     display: none !important;
 }
 
-.token-line.is-comment {
-    user-select: none;
-}
-
-.token-line.is-comment {
-    margin-left: -0.75em;
-    margin-right: -1.25em;
-    margin-bottom: -0.25em;
-    padding: 0.25em 0.75em;
-    border-radius: var(--border-radius) 0 0 var(--border-radius);
-    background-color: var(--color-comment-bg);
-}
-
-.token-line.is-comment.collapsed {
+.token-line.collapsed.is-comment {
     display: none !important;
 }
 
 .token-line:not(.is-comment) + .token-line.is-comment,
 .token-line.is-comment + .token-line:not(.is-comment) {
-    margin-top: 0.5em;
+    margin-top: 1px;
 }
 
 .token-line.is-comment + .token-line.is-comment {
-    margin-top: -0.5em;
+    margin-top: -1px;
 }
 
-.comment-hid,
-.comment-msg,
-.comment-dot,
-.comment-res {
+.comment {
+    border-radius: var(--border-radius);
     font-style: normal;
     font-weight: normal;
     user-select: none;
+}
+
+.token-line.is-comment:has(+ .is-comment) .comment {
+    border-bottom-left-radius: 0;
+}
+
+.token-line.is-comment + .token-line.is-comment .comment {
+    border-top-left-radius: 0;
 }
 
 .comment-hid {
@@ -780,35 +772,31 @@ button.app-docs-import-hint svg {
 
 .comment-dot {
     color: var(--color-aux);
-    font-family: var(--font-default);
-    letter-spacing: 0.02em;
+}
+
+.comment-msg,
+.comment-res {
+    padding: 1px calc(1ch - 2px);
+    border-left: 2px solid;
 }
 
 .comment-msg {
+    border-left-color: var(--color-comment-dark);
+    background-color: var(--color-comment-bg);
     color: var(--color-comment);
 }
 
 .comment-res {
-    color: var(--color-aux);
+    border-left-color: var(--color-aux);
+    background-color: var(--color-border);
+    color: var(--color-aux-dark);
 }
 
 .comment-res::before {
     content: '=';
-    display: inline-block;
-    margin-right: 0.5em;
-    width: 1.25em;
-    height: 1.25em;
-    border-radius: var(--border-radius);
-    background-color: var(--color-border);
-    line-height: 1.25;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.token-line:not(.is-comment) .comment-msg {
-    padding: 0.1em 0.5em;
-    border-radius: 2px;
-    background-color: var(--color-comment-bg);
+    margin: 0 0.75ch 0 0.25ch;
+    color: var(--color-aux);
+    font-weight: 700;
 }
 
 .docs-waterpipe-example {
@@ -852,6 +840,8 @@ button.app-docs-import-hint svg {
 .docs-waterpipe-example i.equal-sign {
     margin-right: 0.5em;
     background-color: var(--color-border);
+    font-weight: 700;
+    user-select: none;
 }
 
 .docs-waterpipe-example-l {
