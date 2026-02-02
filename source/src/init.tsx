@@ -7,6 +7,7 @@ import dom from "zeta-dom/dom";
 import { bind, scrollIntoView, setClass } from "zeta-dom/domUtil";
 import { extend } from "zeta-dom/util";
 import type { PrismThemeNames } from "src/util/prism";
+import redirections from "src/data/redirect.json";
 
 const DARK_MODE = 'zeta-doc.dark-mode';
 const darkModeMQ = matchMedia('(prefers-color-scheme: dark)');
@@ -51,6 +52,12 @@ export const app = brew.with(router, scrollable, appContext)((app) => {
         setDarkMode();
     });
     setClass(dom.root, 'is-touch', 'ontouchstart' in window);
+
+    app.on('navigate', e => {
+        if (e.pathname in redirections) {
+            app.navigate((redirections as any)[e.pathname], true);
+        }
+    });
 });
 
 extend(window, { app, dom, $, scrollIntoView });

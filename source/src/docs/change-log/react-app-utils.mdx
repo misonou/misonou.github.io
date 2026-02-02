@@ -2,6 +2,16 @@
 
 # Change log
 
+## v1.7.2 (2026/02/02)
+
+- <kbd>fix</kbd> fixes to [`useUndoableState`](:)
+  - supplied callback was incorrectly invoked when there is no snapshot to undo/redo
+  - correcting signature's return type
+
+## v1.7.1 (2026/01/26)
+
+- <kbd>fix</kbd> cannot undo/redo current input when multiple instance mounted
+
 ## v1.7.0 (2025/03/03)
 
 - Add [`useUndoableState`](:) and [`UndoableInputMixin`](:)
