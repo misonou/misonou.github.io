@@ -9,7 +9,7 @@ implements the following properties or methods.
     i="FieldType"
     extendsTo={['ChoiceField', 'DateField', 'MultiChoiceField', 'NumericField', 'TextField', 'ToggleField']}
     ip={['defaultValue', 'valueProperty']}
-    im={['isEmpty()', 'normalizeValue()', 'postHook()']} />
+    im={['getMeta()', 'isEmpty()', 'normalizeValue()', 'postHook()']} />
 
 ## Instance properties
 
@@ -22,6 +22,28 @@ Specifies default value when there initial value has not been passed or set.
 Specifies the name of prop that will control [`FormFieldState.value`](:). Default is `value`.
 
 ## Instance methods
+
+### `FieldType.getMeta()` <Badge.Version />
+
+```javascript
+getMeta(meta, value, props)
+```
+
+Provides additional information about current field value for validation purpose.
+
+### Parameters
+
+<dl>
+    #### `meta`
+    Default meta object.
+
+    #### `value`
+    Current field value.
+
+    #### `props`
+    Props passed to [`useFormField`](:).
+
+</dl>
 
 ### `FieldType.isEmpty()` <Badge.Optional />
 
@@ -73,6 +95,8 @@ Applies additional logic and modification to field state.
         #### `memo(factory, deps)`
         Recompute the memoized value when one of the deps has changed.
         Similar to `React.useMemo`.
+
+        > Starting from 0.6.0, callback is invoked with the dependency list as arguments.
     </dl>
 
 </dl>
@@ -83,4 +107,5 @@ Applies additional logic and modification to field state.
 - **0.3.5** Introduced
 - **0.3.11** `FieldType.defaultValue`<br/>`FieldType.normalizeValue()`
 - **0.5.9** `FieldType.postHook()`: `hook` parameter
+- **0.6.0** `FieldType.getMeta()`
 </VersionTimeline>

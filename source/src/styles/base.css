@@ -8,12 +8,12 @@
     --color-border: #e0e3e8;
     --color-background: #f9f9f9;
     --color-text: black;
-    --color-text-bg: #f0f0f0;
+    --color-text-bg: #00000010;
     --color-primary: green;
     --color-highlight: green;
-    --color-highlight-bg: rgba(0, 128, 0, 0.20);
+    --color-highlight-bg: #00800033;
     --color-notice: #66859d;
-    --color-notice-bg: #deeaf3;
+    --color-notice-bg: #ecf2f8;
     --color-comment: #5f5625;
     --color-comment-dark: #a9a06c;
     --color-comment-bg: #f2eab3;
@@ -36,7 +36,7 @@
     --color-border: #4b4c4e;
     --color-background: #333;
     --color-text: white;
-    --color-text-bg: #333;
+    --color-text-bg: #ffffff20;
     --color-primary: #62d062;
     --color-highlight: #62d062;
     --color-highlight-bg: rgb(153 255 153 / 20%);
@@ -210,6 +210,7 @@ p {
 blockquote {
     margin: 1em 0;
     padding: 0.75em 1em;
+    border-left: 2px solid var(--color-notice);
     border-radius: var(--border-radius);
     background-color: var(--color-notice-bg);
 }
@@ -226,7 +227,8 @@ ol {
 
 li > ul,
 li > ol {
-    margin-top: 0.5em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
 }
 
 li {

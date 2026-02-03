@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useReducer, useState } from "react";
 import { Mixin, useFocusStateMixin, useScrollableMixin } from "brew-js-react";
 import { FaAdjust, FaMoon, FaSun } from "react-icons/fa";
 import dom from "zeta-dom/dom";
@@ -34,7 +34,7 @@ export function Nav() {
     const scrollable = useScrollableMixin();
     const focusStateMixin = useFocusStateMixin();
     const [searchOpen, setSearchOpen] = useState(false);
-    const [module, setModule] = useState('');
+    const [module, setModule] = useReducer((_: string, v: string) => (app.sessionStorage.set('module', v), v), app.sessionStorage.get('module') || '');
 
     useEffect(() => {
         return app.on('navigate', () => {
@@ -64,7 +64,7 @@ export function Nav() {
                 <NavSearchBox module={module} onToggle={setSearchOpen} />
             </div>
             <div id="app-nav-content" {...Mixin.use(scrollable)}>
-                <NavMenu />
+                <NavMenu setModule={setModule} />
             </div>
         </nav>
     );

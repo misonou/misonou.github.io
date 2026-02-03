@@ -27,7 +27,7 @@ each(navData, function (i, v) {
     recursive(v);
 });
 
-export function NavMenu() {
+export function NavMenu(props: { setModule: React.Dispatch<string> }) {
     const ref = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
@@ -38,6 +38,9 @@ export function NavMenu() {
                 $(cur).closest('.app-nav-section.root').siblings().addClass('collapsed');
                 $(cur).addClass('current').parents('.app-nav-section').removeClass('collapsed');
                 scrollIntoView(cur, 'auto center', 0, cur.closest('[scrollable]')!, behavior);
+                if ($(cur).hasClass('hidden') ) {
+                    props.setModule(cur.dataset.module || '');
+                }
             } else if (path.endsWith('/index')) {
                 setActive(path.slice(0, -6), behavior);
             }

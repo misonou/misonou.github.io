@@ -79,13 +79,13 @@ import tsx from "!raw-loader!src/components/controls/TextInput.tsx";
 
 ## Example: Custom validation
 
-<Inline>
-{() => {
-    const [value, setValue] = useState('');
-    return <TextInput label="Field with error" value={value} onChange={setValue}
-        onValidate={v => /^\w/.test(v) ? '' : 'Must be start with letter'} />
-}}
-</Inline>
+<TextInput label="Custom validation"
+    onValidate={v => /^[0-9]/.test(v) ? '' : 'Must be start with a digit'} />
+
+```tsx
+<TextInput label="Custom validation"
+    onValidate={v => /^[0-9]/.test(v) ? '' : 'Must be start with a digit'} />
+```
 
 
 ## Source code

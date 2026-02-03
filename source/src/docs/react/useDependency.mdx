@@ -7,6 +7,9 @@ Gets data sent from producer or sends data to consumer.
 > Since v0.5.10, it is preferred to use [`Dependency.Consumer`](:) over the [`Dependency`](:) itself
   for a consumer.
 
+> Since v0.6.0, when `value` is `undefined` or `null`, or `factory` returns `undefined` or `null`,
+  it disables the provider as if it is not mounted.
+
 ```typescript
 const dependency = createDependency(defaultValue);
 

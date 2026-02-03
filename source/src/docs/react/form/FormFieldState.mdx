@@ -5,7 +5,7 @@
 <MemberList
     i="FormFieldState"
     extendsTo={['ChoiceFieldState', 'DateFieldState', 'MultiChoiceFieldState', 'NumericFieldState', 'TextFieldState', 'ToggleFieldState']}
-    ip={['elementRef', 'form', 'key', 'path', 'value', 'error', 'version']}
+    ip={['elementRef', 'form', 'key', 'path', 'value', 'error', 'version', 'meta']}
     im={['setValue()', 'setError()', 'validate()']} />
 
 ## Instance properties
@@ -34,6 +34,20 @@ Gets a unique key identifying the field.
 
 > If there is no parent form context, or `name` is not supplied to `useFormField`,
   an empty string will be returned.
+
+### `FormFieldState.meta` <Badge.ReadOnly /> <Badge.Version />
+
+Gets supplementary detail about current state, for example, soft validation result on current value.
+
+By default it contains following property:
+
+<dl>
+    #### `empty`
+    Whether the field is currently empty.
+
+    By default a field is empty if its associated value is `undefined`, `null`, the empty string or an empty array.
+    This behavior can be overriden by [`FieldType.isEmpty`](:) and [`FormFieldProps.isEmpty`](:).
+</dl>
 
 ### `FormFieldState.path` <Badge.ReadOnly />
 
@@ -89,6 +103,7 @@ A callback to trigger validation of the field.
 - **0.4.15** `FormFieldState.validate()`
 - **0.5.7** `FormFieldState.version`
 - **0.5.11** `FormFieldState.elementRef`: `current` property
+- **0.6.0** `FormFieldState.meta`
 </VersionTimeline>
 
 ## See also

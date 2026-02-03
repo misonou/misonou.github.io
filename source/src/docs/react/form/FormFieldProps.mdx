@@ -57,7 +57,7 @@ Specifies a callback to be invoked with the current value upon changes.
 
 ### `FormFieldProps.onValidate`
 
-Specifies validation handler. It receives three arguments:
+Specifies validation handler. It receives four arguments:
 
 <dl>
     #### `value`
@@ -69,6 +69,9 @@ Specifies validation handler. It receives three arguments:
 
     #### `form`
     [`FormContext`](:) object for the associated form, `null` will be passed if the field is not bound to a form.
+
+    #### `meta` <Badge.Version />
+    Meta information about current value. See [`FormFieldState.meta`](:) for more information.
 </dl>
 
 ### `FormFieldProps.required`
@@ -105,4 +108,5 @@ and field name is specified.
 - **0.1.8** Callback to `FormFieldProps.onValidate()` receives third argument
 - **0.3.4** `FormFieldProps.label`
 - **0.3.6** `FormFieldProps.clearWhenUnmount()`
+- **0.6.0** Callback to `FormFieldProps.onValidate()` receives fourth argument
 </VersionTimeline>

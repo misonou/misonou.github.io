@@ -28,17 +28,13 @@ getDate(str, base)
 
 Returns a date relative to another date.
 
-Supports relative dates in the following format:
-- A `+` or `-` sign, then number and unit (`y`, `m`, `w` and `d` for years, months, weeks and days), e.g. `+1d` 
-or `-1y`.
-- Multiple number and unit pairs can be specified, e.g. `+1y1d` or `-1y1d` which is evaluated from left to right(order matters because the months unit may result in different date due to various days in different month).    
-- Different signs can also be specified for each number and unit pair, e.g. `+1y-1d`.
-
 ### Parameters
 
 <dl>
     #### `str`
     A string specifying the relative date.
+
+    See [Relative dates](#s-relative-dates) for supported formats.
 
     #### `base` <Badge.Optional />
     An optional base date which calculation is based on. Default to today.
@@ -47,7 +43,7 @@ or `-1y`.
 
 ### Return value
 
-A string in standard format (YYYY-MM-DD), or an empty string if the base date is invalid.
+A string in standard format (YYYY-MM-DD), or an empty string if either the relative date or base date is invalid.
 
 ### `DateField.toDateObject()`
 
@@ -57,7 +53,7 @@ toDateObject(str)
 
 Converts a given string to its representated date, truncating time component to midnight in local time.
 
-If the string is in standard format (YYYY-MM-DD), the resulting date object will always have the represented date in local time.   
+If the string is in standard format (YYYY-MM-DD), the resulting date object will always have the represented date in local time.
 Otherwise it is up to browser to determine the original timezone and perform timezone conversion if necessary.
 
 #### Parameters
@@ -107,16 +103,16 @@ Formats display text for a given date.
 ### `DateFieldProps.max`
 
 Specifies the latest date allowed.
-It accepts `Date` object, timestamp in milliseconds, any parsable date string, or relative date from today.     
+It accepts `Date` object, timestamp in milliseconds, any parsable date string, or relative date from today.
 
-> For relative date format, see [`DateField.getDate()`](:).
+ See [Relative dates](#s-relative-dates) for supported formats.
 
 ### `DateFieldProps.min`
 
 Specifies the earliest date allowed.
-It accepts `Date` object, timestamp in milliseconds, any parsable date string, or relative date from today.     
+It accepts `Date` object, timestamp in milliseconds, any parsable date string, or relative date from today.
 
-> For relative date format, see [`DateField.getDate()`](:).
+ See [Relative dates](#s-relative-dates) for supported formats.
 
 ## DateFieldState interface
 
@@ -140,9 +136,46 @@ or an empty string if `max` is not specified or is invalid.
 Earliest allowed date in the standard format (YYYY-MM-DD),
 or an empty string if `min` is not specified or is invalid.
 
+
+## Relative dates
+
+> **Important** Starting from 0.6.0, it no longer carries over to the following month if the target month has fewer days than the source date, e.g. `2024-01-31` plus one month will result in `2024-02-29` instead of `2024-03-02`
+
+Supports relative dates in the following format:
+- A `+` or `-` sign, then number and unit (`y`, `m`, `w` and `d` for years, months, weeks and days), e.g. `+1d`
+or `-1y`.
+- Multiple number and unit pairs can be specified, e.g. `+1y1d` or `-1y1d` which is evaluated from left to right(order matters because the months unit may result in different date due to various days in different month).
+- Different signs can also be specified for each number and unit pair, e.g. `+1y-1d`.
+
+### Relative date functions
+
+~~0.6.0~~
+
+Starting from 0.6.0, also supports the following functions base on today or an optional relative date:
+
+- `year-start([relative_date])`
+- `year-end([relative_date])`
+- `month-start([relative_date])`
+- `month-end([relative_date])`
+- `week-start([relative_date])`
+- `week-end([relative_date])`
+- `nth-after(n, day [, relative_date])`
+- `nth-before(n, day [, relative_date])`
+- `nth-of-year(n, day [, relative_date])`
+- `nth-of-month(n, day [, relative_date])`
+- `nth-last-of-year(n, day [, relative_date])`
+- `nth-last-of-month(n, day [, relative_date])`
+
+where
+- `n` is an integer (1 means first, 2 means second etc)
+- `day` is weekday in three letters e.g. `sun`
+- `relative_date` is an optional basic relative date string, e.g. `+1m`, `-1y2m` etc.
+
+
 ## Version information
 
 <VersionTimeline module="zeta-dom-react">
 - **0.4.2** Introduced
 - **0.5.15** `DateField.getDate()`
+- **0.6.0** Relative date functions
 </VersionTimeline>

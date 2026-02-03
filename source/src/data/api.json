@@ -425,6 +425,7 @@
         "FieldType",
         "FieldType.defaultValue",
         "FieldType.valueProperty",
+        "FieldType.getMeta()",
         "FieldType.isEmpty()",
         "FieldType.normalizeValue()",
         "FieldType.postHook()"
@@ -496,6 +497,7 @@
         "FormFieldState.value",
         "FormFieldState.error",
         "FormFieldState.version",
+        "FormFieldState.meta",
         "FormFieldState.setValue()",
         "FormFieldState.setError()",
         "FormFieldState.validate()"

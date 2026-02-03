@@ -2,19 +2,29 @@
 
 # Change log
 
-## v0.6.0 (2025/02/04)
+## v0.6.0 (2026/02/03)
 
 #### Forms
 
-- Forward cancellation reason to `beforeLeave` event as `reason` property
-- [`ChoiceFieldProps.items`](:) can now be initially undefined
-- [`FormContext.focus`](:) now focuses input element associated with nested data path
-- Add [`FormFieldState.meta`](:) for supplementary detail about current state, for example, soft validation result on current value
-- Pass meta info (same as [`FormFieldState.meta`](:)) as fourth argument to validation callback
+- Pass cancellation reasons to [`beforeLeave`](/docs/react/form/FormContext#s-beforeleave-event) event as `reason` property
+- Focus input associated with nested data when the path passed to [`FormContext.focus`](:) does not have a direct field
+- `memo` hook callbacks in [`FieldType.postHook`](:) are now invoked with values in the dependency list as arguments
+- [`FormFieldProps.onValidate`](:) now works for field without form context, unless `validateOnChange` is set to `false`
+- Field meta
+  - add [`FormFieldState.meta`](:) for meta information about current value
+  - add [`FieldType.getMeta`](:) for providing additional meta information
+  - invoke [`FormFieldProps.onValidate`](:) with a forth argument from the [`FormFieldState.meta`](:) property
+- [`ChoiceFieldProps.items`](:) can now be initially `undefined` without resetting value
+- Relative dates on [`DateField`](:)
+  - extended functions for relative date (see [Relative dates](/docs/react/form/DateField#s-relative-dates) for details)
+  - no longer carry over to the following month if the target month has fewer days than the source date,
+    e.g. `2024-01-31` plus one month will result in `2024-02-29` instead of `2024-03-02`
 
 #### Utilities
 
-- **Breaking change** &mdash; `undefined` and `null` is now ignored when passed to dependency provider, actting like if it was not mounted
+- **Breaking change** &mdash; `undefined` and `null` is now ignored when passed to dependency provider, acting like if it was not mounted
+- [`partial`](:) now returns stable callbacks
+- <kbd>fix</kbd> [`partial`](:) should treat `NaN` as equal values and `0` and `-0` as different values
 
 ## v0.5.17 (2025/02/13)
 

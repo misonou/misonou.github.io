@@ -61,3 +61,5 @@ A callback that
     partial(setState)('prop', value);
     partial(setState)('prop', (oldValue, oldStates) => newValue);
     ```
+
+> Starting from 0.6.0, the returned callback is stable and will not change between renders.

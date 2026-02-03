@@ -15,18 +15,8 @@ import { exec } from 'node:child_process';
     ];
     const entries = await Promise.all(
         packages.map(async (v) => {
-            const { stdout } = await promisify(exec)(`npm view ${v} time --json`);
-            const data = JSON.parse(stdout);
-            for (let i in data) {
-                if (i.includes('-')) {
-                    delete data[i];
-                } else {
-                    data[i] = data[i].slice(0, 10);
-                }
-            }
-            delete data.created;
-            delete data.modified;
-            return [v, data];
+            const { stdout } = await promisify(exec)(`npm view ${v} version`);
+            return [v, stdout.trim()];
         })
     );
     await writeFile('src/data/versions.json', JSON.stringify(Object.fromEntries(entries), null, 4), 'utf8');

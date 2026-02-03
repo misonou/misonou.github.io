@@ -32,7 +32,7 @@
     "waterpipe": "^2.8.1",
     "yaml-loader": "^0.8.0",
     "zeta-dom": "^0.6.1",
-    "zeta-dom-react": "^0.5.16"
+    "zeta-dom-react": "^0.6.0"
   },
   "overrides": {
     "typescript": "^5.7.3"

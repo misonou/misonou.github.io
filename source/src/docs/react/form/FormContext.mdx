@@ -29,17 +29,36 @@ Sets the default action label (or icon) to present for the enter key on virtual 
 ### `FormContext.formatError`
 
 Specifies a callback to generate custom error message for fields associated with this form context.
+It receives the following arguments:
 
-The first argument will be the [`ValidationError`](:) instance returned from validation callback.
-Note that the callback will not be invoked for values other than [`ValidationError`](:).
+<dl>
+    #### `error`
+    [`ValidationError`](:) instance returned from validation callback.
 
-### `FormContext.isValid`
+    #### `name`
+    Data path of the field that caused the validation error.
+
+    #### `props`
+    Properties being passed to [`useFormField`](:).
+
+    #### `form`
+    Associated `FormContext` instance if any.
+
+</dl>
+
+> Note that the callback will not be invoked for values other than [`ValidationError`](:).
+
+### `FormContext.isValid` <Badge.ReadOnly />
 
 Returns if all fields have passed validations.
 
 ### `FormContext.preventLeave`
 
 Whether it should prompt user before leaving the page when form data has been entered.
+
+### `FormContext.ref` <Badge.ReadOnly />
+
+A React ref function to be passed to the `<form>` element.
 
 ### `FormContext.validateOnChange`
 
@@ -63,14 +82,14 @@ element()
 element(path)
 ```
 
-Gets the form element.
+Gets the form element or the input element for the specified field.
 
-This method only works when `FormContext.ref` is passed to HTML elements.
+> This method only works when `FormContext.ref` is passed to HTML elements.
 
 #### Parameters
 
 <dl>
-    #### `path`
+    #### `path` <Badge.Optional />
     A string containing dot-separated property names or an array containing property names.
 
 </dl>
@@ -83,16 +102,17 @@ focus(kind)
 focus(path)
 ```
 
-Focus the form element.
-This method only works when `FormContext.ref` is passed to HTML elements.
+Focus the form element or the input element for the specified field.
+
+> This method only works when `FormContext.ref` is passed to HTML elements.
 
 #### Parameters
 
 <dl>
-    #### `kind` <Badge.Version />
+    #### `kind` <Badge.Optional /> <Badge.Version />
     Bitwise combination of `FormContext.ERROR_FIELD` or `FormContext.EMPTY_FIELD`.
 
-    #### `path`
+    #### `path` <Badge.Optional />
     A string containing dot-separated property names or an array containing property names.
 
 </dl>
@@ -284,9 +304,17 @@ async function checkNameAndEmail() {
 
 ### `FormContext.EMPTY_FIELD` <Badge.ReadOnly />
 
+See [`FormContext.focus()`](:).
+
 ### `FormContext.ERROR_FIELD` <Badge.ReadOnly />
 
+See [`FormContext.focus()`](:).
+
 ### `FormContext.formatError`
+
+Specifies a callback to generate custom error message for fields associated with this form context.
+
+It is overridden by instance's `formatError` property.
 
 ## Static methods
 
@@ -362,6 +390,13 @@ useEffect(()=> {
 }, [form]);
 ```
 
+#### Event properties
+
+<dl>
+    #### `reason` <Badge.Version />
+    Cancellation reason passed to [`cancelLock`](:).
+</dl>
+
 ### `dataChange` event
 
 Allow effects to apply when certain field has changed.
@@ -397,6 +432,7 @@ useEffect(() => {
 - **0.4.2** `FormContext.focus(type)`
 - **0.4.4** `FormContext.getErrors()`
 - **0.4.5** `FormContext.clear()`
+- **0.6.0** `beforeLeave` event: `reason` property
 </VersionTimeline>
 
 ## See also
