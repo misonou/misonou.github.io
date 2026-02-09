@@ -362,6 +362,9 @@
         "DialogState.open()",
         "DialogState.close()"
     ],
+    "/react/dialog/openDialog": [
+        "openDialog()"
+    ],
     "/react/domEventRef": [
         "domEventRef()"
     ],
@@ -689,7 +692,7 @@
     ],
     "/react/mixin/LoadingStateMixin": [
         [
-            "useFocusStateMixin()",
+            "useLoadingStateMixin()",
             ""
         ],
         [
@@ -697,6 +700,17 @@
             "#s-loadingstatemixin-class"
         ],
         "LoadingStateMixin.loading"
+    ],
+    "/react/mixin/MenuKeystrokeMixin": [
+        [
+            "useMenuKeystrokeMixin()",
+            ""
+        ],
+        [
+            "MenuKeystrokeMixin",
+            "#s-menukeystrokemixin-class"
+        ],
+        "MenuKeystrokeMixin.select()"
     ],
     "/react/mixin/Mixin": [
         "Mixin",
@@ -775,6 +789,17 @@
     ],
     "/react/mixin/StaticAttributeMixin": [
         "StaticAttributeMixin"
+    ],
+    "/react/mixin/UndoableInputMixin": [
+        [
+            "useUndoableInputMixin()",
+            ""
+        ],
+        [
+            "UndoableInputMixin",
+            "#s-undoableinputmixin-class"
+        ],
+        "UndoableInputMixin.onChange()"
     ],
     "/react/mixin/UnmanagedClassNameMixin": [
         [
@@ -870,6 +895,9 @@
     ],
     "/react/useSingleton": [
         "useSingleton()"
+    ],
+    "/react/useUndoableState": [
+        "useUndoableState()"
     ],
     "/react/useUnloadEffect": [
         "useUnloadEffect()"

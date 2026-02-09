@@ -403,8 +403,7 @@ pre > .app-demo-source > .app-demo-source-tab > div:first-child {
 }
 
 h1 + .app-docs-member,
-h2 + .app-docs-member,
-.app-docs-import + .app-docs-member {
+h2 + .app-docs-member {
     margin-top: 1em;
 }
 
@@ -544,6 +543,51 @@ button.app-docs-import-hint {
 button.app-docs-import-hint svg {
     font-size: 150%;
     vertical-align: bottom !important;
+}
+
+.app-docs-import-location {
+    display: flex;
+    margin: 1em 0;
+    white-space: nowrap;
+    overflow: hidden;
+    flex-wrap: wrap;
+    gap: 0.25em 1em;
+}
+
+.app-docs-import-location h4 {
+    width: 100%;
+    margin: 0 0 0.25em;
+    color: var(--color-aux);
+    font-size: 90%;
+}
+
+.app-docs-import-location a:link,
+.app-docs-import-location a:visited {
+    display: inline-block;
+    color: var(--color-notice);
+    font-size: 80%;
+}
+
+.app-docs-import-location a:before {
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 2ch;
+    font-weight: bold;
+}
+
+.app-docs-import-location a.js:before {
+    content: 'JS';
+    color: #fbc02d;
+}
+
+.app-docs-import-location a.dts:before {
+    content: 'TS';
+    color: #00a23c;
+}
+
+.app-docs-import-location a.ts:before {
+    content: 'TS';
+    color: #007acc;
 }
 
 :is(h1, h2, h3) + p > del:first-child,

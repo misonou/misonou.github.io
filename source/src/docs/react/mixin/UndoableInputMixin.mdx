@@ -1,0 +1,77 @@
+<Module name="@misonou/react-app-utils" />
+
+# UndoableInputMixin
+
+Monitors value and selection range for input elements.
+
+It is primarily used for maintaining undoability when input is updated programatically,
+which hinders native behavior.
+
+## Syntax
+
+```javascript
+useUndoableInputMixin()
+useUndoableInputMixin(initialValue)
+useUndoableInputMixin(initialValue, debounce)
+```
+
+<ImportHint
+    name="useUndoableInputMixin"
+    module="@misonou/react-app-utils"
+/>
+
+### Parameters
+
+<dl>
+    #### `initialValue` <Badge.Optional />
+    Initial state.
+
+    #### `debounce` <Badge.Optional />
+    Minimum interval in milliseconds before next state to be tracked.
+
+</dl>
+
+## UndoableInputMixin class
+
+> Mixin should be created using [`useUndoableInputMixin`](:) and applied to element by `Mixin.use`.
+
+<ImportHint
+    name="UndoableInputMixin"
+    module="@misonou/react-app-utils"
+    expanded
+/>
+
+<MemberList
+    i="UndoableInputMixin"
+    extends={['StatefulMixin']}
+    im={['onChange()']}
+/>
+
+## Instance methods
+
+### `UndoableInputMixin.onChange()`
+
+```javascript
+onChange(callback)
+```
+
+Adds an listener to be invoked when value is changed.
+Changes caused by undo and redo are also monitored.
+
+### Parameters
+
+<dl>
+    #### `callback`
+    A callback the receives the new value and the triggering input element.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="@misonou/react-app-utils">
+- **1.7.0** Introduced
+</VersionTimeline>
+
+## See also
+
+- [`useUndoableState`](:)

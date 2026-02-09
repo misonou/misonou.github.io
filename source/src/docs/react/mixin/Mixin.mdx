@@ -16,7 +16,7 @@
 
 ### `Mixin.dispose()`
 
-```javascript        
+```javascript
 dispose()
 ```
 
@@ -113,14 +113,9 @@ use(ref)
 use(ref, args0)
 use(ref, args0, args1)
 use(ref, args0, args1, /* … ,*/ argsN)
-use(mixin)
-use(mixin, args0)
-use(mixin, args0, args1)
-use(mixin, args0, args1, /* … ,*/ argsN)
-use()
-use(mixins0)
-use(mixins0, mixins1)
-use(mixins0, mixins1, /* … ,*/ mixinsN)
+use(args0)
+use(args0, args1)
+use(args0, args1, /* … ,*/ argsN)
 ```
 
 Applies React ref and mixins to element.
@@ -131,13 +126,16 @@ Applies React ref and mixins to element.
     #### `ref`
     A ref callback or ref object.
 
-    #### `mixin`
-    Mixin instance.
-
-    #### `mixins0` … `mixinsN` <Badge.Optional />
-    Mixin instances.
-
     #### `args0` … `argsN` <Badge.Optional />
     Mixin instances or string literals. String literals are applied to element as CSS classes.
 
+    > The first argument cannot be string before v0.7.0.
+
 </dl>
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.1.0** Introduced
+- **0.5.3** `Mixin.tabRoot`
+</VersionTimeline>

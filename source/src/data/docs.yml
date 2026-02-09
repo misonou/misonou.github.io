@@ -464,6 +464,10 @@
           path: /react/useSingleton
           class: code
           module: zeta-dom-react
+        - title: useUndoableState
+          path: /react/useUndoableState
+          class: code
+          module: react-app-utils
         - title: useUnloadEffect()
           path: /react/useUnloadEffect
           class: code
@@ -723,6 +727,10 @@
           path: /react/dialog/DialogState
           class: code
           module: brew-js-react
+        - title: openDialog()
+          path: /react/dialog/openDialog
+          class: code
+          module: brew-js-react
 - title: React Translation (i18n)
   pages:
     - title: Using I18n in React
@@ -808,6 +816,10 @@
           path: /react/mixin/ClassNameToggleMixin
           class: code
           module: brew-js-react
+        - title: FocusStateMixin
+          path: /react/mixin/FocusStateMixin
+          class: code
+          module: brew-js-react
         - title: FlyoutMixin
           path: /react/mixin/FlyoutMixin
           class: code
@@ -816,6 +828,14 @@
           path: /react/mixin/FlyoutToggleMixin
           class: code
           module: brew-js-react
+        - title: LoadingStateMixin
+          path: /react/mixin/LoadingStateMixin
+          class: code
+          module: brew-js-react
+        - title: MenuKeystrokeMixin
+          path: /react/mixin/MenuKeystrokeMixin
+          class: code
+          module: react-app-utils
         - title: ScrollIntoViewMixin
           path: /react/mixin/ScrollIntoViewMixin
           class: code
@@ -832,6 +852,10 @@
           path: /react/mixin/StaticAttributeMixin
           class: code
           module: brew-js-react
+        - title: UndoableInputMixin
+          path: /react/mixin/UndoableInputMixin
+          class: code
+          module: react-app-utils
         - title: UnmanagedClassNameMixin
           path: /react/mixin/UnmanagedClassNameMixin
           class: code

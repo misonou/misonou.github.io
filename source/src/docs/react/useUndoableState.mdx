@@ -1,0 +1,38 @@
+<Module name="@misonou/react-app-utils" />
+
+# useUndoableState
+
+Creates a React state that upon updates, old states are tracked and can be restored.
+
+## Syntax
+
+```javascript
+useUndoableState(initialState)
+useUndoableState(initialState, debounce)
+```
+
+<ImportHint
+    name="useUndoableState"
+    module="@misonou/react-app-utils"
+/>
+
+### Parameters
+
+<dl>
+    #### `initialState`
+    Initial state.
+
+    #### `debounce` <Badge.Optional />
+    Minimum interval in milliseconds before next state to be tracked.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="@misonou/react-app-utils">
+- **1.7.0** Introduced
+</VersionTimeline>
+
+## See also
+
+- [`UndoableInputMixin`](:)

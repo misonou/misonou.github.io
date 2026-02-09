@@ -12,48 +12,33 @@ export interface ImportHintProps {
     requireModule?: string;
     global?: string;
     expanded?: boolean;
+    typeOnly?: boolean;
     source?: { name: string, content: Source }[];
+    location?: { type: string, url: string }[];
 };
-
-function formatImport(name: string, defaults?: boolean) {
-    return defaults ? name : `{ ${name} }`;
-}
 
 export function ImportHint(props: ImportHintProps) {
     const focusStateMixin = useFocusStateMixin();
-    const [visible, setVisible] = useState(false);
-
-    const cjs = props.require ? props.require.split('.') : props.global?.split('.');
+    const [visible, setVisible] = useState(props.expanded || false);
     return (
         <>
-            {!props.expanded &&
-                <button className="app-docs-import-hint" onClick={() => setVisible(!visible)}>
+            {!visible &&
+                <button className="app-docs-import-hint" onClick={() => setVisible(true)}>
                     Show import
                     <Icon />
                 </button>}
-            {(visible || props.expanded) &&
+            {visible && <>
                 <div {...Mixin.use(focusStateMixin, 'app-demo app-demo-block app-docs-import')}>
-                    <CodeBlockWithTab
-                        language="javascript"
-                        source={props.source ?? [
-                            {
-                                name: 'module',
-                                content: `import ${formatImport(props.name, !!props.import)} from "${props.module}"`
-                            },
-                            {
-                                name: 'cjs',
-                                content: cjs ?
-                                    `const ${cjs[0] === 'default' ? cjs[1] || props.name : formatImport(cjs[1] || cjs[0])} = require("${props.requireModule ?? props.module.split('/').slice(0, props.module[0] === '@' ? 2 : 1).join('/')}")` +
-                                        (cjs[2] ? `\r\nconst ${props.name} = ${cjs[1]}.${cjs[2]}` : '') :
-                                    '/* No CommonJS export */'
-                            },
-                            {
-                                name: '<script>',
-                                content: props.global ? `const ${props.name} = ${props.global}` : '/* No UMD distribution */'
-                            },
-                        ]}
-                    />
-                </div>}
+                    <CodeBlockWithTab language="javascript" source={props.source || []} />
+                </div>
+                {props.location &&
+                    <div className="app-docs-import-location">
+                        <h4>Source location</h4>
+                        {props.location.map((v, i) => (
+                            <a key={i} className={'external ' + v.type} href={v.url} target="_blank" rel="noreferrer">{/([^\/]+)#L(\d+)$/.test(v.url) && RegExp.$1}</a>
+                        ))}
+                    </div>}
+            </>}
         </>
     );
 }

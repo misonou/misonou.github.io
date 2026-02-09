@@ -17,11 +17,27 @@
 const { readFileSync, statSync } = require('fs');
 const { getImportHintSource, getParsedSource, getDataObject, isJSXComponent, getJSXComponent, getRawContentFromImport, transformJSXComponent } = require('./util/transform-helpers');
 
+const packageNames = Object.create(null);
 const links = Object.create(null);
 
+function purgeExpiredCache() {
+    for (let f of [getApiIndex, getSourceLocations]) {
+        const mtime = statSync(f.f).mtimeMs;
+        if (f.l !== mtime) {
+            f.l = 0;
+            if (f === getApiIndex) {
+                for (let i in links) {
+                    delete links[i];
+                }
+            }
+        }
+    }
+}
+
 function getApiIndex() {
-    if (!getApiIndex.d) {
-        const data = JSON.parse(readFileSync('src/data/api.json', 'utf8'));
+    if (!getApiIndex.l) {
+        const mtime = statSync(getApiIndex.f).mtimeMs;
+        const data = JSON.parse(readFileSync(getApiIndex.f, 'utf8'));
         const dict = Object.create(null);
         for (let i in data) {
             data[i].forEach(v => {
@@ -30,12 +46,47 @@ function getApiIndex() {
             });
         }
         getApiIndex.d = dict;
+        getApiIndex.l = mtime;
     }
     return getApiIndex.d;
 }
+getApiIndex.f = 'src/data/api.json';
+getApiIndex.d = {};
+getApiIndex.l = 0;
+
+/**
+ * @param {string} pkg
+ */
+function getSourceLocations(pkg) {
+    if (!getSourceLocations.l) {
+        const mtime = statSync(getSourceLocations.f).mtimeMs;
+        const data = JSON.parse(readFileSync(getSourceLocations.f, 'utf8'));
+        getSourceLocations.d = data;
+        getSourceLocations.l = mtime;
+    }
+    return getSourceLocations.d[pkg];
+}
+getSourceLocations.f = 'src/data/symbols.json';
+getSourceLocations.d = {};
+getSourceLocations.l = 0;
 
 function generateAnchor(v) {
     return v.toLowerCase().replace(/\W+/g, '-').replace(/^-|-$/g, '');
+}
+
+/**
+ * @param {string} moduleName
+ */
+function getPackageName(moduleName) {
+    if (!packageNames[moduleName]) {
+        let index = 0;
+        if (moduleName[0] === '@') {
+            index = moduleName.indexOf('/') + 1;
+        }
+        index = moduleName.indexOf('/', index);
+        packageNames[moduleName] = index >= 0 ? moduleName.slice(0, index) : moduleName;
+    }
+    return packageNames[moduleName];
 }
 
 function getHref(text) {
@@ -240,11 +291,25 @@ function transformSnippets(component, path, props, t) {
 
 /** @type {Transformer} */
 function transformImportHint(component, path, props, t) {
-    const source = getImportHintSource(Object.fromEntries(props.map(v => [v.node.key.name, v.node.value.value])));
+    const propValues = Object.fromEntries(props.map(v => [v.node.key.name, v.node.value.value]));
+    const source = getImportHintSource(propValues);
     source.forEach(v => {
-        v.content = getParsedSource('javascript', v.content);
+        v.content = getParsedSource(v.name === 'ts' ? 'typescript' : 'javascript', v.content);
     });
     props.at(-1).insertAfter(t.objectProperty(t.identifier('source'), t.valueToNode(source)));
+
+    const sourceLoc = getSourceLocations(getPackageName(propValues.module)) || {};
+    const symbolLoc = sourceLoc.symbols?.[propValues.name];
+    if (symbolLoc) {
+        const locations = [].concat(symbolLoc).map(v => {
+            const ext = /\.(js|tsx?|d\.ts)#/.test(v) && RegExp.$1;
+            return {
+                url: `${sourceLoc.baseUrl}/${v}`,
+                type: ({ 'd.ts': 'dts' })[ext] || ext
+            };
+        });
+        props.at(-1).insertAfter(t.objectProperty(t.identifier('location'), t.valueToNode(locations)));
+    }
 }
 
 /** @type {Record<string, Transformer>} */
@@ -276,14 +341,7 @@ module.exports = function ({ types: t }) {
             },
             FunctionDeclaration(path, s) {
                 if (path.node.id.name === '_createMdxContent') {
-                    const mtimeMs = statSync('src/data/api.json').mtimeMs;
-                    if (getApiIndex.l !== mtimeMs) {
-                        getApiIndex.d = null;
-                        getApiIndex.l = mtimeMs;
-                        for (let i in links) {
-                            delete links[i];
-                        }
-                    }
+                    purgeExpiredCache();
                     const state = {
                         importSources: s.importSources || Object.create(null),
                         tocList: [],

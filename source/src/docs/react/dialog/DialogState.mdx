@@ -41,4 +41,10 @@ Close the dialog. A promise is returned that is resolved after the dialog is des
 dialogState.open()
 ```
 
-Open the dialog. A promise is returned, resolving to `undefined` or any values sent from `dialogState.close()`.
+Open the dialog.
+
+#### Return value
+
+A promise is returned, resolving to
+- `undefined` if dialog is forcibly closed when focus is lost or is detached, or
+- value sent from [`DialogContext.commitDialog`](:) or [`DialogState.close`](:).

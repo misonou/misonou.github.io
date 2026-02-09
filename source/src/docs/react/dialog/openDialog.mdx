@@ -1,0 +1,46 @@
+<Module name="brew-js-react" />
+
+# openDialog
+
+Opens a dialog. It is a shorthand for
+
+```javascript
+createDialog(options).open()
+```
+
+## Syntax
+
+```javascript
+openDialog(options)
+```
+
+<ImportHint
+    name="openDialog"
+    module="brew-js-react"
+    require="openDialog"
+    global="brew.react.openDialog"
+/>
+
+### Parameters
+
+<dl>
+    #### `options`
+    A dictionary containing options. See [`createDialog`](:) for details.
+
+</dl>
+
+### Return value
+
+A promise is returned, resolving to
+- `undefined` if dialog is forcibly closed when focus is lost or is detached, or
+- value sent from [`DialogContext.commitDialog`](:) or [`DialogState.close`](:).
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.7.0** Introduced
+</VersionTimeline>
+
+## See also
+
+- [`createDialog`](:)

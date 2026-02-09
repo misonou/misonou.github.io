@@ -1,0 +1,101 @@
+<Module name="@misonou/react-app-utils" />
+
+# MenuKeystrokeMixin
+
+Returns a mixin that allows selecting menu items by keyboard.
+
+It supports traversing by up/down arrow key, selecting by space/enter key, and jumping by typing characters,
+like most native dropdowns and menus.
+
+## Syntax
+
+```javascript
+useMenuKeystrokeMixin(options)
+useMenuKeystrokeMixin(selector)
+useMenuKeystrokeMixin(selector, autoSelect)
+```
+
+<ImportHint
+    name="useMenuKeystrokeMixin"
+    module="@misonou/react-app-utils"
+/>
+
+### Parameters
+
+<dl>
+    #### `options`
+    A dictionary containing options to be passed to mixin.
+
+    <dl>
+        #### `activeClass` <Badge.Optional />
+        CSS class name to be applied to item during traversal for highlighting.
+        Default is `active`.
+
+        #### `autoSelect` <Badge.Optional />
+        Whether to select current item while user is traversing by arrow keys or jumping by typing characters.
+        Default is `false`.
+
+        #### `menuElement` <Badge.Optional /> <Badge.Version />
+        Specifies the menu element containing menu items. It can be a DOM element, a selector to a DOM element, or a React ref object.
+        Default to element which the mixin is applied to.
+
+        #### `selectedClass` <Badge.Optional />
+        CSS class name indicating that item is selected.
+        Default is `selected`.
+
+        Traversal of elements will start from the item having the specified CSS class name.
+        If there is no such element, traversal will start from the first item.
+
+        #### `selector`
+        CSS selector which specifies elements as traversable menu items.
+
+        #### `wrapAround` <Badge.Optional /> <Badge.Version />
+        Whether to traverse back to start (or end) after reaching the last (or first) menu item.
+        Default is `false`.
+
+    </dl>
+
+    #### `selector`
+    CSS selector which specifies elements as traversable menu items.
+
+    #### `autoSelect` <Badge.Optional />
+    Whether to select current item while user is traversing by arrow keys or jumping by typing characters. Default is `false`.
+
+</dl>
+
+## MenuKeystrokeMixin class
+
+> Mixin should be created using [`useMenuKeystrokeMixin`](:) and applied to element by `Mixin.use`.
+
+<ImportHint
+    name="MenuKeystrokeMixin"
+    module="@misonou/react-app-utils"
+    expanded
+/>
+
+<MemberList
+    i="MenuKeystrokeMixin"
+    extends={['StatefulMixin']}
+    im={['select()']}
+/>
+
+## Instance methods
+
+### `MenuKeystrokeMixin.select()`
+
+```javascript
+select()
+```
+
+Selects the current menu item.
+
+### Return value
+
+Whether an item is selected.
+
+## Version information
+
+<VersionTimeline module="@misonou/react-app-utils">
+- **1.4.0** Introduced
+- **1.7.0** `menuElement` `wrapAround` options
+</VersionTimeline>

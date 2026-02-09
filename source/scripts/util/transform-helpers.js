@@ -147,6 +147,14 @@ function formatImport(name, defaults) {
 }
 
 function getImportHintSource(props) {
+    if (props.typeOnly) {
+        return [
+            {
+                name: 'ts',
+                content: `import type ${formatImport(props.name, !!props.import)} from "${props.module}"`
+            }
+        ];
+    }
     const cjs = props.require ? props.require.split('.') : props.global?.split('.');
     return [
         {

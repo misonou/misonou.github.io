@@ -1,0 +1,2351 @@
+{
+    "@misonou/brew-extension-auth": {
+        "baseUrl": "https://github.com/misonou/brew-extension-auth/blob/60ddbe00a29e7888a03312a150f60d06055b4211",
+        "symbols": {
+            "Auth": [
+                "src/entry.js#L5",
+                "src/extension.d.ts#L325",
+                "src/index.d.ts#L8",
+                "src/index.js#L5"
+            ],
+            "AuthClient": "src/provider.d.ts#L5",
+            "AuthClientCachedResult": "src/provider.d.ts#L3",
+            "AuthContext": "src/extension.d.ts#L276",
+            "AuthEvent": "src/extension.d.ts#L4",
+            "AuthEventMap": "src/extension.d.ts#L36",
+            "AuthExtension": "src/extension.d.ts#L3",
+            "AuthLoginEvent": "src/extension.d.ts#L8",
+            "AuthLogoutEvent": "src/extension.d.ts#L25",
+            "AuthOptions": "src/extension.d.ts#L174",
+            "AuthProvider": [
+                "src/extension.d.ts#L125",
+                "src/provider.d.ts#L52",
+                "src/provider.js#L4"
+            ],
+            "AuthProviderContext": "src/extension.d.ts#L92",
+            "AuthProviderFactory": "src/provider.d.ts#L43",
+            "AuthProviderHint": "src/extension.d.ts#L232",
+            "AuthProviderInfo": "src/extension.d.ts#L108",
+            "AuthProviderLoginRequest": "src/extension.d.ts#L62",
+            "AuthProviderLogoutRequest": "src/extension.d.ts#L77",
+            "AuthProviderResult": "src/extension.d.ts#L42",
+            "AuthResult": "src/extension.d.ts#L159",
+            "AuthSimpleOptions": "src/extension.d.ts#L209",
+            "AuthSimpleOptionsWithResolve": "src/extension.d.ts#L221",
+            "AuthSingleProviderOptions": "src/extension.d.ts#L203",
+            "AuthType": "src/extension.d.ts#L5",
+            "Axios": "src/middleware.d.ts#L4",
+            "axiosMiddleware": "src/middleware.js#L31",
+            "AxiosRequestConfig": "src/middleware.d.ts#L5",
+            "clearInteractionStatus": "src/msal.js#L20",
+            "CommonOptions": "src/extension.d.ts#L207",
+            "createAxiosMiddleware": [
+                "src/middleware.d.ts#L22",
+                "src/middleware.js#L61"
+            ],
+            "createFetchMiddleware": [
+                "src/middleware.d.ts#L14",
+                "src/middleware.js#L57"
+            ],
+            "createProvider": "src/msal.js#L40",
+            "DirectusAuthClient": [
+                "src/examples/directus.js#L6",
+                "src/examples/directus.ts#L30"
+            ],
+            "DirectusUser": "src/examples/directus.ts#L6",
+            "Fetch": "src/middleware.d.ts#L3",
+            "fetchMiddleware": "src/middleware.js#L9",
+            "FetchMiddleware": "src/middleware.d.ts#L7",
+            "getIssuerURL": "src/msal.js#L24",
+            "invalidCredential": "src/errorCode.js#L3",
+            "JSONClient": [
+                "src/util/JSONClient.d.ts#L25",
+                "src/util/JSONClient.js#L5"
+            ],
+            "JSONRequestError": "src/util/JSONClient.d.ts#L6",
+            "JSONRequestMiddleware": "src/util/JSONClient.d.ts#L1",
+            "loggedIn": "src/errorCode.js#L1",
+            "LoginOptions": "src/extension.d.ts#L254",
+            "LogoutOptions": "src/extension.d.ts#L265",
+            "MsalAuthProvider": [
+                "src/msal.d.ts#L4",
+                "src/msal.js#L8"
+            ],
+            "MsalAuthProviderFactory": "src/msal.d.ts#L18",
+            "MsalAuthProviderOptions": "src/msal.d.ts#L6",
+            "noProvider": "src/errorCode.js#L2",
+            "ResolveUserCallback": "src/extension.d.ts#L6",
+            "Result": "src/examples/directus.ts#L28",
+            "retryOrEnd": "src/middleware.js#L5"
+        }
+    },
+    "@misonou/react-app-utils": {
+        "baseUrl": "https://github.com/misonou/react-app-utils/blob/ba7e066898b5af87c9ee1951d9a06a427f706638",
+        "symbols": {
+            "ApiErrorEvent": "lib/createApi.d.ts#L5",
+            "ApiEventListener": "lib/createApi.d.ts#L19",
+            "ApiEventMap": "lib/createApi.d.ts#L1",
+            "ApiOptions": "lib/createApi.d.ts#L23",
+            "append": "lib/HTMLConsole.js#L114",
+            "appendHiddenArrow": "lib/HTMLConsole.js#L150",
+            "colorize": "lib/HTMLConsole.js#L160",
+            "commitLines": "lib/HTMLConsole.js#L760",
+            "createApi": [
+                "lib/createApi.d.ts#L40",
+                "lib/createApi.js#L21"
+            ],
+            "createAppendCallback": "lib/HTMLConsole.js#L744",
+            "createAsyncQueue": [
+                "lib/util.d.ts#L40",
+                "lib/util.js#L38"
+            ],
+            "createDelegatedInput": "lib/MenuKeystrokeMixin.js#L16",
+            "createElement": "lib/HTMLConsole.js#L127",
+            "createExpandableNode": "lib/HTMLConsole.js#L237",
+            "createFakeEntry": "lib/HTMLConsole.js#L166",
+            "createFragment": "lib/HTMLConsole.js#L138",
+            "createMock": "lib/createApi.js#L17",
+            "createUndoable": "lib/undoable.js#L19",
+            "escapeString": "lib/HTMLConsole.js#L57",
+            "fillData": "formAutofiller.js#L11",
+            "FormDevToolMixin": [
+                "lib/FormDevToolMixin.d.ts#L4",
+                "lib/FormDevToolMixin.js#L5"
+            ],
+            "fuzzyMatch": [
+                "lib/fuzzyMatch.d.ts#L43",
+                "lib/fuzzyMatch.js#L61"
+            ],
+            "getInputState": "lib/undoable.js#L11",
+            "getKey": "lib/memoize.js#L5",
+            "getObjectTag": "lib/HTMLConsole.js#L75",
+            "getStringTag": "lib/HTMLConsole.js#L71",
+            "handleUserAction": [
+                "lib/util.d.ts#L61",
+                "lib/util.js#L55"
+            ],
+            "hasPseudoElement": "lib/HTMLConsole.js#L106",
+            "HTMLConsole": [
+                "lib/HTMLConsole.d.ts#L8",
+                "lib/HTMLConsole.js#L771"
+            ],
+            "IConsole": "lib/HTMLConsole.d.ts#L1",
+            "initConsoleOverlay": "consoleOverlay.js#L16",
+            "initMenuKeystroke": "lib/MenuKeystrokeMixin.js#L51",
+            "isArrayLike": "lib/HTMLConsole.js#L63",
+            "isExpandableNode": "lib/HTMLConsole.js#L67",
+            "listProperties": "lib/HTMLConsole.js#L180",
+            "match": "lib/fuzzyMatch.js#L3",
+            "MatchableItem": "lib/fuzzyMatch.d.ts#L1",
+            "MatchedItem": "lib/fuzzyMatch.d.ts#L17",
+            "MatchOptions": "lib/fuzzyMatch.d.ts#L24",
+            "memoize": [
+                "lib/memoize.d.ts#L1",
+                "lib/memoize.js#L41"
+            ],
+            "MenuKeystrokeMixin": [
+                "lib/MenuKeystrokeMixin.d.ts#L41",
+                "lib/MenuKeystrokeMixin.js#L121"
+            ],
+            "MenuKeystrokeOptions": "lib/MenuKeystrokeMixin.d.ts#L3",
+            "minmax": "consoleOverlay.js#L12",
+            "newBlock": "lib/HTMLConsole.js#L146",
+            "newLine": "lib/HTMLConsole.js#L142",
+            "promptAutofill": "formAutofiller.js#L31",
+            "promptForChoice": [
+                "lib/promptForChoice.d.ts#L21",
+                "lib/promptForChoice.js#L11"
+            ],
+            "PromptOptions": "lib/promptForChoice.d.ts#L3",
+            "render": "lib/HTMLConsole.js#L288",
+            "renderDOMNode": "lib/HTMLConsole.js#L566",
+            "renderProperty": "lib/HTMLConsole.js#L275",
+            "resetInput": "lib/useTextInputAutofillFix.js#L13",
+            "selectElement": "lib/MenuKeystrokeMixin.js#L45",
+            "setIdleTimeout": [
+                "lib/util.d.ts#L16",
+                "lib/util.js#L9"
+            ],
+            "SetIdleTimeoutOptions": "lib/util.d.ts#L3",
+            "shouldMock": "lib/createApi.js#L7",
+            "sortPropertyName": "lib/HTMLConsole.js#L52",
+            "TextInputAutofillFix": "lib/useTextInputAutofillFix.d.ts#L1",
+            "UndoableInputMixin": [
+                "lib/undoable.d.ts#L60",
+                "lib/undoable.js#L80"
+            ],
+            "UndoableInputMixinOptions": "lib/undoable.d.ts#L42",
+            "UndoableState": "lib/undoable.d.ts#L3",
+            "useMenuKeystrokeMixin": [
+                "lib/MenuKeystrokeMixin.d.ts#L52",
+                "lib/MenuKeystrokeMixin.js#L117"
+            ],
+            "UserActionOptions": "lib/util.d.ts#L42",
+            "useTextInputAutofillFix": [
+                "lib/useTextInputAutofillFix.d.ts#L24",
+                "lib/useTextInputAutofillFix.js#L19"
+            ],
+            "useUndoableInputMixin": [
+                "lib/undoable.d.ts#L80",
+                "lib/undoable.js#L76"
+            ],
+            "useUndoableState": [
+                "lib/undoable.d.ts#L87",
+                "lib/undoable.js#L65"
+            ],
+            "wrap": "lib/memoize.js#L21",
+            "writeArguments": "lib/HTMLConsole.js#L698",
+            "writeChildNode": "lib/HTMLConsole.js#L665",
+            "writeChildNodeImpl": "lib/HTMLConsole.js#L669",
+            "writeDOMAttribute": "lib/HTMLConsole.js#L679",
+            "writeDOMEndTag": "lib/HTMLConsole.js#L690",
+            "writeObject": "lib/HTMLConsole.js#L694"
+        }
+    },
+    "@misonou/react-css-utils": {
+        "baseUrl": "https://github.com/misonou/react-css-utils/blob/47901f18c37d2ce25e149e92693c468e57a305c1",
+        "symbols": {
+            "AnimatedIndicator": "index.d.ts#L86",
+            "AnimatedIndicatorOptions": "index.d.ts#L79",
+            "cssFromPoint": [
+                "index.d.ts#L9",
+                "index.js#L44"
+            ],
+            "initSortable": [
+                "index.d.ts#L123",
+                "index.js#L317"
+            ],
+            "InitSortableOptions": "index.d.ts#L105",
+            "initStickable": [
+                "index.d.ts#L155",
+                "index.js#L370"
+            ],
+            "intersectRect": "index.js#L28",
+            "position": [
+                "index.d.ts#L21",
+                "index.js#L58"
+            ],
+            "PositionAlign": "index.d.ts#L1",
+            "PositionAnchor": "index.d.ts#L7",
+            "positionCallback": "index.js#L65",
+            "Positioner": [
+                "Positioner.d.ts#L3",
+                "Positioner.js#L6"
+            ],
+            "positionImpl": "index.js#L100",
+            "PositionOptions": "index.d.ts#L42",
+            "setStyle": "index.js#L32",
+            "startPositioning": [
+                "index.d.ts#L40",
+                "index.js#L384"
+            ],
+            "Stickable": "index.d.ts#L125",
+            "useAnimatedIndicator": [
+                "index.d.ts#L103",
+                "index.js#L248"
+            ]
+        }
+    },
+    "brew-js": {
+        "baseUrl": "https://github.com/misonou/brew-js/blob/00efe84f6b10972bae3dd2b918c9e4878867d7f6",
+        "symbols": {
+            "addAnimateIn": [
+                "src/anim.d.ts#L36",
+                "src/anim.js#L152"
+            ],
+            "addAnimateOut": [
+                "src/anim.d.ts#L42",
+                "src/anim.js#L160"
+            ],
+            "addAsyncAction": [
+                "src/domAction.d.ts#L29",
+                "src/domAction.js#L49"
+            ],
+            "addDetect": [
+                "src/app.d.ts#L92",
+                "src/app.js#L233"
+            ],
+            "addExtension": [
+                "src/app.d.ts#L58",
+                "src/app.js#L221"
+            ],
+            "addRenderer": [
+                "src/dom.d.ts#L80",
+                "src/dom.js#L378"
+            ],
+            "addSelectHandlers": [
+                "src/dom.d.ts#L9",
+                "src/dom.js#L111"
+            ],
+            "addStyleSheet": [
+                "src/util/common.d.ts#L196",
+                "src/util/common.js#L304"
+            ],
+            "addTemplate": [
+                "src/dom.d.ts#L76",
+                "src/dom.js#L370"
+            ],
+            "addTransformer": [
+                "src/dom.d.ts#L78",
+                "src/dom.js#L374"
+            ],
+            "animateIn": [
+                "src/anim.d.ts#L9",
+                "src/anim.js#L95"
+            ],
+            "animateOut": [
+                "src/anim.d.ts#L30",
+                "src/anim.js#L128"
+            ],
+            "AnimationEvent": "src/types.d.ts#L150",
+            "api": [
+                "src/util/common.d.ts#L164",
+                "src/util/common.js#L201"
+            ],
+            "API": "src/types.d.ts#L126",
+            "ApiClient": "src/util/fetch.d.ts#L65",
+            "ApiClientError": "src/util/fetch.d.ts#L7",
+            "ApiClientTraps": "src/util/fetch.d.ts#L30",
+            "apiError": [
+                "src/errorCode.d.ts#L3",
+                "src/errorCode.js#L3"
+            ],
+            "APIMethod": "src/types.d.ts#L111",
+            "APIOptions": "src/types.d.ts#L89",
+            "App": [
+                "src/app.js#L81",
+                "src/types.d.ts#L191"
+            ],
+            "AppInit": "src/app.d.ts#L6",
+            "AppInstance": "src/types.d.ts#L16",
+            "batch": [
+                "src/dom.d.ts#L44",
+                "src/dom.js#L295"
+            ],
+            "BeforePageLoadEvent": "src/extension/withRouter.d.ts#L56",
+            "brew": [
+                "src/core.d.ts#L50",
+                "src/core.js#L45",
+                "src/index.js#L2"
+            ],
+            "BrewEventMap": "src/types.d.ts#L142",
+            "BrewEventName": "src/types.d.ts#L140",
+            "closeFlyout": [
+                "src/domAction.d.ts#L47",
+                "src/domAction.js#L62"
+            ],
+            "combinePath": [
+                "src/util/path.d.ts#L20",
+                "src/util/path.js#L25"
+            ],
+            "Component": "src/directive.js#L28",
+            "ComponentContext": [
+                "src/directive.d.ts#L13",
+                "src/directive.js#L32"
+            ],
+            "ComponentContextEventMap": "src/directive.d.ts#L9",
+            "compressToUTF16": "src/include/lz-string.js#L3",
+            "config": "src/extension/config.d.ts#L5",
+            "ConfigOptions": "src/extension/withConfig.d.ts#L18",
+            "configureRouter": "src/extension/router.js#L304",
+            "cookie": [
+                "src/util/common.d.ts#L154",
+                "src/util/common.js#L183"
+            ],
+            "CookieAccessor": "src/util/common.d.ts#L20",
+            "CookieAttributes": [
+                "src/types.d.ts#L7",
+                "src/util/common.d.ts#L1"
+            ],
+            "copyAttr": [
+                "src/util/common.d.ts#L75",
+                "src/util/common.js#L59"
+            ],
+            "createApiClient": [
+                "src/util/fetch.d.ts#L154",
+                "src/util/fetch.js#L77"
+            ],
+            "createContextClass": "src/directive.js#L41",
+            "createObjectStorage": [
+                "src/util/storage.d.ts#L128",
+                "src/util/storage.js#L14"
+            ],
+            "createRequest": "src/util/fetch.js#L34",
+            "createRouteState": "src/extension/router.js#L142",
+            "declareVar": [
+                "src/var.d.ts#L38",
+                "src/var.js#L126"
+            ],
+            "decodeValue": "src/util/common.js#L22",
+            "decompressFromUTF16": "src/include/lz-string.js#L4",
+            "defaults": "src/defaults.js#L2",
+            "defineUseMethod": "src/app.js#L74",
+            "deleteCookie": [
+                "src/util/common.d.ts#L149",
+                "src/util/common.js#L175"
+            ],
+            "detectLanguage": "src/extension/i18n.js#L21",
+            "Directive": "src/directive.d.ts#L28",
+            "DirectiveComponent": [
+                "src/extension/withScrollable.d.ts#L39",
+                "src/types.d.ts#L45"
+            ],
+            "DirectiveInit": "src/directive.d.ts#L16",
+            "DirectiveType": "src/directive.d.ts#L1",
+            "DirectiveTypeMap": "src/directive.d.ts#L3",
+            "disableEvent": "src/domAction.js#L36",
+            "DOMProcessorCallback": "src/types.d.ts#L18",
+            "DOMUpdateState": "src/types.d.ts#L20",
+            "emitAppEvent": [
+                "src/app.d.ts#L94",
+                "src/app.js#L237"
+            ],
+            "encodeNameValue": "src/util/common.js#L18",
+            "evalAttr": [
+                "src/var.d.ts#L109",
+                "src/var.js#L195"
+            ],
+            "evalExpression": [
+                "src/var.d.ts#L92",
+                "src/var.js#L181"
+            ],
+            "evalTemplate": [
+                "src/var.d.ts#L100",
+                "src/var.js#L185"
+            ],
+            "evaluate": [
+                "src/var.d.ts#L85",
+                "src/var.js#L177"
+            ],
+            "EventDispatcher": "src/types.d.ts#L55",
+            "EventHandler": "src/types.d.ts#L13",
+            "EventHandlers": "src/types.d.ts#L14",
+            "exactTargetWrapper": "src/app.js#L28",
+            "executeRequest": "src/util/fetch.js#L53",
+            "exportAppToGlobal": [
+                "src/entry-slim.js#L34",
+                "src/entry.js#L14"
+            ],
+            "ExtendedEventMap": "src/types.d.ts#L15",
+            "Extension": [
+                "src/core.d.ts#L20",
+                "src/types.d.ts#L5"
+            ],
+            "ExtensionEventMap": [
+                "src/core.d.ts#L25",
+                "src/types.d.ts#L6"
+            ],
+            "fetchImpl": "src/util/fetch.js#L7",
+            "FetchLayer": "src/util/fetch.d.ts#L3",
+            "FetchMiddleware": "src/util/fetch.d.ts#L4",
+            "findVarContext": "src/var.js#L70",
+            "FlyoutOptions": "src/domAction.d.ts#L49",
+            "formatMessage": "src/util/console.js#L11",
+            "fromRoutePath": "src/extension/router.d.ts#L18",
+            "getAttr": [
+                "src/util/common.d.ts#L52",
+                "src/util/common.js#L42"
+            ],
+            "getAttrValues": [
+                "src/util/common.d.ts#L30",
+                "src/util/common.js#L26"
+            ],
+            "getBrowserLanguages": "src/extension/i18n.js#L17",
+            "getComponentState": "src/dom.js#L27",
+            "getCookie": [
+                "src/util/common.d.ts#L127",
+                "src/util/common.js#L148"
+            ],
+            "getCurrentPathAndQuery": "src/extension/router.js#L49",
+            "getCurrentQuery": "src/extension/router.js#L45",
+            "getDeclaredVar": "src/var.js#L52",
+            "getDirectiveComponent": [
+                "src/directive.d.ts#L68",
+                "src/directive.js#L82"
+            ],
+            "getFormValues": [
+                "src/util/common.d.ts#L85",
+                "src/util/common.js#L75"
+            ],
+            "getIndexOfQueryAndHash": "src/util/path.js#L8",
+            "getJSON": [
+                "src/util/common.d.ts#L179",
+                "src/util/common.js#L257"
+            ],
+            "getQueryAndHash": [
+                "src/util/path.d.ts#L40",
+                "src/util/path.js#L79"
+            ],
+            "getQueryParam": [
+                "src/util/common.d.ts#L92",
+                "src/util/common.js#L111"
+            ],
+            "getShouldAnimate": "src/anim.js#L15",
+            "getVar": [
+                "src/var.d.ts#L60",
+                "src/var.js#L157"
+            ],
+            "getVarScope": [
+                "src/var.d.ts#L6",
+                "src/var.js#L85"
+            ],
+            "groupLog": [
+                "src/util/console.d.ts#L3",
+                "src/util/console.js#L31"
+            ],
+            "handleAnimation": "src/anim.js#L32",
+            "handleAsync": [
+                "src/dom.d.ts#L28",
+                "src/dom.js#L160"
+            ],
+            "handleMutations": "src/anim.js#L22",
+            "hasAttr": [
+                "src/util/common.d.ts#L44",
+                "src/util/common.js#L38"
+            ],
+            "hasDataAttributes": "src/var.js#L46",
+            "HashChangeEvent": "src/extension/withRouter.d.ts#L68",
+            "HistoryStorage": [
+                "src/extension/router.js#L60",
+                "src/extension/withRouter.d.ts#L332"
+            ],
+            "hookBeforeUpdate": [
+                "src/dom.d.ts#L20",
+                "src/dom.js#L151"
+            ],
+            "HTTPMethod": "src/types.d.ts#L12",
+            "i18n": "src/extension/i18n.d.ts#L5",
+            "I18nOptions": "src/extension/withI18n.d.ts#L34",
+            "idleTimeout": "src/extension/idleTimeout.d.ts#L5",
+            "IdleTimeoutEventMap": "src/extension/withIdleTimeout.d.ts#L2",
+            "IdleTimeoutOptions": "src/extension/withIdleTimeout.d.ts#L15",
+            "init": [
+                "src/app.d.ts#L24",
+                "src/app.js#L176"
+            ],
+            "initExtension": "src/app.js#L46",
+            "initHtmlRouter": "src/extension/htmlRouter.js#L55",
+            "initStorage": "src/extension/router.js#L53",
+            "install": [
+                "src/app.d.ts#L51",
+                "src/app.js#L217"
+            ],
+            "isBoolAttr": [
+                "src/util/common.d.ts#L37",
+                "src/util/common.js#L34"
+            ],
+            "isDirective": [
+                "src/dom.d.ts#L4",
+                "src/dom.js#L107"
+            ],
+            "isElementActive": [
+                "src/app.d.ts#L98",
+                "src/app.js#L241",
+                "src/extension/htmlRouter.js#L28"
+            ],
+            "isFlyoutOpen": [
+                "src/domAction.d.ts#L39",
+                "src/domAction.js#L53"
+            ],
+            "isObject": "src/util/storage.js#L6",
+            "isSameWindow": "src/domAction.js#L41",
+            "isSubPathOf": [
+                "src/util/path.d.ts#L72",
+                "src/util/path.js#L115"
+            ],
+            "jQuery": "src/include/jquery.js#L2",
+            "loadScript": [
+                "src/util/common.d.ts#L186",
+                "src/util/common.js#L265"
+            ],
+            "login": "src/extension/login.d.ts#L5",
+            "LoginEvent": "src/extension/withLogin.d.ts#L10",
+            "LoginEventMap": "src/extension/withLogin.d.ts#L5",
+            "LoginOptions": "src/extension/withLogin.d.ts#L44",
+            "markUpdated": [
+                "src/dom.d.ts#L33",
+                "src/dom.js#L171"
+            ],
+            "matchElement": [
+                "src/dom.d.ts#L15",
+                "src/dom.js#L136"
+            ],
+            "matchRoute": [
+                "src/extension/router.d.ts#L14",
+                "src/extension/router.js#L35"
+            ],
+            "matchRouteByParams": "src/extension/router.js#L160",
+            "matchRouteByPath": "src/extension/router.js#L189",
+            "mergeDOMUpdates": "src/dom.js#L53",
+            "mountElement": [
+                "src/dom.d.ts#L57",
+                "src/dom.js#L313"
+            ],
+            "NamedNodeMap": "typings/lib.dom.d.ts#L1",
+            "NavigateEvent": "src/extension/withRouter.d.ts#L53",
+            "NavigateResult": "src/extension/withRouter.d.ts#L84",
+            "NavigationCancellationRequest": [
+                "src/domAction.d.ts#L3",
+                "src/domAction.js#L25"
+            ],
+            "navigationCancelled": [
+                "src/errorCode.d.ts#L5",
+                "src/errorCode.js#L5"
+            ],
+            "navigationRejected": [
+                "src/errorCode.d.ts#L6",
+                "src/errorCode.js#L6"
+            ],
+            "NavigationType": "src/extension/withRouter.d.ts#L13",
+            "networkError": [
+                "src/errorCode.d.ts#L1",
+                "src/errorCode.js#L1"
+            ],
+            "normalizePath": [
+                "src/util/path.d.ts#L34",
+                "src/util/path.js#L51"
+            ],
+            "ObjectStorage": "src/util/storage.d.ts#L1",
+            "openDeferredURL": [
+                "src/util/common.d.ts#L226",
+                "src/util/common.js#L356"
+            ],
+            "openFlyout": [
+                "src/domAction.d.ts#L110",
+                "src/domAction.js#L105"
+            ],
+            "OrientationChangeEvent": "src/extension/withViewport.d.ts#L17",
+            "PageEvent": "src/extension/withRouter.d.ts#L60",
+            "PageInfo": [
+                "src/extension/router.js#L275",
+                "src/extension/withRouter.d.ts#L108"
+            ],
+            "parsePath": [
+                "src/util/path.d.ts#L26",
+                "src/util/path.js#L40"
+            ],
+            "parseRoute": "src/extension/router.js#L111",
+            "peekBody": [
+                "src/util/fetch.d.ts#L165",
+                "src/util/fetch.js#L104"
+            ],
+            "PersistedStorage": "src/extension/withRouter.d.ts#L325",
+            "PopStateEvent": "src/extension/withRouter.d.ts#L73",
+            "preloadImage": "src/extension/preloadImage.d.ts#L3",
+            "preloadImages": [
+                "src/util/common.d.ts#L204",
+                "src/util/common.js#L318"
+            ],
+            "preventLeave": [
+                "src/dom.d.ts#L68",
+                "src/dom.js#L366"
+            ],
+            "processQueryString": "src/util/common.js#L88",
+            "processRender": "src/dom.js#L86",
+            "processStateChange": [
+                "src/dom.d.ts#L38",
+                "src/dom.js#L180"
+            ],
+            "processTransform": "src/dom.js#L63",
+            "PromiseOrEmpty": "src/types.d.ts#L17",
+            "readBody": "src/util/fetch.js#L16",
+            "registerDirective": [
+                "src/directive.d.ts#L45",
+                "src/directive.js#L107"
+            ],
+            "registerMatchPathElements": "src/extension/htmlRouter.js#L33",
+            "registerSimpleDirective": [
+                "src/directive.d.ts#L53",
+                "src/directive.js#L86"
+            ],
+            "removeQueryAndHash": [
+                "src/util/path.d.ts#L46",
+                "src/util/path.js#L84"
+            ],
+            "RequestOptions": "src/util/fetch.d.ts#L5",
+            "resetVar": [
+                "src/var.d.ts#L54",
+                "src/var.js#L145"
+            ],
+            "ResizeEvent": "src/extension/withViewport.d.ts#L19",
+            "resourceError": [
+                "src/errorCode.d.ts#L2",
+                "src/errorCode.js#L2"
+            ],
+            "Route": [
+                "src/extension/router.js#L199",
+                "src/extension/withRouter.d.ts#L384"
+            ],
+            "routeCommitParams": "src/extension/router.js#L228",
+            "RouteParam": "src/extension/withRouter.d.ts#L375",
+            "RoutePattern": [
+                "src/extension/router.js#L88",
+                "src/extension/withRouter.d.ts#L334"
+            ],
+            "router": [
+                "src/extension/htmlRouter.d.ts#L5",
+                "src/extension/router.d.ts#L5"
+            ],
+            "RouterEvent": "src/extension/withRouter.d.ts#L15",
+            "RouterEventMap": "src/extension/withRouter.d.ts#L2",
+            "RouterOptions": "src/extension/withRouter.d.ts#L442",
+            "scrollable": "src/extension/scrollable.d.ts#L5",
+            "ScrollableEvent": "src/extension/withScrollable.d.ts#L13",
+            "ScrollableEventMap": "src/extension/withScrollable.d.ts#L5",
+            "ScrollableIndexChangeEvent": "src/extension/withScrollable.d.ts#L26",
+            "selectorForAttr": [
+                "src/util/common.d.ts#L80",
+                "src/util/common.js#L65"
+            ],
+            "setAttr": [
+                "src/util/common.d.ts#L60",
+                "src/util/common.js#L46"
+            ],
+            "setBaseUrl": [
+                "src/util/path.d.ts#L12",
+                "src/util/path.js#L17"
+            ],
+            "setCookie": [
+                "src/util/common.d.ts#L135",
+                "src/util/common.js#L160"
+            ],
+            "setQueryParam": [
+                "src/util/common.d.ts#L107",
+                "src/util/common.js#L120"
+            ],
+            "setVar": [
+                "src/var.d.ts#L13",
+                "src/var.js#L95"
+            ],
+            "shouldIgnore": "src/util/storage.js#L10",
+            "StateChangeEvent": "src/types.d.ts#L162",
+            "stringOrSymbol": "src/extension/router.js#L66",
+            "template": [
+                "src/extension/formVar.d.ts#L2",
+                "src/extension/formVar.js#L2",
+                "src/extension/template.d.ts#L5"
+            ],
+            "timeout": [
+                "src/errorCode.d.ts#L7",
+                "src/errorCode.js#L7"
+            ],
+            "toAbsoluteUrl": [
+                "src/util/path.d.ts#L59",
+                "src/util/path.js#L100"
+            ],
+            "toDictionary": "src/extension/i18n.js#L5",
+            "toElementTag": "src/util/console.js#L3",
+            "toggleFlyout": [
+                "src/domAction.d.ts#L137",
+                "src/domAction.js#L94"
+            ],
+            "toQueryString": [
+                "src/util/common.d.ts#L121",
+                "src/util/common.js#L138"
+            ],
+            "toRelativeUrl": [
+                "src/util/path.d.ts#L65",
+                "src/util/path.js#L107"
+            ],
+            "toRoutePath": "src/extension/router.d.ts#L16",
+            "toSegments": [
+                "src/util/path.d.ts#L79",
+                "src/util/path.js#L123"
+            ],
+            "truncateJSON": "src/util/console.js#L7",
+            "UnloadEvent": "src/types.d.ts#L168",
+            "updateDOM": "src/dom.js#L32",
+            "updateRouteState": "src/extension/router.js#L153",
+            "Util": "src/core.d.ts#L29",
+            "ValidateEvent": "src/types.d.ts#L172",
+            "validationFailed": [
+                "src/errorCode.d.ts#L4",
+                "src/errorCode.js#L4"
+            ],
+            "VarContext": [
+                "src/types.d.ts#L40",
+                "src/var.js#L31"
+            ],
+            "viewport": "src/extension/viewport.d.ts#L5",
+            "ViewportEvent": "src/extension/withViewport.d.ts#L10",
+            "ViewportEventMap": "src/extension/withViewport.d.ts#L5",
+            "Watchable": "src/types.d.ts#L175",
+            "waterpipe": "src/include/waterpipe.js#L2",
+            "withBaseUrl": [
+                "src/util/path.d.ts#L53",
+                "src/util/path.js#L92"
+            ],
+            "WithConfig": "src/extension/withConfig.d.ts#L5",
+            "WithExport": "src/app.d.ts#L3",
+            "WithExtension": "src/app.d.ts#L4",
+            "WithHtmlRouter": "src/extension/withHtmlRouter.d.ts#L4",
+            "WithI18n": "src/extension/withI18n.d.ts#L5",
+            "WithIdleTimeout": "src/extension/withIdleTimeout.d.ts#L6",
+            "WithLogin": "src/extension/withLogin.d.ts#L17",
+            "WithRouter": "src/extension/withRouter.d.ts#L142",
+            "WithScrollable": "src/extension/withScrollable.d.ts#L31",
+            "WithTemplate": "src/extension/withTemplate.d.ts#L2",
+            "WithViewport": "src/extension/withViewport.d.ts#L21",
+            "wrapEventHandlers": "src/app.js#L36",
+            "writeLog": [
+                "src/util/console.d.ts#L1",
+                "src/util/console.js#L22"
+            ]
+        }
+    },
+    "brew-js-react": {
+        "baseUrl": "https://github.com/misonou/brew-js-react/blob/a77195152155eeb37f73b680dfa55ac272e97fe3",
+        "symbols": {
+            "AnimateMixin": [
+                "src/mixins/AnimateMixin.d.ts#L38",
+                "src/mixins/AnimateMixin.js#L6"
+            ],
+            "AnimateSequenceItemMixin": [
+                "src/mixins/AnimateSequenceItemMixin.d.ts#L9",
+                "src/mixins/AnimateSequenceItemMixin.js#L6"
+            ],
+            "AnimateSequenceMixin": [
+                "src/mixins/AnimateSequenceMixin.d.ts#L11",
+                "src/mixins/AnimateSequenceMixin.js#L10"
+            ],
+            "AnimationEffect": "src/mixins/AnimateMixin.d.ts#L19",
+            "AnimationTrigger": "src/mixins/AnimateMixin.d.ts#L31",
+            "brew": [
+                "src/index.d.ts#L4",
+                "src/index.js#L3"
+            ],
+            "checkState": "src/mixins/ClassNameMixin.js#L6",
+            "ClassNameMixin": [
+                "src/mixins/ClassNameMixin.d.ts#L11",
+                "src/mixins/ClassNameMixin.js#L18"
+            ],
+            "ClassNameMixinState": "src/mixins/ClassNameMixin.d.ts#L3",
+            "ClassNameToggleMixin": [
+                "src/mixins/ClassNameToggleMixin.d.ts#L11",
+                "src/mixins/ClassNameToggleMixin.js#L5"
+            ],
+            "createCallback": "src/i18n.js#L19",
+            "createDialog": [
+                "src/dialog.d.ts#L196",
+                "src/dialog.js#L61"
+            ],
+            "createDialogElement": "src/dialog.js#L26",
+            "createDialogQueue": [
+                "src/dialog.d.ts#L190",
+                "src/dialog.js#L110"
+            ],
+            "createUseFunction": "src/mixin.js#L23",
+            "createViewComponent": "src/view.js#L307",
+            "CustomAttributeProvider": "src/mixins/Mixin.d.ts#L15",
+            "debounceAsync": "src/dialog.js#L13",
+            "Dialog": [
+                "src/dialog.d.ts#L223",
+                "src/dialog.js#L178"
+            ],
+            "DialogBaseProps": "src/dialog.d.ts#L13",
+            "DialogCloseCallback": "src/dialog.d.ts#L6",
+            "DialogContext": "src/dialog.d.ts#L148",
+            "DialogController": "src/dialog.d.ts#L36",
+            "DialogControllerAdvancedOptions": "src/dialog.d.ts#L19",
+            "DialogControllerOptions": "src/dialog.d.ts#L17",
+            "DialogOptions": "src/dialog.d.ts#L72",
+            "DialogOptionsStrict": "src/dialog.d.ts#L10",
+            "DialogProps": "src/dialog.d.ts#L175",
+            "DialogRenderComponentProps": "src/dialog.d.ts#L15",
+            "DialogResult": "src/dialog.d.ts#L9",
+            "DialogState": "src/dialog.d.ts#L52",
+            "disposeUnmountedStates": "src/mixins/StatefulMixin.js#L7",
+            "ErrorBoundary": "src/view.js#L80",
+            "ErrorViewProps": "src/view.d.ts#L127",
+            "extendSelf": "src/mixin.js#L19",
+            "FlyoutMixin": [
+                "src/mixins/FlyoutMixin.d.ts#L47",
+                "src/mixins/FlyoutMixin.js#L18"
+            ],
+            "FlyoutMixinOptions": "src/mixins/FlyoutMixin.d.ts#L9",
+            "FlyoutToggleMixin": [
+                "src/mixins/FlyoutToggleMixin.d.ts#L9",
+                "src/mixins/FlyoutToggleMixin.js#L7"
+            ],
+            "FocusStateMixin": [
+                "src/mixins/FocusStateMixin.d.ts#L11",
+                "src/mixins/FocusStateMixin.js#L8"
+            ],
+            "getCurrentParams": "src/view.js#L263",
+            "getCurrentStates": "src/hooks.js#L12",
+            "HintedType": "src/mixins/FlyoutMixin.d.ts#L7",
+            "isViewMatched": [
+                "src/view.d.ts#L188",
+                "src/view.js#L339"
+            ],
+            "isViewRendered": [
+                "src/view.d.ts#L194",
+                "src/view.js#L344"
+            ],
+            "JQueryScrollableMethods": "src/mixins/ScrollableMixin.d.ts#L8",
+            "linkTo": [
+                "src/view.d.ts#L285",
+                "src/view.js#L409"
+            ],
+            "LoadingStateMixin": [
+                "src/mixins/LoadingStateMixin.d.ts#L11",
+                "src/mixins/LoadingStateMixin.js#L9"
+            ],
+            "makeTranslation": [
+                "src/i18n.d.ts#L94",
+                "src/i18n.js#L38"
+            ],
+            "matchView": [
+                "src/view.d.ts#L200",
+                "src/view.js#L348"
+            ],
+            "matchViewParams": "src/view.js#L299",
+            "Mixin": [
+                "src/mixins/Mixin.d.ts#L19",
+                "src/mixins/Mixin.js#L5"
+            ],
+            "MixinDefaultProps": "src/mixins/Mixin.d.ts#L10",
+            "MixinProps": "src/mixins/Mixin.d.ts#L5",
+            "MixinRef": "src/mixins/StatefulMixin.d.ts#L20",
+            "MixinRefImpl": "src/mixins/StatefulMixin.js#L25",
+            "MixinState": [
+                "src/mixins/StatefulMixin.d.ts#L3",
+                "src/mixins/StatefulMixin.js#L14"
+            ],
+            "MixinTypes": "src/mixins/Mixin.d.ts#L8",
+            "navigateTo": [
+                "src/view.d.ts#L294",
+                "src/view.js#L413"
+            ],
+            "normalizePart": "src/view.js#L259",
+            "onAppInit": "src/app.js#L10",
+            "openDialog": [
+                "src/dialog.d.ts#L210",
+                "src/dialog.js#L54"
+            ],
+            "PageChangeEvent": "src/view.d.ts#L19",
+            "PageEvent": "src/brew.d.ts#L2",
+            "ParamsWithURLParts": "src/view.d.ts#L17",
+            "PartialRequired": "src/dialog.d.ts#L3",
+            "redirectTo": [
+                "src/view.d.ts#L303",
+                "src/view.js#L417"
+            ],
+            "registerErrorView": [
+                "src/view.d.ts#L181",
+                "src/view.js#L383"
+            ],
+            "registerView": [
+                "src/view.d.ts#L174",
+                "src/view.js#L360"
+            ],
+            "renderView": [
+                "src/view.d.ts#L240",
+                "src/view.js#L387"
+            ],
+            "resolvePath": [
+                "src/view.d.ts#L270",
+                "src/view.js#L400"
+            ],
+            "ResourceGlobalKey": "src/i18n.d.ts#L1",
+            "ResourceKey": "src/i18n.d.ts#L2",
+            "ScrollableMixin": [
+                "src/mixins/ScrollableMixin.d.ts#L51",
+                "src/mixins/ScrollableMixin.js#L9"
+            ],
+            "ScrollableMixinOptions": "src/mixins/ScrollableMixin.d.ts#L10",
+            "ScrollIntoViewMixin": [
+                "src/mixins/ScrollIntoViewMixin.d.ts#L10",
+                "src/mixins/ScrollIntoViewMixin.js#L5"
+            ],
+            "SetQueryParamAction": "src/hooks.d.ts#L1",
+            "showDialog": "src/dialog.js#L43",
+            "sortViews": "src/view.js#L295",
+            "StatefulMixin": [
+                "src/mixins/StatefulMixin.d.ts#L27",
+                "src/mixins/StatefulMixin.js#L35"
+            ],
+            "StaticAttributeMixin": [
+                "src/mixins/StaticAttributeMixin.d.ts#L3",
+                "src/mixins/StaticAttributeMixin.js#L4"
+            ],
+            "toggleSelf": "src/mixins/FlyoutMixin.js#L10",
+            "Translate": "src/i18n.d.ts#L4",
+            "Translation": "src/i18n.d.ts#L28",
+            "TranslationFactory": "src/i18n.d.ts#L39",
+            "triggerFlyoutAction": "src/mixins/FlyoutToggleMixin.js#L12",
+            "TString": "src/i18n.js#L9",
+            "UnionToIntersection": "src/mixins/Mixin.d.ts#L7",
+            "UnmanagedClassNameMixin": [
+                "src/mixins/UnmanagedClassNameMixin.d.ts#L11",
+                "src/mixins/UnmanagedClassNameMixin.js#L4"
+            ],
+            "updatePersistedValue": "src/hooks.js#L37",
+            "updateViewState": "src/hooks.js#L48",
+            "useAnimateMixin": [
+                "src/mixin.d.ts#L70",
+                "src/mixin.js#L27"
+            ],
+            "useAnimateSequenceMixin": [
+                "src/mixin.d.ts#L77",
+                "src/mixin.js#L28"
+            ],
+            "useAppReady": [
+                "src/hooks.d.ts#L11",
+                "src/hooks.js#L71"
+            ],
+            "useAppReadyState": [
+                "src/hooks.d.ts#L17",
+                "src/hooks.js#L75"
+            ],
+            "useClassNameToggleMixin": [
+                "src/mixin.d.ts#L101",
+                "src/mixin.js#L29"
+            ],
+            "useFlyoutMixin": [
+                "src/mixin.d.ts#L65",
+                "src/mixin.js#L30"
+            ],
+            "useFocusStateMixin": [
+                "src/mixin.d.ts#L82",
+                "src/mixin.js#L31"
+            ],
+            "useLanguage": [
+                "src/i18n.d.ts#L74",
+                "src/i18n.js#L34"
+            ],
+            "useLoadingStateMixin": [
+                "src/mixin.d.ts#L88",
+                "src/mixin.js#L32"
+            ],
+            "useMixin": [
+                "src/mixin.d.ts#L107",
+                "src/mixin.js#L37"
+            ],
+            "useMixinRef": [
+                "src/mixin.d.ts#L120",
+                "src/mixin.js#L45"
+            ],
+            "useQueryParam": [
+                "src/hooks.d.ts#L51",
+                "src/hooks.js#L119"
+            ],
+            "useRouteParam": [
+                "src/hooks.d.ts#L28",
+                "src/hooks.js#L83"
+            ],
+            "useRouteState": [
+                "src/hooks.d.ts#L34",
+                "src/hooks.js#L102"
+            ],
+            "useScrollableMixin": [
+                "src/mixin.d.ts#L54",
+                "src/mixin.js#L33"
+            ],
+            "useScrollIntoViewMixin": [
+                "src/mixin.d.ts#L59",
+                "src/mixin.js#L34"
+            ],
+            "useUnmanagedClassNameMixin": [
+                "src/mixin.d.ts#L94",
+                "src/mixin.js#L35"
+            ],
+            "useViewContainerState": "src/view.d.ts#L165",
+            "useViewContext": [
+                "src/view.d.ts#L160",
+                "src/view.js#L335"
+            ],
+            "useViewContextWithEffect": "src/hooks.js#L59",
+            "ViewComponent": "src/view.d.ts#L6",
+            "ViewComponentRootProps": "src/view.d.ts#L142",
+            "ViewContainer": "src/view.js#L139",
+            "ViewContainerState": "src/view.d.ts#L11",
+            "ViewContext": [
+                "src/view.d.ts#L46",
+                "src/view.js#L45"
+            ],
+            "ViewContextEventMap": "src/view.d.ts#L41",
+            "ViewParamMatchers": "src/view.d.ts#L7",
+            "ViewProps": "src/view.d.ts#L104",
+            "ViewState": "src/hooks.js#L16",
+            "ViewStateContainer": [
+                "src/hooks.d.ts#L3",
+                "src/hooks.js#L170"
+            ],
+            "VoidOrOptional": "src/dialog.d.ts#L4",
+            "WithOptions": "src/mixin.d.ts#L17"
+        }
+    },
+    "jq-scrollable": {
+        "baseUrl": "https://github.com/misonou/jquery-scrollable/blob/291216aa3842575e39b31b09a571649b0b4cf43e",
+        "symbols": {
+            "JQuery": "types.d.ts#L1",
+            "JQueryScrollable": "types.d.ts#L20",
+            "JQueryScrollableCancellableEventProps": "types.d.ts#L289",
+            "JQueryScrollableEventHooks": "types.d.ts#L193",
+            "JQueryScrollableEventProps": "types.d.ts#L278",
+            "JQueryScrollableOptions": "types.d.ts#L296",
+            "JQueryScrollableScrollbarOptions": "types.d.ts#L161",
+            "JQueryScrollableState": "types.d.ts#L227",
+            "JQueryScrollableStatic": "types.d.ts#L8",
+            "JQueryScrollableStickyPosition": "types.d.ts#L18",
+            "JQueryStatic": "types.d.ts#L14"
+        }
+    },
+    "zeta-dom": {
+        "baseUrl": "https://github.com/misonou/zeta-dom/blob/4cbe588fd73929e152e7b6408d86b5b4d51ff859",
+        "symbols": {
+            "acceptNode": [
+                "src/domUtil.d.ts#L69",
+                "src/domUtil.js#L139"
+            ],
+            "AdditionalMembers": "src/types.d.ts#L56",
+            "addOrRemoveEventListener": "src/domUtil.js#L248",
+            "afterDetached": [
+                "src/observe.d.ts#L107",
+                "src/observe.js#L78"
+            ],
+            "always": [
+                "src/util.d.ts#L535",
+                "src/util.js#L551"
+            ],
+            "animatableValue": "src/cssUtil.js#L39",
+            "any": [
+                "src/util.d.ts#L208",
+                "src/util.js#L232"
+            ],
+            "AnyConstructor": "src/types.d.ts#L54",
+            "AnyConstructorOrClass": "src/types.d.ts#L55",
+            "AnyFunction": "src/types.d.ts#L53",
+            "applyBoxValues": "src/domUtil.js#L366",
+            "approxMultipleOf": "src/dom.js#L71",
+            "ArrayMember": "src/types.d.ts#L13",
+            "arrRemove": [
+                "src/util.d.ts#L344",
+                "src/util.js#L325"
+            ],
+            "assertDescendantOfTree": "src/tree.js#L34",
+            "assertSameTree": "src/tree.js#L29",
+            "attachHelperDiv": "src/domUtil.js#L83",
+            "beginDrag": [
+                "src/dom.d.ts#L225",
+                "src/dom.js#L552"
+            ],
+            "beginPinchZoom": [
+                "src/dom.d.ts#L232",
+                "src/dom.js#L565"
+            ],
+            "bind": [
+                "src/domUtil.d.ts#L155",
+                "src/domUtil.js#L260"
+            ],
+            "bindOnce": [
+                "src/domUtil.d.ts#L176",
+                "src/domUtil.js#L267"
+            ],
+            "bindUntil": [
+                "src/domUtil.d.ts#L178",
+                "src/domUtil.js#L275"
+            ],
+            "blur": [
+                "src/dom.d.ts#L158",
+                "src/dom.js#L1054"
+            ],
+            "BoxAlign": "src/types.d.ts#L149",
+            "BoxCorner": "src/types.d.ts#L148",
+            "BoxSide": "src/types.d.ts#L147",
+            "camel": [
+                "src/util.d.ts#L467",
+                "src/util.js#L488"
+            ],
+            "cancellationRejected": [
+                "src/errorCode.d.ts#L1",
+                "src/errorCode.js#L1"
+            ],
+            "CancellationRequest": [
+                "src/domLock.d.ts#L3",
+                "src/domLock.js#L16"
+            ],
+            "cancelled": [
+                "src/errorCode.d.ts#L2",
+                "src/errorCode.js#L2"
+            ],
+            "cancelLock": "src/domLock.js#L184",
+            "catchAsync": [
+                "src/util.d.ts#L577",
+                "src/util.js#L602"
+            ],
+            "checkNodeState": "src/tree.js#L102",
+            "cleanupFocusPath": "src/dom.js#L147",
+            "clearImmediateOnce": [
+                "src/util.d.ts#L411",
+                "src/util.js#L407"
+            ],
+            "clearLock": "src/domLock.js#L45",
+            "ClickName": "src/types.d.ts#L173",
+            "CollectionKeyOf": "src/util.d.ts#L17",
+            "CollectionValueOf": "src/util.d.ts#L25",
+            "combineFn": [
+                "src/util.d.ts#L385",
+                "src/util.js#L352"
+            ],
+            "combineNodeFilters": [
+                "src/domUtil.d.ts#L78",
+                "src/domUtil.js#L148"
+            ],
+            "comparePosition": [
+                "src/domUtil.d.ts#L45",
+                "src/domUtil.js#L101"
+            ],
+            "connected": [
+                "src/domUtil.d.ts#L53",
+                "src/domUtil.js#L115"
+            ],
+            "ContainerComponent": "src/events.js#L410",
+            "containerCreateDispose": "src/events.js#L401",
+            "containerRegisterHandler": "src/events.js#L418",
+            "containsOrEquals": [
+                "src/domUtil.d.ts#L61",
+                "src/domUtil.js#L119"
+            ],
+            "createAutoCleanupMap": [
+                "src/observe.d.ts#L78",
+                "src/observe.js#L61"
+            ],
+            "createNodeClass": "src/tree.js#L355",
+            "createNodeIterator": [
+                "src/domUtil.d.ts#L133",
+                "src/domUtil.js#L235"
+            ],
+            "createPrivateStore": [
+                "src/util.d.ts#L403",
+                "src/util.js#L374"
+            ],
+            "createTreeWalker": [
+                "src/domUtil.d.ts#L141",
+                "src/domUtil.js#L239"
+            ],
+            "Date": "src/types.d.ts#L664",
+            "deepFreeze": [
+                "src/util.d.ts#L686",
+                "src/util.js#L703"
+            ],
+            "DeepReadonly": "src/types.d.ts#L34",
+            "Default": "src/types.d.ts#L50",
+            "deferrable": [
+                "src/util.d.ts#L575",
+                "src/util.js#L588"
+            ],
+            "Deferrable": "src/types.d.ts#L210",
+            "define": [
+                "src/util.d.ts#L624",
+                "src/util.js#L651"
+            ],
+            "defineAliasProperty": [
+                "src/util.d.ts#L758",
+                "src/util.js#L787"
+            ],
+            "defineGetterProperty": [
+                "src/util.d.ts#L642",
+                "src/util.js#L669"
+            ],
+            "defineHiddenProperty": [
+                "src/util.d.ts#L651",
+                "src/util.js#L678"
+            ],
+            "defineObservableProperty": [
+                "src/util.d.ts#L769",
+                "src/util.js#L799"
+            ],
+            "defineOwnProperty": [
+                "src/util.d.ts#L633",
+                "src/util.js#L660"
+            ],
+            "definePrototype": [
+                "src/util.d.ts#L659",
+                "src/util.js#L687"
+            ],
+            "delay": [
+                "src/util.d.ts#L588",
+                "src/util.js#L616"
+            ],
+            "DetachHandlerState": "src/observe.js#L15",
+            "Dictionary": "src/types.d.ts#L12",
+            "Direction": "src/types.d.ts#L152",
+            "Direction2D": "src/types.d.ts#L156",
+            "dispatchDOMMouseEvent": [
+                "src/domUtil.d.ts#L182",
+                "src/domUtil.js#L279"
+            ],
+            "dispatchInputEvent": "src/dom.js#L135",
+            "document": "src/env.js#L6",
+            "Document": "src/types.d.ts#L671",
+            "dom": "src/dom.d.ts#L48",
+            "DOMEventHandler": "src/domUtil.d.ts#L3",
+            "DOMEventHandlers": "src/domUtil.d.ts#L4",
+            "DOMEventIDLProp": "src/types.d.ts#L143",
+            "DOMEventNames": "src/types.d.ts#L77",
+            "DOMEventsOf": "src/types.d.ts#L145",
+            "DOMEventType": "src/types.d.ts#L144",
+            "domReady": [
+                "src/domUtil.d.ts#L14",
+                "src/env.js#L13"
+            ],
+            "each": [
+                "src/util.d.ts#L166",
+                "src/util.js#L156"
+            ],
+            "either": [
+                "src/util.d.ts#L50",
+                "src/util.js#L50"
+            ],
+            "elementFromPoint": [
+                "src/domUtil.d.ts#L388",
+                "src/domUtil.js#L623"
+            ],
+            "ElementLike": "src/types.d.ts#L8",
+            "ElementType": "src/types.d.ts#L72",
+            "emitAsyncEvents": "src/events.js#L137",
+            "emitDOMEvent": "src/events.js#L75",
+            "emitterCallHandlers": "src/events.js#L218",
+            "emitterHandleResult": "src/events.js#L257",
+            "emitterIterateTargets": "src/events.js#L205",
+            "ensureLock": "src/domLock.js#L29",
+            "ensurePropertyObserved": "src/util.js#L764",
+            "EntryKey": "src/util.d.ts#L15",
+            "EntryValue": "src/util.d.ts#L16",
+            "equal": [
+                "src/util.d.ts#L358",
+                "src/util.js#L338"
+            ],
+            "errorWithCode": [
+                "src/util.d.ts#L441",
+                "src/util.js#L461"
+            ],
+            "EventContainerOptions": [
+                "src/events.d.ts#L91",
+                "src/types.d.ts#L644"
+            ],
+            "EventEmitAlias": [
+                "src/events.d.ts#L8",
+                "src/types.d.ts#L642"
+            ],
+            "EventEmitOptions": [
+                "src/events.d.ts#L19",
+                "src/types.d.ts#L643"
+            ],
+            "exclude": [
+                "src/util.d.ts#L279",
+                "src/util.js#L287"
+            ],
+            "execFirstParen": "src/util.js#L518",
+            "executeOnce": [
+                "src/util.d.ts#L397",
+                "src/util.js#L363"
+            ],
+            "extend": [
+                "src/util.d.ts#L139",
+                "src/util.js#L112"
+            ],
+            "ExtractAny": [
+                "src/types.d.ts#L51",
+                "src/util.d.ts#L33"
+            ],
+            "fill": [
+                "src/util.d.ts#L232",
+                "src/util.js#L259"
+            ],
+            "findNode": "src/tree.js#L73",
+            "findParent": "src/tree.js#L79",
+            "focus": [
+                "src/dom.d.ts#L151",
+                "src/dom.js#L1046"
+            ],
+            "focusable": [
+                "src/dom.d.ts#L131",
+                "src/dom.js#L179"
+            ],
+            "focused": [
+                "src/dom.d.ts#L137",
+                "src/dom.js#L175"
+            ],
+            "freeze": "src/util.d.ts#L611",
+            "GestureName": "src/types.d.ts#L174",
+            "getActiveElement": "src/dom.js#L156",
+            "getBoxValues": "src/domUtil.js#L341",
+            "getClass": [
+                "src/domUtil.d.ts#L203",
+                "src/domUtil.js#L302"
+            ],
+            "getCommonAncestor": [
+                "src/domUtil.d.ts#L117",
+                "src/domUtil.js#L194"
+            ],
+            "getComputedStyle": "src/env.js#L9",
+            "getContainerForElement": "src/events.js#L41",
+            "getContentRect": [
+                "src/domUtil.d.ts#L226",
+                "src/domUtil.js#L458"
+            ],
+            "getContentRectCustom": "src/domUtil.js#L435",
+            "getContentRectNative": "src/domUtil.js#L440",
+            "getEventContext": "src/events.js#L53",
+            "getEventSource": "src/events.js#L37",
+            "getFocusableWithin": "src/dom.js#L189",
+            "getInnerBoxValues": "src/domUtil.js#L350",
+            "getMatchWordRegex": "src/util.js#L514",
+            "getModalElement": "src/dom.js#L163",
+            "getObservableState": "src/util.js#L719",
+            "getOwnPropertyDescriptors": [
+                "src/util.d.ts#L616",
+                "src/util.js#L643"
+            ],
+            "getRect": [
+                "src/domUtil.d.ts#L287",
+                "src/domUtil.js#L537"
+            ],
+            "getRects": [
+                "src/domUtil.d.ts#L316",
+                "src/domUtil.js#L576"
+            ],
+            "getSafeAreaInset": [
+                "src/domUtil.d.ts#L220",
+                "src/domUtil.js#L328"
+            ],
+            "getScrollOffset": [
+                "src/domUtil.d.ts#L222",
+                "src/domUtil.js#L370"
+            ],
+            "getScrollParent": [
+                "src/domUtil.d.ts#L224",
+                "src/domUtil.js#L377"
+            ],
+            "getSelection": "src/env.js#L8",
+            "getShortcut": [
+                "src/dom.d.ts#L219",
+                "src/dom.js#L436"
+            ],
+            "getTextInputMode": "src/dom.js#L86",
+            "grep": [
+                "src/util.d.ts#L191",
+                "src/util.js#L211"
+            ],
+            "handleMutations": "src/tree.js#L333",
+            "handlePromise": "src/domLock.js#L53",
+            "HasElement": "src/types.d.ts#L310",
+            "HasEntries": "src/util.d.ts#L7",
+            "HasForEach": "src/util.d.ts#L11",
+            "hasOwnProperty": [
+                null,
+                null,
+                null
+            ],
+            "HasParent": "src/types.d.ts#L317",
+            "HasParentNode": "src/types.d.ts#L321",
+            "HasRange": "src/types.d.ts#L296",
+            "HasRect": "src/types.d.ts#L303",
+            "HintedKeyOf": "src/types.d.ts#L30",
+            "HintedString": "src/types.d.ts#L29",
+            "HintedStringKeyOf": "src/types.d.ts#L31",
+            "HtmlContent": "src/types.d.ts#L9",
+            "htmlDecode": [
+                "src/util.d.ts#L517",
+                "src/util.js#L534"
+            ],
+            "hyphenate": [
+                "src/util.d.ts#L474",
+                "src/util.js#L494"
+            ],
+            "iequal": [
+                "src/util.d.ts#L450",
+                "src/util.js#L476"
+            ],
+            "If": "src/types.d.ts#L44",
+            "inherit": [
+                "src/util.d.ts#L673",
+                "src/util.js#L697"
+            ],
+            "InheritedNode": [
+                "src/tree.d.ts#L94",
+                "src/tree.js#L397"
+            ],
+            "InheritedNodeTree": [
+                "src/tree.d.ts#L72",
+                "src/tree.js#L470"
+            ],
+            "InheritedNodeTreeOptions": [
+                "src/tree.d.ts#L14",
+                "src/types.d.ts#L656"
+            ],
+            "initDetachWatcher": "src/observe.js#L173",
+            "initNode": "src/tree.js#L47",
+            "inputValueImpl": "src/dom.js#L114",
+            "insertChildNode": "src/tree.js#L129",
+            "insertInheritedNode": "src/tree.js#L185",
+            "insertNode": "src/tree.js#L110",
+            "insertText": [
+                "src/dom.d.ts#L244",
+                "src/dom.js#L577"
+            ],
+            "insertTraversableNode": "src/tree.js#L155",
+            "Inset": "src/types.d.ts#L246",
+            "InstanceTypeOrObject": "src/util.d.ts#L39",
+            "invalidOperation": [
+                "src/errorCode.d.ts#L3",
+                "src/errorCode.js#L3"
+            ],
+            "is": [
+                "src/util.d.ts#L65",
+                "src/util.js#L58"
+            ],
+            "IS_IE": "src/env.js#L18",
+            "IS_IE10": "src/env.js#L17",
+            "IS_IOS": "src/env.js#L16",
+            "IS_MAC": "src/env.js#L15",
+            "IS_TOUCH": "src/env.js#L19",
+            "IsAny": "src/types.d.ts#L46",
+            "IsAnyOrUnknown": "src/types.d.ts#L47",
+            "isArray": [
+                "src/util.d.ts#L78",
+                "src/util.js#L66"
+            ],
+            "isArrayLike": [
+                "src/util.d.ts#L122",
+                "src/util.js#L87"
+            ],
+            "isCssUrlValue": [
+                "src/cssUtil.d.ts#L5",
+                "src/cssUtil.js#L20"
+            ],
+            "isError": [
+                "src/util.d.ts#L92",
+                "src/util.js#L74"
+            ],
+            "isErrorWithCode": [
+                "src/util.d.ts#L443",
+                "src/util.js#L467"
+            ],
+            "isFunction": [
+                "src/util.d.ts#L85",
+                "src/util.js#L70"
+            ],
+            "isMouseDown": "src/dom.js#L101",
+            "IsNever": "src/types.d.ts#L49",
+            "isPlainObject": [
+                "src/util.d.ts#L106",
+                "src/util.js#L82"
+            ],
+            "isThenable": [
+                "src/util.d.ts#L99",
+                "src/util.js#L78"
+            ],
+            "isUndefinedOrNull": [
+                "src/util.d.ts#L71",
+                "src/util.js#L62"
+            ],
+            "IsUnknown": "src/types.d.ts#L48",
+            "isVisible": [
+                "src/domUtil.d.ts#L36",
+                "src/domUtil.js#L125"
+            ],
+            "IterateCallbackOrNull": "src/types.d.ts#L42",
+            "iterateFocusPath": [
+                "src/dom.d.ts#L217",
+                "src/dom.js#L394"
+            ],
+            "iterateNode": [
+                "src/domUtil.d.ts#L87",
+                "src/domUtil.js#L168"
+            ],
+            "iterateNodeToArray": [
+                "src/domUtil.d.ts#L94",
+                "src/domUtil.js#L181"
+            ],
+            "IteratorNodeFilter": "src/types.d.ts#L40",
+            "IteratorNodeFilterResult": "src/types.d.ts#L39",
+            "jQuery": "src/include/jquery.js#L2",
+            "KeyNameModifier": "src/types.d.ts#L163",
+            "KEYNAMES": "src/constants.js#L4",
+            "KeyNameSingleCharacter": "src/types.d.ts#L172",
+            "KeyNameSpecial": "src/types.d.ts#L164",
+            "KeyOf": "src/types.d.ts#L14",
+            "keys": "src/util.d.ts#L605",
+            "kv": [
+                "src/util.d.ts#L225",
+                "src/util.js#L253"
+            ],
+            "lcfirst": [
+                "src/util.d.ts#L488",
+                "src/util.js#L505"
+            ],
+            "listenDOMEvent": "src/events.js#L101",
+            "lock": "src/domLock.js#L104",
+            "locked": "src/domLock.js#L173",
+            "makeArray": [
+                "src/util.d.ts#L130",
+                "src/util.js#L98"
+            ],
+            "makeAsync": [
+                "src/util.d.ts#L597",
+                "src/util.js#L624"
+            ],
+            "makeSelection": [
+                "src/domUtil.d.ts#L397",
+                "src/domUtil.js#L516"
+            ],
+            "map": [
+                "src/util.d.ts#L182",
+                "src/util.js#L196"
+            ],
+            "mapGet": [
+                "src/util.d.ts#L296",
+                "src/util.js#L312"
+            ],
+            "mapObject": [
+                "src/util.d.ts#L288",
+                "src/util.js#L304"
+            ],
+            "mapRemove": [
+                "src/util.d.ts#L336",
+                "src/util.js#L319"
+            ],
+            "MapResultValue": "src/types.d.ts#L41",
+            "matchSelector": [
+                "src/domUtil.d.ts#L29",
+                "src/domUtil.js#L94"
+            ],
+            "matchWord": [
+                "src/util.d.ts#L503",
+                "src/util.js#L522"
+            ],
+            "matchWordMulti": [
+                "src/util.d.ts#L511",
+                "src/util.js#L526"
+            ],
+            "MaybeFunctionOrConstructor": "src/util.d.ts#L40",
+            "measureLine": "src/dom.js#L75",
+            "mergeRect": [
+                "src/domUtil.d.ts#L378",
+                "src/domUtil.js#L619"
+            ],
+            "muteAndReturn": "src/domLock.js#L24",
+            "NodeIterator": [
+                "src/types.d.ts#L325",
+                "src/util.d.ts#L3"
+            ],
+            "NodeOfType": "src/types.d.ts#L60",
+            "NodeTree": [
+                "src/tree.d.ts#L51",
+                "src/tree.js#L403"
+            ],
+            "NodeTreeEventMap": [
+                "src/tree.d.ts#L17",
+                "src/types.d.ts#L657"
+            ],
+            "NodeTreeMutationRecord": [
+                "src/tree.d.ts#L29",
+                "src/types.d.ts#L659"
+            ],
+            "NodeTreeOptions": [
+                "src/tree.d.ts#L3",
+                "src/types.d.ts#L654"
+            ],
+            "NodeTreeUpdateEvent": [
+                "src/tree.d.ts#L21",
+                "src/types.d.ts#L658"
+            ],
+            "noop": [
+                "src/util.d.ts#L46",
+                "src/util.js#L44"
+            ],
+            "normalizeCSSValue": "src/cssUtil.js#L24",
+            "normalizeEventOptions": "src/events.js#L65",
+            "normalizeEventTarget": "src/events.js#L61",
+            "normalizeKey": "src/dom.js#L105",
+            "Not": "src/types.d.ts#L45",
+            "notifyAsync": "src/domLock.js#L140",
+            "observe": [
+                "src/observe.d.ts#L22",
+                "src/observe.js#L20"
+            ],
+            "ObserveCallback": "src/observe.d.ts#L3",
+            "Offset": "src/types.d.ts#L241",
+            "parentsAndSelf": [
+                "src/domUtil.d.ts#L119",
+                "src/domUtil.js#L199"
+            ],
+            "parseCSS": [
+                "src/cssUtil.d.ts#L3",
+                "src/cssUtil.js#L10"
+            ],
+            "pick": [
+                "src/util.d.ts#L270",
+                "src/util.js#L269"
+            ],
+            "pipe": [
+                "src/util.d.ts#L48",
+                "src/util.js#L46"
+            ],
+            "Point": "src/types.d.ts#L236",
+            "PointerTracking": "src/types.d.ts#L347",
+            "pointInRect": [
+                "src/domUtil.d.ts#L370",
+                "src/domUtil.js#L614"
+            ],
+            "PointLike": "src/types.d.ts#L7",
+            "prepEventSource": "src/events.js#L33",
+            "preventLeave": "src/domLock.js#L163",
+            "Primitive": "src/types.d.ts#L11",
+            "PrivateStore": "src/types.d.ts#L231",
+            "Promise": "src/include/promise-polyfill.js#L1",
+            "PromiseResult": "src/types.d.ts#L36",
+            "PropertyChangeHandler": "src/types.d.ts#L176",
+            "PropertyChangeRecord": "src/types.d.ts#L178",
+            "PropertyTypeOrAny": "src/types.d.ts#L28",
+            "randomId": [
+                "src/util.d.ts#L452",
+                "src/util.js#L480"
+            ],
+            "RangeLike": "src/types.d.ts#L5",
+            "Rect": [
+                "src/domUtil.js#L18",
+                "src/types.d.ts#L253"
+            ],
+            "rectCovers": [
+                "src/domUtil.d.ts#L358",
+                "src/domUtil.js#L606"
+            ],
+            "rectEquals": [
+                "src/domUtil.d.ts#L350",
+                "src/domUtil.js#L599"
+            ],
+            "rectIntersects": [
+                "src/domUtil.d.ts#L360",
+                "src/domUtil.js#L610"
+            ],
+            "RectLike": "src/types.d.ts#L6",
+            "registerAsyncEvent": "src/events.js#L114",
+            "registerCleanup": [
+                "src/observe.d.ts#L66",
+                "src/observe.js#L52"
+            ],
+            "reject": [
+                "src/util.d.ts#L528",
+                "src/util.js#L547"
+            ],
+            "releaseFocus": [
+                "src/dom.d.ts#L211",
+                "src/dom.js#L390"
+            ],
+            "releaseModal": [
+                "src/dom.d.ts#L192",
+                "src/dom.js#L349"
+            ],
+            "removeAsyncEvent": "src/events.js#L126",
+            "removeContainerForElement": "src/events.js#L46",
+            "removeFocusUnsafe": "src/dom.js#L316",
+            "removeInheritedNode": "src/tree.js#L241",
+            "removeNode": [
+                "src/domUtil.d.ts#L195",
+                "src/domUtil.js#L296",
+                "src/tree.js#L114"
+            ],
+            "removeNodeFromMap": "src/tree.js#L118",
+            "removeTraversableNode": "src/tree.js#L197",
+            "removeVendorPrefix": "src/cssUtil.js#L43",
+            "reorderTraversableChildNodes": "src/tree.js#L254",
+            "repeat": [
+                "src/util.d.ts#L460",
+                "src/util.js#L484"
+            ],
+            "reportError": [
+                "src/dom.d.ts#L116",
+                "src/dom.js#L1042",
+                "src/env.js#L10"
+            ],
+            "resolve": [
+                "src/util.d.ts#L525",
+                "src/util.js#L543"
+            ],
+            "resolveAll": [
+                "src/util.d.ts#L545",
+                "src/util.js#L560"
+            ],
+            "retainFocus": [
+                "src/dom.d.ts#L205",
+                "src/dom.js#L384"
+            ],
+            "retryable": [
+                "src/util.d.ts#L566",
+                "src/util.js#L578"
+            ],
+            "root": "src/env.js#L7",
+            "runAsync": "src/domLock.js#L144",
+            "RunAsyncContext": "src/types.d.ts#L220",
+            "runCSSTransition": [
+                "src/cssUtil.d.ts#L16",
+                "src/cssUtil.js#L47"
+            ],
+            "sameValue": "src/util.d.ts#L55",
+            "sameValueZero": [
+                "src/util.d.ts#L57",
+                "src/util.js#L54"
+            ],
+            "scrollBy": [
+                "src/domUtil.d.ts#L228",
+                "src/domUtil.js#L391"
+            ],
+            "scrollIntoView": [
+                "src/domUtil.d.ts#L240",
+                "src/domUtil.js#L462"
+            ],
+            "selectClosestRelative": [
+                "src/domUtil.d.ts#L125",
+                "src/domUtil.js#L221"
+            ],
+            "selectIncludeSelf": [
+                "src/domUtil.d.ts#L123",
+                "src/domUtil.js#L207"
+            ],
+            "setAdd": [
+                "src/util.d.ts#L351",
+                "src/util.js#L332"
+            ],
+            "setClass": [
+                "src/domUtil.d.ts#L210",
+                "src/domUtil.js#L311"
+            ],
+            "setFocus": "src/dom.js#L246",
+            "setFocusUnsafe": "src/dom.js#L296",
+            "setImmediate": [
+                "src/util.d.ts#L405",
+                "src/util.js#L384"
+            ],
+            "setImmediateOnce": [
+                "src/util.d.ts#L407",
+                "src/util.js#L395"
+            ],
+            "setImmediateOnceCallback": "src/util.js#L391",
+            "setInterval": [
+                "src/util.d.ts#L423",
+                "src/util.js#L418"
+            ],
+            "setIntervalSafe": [
+                "src/util.d.ts#L431",
+                "src/util.js#L425"
+            ],
+            "setLastEventSource": "src/events.js#L30",
+            "setModal": [
+                "src/dom.d.ts#L186",
+                "src/dom.js#L329"
+            ],
+            "setParentNode": "src/tree.js#L97",
+            "setPromiseTimeout": [
+                "src/util.d.ts#L582",
+                "src/util.js#L607"
+            ],
+            "setShortcut": [
+                "src/dom.d.ts#L221",
+                "src/dom.js#L440"
+            ],
+            "setTabRoot": [
+                "src/dom.d.ts#L166",
+                "src/dom.js#L372"
+            ],
+            "setTextData": "src/dom.js#L123",
+            "setTimeout": [
+                "src/util.d.ts#L417",
+                "src/util.js#L411"
+            ],
+            "setTimeoutOnce": [
+                "src/util.d.ts#L409",
+                "src/util.js#L401"
+            ],
+            "single": [
+                "src/util.d.ts#L217",
+                "src/util.js#L244"
+            ],
+            "splice": [
+                "src/util.d.ts#L199",
+                "src/util.js#L222"
+            ],
+            "StringKeyOf": "src/types.d.ts#L27",
+            "styleToJSON": "src/cssUtil.js#L31",
+            "subscribeAsync": "src/domLock.js#L124",
+            "tagName": [
+                "src/domUtil.d.ts#L21",
+                "src/domUtil.js#L90"
+            ],
+            "textInputAllowed": [
+                "src/dom.d.ts#L122",
+                "src/dom.js#L97"
+            ],
+            "throwNotFunction": [
+                "src/util.d.ts#L439",
+                "src/util.js#L454"
+            ],
+            "throwNotOwnDataProperty": "src/util.js#L780",
+            "throwOrReturn": "src/tree.js#L22",
+            "throws": [
+                "src/util.d.ts#L437",
+                "src/util.js#L450"
+            ],
+            "toPlainRect": [
+                "src/domUtil.d.ts#L323",
+                "src/domUtil.js#L585"
+            ],
+            "trackElements": "src/observe.js#L94",
+            "trackPointer": "src/dom.js#L461",
+            "TraversableNode": [
+                "src/tree.d.ts#L83",
+                "src/tree.js#L371"
+            ],
+            "TraversableNodeTree": [
+                "src/tree.d.ts#L64",
+                "src/tree.js#L457"
+            ],
+            "TraversableNodeTreeOptions": [
+                "src/tree.d.ts#L11",
+                "src/types.d.ts#L655"
+            ],
+            "TreeTraverser": "src/types.d.ts#L339",
+            "TreeWalker": [
+                "src/tree.d.ts#L98",
+                "src/tree.js#L493"
+            ],
+            "treeWalkerAcceptNode": "src/tree.js#L505",
+            "treeWalkerIsNodeVisible": "src/tree.js#L501",
+            "treeWalkerNodeAccepted": "src/tree.js#L518",
+            "treeWalkerTraverseChildren": "src/tree.js#L526",
+            "treeWalkerTraverseSibling": "src/tree.js#L547",
+            "triggerFocusEvent": "src/dom.js#L206",
+            "triggerModalChangeEvent": "src/dom.js#L217",
+            "trim": [
+                "src/util.d.ts#L495",
+                "src/util.js#L510"
+            ],
+            "ucfirst": [
+                "src/util.d.ts#L481",
+                "src/util.js#L500"
+            ],
+            "Union": "src/util.d.ts#L34",
+            "UnionAll": "src/util.d.ts#L38",
+            "UnregisterCallback": "src/types.d.ts#L58",
+            "unsetTabRoot": [
+                "src/dom.d.ts#L172",
+                "src/dom.js#L378"
+            ],
+            "updateTabIndex": "src/dom.js#L233",
+            "updateTabRoot": "src/dom.js#L223",
+            "updateTree": "src/tree.js#L288",
+            "ValueOf": "src/types.d.ts#L20",
+            "values": "src/util.d.ts#L608",
+            "VersionState": "src/tree.js#L43",
+            "VirtualNode": [
+                "src/tree.d.ts#L79",
+                "src/tree.js#L368"
+            ],
+            "watch": [
+                "src/util.d.ts#L705",
+                "src/util.js#L837"
+            ],
+            "watchable": [
+                "src/util.d.ts#L742",
+                "src/util.js#L893"
+            ],
+            "Watchable": "src/types.d.ts#L183",
+            "WatchableInstance": "src/types.d.ts#L37",
+            "watchAttributes": [
+                "src/observe.d.ts#L51",
+                "src/observe.js#L138"
+            ],
+            "watchElements": [
+                "src/observe.d.ts#L41",
+                "src/observe.js#L115"
+            ],
+            "watchOnce": [
+                "src/util.d.ts#L728",
+                "src/util.js#L874"
+            ],
+            "watchOwnAttributes": [
+                "src/observe.d.ts#L59",
+                "src/observe.js#L166"
+            ],
+            "WhitespaceDelimited": "src/types.d.ts#L33",
+            "window": "src/env.js#L5",
+            "wrapSelectorHandler": "src/events.js#L91",
+            "ZetaAsyncHandleableEvent": "src/types.d.ts#L547",
+            "ZetaDeferrableEvent": "src/types.d.ts#L528",
+            "ZetaDelegatedEventTarget": "src/types.d.ts#L422",
+            "ZetaDOMEvent": "src/types.d.ts#L570",
+            "ZetaDOMEventHandler": "src/types.d.ts#L415",
+            "ZetaDOMEventHandlers": "src/types.d.ts#L417",
+            "ZetaDOMEventMap": "src/types.d.ts#L360",
+            "ZetaDOMEventName": "src/types.d.ts#L358",
+            "ZetaDragEvent": "src/types.d.ts#L597",
+            "ZetaErrorEvent": "src/types.d.ts#L566",
+            "ZetaEvent": [
+                "src/events.js#L271",
+                "src/types.d.ts#L563"
+            ],
+            "ZetaEventBase": "src/types.d.ts#L504",
+            "ZetaEventContainer": [
+                "src/events.d.ts#L138",
+                "src/events.js#L310"
+            ],
+            "ZetaEventContext": "src/types.d.ts#L426",
+            "ZetaEventContextBase": "src/types.d.ts#L420",
+            "ZetaEventData": "src/types.d.ts#L460",
+            "ZetaEventDispatcher": "src/types.d.ts#L438",
+            "ZetaEventEmitDataType": "src/types.d.ts#L388",
+            "ZetaEventEmitOptionType": "src/types.d.ts#L392",
+            "ZetaEventEmitReturnType": "src/types.d.ts#L397",
+            "ZetaEventEmitReturnTypeByOptions": "src/types.d.ts#L402",
+            "ZetaEventEmitter": "src/events.js#L156",
+            "ZetaEventGenericInit": "src/types.d.ts#L390",
+            "ZetaEventHandler": "src/types.d.ts#L411",
+            "ZetaEventHandlerReturnType": "src/types.d.ts#L407",
+            "ZetaEventHandlers": "src/types.d.ts#L413",
+            "ZetaEventInit": "src/types.d.ts#L389",
+            "ZetaEventSource": [
+                "src/events.d.ts#L122",
+                "src/events.js#L23",
+                "src/types.d.ts#L631"
+            ],
+            "ZetaEventSourceName": "src/types.d.ts#L356",
+            "ZetaEventType": "src/types.d.ts#L384",
+            "ZetaFocusEvent": "src/types.d.ts#L577",
+            "ZetaGestureEvent": "src/types.d.ts#L611",
+            "ZetaGetContentRectEvent": "src/types.d.ts#L628",
+            "ZetaHandleableEvent": "src/types.d.ts#L531",
+            "ZetaInputEvent": "src/types.d.ts#L619",
+            "ZetaKeystrokeEvent": "src/types.d.ts#L607",
+            "ZetaModalChangeEvent": "src/types.d.ts#L581",
+            "ZetaMouseEvent": "src/types.d.ts#L591",
+            "ZetaNativeUIEvent": "src/types.d.ts#L573",
+            "ZetaPointerEvent": "src/types.d.ts#L585",
+            "ZetaScrollByEvent": "src/types.d.ts#L622",
+            "ZetaTextInputEvent": "src/types.d.ts#L615",
+            "ZetaTouchEvent": "src/types.d.ts#L594",
+            "ZetaWheelEvent": "src/types.d.ts#L600"
+        }
+    },
+    "zeta-dom-react": {
+        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/0fbf76409d1fc5cea14fdf7ab2e50df3a6e95304",
+        "symbols": {
+            "adjustMonth": "src/fields/DateField.js#L33",
+            "AsyncContentEventMap": "src/hooks.d.ts#L105",
+            "AsyncContentLoadEvent": "src/hooks.d.ts#L110",
+            "AsyncContentState": "src/hooks.d.ts#L114",
+            "AsyncScope": "src/hooks.d.ts#L93",
+            "BreakpointContext": "src/css.d.ts#L1",
+            "ChoiceField": [
+                "src/fields/ChoiceField.d.ts#L48",
+                "src/fields/ChoiceField.js#L3"
+            ],
+            "ChoiceFieldProps": "src/fields/ChoiceField.d.ts#L21",
+            "ChoiceFieldPropsItem": "src/fields/ChoiceField.d.ts#L4",
+            "ChoiceFieldState": "src/fields/ChoiceField.d.ts#L33",
+            "ChoiceItem": "src/fields/ChoiceField.d.ts#L14",
+            "ChoiceItemType": "src/fields/ChoiceField.d.ts#L8",
+            "ChoiceItemValueType": "src/fields/ChoiceField.d.ts#L3",
+            "clampValue": "src/fields/DateField.js#L96",
+            "ClassName": "src/util.d.ts#L2",
+            "ClassNameProvider": "src/util.d.ts#L4",
+            "classNames": [
+                "src/util.d.ts#L45",
+                "src/util.js#L47"
+            ],
+            "clearUnusedSingletons": "src/hooks.js#L28",
+            "cloneValue": "src/form.js#L65",
+            "combineRef": [
+                "src/util.d.ts#L70",
+                "src/util.js#L81"
+            ],
+            "combineValidators": [
+                "src/form.d.ts#L617",
+                "src/form.js#L715"
+            ],
+            "compare": "src/dataView.js#L11",
+            "createAsyncScope": [
+                "src/hooks.d.ts#L181",
+                "src/hooks.js#L80"
+            ],
+            "createBreakpointContext": [
+                "src/css.d.ts#L30",
+                "src/css.js#L17"
+            ],
+            "createDataObject": "src/form.js#L170",
+            "createDependency": [
+                "src/hooks.d.ts#L443",
+                "src/hooks.js#L369"
+            ],
+            "createErrorHandler": [
+                "src/hooks.d.ts#L413",
+                "src/hooks.js#L294"
+            ],
+            "createFieldState": "src/form.js#L269",
+            "createHookHelper": "src/form.js#L33",
+            "createRefInitCallback": "src/hooks.js#L71",
+            "DataChangeEvent": "src/form.d.ts#L352",
+            "DataView": [
+                "src/dataView.d.ts#L31",
+                "src/dataView.js#L27"
+            ],
+            "DataViewEventMap": "src/dataView.d.ts#L24",
+            "DataViewProps": "src/dataView.d.ts#L1",
+            "DateField": [
+                "src/fields/DateField.d.ts#L40",
+                "src/fields/DateField.js#L119"
+            ],
+            "DateFieldProps": "src/fields/DateField.d.ts#L3",
+            "DateFieldState": "src/fields/DateField.d.ts#L23",
+            "Dependency": "src/hooks.d.ts#L153",
+            "DependencyConsumer": "src/hooks.d.ts#L164",
+            "DependencyProvider": "src/hooks.d.ts#L167",
+            "DependencyProviderContext": "src/hooks.d.ts#L170",
+            "DisposeCallback": "src/hooks.d.ts#L10",
+            "domEventRef": [
+                "src/util.d.ts#L35",
+                "src/util.js#L19"
+            ],
+            "emitDataChangeEvent": "src/form.js#L127",
+            "ErrorContext": "src/hooks.d.ts#L24",
+            "ErrorHandler": "src/hooks.d.ts#L39",
+            "ErrorHandlerWithRef": "src/hooks.d.ts#L89",
+            "ErrorSource": "src/hooks.d.ts#L20",
+            "EventHandlerThis": "src/hooks.d.ts#L7",
+            "EventsOf": "src/hooks.d.ts#L3",
+            "EventStateSelector": "src/hooks.d.ts#L8",
+            "EventType": "src/hooks.d.ts#L4",
+            "FieldHookHelper": "src/form.d.ts#L144",
+            "FieldMeta": "src/form.d.ts#L124",
+            "FieldPostHookCallback": "src/form.d.ts#L18",
+            "FieldPropsType": "src/form.d.ts#L14",
+            "FieldStateType": "src/form.d.ts#L10",
+            "FieldType": "src/form.d.ts#L168",
+            "FieldTypeConstructor": "src/form.d.ts#L164",
+            "FieldTypeOptions": "src/form.d.ts#L138",
+            "FieldValueType": "src/form.d.ts#L9",
+            "Form": [
+                "src/form.d.ts#L2",
+                "src/form.js#L737"
+            ],
+            "FormArray": [
+                "src/form.d.ts#L105",
+                "src/form.js#L759"
+            ],
+            "FormatErrorCallback": "src/form.d.ts#L6",
+            "FormBeforeLeaveEvent": "src/form.d.ts#L368",
+            "FormContext": [
+                "src/form.d.ts#L400",
+                "src/form.js#L459"
+            ],
+            "FormContextOptions": "src/form.d.ts#L372",
+            "FormContextProvider": [
+                "src/form.d.ts#L1",
+                "src/form.js#L755"
+            ],
+            "FormEventMap": "src/form.d.ts#L344",
+            "FormFieldProps": "src/form.d.ts#L206",
+            "FormFieldState": "src/form.d.ts#L284",
+            "FormObject": [
+                "src/form.d.ts#L91",
+                "src/form.js#L763"
+            ],
+            "FormObjectHelper": "src/form.d.ts#L56",
+            "FormObjectProps": "src/form.d.ts#L74",
+            "formPersist": "src/form.js#L455",
+            "FormProps": "src/form.d.ts#L340",
+            "FormValidateEvent": "src/form.d.ts#L356",
+            "FormValidationChangeEvent": "src/form.d.ts#L362",
+            "getAllAncestorPaths": "src/form.js#L118",
+            "getField": "src/form.js#L100",
+            "getPath": "src/form.js#L106",
+            "handleDataChange": "src/form.js#L160",
+            "hasImplicitError": "src/form.js#L61",
+            "HiddenField": [
+                "src/form.d.ts#L122",
+                "src/form.js#L801"
+            ],
+            "HiddenFieldProps": "src/form.d.ts#L107",
+            "HintablePath": "src/form.d.ts#L24",
+            "HintableProperty": "src/form.d.ts#L20",
+            "innerTextOrHTML": [
+                "src/util.d.ts#L51",
+                "src/util.js#L70"
+            ],
+            "IS_DEV": [
+                "src/env.js#L1",
+                "src/env.umd.js#L20"
+            ],
+            "isEmpty": "src/form.js#L57",
+            "isSingletonDisposed": [
+                "src/hooks.d.ts#L359",
+                "src/hooks.js#L275"
+            ],
+            "keyFor": "src/form.js#L69",
+            "LegacyFieldPropsType": "src/form.d.ts#L16",
+            "LegacyFieldStateType": "src/form.d.ts#L15",
+            "MultiChoiceField": [
+                "src/fields/MultiChoiceField.d.ts#L35",
+                "src/fields/MultiChoiceField.js#L4"
+            ],
+            "MultiChoiceFieldProps": "src/fields/MultiChoiceField.d.ts#L3",
+            "MultiChoiceFieldState": "src/fields/MultiChoiceField.d.ts#L16",
+            "muteRejection": "src/hooks.js#L23",
+            "normalizeChoiceItems": "src/fields/ChoiceField.js#L5",
+            "normalizeDate": "src/fields/DateField.js#L81",
+            "normalizeOptions": "src/form.js#L442",
+            "NumericField": [
+                "src/fields/NumericField.d.ts#L28",
+                "src/fields/NumericField.js#L3"
+            ],
+            "NumericFieldProps": "src/fields/NumericField.d.ts#L3",
+            "NumericFieldState": "src/fields/NumericField.d.ts#L25",
+            "parseRelativeDate": "src/fields/DateField.js#L53",
+            "parseRelativeDateSimple": "src/fields/DateField.js#L39",
+            "partial": [
+                "src/util.d.ts#L57",
+                "src/util.js#L74"
+            ],
+            "pathContains": "src/form.js#L95",
+            "PrimitiveClassName": "src/util.d.ts#L1",
+            "PropertyType": "src/form.d.ts#L25",
+            "PropertyTypeFromPath": "src/form.d.ts#L26",
+            "registerFieldType": [
+                "src/form.d.ts#L625",
+                "src/form.js#L726"
+            ],
+            "resolvePathInfo": "src/form.js#L73",
+            "setPageCount": "src/dataView.js#L23",
+            "SetPartialCallback": "src/util.d.ts#L8",
+            "setPartialState": "src/util.js#L8",
+            "Stringifiable": "src/form.d.ts#L28",
+            "TextField": [
+                "src/fields/TextField.d.ts#L19",
+                "src/fields/TextField.js#L3"
+            ],
+            "TextFieldProps": "src/fields/TextField.d.ts#L5",
+            "TextFieldState": "src/fields/TextField.d.ts#L12",
+            "TextInputAttributes": "src/fields/TextField.d.ts#L3",
+            "toDateObject": "src/fields/DateField.js#L101",
+            "toDateString": "src/fields/DateField.js#L106",
+            "ToggleField": [
+                "src/fields/ToggleField.d.ts#L17",
+                "src/fields/ToggleField.js#L3"
+            ],
+            "ToggleFieldProps": "src/fields/ToggleField.d.ts#L3",
+            "ToggleFieldState": "src/fields/ToggleField.d.ts#L10",
+            "toRefCallback": [
+                "src/util.d.ts#L76",
+                "src/util.js#L85"
+            ],
+            "useAsync": [
+                "src/hooks.d.ts#L310",
+                "src/hooks.js#L159"
+            ],
+            "useAutoSetRef": [
+                "src/hooks.d.ts#L187",
+                "src/hooks.js#L89"
+            ],
+            "useDataView": [
+                "src/dataView.d.ts#L157",
+                "src/dataView.js#L169"
+            ],
+            "useDependency": [
+                "src/hooks.d.ts#L455",
+                "src/hooks.js#L387"
+            ],
+            "useDispose": [
+                "src/hooks.d.ts#L353",
+                "src/hooks.js#L260"
+            ],
+            "useEagerReducer": [
+                "src/hooks.d.ts#L208",
+                "src/hooks.js#L95"
+            ],
+            "useEagerState": [
+                "src/hooks.d.ts#L194",
+                "src/hooks.js#L110"
+            ],
+            "useErrorHandler": [
+                "src/hooks.d.ts#L432",
+                "src/hooks.js#L349"
+            ],
+            "useErrorHandlerRef": [
+                "src/hooks.d.ts#L420",
+                "src/hooks.js#L290"
+            ],
+            "useEventTrigger": [
+                "src/hooks.d.ts#L236",
+                "src/hooks.js#L131"
+            ],
+            "useFormContext": [
+                "src/form.d.ts#L593",
+                "src/form.js#L610"
+            ],
+            "useFormField": [
+                "src/form.d.ts#L605",
+                "src/form.js#L638"
+            ],
+            "useFormFieldInternal": "src/form.js#L342",
+            "useMediaQuery": [
+                "src/css.d.ts#L24",
+                "src/css.js#L6"
+            ],
+            "useMemoizedFunction": [
+                "src/hooks.d.ts#L291",
+                "src/hooks.js#L142"
+            ],
+            "useObservableProperty": [
+                "src/hooks.d.ts#L300",
+                "src/hooks.js#L149"
+            ],
+            "useRefInitCallback": [
+                "src/hooks.d.ts#L332",
+                "src/hooks.js#L254"
+            ],
+            "useSingleton": [
+                "src/hooks.d.ts#L396",
+                "src/hooks.js#L279"
+            ],
+            "useSingletonEffectImpl": "src/hooks.js#L38",
+            "useSingletonEffectImplDev": "src/hooks.js#L49",
+            "useUnloadEffect": [
+                "src/hooks.d.ts#L438",
+                "src/hooks.js#L360"
+            ],
+            "useUpdateTrigger": [
+                "src/hooks.d.ts#L221",
+                "src/hooks.js#L116"
+            ],
+            "useValueTrigger": [
+                "src/hooks.d.ts#L229",
+                "src/hooks.js#L122"
+            ],
+            "useViewState": [
+                "src/viewState.d.ts#L45",
+                "src/viewState.js#L10"
+            ],
+            "ValidateCallback": "src/form.d.ts#L5",
+            "validateFields": "src/form.js#L382",
+            "ValidateResult": "src/form.d.ts#L4",
+            "ValidationError": [
+                "src/form.d.ts#L33",
+                "src/form.js#L27"
+            ],
+            "ViewState": "src/viewState.d.ts#L1",
+            "ViewStateProvider": [
+                "src/viewState.d.ts#L24",
+                "src/viewState.js#L8"
+            ],
+            "WithFallback": "src/form.d.ts#L8",
+            "withSuspense": [
+                "src/util.d.ts#L83",
+                "src/util.js#L94"
+            ],
+            "wrapErrorResult": "src/form.js#L429"
+        }
+    }
+}
