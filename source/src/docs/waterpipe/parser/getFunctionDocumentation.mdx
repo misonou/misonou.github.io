@@ -1,0 +1,95 @@
+<Module name="waterpipe-parser" />
+
+# getFunctionDocumentation
+
+Gets documentation for a function.
+
+## Syntax
+
+```javascript
+getFunctionDocumentation(language, name, args)
+```
+
+<ImportHint
+    name="getFunctionDocumentation"
+    module="waterpipe-parser"
+    require="getFunctionDocumentation"
+/>
+
+### Parameters
+
+<dl>
+    #### `language`
+    Language identifier.
+
+    #### `name`
+    Name of the function to resolve.
+
+    #### `args`
+    Argument kinds for overload resolution.
+
+    It should be a list of [`FunctionArgumentDefinition`](:) objects.
+</dl>
+
+### Return value
+
+A [`FunctionDocumentation`](:) object.
+
+
+## FunctionDocumentation interface
+
+<MemberList
+    i="FunctionDocumentation"
+    ip={['name', 'description', 'args']}
+/>
+
+### `FunctionDocumentation.args`
+
+Gets the documentation for the function arguments.
+
+See [`FunctionArgumentDocumentation`](:) for details.
+
+### `FunctionDocumentation.description` <Badge.Optional />
+
+Gets the description of the function.
+
+### `FunctionDocumentation.name`
+
+Gets the name of the function.
+
+## FunctionArgumentDocumentation interface
+
+<MemberList
+    i="FunctionArgumentDocumentation"
+    ip={['kind', 'name', 'description']}
+/>
+
+### `FunctionArgumentDocumentation.description` <Badge.Optional />
+
+Description of the argument.
+
+### `FunctionArgumentDocumentation.kind`
+
+Accepted argument kind.
+
+Possible values:
+
+<dl>
+    #### `any`
+    Accepts any kind of argument.
+
+    #### `pipe`
+    Accepts pipe argument.
+
+    #### `value`
+    Accepts value argument, i.e. either a data path or a constant value.
+
+    #### `constant`
+    Accepts constant value argument, i.e. a double-quoted string or a backtick-prefixed string.
+</dl>
+
+
+### `FunctionArgumentDocumentation.name` <Badge.Optional />
+
+Name of the argument.
+

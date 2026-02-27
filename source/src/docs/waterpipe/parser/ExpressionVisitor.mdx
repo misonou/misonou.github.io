@@ -1,0 +1,81 @@
+<Module name="waterpipe-parser" />
+
+# ExpressionVisitor interface
+
+Defines callbacks for each expression type.
+
+For each property, you can supply either a single callback function or an object with `enter` and `exit` callbacks.
+If a single callback function is supplied, it is treated as an `enter` callback.
+
+Each callback is invoked with an [`ExpressionVisitorContext`](:) object as the first argument,
+and an optional second argument if `state` is provided to [`Expression.visit()`](:).
+
+```javascript
+expr.visit({
+    pipe: {
+        enter: (context) => {
+            console.log('enter pipe');
+        },
+        exit: (context) => {
+            console.log('exit pipe');
+        },
+    },
+    function: (context) => {
+        console.log('function call');
+    }
+});
+```
+
+<MemberList
+    i="ExpressionVisitor"
+    ip={['pipe', 'branch', 'function', 'argument', 'value']}
+/>
+
+## Instance properties
+
+### `ExpressionVisitor.argument` <Badge.Optional />
+
+Callback for visiting argument expressions.
+
+### `ExpressionVisitor.branch` <Badge.Optional />
+
+Callback for visiting branch expressions.
+
+### `ExpressionVisitor.function` <Badge.Optional />
+
+Callback for visiting function expressions.
+
+### `ExpressionVisitor.pipe` <Badge.Optional />
+
+Callback for visiting pipe expressions.
+
+### `ExpressionVisitor.value` <Badge.Optional />
+
+Callback for visiting value expressions.
+
+## Return value from callbacks
+
+When using [`visitExpression()`](:) or [`getVisitExpressionIterator()`](:),
+returned value from the callbacks are collected as an array. Undefined values returned from callbacks are omitted.
+
+```javascript
+const expr = Parser.default.parse('arr join ""');
+const results = expr.visit({
+    pipe: (context) => 'pipe',
+    function: (context) => 'function',
+});
+results // -> ['pipe', 'function']
+```
+
+## Passing state to callbacks
+
+You can pass an optional `state` argument to [`visitExpression()`](:) or [`getVisitExpressionIterator()`](:).
+This state will be passed as the second argument to each callback.
+
+```javascript
+const expr = Parser.default.parse('arr join ""');
+const results = expr.visit({
+    pipe: (context, state) => state.message,
+}, { message: 'visiting pipe' });
+results // -> ['visiting pipe']
+```

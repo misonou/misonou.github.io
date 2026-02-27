@@ -1,0 +1,409 @@
+<Module name="waterpipe-parser" />
+
+# Expression interface
+
+Base interface for all expression nodes in the AST.
+
+<MemberList
+    i="Expression"
+    extendsTo={['ArgumentExpression', 'BranchExpression', 'FunctionExpression', 'PipeExpression', 'RootExpression', 'ValueExpression']}
+    ip={['type', 'parent', 'start', 'end', 'token', 'source', 'evaluationContext']}
+    im={['closest()', 'getNodeAtPosition()', 'getVisitIterator()', 'visit()']}
+/>
+
+## Instance properties
+
+### `Expression.end` <Badge.ReadOnly />
+
+Gets the end position in the source string.
+
+### `Expression.evaluationContext` <Badge.ReadOnly />
+
+Gets the evaluation context if available.
+Evaluation context is only available if the expression is parsed with input and globals.
+
+### `Expression.parent` <Badge.ReadOnly />
+
+Gets the parent expression.
+
+### `Expression.source` <Badge.ReadOnly />
+
+Gets the source string of this expression.
+
+### `Expression.start` <Badge.ReadOnly />
+
+Gets the start position in the source string.
+
+### `Expression.token` <Badge.ReadOnly />
+
+Gets the [`Token`](:) object representing the leading token associated with this expression.
+
+It is `null` for `RootExpression` and `PipeExpression` nodes.
+
+### `Expression.type` <Badge.ReadOnly />
+
+Gets the type of the expression. See [`ExpressionType`](:) enum for possible values.
+
+## Instance methods
+
+### `Expression.closest()`
+
+```javascript
+closest(type)
+```
+
+Finds the closest ancestor of the specified expression type.
+
+#### Parameters
+
+<dl>
+    #### `type`
+    Type of expression to find. See [`ExpressionType`](:) enum for possible values.
+
+</dl>
+
+### `Expression.getNodeAtPosition()`
+
+```javascript
+getNodeAtPosition(pos)
+```
+
+Finds the expression node at the specified position in the source string.
+
+#### Parameters
+
+<dl>
+    #### `pos`
+    Position in the source string.
+
+</dl>
+
+#### Return value
+
+An [`Expression`](:) object representing the node at the specified position.
+
+If the position is out of range, an error is thrown.
+
+See [`getNodeAtPosition()`](:) for more details.
+
+### `Expression.getVisitIterator()`
+
+```javascript
+getVisitIterator(visitor)
+getVisitIterator(visitor, state)
+```
+
+Creates an iterator that visits each node in the expression tree.
+
+#### Parameters
+
+<dl>
+    #### `visitor`
+    A visitor object or callback to apply to each node.
+
+    If a callback is supplied, the callback is invoked for each descendant node in depth first order.
+
+    #### `state` <Badge.Optional />
+    Custom state object to be passed as the second argument to visitor callbacks.
+
+</dl>
+
+#### Return value
+
+A generator that yields the results from visitor while visiting each node. Undefined values returned from callbacks are omitted.
+
+See [Visiting expressions](/docs/waterpipe/parser/visiting-expressions) for more details.
+
+### `Expression.visit()`
+
+```javascript
+visit(visitor)
+visit(visitor, state)
+```
+
+Visits each nodes in the expression tree.
+
+#### Parameters
+
+<dl>
+    #### `visitor`
+    An [`ExpressionVisitor`](:) object or callback to apply to each node.
+
+    If a callback is supplied, the callback is invoked for each descendant node in depth first order.
+
+    #### `state` <Badge.Optional />
+    Custom state object to be passed as the second argument to visitor callbacks.
+
+</dl>
+
+#### Return value
+
+An array of results from visitor while visiting each node. Undefined values returned from callbacks are omitted.
+
+See [Visiting expressions](/docs/waterpipe/parser/visiting-expressions) for more details.
+
+
+## ExpressionType enum
+
+Enumeration of expression types in the AST. Used in [`Expression.type`](:).
+
+The enum class support getting name from value and value from name.
+
+```javascript
+ExpressionType[ExpressionType.root] === 'root';
+```
+
+<MemberList
+    i="ExpressionType"
+    sp={['root', 'argument', 'function', 'pipe', 'branch', 'value']}
+/>
+
+### `ExpressionType.argument`
+
+Integer value 1.
+
+Value present for `ArgumentExpression` nodes.
+
+### `ExpressionType.branch`
+
+Integer value 4.
+
+Value present for `BranchExpression` nodes.
+
+### `ExpressionType.function`
+
+Integer value 2.
+
+Value present for `FunctionExpression` nodes.
+
+### `ExpressionType.pipe`
+
+Integer value 3.
+
+Value present for `PipeExpression` nodes.
+
+### `ExpressionType.root`
+
+Integer value 0.
+
+Value present for `RootExpression` nodes.
+
+### `ExpressionType.value`
+
+Integer value 5.
+
+Value present for `ValueExpression` nodes.
+
+
+## ArgumentExpression interface
+
+Represents an argument expression in the AST.
+
+<MemberList
+    i="ArgumentExpression"
+    extends={['Expression']}
+    ip={['type','endToken', 'parent', 'pipe', 'value', 'unclosed']}
+/>
+
+### `ArgumentExpression.endToken` <Badge.ReadOnly />
+
+Gets the ending [`Token`](:) object if the argument is a nested pipe expression and is not unclosed.
+
+### `ArgumentExpression.parent` <Badge.ReadOnly />
+
+Gets the parent pipe or function expression.
+
+### `ArgumentExpression.pipe` <Badge.ReadOnly />
+
+Gets the nested pipe expression if any.
+
+### `ArgumentExpression.type` <Badge.ReadOnly />
+
+Gets the expression type, always [`ExpressionType.argument`](:).
+
+### `ArgumentExpression.unclosed` <Badge.ReadOnly />
+
+Gets whether the argument is unclosed when the argument is a nested pipe expression and the closing brace is missing.
+
+### `ArgumentExpression.value` <Badge.ReadOnly />
+
+Gets the value expression if any.
+
+
+## BranchExpression interface
+
+Represents a branch expression in the AST.
+
+<MemberList
+    i="BranchExpression"
+    extends={['Expression']}
+    ip={['type', 'parent', 'operator', 'pipe']}
+/>
+
+### `BranchExpression.operator` <Badge.ReadOnly />
+
+Gets the branch operator, i.e. `|`, `||` or `&&`.
+
+### `BranchExpression.parent` <Badge.ReadOnly />
+
+Gets the parent pipe expression.
+
+### `BranchExpression.pipe` <Badge.ReadOnly />
+
+Gets the pipe expression for this branch.
+
+### `BranchExpression.type` <Badge.ReadOnly />
+
+Gets the expression type, always [`ExpressionType.branch`](:).
+
+
+## FunctionExpression interface
+
+Represents a function expression in the AST.
+
+<MemberList
+    i="FunctionExpression"
+    extends={['Expression']}
+    ip={['type', 'parent', 'name', 'args']}
+/>
+
+### `FunctionExpression.args` <Badge.ReadOnly />
+
+Gets the argument expressions.
+
+### `FunctionExpression.name` <Badge.ReadOnly />
+
+Gets the function name.
+
+### `FunctionExpression.parent` <Badge.ReadOnly />
+
+Gets the parent pipe expression.
+
+### `FunctionExpression.type` <Badge.ReadOnly />
+
+Gets the expression type, always [`ExpressionType.function`](:).
+
+
+## PipeExpression interface
+
+Represents a pipe expression in the AST.
+
+<MemberList
+    i="PipeExpression"
+    extends={['Expression']}
+    ip={['type', 'parent', 'next', 'input', 'branch']}
+/>
+
+### `PipeExpression.branch` <Badge.ReadOnly />
+
+Gets the branch expression if exists.
+
+### `PipeExpression.input` <Badge.ReadOnly />
+
+Gets the argument expression for input value if exists.
+
+### `PipeExpression.next` <Badge.ReadOnly />
+
+Gets the child function expressions in the pipe.
+
+### `PipeExpression.parent` <Badge.ReadOnly />
+
+Gets the parent expression.
+
+### `PipeExpression.type` <Badge.ReadOnly />
+
+Gets the expression type, always [`ExpressionType.pipe`](:).
+
+
+## RootExpression interface
+
+Represents the root expression of the AST.
+
+<MemberList
+    i="RootExpression"
+    extends={['Expression']}
+    ip={['type', 'parent', 'expression', 'tokens']}
+/>
+
+### `RootExpression.expression` <Badge.ReadOnly />
+
+Gets the main pipe expression.
+
+### `RootExpression.parent` <Badge.ReadOnly />
+
+Always `null` for root expression.
+
+### `RootExpression.tokens`
+
+Gets all parsed tokens, including spaces.
+
+### `RootExpression.type` <Badge.ReadOnly />
+
+Gets the expression type, always [`ExpressionType.root`](:).
+
+
+## ValueExpression interface
+
+Represents a value expression in the AST.
+
+<MemberList
+    i="ValueExpression"
+    extends={['Expression']}
+    ip={['type', 'parent', 'text', 'rawText', 'evaluationMode']}
+/>
+
+### `ValueExpression.evaluationMode` <Badge.ReadOnly />
+
+Gets the evaluation mode for this value. See [`ValueEvaluationMode`](:) enum for possible values.
+
+### `ValueExpression.parent` <Badge.ReadOnly />
+
+Gets the parent argument expression.
+
+### `ValueExpression.rawText` <Badge.ReadOnly />
+
+Gets the raw text of the value in the source string.
+
+### `ValueExpression.text` <Badge.ReadOnly />
+
+Gets the unescaped text from the raw text in the source string.
+
+### `ValueExpression.type` <Badge.ReadOnly />
+
+Gets the expression type, always [`ExpressionType.value`](:).
+
+## ValueEvaluationMode enum
+
+Enumeration of value evaluation modes. Used in [`ValueExpression.evaluationMode`](:).
+
+The enum class support getting name from value and value from name.
+
+```javascript
+ValueEvaluationMode[ValueEvaluationMode.auto] === 'auto'
+```
+
+> Values has the same enum value as [`TokenType`](:) counterparts.
+
+<MemberList
+    i="ValueEvaluationMode"
+    sp={['auto', 'constant', 'path']}
+/>
+
+### `ValueEvaluationMode.auto`
+
+Integer value 0.
+
+Token may resolves as data path or constant, as it is not double-quoted, backtick-prefixed, or prefixed by a dollar sign (`$`).
+
+### `ValueEvaluationMode.constant`
+
+Integer value 1.
+
+Token is resolved as constant, as it is a double-quoted string or a backtick-prefixed string.
+
+### `ValueEvaluationMode.path`
+
+Integer value 2.
+
+Token is resolved as data path, as it is prefixed by a dollar sign (`$`).
+

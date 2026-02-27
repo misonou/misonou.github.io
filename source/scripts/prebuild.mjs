@@ -120,7 +120,7 @@ async function processFiles(path) {
                 }
                 case customComponents.MemberList: {
                     const { i, ip, im, sp, sm, ev } = o.props;
-                    if (!o.props.noRoot) {
+                    if (i && !o.props.noRoot) {
                         addEntry(i, lastHash || null);
                     }
                     ip?.map(v => i + (i && v[0] !== '[' ? '.' : '') + v).forEach(v => addEntry(v));

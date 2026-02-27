@@ -1,0 +1,24 @@
+import Playground from "src/components/examples/waterpipe-playground";
+import SupportTable from "src/components/examples/waterpipe-playground/SupportTable";
+
+<Module name="waterpipe" />
+
+# Playground
+
+The interactive editor is built from the experimental package `@misonou/waterpipe-editor`.
+
+<Playground />
+
+### Supported features in the selected version
+
+Flag in the table below represents the property name on [`Parser.supports`](:) object.
+
+<SupportTable>
+
+- `nestedDataPath`
+  Nested parenthesized data paths e.g. `$(foo.$(bar.baz))`
+
+- `poundVariableInPipe`
+  `#index`, `#count` and its shorthand variable in pipe function e.g. `arr where [ #index == #count - 1 ]`
+
+</SupportTable>

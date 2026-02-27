@@ -170,7 +170,7 @@ function getImportHintSource(props) {
         },
         {
             name: '<script>',
-            content: props.global ? `const ${props.name} = ${props.global}` : '/* No UMD distribution */'
+            content: props.global === props.name ? `${props.name} // global variable` : props.global ? `const ${props.name} = ${props.global}` : '/* No UMD distribution */'
         },
     ]
 }

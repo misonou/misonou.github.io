@@ -1,0 +1,80 @@
+<Module name="waterpipe-parser" />
+
+# createCodeEdit
+
+Creates a code edit for the given expression and range.
+
+When the value is a double quote (`"`) or an open square bracket (`[`) character,
+it automatically wraps selected text with the quote or square bracket pairs.
+
+When wrapping selected text with square bracket pairs, it inserts square brackets correctly
+so that the expression remain syntactically correct if the selection range does not start or end in the middle of some tokens.
+
+```javascript
+const expr = parseExpression('arr join ""');
+const edit = createCodeEdit(expr, 0, 3, '[');
+```
+
+would get an object like following:
+
+```javascript
+{
+    value: '[ arr ]',
+    range: [ 0, 3 ],
+    selectionAfter: [ 5, 5 ]
+}
+```
+
+## Syntax
+
+```javascript
+createCodeEdit(expression, start, end, value)
+```
+
+<ImportHint
+    name="createCodeEdit"
+    module="waterpipe-parser"
+    require="createCodeEdit"
+/>
+
+### Parameters
+
+<dl>
+    #### `expression`
+    The root expression.
+
+    #### `start`
+    The start position.
+
+    #### `end`
+    The end position.
+
+    #### `value`
+    Raw string to insert or replace.
+
+</dl>
+
+### Return value
+
+A [`CodeEdit`](:) object.
+
+
+## CodeEdit interface
+
+<MemberList
+    i="CodeEdit"
+    ip={['range', 'value', 'selectionAfter']}
+/>
+
+### `CodeEdit.range` <Badge.ReadOnly />
+
+Gets the range to replace, as start and end positions.
+
+### `CodeEdit.selectionAfter` <Badge.ReadOnly />
+
+Gets the position to place the cursor after the edit.
+
+### `CodeEdit.value` <Badge.ReadOnly />
+
+Gets the raw string for replacement at the edit range.
+

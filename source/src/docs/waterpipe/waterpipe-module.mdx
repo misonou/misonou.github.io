@@ -1,0 +1,156 @@
+<Module name="waterpipe" />
+
+# Waterpipe module
+
+<ImportHint
+    name="waterpipe"
+    module="waterpipe"
+    import="default"
+    require="default"
+    global="waterpipe"
+    expanded
+/>
+
+<MemberList
+    i="waterpipe"
+    ip={['version', 'globals', 'defaultOptions', 'pipes']}
+    im={['eval()', 'string()']}
+    noRoot
+/>
+
+## Syntax
+
+```javascript
+waterpipe(template)
+waterpipe(template, data)
+waterpipe(template, data, options)
+```
+
+Evaluates a waterpipe template.
+
+### Parameters
+
+<dl>
+    #### `template`
+    A waterpipe template.
+
+    #### `data` <Badge.Optional />
+    Input data.
+
+    #### `options` <Badge.Optional />
+    A dictionary containing following options.
+
+    Except the `globals` option, for any unspecified option, fallback value on [`waterpipe.defaultOptions`](:) will be taken.
+
+    <dl>
+        #### `globals`
+        Defines global variables readable in this evaluation.
+        Variables declared here will override those in [`waterpipe.globals`](:).
+
+        #### `html` <Badge.Version />
+        Special HTML characters are encoded, including `'`, `"`, `&`, `<` and `>`,
+        while whitespaces between text, expressions and flow control tags are collapsed.
+        Default is `true`. When set to `false`, `noEncode` is automatically set to `true`.
+        See [Output mode](/docs/waterpipe/output-mode).
+
+        #### `indent`
+        Sets indentation of resulting HTML markup.
+
+        Each level of nested elements will be indented by the specfied number of spaces or the specific sequence of characters.
+        If either `0` or an empty string is specified, indentation is turned off as if this option is absent.
+
+        #### `indentPadding`
+        Number of spaces or the specific sequence of characters that will be left padded to each line.
+        This option is only effective if the indent option is present and not equal to `0` or an empty string.
+
+        #### `noEncode` <Badge.Version />
+        Special HTML characters are **not** encoded, including `'`, `"`, `&`, `<` and `>`,
+        while whitespaces between text, expressions and flow control tags are collapsed.
+        Default is `false`. See [Output mode](/docs/waterpipe/output-mode).
+
+        #### `noWarning` <Badge.Version />
+        Turn off console warning.
+
+    </dl>
+</dl>
+
+
+
+## Instance properties
+
+### `waterpipe.defaultOptions` <Badge.ReadOnly />
+
+Sets default options used when options are not passed for template evaluation.
+
+See [`waterpipe()`](:) for available options.
+
+### `waterpipe.globals` <Badge.ReadOnly />
+
+Defines global variables readable from all templates.
+
+### `waterpipe.pipes` <Badge.ReadOnly />
+
+Defines pipe functions.
+
+### `waterpipe.version` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the library version.
+
+## Instance methods
+
+### `waterpipe.eval()`
+
+```javascript
+eval(expression)
+eval(expression, data)
+eval(expression, data, options)
+```
+
+Evaluates a single waterpipe expression.
+
+### Parameters
+
+<dl>
+    #### `expression`
+    A waterpipe expression.
+
+    #### `data` <Badge.Optional />
+    Input data.
+
+    #### `options` <Badge.Optional />
+    See [`waterpipe()`](:) for available options.
+
+    Except the `globals` option, for any unspecified option, fallback value on [`waterpipe.defaultOptions`](:) will be taken.
+
+</dl>
+
+### Return value
+
+Result of the expression.
+
+### `waterpipe.string()`
+
+```javascript
+string(value)
+```
+
+Converts the given value to string using waterpipe's internal conversion.
+
+### Parameters
+
+<dl>
+    #### `value`
+    Any value.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="waterpipe">
+- **1.0.0** Initial release
+- **2.2.0** `option` parameter in `waterpipe.eval`
+- **2.3.0** `waterpipe.defaultOptions` <br/> `waterpipe.string()`
+- **2.5.0** `noEncode` option
+- **2.7.0** `html` option
+- **2.9.0** `waterpipe.version` <br/> `noWarning` option
+</VersionTimeline>

@@ -4,22 +4,19 @@
 
 The library is a UMD-module that support browsers, AMD and Node.js.
 
-For simplest case in HTML, include using `<script>` tags:
+<ImportHint
+    name="waterpipe"
+    module="waterpipe"
+    import="default"
+    require="default"
+    global="waterpipe"
+    expanded
+/>
+
+In HTML, include using `<script>` tags:
 
 ```html
 <script type="text/javascript" src="https://unkpg.com/waterpipe"></script>
-```
-
-For Node.js, use `require()`:
-
-```javascript
-var waterpipe = require('waterpipe');
-```
-
-For ES module, use `import`:
-
-```javascript
-import waterpipe from 'waterpipe';
 ```
 
 ## Evaluating template
@@ -37,6 +34,9 @@ waterpipe('The value is {{value}}.', { value: 1 });
 ```
 
 ## Evaluating expression
+
+> Visit our [Playground](/docs/waterpipe/playground) for an interactive editor to test out expressions
+  and see supported features in different versions.
 
 ```javascript
 waterpipe.eval(template, data)

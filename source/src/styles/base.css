@@ -109,6 +109,7 @@ body {
     line-height: 1.5;
     word-wrap: break-word;
     -webkit-text-size-adjust: none;
+    --wtpe-font-mono: var(--font-monospace);
 }
 
 [disabled],

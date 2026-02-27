@@ -17,8 +17,10 @@
 const { relative } = require('path');
 const { getParsedSource, isJSXComponent, getRawContentFromImport, transformJSXComponent } = require('./util/transform-helpers');
 
-/** @type {Transformer} */
-function transformDemoWithSource(component, path, props, t, state) {
+const exampleDir = 'src/components/examples/';
+
+/** @type {(filename: string, ...args: Parameters<Transformer>) => ReturnType<Transformer>} */
+function transformDemoWithSource(filename, component, path, props, t, state) {
     const pSource = props.find(v => v.node.key.name === 'source');
     if (pSource && pSource.node.value.type === 'ObjectExpression') {
         pSource.node.value.properties.forEach((v, i) => {
@@ -32,6 +34,11 @@ function transformDemoWithSource(component, path, props, t, state) {
                 pSource.get(`value.properties.${i}.value`).replaceWith(t.valueToNode(getParsedSource(language, source)));
             }
         });
+    }
+    const relPath = relative(process.cwd(), filename).replace(/\\/g, '/');
+    if (relPath.startsWith(exampleDir)) {
+        const id = relPath.slice(exampleDir.length, relPath.indexOf('/', exampleDir.length));
+        props.at(-1).insertAfter(t.objectProperty(t.identifier('id'), t.stringLiteral(id)));
     }
 }
 
@@ -50,7 +57,7 @@ module.exports = function ({ types: t }) {
                 }
             },
             CallExpression(path, s) {
-                if (isJSXComponent(path) && transformJSXComponent(path, t, s, { DemoWithSource: transformDemoWithSource })) {
+                if (isJSXComponent(path) && transformJSXComponent(path, t, s, { DemoWithSource: transformDemoWithSource.bind(null, s.filename) })) {
                     path.skip();
                 }
             }

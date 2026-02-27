@@ -1,0 +1,102 @@
+<Module name="waterpipe-parser" />
+
+# Evaluating expressions
+
+When input value is provided when parsing an expression, an [`EvaluationContext`](:) is created and associated with the expression,
+which allows inspecting variable scopes and evaluate data paths.
+
+## Data paths
+
+```javascript
+const parser = Parser.default;
+const expr = parser.parseExpression('arr join ""', { arr: [1, 2, 3] });
+expr.evaluationContext.evaluate('arr')
+// -> EvaluatedData { valueType: 'list', value: [1, 2, 3], ... }
+```
+
+### Listing data paths
+
+```javascript
+const expr = parser.parseExpression('arr join ""', { arr: [1, 2, 3] });
+expr.evaluationContext.getDataPaths()
+// -> [ DataPath { valueType: 'list', value: EvaluatedData, path: 'arr' } ]
+```
+
+## Variable scope
+
+```javascript
+const expr = parser.parseExpression('arr join ""', { arr: [1, 2, 3] }, { foo: 'bar' });
+expr.evaluationContext.resolveScope('arr') // -> -2 (Scope.root)
+expr.evaluationContext.resolveScope('foo') // -> -1 (Scope.global)
+```
+
+Or directly getting the [`EvaluationScope`](:) object by calling [`EvaluationContext.scopeAt()`](:):
+
+```javascript
+const expr = parser.parseExpression('arr join ""', { arr: [1, 2, 3] }, { foo: 'bar' });
+expr.evaluationContext.scopeAt(Scope.root)
+// -> EvaluationScope { scope: '@root', ... }
+expr.evaluationContext.scopeAt(Scope.global)
+// -> EvaluationScope { scope: '@global', ... }
+```
+
+Inside of nested pipe arguments, it is possible to evaluate input value of the parent scope:
+
+```javascript
+const expr = parser.parseExpression('arr map [ + 10 ]', { arr: [1, 2, 3] });
+
+// Get the node inside the 'map' function argument
+const node = expr.getNodeAtPosition(10);
+const context = new ExpressionVisitorContext(node, expr);
+context.evaluateVariableScope(0)
+// -> EvaluatedData { valueType: 'number', unionOf: [1, 2, 3], ... }
+context.evaluateVariableScope(1)
+// -> EvaluatedData { valueType: 'record', value: { arr: [1, 2, 3] }, ... }
+```
+
+## Examining functions
+
+It is also possible to examine input and output value of each function invocation in a pipe:
+
+```javascript
+const expr = parser.parseExpression('arr map [ + 10 ] sum', { arr: [1, 2, 3] });
+
+// Get the node of the 'map' function
+const node = expr.getNodeAtPosition(6);
+const context = new ExpressionVisitorContext(node, expr);
+context.evaluateFunctionInput()
+// -> EvaluatedData { valueType: 'list', value: [1, 2, 3], ... }
+context.evaluateFunctionOutput()
+// -> EvaluatedData { valueType: 'list', value: [11, 12, 13], ... }
+
+// Get the node of the 'sum' function
+const node = expr.getNodeAtPosition(18);
+const context = new ExpressionVisitorContext(node, expr);
+context.evaluateFunctionInput()
+// -> EvaluatedData { valueType: 'list', value: [11, 12, 13], ... }
+context.evaluateFunctionOutput()
+// -> EvaluatedData { valueType: 'number', value: 36, ... }
+```
+
+It also works in nested pipe arguments, in particular for functions like `map`, `where` that iterate over input values:
+
+```javascript
+const expr = parser.parseExpression('arr map [ + 10 ] sum', { arr: [1, 2, 3] });
+
+// Get the node inside the 'map' function argument
+const node = expr.getNodeAtPosition(10);
+const context = new ExpressionVisitorContext(node, expr);
+context.evaluateFunctionInput()
+// -> EvaluatedData { valueType: 'number', unionOf: [1, 2, 3], ... }
+context.evaluateFunctionOutput()
+// -> EvaluatedData { valueType: 'number', unionOf: [11, 12, 13], ... }
+```
+
+Here the input and output value of the `+` function inside the `map` argument are union types,
+representing all possible values during the iteration.
+
+## See also
+
+- [`EvaluatedData`](:)
+- [`EvaluationContext`](:)
+- [`ExpressionVisitorContext`](:)

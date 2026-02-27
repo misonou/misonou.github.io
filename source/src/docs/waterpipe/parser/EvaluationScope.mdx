@@ -1,0 +1,56 @@
+<Module name="waterpipe-parser" />
+
+# EvaluationScope class
+
+Represents an evaluation scope with input data.
+
+<ImportHint
+    name="EvaluationScope"
+    module="waterpipe-parser"
+    require="EvaluationScope"
+    expanded
+/>
+
+<MemberList
+    i="EvaluationScope"
+    ip={['scope', 'input', 'iterationContext']}
+/>
+
+## Constructor
+
+```javascript
+new EvaluationScope(scope, input)
+new EvaluationScope(scope, input, iterationContext)
+```
+
+### Parameters
+
+<dl>
+    #### `scope`
+    The scope identifier.
+
+    #### `input`
+    The input value for this scope.
+
+    #### `iterationContext` <Badge.Optional />
+    Optional iteration context.
+
+</dl>
+
+## Instance properties
+
+### `EvaluationScope.input` <Badge.ReadOnly />
+
+Gets the input value for this scope.
+
+### `EvaluationScope.iterationContext` <Badge.ReadOnly />
+
+Gets the iterated object if this scope is instantiated by iteration.
+
+### `EvaluationScope.scope` <Badge.ReadOnly />
+
+Gets the scope identifier.
+
+- If the scope is the global scope, this will be `@global`
+- if the scope is the root scope, this will be `@root`
+- otherwise, it will be an empty string.

@@ -6,6 +6,14 @@
     all: revert;
 }
 
+.app-demo-view button:not(.zui-button),
+.app-demo-view select {
+    padding: 0.1em 0.25em;
+    font-family: inherit;
+    font-size: 100%;
+    min-height: 1.5em;
+}
+
 .app-demo-view:not(:hover):not(.scrolling) {
     --jqs-scrollbar-opacity: 0.2;
 }

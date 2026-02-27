@@ -1,24 +1,24 @@
-#demo-rgxdp {
+#demo-focus-delegation-content {
     display: flex;
     margin-top: 1em;
     gap: 20px;
 }
 
-#demo-rgxdp > div {
+#demo-focus-delegation-content > div {
     border: 4px solid transparent;
     background-color: lightgray;
     width: 100px;
     height: 100px;
 }
 
-#demo-rgxdp > div.focused {
+#demo-focus-delegation-content > div.focused {
     border-color: red;
 }
 
-#demo-rgxdp > div::after {
+#demo-focus-delegation-content > div::after {
     content: 'Click me';
 }
 
-#demo-rgxdp > div.focused::after {
+#demo-focus-delegation-content > div.focused::after {
     content: 'I\'m focused';
 }

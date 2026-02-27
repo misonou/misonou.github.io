@@ -11,7 +11,7 @@ export default function Component() {
     const loadingState = useLoadingStateMixin();
     const loading = useObservableProperty(loadingState, 'loading');
     return (
-        <div id="demo-wujq5" {...Mixin.use(loadingState)}>
+        <div id="demo-loading-mixin-content" {...Mixin.use(loadingState)}>
             {loading ?
                 <button onClick={e => cancelLock(e.currentTarget.parentElement!)}>
                     Cancel

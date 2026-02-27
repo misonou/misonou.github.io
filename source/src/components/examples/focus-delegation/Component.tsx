@@ -22,7 +22,7 @@ export default function Component() {
                 label="Delegate focus"
                 checked={delegateFocus}
                 onChange={setDelegateFocus} />
-            <div id="demo-rgxdp">
+            <div id="demo-focus-delegation-content">
                 <div {...Mixin.use(focusState)}></div>
                 <div {...Mixin.use(focusState)}></div>
             </div>

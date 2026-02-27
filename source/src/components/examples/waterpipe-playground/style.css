@@ -1,0 +1,44 @@
+.app-docs-wtpe-field {
+    margin: 0 -1em -1em;
+    border-top: 1px solid var(--zui-color-outline);
+}
+
+.app-docs-wtpe-field .wtpe-editor-field > * {
+    padding: 0.7em 1em;
+}
+
+.demo-waterpipe-playground-status td:last-child {
+    text-align: center;
+}
+
+.demo-waterpipe-playground-status td:last-child span {
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    background-color: var(--color-highlight-bg);
+    color: var(--color-highlight);
+    font-size: 90%;
+    font-weight: 500;
+}
+
+.demo-waterpipe-playground-status:not(.supported) td {
+    color: var(--color-aux);
+}
+
+.demo-waterpipe-playground-status:not(.supported) td:last-child span {
+    background-color: var(--wtpe-color-error2);
+    color: var(--wtpe-color-error);
+}
+
+#demo-waterpipe-playground-dialog {
+    display: flex;
+    width: 768px;
+    max-width: 75vw;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+#demo-waterpipe-playground-dialog > div:last-child {
+    display: flex;
+    gap: 0.5em;
+}

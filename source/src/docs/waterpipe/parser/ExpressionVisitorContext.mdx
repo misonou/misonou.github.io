@@ -1,0 +1,190 @@
+<Module name="waterpipe-parser" />
+
+# ExpressionVisitorContext class
+
+Provides context and utility methods for visiting an expression node.
+
+<ImportHint
+    name="ExpressionVisitorContext"
+    module="waterpipe-parser"
+    require="ExpressionVisitorContext"
+    expanded
+/>
+
+<MemberList
+    i="ExpressionVisitorContext"
+    extendsTo={['CodeSuggestionContext']}
+    ip={['node', 'root']}
+    im={['evaluate()', 'evaluateFunctionInput()', 'evaluateFunctionOutput()', 'evaluateVariableScope()', 'getDataPaths()', 'resolveScope()', 'isValidPath()', 'skip()']}
+/>
+
+## Constructor
+
+```javascript
+new ExpressionVisitorContext(node)
+new ExpressionVisitorContext(node, root)
+```
+
+### Parameters
+
+<dl>
+    #### `node`
+    The expression node to visit.
+
+    #### `root` <Badge.Optional />
+    The root expression, if different from the node.
+
+</dl>
+
+## Instance properties
+
+### `ExpressionVisitorContext.node` <Badge.ReadOnly />
+
+Gets the current expression node being visited.
+
+### `ExpressionVisitorContext.root` <Badge.ReadOnly />
+
+Gets the root expression of the AST.
+
+## Instance methods
+
+### `ExpressionVisitorContext.evaluate()`
+
+```javascript
+evaluate(expression)
+```
+
+Evaluates an expression in the current context.
+
+#### Parameters
+
+<dl>
+    #### `expression`
+    The expression to evaluate.
+
+</dl>
+
+### `ExpressionVisitorContext.evaluateFunctionInput()`
+
+```javascript
+evaluateFunctionInput()
+```
+
+Evaluates the input value to the current function.
+
+### `ExpressionVisitorContext.evaluateFunctionOutput()`
+
+```javascript
+evaluateFunctionOutput()
+```
+
+Evaluates the output value of the current function.
+
+### `ExpressionVisitorContext.evaluateVariableScope()`
+
+```javascript
+evaluateVariableScope(scope)
+```
+
+Evaluates the input value of a given variable scope.
+
+#### Parameters
+
+<dl>
+    #### `scope`
+    Variable scope to evaluate.
+
+</dl>
+
+### `ExpressionVisitorContext.getDataPaths()`
+
+```javascript
+getDataPaths()
+getDataPaths(scope)
+```
+
+Gets the data paths available in the specified variable scope.
+
+#### Parameters
+
+<dl>
+    #### `scope` <Badge.Optional />
+    Identifier of the variable scope. It can be a [`Scope`](:) enum value, scope index, or scope path like `@root`.
+
+</dl>
+
+### `ExpressionVisitorContext.isValidPath()`
+
+```javascript
+isValidPath(path)
+```
+
+Checks whether the given path is valid in the current context.
+
+#### Parameters
+
+<dl>
+    #### `path`
+    The path to check.
+
+</dl>
+
+### `ExpressionVisitorContext.resolveScope()`
+
+```javascript
+resolveScope(path)
+```
+
+Resolves a path string to a scope index.
+
+#### Parameters
+
+<dl>
+    #### `path`
+    The path to resolve.
+
+</dl>
+
+#### Return value
+
+The scope index or false if not found.
+
+### `ExpressionVisitorContext.skip()`
+
+```javascript
+skip()
+skip(node)
+```
+
+Skips a node and its children during traversal.
+
+#### Parameters
+
+<dl>
+    #### `node` <Badge.Optional />
+    The node to skip. If not provided, skips the current node.
+</dl>
+
+
+## Scope enum
+
+Enumeration of special variable scopes.
+
+The enum class support getting name from value and value from name.
+
+```javascript
+Scope[Scope.global] === 'global'
+```
+
+<MemberList
+    i="Scope"
+    sp={['global', 'root']}
+/>
+
+### `Scope.global`
+
+Integer value -1.
+
+### `Scope.root`
+
+Integer value -2.

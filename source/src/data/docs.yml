@@ -1230,13 +1230,16 @@
           path: /util/TreeWalker
           class: code
           module: zeta-dom
-- title: Waterpipe References
+- title: Waterpipe
   pages:
     - title: Using waterpipe
       path: /waterpipe/using-waterpipe
       module: waterpipe
     - title: Cheat sheet
       path: /waterpipe/cheat-sheet
+      module: waterpipe
+    - title: Playground
+      path: /waterpipe/playground
       module: waterpipe
     - title: Basic concepts
       pages:
@@ -1315,8 +1318,8 @@
         - title: Formatting functions
           path: /waterpipe/formatting-functions
           module: waterpipe
-        - title: Template functions
-          path: /waterpipe/template-functions
+        - title: Evaluation functions
+          path: /waterpipe/evaluation-functions
           module: waterpipe
     - title: Extensibility
       pages:
@@ -1326,3 +1329,122 @@
         - title: Wildcard function
           path: /waterpipe/wildcard-function
           module: waterpipe
+    - title: References
+      pages:
+        - title: waterpipe
+          path: /waterpipe/waterpipe-module
+          class: code
+          module: waterpipe
+          pageTitle: Waterpipe module
+        - title: PipeEvaluator
+          path: /waterpipe/PipeEvaluator
+          class: code
+          module: waterpipe
+- title: Waterpipe Parser
+  pages:
+    - title: Overview
+      path: /waterpipe/parser
+      module: waterpipe-parser
+      pageTitle: Waterpipe parser
+    - title: Parsing expressions
+      path: /waterpipe/parser/parsing-expressions
+      module: waterpipe-parser
+    - title: Visiting expressions
+      path: /waterpipe/parser/visiting-expressions
+      module: waterpipe-parser
+    - title: Evaluating expressions
+      path: /waterpipe/parser/evaluating-expressions
+      module: waterpipe-parser
+    - title: Warnings and errors
+      path: /waterpipe/parser/warnings-and-errors
+      module: waterpipe-parser
+    - title: Code suggestions
+      path: /waterpipe/parser/code-suggestions
+      module: waterpipe-parser
+    - title: Custom functions
+      path: /waterpipe/parser/custom-functions
+      module: waterpipe-parser
+    - title: References
+      pages:
+        - title: Interfaces
+          pages:
+            - title: Diagnostics
+              path: /waterpipe/parser/Diagnostics
+              class: code
+              module: waterpipe-parser
+            - title: Expression
+              path: /waterpipe/parser/Expression
+              class: code
+              module: waterpipe-parser
+            - title: ExpressionVisitor
+              path: /waterpipe/parser/ExpressionVisitor
+              class: code
+              module: waterpipe-parser
+            - title: FunctionDefinition
+              path: /waterpipe/parser/FunctionDefinition
+              class: code
+              module: waterpipe-parser
+            - title: Supports
+              path: /waterpipe/parser/Supports
+              class: code
+              module: waterpipe-parser
+            - title: Token
+              path: /waterpipe/parser/Token
+              class: code
+              module: waterpipe-parser
+        - title: Classes
+          pages:
+            - title: CodeSuggestionContext
+              path: /waterpipe/parser/CodeSuggestionContext
+              class: code
+              module: waterpipe-parser
+            - title: DataPath
+              path: /waterpipe/parser/DataPath
+              class: code
+              module: waterpipe-parser
+            - title: EvaluatedData
+              path: /waterpipe/parser/EvaluatedData
+              class: code
+              module: waterpipe-parser
+            - title: EvaluationContext
+              path: /waterpipe/parser/EvaluationContext
+              class: code
+              module: waterpipe-parser
+            - title: EvaluationScope
+              path: /waterpipe/parser/EvaluationScope
+              class: code
+              module: waterpipe-parser
+            - title: ExpressionVisitorContext
+              path: /waterpipe/parser/ExpressionVisitorContext
+              class: code
+              module: waterpipe-parser
+            - title: Parser
+              path: /waterpipe/parser/Parser
+              class: code
+              module: waterpipe-parser
+            - title: TypedData
+              path: /waterpipe/parser/TypedData
+              class: code
+              module: waterpipe-parser
+        - title: Functions
+          pages:
+            - title: addFunctionDefinitions()
+              path: /waterpipe/parser/addFunctionDefinitions
+              class: code
+              module: waterpipe-parser
+            - title: createCodeEdit()
+              path: /waterpipe/parser/createCodeEdit
+              class: code
+              module: waterpipe-parser
+            - title: getFunctionDocumentation()
+              path: /waterpipe/parser/getFunctionDocumentation
+              class: code
+              module: waterpipe-parser
+            - title: listFunctionsByInputType()
+              path: /waterpipe/parser/listFunctionsByInputType
+              class: code
+              module: waterpipe-parser
+            - title: loadFunctionDocumentation()
+              path: /waterpipe/parser/loadFunctionDocumentation
+              class: code
+              module: waterpipe-parser

@@ -1,0 +1,110 @@
+<Module name="waterpipe-parser" />
+
+# DataPath class
+
+Represents a data path, its associated data type and evaluated value if available.
+
+<ImportHint
+    name="DataPath"
+    module="waterpipe-parser"
+    require="DataPath"
+    expanded
+/>
+
+<MemberList
+    i="DataPath"
+    extends={['TypedData']}
+    ip={['path', 'value']}
+    im={['toString()']}
+/>
+
+## Constructor
+
+```javascript
+new DataPath(path, value)
+new DataPath(path, valueType)
+```
+
+### Parameters
+
+<dl>
+    #### `path`
+    Data path to this instance represent.
+
+    #### `valueType`
+    Data type.
+
+    When this parameter is provided, [`DataPath.value`](:) will be initialized with an instance of [`EvaluatedData`](#)
+    with the specified type but without a concrete value.
+
+    Possible values:
+
+    <dl>
+        #### `empty`
+        Represents an empty type, i.e. `null` and `undefined`.
+
+        #### `boolean`
+        Represents a boolean type.
+
+        #### `number`
+        Represents a numeric type.
+
+        #### `string`
+        Represents a string type.
+
+        #### `record`
+        Represents a dictionary-like type, typically an object with string keys.
+
+        #### `list`
+        Represents a list type, typically an array of scalar values.
+
+        #### `table`
+        Represents a table type, typically an array of records.
+
+        #### `mixed`
+        Represents a mixed type.
+    </dl>
+
+    #### `value`
+    An [`EvaluatedValue`](#) instance.
+
+</dl>
+
+## Instance properties
+
+### `DataPath.path` <Badge.ReadOnly />
+
+Gets the data path.
+
+### `DataPath.value` <Badge.ReadOnly />
+
+Gets the evaluated value at this path.
+
+## Instance methods
+
+### `DataPath.toString()`
+
+```javascript
+toString()
+toString(options)
+```
+
+Returns the string representation for the evaluated value at this path.
+
+#### Parameters
+
+<dl>
+    #### `options` <Badge.Optional />
+    Formatting options.
+
+    <dl>
+        #### `listObjectMembers` <Badge.Optional />
+        Specifies whether to append object members in the formatted string.
+
+        #### `listUnionValues` <Badge.Optional />
+        Specifies whether to append union values in the formatted string.
+
+        #### `maxLength` <Badge.Optional />
+        Specifies the maximum length of the formatted string.
+    </dl>
+</dl>

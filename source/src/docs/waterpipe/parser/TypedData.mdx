@@ -1,0 +1,75 @@
+<Module name="waterpipe-parser" />
+
+# TypedData class
+
+Base class for typed data.
+
+<ImportHint
+    name="TypedData"
+    module="waterpipe-parser"
+    require="TypedData"
+    expanded
+/>
+
+<MemberList
+    i="TypedData"
+    extendsTo={['DataPath', 'EvaluatedData']}
+    ip={['valueType', 'isPrimitive', 'isObject']}
+/>
+
+## Constructor
+
+```javascript
+new TypedData(valueType)
+```
+
+### Parameters
+
+<dl>
+    #### `valueType`
+    Data type.
+
+    Possible values:
+
+    <dl>
+        #### `empty`
+        Represents an empty type, i.e. `null` and `undefined`.
+
+        #### `boolean`
+        Represents a boolean type.
+
+        #### `number`
+        Represents a numeric type.
+
+        #### `string`
+        Represents a string type.
+
+        #### `record`
+        Represents a dictionary-like type, typically an object with string keys.
+
+        #### `list`
+        Represents a list type, typically an array of scalar values.
+
+        #### `table`
+        Represents a table type, typically an array of records.
+
+        #### `mixed`
+        Represents a mixed type.
+    </dl>
+</dl>
+
+## Instance properties
+
+### `TypedData.isObject` <Badge.ReadOnly />
+
+Gets whether this data represents an object type.
+
+### `TypedData.isPrimitive` <Badge.ReadOnly />
+
+Gets whether this data represents a primitive type.
+
+### `TypedData.valueType` <Badge.ReadOnly />
+
+Gets the data type respresented by this instance.
+
+For possible values, see the `valueType` parameter in the constructor.

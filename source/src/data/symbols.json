@@ -80,7 +80,7 @@
         }
     },
     "@misonou/react-app-utils": {
-        "baseUrl": "https://github.com/misonou/react-app-utils/blob/ba7e066898b5af87c9ee1951d9a06a427f706638",
+        "baseUrl": "https://github.com/misonou/react-app-utils/blob/0fd91cf7bf5b9cd737ca19dc5598f5b29aea4767",
         "symbols": {
             "ApiErrorEvent": "lib/createApi.d.ts#L5",
             "ApiEventListener": "lib/createApi.d.ts#L19",
@@ -99,13 +99,13 @@
                 "lib/util.d.ts#L40",
                 "lib/util.js#L38"
             ],
-            "createDelegatedInput": "lib/MenuKeystrokeMixin.js#L16",
+            "createDelegatedInput": "lib/MenuKeystrokeMixin.js#L17",
             "createElement": "lib/HTMLConsole.js#L127",
             "createExpandableNode": "lib/HTMLConsole.js#L237",
             "createFakeEntry": "lib/HTMLConsole.js#L166",
             "createFragment": "lib/HTMLConsole.js#L138",
             "createMock": "lib/createApi.js#L17",
-            "createUndoable": "lib/undoable.js#L19",
+            "createUndoable": "lib/undoable.js#L28",
             "escapeString": "lib/HTMLConsole.js#L57",
             "fillData": "formAutofiller.js#L11",
             "FormDevToolMixin": [
@@ -131,7 +131,7 @@
             ],
             "IConsole": "lib/HTMLConsole.d.ts#L1",
             "initConsoleOverlay": "consoleOverlay.js#L16",
-            "initMenuKeystroke": "lib/MenuKeystrokeMixin.js#L51",
+            "initMenuKeystroke": "lib/MenuKeystrokeMixin.js#L52",
             "isArrayLike": "lib/HTMLConsole.js#L63",
             "isExpandableNode": "lib/HTMLConsole.js#L67",
             "listProperties": "lib/HTMLConsole.js#L180",
@@ -145,7 +145,7 @@
             ],
             "MenuKeystrokeMixin": [
                 "lib/MenuKeystrokeMixin.d.ts#L41",
-                "lib/MenuKeystrokeMixin.js#L121"
+                "lib/MenuKeystrokeMixin.js#L129"
             ],
             "MenuKeystrokeOptions": "lib/MenuKeystrokeMixin.d.ts#L3",
             "minmax": "consoleOverlay.js#L12",
@@ -161,7 +161,7 @@
             "renderDOMNode": "lib/HTMLConsole.js#L566",
             "renderProperty": "lib/HTMLConsole.js#L275",
             "resetInput": "lib/useTextInputAutofillFix.js#L13",
-            "selectElement": "lib/MenuKeystrokeMixin.js#L45",
+            "selectElement": "lib/MenuKeystrokeMixin.js#L46",
             "setIdleTimeout": [
                 "lib/util.d.ts#L16",
                 "lib/util.js#L9"
@@ -172,13 +172,14 @@
             "TextInputAutofillFix": "lib/useTextInputAutofillFix.d.ts#L1",
             "UndoableInputMixin": [
                 "lib/undoable.d.ts#L60",
-                "lib/undoable.js#L80"
+                "lib/undoable.js#L89"
             ],
             "UndoableInputMixinOptions": "lib/undoable.d.ts#L42",
             "UndoableState": "lib/undoable.d.ts#L3",
+            "updateInputState": "lib/undoable.js#L19",
             "useMenuKeystrokeMixin": [
-                "lib/MenuKeystrokeMixin.d.ts#L52",
-                "lib/MenuKeystrokeMixin.js#L117"
+                "lib/MenuKeystrokeMixin.d.ts#L57",
+                "lib/MenuKeystrokeMixin.js#L125"
             ],
             "UserActionOptions": "lib/util.d.ts#L42",
             "useTextInputAutofillFix": [
@@ -186,12 +187,12 @@
                 "lib/useTextInputAutofillFix.js#L19"
             ],
             "useUndoableInputMixin": [
-                "lib/undoable.d.ts#L80",
-                "lib/undoable.js#L76"
+                "lib/undoable.d.ts#L86",
+                "lib/undoable.js#L85"
             ],
             "useUndoableState": [
-                "lib/undoable.d.ts#L87",
-                "lib/undoable.js#L65"
+                "lib/undoable.d.ts#L93",
+                "lib/undoable.js#L74"
             ],
             "wrap": "lib/memoize.js#L21",
             "writeArguments": "lib/HTMLConsole.js#L698",
@@ -1077,7 +1078,7 @@
         }
     },
     "jq-scrollable": {
-        "baseUrl": "https://github.com/misonou/jquery-scrollable/blob/291216aa3842575e39b31b09a571649b0b4cf43e",
+        "baseUrl": "https://github.com/misonou/jquery-scrollable/blob/05eafb7ccad3ea8dae35625976e46524234b9945",
         "symbols": {
             "JQuery": "types.d.ts#L1",
             "JQueryScrollable": "types.d.ts#L20",
@@ -1090,6 +1091,269 @@
             "JQueryScrollableStatic": "types.d.ts#L8",
             "JQueryScrollableStickyPosition": "types.d.ts#L18",
             "JQueryStatic": "types.d.ts#L14"
+        }
+    },
+    "waterpipe": {
+        "baseUrl": "https://github.com/misonou/waterpipe/blob/fa144d09d1b81c6c6215a6b0d5d0bd1178a28e08",
+        "symbols": {
+            "Pipe": "typings/waterpipe.d.ts#L102",
+            "PipeEvaluator": "typings/waterpipe.d.ts#L127",
+            "VaridicPipe": "typings/waterpipe.d.ts#L109",
+            "waterpipe": "src/waterpipe.js#L1",
+            "Waterpipe": "typings/waterpipe.d.ts#L3",
+            "WaterpipeGlobal": "typings/waterpipe.d.ts#L90",
+            "WaterpipeOptions": "typings/waterpipe.d.ts#L53"
+        }
+    },
+    "waterpipe-parser": {
+        "baseUrl": "https://github.com/misonou/waterpipe-parser/blob/d5cdcb16ecd336956756c706d0a54dcb1166844e",
+        "symbols": {
+            "addFunctionDefinitions": [
+                "src/signatures.d.ts#L129",
+                "src/signatures.js#L401"
+            ],
+            "ArgumentExpression": "src/parser.d.ts#L126",
+            "assertEvaulationContext": "src/visitor.js#L331",
+            "BranchExpression": "src/parser.d.ts#L216",
+            "CodeEdit": "src/suggestions.d.ts#L10",
+            "CodeSuggestion": "src/suggestions.d.ts#L25",
+            "CodeSuggestionContext": [
+                "src/suggestions.d.ts#L68",
+                "src/suggestions.js#L40"
+            ],
+            "CodeSuggestionType": "src/suggestions.d.ts#L8",
+            "config": "jest.config.js#L4",
+            "ConstantType": "src/util.d.ts#L1",
+            "createCodeEdit": [
+                "src/suggestions.d.ts#L132",
+                "src/suggestions.js#L110"
+            ],
+            "createCodeEditImpl": "src/suggestions.js#L187",
+            "createExpression": "src/parser.js#L580",
+            "DataFormatOptions": "src/data.d.ts#L29",
+            "DataPath": [
+                "src/data.d.ts#L108",
+                "src/data.js#L28"
+            ],
+            "DataType": "src/data.d.ts#L3",
+            "defineMethodProperties": [
+                "src/util.d.ts#L11",
+                "src/util.js#L24"
+            ],
+            "defineSupport": [
+                "src/supports.d.ts#L25",
+                "src/supports.js#L36"
+            ],
+            "Diagnostics": "src/diagnostics.d.ts#L4",
+            "escapeConstant": [
+                "src/util.d.ts#L33",
+                "src/util.js#L80"
+            ],
+            "evaluate": "src/parser.js#L701",
+            "evaluateArgument": "src/parser.js#L643",
+            "EvaluatedData": [
+                "src/data.d.ts#L47",
+                "src/data.js#L52"
+            ],
+            "evaluateFunction": "src/visitor.js#L353",
+            "evaluateFunctionInput": "src/parser.js#L656",
+            "evaluateImpl": "src/parser.js#L723",
+            "evaluateObjectPath": "src/parser.js#L670",
+            "evaluateQuick": "src/parser.js#L632",
+            "EvaluationContext": [
+                "src/parser.d.ts#L289",
+                "src/parser.js#L107"
+            ],
+            "EvaluationScope": [
+                "src/parser.d.ts#L261",
+                "src/parser.js#L56"
+            ],
+            "Expression": "src/parser.d.ts#L7",
+            "ExpressionBase": [
+                "src/parser.d.ts#L12",
+                "src/parser.js#L158"
+            ],
+            "ExpressionType": "src/enum.js#L30",
+            "ExpressionVisitor": "src/visitor.d.ts#L10",
+            "ExpressionVisitorCallback": "src/visitor.d.ts#L6",
+            "ExpressionVisitorCallbackOrObject": "src/visitor.d.ts#L7",
+            "ExpressionVisitorContext": [
+                "src/visitor.d.ts#L36",
+                "src/visitor.js#L35"
+            ],
+            "ExpressionVisitorGenericContext": "src/visitor.d.ts#L5",
+            "fillEnum": "src/enum.js#L4",
+            "findFunctionDocumentation": "src/resources/loader.js#L43",
+            "forEachValue": "src/parser.js#L764",
+            "format": "src/data.js#L201",
+            "formatList": "src/data.js#L278",
+            "formatLongString": "src/data.js#L212",
+            "formatShortString": "src/data.js#L241",
+            "formatValue": "src/data.js#L252",
+            "FunctionArgumentDefinition": "src/signatures.d.ts#L9",
+            "FunctionArgumentDocumentation": "src/resources/index.d.ts#L18",
+            "FunctionArgumentDocumentationMeta": "src/resources/index.d.ts#L55",
+            "FunctionArgumentHint": "src/signatures.d.ts#L52",
+            "FunctionArgumentKind": "src/signatures.d.ts#L6",
+            "FunctionContext": "src/suggestions.d.ts#L46",
+            "FunctionDefinition": "src/signatures.d.ts#L65",
+            "FunctionDocumentation": "src/resources/index.d.ts#L3",
+            "FunctionDocumentationMeta": "src/resources/index.d.ts#L33",
+            "FunctionExpression": "src/parser.d.ts#L160",
+            "FunctionSignature": "src/signatures.d.ts#L32",
+            "FunctionSignatureResolver": "src/signatures.d.ts#L7",
+            "getArgumentHints": "src/suggestions.js#L262",
+            "getArgumentSuggestions": "src/suggestions.js#L351",
+            "getCodeSuggestionContext": [
+                "src/suggestions.d.ts#L116",
+                "src/suggestions.js#L99"
+            ],
+            "getConstantType": [
+                "src/util.d.ts#L16",
+                "src/util.js#L38"
+            ],
+            "getDataPaths": "src/parser.js#L787",
+            "getDataType": "src/data.js#L313",
+            "getDiagnostics": [
+                "src/diagnostics.d.ts#L29",
+                "src/diagnostics.js#L149"
+            ],
+            "getDiagnosticsImpl": "src/diagnostics.js#L40",
+            "getDisplayVersion": "src/diagnostics.js#L20",
+            "getEditRange": "src/suggestions.js#L509",
+            "getFunctionAndPipeSuggestions": "src/suggestions.js#L342",
+            "getFunctionArgument": "src/diagnostics.js#L28",
+            "getFunctionContext": "src/suggestions.js#L216",
+            "getFunctionDefinition": [
+                "src/signatures.d.ts#L135",
+                "src/signatures.js#L422"
+            ],
+            "getFunctionDocumentation": [
+                "src/resources/index.d.ts#L75",
+                "src/resources/loader.js#L33"
+            ],
+            "getFunctionSignature": [
+                "src/signatures.d.ts#L142",
+                "src/signatures.js#L446"
+            ],
+            "getFunctionSuggestions": "src/suggestions.js#L416",
+            "getHintablePaths": "src/suggestions.js#L430",
+            "getHintValueForArgument": "src/suggestions.js#L445",
+            "getIterableIndexOrCount": "src/parser.js#L95",
+            "getNodeAtPosition": [
+                "src/visitor.d.ts#L142",
+                "src/visitor.js#L302"
+            ],
+            "getPrefixPathAtPosition": "src/suggestions.js#L489",
+            "getRawText": "src/suggestions.js#L480",
+            "getRootExpression": "src/visitor.js#L342",
+            "getSortedPropertyNames": "src/data.js#L190",
+            "getSuggestions": "src/suggestions.js#L271",
+            "getSuggestionsAfterArgument": "src/suggestions.js#L331",
+            "getSuggestionsAfterFunction": "src/suggestions.js#L319",
+            "getSupports": [
+                "src/supports.d.ts#L30",
+                "src/supports.js#L45"
+            ],
+            "getTokenEnd": "src/suggestions.js#L465",
+            "getTokenType": "src/suggestions.js#L151",
+            "getUnionIterator": "src/parser.js#L774",
+            "getVisitExpressionIterator": [
+                "src/visitor.d.ts#L109",
+                "src/visitor.js#L255"
+            ],
+            "Global": "src/parser.js#L196",
+            "hasOwnProperty": [
+                null,
+                null,
+                null
+            ],
+            "isArgumentTypeMatched": [
+                "src/signatures.d.ts#L158",
+                "src/signatures.js#L457"
+            ],
+            "isConstantToken": [
+                "src/util.d.ts#L63",
+                "src/util.js#L110"
+            ],
+            "isEditingNestedPath": "src/suggestions.js#L175",
+            "isNestedDataPath": [
+                "src/util.d.ts#L105",
+                "src/util.js#L141"
+            ],
+            "isTokenEnd": "src/suggestions.js#L166",
+            "isValidFunction": [
+                "src/util.d.ts#L99",
+                "src/util.js#L133"
+            ],
+            "isValidProperty": [
+                "src/util.d.ts#L93",
+                "src/util.js#L125"
+            ],
+            "isValidPropertyName": [
+                "src/util.d.ts#L73",
+                "src/util.js#L117"
+            ],
+            "listFunctionsByInputType": [
+                "src/signatures.d.ts#L172",
+                "src/signatures.js#L517"
+            ],
+            "loadFunctionDocumentation": [
+                "src/resources/index.d.ts#L67",
+                "src/resources/loader.js#L15"
+            ],
+            "matchFunctionSignature": "src/signatures.d.ts#L165",
+            "parseConstant": [
+                "src/util.d.ts#L27",
+                "src/util.js#L72"
+            ],
+            "parseExpression": [
+                "src/parser.d.ts#L337",
+                "src/parser.js#L222"
+            ],
+            "Parser": [
+                "src/factory.d.ts#L45",
+                "src/factory.js#L9"
+            ],
+            "ParserContext": "src/factory.d.ts#L34",
+            "ParserFactory": "src/factory.d.ts#L52",
+            "ParserMethods": "src/factory.d.ts#L31",
+            "ParserStaticMethods": "src/factory.d.ts#L32",
+            "parseValue": [
+                "src/util.d.ts#L21",
+                "src/util.js#L51"
+            ],
+            "PipeExpression": "src/parser.d.ts#L186",
+            "PipeMode": "src/signatures.d.ts#L5",
+            "requireEscape": [
+                "src/util.d.ts#L54",
+                "src/util.js#L102"
+            ],
+            "resolveScope": "src/parser.js#L603",
+            "RootExpression": "src/parser.d.ts#L100",
+            "Scope": "src/enum.js#L40",
+            "shouldExpand": "src/data.js#L183",
+            "sortSignatures": "src/signatures.js#L379",
+            "Supports": "src/supports.d.ts#L3",
+            "toItem": "src/suggestions.js#L248",
+            "Token": "src/parser.d.ts#L239",
+            "TokenType": "src/enum.js#L10",
+            "TypedData": [
+                "src/data.d.ts#L8",
+                "src/data.js#L10"
+            ],
+            "unescapeConstant": [
+                "src/util.d.ts#L44",
+                "src/util.js#L88"
+            ],
+            "unescapeToken": "src/parser.js#L588",
+            "ValueEvaluationMode": "src/enum.js#L23",
+            "ValueExpression": "src/parser.d.ts#L70",
+            "visitExpression": [
+                "src/visitor.d.ts#L126",
+                "src/visitor.js#L294"
+            ],
+            "wrapArguments": "src/signatures.js#L387"
         }
     },
     "zeta-dom": {
@@ -1170,7 +1434,10 @@
                 "src/errorCode.d.ts#L2",
                 "src/errorCode.js#L2"
             ],
-            "cancelLock": "src/domLock.js#L184",
+            "cancelLock": [
+                "src/domLock.d.ts#L83",
+                "src/domLock.js#L184"
+            ],
             "catchAsync": [
                 "src/util.d.ts#L577",
                 "src/util.js#L602"
@@ -1306,7 +1573,10 @@
             "ElementLike": "src/types.d.ts#L8",
             "ElementType": "src/types.d.ts#L72",
             "emitAsyncEvents": "src/events.js#L137",
-            "emitDOMEvent": "src/events.js#L75",
+            "emitDOMEvent": [
+                "src/events.d.ts#L343",
+                "src/events.js#L75"
+            ],
             "emitterCallHandlers": "src/events.js#L218",
             "emitterHandleResult": "src/events.js#L257",
             "emitterIterateTargets": "src/events.js#L205",
@@ -1389,8 +1659,14 @@
             ],
             "getContentRectCustom": "src/domUtil.js#L435",
             "getContentRectNative": "src/domUtil.js#L440",
-            "getEventContext": "src/events.js#L53",
-            "getEventSource": "src/events.js#L37",
+            "getEventContext": [
+                "src/events.d.ts#L329",
+                "src/events.js#L53"
+            ],
+            "getEventSource": [
+                "src/events.d.ts#L328",
+                "src/events.js#L37"
+            ],
             "getFocusableWithin": "src/dom.js#L189",
             "getInnerBoxValues": "src/domUtil.js#L350",
             "getMatchWordRegex": "src/util.js#L514",
@@ -1578,9 +1854,18 @@
                 "src/util.d.ts#L488",
                 "src/util.js#L505"
             ],
-            "listenDOMEvent": "src/events.js#L101",
-            "lock": "src/domLock.js#L104",
-            "locked": "src/domLock.js#L173",
+            "listenDOMEvent": [
+                "src/events.d.ts#L359",
+                "src/events.js#L101"
+            ],
+            "lock": [
+                "src/domLock.d.ts#L29",
+                "src/domLock.js#L104"
+            ],
+            "locked": [
+                "src/domLock.d.ts#L70",
+                "src/domLock.js#L173"
+            ],
             "makeArray": [
                 "src/util.d.ts#L130",
                 "src/util.js#L98"
@@ -1663,7 +1948,10 @@
             "normalizeEventTarget": "src/events.js#L61",
             "normalizeKey": "src/dom.js#L105",
             "Not": "src/types.d.ts#L45",
-            "notifyAsync": "src/domLock.js#L140",
+            "notifyAsync": [
+                "src/domLock.d.ts#L111",
+                "src/domLock.js#L140"
+            ],
             "observe": [
                 "src/observe.d.ts#L22",
                 "src/observe.js#L20"
@@ -1693,8 +1981,14 @@
                 "src/domUtil.js#L614"
             ],
             "PointLike": "src/types.d.ts#L7",
-            "prepEventSource": "src/events.js#L33",
-            "preventLeave": "src/domLock.js#L163",
+            "prepEventSource": [
+                "src/events.d.ts#L324",
+                "src/events.js#L33"
+            ],
+            "preventLeave": [
+                "src/domLock.d.ts#L139",
+                "src/domLock.js#L163"
+            ],
             "Primitive": "src/types.d.ts#L11",
             "PrivateStore": "src/types.d.ts#L231",
             "Promise": "src/include/promise-polyfill.js#L1",
@@ -1780,7 +2074,10 @@
                 "src/util.js#L578"
             ],
             "root": "src/env.js#L7",
-            "runAsync": "src/domLock.js#L144",
+            "runAsync": [
+                "src/domLock.d.ts#L119",
+                "src/domLock.js#L144"
+            ],
             "RunAsyncContext": "src/types.d.ts#L220",
             "runCSSTransition": [
                 "src/cssUtil.d.ts#L16",
@@ -1834,7 +2131,10 @@
                 "src/util.d.ts#L431",
                 "src/util.js#L425"
             ],
-            "setLastEventSource": "src/events.js#L30",
+            "setLastEventSource": [
+                "src/events.d.ts#L333",
+                "src/events.js#L30"
+            ],
             "setModal": [
                 "src/dom.d.ts#L186",
                 "src/dom.js#L329"
@@ -1871,7 +2171,10 @@
             ],
             "StringKeyOf": "src/types.d.ts#L27",
             "styleToJSON": "src/cssUtil.js#L31",
-            "subscribeAsync": "src/domLock.js#L124",
+            "subscribeAsync": [
+                "src/domLock.d.ts#L126",
+                "src/domLock.js#L124"
+            ],
             "tagName": [
                 "src/domUtil.d.ts#L21",
                 "src/domUtil.js#L90"

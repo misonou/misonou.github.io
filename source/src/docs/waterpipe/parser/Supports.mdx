@@ -1,0 +1,22 @@
+<Module name="waterpipe-parser" />
+
+# Supports interface
+
+A dictionary returned from [`Parser.supports`](:) listing supported features in the linked waterpipe module.
+
+See [Playground](/docs/waterpipe/playground) for an interactive view of each support flag on different waterpipe version.
+
+<MemberList
+    i="Supports"
+    ip={['nestedDataPath', 'poundVariableInPipe']}
+/>
+
+## Instance properties
+
+### `Supports.nestedDataPath` <Badge.ReadOnly />
+
+Whether nested data path access using `$($(...))` is supported.
+
+### `Supports.poundVariableInPipe` <Badge.ReadOnly />
+
+Whether iteration variable (`#count`, ...) is supported in pipe expressions, e.g. `sum [ #count ]`.

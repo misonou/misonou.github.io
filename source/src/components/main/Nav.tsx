@@ -26,6 +26,7 @@ const packages = [
     'react-css-utils',
     'jq-scrollable',
     'waterpipe',
+    'waterpipe-parser',
 ];
 
 

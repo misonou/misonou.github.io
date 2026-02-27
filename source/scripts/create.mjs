@@ -162,7 +162,7 @@ function processClassOrInterface(node, nested, treatAsStatic) {
     }
     const members = Object.create(null);
     (node.members || node.type.members).forEach(v => {
-        const isConstructor = v.kind === ts.SyntaxKind.Constructor;
+        const isConstructor = v.kind === ts.SyntaxKind.Constructor || v.kind == ts.SyntaxKind.ConstructSignature;
         const isMethod = v.kind === ts.SyntaxKind.MethodDeclaration || v.kind === ts.SyntaxKind.MethodSignature;
         if (isConstructor || isMethod || v.kind === ts.SyntaxKind.PropertyDeclaration || v.kind == ts.SyntaxKind.PropertySignature || v.kind == ts.SyntaxKind.GetAccessor) {
             const name = isConstructor ? '.ctor' : v.name.escapedText;

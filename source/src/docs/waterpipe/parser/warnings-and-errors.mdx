@@ -1,0 +1,39 @@
+<Module name="waterpipe-parser" />
+
+# Warnings and errors
+
+Warnings and errors in an expression can be obtained based on loaded function definitions.
+
+> **Important** To get accurate diagnostics, make sure to add function definitions for custom pipe functions.
+  See [Custom functions](/docs/waterpipe/parser/custom-functions) section for more details.
+
+```javascript
+const parser = Parser.default;
+const expr = parser.parseExpression('arr where', { arr: [] });
+const diagnostics = parser.getDiagnostics(expr);
+```
+
+The `diagnostics` variable will contain:
+
+```javascript
+[
+    {
+        start: 4,
+        end: 9,
+        level: 'warn',
+        message: 'Expect 1 argument(s)'
+    }
+]
+```
+
+which could then be used to show warnings or errors such as following:
+
+```text
+arr where
+    ^^^^^
+Warning: Expect 1 argument(s)
+```
+
+## See also
+
+- [`Parser.getDiagnostics`](:)

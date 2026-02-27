@@ -1,5 +1,8 @@
 const fs = require('fs');
+const { glob } = require('glob');
 const path = require('path');
+const semver = require('semver');
+const webpack = require('webpack');
 
 function resolveModulePath(...paths) {
     for (let v of paths) {
@@ -8,6 +11,33 @@ function resolveModulePath(...paths) {
             return v;
         }
     }
+}
+
+function resolveModuleAlias(alias) {
+    const result = {};
+    for (const [k, v] of Object.entries(alias)) {
+        const resolved = resolveModulePath(v);
+        if (resolved) {
+            result[k] = resolved;
+        }
+    }
+    return result;
+}
+
+function getWaterpipeVersions(env) {
+    const isDev = env !== 'production' && resolveModulePath('../waterpipe');
+    const versions = [];
+
+    glob.sync('runtime/waterpipe/*.min.js', { absolute: true }).forEach(v => {
+        if (/waterpipe-(.+?)\.min\.js$/.test(v)) {
+            versions.push(RegExp.$1);
+        }
+    });
+    versions.sort((a, b) => semver.compare(b, a));
+    if (isDev) {
+        versions.unshift('local');
+    }
+    return versions;
 }
 
 module.exports = async ({ env }) => {
@@ -22,18 +52,28 @@ module.exports = async ({ env }) => {
                         loader: 'yaml-loader'
                     },
                 );
+                const definePlugin = config.plugins.find(v => v instanceof webpack.DefinePlugin);
+                definePlugin.definitions['process.env.WATERPIPE_VERSIONS'] = JSON.stringify(getWaterpipeVersions(env));
+
                 return {
                     ...config,
                     devtool: env === 'production' ? false : 'inline-source-map',
+                    ignoreWarnings: [
+                        ...(config.ignoreWarnings || []),
+                        {
+                            module: /waterpipe-(.+?)\.min\.js$/,
+                            message: /parse source map from/
+                        }
+                    ],
                     module: {
                         ...config.module,
                         rules: [
                             ...(config.module.rules || []),
                             {
                                 test: /\.tsx?$/,
-                                exclude: /node_modules/,
-                                use: [
+                                rules: [
                                     {
+                                        exclude: /node_modules/,
                                         loader: 'babel-loader',
                                         options: {
                                             plugins: [[path.resolve('./scripts/tsx-transform.js'), { include: path.join(process.cwd(), 'src/components/examples') }]]
@@ -42,7 +82,9 @@ module.exports = async ({ env }) => {
                                     {
                                         loader: 'ts-loader',
                                         options: {
+                                            allowTsInNodeModules: true,
                                             compilerOptions: {
+                                                sourceMap: true,
                                                 noEmit: false
                                             }
                                         }
@@ -73,20 +115,23 @@ module.exports = async ({ env }) => {
                     },
                     resolve: {
                         extensions: ['.js', '.ts', '.tsx', '.mdx'],
-                        alias: {
-                            'src': path.resolve('src'),
-                            'react': path.resolve('node_modules/react'),
-                            'react-dom': path.resolve('node_modules/react-dom'),
-                            'jquery': path.resolve('node_modules/jquery'),
-                            'brew-js': resolveModulePath('../brew-js/src', 'node_modules/brew-js'),
-                            'brew-js-react': resolveModulePath('../brew-js-react/src', 'node_modules/brew-js-react'),
-                            'zeta-dom': resolveModulePath('../zeta-dom/src', 'node_modules/zeta-dom'),
-                            'zeta-dom-react': resolveModulePath('../zeta-dom-react/src', 'node_modules/zeta-dom-react'),
-                            'jq-scrollable': resolveModulePath('../jquery-scrollable', 'node_modules/jq-scrollable'),
-                            'waterpipe': resolveModulePath('../waterpipe', 'node_modules/waterpipe'),
-                            '@misonou/react-app-utils': resolveModulePath('../react-app-utils', 'node_modules/@misonou/react-app-utils'),
-                            '@misonou/react-css-utils': resolveModulePath('../react-css-utils', 'node_modules/@misonou/react-css-utils'),
-                        }
+                        alias: resolveModuleAlias({
+                            'src': 'src',
+                            'runtime': 'runtime',
+                            'react': 'node_modules/react',
+                            'react-dom': 'node_modules/react-dom',
+                            'jquery': 'node_modules/jquery',
+                            'brew-js': '../brew-js/src',
+                            'brew-js-react': '../brew-js-react/src',
+                            'zeta-dom': '../zeta-dom/src',
+                            'zeta-dom-react': '../zeta-dom-react/src',
+                            'jq-scrollable': '../jquery-scrollable',
+                            'waterpipe': '../waterpipe',
+                            'waterpipe-parser': '../waterpipe-parser',
+                            '@misonou/waterpipe-editor': '../waterpipe-editor/src',
+                            '@misonou/react-app-utils': '../react-app-utils',
+                            '@misonou/react-css-utils': '../react-css-utils',
+                        })
                     }
                 };
             }

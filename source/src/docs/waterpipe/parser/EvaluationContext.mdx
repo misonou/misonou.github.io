@@ -1,0 +1,118 @@
+<Module name="waterpipe-parser" />
+
+# EvaluationContext class
+
+Provides context for evaluating expressions with scopes.
+
+```javascript
+const expr = parseExpression('.', { foo: 'bar' });
+expr.evaluationContext.evaluate('foo') // -> 'bar'
+```
+
+<ImportHint
+    name="EvaluationContext"
+    module="waterpipe-parser"
+    require="EvaluationContext"
+    expanded
+/>
+
+<MemberList
+    i="EvaluationContext"
+    ip={['scopes', 'input']}
+    im={['evaluate()', 'resolveScope()', 'scopeAt()', 'getDataPaths()']}
+/>
+
+## Constructor
+
+```javascript
+new EvaluationContext(scopes)
+```
+
+### Parameters
+
+<dl>
+    #### `scopes`
+    A list of variable scopes.
+
+</dl>
+
+## Instance properties
+
+### `EvaluationContext.input` <Badge.ReadOnly />
+
+Gets the input value.
+
+### `EvaluationContext.scopes` <Badge.ReadOnly />
+
+Gets the list of variable scopes.
+
+## Instance methods
+
+### `EvaluationContext.evaluate()`
+
+```javascript
+evaluate(expression)
+```
+
+Evaluates an expression.
+
+#### Parameters
+
+<dl>
+    #### `expression`
+    Expression to evaluate.
+
+</dl>
+
+#### Return value
+
+An [`EvaluatedData`](:) object representing the evaluation result.
+
+### `EvaluationContext.getDataPaths()`
+
+```javascript
+getDataPaths()
+```
+
+Gets all data paths in the current context.
+
+### `EvaluationContext.resolveScope()`
+
+```javascript
+resolveScope(path)
+resolveScope(path, allowShorthand)
+```
+
+Resolves a data path to a variable scope index.
+
+#### Parameters
+
+<dl>
+    #### `path`
+    Data path to resolve.
+
+    #### `allowShorthand` <Badge.Optional />
+    Whether to allow shorthand paths, e.g. `#` or `.`.
+
+</dl>
+
+#### Return value
+
+Resolved scope index or special scope identifier; or false when the data path is invalid.
+
+### `EvaluationContext.scopeAt()`
+
+```javascript
+scopeAt(scope)
+```
+
+Gets the specified variable scope.
+
+#### Parameters
+
+<dl>
+    #### `scope`
+    Special scope identifier for the global and root scopes.
+
+</dl>
+

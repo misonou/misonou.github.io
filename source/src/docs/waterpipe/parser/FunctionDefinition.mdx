@@ -1,0 +1,131 @@
+<Module name="waterpipe-parser" />
+
+# FunctionDefinition interface
+
+<MemberList
+    i="FunctionDefinition"
+    ip={['alias', 'input', 'args', 'overloads']}
+/>
+
+## Instance properties
+
+### `FunctionDefinition.alias` <Badge.ReadOnly /> <Badge.Optional />
+
+Alias or a list of aliases for the function.
+
+### `FunctionDefinition.args` <Badge.ReadOnly /> <Badge.Optional />
+
+Shorthand for defining a function with a single signature.
+
+It is be a list of [`FunctionArgumentDefinition`](:) objects.
+
+### `FunctionDefinition.input` <Badge.ReadOnly /> <Badge.Optional />
+
+Input data types the function accepts.
+
+See [`TypedData.valueType`](:) for possible values.
+
+### `FunctionDefinition.overloads` <Badge.ReadOnly /> <Badge.Optional />
+
+Defines overloads for the function.
+
+See [Custom functions](/docs/waterpipe/parser/custom-functions) for details.
+
+## FunctionSignature interface
+
+<MemberList
+    i="FunctionSignature"
+    ip={['args', 'length']}
+/>
+
+### `FunctionSignature.args` <Badge.ReadOnly />
+
+Defines the argument definitions.
+
+It is a list of [`FunctionArgumentDefinition`](:) objects.
+
+### `FunctionSignature.length` <Badge.ReadOnly />
+
+Defines the formal length of the argument list.
+
+For functions that supports variadic arguments, it can be greater than `args.length` or,
+be set as `Infinity` when the function accepts infinite number of arguments or
+the number of arguments is indeterminate given the argument hints.
+
+
+## FunctionArgumentDefinition interface
+
+<MemberList
+    i="FunctionArgumentDefinition"
+    ip={['kind', 'pipeMode', 'acceptObject', 'hintFromInput']}
+/>
+
+### `FunctionArgumentDefinition.acceptObject` <Badge.ReadOnly /> <Badge.Optional />
+
+Whether the argument accepts objects.
+
+### `FunctionArgumentDefinition.hintFromInput` <Badge.ReadOnly /> <Badge.Optional />
+
+Whether to hint from input value of the current variable scope.
+
+### `FunctionArgumentDefinition.kind` <Badge.ReadOnly />
+
+The kind of argument accepted.
+
+<dl>
+    #### `any`
+    Accepts any kind of argument.
+
+    #### `pipe`
+    Accepts pipe argument.
+
+    #### `value`
+    Accepts value argument, i.e. either a data path or a constant value.
+
+    #### `constant`
+    Accepts constant value argument, i.e. a double-quoted string or a backtick-prefixed string.
+</dl>
+
+
+### `FunctionArgumentDefinition.pipeMode` <Badge.ReadOnly /> <Badge.Optional />
+
+Optional pipe mode for pipe arguments.
+
+<dl>
+    #### `input`
+    Pipe argument will be invoked with input value of the current variable scope.
+
+    #### `current`
+    Pipe argument will be invoked with input value of the current pipe function, i.e.
+    the output of the previous function in the pipe; or the input value of the current variable scope if it is the first function in the pipe.
+
+    #### `iter`
+    Pipe argument will be invoked iteratively for each item in the input array.
+</dl>
+
+## FunctionArgumentHint interface
+
+Represents hint information for function argument during overload resolution.
+
+<MemberList
+    i="FunctionArgumentHint"
+    ip={['pipe', 'value']}
+/>
+
+### `FunctionArgumentHint.pipe` <Badge.Optional />
+
+Specifies hint for pipe arguments.
+A truthy value indicates pipe argument is expected.
+
+### `FunctionArgumentHint.value` <Badge.Optional />
+
+Specifies hint for arguments other than pipe with raw text in the source string.
+It can be escaped constant, an explicit data path (prefixed with `$`) or an unquoted string.
+
+When specified, it requires the following properties:
+
+<dl>
+    #### `rawText`
+    The raw text of the argument in the source string.
+
+</dl>

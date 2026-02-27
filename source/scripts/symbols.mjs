@@ -31,7 +31,7 @@ function processPackage(pkg, version, dir) {
     const symbols = {};
 
     fs.globSync('**/*.{js,ts,tsx}', { cwd: dir, exclude: ['**/{node_modules,dev,dist,build,coverage,tests}/**'], }).forEach((file) => {
-        const re = new RegExp(`^(export ${file.endsWith('.d.ts') ? '|    ' : ''})?((?:default )?(?:function\*?|async function\*?|interface|class|abstract class|type)|declare const|const|default) (\\w[^(< ;:]*)`);
+        const re = new RegExp(`^(export ${file.endsWith('.d.ts') ? '|    ' : ''})?((?:default |declare )?(?:function\*?|async function\*?|interface|class|abstract class|type|const)|default) (\\w[^(< ;:]*)`);
         const repoPath = file.replace(/\\/g, '/');
         const content = execSync(`git show ${commitId}:${repoPath}`, execOpts);
         const dict = {};

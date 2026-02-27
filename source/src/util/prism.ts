@@ -57,6 +57,18 @@ export function renderTokens(theme: PrismTheme, language: string, code: string |
     return render(renderProps);
 }
 
+export function HighlightWrapper(props: Required<Omit<HighlightProps, 'children' | 'prism'>>) {
+    return renderTokens(props.theme, props.language, props.code, ({ getLineProps, tokens, getTokenProps }) => {
+        return React.createElement('div', null,
+            tokens.map((line, i) => (
+                React.createElement('div', { key: i, ...getLineProps({ line }) },
+                    line.map((v, i) => React.createElement('span', { key: i, ...getTokenProps({ token: v }) }))
+                )
+            ))
+        );
+    });
+}
+
 type PrismThemeEntry = PrismTheme['plain'];
 type ThemeDict = {
     root: PrismThemeEntry

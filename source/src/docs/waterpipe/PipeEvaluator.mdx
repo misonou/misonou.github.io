@@ -1,0 +1,201 @@
+<Module name="waterpipe" />
+
+# PipeEvaluator interface
+
+Provides advanced control over how the expression is evaluated.
+
+It is passed as the second argument to a variabic pipe function.
+
+```javascript
+waterpipe.pipes.myPipe = function(input, evaluator) {
+    // evaluator is an instance of PipeEvaluator
+}
+waterpipe.pipes.myPipe.varargs = true;
+```
+
+<ImportHint
+    name="PipeEvaluator"
+    module="waterpipe"
+    typeOnly
+    expanded
+/>
+
+<MemberList
+    i="PipeEvaluator"
+    ip={['globals']}
+    im={['eval()', 'stop()', 'push()', 'reset()', 'hasArgs()', 'state()', 'raw()', 'next()', 'fn()', 'each()']}
+/>
+
+## Instance properties
+
+### `PipeEvaluator.globals` <Badge.ReadOnly />
+
+Contains global variables visible in current scope.
+
+## Instance methods
+
+### `PipeEvaluator.each()`
+
+```javascript
+each(value, callback, iterFn)
+```
+
+Iterates over the given value (array or object) and calls the callback for each item.
+
+### Parameters
+
+<dl>
+    #### `value`
+    Value to iterate over.
+
+    #### `callback`
+    Callback function called for each item. Iteration will be stopped if the callback returns `false`.
+
+    #### `iterFn`
+    Function from `PipeEvaluator.fn` for which when invoked in each iteration the input value and special variable `#`, `#index` and `#count` are correctly set.
+
+</dl>
+
+### `PipeEvaluator.eval()`
+
+```javascript
+eval(objectPath)
+```
+
+Evaluates an object path in the current context.
+
+### Parameters
+
+<dl>
+    #### `objectPath`
+</dl>
+
+### `PipeEvaluator.fn()`
+
+```javascript
+fn()
+fn(fallback)
+```
+
+Reads a portion of upcoming arguments that conforms a waterpipe lambda expression (embraced by [ ] arguments) as a callable function.
+
+### Parameters
+
+<dl>
+    #### `fallback` <Badge.Optional />
+    A fallback function will intakes the next argument if there is no lambda expression.
+
+</dl>
+
+### Return value
+
+A function which when called, the lambda expression will be evaluated against the input arguments and the result is returned.
+
+### `PipeEvaluator.hasArgs()`
+
+```javascript
+hasArgs()
+```
+
+Determines whether there is still arguments in the expression.
+
+### `PipeEvaluator.next()`
+
+```javascript
+next()
+next(preferObject)
+```
+
+Reads the next argument.
+
+### Parameters
+
+<dl>
+    #### `preferObject` <Badge.Optional />
+    Tells the evaluator whether an implicit argument
+    (neither preceding with $ sign which is always evaluated nor embraced by "" which is always literal) 
+    should be evaluted if the object path resolved to values other than boolean, number or string,
+    when the current input value is not an object.
+
+</dl>
+
+### `PipeEvaluator.push()`
+
+```javascript
+push(value)
+```
+
+Pushes the specified value to the result array.
+The result of the current expression will be an flattened array containing all pushed values.
+
+### Parameters
+
+<dl>
+    #### `value`
+    A single value or an array of values.
+
+</dl>
+
+### `PipeEvaluator.raw()`
+
+```javascript
+raw()
+```
+
+Reads the next argument as plain text appeared in the expression.
+
+### `PipeEvaluator.reset()`
+
+```javascript
+reset()
+```
+
+Resets the current value to the initial input of the expression.
+
+### `PipeEvaluator.state()`
+
+```javascript
+state()
+```
+
+Gets the type of the current token in the expression.
+
+#### Return value
+
+It returns one of the following possible values:
+
+<dl>
+    #### `auto`
+    Current token is evaluated as a constant value or a data path based on whether it is a valid data path or not and the current input value.
+    See [Arguments to pipe function](/docs/waterpipe/transforming-data#s-arguments-to-pipe-function) for details.
+
+    #### `const`
+    Current token is always evaluated as a constant value.
+
+    #### `func`
+    Current token represents the beginning of a nested pipe expression.
+
+    #### `end`
+    Reached the end of pipe expression.
+
+    #### `path`
+    Current token is always evaluated as a data path.
+
+</dl>
+
+### `PipeEvaluator.stop()`
+
+```javascript
+stop()
+```
+
+Stops execution of the current expression and returns the current input value.
+
+
+## Version information
+
+<VersionTimeline module="waterpipe">
+- **2.0.0** Introduced
+- **2.1.0** `PipeEvaluator.state()`
+- **2.10.0** `PipeEvaluator.each()`
+</VersionTimeline>

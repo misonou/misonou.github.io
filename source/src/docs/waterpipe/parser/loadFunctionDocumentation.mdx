@@ -1,0 +1,89 @@
+<Module name="waterpipe-parser" />
+
+# loadFunctionDocumentation
+
+Adds function documentations for a specific language.
+
+## Syntax
+
+```javascript
+loadFunctionDocumentation(language, dict)
+```
+
+<ImportHint
+    name="loadFunctionDocumentation"
+    module="waterpipe-parser"
+    require="loadFunctionDocumentation"
+/>
+
+### Parameters
+
+<dl>
+    #### `language`
+    Language identifier.
+
+    #### `dict`
+    A dictionary of function names to their metadata.
+
+    See [`FunctionDocumentationMeta`](:) for details.
+
+</dl>
+
+### Return value
+
+The function does not return a value.
+
+
+## FunctionDocumentationMeta interface
+
+<MemberList
+    i="FunctionDocumentationMeta"
+    ip={['description', 'args', 'resolveArg']}
+/>
+
+### `FunctionDocumentationMeta.args` <Badge.Optional />
+
+Specifies the documentations for the function arguments.
+
+When the function contains multiple overloads, the list should include all arguments for all overloads.
+
+Each item in the list should be a [`FunctionArgumentDocumentationMeta`](:) object.
+
+### `FunctionDocumentationMeta.description` <Badge.Optional />
+
+Specifies the description for the function.
+
+### `FunctionDocumentationMeta.resolveArg` <Badge.Optional />
+
+Specifies callback for dynamic resolution of arguments.
+
+The callback receives the argument definition, its position, and the full list of argument definitions for each
+argument definitions passed to [`getFunctionDocumentation`](:);
+and should return the corresponding argument documentation.
+
+```javascript
+loadFunctionDocumentation('en', {
+    myFunction: {
+        /* ... */
+        resolveArg(arg, index, args) {
+            return {
+                name: arg.name,
+                description: `This is argument #${index + 1}`,
+            };
+        }
+    },
+});
+```
+
+
+## FunctionArgumentDocumentationMeta interface
+
+<MemberList
+    i="FunctionArgumentDocumentationMeta"
+    extends={['FunctionArgumentDocumentation']}
+    ip={['position']}
+/>
+
+### `FunctionArgumentDocumentationMeta.position`
+
+Specifies the position of the argument as a zero-based index.

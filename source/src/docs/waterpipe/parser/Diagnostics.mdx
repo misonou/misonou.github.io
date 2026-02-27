@@ -1,0 +1,38 @@
+<Module name="waterpipe-parser" />
+
+# Diagnostics interface
+
+<MemberList
+    i="Diagnostics"
+    ip={['start', 'end', 'level', 'message']}
+/>
+
+### `Diagnostics.end` <Badge.ReadOnly />
+
+Gets the end position in source where this diagnostic applies.
+
+### `Diagnostics.level` <Badge.ReadOnly />
+
+Gets the severity level of the diagnostic.
+
+Possible values:
+
+<dl>
+    #### `error`
+    An error that prevents correct parsing or evaluation.
+
+    #### `warn`
+    A warning about potential issues.
+</dl>
+
+### `Diagnostics.message` <Badge.ReadOnly />
+
+Gets the diagnostic message.
+
+### `Diagnostics.start` <Badge.ReadOnly />
+
+Gets the start position in source where this diagnostic applies.
+
+## See also
+
+- [`Parser.getDiagnostics`](:)

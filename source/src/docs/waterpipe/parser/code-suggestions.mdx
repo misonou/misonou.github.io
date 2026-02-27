@@ -1,0 +1,101 @@
+import { DataTypeIcon } from "@misonou/waterpipe-editor"
+
+<Module name="waterpipe-parser" />
+
+# Code suggestions
+
+The [`CodeSuggestionContext`](:) class provides code suggestions for a given expression and position.
+
+It gives suggestions based on the context at the given position:
+
+- In or expecting an argument expression:
+  - **Pipe suggestions**: Conversion of current argument to a nested pipe argument.
+  - **String suggestions**: Conversion of current token to a double-quoted constant value.
+  - **Path suggestions**: Available data paths.
+
+- In or expecting a function name:
+  - **Function suggestions**: Available pipe functions that accepts the current input value.
+
+> **Important** To get accurate code suggestions, make sure to add function definitions for custom pipe functions.
+  See [Custom functions](/docs/waterpipe/parser/custom-functions) section for more details.
+
+
+```javascript
+const parser = Parser.default;
+const expr = parser.parseExpression('arr', { arr: [1, 2, 3] }, { foo: { bar: {} } })
+parser.getCodeSuggestionContext(expr, 0).suggestions
+// -> [ { type: 'pipe', value: '[ arr ]', ... }, ... ]
+```
+
+{/* style: "white-space: nowrap" */}
+
+| Type                                   | Value     | Display text | Description        |
+|----------------------------------------|-----------|--------------|--------------------|
+| <DataTypeIcon type="pipe"/>   `pipe`   | `[ arr ]` | `[ arr ]`    |                    |
+| <DataTypeIcon type="string"/> `string` | `"arr"`   | `"arr"`      |                    |
+| <DataTypeIcon type="path"/>   `path`   | `arr`     | `arr`        | `List [ 1, 2, 3 ]` |
+| <DataTypeIcon type="path"/>   `path`   | `foo`     | `foo`        | `Record { bar }`   |
+| <DataTypeIcon type="path"/>   `path`   | `foo.bar` | `foo.bar`    | `Record {  }`      |
+
+Data path masked by variable scopes are automatically resolved as prefixed with correct scope resolutions:
+
+```javascript
+const expr = parser.parseExpression('', { foo: 1 }, { foo: 2 });
+parser.getCodeSuggestionContext(expr, 0).suggestions
+// -> [ { type: 'path', value: '[  ]', ... }, ... ]
+```
+
+{/* style: "white-space: nowrap" */}
+
+| Type                               | Value         | Display text  | Description |
+|------------------------------------|---------------|---------------|-------------|
+| <DataTypeIcon type="pipe"/> `pipe` | `[  ]`        | `[  ]`        |             |
+| <DataTypeIcon type="path"/> `path` | `foo`         | `foo`         | `1`         |
+| <DataTypeIcon type="path"/> `path` | `@global.foo` | `@global.foo` | `2`         |
+
+
+## Applying code suggestions
+
+Uses [`CodeSuggestionContext.createCodeEdit()`](:) function to create code edits based on the current context.
+
+```javascript
+const expr = parser.parseExpression('arr join ""');
+const context = parser.getCodeSuggestionContext(expr, 0);
+context.editMode // -> 'replace'
+context.createCodeEdit('[ arr ]')
+// -> { value: '[ arr ]', range: [0, 3], selectionAfter: [5, 5] }
+```
+
+The `value` will replace original text in the `range`, and the cursor will be placed at `selectionAfter` position after applying the edit.
+
+
+## Documentations
+
+Although not directly consumed by the parser library, it provides a way to get function documentations for code suggestions.
+
+```javascript
+getFunctionDocumentation('en', 'where', [{ kind: 'pipe' }])
+```
+
+It will return a [`FunctionDocumentation`](:) object like following:
+
+```javascript
+{
+    name: 'where',
+    description: 'Filters an object, list or table by condition.',
+    args: [
+        {
+            position: 0,
+            kind: 'pipe',
+            name: 'condition',
+            description: 'An expression that returns true or false'
+        }
+    ]
+}
+```
+
+## See also
+
+- [`CodeSuggestionContext`](:)
+- [`createCodeEdit`](:)
+- [`getFunctionDocumentation`](:)

@@ -1,0 +1,139 @@
+<Module name="waterpipe-parser" />
+
+# Visiting expressions
+
+Expression tree can be traversed by using [`Expression.visit()`](:) function.
+
+Each nodes in the expression tree is visited in depth-first order, which matches the token order.
+
+> **Important** Root expression node is not visited.
+
+```javascript
+const expr = Parser.default.parseExpression('arr join ""');
+expr.visit((context) => {
+    console.log(ExpressionType[context.node.type]); // -> 'pipe', 'argument', 'value', ...
+});
+```
+
+## Returning values from visitor
+
+Values can be returned from the callback and are collected as an array.
+
+> Undefined values returned from callbacks are omitted.
+
+```javascript
+const expr = Parser.default.parseExpression('arr join ""');
+const types = expr.visit((context) => {
+    return ExpressionType[context.node.type];
+});
+types // -> ['pipe', 'argument', 'value', 'function', 'argument', 'value']
+```
+
+## Defining action by expression type
+
+You can also supply an object with callbacks for each expression type to selectively visit certain types of nodes.
+
+```javascript
+const expr = Parser.default.parseExpression('arr join ""');
+const types = expr.visit({
+    pipe: (context) => 'pipe',
+    function: (context) => 'function',
+});
+types // -> ['pipe', 'function']
+```
+
+## Enter and exit callbacks
+
+It is also possible to define both enter and exit callbacks for each expression type by using an object with `enter` and `exit` properties.
+
+The `enter` callback is invoked when the node is first visited before all child nodes,
+while the `exit` callback is invoked after all child nodes have been visited.
+
+```javascript
+const expr = Parser.default.parseExpression('arr join ""');
+const types = expr.visit({
+    pipe: {
+        enter: (context) => 'enter pipe',
+        exit: (context) => 'exit pipe',
+    },
+    function: {
+        enter: (context) => 'enter function',
+        exit: (context) => 'exit function',
+    },
+});
+types // -> ['enter pipe', 'enter function', 'exit function', 'exit pipe']
+```
+
+## Skipping nodes
+
+You can skip traversal of child nodes by calling [`ExpressionVisitorContext.skip()`](:):
+
+> Note that if it is called in an enter callback,
+  the exit callback for the current node will also be skipped.
+
+```javascript
+const expr = Parser.default.parseExpression('arr join ""');
+const types = expr.visit({
+    pipe: (context) => {
+        // skip traversing child nodes
+        context.skip();
+        return 'pipe';
+    },
+    function: (context) => 'function'
+});
+types // -> ['pipe']
+```
+
+You can also skip a specific node by passing the node to [`ExpressionVisitorContext.skip()`](:):
+
+```javascript
+const expr = Parser.default.parseExpression('arr join "" || bar');
+const types = expr.visit({
+    pipe: (context) => {
+        // skip traversing the branch node `|| bar`
+        context.skip(context.node.branch);
+        return 'pipe';
+    },
+    branch: (context) => 'branch'
+});
+types // -> ['pipe']
+```
+
+## Passing state to callbacks
+
+You can pass an optional `state` argument to [`Expression.visit()`](:) or [`Expression.getVisitIterator()`](:).
+This state will be passed as the second argument to each callback.
+
+```javascript
+const expr = Parser.default.parseExpression('arr join ""');
+const results = expr.visit({
+    pipe: (context, state) => state.message,
+}, { message: 'visiting pipe' });
+results // -> ['visiting pipe']
+```
+
+## Using generator
+
+Alternatively, you can use [`Expression.getVisitIterator()`](:) to create an iterator so that early termination of tree traversal is possible.
+
+> Note the it requires values to be yielded from the callback, otherwise the visitor will walk the entire tree on the first call to `next()` of the iterator object.
+
+```javascript
+const expr = Parser.default.parseExpression('arr join ""');
+const iterator = expr.getVisitIterator((context) => {
+    return ExpressionType[context.node.type];
+});
+
+for (const type of iterator) {
+    console.log(type); // -> 'pipe', 'argument', 'value', ...
+    if (type === 'function') {
+        break; // terminate traversal early
+    }
+}
+```
+
+## See also
+
+- [`Expression.getVisitIterator()`](:)
+- [`Expression.visit()`](:)
+- [`ExpressionVisitorContext`](:)

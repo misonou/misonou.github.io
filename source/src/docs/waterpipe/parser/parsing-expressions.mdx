@@ -1,0 +1,136 @@
+<Module name="waterpipe-parser" />
+
+# Parsing expressions
+
+Use [`Parser.parseExpression()`](:) to parse an expression string into an AST.
+
+```javascript
+Parser.default.parseExpression('arr join ""') // -> ExpressionBase { type: 0, source: 'arr join ""', ... }
+```
+
+will give the expression tree like following:
+
+```javascript
+<ref *1> ExpressionBase {
+  type: 0,
+    start: 0,
+    end: 11,
+    source: 'arr join ""',
+    parent: null,
+    evaluationContext: null,
+    expression: <ref *2> ExpressionBase {
+        type: 3,
+        start: 0,
+        end: 11,
+        source: 'arr join ""',
+        parent: [Circular *1],
+        evaluationContext: null,
+        input: ExpressionBase {
+            type: 1,
+            start: 0,
+            end: 3,
+            source: 'arr',
+            parent: [Circular *2],
+            evaluationContext: null,
+            pipe: null,
+            value: [ExpressionBase]
+        },
+        branch: null,
+        next: [ [ExpressionBase] ]
+    }
+}
+```
+
+## Expression types
+
+Example of a generated AST of the expression `arr map [ 1 | . == 2 ]`:
+
+```text
+arr map [ 1 | . == 2 ] RootExpression { expression }
+arr map [ 1 | . == 2 ] \- PipeExpression { input, next }
+arr                       |- ArgumentExpression { value }
+arr                       |  \- ValueExpression { text: "arr" }
+    map [ 1 | . == 2 ]    \- FunctionExpression { name: "map", args }
+        [ 1 | . == 2 ]       \- ArgumentExpression { pipe }
+          1 | . == 2            \- PipeExpression { input, branch }
+          1                        |- ArgumentExpression { value }
+          1                        |  \- ValueExpression { text: "1" }
+            | . == 2               \- BranchExpression { operator: "|" }
+              . == 2                  \- PipeExpression { input, next }
+...                                      ...
+```
+
+Different types of expression can be distinguished by matching [`Expression.type`](:) with the [`ExpressionType`](:) enum:
+
+| Enum value                | Expression type      | Description                                   |
+|---------------------------|----------------------|-----------------------------------------------|
+| `ExpressionType.root`     | `RootExpression`     | The root of the expression tree               |
+| `ExpressionType.argument` | `ArgumentExpression` | Argument in a function call                   |
+| `ExpressionType.function` | `FunctionExpression` | Function call with name and arguments         |
+| `ExpressionType.pipe`     | `PipeExpression`     | Pipe expression                               |
+| `ExpressionType.branch`   | `BranchExpression`   | Branch like <code>&#124;&#124;</code> or `&&` |
+| `ExpressionType.value`    | `ValueExpression`    | Value literal or data path                    |
+
+## Iterating tokens
+
+Iterates over all tokens in the expression.
+
+```javascript
+const expr = Parser.default.parseExpression('arr join ""');
+expr.tokens.map(t => t.value) // -> ['arr', ' ', 'join', ' ', '""']
+```
+
+## Finding node at position
+
+Finds the expression node at the specified position in the source string.
+
+```javascript
+const expr = Parser.default.parseExpression('arr join ""');
+expr.getNodeAtPosition(5)
+// -> ExpressionBase { type: 2, source: 'join ""', ... }
+```
+
+### Handling position between tokens
+
+In general, for token other than `[` and `]`, when the specified position is:
+- at the start, the end, or in the middle of a token &mdash; the innermost expression associated with the token is returned;
+- between two tokens &mdash; the innermost expression associated with the last token is returned.
+
+For example, for the expression `arr || obj where true`:
+
+| Offset   | Returned node                                   |
+|----------|-------------------------------------------------|
+| 0-3      | value expression for `arr`                      |
+| 4-5      | branch expression for <code>&#124;&#124;</code> |
+| 6-9      | value expression for `obj`                      |
+| 10-15    | function expression for `where true`            |
+| 16-20    | value expression for `true`                     |
+
+With the exceptional handling of **pipe expressions**:
+
+If the specified position is
+- **(a)** at the start of `[` or at the end of `]` &mdash; the argument expression is returned.
+- **(b)** at the end of `[` and the nested pipe expression is not empty, the first child expression is returned.
+- **(c)** at the start of `]` and the nested pipe expression is not empty, the last descendant expression is returned.
+
+Only when **(d)** at the position between `[` and `]` of an empty pipe expression, the pipe expression itself is returned.
+
+For example, for the expression `[ str upper ] & [  ]`:
+
+| Offset   | Returned node                           | Case |
+|----------|-----------------------------------------|------|
+| 0        | argument expression for `[ str upper ]` | (a)  |
+| 1-5      | value expression for `str`              | (b)  |
+| 6-12     | function expression for `upper`         | (c)  |
+| 13       | argument expression for `[ str upper ]` | (a)  |
+| 14-15    | function expression for `& [   ]`       |      |
+| 16       | argument expression for `[  ]`          | (a)  |
+| 17-18    | pipe expression (empty)                 | (d)  |
+| 19       | argument expression for `[  ]`          | (a)  |
+
+## See also
+
+- [`Parser`](:)
+- [`Expression`](:)
+- [`ExpressionType`](:)
+- [`Token`](:)

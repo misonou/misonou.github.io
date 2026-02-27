@@ -436,6 +436,15 @@ h2 + .app-docs-member {
     list-style: none;
 }
 
+.app-docs-member-list li {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.app-docs-member-list code {
+    white-space: nowrap;
+}
+
 @media (max-width: 768px) {
     .app-docs-member-list {
         display: block;

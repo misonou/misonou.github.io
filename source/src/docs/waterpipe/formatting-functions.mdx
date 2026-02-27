@@ -41,3 +41,14 @@ It is also useful to extract date and time components from the given timestamp o
     data={{ timestamp: 1370000000000, date: '2013-05-31' }}
     examples={['timestamp :date yyyy-MM-dd', 'timestamp :date f', 'date :date f', 'date :date M']}
 />
+
+### `:json`
+
+Converts the piped value to a JSON string.
+
+<WaterpipeExample
+    data={{ value: { foo: "baz", bar: 1 } }}
+    examples={['value :json']}
+/>
+
+> **Important** Before 2.8.1, the function is undocumented and accepts 3 arguments instead.

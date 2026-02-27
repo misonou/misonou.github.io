@@ -1,0 +1,189 @@
+<Module name="waterpipe-parser" />
+
+# CodeSuggestionContext class
+
+Context for generating code suggestions.
+
+It is returned by [`Parser.getCodeSuggestionContext`](:).
+
+<ImportHint
+    name="CodeSuggestionContext"
+    module="waterpipe-parser"
+    require="CodeSuggestionContext"
+    expanded
+/>
+
+<MemberList
+    i="CodeSuggestionContext"
+    extends={['ExpressionVisitorContext']}
+    ip={['selectionRange', 'editRange', 'editMode', 'hintValue', 'suggestions', 'tokenType']}
+    im={['createCodeEdit()', 'getFunctionContexts()']}
+/>
+
+## Instance properties
+
+### `CodeSuggestionContext.editMode` <Badge.ReadOnly />
+
+Whether the suggested value should be inserted or be a replacement for the edit range.
+
+### `CodeSuggestionContext.editRange` <Badge.ReadOnly />
+
+The edit range for applying suggestions.
+
+### `CodeSuggestionContext.hintValue` <Badge.ReadOnly />
+
+The hint value at the current position for filtering suggestions,
+typically the unescaped string for constant value or the raw text for other kinds of token.
+
+### `CodeSuggestionContext.selectionRange` <Badge.ReadOnly />
+
+The selection range for suggestions.
+
+### `CodeSuggestionContext.suggestions` <Badge.ReadOnly />
+
+Gets available suggestions.
+
+### `CodeSuggestionContext.tokenType` <Badge.ReadOnly />
+
+Gets the type of the token at the current position.
+If the selection range spans multiple tokens, `null` is returned.
+
+See [`TokenType`](:) for possible values.
+
+## Instance methods
+
+### `CodeSuggestionContext.createCodeEdit()`
+
+```javascript
+createCodeEdit(value)
+```
+
+Creates a code edit from a raw string.
+
+#### Parameters
+
+<dl>
+    #### `value`
+    Raw string to insert or replace.
+
+</dl>
+
+#### Return value
+
+A [`CodeEdit`](:) object.
+
+### `CodeSuggestionContext.getFunctionContexts()`
+
+```javascript
+getFunctionContexts()
+```
+
+Gets function contexts for suggestions.
+
+In nested expressions where a function expression is nested within parent argument expression,
+the current context is yielded first and then the parent context.
+
+#### Return value
+
+A list of [`FunctionContext`](:) objects representing the function contexts.
+
+
+## CodeSuggestion interface
+
+A `CodeSuggestion` object represents a suggested edit at the current position.
+
+A list of `CodeSuggestion` objects is returned by the [`CodeSuggestionContext.suggestions`](:) property.
+
+<MemberList
+    i="CodeSuggestion"
+    ip={['type', 'value', 'displayText', 'description']}
+/>
+
+### `CodeSuggestion.description` <Badge.ReadOnly /> <Badge.Optional />
+
+Gets the description of the suggested edit.
+
+### `CodeSuggestion.displayText` <Badge.ReadOnly />
+
+Gets the display text of the suggested edit.
+
+If the suggestion is a constant value, the display text is the unescaped representation.
+
+### `CodeSuggestion.type` <Badge.ReadOnly />
+
+Gets the type of the suggestion.
+
+Possible values:
+
+<dl>
+    #### `empty`
+    Suggestion is an empty type, i.e. `null` and `undefined`.
+
+    #### `boolean`
+    Suggestion is a boolean type.
+
+    #### `number`
+    Suggestion is a numeric type.
+
+    #### `string`
+    Suggestion is a string type.
+
+    #### `record`
+    Suggestion is a dictionary-like type, typically an object with string keys.
+
+    #### `list`
+    Suggestion is a list type, typically an array of scalar values.
+
+    #### `table`
+    Suggestion is a table type, typically an array of records.
+
+    #### `fn`
+    Suggestion is a function name.
+
+    #### `pipe`
+    Suggestion is a nested pipe argument.
+
+    #### `path`
+    Suggestion is a data path.
+
+    #### `mixed`
+    Suggestion is a mixed type.
+</dl>
+
+### `CodeSuggestion.value` <Badge.ReadOnly />
+
+Gets the raw string of the suggested edit.
+
+If the suggestion is a constant value, the raw string is the escaped representation.
+
+
+## FunctionContext interface
+
+The `FunctionContext` interface provides context information about a function call
+within an expression, including the function name, arguments, and current position.
+
+A list of `FunctionContext` objects is returned by the [`CodeSuggestionContext.getFunctionContexts()`](:) method.
+
+<MemberList
+    i="FunctionContext"
+    ip={['node', 'name', 'args', 'position']}
+/>
+
+### `FunctionContext.args` <Badge.ReadOnly />
+
+Gets the argument definitions.
+
+It is a list of [`FunctionArgumentDefinition`](:) objects.
+
+### `FunctionContext.name` <Badge.ReadOnly />
+
+Gets the function name.
+
+### `FunctionContext.node` <Badge.ReadOnly />
+
+Gets the function expression node.
+
+### `FunctionContext.position` <Badge.ReadOnly />
+
+Gets the current argument position as a zero-based index.
+

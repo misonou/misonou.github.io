@@ -1,0 +1,88 @@
+<Module name="waterpipe-parser" />
+
+# Token interface
+
+<MemberList
+    i="Token"
+    ip={['type', 'value', 'start', 'end', 'context']}
+/>
+
+## Instance properties
+
+### `Token.context`
+
+Gets the associated [`ExpressionVisitorContext`](:) object in which the token was parsed.
+
+### `Token.end`
+
+Gets the ending position of the token in the source string.
+
+### `Token.start`
+
+Gets the starting position of the token in the source string.
+
+### `Token.type`
+
+Gets the type of the token. See [`TokenType`](:) enum for possible values.
+
+### `Token.value`
+
+Gets the string value of the token.
+
+## TokenType enum
+
+Enumeration of token types used in parsing. Used in [`Token.type`](:).
+
+The enum class support getting name from value and value from name.
+
+```javascript
+TokenType[TokenType.auto] === 'auto'
+```
+
+<MemberList
+    i="TokenType"
+    sp={['auto', 'constant', 'path', 'push', 'pop', 'branch', 'function']}
+/>
+
+### `TokenType.auto`
+
+Integer value 0.
+
+Represents an automatic token type, that is a token in the position of input value or function argument
+where the type is determined by the context, either a constant value or a data path.
+
+### `TokenType.branch`
+
+Integer value 5.
+
+Represents a branch token, `|`, `||` or `&&` in a branch expression.
+
+### `TokenType.constant`
+
+Integer value 1.
+
+Represents a constant value token, either a backtick-enclosed constant or a double-quoted string.
+
+### `TokenType.function`
+
+Integer value 6.
+
+Represents a function name in the beginning of a function expression.
+
+### `TokenType.path`
+
+Integer value 2.
+
+Represents a data path, which is prefixed by a dollar sign character.
+
+### `TokenType.pop`
+
+Integer value 4.
+
+Represents a close square bracket `]` in a nested pipe expression.
+
+### `TokenType.push`
+
+Integer value 3.
+
+Represents an open square bracket `[` in a nested pipe expression.

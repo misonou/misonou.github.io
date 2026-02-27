@@ -267,12 +267,14 @@ Some of the features are not available in 1.x versions.
     <td width="175px">
         <code>:printf</code><br/>
         <code>:query</code><br/>
-        <code>:date</code>
+        <code>:date</code><br/>
+        <code>:json</code>
     </td>
     <td width="425px">
         <code>{'{{3.14 :printf %d}}'}</code> <kbd>&#x279c;</kbd> <code>3</code><br/>
-        <code>{'{{&amp;:query}}'}</code> <kbd>&#x279c;</kbd> <code>p1=value1&amp;p2=value2</code><br/>
-        <code>{'{{0 :date yyyy-MM-dd}}'}</code> <kbd>&#x279c;</kbd> <code>1970-01-01</code>
+        <code>{'{{&:query}}'}</code> <kbd>&#x279c;</kbd> <code>p1=value1&amp;p2=value2</code><br/>
+        <code>{'{{0 :date yyyy-MM-dd}}'}</code> <kbd>&#x279c;</kbd> <code>1970-01-01</code><br/>
+        <code>{'{{&:json}}'}</code> <kbd>&#x279c;</kbd> <code>{'{"p1":"value1","p2":"value2"}'}</code>
     </td>
 </tr>
 <tr>
@@ -287,12 +289,14 @@ Some of the features are not available in 1.x versions.
     </td>
 </tr>
 <tr>
-    <td width="125px" valign="top"><i>Template</i></td>
+    <td width="125px" valign="top"><i>Evaluation</i></td>
     <td width="175px">
-        <code>|&gt;</code> <code>eval</code> <kbd>v2.8</kbd>
+        <code>|&gt;</code> <code>eval</code> <kbd>v2.8</kbd><br/>
+        <code>select</code> <kbd>v2.10</kbd>
     </td>
     <td width="425px">
-        <code>{'{{"foo" |> template}}'}</code> <kbd>&#x279c;</kbd> <code>Value is foo</code>
+        <code>{'{{"foo" |> template}}'}</code> <kbd>&#x279c;</kbd> <code>Value is foo</code><br/>
+        <code>{'{{obj select [ prop ]}}'}</code> <kbd>&#x279c;</kbd> <code>Got obj.prop</code>
     </td>
 </tr>
 </MDXTableElement>

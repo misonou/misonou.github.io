@@ -1,0 +1,410 @@
+<Module name="waterpipe-parser" />
+
+# Parser class
+
+<ImportHint
+    name="Parser"
+    module="waterpipe-parser"
+    require="Parser"
+    expanded
+/>
+
+<MemberList
+    i="Parser"
+    ip={['waterpipe', 'supports', 'version']}
+    im={['getCodeSuggestionContext()', 'escapeConstant()', 'getDiagnostics()', 'getFunctionDefinition()', 'getFunctionSignature()', 'isConstantToken()', 'isValidFunction()', 'isValidProperty()', 'isValidPropertyName()', 'matchFunctionSignature()', 'parseConstant()', 'parseExpression()', 'requireEscape()', 'unescapeConstant()']}
+    sp={['default']}
+    sm={['defineSupport()']}
+/>
+
+## Constructor
+
+```javascript
+new Parser()
+new Parser(waterpipe)
+```
+
+### Parameters
+
+<dl>
+    #### `waterpipe` <Badge.Optional />
+    Default export of waterpipe module. If no waterpipe module is provided, it will use the default one.
+
+</dl>
+
+## Instance properties
+
+### `Parser.supports` <Badge.ReadOnly />
+
+Gets an [`Supports`](:) object listing feature supports in the associated waterpipe version.
+
+### `Parser.waterpipe` <Badge.ReadOnly />
+
+Gets the waterpipe module associated with this parser instance.
+
+### `Parser.version` <Badge.ReadOnly />
+
+Gets the waterpipe version.
+
+> For version `<2.9.0`, an empty string is returned as the module does not expose a version number.
+
+## Instance methods
+
+### `Parser.escapeConstant()`
+
+Escapes string to a constant value.
+
+It always wraps the value in double quotes and escapes inner quotes.
+
+```javascript
+escapeConstant(value)
+```
+
+#### Parameters
+
+<dl>
+    #### `value`
+    The value to escape.
+
+</dl>
+
+
+### `Parser.getCodeSuggestionContext()`
+
+Creates a new code suggestion context.
+
+```javascript
+getCodeSuggestionContext(expression, start)
+getCodeSuggestionContext(expression, start, end)
+```
+
+#### Parameters
+
+<dl>
+    #### `expression`
+    The root expression.
+
+    #### `start`
+    The start position for suggestions.
+
+    #### `end` <Badge.Optional />
+    Optional end position.
+
+</dl>
+
+#### Return value
+
+A [`CodeSuggestionContext`](:) object.
+
+### `Parser.getDiagnostics()`
+
+Gets diagnostics for a given expression.
+
+```javascript
+getDiagnostics(context)
+getDiagnostics(expression)
+getDiagnostics(expression, input)
+getDiagnostics(expression, input, globals)
+```
+
+#### Parameters
+
+<dl>
+    #### `context`
+    Expression visitor context.
+
+    #### `expression`
+    Expression string or an [`Expression`](:) object to analyze.
+
+    #### `input` <Badge.Optional />
+    Input data for data evaluation.
+
+    #### `globals` <Badge.Optional />
+    Global variables for data evaluation.
+
+</dl>
+
+#### Return value
+
+A list of [`Diagnostics`](:) objects.
+If there is no warnings or errors found, an empty array is returned.
+
+### `Parser.getFunctionDefinition()`
+
+Gets the definition of a function.
+
+```javascript
+getFunctionDefinition(name)
+```
+
+#### Parameters
+
+<dl>
+    #### `name`
+    Function name.
+
+</dl>
+
+#### Return value
+
+A [`FunctionDefinition`](:) object.
+
+### `Parser.getFunctionSignature()`
+
+Gets the signature for a function expression.
+
+```javascript
+getFunctionSignature(expr)
+getFunctionSignature(name)
+getFunctionSignature(name, args)
+```
+
+#### Parameters
+
+<dl>
+    #### `expr`
+    A function expression.
+
+    #### `name`
+    Function name.
+
+    #### `args` <Badge.Optional />
+    Constraint on each argument for overload resolution.
+
+    Each item in the list should be a [`FunctionArgumentHint`](:) object.
+
+</dl>
+
+#### Return value
+
+A [`FunctionSignature`](:) object representing the matched function signature; or a default signature with no arguments otherwise.
+
+### `Parser.isConstantToken()`
+
+Checks whether a string represents a constant value when placed as input value or function argument in an expression.
+
+A constant in an expression must start with a backtick character, or be wrapped by double quotes (`"`).
+
+```javascript
+isConstantToken(value)
+```
+
+#### Parameters
+
+<dl>
+    #### `value`
+    The string to check.
+
+</dl>
+
+### `Parser.isValidFunction()`
+
+Checks whether the given name resolves to a valid pipe function.
+
+```javascript
+isValidFunction(fn)
+```
+
+#### Parameters
+
+<dl>
+    #### `fn`
+    The function name.
+
+</dl>
+
+### `Parser.isValidProperty()`
+
+Checks whether a property is valid for an input object.
+
+A valid property name can 1) appear as a single traversal step in a data path, and 2) when unquoted as the first token in
+an expression, or as an argument to a function where evaluation mode is `auto`,
+the token is interpreted as a property access on the current input object.
+
+A property is consider valid on a given input when all of the following criteria is met:
+- input is an object
+- property exists on the object
+- property evaluates to value other than function
+- property name is a valid property name.
+
+```javascript
+isValidProperty(input, prop)
+```
+
+#### Parameters
+
+<dl>
+    #### `input`
+    The input object.
+
+    #### `prop`
+    The property name.
+
+</dl>
+
+### `Parser.isValidPropertyName()`
+
+Checks whether a name is a valid property name.
+
+A valid property name should not contain whitespace or dot (`.`) character and
+should not start with dollar sign (`$`) or double quote (`"`) character.
+
+```javascript
+isValidPropertyName(prop)
+```
+
+#### Parameters
+
+<dl>
+    #### `prop`
+    The property name.
+
+</dl>
+
+### `Parser.matchFunctionSignature()`
+
+Gets all function signatures that accept specified arguments.
+
+```javascript
+matchFunctionSignature(name)
+matchFunctionSignature(name, args)
+```
+
+#### Parameters
+
+<dl>
+    #### `name`
+    The function name.
+
+    #### `args` <Badge.Optional />
+    Constraint on each argument for overload resolution.
+
+    It should be a list of [`FunctionArgumentHint`](:) objects.
+
+</dl>
+
+#### Return value
+
+An iterable of [`FunctionSignature`](:) objects that match the specified argument hints.
+
+### `Parser.parseConstant()`
+
+Parses a constant token to its represented value as a number, boolean, `null` or `undefined` if applicable.
+
+```javascript
+parseConstant(value)
+```
+
+#### Parameters
+
+<dl>
+    #### `value`
+    The string to parse.
+
+</dl>
+
+### `Parser.parseExpression()`
+
+Parses an expression string into an AST.
+
+> If the input and globals are provided, the returned root expression and all descendant expressions
+  will have `evaluationContext` property initialized. See [`EvaluationContext`](:) for details.
+
+```javascript
+parseExpression(expression)
+parseExpression(expression, input)
+parseExpression(expression, input, globals)
+```
+
+#### Parameters
+
+<dl>
+    #### `expression`
+    The expression string to parse.
+
+    #### `input` <Badge.Optional />
+    Optional input data for evaluation.
+
+    #### `globals` <Badge.Optional />
+    Optional global variables.
+
+</dl>
+
+#### Return value
+
+A [`RootExpression`](:) object representing the parsed AST.
+
+### `Parser.requireEscape()`
+
+Checks whether a string requires escaping to be a proper token in an expression.
+
+A string value requires escaping if it is an empty string, contains whitespace,
+starts with a backtick character, or is wrapped by double quotes (`"`).
+
+```javascript
+requireEscape(value)
+```
+
+#### Parameters
+
+<dl>
+    #### `value`
+    Unescaped string representing the constant.
+
+</dl>
+
+### `Parser.unescapeConstant()`
+
+Unescapes a constant value.
+
+It unescapes double-quoted strings by removing the surrounding quotes and unescaping inner quotes;
+or remove preceding backtick character from backtick-escaped strings. If the string is not quoted or backtick-escaped,
+it is returned as-is.
+
+Similar to [`Parser.parseConstant`](:) but does not convert the value to other types.
+
+```javascript
+unescapeConstant(value)
+```
+
+#### Parameters
+
+<dl>
+    #### `value`
+    The string to unescape.
+
+</dl>
+
+
+## Static properties
+
+### `Parser.default` <Badge.ReadOnly />
+
+Gets the default parser that is linked to the loaded waterpipe module.
+
+
+## Static methods
+
+### `Parser.defineSupport()`
+
+Defines a custom support flag.
+
+```javascript
+defineSupport(callback)
+defineSupport(callback, description)
+```
+
+#### Parameters
+
+<dl>
+    #### `callback`
+    Callback function to determine whether the feature is supported in the given waterpipe module.
+
+    #### `description` <Badge.Optional />
+    Optional description.
+
+</dl>
+
+#### Return value
+
+A unique symbol that can be used to retrieve the support status on `Parser.supports` object.      

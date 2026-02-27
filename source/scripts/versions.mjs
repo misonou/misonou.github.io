@@ -9,6 +9,8 @@ import { exec } from 'node:child_process';
         'brew-js',
         'brew-js-react',
         'jq-scrollable',
+        'waterpipe',
+        'waterpipe-parser',
         '@misonou/react-app-utils',
         '@misonou/react-css-utils',
         '@misonou/brew-extension-auth',

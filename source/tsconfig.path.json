@@ -8,6 +8,9 @@
         "paths": {
             "@misonou/react-app-utils": ["../react-app-utils", "node_modules/@misonou/react-app-utils"],
             "@misonou/react-css-utils": ["../react-css-utils", "node_modules/@misonou/react-css-utils"],
+            "@misonou/waterpipe-editor": ["../waterpipe-editor", "node_modules/@misonou/waterpipe-editor"],
+            "waterpipe": ["../waterpipe", "node_modules/waterpipe"],
+            "waterpipe-parser": ["../waterpipe-parser/src", "node_modules/waterpipe-parser"],
             "jq-scrollable": ["../jquery-scrollable", "node_modules/jq-scrollable"],
             "zeta-dom": ["../zeta-dom/src", "node_modules/zeta-dom"],
             "zeta-dom/*": ["../zeta-dom/src/*", "node_modules/zeta-dom/*"],

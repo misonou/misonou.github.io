@@ -1326,6 +1326,59 @@ button.variant-outlined.loading:after {
 }
 
 .zui-radio-list > label > span {
-    font-size: 87.5%;
     padding-left: 0.5em;
+}
+
+
+/***********************************************
+ * Code highlight field
+ ***********************************************/
+
+.zui-code-highlight-field-outline {
+    position: relative;
+    min-height: var(--zui-field-min-height);
+    max-height: var(--zui-field-max-height);
+    border: 1px solid var(--zui-color-outline);
+    border-radius: var(--zui-border-radius);
+    font-size: 80%;
+    font-family: var(--font-monospace);
+    font-weight: 400;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    overflow: hidden;
+
+    --zui-field-min-height: 100px;
+    --zui-field-max-height: 400px;
+}
+
+.zui-code-highlight-field-outline > * {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5em 0.75em;
+    min-height: var(--zui-field-min-height);
+    max-height: var(--zui-field-max-height);
+    overflow: auto;
+}
+
+.zui-code-highlight-field-code {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.zui-code-highlight-field-outline textarea {
+    border: none;
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    caret-color: black;
+    resize: none;
+    field-sizing: content;
+}
+
+.zui-code-highlight-field-outline:not(.rendering) .zui-code-highlight-field-code.is-fallback,
+.zui-code-highlight-field-outline.rendering .zui-code-highlight-field-code.is-highlight,
+.zui-code-highlight-field-outline > textarea {
+    color: transparent;
 }

@@ -12,6 +12,7 @@ export interface DemoComponentProps {
 }
 
 export interface DemoWithSourceProps {
+    id?: string;
     title?: string;
     maxHeight?: number | 'none';
     component: React.FC<DemoComponentProps>;
@@ -57,8 +58,8 @@ export function DemoWithSource(props: DemoWithSourceProps) {
         <div {...Mixin.use(errorHandler.ref, focusStateMixin, 'app-demo app-demo-block')}>
             {props.title &&
                 <div className="app-demo-block-title">{props.title}</div>}
-            <div className="app-demo-view" style={{ maxHeight: props.maxHeight, overflow: props.maxHeight === 'none' ? 'visible' : 'auto' }}>
-                <Component {...{ console }} />
+            <div className="app-demo-view" id={props.id && `demo-${props.id}`} style={{ maxHeight: props.maxHeight, overflow: props.maxHeight === 'none' ? 'visible' : 'auto' }}>
+                <Component console={console} />
             </div>
             {props.console &&
                 <div className="app-demo-source">

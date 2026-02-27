@@ -1,0 +1,96 @@
+<Module name="waterpipe-parser" />
+
+# Custom functions
+
+When custom pipe functions is defined, proper function definition should be provided
+so that the expression can be parsed correctly.
+
+```javascript
+addFunctionDefinitions({
+    myFunction: {
+        args: [
+            { position: 0, kind: 'pipe' },
+            { position: 1, kind: 'string' }
+        ]
+    }
+});
+```
+
+## Defining overloads
+
+When a list of overloads is provided, the list should be sorted from the most number of arguments to the least.
+
+```javascript
+{
+    /* ... */
+    overloads: [
+        [{ kind: 'value' }, { kind: 'constant' }],
+        [{ kind: 'value' }],
+    ]
+}
+```
+
+When a callback is provided, the callback should return one or more function signatures based on the argument hints,
+sorted from the most number of arguments to the least.
+
+For example, to define a function that
+- accepts either a number constant followed by that many arguments of any type,
+- or a single argument of any type:
+
+```javascript
+{
+    /* ... */
+    overloads(args) {
+        // indeterministic as the length is inferred from the first argument
+        if (args.length === 0) {
+            return { length: Infinity, args: [] };
+        }
+        // when first argument is a number constant, accept that many arguments of any type
+        if (args[0].value && args[0].value.evaluationMode === ValueEvaluationMode.constant) {
+            const value = parseConstant(args[0].value.rawText);
+            if (typeof value === 'number') {
+                const length = Math.max(1, value | 0);
+                return {
+                    length: length + 1,
+                    args: [({ kind: 'constant' }))].concat(' '.repeat(length).split('').map(() => ({ kind: 'any' })))
+                };
+            }
+        }
+        // otherwise accept a single argument
+        return { length: 1, args: [{ kind: 'any' }] };
+    }
+}
+```
+
+This way the following calls are valid:
+
+```text
+myFunc 5 1 2 3 4 5
+myFunc "hello"
+```
+
+## Documentation
+
+Although documentation is not directly consumed by the parser library,
+it is recommended to also provide function documentations for custom functions
+so that code suggestions and other documentation-related features can work properly.
+
+```javascript
+loadFunctionDocumentation('en', {
+    where: {
+        description: 'Filters an object, list or table by condition.',
+        args: [
+            { position: 0, kind: 'pipe', name: 'condition', description: '...' },
+            { position: 0, kind: 'constant', name: 'keyOrFn', description: '...' },
+        ]
+    },
+    /* ... */
+});
+```
+
+> The `args` list should contain all possible arguments for all overloads of the function.
+
+## See also
+
+- [`addFunctionDefinitions`](:)
+- [`loadFunctionDocumentation`](:)

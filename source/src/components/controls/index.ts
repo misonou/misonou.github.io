@@ -1,6 +1,7 @@
 export * from "./Button";
 export * from "./Checkbox";
 export * from "./CheckboxList";
+export * from "./CodeHighlightTextField";
 export * from "./DatePicker";
 export * from "./Dropdown";
 export * from "./FieldColumn";

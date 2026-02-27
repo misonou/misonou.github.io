@@ -12,7 +12,8 @@
         "app.emit()",
         "app.isElementActive()",
         "app.halt()",
-        "app: ready event"
+        "app: ready event",
+        "app: unload event"
     ],
     "/app/auth/AuthClient": [
         "AuthClient",
@@ -1382,5 +1383,337 @@
     ],
     "/util/unsetTabRoot": [
         "unsetTabRoot()"
+    ],
+    "/waterpipe/parser/addFunctionDefinitions": [
+        "addFunctionDefinitions()"
+    ],
+    "/waterpipe/parser/CodeSuggestionContext": [
+        "CodeSuggestionContext",
+        "CodeSuggestionContext.selectionRange",
+        "CodeSuggestionContext.editRange",
+        "CodeSuggestionContext.editMode",
+        "CodeSuggestionContext.hintValue",
+        "CodeSuggestionContext.suggestions",
+        "CodeSuggestionContext.tokenType",
+        "CodeSuggestionContext.createCodeEdit()",
+        "CodeSuggestionContext.getFunctionContexts()",
+        [
+            "CodeSuggestion",
+            "#s-codesuggestion-interface"
+        ],
+        "CodeSuggestion.type",
+        "CodeSuggestion.value",
+        "CodeSuggestion.displayText",
+        "CodeSuggestion.description",
+        [
+            "FunctionContext",
+            "#s-functioncontext-interface"
+        ],
+        "FunctionContext.node",
+        "FunctionContext.name",
+        "FunctionContext.args",
+        "FunctionContext.position"
+    ],
+    "/waterpipe/parser/createCodeEdit": [
+        "createCodeEdit()",
+        [
+            "CodeEdit",
+            "#s-codeedit-interface"
+        ],
+        "CodeEdit.range",
+        "CodeEdit.value",
+        "CodeEdit.selectionAfter"
+    ],
+    "/waterpipe/parser/DataPath": [
+        "DataPath",
+        "DataPath.path",
+        "DataPath.value",
+        "DataPath.toString()"
+    ],
+    "/waterpipe/parser/Diagnostics": [
+        "Diagnostics",
+        "Diagnostics.start",
+        "Diagnostics.end",
+        "Diagnostics.level",
+        "Diagnostics.message"
+    ],
+    "/waterpipe/parser/EvaluatedData": [
+        "EvaluatedData",
+        "EvaluatedData.value",
+        "EvaluatedData.unionOf",
+        "EvaluatedData.expandable",
+        "EvaluatedData.asIterated()",
+        "EvaluatedData.hasProperty()",
+        "EvaluatedData.getProperty()",
+        "EvaluatedData.getDataPaths()",
+        "EvaluatedData.expandDataPaths()",
+        "EvaluatedData.toString()",
+        "EvaluatedData.empty",
+        "EvaluatedData.fromValues()"
+    ],
+    "/waterpipe/parser/EvaluationContext": [
+        "EvaluationContext",
+        "EvaluationContext.scopes",
+        "EvaluationContext.input",
+        "EvaluationContext.evaluate()",
+        "EvaluationContext.resolveScope()",
+        "EvaluationContext.scopeAt()",
+        "EvaluationContext.getDataPaths()"
+    ],
+    "/waterpipe/parser/EvaluationScope": [
+        "EvaluationScope",
+        "EvaluationScope.scope",
+        "EvaluationScope.input",
+        "EvaluationScope.iterationContext"
+    ],
+    "/waterpipe/parser/Expression": [
+        "Expression",
+        "Expression.type",
+        "Expression.parent",
+        "Expression.start",
+        "Expression.end",
+        "Expression.token",
+        "Expression.source",
+        "Expression.evaluationContext",
+        "Expression.closest()",
+        "Expression.getNodeAtPosition()",
+        "Expression.getVisitIterator()",
+        "Expression.visit()",
+        [
+            "ExpressionType",
+            "#s-expressiontype-enum"
+        ],
+        "ExpressionType.root",
+        "ExpressionType.argument",
+        "ExpressionType.function",
+        "ExpressionType.pipe",
+        "ExpressionType.branch",
+        "ExpressionType.value",
+        [
+            "ArgumentExpression",
+            "#s-argumentexpression-interface"
+        ],
+        "ArgumentExpression.type",
+        "ArgumentExpression.endToken",
+        "ArgumentExpression.parent",
+        "ArgumentExpression.pipe",
+        "ArgumentExpression.value",
+        "ArgumentExpression.unclosed",
+        [
+            "BranchExpression",
+            "#s-branchexpression-interface"
+        ],
+        "BranchExpression.type",
+        "BranchExpression.parent",
+        "BranchExpression.operator",
+        "BranchExpression.pipe",
+        [
+            "FunctionExpression",
+            "#s-functionexpression-interface"
+        ],
+        "FunctionExpression.type",
+        "FunctionExpression.parent",
+        "FunctionExpression.name",
+        "FunctionExpression.args",
+        [
+            "PipeExpression",
+            "#s-pipeexpression-interface"
+        ],
+        "PipeExpression.type",
+        "PipeExpression.parent",
+        "PipeExpression.next",
+        "PipeExpression.input",
+        "PipeExpression.branch",
+        [
+            "RootExpression",
+            "#s-rootexpression-interface"
+        ],
+        "RootExpression.type",
+        "RootExpression.parent",
+        "RootExpression.expression",
+        "RootExpression.tokens",
+        [
+            "ValueExpression",
+            "#s-valueexpression-interface"
+        ],
+        "ValueExpression.type",
+        "ValueExpression.parent",
+        "ValueExpression.text",
+        "ValueExpression.rawText",
+        "ValueExpression.evaluationMode",
+        [
+            "ValueEvaluationMode",
+            "#s-valueevaluationmode-enum"
+        ],
+        "ValueEvaluationMode.auto",
+        "ValueEvaluationMode.constant",
+        "ValueEvaluationMode.path"
+    ],
+    "/waterpipe/parser/ExpressionVisitor": [
+        "ExpressionVisitor",
+        "ExpressionVisitor.pipe",
+        "ExpressionVisitor.branch",
+        "ExpressionVisitor.function",
+        "ExpressionVisitor.argument",
+        "ExpressionVisitor.value"
+    ],
+    "/waterpipe/parser/ExpressionVisitorContext": [
+        "ExpressionVisitorContext",
+        "ExpressionVisitorContext.node",
+        "ExpressionVisitorContext.root",
+        "ExpressionVisitorContext.evaluate()",
+        "ExpressionVisitorContext.evaluateFunctionInput()",
+        "ExpressionVisitorContext.evaluateFunctionOutput()",
+        "ExpressionVisitorContext.evaluateVariableScope()",
+        "ExpressionVisitorContext.getDataPaths()",
+        "ExpressionVisitorContext.resolveScope()",
+        "ExpressionVisitorContext.isValidPath()",
+        "ExpressionVisitorContext.skip()",
+        [
+            "Scope",
+            "#s-scope-enum"
+        ],
+        "Scope.global",
+        "Scope.root"
+    ],
+    "/waterpipe/parser/FunctionDefinition": [
+        "FunctionDefinition",
+        "FunctionDefinition.alias",
+        "FunctionDefinition.input",
+        "FunctionDefinition.args",
+        "FunctionDefinition.overloads",
+        [
+            "FunctionSignature",
+            "#s-functionsignature-interface"
+        ],
+        "FunctionSignature.args",
+        "FunctionSignature.length",
+        [
+            "FunctionArgumentDefinition",
+            "#s-functionargumentdefinition-interface"
+        ],
+        "FunctionArgumentDefinition.kind",
+        "FunctionArgumentDefinition.pipeMode",
+        "FunctionArgumentDefinition.acceptObject",
+        "FunctionArgumentDefinition.hintFromInput",
+        [
+            "FunctionArgumentHint",
+            "#s-functionargumenthint-interface"
+        ],
+        "FunctionArgumentHint.pipe",
+        "FunctionArgumentHint.value"
+    ],
+    "/waterpipe/parser/getFunctionDocumentation": [
+        "getFunctionDocumentation()",
+        [
+            "FunctionDocumentation",
+            "#s-functiondocumentation-interface"
+        ],
+        "FunctionDocumentation.name",
+        "FunctionDocumentation.description",
+        "FunctionDocumentation.args",
+        [
+            "FunctionArgumentDocumentation",
+            "#s-functionargumentdocumentation-interface"
+        ],
+        "FunctionArgumentDocumentation.kind",
+        "FunctionArgumentDocumentation.name",
+        "FunctionArgumentDocumentation.description"
+    ],
+    "/waterpipe/parser/listFunctionsByInputType": [
+        "listFunctionsByInputType()"
+    ],
+    "/waterpipe/parser/loadFunctionDocumentation": [
+        "loadFunctionDocumentation()",
+        [
+            "FunctionDocumentationMeta",
+            "#s-functiondocumentationmeta-interface"
+        ],
+        "FunctionDocumentationMeta.description",
+        "FunctionDocumentationMeta.args",
+        "FunctionDocumentationMeta.resolveArg",
+        [
+            "FunctionArgumentDocumentationMeta",
+            "#s-functionargumentdocumentationmeta-interface"
+        ],
+        "FunctionArgumentDocumentationMeta.position"
+    ],
+    "/waterpipe/parser/Parser": [
+        "Parser",
+        "Parser.waterpipe",
+        "Parser.supports",
+        "Parser.version",
+        "Parser.getCodeSuggestionContext()",
+        "Parser.escapeConstant()",
+        "Parser.getDiagnostics()",
+        "Parser.getFunctionDefinition()",
+        "Parser.getFunctionSignature()",
+        "Parser.isConstantToken()",
+        "Parser.isValidFunction()",
+        "Parser.isValidProperty()",
+        "Parser.isValidPropertyName()",
+        "Parser.matchFunctionSignature()",
+        "Parser.parseConstant()",
+        "Parser.parseExpression()",
+        "Parser.requireEscape()",
+        "Parser.unescapeConstant()",
+        "Parser.default",
+        "Parser.defineSupport()"
+    ],
+    "/waterpipe/parser/Supports": [
+        "Supports",
+        "Supports.nestedDataPath",
+        "Supports.poundVariableInPipe"
+    ],
+    "/waterpipe/parser/Token": [
+        "Token",
+        "Token.type",
+        "Token.value",
+        "Token.start",
+        "Token.end",
+        "Token.context",
+        [
+            "TokenType",
+            "#s-tokentype-enum"
+        ],
+        "TokenType.auto",
+        "TokenType.constant",
+        "TokenType.path",
+        "TokenType.push",
+        "TokenType.pop",
+        "TokenType.branch",
+        "TokenType.function"
+    ],
+    "/waterpipe/parser/TypedData": [
+        "TypedData",
+        "TypedData.valueType",
+        "TypedData.isPrimitive",
+        "TypedData.isObject"
+    ],
+    "/waterpipe/PipeEvaluator": [
+        "PipeEvaluator",
+        "PipeEvaluator.globals",
+        "PipeEvaluator.eval()",
+        "PipeEvaluator.stop()",
+        "PipeEvaluator.push()",
+        "PipeEvaluator.reset()",
+        "PipeEvaluator.hasArgs()",
+        "PipeEvaluator.state()",
+        "PipeEvaluator.raw()",
+        "PipeEvaluator.next()",
+        "PipeEvaluator.fn()",
+        "PipeEvaluator.each()"
+    ],
+    "/waterpipe/waterpipe-module": [
+        "waterpipe.version",
+        "waterpipe.globals",
+        "waterpipe.defaultOptions",
+        "waterpipe.pipes",
+        "waterpipe.eval()",
+        "waterpipe.string()",
+        [
+            "waterpipe()",
+            ""
+        ]
     ]
 }

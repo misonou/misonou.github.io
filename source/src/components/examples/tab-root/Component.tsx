@@ -10,7 +10,7 @@ export default function Component() {
     }, []);
 
     return (
-        <div id="demo-tabroot" ref={container}>
+        <div ref={container}>
             <p>
                 Focus one of the text boxes and then press <kbd>Tab</kbd> or <kbd>Shift</kbd>+<kbd>Tab</kbd>.
             </p>
