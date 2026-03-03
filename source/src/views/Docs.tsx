@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Mixin, ViewComponent, ViewProps, redirectTo, registerView, renderView, useRouteParam } from "brew-js-react";
-import { combineFn, extend, isErrorWithCode } from "zeta-dom/util";
-import { scrollIntoView } from "zeta-dom/domUtil";
+import { combineFn, extend, isErrorWithCode, makeArray, single } from "zeta-dom/util";
+import { getRect, scrollIntoView } from "zeta-dom/domUtil";
 import dom from "zeta-dom/dom";
+import { getDirectiveComponent } from "brew-js/directive";
 import { parsePath } from "brew-js/util/path";
 import { Badge, CodeBlock, CodeBlockWithTab, Color, DemoBlock, DemoWithSource, ImportHint, Inline, MDXCodeElement, MDXTableElement, MemberList, Module, Snippets, SyntaxHighlight, VersionTimeline, WaterpipeExample } from "src/components/docs";
 import { PageSearch, TableOfContentItem, TableOfContents } from "src/components/main";
@@ -93,6 +94,10 @@ function DocsView({ viewContext }: ViewProps<{}>) {
     const Content = viewComponents[filePath] || (viewComponents[filePath] = registerMDXContentView(filePath));
 
     useEffect(() => {
+        const container = viewContext.container;
+        const aside = container.querySelector('aside')!;
+        const scrollable = getDirectiveComponent(aside).scrollable!;
+
         return combineFn(
             dom.on('click', 'h1[id],h2[id],h3[id]', e => {
                 navigator.clipboard?.writeText(location.origin + location.pathname + '#' + e.target.id);
@@ -104,8 +109,8 @@ function DocsView({ viewContext }: ViewProps<{}>) {
                     scrollToElementWithHash(link.hash);
                 }
             }),
-            app.on(viewContext.container, 'pageenter', e => {
-                if (e.target === viewContext.container) {
+            app.on(container, 'pageenter', e => {
+                if (e.target === container) {
                     return;
                 }
                 const meta = (e.view! as MDXViewComponent).getMeta();
@@ -118,6 +123,15 @@ function DocsView({ viewContext }: ViewProps<{}>) {
                 const hash = parsePath(app.path).hash;
                 if (hash) {
                     scrollToElementWithHash(hash);
+                }
+            }),
+            app.on('scrollProgressChange', e => {
+                if (e.target.id === 'app' && scrollable.scrollMaxY && getComputedStyle(aside).display !== 'none') {
+                    const headers = container.querySelectorAll('h1,h2[id],h3[id]');
+                    const target = single(headers, v => getRect(v).top > 50 && aside.querySelector('[href="#' + v.id + '"]'));
+                    if (target) {
+                        scrollIntoView(target);
+                    }
                 }
             }),
             app.on('hashchange', e => {

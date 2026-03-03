@@ -2,6 +2,15 @@
 
 # Change log
 
+## v0.6.1 (2026/03/03)
+
+#### Forms
+
+- [`FormFieldState.key`](:) now returns unique keys instead of empty string for fields with form context
+- [`<Form>`](:) and [`<FormContextProvider>`](:) now throw errors when the supplied context object is not a [`FormContext`](:) instance
+- <kbd>fix</kbd> [`FormFieldState.form`](:) should return `null` instead of the internal form context for fields without parent form context
+- <kbd>fix</kbd> memory leak after unnamed field is mounted in development strict mode
+
 ## v0.6.0 (2026/02/03)
 
 #### Forms

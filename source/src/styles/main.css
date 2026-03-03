@@ -321,7 +321,8 @@ nav a.current:before {
     z-index: 1;
 }
 
-.app-toc:not(:hover):not(.scrolling) {
+.app-toc:not(:hover):not(.scrolling),
+.app-toc.scrolling-script {
     --jqs-scrollbar-opacity: 0.1;
     --jqs-scrollbar-size: 2px;
 }

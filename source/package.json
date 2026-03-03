@@ -41,7 +41,9 @@
     "typescript": "^5.7.3"
   },
   "scripts": {
+    "postinstall": "node -e \"!process.env.CI && process.exit(1)\" || npm --prefix runtime/react/19 install react react-dom",
     "start": "cross-env PORT=3003 FAST_REFRESH=false craco start",
+    "start:react19": "cross-env PORT=3003 FAST_REFRESH=false REACT_RUNTIME=runtime/react/19 craco start",
     "build": "dotenv craco build",
     "prebuild": "node ./scripts/versions.mjs && node ./scripts/prebuild.mjs"
   },

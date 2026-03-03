@@ -118,8 +118,8 @@ module.exports = async ({ env }) => {
                         alias: resolveModuleAlias({
                             'src': 'src',
                             'runtime': 'runtime',
-                            'react': 'node_modules/react',
-                            'react-dom': 'node_modules/react-dom',
+                            'react': `${process.env.REACT_RUNTIME || '.'}/node_modules/react`,
+                            'react-dom': `${process.env.REACT_RUNTIME || '.'}/node_modules/react-dom`,
                             'jquery': 'node_modules/jquery',
                             'brew-js': '../brew-js/src',
                             'brew-js-react': '../brew-js-react/src',
