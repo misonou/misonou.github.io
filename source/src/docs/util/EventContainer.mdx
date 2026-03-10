@@ -13,7 +13,7 @@
 <MemberList
     i="ZetaEventContainer"
     ip={['element', 'context', 'event', 'autoDestroy', 'normalizeTouchEvents', 'captureDOMEvents']}
-    im={['getContexts()', 'add()', 'delete()', 'destroy()', 'emit()', 'emitAsync()', 'tap()', 'flushEvents()']}
+    im={['getContexts()', 'add()', 'delete()', 'destroy()', 'emit()', 'emitAsync()', 'tap()', 'flushEvents()', 'has()']}
 />
 
 ## Constructor
@@ -92,7 +92,7 @@ add(target, event, handler)
 
 Registers event handlers to a DOM element or a custom event target.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `target`
@@ -109,7 +109,7 @@ Registers event handlers to a DOM element or a custom event target.
 
 </dl>
 
-### Return value
+#### Return value
 
 A function that will unregister the handler when called.
 
@@ -122,7 +122,7 @@ delete(target)
 Removes the DOM element or custom event target from the container.
 All event handlers are also removed.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `target`
@@ -156,7 +156,7 @@ emit(eventName, target, props, options)
 Re-emits an event to components.
 If the event is handled by component, a promise object is returned.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `event`
@@ -240,7 +240,7 @@ emitAsync(eventName, target, data, options, mergeData)
 
 Emits an event to components asynchronously.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `eventName`
@@ -276,13 +276,29 @@ getContexts(target)
 
 Gets context object associated with the event target.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `target`
     An event target, typically a DOM element.
 
 </dl>
+
+### `ZetaEventContainer.has()` <Badge.Version />
+
+```javascript
+has(target)
+```
+
+Returns whether handlers are registered to the event target.
+
+#### Parameters
+
+<dl>
+    #### `target`
+    An event target.
+</dl>
+
 
 ### `ZetaEventContainer.tap()`
 
@@ -292,7 +308,7 @@ tap(handler)
 
 Adds a handler to intercept event being fired within this container.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `handler`
@@ -309,4 +325,5 @@ Adds a handler to intercept event being fired within this container.
 - **0.5.0** `ZetaEventContainer.emit()`: `preventNative`, `preAlias` and `postAlias` option
 - **0.5.6** `ZetaEventContainer.emit()`: `deferrable` option
 - **0.5.9** `willDestroy` option
+- **0.6.4** `ZetaEventContainer.has()`
 </VersionTimeline>

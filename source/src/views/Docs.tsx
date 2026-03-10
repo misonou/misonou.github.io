@@ -8,6 +8,7 @@ import { parsePath } from "brew-js/util/path";
 import { Badge, CodeBlock, CodeBlockWithTab, Color, DemoBlock, DemoWithSource, ImportHint, Inline, MDXCodeElement, MDXTableElement, MemberList, Module, Snippets, SyntaxHighlight, VersionTimeline, WaterpipeExample } from "src/components/docs";
 import { PageSearch, TableOfContentItem, TableOfContents } from "src/components/main";
 import { app } from "src/init";
+import { useUnloadEffect } from "zeta-dom-react";
 
 type MDXViewComponent = ViewComponent<{}> & {
     getMeta(): MDXMetaData;
@@ -63,10 +64,15 @@ async function importMDXOrNotFound(path: string): Promise<any> {
 function registerMDXContentView(remainingSegments: string) {
     let metaObj: MDXMetaData;
     return extend(registerView(async () => {
-        const { default: Content, meta } = await importMDXOrNotFound(remainingSegments);
+        const { default: Content, meta, moduleId } = await importMDXOrNotFound(remainingSegments);
         metaObj = meta;
         return {
             default: function () {
+                useUnloadEffect(persisted => {
+                    if (!persisted) {
+                        (window as any)[process.env.CHUNK_LOADING_GLOBAL!].remove(moduleId);
+                    }
+                });
                 return <Content components={mdxComponents} />;
             }
         };
@@ -141,10 +147,6 @@ function DocsView({ viewContext }: ViewProps<{}>) {
             })
         );
     }, []);
-
-    if (filePath === '/') {
-        return null;
-    }
 
     return (
         <>

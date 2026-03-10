@@ -2,6 +2,15 @@
 
 # Change log
 
+## v0.6.4 (2026/03/10)
+
+- Add [`ZetaEventContainer.has`](:)
+- <kbd>fix</kbd> callback passed to [`watch`](:) without specifying specific property
+  - should be triggered when an alias property updates
+  - should receive alias property's value on `oldValues` and `newValues` object when such property is aliased to
+    another property on the same object
+- <kbd>fix</kbd> type definitions for [`single`](:) and [`definePrototype`](:) <Badge.TS />
+
 ## v0.6.3 (2025/12/12)
 
 - <kbd>fix</kbd> prevent scrolling non-focusable element when dragging

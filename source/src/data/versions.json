@@ -1,9 +1,9 @@
 {
-    "zeta-dom": "0.6.3",
-    "zeta-dom-react": "0.6.0",
+    "zeta-dom": "0.6.4",
+    "zeta-dom-react": "0.6.1",
     "brew-js": "0.7.3",
-    "brew-js-react": "0.7.0",
-    "jq-scrollable": "1.17.1",
+    "brew-js-react": "0.7.1",
+    "jq-scrollable": "1.18.0",
     "waterpipe": "2.10.0",
     "waterpipe-parser": "2.10.1",
     "@misonou/react-app-utils": "1.8.0",

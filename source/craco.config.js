@@ -3,6 +3,7 @@ const { glob } = require('glob');
 const path = require('path');
 const semver = require('semver');
 const webpack = require('webpack');
+const ChunkTeardownRuntimePlugin = require('./scripts/util/ChunkTeardownRuntimePlugin.js');
 
 function resolveModulePath(...paths) {
     for (let v of paths) {
@@ -52,18 +53,30 @@ module.exports = async ({ env }) => {
                         loader: 'yaml-loader'
                     },
                 );
+                const chunkLoadingGlobal = '__webpackChunks__';
                 const definePlugin = config.plugins.find(v => v instanceof webpack.DefinePlugin);
-                definePlugin.definitions['process.env.WATERPIPE_VERSIONS'] = JSON.stringify(getWaterpipeVersions(env));
-
+                definePlugin.definitions = {
+                    ...definePlugin.definitions,
+                    ['process.env.WATERPIPE_VERSIONS']: JSON.stringify(getWaterpipeVersions(env)),
+                    ['process.env.CHUNK_LOADING_GLOBAL']: JSON.stringify(chunkLoadingGlobal)
+                };
                 return {
                     ...config,
                     devtool: env === 'production' ? false : 'inline-source-map',
+                    output: {
+                        ...config.output,
+                        chunkLoadingGlobal
+                    },
                     ignoreWarnings: [
                         ...(config.ignoreWarnings || []),
                         {
                             module: /waterpipe-(.+?)\.min\.js$/,
                             message: /parse source map from/
                         }
+                    ],
+                    plugins: [
+                        ...(config.plugins || []),
+                        new ChunkTeardownRuntimePlugin()
                     ],
                     module: {
                         ...config.module,

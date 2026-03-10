@@ -795,7 +795,7 @@
         }
     },
     "brew-js-react": {
-        "baseUrl": "https://github.com/misonou/brew-js-react/blob/a77195152155eeb37f73b680dfa55ac272e97fe3",
+        "baseUrl": "https://github.com/misonou/brew-js-react/blob/6c4c71e2e8ba54e837a9794cd257658ad0fc27c7",
         "symbols": {
             "AnimateMixin": [
                 "src/mixins/AnimateMixin.d.ts#L38",
@@ -836,7 +836,7 @@
                 "src/dialog.js#L110"
             ],
             "createUseFunction": "src/mixin.js#L23",
-            "createViewComponent": "src/view.js#L307",
+            "createViewComponent": "src/view.js#L309",
             "CustomAttributeProvider": "src/mixins/Mixin.d.ts#L15",
             "debounceAsync": "src/dialog.js#L13",
             "Dialog": [
@@ -857,7 +857,7 @@
             "DialogState": "src/dialog.d.ts#L52",
             "disposeUnmountedStates": "src/mixins/StatefulMixin.js#L7",
             "ErrorBoundary": "src/view.js#L80",
-            "ErrorViewProps": "src/view.d.ts#L127",
+            "ErrorViewProps": "src/view.d.ts#L134",
             "extendSelf": "src/mixin.js#L19",
             "FlyoutMixin": [
                 "src/mixins/FlyoutMixin.d.ts#L47",
@@ -872,21 +872,21 @@
                 "src/mixins/FocusStateMixin.d.ts#L11",
                 "src/mixins/FocusStateMixin.js#L8"
             ],
-            "getCurrentParams": "src/view.js#L263",
+            "getCurrentParams": "src/view.js#L265",
             "getCurrentStates": "src/hooks.js#L12",
             "HintedType": "src/mixins/FlyoutMixin.d.ts#L7",
             "isViewMatched": [
-                "src/view.d.ts#L188",
-                "src/view.js#L339"
+                "src/view.d.ts#L195",
+                "src/view.js#L341"
             ],
             "isViewRendered": [
-                "src/view.d.ts#L194",
-                "src/view.js#L344"
+                "src/view.d.ts#L201",
+                "src/view.js#L346"
             ],
             "JQueryScrollableMethods": "src/mixins/ScrollableMixin.d.ts#L8",
             "linkTo": [
-                "src/view.d.ts#L285",
-                "src/view.js#L409"
+                "src/view.d.ts#L292",
+                "src/view.js#L411"
             ],
             "LoadingStateMixin": [
                 "src/mixins/LoadingStateMixin.d.ts#L11",
@@ -897,10 +897,10 @@
                 "src/i18n.js#L38"
             ],
             "matchView": [
-                "src/view.d.ts#L200",
-                "src/view.js#L348"
+                "src/view.d.ts#L207",
+                "src/view.js#L350"
             ],
-            "matchViewParams": "src/view.js#L299",
+            "matchViewParams": "src/view.js#L301",
             "Mixin": [
                 "src/mixins/Mixin.d.ts#L19",
                 "src/mixins/Mixin.js#L5"
@@ -915,10 +915,10 @@
             ],
             "MixinTypes": "src/mixins/Mixin.d.ts#L8",
             "navigateTo": [
-                "src/view.d.ts#L294",
-                "src/view.js#L413"
+                "src/view.d.ts#L301",
+                "src/view.js#L415"
             ],
-            "normalizePart": "src/view.js#L259",
+            "normalizePart": "src/view.js#L261",
             "onAppInit": "src/app.js#L10",
             "openDialog": [
                 "src/dialog.d.ts#L210",
@@ -929,24 +929,24 @@
             "ParamsWithURLParts": "src/view.d.ts#L17",
             "PartialRequired": "src/dialog.d.ts#L3",
             "redirectTo": [
-                "src/view.d.ts#L303",
-                "src/view.js#L417"
+                "src/view.d.ts#L310",
+                "src/view.js#L419"
             ],
             "registerErrorView": [
-                "src/view.d.ts#L181",
-                "src/view.js#L383"
+                "src/view.d.ts#L188",
+                "src/view.js#L385"
             ],
             "registerView": [
-                "src/view.d.ts#L174",
-                "src/view.js#L360"
+                "src/view.d.ts#L181",
+                "src/view.js#L362"
             ],
             "renderView": [
-                "src/view.d.ts#L240",
-                "src/view.js#L387"
+                "src/view.d.ts#L247",
+                "src/view.js#L389"
             ],
             "resolvePath": [
-                "src/view.d.ts#L270",
-                "src/view.js#L400"
+                "src/view.d.ts#L277",
+                "src/view.js#L402"
             ],
             "ResourceGlobalKey": "src/i18n.d.ts#L1",
             "ResourceKey": "src/i18n.d.ts#L2",
@@ -961,7 +961,7 @@
             ],
             "SetQueryParamAction": "src/hooks.d.ts#L1",
             "showDialog": "src/dialog.js#L43",
-            "sortViews": "src/view.js#L295",
+            "sortViews": "src/view.js#L297",
             "StatefulMixin": [
                 "src/mixins/StatefulMixin.d.ts#L27",
                 "src/mixins/StatefulMixin.js#L35"
@@ -1051,15 +1051,15 @@
                 "src/mixin.d.ts#L94",
                 "src/mixin.js#L35"
             ],
-            "useViewContainerState": "src/view.d.ts#L165",
+            "useViewContainerState": "src/view.d.ts#L172",
             "useViewContext": [
-                "src/view.d.ts#L160",
-                "src/view.js#L335"
+                "src/view.d.ts#L167",
+                "src/view.js#L337"
             ],
             "useViewContextWithEffect": "src/hooks.js#L59",
             "ViewComponent": "src/view.d.ts#L6",
-            "ViewComponentRootProps": "src/view.d.ts#L142",
-            "ViewContainer": "src/view.js#L139",
+            "ViewComponentRootProps": "src/view.d.ts#L149",
+            "ViewContainer": "src/view.js#L141",
             "ViewContainerState": "src/view.d.ts#L11",
             "ViewContext": [
                 "src/view.d.ts#L46",
@@ -1067,7 +1067,7 @@
             ],
             "ViewContextEventMap": "src/view.d.ts#L41",
             "ViewParamMatchers": "src/view.d.ts#L7",
-            "ViewProps": "src/view.d.ts#L104",
+            "ViewProps": "src/view.d.ts#L111",
             "ViewState": "src/hooks.js#L16",
             "ViewStateContainer": [
                 "src/hooks.d.ts#L3",
@@ -1357,7 +1357,7 @@
         }
     },
     "zeta-dom": {
-        "baseUrl": "https://github.com/misonou/zeta-dom/blob/4cbe588fd73929e152e7b6408d86b5b4d51ff859",
+        "baseUrl": "https://github.com/misonou/zeta-dom/blob/8c0578dba3cdfbb6f01232be1f2bc10a21197ef1",
         "symbols": {
             "acceptNode": [
                 "src/domUtil.d.ts#L69",
@@ -1367,16 +1367,16 @@
             "addOrRemoveEventListener": "src/domUtil.js#L248",
             "afterDetached": [
                 "src/observe.d.ts#L107",
-                "src/observe.js#L78"
+                "src/observe.js#L77"
             ],
             "always": [
                 "src/util.d.ts#L535",
-                "src/util.js#L551"
+                "src/util.js#L550"
             ],
-            "animatableValue": "src/cssUtil.js#L39",
+            "animatableValue": "src/cssUtil.js#L38",
             "any": [
                 "src/util.d.ts#L208",
-                "src/util.js#L232"
+                "src/util.js#L231"
             ],
             "AnyConstructor": "src/types.d.ts#L54",
             "AnyConstructorOrClass": "src/types.d.ts#L55",
@@ -1386,7 +1386,7 @@
             "ArrayMember": "src/types.d.ts#L13",
             "arrRemove": [
                 "src/util.d.ts#L344",
-                "src/util.js#L325"
+                "src/util.js#L324"
             ],
             "assertDescendantOfTree": "src/tree.js#L34",
             "assertSameTree": "src/tree.js#L29",
@@ -1420,7 +1420,7 @@
             "BoxSide": "src/types.d.ts#L147",
             "camel": [
                 "src/util.d.ts#L467",
-                "src/util.js#L488"
+                "src/util.js#L487"
             ],
             "cancellationRejected": [
                 "src/errorCode.d.ts#L1",
@@ -1428,7 +1428,7 @@
             ],
             "CancellationRequest": [
                 "src/domLock.d.ts#L3",
-                "src/domLock.js#L16"
+                "src/domLock.js#L15"
             ],
             "cancelled": [
                 "src/errorCode.d.ts#L2",
@@ -1436,25 +1436,25 @@
             ],
             "cancelLock": [
                 "src/domLock.d.ts#L83",
-                "src/domLock.js#L184"
+                "src/domLock.js#L183"
             ],
             "catchAsync": [
                 "src/util.d.ts#L577",
-                "src/util.js#L602"
+                "src/util.js#L601"
             ],
             "checkNodeState": "src/tree.js#L102",
             "cleanupFocusPath": "src/dom.js#L147",
             "clearImmediateOnce": [
                 "src/util.d.ts#L411",
-                "src/util.js#L407"
+                "src/util.js#L406"
             ],
-            "clearLock": "src/domLock.js#L45",
+            "clearLock": "src/domLock.js#L44",
             "ClickName": "src/types.d.ts#L173",
             "CollectionKeyOf": "src/util.d.ts#L17",
             "CollectionValueOf": "src/util.d.ts#L25",
             "combineFn": [
                 "src/util.d.ts#L385",
-                "src/util.js#L352"
+                "src/util.js#L351"
             ],
             "combineNodeFilters": [
                 "src/domUtil.d.ts#L78",
@@ -1468,16 +1468,16 @@
                 "src/domUtil.d.ts#L53",
                 "src/domUtil.js#L115"
             ],
-            "ContainerComponent": "src/events.js#L410",
-            "containerCreateDispose": "src/events.js#L401",
-            "containerRegisterHandler": "src/events.js#L418",
+            "ContainerComponent": "src/events.js#L414",
+            "containerCreateDispose": "src/events.js#L405",
+            "containerRegisterHandler": "src/events.js#L422",
             "containsOrEquals": [
                 "src/domUtil.d.ts#L61",
                 "src/domUtil.js#L119"
             ],
             "createAutoCleanupMap": [
                 "src/observe.d.ts#L78",
-                "src/observe.js#L61"
+                "src/observe.js#L60"
             ],
             "createNodeClass": "src/tree.js#L355",
             "createNodeIterator": [
@@ -1486,7 +1486,7 @@
             ],
             "createPrivateStore": [
                 "src/util.d.ts#L403",
-                "src/util.js#L374"
+                "src/util.js#L373"
             ],
             "createTreeWalker": [
                 "src/domUtil.d.ts#L141",
@@ -1495,48 +1495,48 @@
             "Date": "src/types.d.ts#L664",
             "deepFreeze": [
                 "src/util.d.ts#L686",
-                "src/util.js#L703"
+                "src/util.js#L702"
             ],
             "DeepReadonly": "src/types.d.ts#L34",
             "Default": "src/types.d.ts#L50",
             "deferrable": [
                 "src/util.d.ts#L575",
-                "src/util.js#L588"
+                "src/util.js#L587"
             ],
             "Deferrable": "src/types.d.ts#L210",
             "define": [
                 "src/util.d.ts#L624",
-                "src/util.js#L651"
+                "src/util.js#L650"
             ],
             "defineAliasProperty": [
                 "src/util.d.ts#L758",
-                "src/util.js#L787"
+                "src/util.js#L819"
             ],
             "defineGetterProperty": [
                 "src/util.d.ts#L642",
-                "src/util.js#L669"
+                "src/util.js#L668"
             ],
             "defineHiddenProperty": [
                 "src/util.d.ts#L651",
-                "src/util.js#L678"
+                "src/util.js#L677"
             ],
             "defineObservableProperty": [
                 "src/util.d.ts#L769",
-                "src/util.js#L799"
+                "src/util.js#L836"
             ],
             "defineOwnProperty": [
                 "src/util.d.ts#L633",
-                "src/util.js#L660"
+                "src/util.js#L659"
             ],
             "definePrototype": [
                 "src/util.d.ts#L659",
-                "src/util.js#L687"
+                "src/util.js#L686"
             ],
             "delay": [
                 "src/util.d.ts#L588",
-                "src/util.js#L616"
+                "src/util.js#L615"
             ],
-            "DetachHandlerState": "src/observe.js#L15",
+            "DetachHandlerState": "src/observe.js#L14",
             "Dictionary": "src/types.d.ts#L12",
             "Direction": "src/types.d.ts#L152",
             "Direction2D": "src/types.d.ts#L156",
@@ -1560,11 +1560,11 @@
             ],
             "each": [
                 "src/util.d.ts#L166",
-                "src/util.js#L156"
+                "src/util.js#L155"
             ],
             "either": [
                 "src/util.d.ts#L50",
-                "src/util.js#L50"
+                "src/util.js#L49"
             ],
             "elementFromPoint": [
                 "src/domUtil.d.ts#L388",
@@ -1574,23 +1574,24 @@
             "ElementType": "src/types.d.ts#L72",
             "emitAsyncEvents": "src/events.js#L137",
             "emitDOMEvent": [
-                "src/events.d.ts#L343",
+                "src/events.d.ts#L349",
                 "src/events.js#L75"
             ],
             "emitterCallHandlers": "src/events.js#L218",
             "emitterHandleResult": "src/events.js#L257",
             "emitterIterateTargets": "src/events.js#L205",
-            "ensureLock": "src/domLock.js#L29",
-            "ensurePropertyObserved": "src/util.js#L764",
+            "ensureAliasTargetObserved": "src/util.js#L784",
+            "ensureLock": "src/domLock.js#L28",
+            "ensurePropertyObserved": "src/util.js#L796",
             "EntryKey": "src/util.d.ts#L15",
             "EntryValue": "src/util.d.ts#L16",
             "equal": [
                 "src/util.d.ts#L358",
-                "src/util.js#L338"
+                "src/util.js#L337"
             ],
             "errorWithCode": [
                 "src/util.d.ts#L441",
-                "src/util.js#L461"
+                "src/util.js#L460"
             ],
             "EventContainerOptions": [
                 "src/events.d.ts#L91",
@@ -1606,16 +1607,16 @@
             ],
             "exclude": [
                 "src/util.d.ts#L279",
-                "src/util.js#L287"
+                "src/util.js#L286"
             ],
-            "execFirstParen": "src/util.js#L518",
+            "execFirstParen": "src/util.js#L517",
             "executeOnce": [
                 "src/util.d.ts#L397",
-                "src/util.js#L363"
+                "src/util.js#L362"
             ],
             "extend": [
                 "src/util.d.ts#L139",
-                "src/util.js#L112"
+                "src/util.js#L111"
             ],
             "ExtractAny": [
                 "src/types.d.ts#L51",
@@ -1623,7 +1624,7 @@
             ],
             "fill": [
                 "src/util.d.ts#L232",
-                "src/util.js#L259"
+                "src/util.js#L258"
             ],
             "findNode": "src/tree.js#L73",
             "findParent": "src/tree.js#L79",
@@ -1660,21 +1661,21 @@
             "getContentRectCustom": "src/domUtil.js#L435",
             "getContentRectNative": "src/domUtil.js#L440",
             "getEventContext": [
-                "src/events.d.ts#L329",
+                "src/events.d.ts#L335",
                 "src/events.js#L53"
             ],
             "getEventSource": [
-                "src/events.d.ts#L328",
+                "src/events.d.ts#L334",
                 "src/events.js#L37"
             ],
             "getFocusableWithin": "src/dom.js#L189",
             "getInnerBoxValues": "src/domUtil.js#L350",
-            "getMatchWordRegex": "src/util.js#L514",
+            "getMatchWordRegex": "src/util.js#L513",
             "getModalElement": "src/dom.js#L163",
-            "getObservableState": "src/util.js#L719",
+            "getObservableState": "src/util.js#L718",
             "getOwnPropertyDescriptors": [
                 "src/util.d.ts#L616",
-                "src/util.js#L643"
+                "src/util.js#L642"
             ],
             "getRect": [
                 "src/domUtil.d.ts#L287",
@@ -1704,10 +1705,10 @@
             "getTextInputMode": "src/dom.js#L86",
             "grep": [
                 "src/util.d.ts#L191",
-                "src/util.js#L211"
+                "src/util.js#L210"
             ],
             "handleMutations": "src/tree.js#L333",
-            "handlePromise": "src/domLock.js#L53",
+            "handlePromise": "src/domLock.js#L52",
             "HasElement": "src/types.d.ts#L310",
             "HasEntries": "src/util.d.ts#L7",
             "HasForEach": "src/util.d.ts#L11",
@@ -1726,20 +1727,20 @@
             "HtmlContent": "src/types.d.ts#L9",
             "htmlDecode": [
                 "src/util.d.ts#L517",
-                "src/util.js#L534"
+                "src/util.js#L533"
             ],
             "hyphenate": [
                 "src/util.d.ts#L474",
-                "src/util.js#L494"
+                "src/util.js#L493"
             ],
             "iequal": [
                 "src/util.d.ts#L450",
-                "src/util.js#L476"
+                "src/util.js#L475"
             ],
             "If": "src/types.d.ts#L44",
             "inherit": [
                 "src/util.d.ts#L673",
-                "src/util.js#L697"
+                "src/util.js#L696"
             ],
             "InheritedNode": [
                 "src/tree.d.ts#L94",
@@ -1753,7 +1754,7 @@
                 "src/tree.d.ts#L14",
                 "src/types.d.ts#L656"
             ],
-            "initDetachWatcher": "src/observe.js#L173",
+            "initDetachWatcher": "src/observe.js#L172",
             "initNode": "src/tree.js#L47",
             "inputValueImpl": "src/dom.js#L114",
             "insertChildNode": "src/tree.js#L129",
@@ -1772,7 +1773,7 @@
             ],
             "is": [
                 "src/util.d.ts#L65",
-                "src/util.js#L58"
+                "src/util.js#L57"
             ],
             "IS_IE": "src/env.js#L18",
             "IS_IE10": "src/env.js#L17",
@@ -1783,41 +1784,41 @@
             "IsAnyOrUnknown": "src/types.d.ts#L47",
             "isArray": [
                 "src/util.d.ts#L78",
-                "src/util.js#L66"
+                "src/util.js#L65"
             ],
             "isArrayLike": [
                 "src/util.d.ts#L122",
-                "src/util.js#L87"
+                "src/util.js#L86"
             ],
             "isCssUrlValue": [
                 "src/cssUtil.d.ts#L5",
-                "src/cssUtil.js#L20"
+                "src/cssUtil.js#L19"
             ],
             "isError": [
                 "src/util.d.ts#L92",
-                "src/util.js#L74"
+                "src/util.js#L73"
             ],
             "isErrorWithCode": [
                 "src/util.d.ts#L443",
-                "src/util.js#L467"
+                "src/util.js#L466"
             ],
             "isFunction": [
                 "src/util.d.ts#L85",
-                "src/util.js#L70"
+                "src/util.js#L69"
             ],
             "isMouseDown": "src/dom.js#L101",
             "IsNever": "src/types.d.ts#L49",
             "isPlainObject": [
                 "src/util.d.ts#L106",
-                "src/util.js#L82"
+                "src/util.js#L81"
             ],
             "isThenable": [
                 "src/util.d.ts#L99",
-                "src/util.js#L78"
+                "src/util.js#L77"
             ],
             "isUndefinedOrNull": [
                 "src/util.d.ts#L71",
-                "src/util.js#L62"
+                "src/util.js#L61"
             ],
             "IsUnknown": "src/types.d.ts#L48",
             "isVisible": [
@@ -1848,31 +1849,31 @@
             "keys": "src/util.d.ts#L605",
             "kv": [
                 "src/util.d.ts#L225",
-                "src/util.js#L253"
+                "src/util.js#L252"
             ],
             "lcfirst": [
                 "src/util.d.ts#L488",
-                "src/util.js#L505"
+                "src/util.js#L504"
             ],
             "listenDOMEvent": [
-                "src/events.d.ts#L359",
+                "src/events.d.ts#L365",
                 "src/events.js#L101"
             ],
             "lock": [
                 "src/domLock.d.ts#L29",
-                "src/domLock.js#L104"
+                "src/domLock.js#L103"
             ],
             "locked": [
                 "src/domLock.d.ts#L70",
-                "src/domLock.js#L173"
+                "src/domLock.js#L172"
             ],
             "makeArray": [
                 "src/util.d.ts#L130",
-                "src/util.js#L98"
+                "src/util.js#L97"
             ],
             "makeAsync": [
                 "src/util.d.ts#L597",
-                "src/util.js#L624"
+                "src/util.js#L623"
             ],
             "makeSelection": [
                 "src/domUtil.d.ts#L397",
@@ -1880,19 +1881,19 @@
             ],
             "map": [
                 "src/util.d.ts#L182",
-                "src/util.js#L196"
+                "src/util.js#L195"
             ],
             "mapGet": [
                 "src/util.d.ts#L296",
-                "src/util.js#L312"
+                "src/util.js#L311"
             ],
             "mapObject": [
                 "src/util.d.ts#L288",
-                "src/util.js#L304"
+                "src/util.js#L303"
             ],
             "mapRemove": [
                 "src/util.d.ts#L336",
-                "src/util.js#L319"
+                "src/util.js#L318"
             ],
             "MapResultValue": "src/types.d.ts#L41",
             "matchSelector": [
@@ -1901,11 +1902,11 @@
             ],
             "matchWord": [
                 "src/util.d.ts#L503",
-                "src/util.js#L522"
+                "src/util.js#L521"
             ],
             "matchWordMulti": [
                 "src/util.d.ts#L511",
-                "src/util.js#L526"
+                "src/util.js#L525"
             ],
             "MaybeFunctionOrConstructor": "src/util.d.ts#L40",
             "measureLine": "src/dom.js#L75",
@@ -1913,7 +1914,7 @@
                 "src/domUtil.d.ts#L378",
                 "src/domUtil.js#L619"
             ],
-            "muteAndReturn": "src/domLock.js#L24",
+            "muteAndReturn": "src/domLock.js#L23",
             "NodeIterator": [
                 "src/types.d.ts#L325",
                 "src/util.d.ts#L3"
@@ -1941,20 +1942,21 @@
             ],
             "noop": [
                 "src/util.d.ts#L46",
-                "src/util.js#L44"
+                "src/util.js#L43"
             ],
-            "normalizeCSSValue": "src/cssUtil.js#L24",
+            "normalizeCSSValue": "src/cssUtil.js#L23",
             "normalizeEventOptions": "src/events.js#L65",
             "normalizeEventTarget": "src/events.js#L61",
             "normalizeKey": "src/dom.js#L105",
             "Not": "src/types.d.ts#L45",
             "notifyAsync": [
                 "src/domLock.d.ts#L111",
-                "src/domLock.js#L140"
+                "src/domLock.js#L139"
             ],
+            "notifyPropertyChange": "src/util.js#L772",
             "observe": [
                 "src/observe.d.ts#L22",
-                "src/observe.js#L20"
+                "src/observe.js#L19"
             ],
             "ObserveCallback": "src/observe.d.ts#L3",
             "Offset": "src/types.d.ts#L241",
@@ -1964,15 +1966,15 @@
             ],
             "parseCSS": [
                 "src/cssUtil.d.ts#L3",
-                "src/cssUtil.js#L10"
+                "src/cssUtil.js#L9"
             ],
             "pick": [
                 "src/util.d.ts#L270",
-                "src/util.js#L269"
+                "src/util.js#L268"
             ],
             "pipe": [
                 "src/util.d.ts#L48",
-                "src/util.js#L46"
+                "src/util.js#L45"
             ],
             "Point": "src/types.d.ts#L236",
             "PointerTracking": "src/types.d.ts#L347",
@@ -1982,23 +1984,23 @@
             ],
             "PointLike": "src/types.d.ts#L7",
             "prepEventSource": [
-                "src/events.d.ts#L324",
+                "src/events.d.ts#L330",
                 "src/events.js#L33"
             ],
             "preventLeave": [
                 "src/domLock.d.ts#L139",
-                "src/domLock.js#L163"
+                "src/domLock.js#L162"
             ],
             "Primitive": "src/types.d.ts#L11",
             "PrivateStore": "src/types.d.ts#L231",
-            "Promise": "src/include/promise-polyfill.js#L1",
+            "Promise": "src/env.js#L5",
             "PromiseResult": "src/types.d.ts#L36",
             "PropertyChangeHandler": "src/types.d.ts#L176",
             "PropertyChangeRecord": "src/types.d.ts#L178",
             "PropertyTypeOrAny": "src/types.d.ts#L28",
             "randomId": [
                 "src/util.d.ts#L452",
-                "src/util.js#L480"
+                "src/util.js#L479"
             ],
             "RangeLike": "src/types.d.ts#L5",
             "Rect": [
@@ -2021,11 +2023,11 @@
             "registerAsyncEvent": "src/events.js#L114",
             "registerCleanup": [
                 "src/observe.d.ts#L66",
-                "src/observe.js#L52"
+                "src/observe.js#L51"
             ],
             "reject": [
                 "src/util.d.ts#L528",
-                "src/util.js#L547"
+                "src/util.js#L546"
             ],
             "releaseFocus": [
                 "src/dom.d.ts#L211",
@@ -2046,11 +2048,11 @@
             ],
             "removeNodeFromMap": "src/tree.js#L118",
             "removeTraversableNode": "src/tree.js#L197",
-            "removeVendorPrefix": "src/cssUtil.js#L43",
+            "removeVendorPrefix": "src/cssUtil.js#L42",
             "reorderTraversableChildNodes": "src/tree.js#L254",
             "repeat": [
                 "src/util.d.ts#L460",
-                "src/util.js#L484"
+                "src/util.js#L483"
             ],
             "reportError": [
                 "src/dom.d.ts#L116",
@@ -2059,11 +2061,11 @@
             ],
             "resolve": [
                 "src/util.d.ts#L525",
-                "src/util.js#L543"
+                "src/util.js#L542"
             ],
             "resolveAll": [
                 "src/util.d.ts#L545",
-                "src/util.js#L560"
+                "src/util.js#L559"
             ],
             "retainFocus": [
                 "src/dom.d.ts#L205",
@@ -2071,22 +2073,22 @@
             ],
             "retryable": [
                 "src/util.d.ts#L566",
-                "src/util.js#L578"
+                "src/util.js#L577"
             ],
             "root": "src/env.js#L7",
             "runAsync": [
                 "src/domLock.d.ts#L119",
-                "src/domLock.js#L144"
+                "src/domLock.js#L143"
             ],
             "RunAsyncContext": "src/types.d.ts#L220",
             "runCSSTransition": [
                 "src/cssUtil.d.ts#L16",
-                "src/cssUtil.js#L47"
+                "src/cssUtil.js#L46"
             ],
             "sameValue": "src/util.d.ts#L55",
             "sameValueZero": [
                 "src/util.d.ts#L57",
-                "src/util.js#L54"
+                "src/util.js#L53"
             ],
             "scrollBy": [
                 "src/domUtil.d.ts#L228",
@@ -2106,7 +2108,7 @@
             ],
             "setAdd": [
                 "src/util.d.ts#L351",
-                "src/util.js#L332"
+                "src/util.js#L331"
             ],
             "setClass": [
                 "src/domUtil.d.ts#L210",
@@ -2116,23 +2118,23 @@
             "setFocusUnsafe": "src/dom.js#L296",
             "setImmediate": [
                 "src/util.d.ts#L405",
-                "src/util.js#L384"
+                "src/util.js#L383"
             ],
             "setImmediateOnce": [
                 "src/util.d.ts#L407",
-                "src/util.js#L395"
+                "src/util.js#L394"
             ],
-            "setImmediateOnceCallback": "src/util.js#L391",
+            "setImmediateOnceCallback": "src/util.js#L390",
             "setInterval": [
                 "src/util.d.ts#L423",
-                "src/util.js#L418"
+                "src/util.js#L417"
             ],
             "setIntervalSafe": [
                 "src/util.d.ts#L431",
-                "src/util.js#L425"
+                "src/util.js#L424"
             ],
             "setLastEventSource": [
-                "src/events.d.ts#L333",
+                "src/events.d.ts#L339",
                 "src/events.js#L30"
             ],
             "setModal": [
@@ -2142,7 +2144,7 @@
             "setParentNode": "src/tree.js#L97",
             "setPromiseTimeout": [
                 "src/util.d.ts#L582",
-                "src/util.js#L607"
+                "src/util.js#L606"
             ],
             "setShortcut": [
                 "src/dom.d.ts#L221",
@@ -2155,25 +2157,25 @@
             "setTextData": "src/dom.js#L123",
             "setTimeout": [
                 "src/util.d.ts#L417",
-                "src/util.js#L411"
+                "src/util.js#L410"
             ],
             "setTimeoutOnce": [
                 "src/util.d.ts#L409",
-                "src/util.js#L401"
+                "src/util.js#L400"
             ],
             "single": [
                 "src/util.d.ts#L217",
-                "src/util.js#L244"
+                "src/util.js#L243"
             ],
             "splice": [
                 "src/util.d.ts#L199",
-                "src/util.js#L222"
+                "src/util.js#L221"
             ],
             "StringKeyOf": "src/types.d.ts#L27",
-            "styleToJSON": "src/cssUtil.js#L31",
+            "styleToJSON": "src/cssUtil.js#L30",
             "subscribeAsync": [
                 "src/domLock.d.ts#L126",
-                "src/domLock.js#L124"
+                "src/domLock.js#L123"
             ],
             "tagName": [
                 "src/domUtil.d.ts#L21",
@@ -2185,19 +2187,19 @@
             ],
             "throwNotFunction": [
                 "src/util.d.ts#L439",
-                "src/util.js#L454"
+                "src/util.js#L453"
             ],
-            "throwNotOwnDataProperty": "src/util.js#L780",
+            "throwNotOwnDataProperty": "src/util.js#L812",
             "throwOrReturn": "src/tree.js#L22",
             "throws": [
                 "src/util.d.ts#L437",
-                "src/util.js#L450"
+                "src/util.js#L449"
             ],
             "toPlainRect": [
                 "src/domUtil.d.ts#L323",
                 "src/domUtil.js#L585"
             ],
-            "trackElements": "src/observe.js#L94",
+            "trackElements": "src/observe.js#L93",
             "trackPointer": "src/dom.js#L461",
             "TraversableNode": [
                 "src/tree.d.ts#L83",
@@ -2225,11 +2227,11 @@
             "triggerModalChangeEvent": "src/dom.js#L217",
             "trim": [
                 "src/util.d.ts#L495",
-                "src/util.js#L510"
+                "src/util.js#L509"
             ],
             "ucfirst": [
                 "src/util.d.ts#L481",
-                "src/util.js#L500"
+                "src/util.js#L499"
             ],
             "Union": "src/util.d.ts#L34",
             "UnionAll": "src/util.d.ts#L38",
@@ -2250,32 +2252,32 @@
             ],
             "watch": [
                 "src/util.d.ts#L705",
-                "src/util.js#L837"
+                "src/util.js#L866"
             ],
             "watchable": [
                 "src/util.d.ts#L742",
-                "src/util.js#L893"
+                "src/util.js#L933"
             ],
             "Watchable": "src/types.d.ts#L183",
             "WatchableInstance": "src/types.d.ts#L37",
             "watchAttributes": [
                 "src/observe.d.ts#L51",
-                "src/observe.js#L138"
+                "src/observe.js#L137"
             ],
             "watchElements": [
                 "src/observe.d.ts#L41",
-                "src/observe.js#L115"
+                "src/observe.js#L114"
             ],
             "watchOnce": [
                 "src/util.d.ts#L728",
-                "src/util.js#L874"
+                "src/util.js#L914"
             ],
             "watchOwnAttributes": [
                 "src/observe.d.ts#L59",
-                "src/observe.js#L166"
+                "src/observe.js#L165"
             ],
             "WhitespaceDelimited": "src/types.d.ts#L33",
-            "window": "src/env.js#L5",
+            "window": "src/env.js#L4",
             "wrapSelectorHandler": "src/events.js#L91",
             "ZetaAsyncHandleableEvent": "src/types.d.ts#L547",
             "ZetaDeferrableEvent": "src/types.d.ts#L528",

@@ -1238,7 +1238,8 @@
         "ZetaEventContainer.emit()",
         "ZetaEventContainer.emitAsync()",
         "ZetaEventContainer.tap()",
-        "ZetaEventContainer.flushEvents()"
+        "ZetaEventContainer.flushEvents()",
+        "ZetaEventContainer.has()"
     ],
     "/util/focus": [
         "focus()"

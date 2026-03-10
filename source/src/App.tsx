@@ -1,4 +1,5 @@
 import { Mixin, registerErrorView, renderView, useAppReadyState, useScrollableMixin } from "brew-js-react";
+import { useEffect, useRef } from "react";
 import { Nav } from "src/components/main";
 import { Docs } from "src/views/Docs";
 import { reportError } from "zeta-dom/dom";
@@ -19,7 +20,10 @@ export default function App() {
 }
 
 registerErrorView((props) => {
-    reportError(props.error);
+    const ref = useRef<any>();
+    useEffect(() => {
+        ref.current = ref.current || reportError(props.error) || true;
+    });
     return (
         <div className="app-page-error">
             {props.error.name === 'ChunkLoadError' ?

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://misonou.pages.dev/docs/app/App</loc>
-         <lastmod>2024-10-07</lastmod>
+         <lastmod>2026-02-24</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/app/auth/AuthClient</loc>
@@ -14,11 +14,11 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/app/auth/AuthProvider</loc>
-         <lastmod>2024-03-28</lastmod>
+         <lastmod>2026-02-06</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/app/auth/AuthProviderContext</loc>
-         <lastmod>2024-03-28</lastmod>
+         <lastmod>2026-03-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/app/auth/AuthProviderResult</loc>
@@ -82,39 +82,39 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/brew-extension-auth</loc>
-         <lastmod>2024-08-23</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/brew-js-react</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2026-03-10</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/brew-js</loc>
-         <lastmod>2024-12-24</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/jq-scrollable</loc>
-         <lastmod>2024-12-23</lastmod>
+         <lastmod>2026-03-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/react-app-utils</loc>
-         <lastmod>2025-01-02</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/react-css-utils</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2026-01-15</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/waterpipe</loc>
-         <lastmod>2025-01-08</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/zeta-dom-react</loc>
-         <lastmod>2025-01-10</lastmod>
+         <lastmod>2026-03-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/change-log/zeta-dom</loc>
-         <lastmod>2024-12-16</lastmod>
+         <lastmod>2026-03-10</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/deprecated</loc>
@@ -130,7 +130,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/devtools/HTMLConsole</loc>
-         <lastmod>2024-11-14</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/devtools/promptForChoice</loc>
@@ -138,7 +138,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/addAnimateIn</loc>
-         <lastmod>2024-03-27</lastmod>
+         <lastmod>2026-02-09</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/animateIn</loc>
@@ -170,7 +170,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/events</loc>
-         <lastmod>2024-12-10</lastmod>
+         <lastmod>2025-01-13</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/focus-delegation</loc>
@@ -186,11 +186,11 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/initSortable</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/initStickable</loc>
-         <lastmod>2023-11-13</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/insertText</loc>
@@ -210,7 +210,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/openFlyout</loc>
-         <lastmod>2024-09-08</lastmod>
+         <lastmod>2025-01-17</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/pointer-events</loc>
@@ -222,7 +222,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/Positioner</loc>
-         <lastmod>2024-06-07</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/prevent-leave</loc>
@@ -250,7 +250,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/text-input-events</loc>
-         <lastmod>2024-02-08</lastmod>
+         <lastmod>2025-01-13</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/dom/toggleFlyout</loc>
@@ -278,7 +278,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/index</loc>
-         <lastmod>2024-12-19</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/not-found</loc>
@@ -286,7 +286,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/combineRef</loc>
-         <lastmod>2023-07-28</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/createAsyncScope</loc>
@@ -334,11 +334,11 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/dialog/createDialog</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/dialog/createDialogQueue</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/dialog/customizing</loc>
@@ -358,7 +358,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/dialog/DialogState</loc>
-         <lastmod>2024-12-13</lastmod>
+         <lastmod>2026-02-09</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/dialog/foreground-operation</loc>
@@ -367,6 +367,10 @@
     <url>
          <loc>https://misonou.pages.dev/docs/react/dialog/modal-dialog</loc>
          <lastmod>2024-12-25</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/react/dialog/openDialog</loc>
+         <lastmod>2026-02-09</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/dialog/overview</loc>
@@ -390,7 +394,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/ChoiceField</loc>
-         <lastmod>2024-11-14</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/composite-controls</loc>
@@ -426,11 +430,11 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/control-suggestions</loc>
-         <lastmod>2024-06-11</lastmod>
+         <lastmod>2025-12-16</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/control-textinput</loc>
-         <lastmod>2023-12-15</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/control-toggle</loc>
@@ -446,7 +450,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/DateField</loc>
-         <lastmod>2024-12-13</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/error-message</loc>
@@ -458,7 +462,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/FieldType</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/forcing-error-state</loc>
@@ -474,7 +478,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/FormContext</loc>
-         <lastmod>2024-11-14</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/FormContextProvider</loc>
@@ -482,11 +486,11 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/FormFieldProps</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/FormFieldState</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/form/FormObject</loc>
@@ -590,7 +594,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/i18n/makeTranslation</loc>
-         <lastmod>2023-11-03</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/i18n/translate</loc>
@@ -598,19 +602,19 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/i18n/useLanguage</loc>
-         <lastmod>2023-07-27</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/i18n/useTranslation</loc>
-         <lastmod>2024-10-31</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/AnimateMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/AnimateSequenceMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/child-component</loc>
@@ -618,23 +622,23 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/ClassNameMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/ClassNameToggleMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/FlyoutMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/FlyoutToggleMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/FocusStateMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/FormDevToolMixin</loc>
@@ -642,11 +646,15 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/LoadingStateMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-28</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/react/mixin/MenuKeystrokeMixin</loc>
+         <lastmod>2026-02-09</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/Mixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/MixinState</loc>
@@ -662,23 +670,27 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/ScrollableMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/ScrollIntoViewMixin</loc>
-         <lastmod>2024-06-07</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/StatefulMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/StaticAttributeMixin</loc>
-         <lastmod>2025-01-07</lastmod>
+         <lastmod>2026-02-24</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/react/mixin/UndoableInputMixin</loc>
+         <lastmod>2026-02-09</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/UnmanagedClassNameMixin</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/mixin/useMixin</loc>
@@ -690,7 +702,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/partial</loc>
-         <lastmod>2023-07-28</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useAnimatedIndicator</loc>
@@ -698,15 +710,15 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useAsync</loc>
-         <lastmod>2024-10-28</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useDependency</loc>
-         <lastmod>2024-08-12</lastmod>
+         <lastmod>2026-02-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useDispose</loc>
-         <lastmod>2023-07-25</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useEagerReducer</loc>
@@ -718,7 +730,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useErrorHandler</loc>
-         <lastmod>2024-09-20</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useEventTrigger</loc>
@@ -730,19 +742,23 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useMemoizedFunction</loc>
-         <lastmod>2023-07-24</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useObservableProperty</loc>
-         <lastmod>2024-12-05</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useRefInitCallback</loc>
-         <lastmod>2024-12-13</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useSingleton</loc>
          <lastmod>2024-08-06</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/react/useUndoableState</loc>
+         <lastmod>2026-02-09</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/useUnloadEffect</loc>
@@ -758,7 +774,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/react/ViewStateProvider</loc>
-         <lastmod>2023-11-10</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/router/beforepageload-event</loc>
@@ -950,7 +966,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/scrollable/options</loc>
-         <lastmod>2024-11-19</lastmod>
+         <lastmod>2025-03-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/scrollable/overscroll-behavior</loc>
@@ -978,7 +994,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/scrollable/ScrollableStatic</loc>
-         <lastmod>2024-11-18</lastmod>
+         <lastmod>2025-03-03</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/scrollable/scrollbars</loc>
@@ -1042,7 +1058,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/EventContainer</loc>
-         <lastmod>2024-12-10</lastmod>
+         <lastmod>2026-03-10</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/focus</loc>
@@ -1074,11 +1090,11 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/InheritedNodeTree</loc>
-         <lastmod>2023-11-12</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/isArrayLike</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/iterateFocusPath</loc>
@@ -1094,11 +1110,11 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/memoize</loc>
-         <lastmod>2024-11-07</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/NodeTree</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/notifyAsync</loc>
@@ -1106,7 +1122,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/openDeferredURL</loc>
-         <lastmod>2023-11-03</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/preventLeave</loc>
@@ -1134,7 +1150,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/setCookie</loc>
-         <lastmod>2024-11-05</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/setModal</loc>
@@ -1154,15 +1170,15 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/toQueryString</loc>
-         <lastmod>2024-10-31</lastmod>
+         <lastmod>2026-02-28</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/TraversableNodeTree</loc>
-         <lastmod>2023-11-12</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/TreeWalker</loc>
-         <lastmod>2024-12-12</lastmod>
+         <lastmod>2026-02-23</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/util/unsetTabRoot</loc>
@@ -1182,7 +1198,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/cheat-sheet</loc>
-         <lastmod>2024-12-13</lastmod>
+         <lastmod>2026-02-24</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/comment</loc>
@@ -1190,7 +1206,7 @@
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/comparison-functions</loc>
-         <lastmod>2024-12-13</lastmod>
+         <lastmod>2026-01-16</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/conditional-functions</loc>
@@ -1213,16 +1229,20 @@
          <lastmod>2024-02-28</lastmod>
     </url>
     <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/evaluation-functions</loc>
+         <lastmod>2026-02-24</lastmod>
+    </url>
+    <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/foreach-statement</loc>
          <lastmod>2024-12-13</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/formatting-functions</loc>
-         <lastmod>2024-03-01</lastmod>
+         <lastmod>2026-02-24</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/global-variables</loc>
-         <lastmod>2024-12-13</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/if-statement</loc>
@@ -1245,6 +1265,118 @@
          <lastmod>2024-03-02</lastmod>
     </url>
     <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/addFunctionDefinitions</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/code-suggestions</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/CodeSuggestionContext</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/createCodeEdit</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/custom-functions</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/DataPath</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/Diagnostics</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/EvaluatedData</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/evaluating-expressions</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/EvaluationContext</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/EvaluationScope</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/Expression</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/ExpressionVisitor</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/ExpressionVisitorContext</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/FunctionDefinition</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/getFunctionDocumentation</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/index</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/listFunctionsByInputType</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/loadFunctionDocumentation</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/Parser</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/parsing-expressions</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/Supports</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/Token</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/TypedData</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/visiting-expressions</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/parser/warnings-and-errors</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/PipeEvaluator</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/playground</loc>
+         <lastmod>2026-02-27</lastmod>
+    </url>
+    <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/scope-and-name-visibility</loc>
          <lastmod>2024-03-04</lastmod>
     </url>
@@ -1257,20 +1389,20 @@
          <lastmod>2024-03-01</lastmod>
     </url>
     <url>
-         <loc>https://misonou.pages.dev/docs/waterpipe/template-functions</loc>
-         <lastmod>2025-01-08</lastmod>
-    </url>
-    <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/transforming-data</loc>
          <lastmod>2024-12-13</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/using-waterpipe</loc>
-         <lastmod>2024-03-02</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/variable-functions</loc>
          <lastmod>2024-03-01</lastmod>
+    </url>
+    <url>
+         <loc>https://misonou.pages.dev/docs/waterpipe/waterpipe-module</loc>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://misonou.pages.dev/docs/waterpipe/wildcard-function</loc>

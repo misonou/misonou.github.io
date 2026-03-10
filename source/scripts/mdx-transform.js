@@ -367,7 +367,9 @@ module.exports = function ({ types: t }) {
                         }))
                     };
                     path.insertAfter(t.exportNamedDeclaration(t.variableDeclaration('const', [
-                        t.variableDeclarator(t.identifier('meta'), t.valueToNode(meta))
+                        t.variableDeclarator(t.identifier('meta'), t.valueToNode(meta)),
+                        t.variableDeclarator(t.identifier('marker'), t.newExpression(t.identifier('Uint8Array'), [])),
+                        t.variableDeclarator(t.identifier('moduleId'), t.memberExpression(t.identifier('__webpack_module__'), t.identifier('id')))
                     ])));
                 }
             }
