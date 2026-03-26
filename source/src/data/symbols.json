@@ -1,6 +1,6 @@
 {
     "@misonou/brew-extension-auth": {
-        "baseUrl": "https://github.com/misonou/brew-extension-auth/blob/60ddbe00a29e7888a03312a150f60d06055b4211",
+        "baseUrl": "https://github.com/misonou/brew-extension-auth/blob/e82b466e0f38f530dac237b4282ef2bd3b988dd3",
         "symbols": {
             "Auth": [
                 "src/entry.js#L5",
@@ -37,7 +37,7 @@
             "Axios": "src/middleware.d.ts#L4",
             "axiosMiddleware": "src/middleware.js#L31",
             "AxiosRequestConfig": "src/middleware.d.ts#L5",
-            "clearInteractionStatus": "src/msal.js#L20",
+            "clearInteractionStatus": "src/msal.js#L21",
             "CommonOptions": "src/extension.d.ts#L207",
             "createAxiosMiddleware": [
                 "src/middleware.d.ts#L22",
@@ -47,7 +47,7 @@
                 "src/middleware.d.ts#L14",
                 "src/middleware.js#L57"
             ],
-            "createProvider": "src/msal.js#L40",
+            "createProvider": "src/msal.js#L41",
             "DirectusAuthClient": [
                 "src/examples/directus.js#L6",
                 "src/examples/directus.ts#L30"
@@ -56,7 +56,7 @@
             "Fetch": "src/middleware.d.ts#L3",
             "fetchMiddleware": "src/middleware.js#L9",
             "FetchMiddleware": "src/middleware.d.ts#L7",
-            "getIssuerURL": "src/msal.js#L24",
+            "getIssuerURL": "src/msal.js#L25",
             "invalidCredential": "src/errorCode.js#L3",
             "JSONClient": [
                 "src/util/JSONClient.d.ts#L25",
@@ -248,7 +248,7 @@
         }
     },
     "brew-js": {
-        "baseUrl": "https://github.com/misonou/brew-js/blob/00efe84f6b10972bae3dd2b918c9e4878867d7f6",
+        "baseUrl": "https://github.com/misonou/brew-js/blob/fd3e72d3c7f665bcc86d4a3821c8444894399710",
         "symbols": {
             "addAnimateIn": [
                 "src/anim.d.ts#L36",
@@ -386,12 +386,12 @@
                 "src/util/common.js#L175"
             ],
             "detectLanguage": "src/extension/i18n.js#L21",
-            "Directive": "src/directive.d.ts#L28",
+            "Directive": "src/directive.d.ts#L32",
             "DirectiveComponent": [
                 "src/extension/withScrollable.d.ts#L39",
                 "src/types.d.ts#L45"
             ],
-            "DirectiveInit": "src/directive.d.ts#L16",
+            "DirectiveInit": "src/directive.d.ts#L20",
             "DirectiveType": "src/directive.d.ts#L1",
             "DirectiveTypeMap": "src/directive.d.ts#L3",
             "disableEvent": "src/domAction.js#L36",
@@ -461,7 +461,7 @@
             "getCurrentQuery": "src/extension/router.js#L45",
             "getDeclaredVar": "src/var.js#L52",
             "getDirectiveComponent": [
-                "src/directive.d.ts#L68",
+                "src/directive.d.ts#L72",
                 "src/directive.js#L82"
             ],
             "getFormValues": [
@@ -651,12 +651,12 @@
             "PromiseOrEmpty": "src/types.d.ts#L17",
             "readBody": "src/util/fetch.js#L16",
             "registerDirective": [
-                "src/directive.d.ts#L45",
+                "src/directive.d.ts#L49",
                 "src/directive.js#L107"
             ],
             "registerMatchPathElements": "src/extension/htmlRouter.js#L33",
             "registerSimpleDirective": [
-                "src/directive.d.ts#L53",
+                "src/directive.d.ts#L57",
                 "src/directive.js#L86"
             ],
             "removeQueryAndHash": [

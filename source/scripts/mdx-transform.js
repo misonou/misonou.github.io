@@ -95,7 +95,7 @@ function getHref(text) {
     if (!path) {
         return '';
     }
-    if (!hash) {
+    if (hash === undefined) {
         if (/:(.+ event)$/.test(text)) {
             hash = '#s-' + generateAnchor(RegExp.$1);
         } else if (text.replace(/[^\w.]/g, '') !== path.split('/').pop()) {
