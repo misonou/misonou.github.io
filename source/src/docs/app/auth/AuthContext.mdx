@@ -7,7 +7,7 @@ Members of the `AuthContext` interface is injected to app instance by [`app.useA
 <MemberList
     i="app" noRoot
     ip={['user']}
-    im={['resolveAuthProvider()', 'acquireToken()', 'login()', 'logout()', 'on()']}
+    im={['getAllAccounts()', 'resolveAuthProvider()', 'acquireToken()', 'login()', 'logout()', 'on()']}
     ev={['login', 'logout', 'sessionEnded']}
 />
 
@@ -25,12 +25,13 @@ Returns an object containing information of current user; or `null` when user is
 acquireToken()
 acquireToken(forceRefresh)
 acquireToken(callback)
+acquireToken(account)
 ```
 
 Gets access token for the logged in user.
 It will try to refresh access token if the current one is already expired.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `forceRefresh` <Badge.Optional />
@@ -39,22 +40,33 @@ It will try to refresh access token if the current one is already expired.
     #### `callback` <Badge.Optional />
     A callback receiving access token, or `null` if user has not logged in, and a flag indicates whether a refresh could be tried.
 
+    #### `account` <Badge.Optional />
+    Object supplied to `resolvedUser` callback, or an user object returned from [`app.getAllAccounts()`](:).
 </dl>
 
-### Return value
+#### Return value
 
 The access token, or `null` if user has not logged in.
+
+### `app.getAllAccounts()` <Badge.Version />
+
+```javascript
+getAllAccounts()
+```
+
+Gets all accounts that have login sessions.
 
 ### `app.login()`
 
 ```javascript
 login()
 login(options)
+login(user)
 ```
 
 Logs in using one of the authentication providers.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `options` <Badge.Optional />
@@ -82,9 +94,13 @@ Logs in using one of the authentication providers.
         Path to visit after logged in.
 
     </dl>
+
+    #### `user` <Badge.Version />
+    User object returned by [`AuthContext.user`](:) or [`AuthContext.getAllAccounts`](:).
+
 </dl>
 
-### Return value
+#### Return value
 
 A promise which may resolve after logged in successfully.
 
@@ -97,7 +113,7 @@ logout(options)
 
 Logs out the current user.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `options` <Badge.Optional />
@@ -107,13 +123,13 @@ Logs out the current user.
         #### `returnPath` <Badge.Optional />
         Path to visit after logged out.
 
-        #### `singleLogout` <Badge.Optional />
+        #### `singleLogout` <Badge.Optional /> <Badge.Deprecated />
         Whether to also log out from other applications for the same single sign-on session.
 
     </dl>
 </dl>
 
-### Return value
+#### Return value
 
 A promise which may resolve after logged out successfully.
 
@@ -126,7 +142,7 @@ on(handlers)
 
 Register event handlers.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `event`
@@ -148,7 +164,7 @@ resolveAuthProvider(hint)
 
 Resolves which authentication provider would be used based on the input.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `hint`
@@ -171,7 +187,7 @@ Resolves which authentication provider would be used based on the input.
     </dl>
 </dl>
 
-### Return value
+#### Return value
 
 An object with the following properties:
 
@@ -211,13 +227,35 @@ Fired when user is logged in.
 #### Event properties
 
 <dl>
+    #### `interaction` <Badge.ReadOnly /> <Badge.Version />
+    Gets the way how the user is logged in. It has the following possible values:
+
+    <dl>
+        #### `redirect`
+        User is logged in through redirection from external provider
+
+        #### `none`
+        User is logged in through session recovery without redirection
+
+        #### `user`
+        User is logged in through explicit login action in the current session
+
+    </dl>
+
     #### `sessionChanged` <Badge.ReadOnly /> <Badge.Version />
-    Gets whether the a different user was logged in in the same browser session.
-    It is always `false` when `login` event is not fired on app start.
+    Gets whether a different user has been logged in.
+
+    It is always `false` when `sessionResumed` is `true`.
+
+    > Prior to 0.6.0, `sessionChanged` is always `false` unless on app start.
 
     #### `sessionResumed` <Badge.ReadOnly /> <Badge.Version />
-    Gets whether the user has been logged in in the same browser session.
-    It is always `false` when `login` event is not fired on app start.
+    Gets whether the same user has been logged in.
+
+    The user can already be logged in in previous visit in the same tab; or the session is recovered from browser cache.
+    It is always `false` when `login` event is not fired on app start, or when `sessionChanged` is `true`.
+
+    > Prior to 0.6.0, `sessionResumed` is always `false` in the first visit in the current tab.
 
     #### `user` <Badge.ReadOnly />
     Gets the user that is currently or has been logged in.
@@ -234,6 +272,21 @@ Fired when user is logged out.
 #### Event properties
 
 <dl>
+    #### `interaction` <Badge.ReadOnly /> <Badge.Version />
+    Gets the way how the user is logged out. It has the following possible values:
+
+    <dl>
+        #### `redirect`
+        User is logged out through redirection from external provider
+
+        #### `none`
+        User is logged out when the session is expired or revoked
+
+        #### `user`
+        User is logged out through explicit logout action in the current session
+
+    </dl>
+
     #### `user` <Badge.ReadOnly />
     Gets the user that was logged in.
 
@@ -262,4 +315,5 @@ No additional properties.
 - **0.1.0** Introduced
 - **0.3.0** `app.resolveAuthProvider()` and `app.login()`: `authType` and `providerType` options
 - **0.4.0** `login` event: `sessionChanged` and `sessionResumed` properties
+- **0.6.0** `app.getAllAccounts()` <br/> `login` event: `interaction` property <br/> `logout` event: `interaction` property
 </VersionTimeline>

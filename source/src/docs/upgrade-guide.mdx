@@ -1,22 +1,81 @@
 # Upgrading guide
 
-## Upgrading to brew-extension-auth 0.4.x
+## Upgrading to brew-extension-auth 0.6.x
+
+If you have implemented custom provider, you will need to implement [`AuthProvider.getAllAccounts`](:) and [`AuthProvider.setActiveAccount`](:):
 
 ```javascript
-/* Before: */
+export const provider = {
+    /* ... */
+    getAllAccounts() {
+        // return all accounts available in the provider
+    },
+    getActiveAccount() {
+        // return the active account previously set by setActiveAccount
+    },
+    setActiveAccount(account) {
+        if (account) {
+            // set active account to the one specified by argument
+        } else {
+            // clear active account
+        }
+    },
+    refresh(params) {
+        // params may contains accountId only and not account
+        var account = params.account || lookupAccount(params.accountId);
+        /* ... */
+    }
+};
+```
+
+If you have implement custom client, make sure to handle argument change:
+
+```javascript
+export const provider = AuthProvider.from({
+    /* ... */
+    logout(authResult, context) {
+        // the first argument no longer contains interaction and singleLogout properties
+        // use context.interaction instead
+    }
+});
+```
+
+It is also recommended for custom provider or client to return the following properties from `login` and `refresh`:
+
+```javascript
+{
+    username: 'somehandle',
+    name: '',
+    email: null,     // optional
+    avatarUrl: null, // optional
+}
+```
+
+
+## Upgrading to brew-extension-auth 0.4.x
+
+If you have implemented custom provider, you will need to separate the logic from `init` method:
+
+```javascript
 export const Provider = {
     init() {
         /* ... */
         const isLoginRedirect = /* need to be determined manually */;
         return isLoginRedirect ? handleLoginRedirect() : getActiveAccount();
-    }
-}
-/* After: */
+    },
+    /* ... */
+};
+```
+
+would be changed to:
+
+```javascript
 export const Provider = {
-    init() { /* ... */ }
-    handleLoginRedirect() { /* ... */ }
-    getActiveAccount() { /* ... */ }
-}
+    init() { /* ... */ },
+    handleLoginRedirect() { /* ... */ },
+    getActiveAccount() { /* ... */ },
+    /* ... */
+};
 ```
 
 ## Upgrading to brew-react-js 0.5.x
@@ -95,7 +154,7 @@ to
 }
 ```
 
-## Upgrading to brew.js 0.4.x ~~brew-js~~
+## Upgrading to brew.js 0.4.x
 
 ### Feature moved to HtmlRouter
 
@@ -113,7 +172,7 @@ Add `loading-scope` to `<html>` to enable it.
 </html>
 ```
 
-## Upgrading to brew.js 0.3.x ~~brew-js~~
+## Upgrading to brew.js 0.3.x
 
 Starting v0.3, extensions must be loaded by `brew.with` in order to use when using Webpack.
 

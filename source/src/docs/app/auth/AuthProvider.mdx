@@ -26,7 +26,7 @@ from(key, client)
 
 Creates an authentication provider from a stateless authentication client.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `key`
@@ -37,6 +37,266 @@ Creates an authentication provider from a stateless authentication client.
 
 </dl>
 
-### Return value
+#### Return value
 
 An authentication provider which can be passed to [`app.useAuth`](:).
+
+## AuthProvider interface
+
+<MemberList
+    i="AuthProvider"
+    ip={['key', 'authType', 'providerType']}
+    im={['init()', 'getAllAccounts()', 'getActiveAccount()', 'setActiveAccount()', 'handleLoginRedirect()', 'login()', 'logout()', 'refresh()', 'isHandleable()']}
+/>
+
+### `AuthProvider.authType` <Badge.ReadOnly />
+
+Authentication method used by the provider.
+- `password` refers to authentication using password.
+- `federated` refers to federated identity provider, like an OpenID connect provider.
+- `publicKey` refers to passwordless authentication using key-pairs, commonly known as passkeys.
+
+### `AuthProvider.key` <Badge.ReadOnly />
+
+A unique key identifying the provider.
+
+### `AuthProvider.providerType` <Badge.ReadOnly />
+
+Type of provider, e.g. `msal` for `MsalAuthProvider`.
+
+### `AuthProvider.getActiveAccount()`
+
+```javascript
+getActiveAccount(context)
+```
+
+Restores existing login session.
+
+#### Parameters
+
+<dl>
+    #### `context`
+    Add [`AuthProviderContext`](:) object.
+</dl>
+
+### `AuthProvider.getAllAccounts()`
+
+```javascript
+getAllAccounts(context)
+```
+
+Gets all accounts that have login sessions.
+
+#### Parameters
+
+<dl>
+    #### `context`
+    Add [`AuthProviderContext`](:) object.
+</dl>
+
+#### Return value
+
+It should return an array of account object with the following properties:
+
+<dl>
+    #### `account`
+    Identity returned from the provider.
+
+    #### `accountId`
+    A unique key identifying the user within the provider.
+
+    #### `avatarUrl`
+    URL for user's avatar, if available.
+
+    #### `email`
+    Email address for user, if available.
+
+    #### `name`
+    Display name for user. If provider does not return display name, username or account ID will be used.
+
+    #### `username`
+    Username for user. If provider does not return username, account ID will be used.
+</dl>
+
+### `AuthProvider.handleLoginRedirect()`
+
+```javascript
+handleLoginRedirect(context)
+```
+
+Handles authentication result returned from external authentication provider during app initialization.
+
+#### Parameters
+
+<dl>
+    #### `context`
+    Add [`AuthProviderContext`](:) object.
+</dl>
+
+#### Return value
+
+It should return an [`AuthProviderResult`](:) object if the provider can handle the login redirect, or `null` otherwise.
+
+### `AuthProvider.init()`
+
+```javascript
+init(context)
+```
+
+Performs initialization.
+
+#### Parameters
+
+<dl>
+    #### `context`
+    Add [`AuthProviderContext`](:) object.
+</dl>
+
+### `AuthProvider.isHandleable()`
+
+```javascript
+isHandleable(loginHint)
+```
+
+Returns whether the authentication provider can process the request given the login hint.
+
+#### Parameters
+
+<dl>
+    #### `loginHint`
+    Login hint, ususally user email, provided by user.
+
+</dl>
+
+### `AuthProvider.login()`
+
+```javascript
+login(params, context)
+```
+
+Performs login.
+
+#### Parameters
+
+<dl>
+    #### `params`
+    A dictionary containing the following properties:
+
+    <dl>
+        #### `interaction` <Badge.Deprecated />
+        Specifies the preferred way to login.
+        <dl>
+            #### `redirect`
+            #### `popup`
+        </dl>
+
+        > Retrievable from the [`AuthProviderContext`](:) object which is passed to provider as the last argument.
+
+        #### `accountId`
+        Account to login. Introduced in 0.6.0.
+
+        #### `loginHint`
+        Login hint, usually user email, to be passed to external authentication provider.
+
+        #### `password`
+        Password to be passed to authentication provider.
+
+    </dl>
+
+    #### `context`
+    Add [`AuthProviderContext`](:) object.
+</dl>
+
+#### Return value
+
+It should return an [`AuthProviderResult`](:) object if the provider can handle the login.
+
+If the login requires redirect to external authentication provider, it should a non-resolving promise.
+
+### `AuthProvider.logout()`
+
+```javascript
+logout(params, context)
+```
+
+Performs logout.
+
+#### Parameters
+
+<dl>
+    #### `params`
+    A dictionary containing the following properties:
+
+    <dl>
+        #### `accountId`
+        Account to logout.
+
+        #### `interaction` <Badge.Deprecated />
+        Specifies the preferred way to logout.
+        <dl>
+            #### `redirect`
+            #### `popup`
+        </dl>
+
+        > Retrievable from the [`AuthProviderContext`](:) object which is passed to provider as the last argument.
+
+        #### `singleLogout` <Badge.Deprecated />
+        Whether user should be logged out completely from other applications for the same single sign-on session.
+
+        > This option is not currently supported and will be removed in the future.
+
+    </dl>
+
+    #### `context`
+    Add [`AuthProviderContext`](:) object.
+</dl>
+
+### `AuthProvider.refresh()`
+
+```javascript
+refresh(params, context)
+```
+
+Refreshes current login session.
+
+#### Parameters
+
+<dl>
+    #### `params`
+    The last authentication result returned by this provider.
+
+    > Since 0.6.0, it may only contains `accountId` property without other properties.
+
+    #### `context`
+    Add [`AuthProviderContext`](:) object.
+</dl>
+
+#### Return value
+
+It should return an [`AuthProviderResult`](:) object if the provider can refresh the login session.
+
+### `AuthProvider.setActiveAccount()`
+
+```javascript
+setActiveAccount(account, context)
+```
+
+Sets active account, so that current login session can be restored in the future.
+
+#### Parameters
+
+<dl>
+    #### `account`
+    The account to set as active. If `null` is passed, the active account should be cleared.
+
+    #### `context`
+    Add [`AuthProviderContext`](:) object.
+</dl>
+
+## Version information
+
+<VersionTimeline module="@misonou/brew-extension-auth">
+- **0.1.0** Introduced
+- **0.4.0** `AuthProvider.handleLoginRedirect()`
+- **0.6.0** `AuthProvider.getAllAccounts()` <br/> `AuthProvider.setActiveAccount()`
+</VersionTimeline>

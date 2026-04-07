@@ -298,6 +298,9 @@ function transformImportHint(component, path, props, t) {
     });
     props.at(-1).insertAfter(t.objectProperty(t.identifier('source'), t.valueToNode(source)));
 
+    if (propValues.noLocation) {
+        return;
+    }
     const sourceLoc = getSourceLocations(getPackageName(propValues.module)) || {};
     const symbolLoc = sourceLoc.symbols?.[propValues.name];
     if (symbolLoc) {

@@ -2,82 +2,9 @@
 
 # Auth extension
 
-This is a preview extension for single sign-on in `brew.js` application.
+This is an extension for single sign-on in `brew.js` application.
 
-<ImportHint
-    name="Auth"
-    module="@misonou/brew-extension-auth"
-    import="default"
-    require="default"
-    global="brew.Auth"
-    expanded
-/>
-
-> See [`AuthContext`](/docs/app/auth/AuthContext) for injected app properties, methods and events.
-
-## Syntax
-
-```javascript
-app.useAuth(options)
-```
-
-### Parameters
-
-<dl>
-    #### `options`
-    A dictionary containing options.
-
-    <dl>
-        #### `interaction` <Badge.Optional />
-        Specifies the preferred way to login when authenticating through external providers.
-
-        It accepts the following values:
-
-        <dl>
-            #### `redirect`
-
-            #### `popup`
-        </dl>
-        Default is `redirect`.
-
-        #### `postLoginPath` <Badge.Optional />
-        Default path to visit after logged in.
-        If not specified, user will be redirected to current path.
-
-        #### `postLogoutPath` <Badge.Optional />
-        Default path to visit after logged out.
-        If not specified, user will be redirected to current path.
-
-        #### `provider` <Badge.Version />
-        An authentication provider.
-
-        > This option cannot be used with `providers`
-
-        #### `providers`
-        A list of authentication providers.
-
-        > This option cannot be used with `provider`
-
-        #### `resolveUser`
-        A callback that gather information about current user which will be exposed as [`app.user`](:).
-
-        The callback will receive an argument with following properties:
-
-        <dl>
-            #### `account` <Badge.ReadOnly />
-            Identity returned from the provider.
-
-            #### `provider` <Badge.ReadOnly />
-            A unique key identifying the provider.
-
-            #### `providerType` <Badge.ReadOnly />
-            Type of identity returned from provider, e.g. `msal` for `MsalAuthProvider`.
-        </dl>
-    </dl>
-</dl>
-
-
-## Example
+See [`app.useAuth()`](:) for documentation of initializing the extension.
 
 ```typescript
 import brew from "brew-js/app";
@@ -129,10 +56,3 @@ brew.with(brew.Auth)(app => {
     const fetch = brew.Auth.createFetchMiddleware(app);
 });
 ```
-
-## Version information
-
-<VersionTimeline module="@misonou/brew-extension-auth">
-- **0.1.0** Introduced
-- **0.3.0** `provider` option
-</VersionTimeline>

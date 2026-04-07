@@ -1,0 +1,103 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# useAuth
+
+See [`AuthContext`](/docs/app/auth/AuthContext) for injected app properties, methods and events.
+
+<ImportHint
+    name="Auth"
+    module="@misonou/brew-extension-auth"
+    import="default"
+    require="default"
+    global="brew.Auth"
+    noLocation
+    expanded
+/>
+
+## Syntax
+
+```javascript
+app.useAuth(options)
+```
+
+### Parameters
+
+<dl>
+    #### `options`
+    A dictionary containing options.
+
+    <dl>
+        #### `interaction` <Badge.Optional />
+        Specifies the preferred way to login when authenticating through external providers.
+
+        It accepts the following values:
+
+        <dl>
+            #### `redirect`
+
+            #### `popup`
+        </dl>
+        Default is `redirect`.
+
+        #### `postLoginPath` <Badge.Optional />
+        Default path to visit after logged in.
+        If not specified, user will be redirected to current path.
+
+        #### `postLogoutPath` <Badge.Optional />
+        Default path to visit after logged out.
+        If not specified, user will be redirected to current path.
+
+        #### `provider` <Badge.Version />
+        An authentication provider.
+
+        > This option cannot be used with `providers`
+
+        #### `providers`
+        A list of authentication providers.
+
+        > This option cannot be used with `provider`
+
+        #### `resolveUser`
+        A callback that gather information about an user which will be returned by [`app.user`](:).
+
+        The callback will receive the following arguments:
+
+        <dl>
+            #### `info`
+            <dl>
+                #### `account` <Badge.ReadOnly />
+                Identity returned from the provider.
+
+                #### `accountId` <Badge.ReadOnly /> <Badge.Version />
+                A unique key identifying the user within the provider.
+
+                #### `avatarUrl` <Badge.ReadOnly /> <Badge.Version />
+                URL for user's avatar, if available.
+
+                #### `email` <Badge.ReadOnly /> <Badge.Version />
+                Email address for user, if available.
+
+                #### `name` <Badge.ReadOnly /> <Badge.Version />
+                Display name for user. If provider does not return display name, username or account ID will be used.
+
+                #### `provider` <Badge.ReadOnly />
+                A unique key identifying the provider.
+
+                #### `providerType` <Badge.ReadOnly />
+                Type of identity returned from provider, e.g. `msal` for `MsalAuthProvider`.
+
+                #### `username` <Badge.ReadOnly /> <Badge.Version />
+                Username for user. If provider does not return username, account ID will be used.
+            </dl>
+
+        </dl>
+    </dl>
+</dl>
+
+## Version information
+
+<VersionTimeline module="@misonou/brew-extension-auth">
+- **0.1.0** Introduced
+- **0.3.0** `provider` option
+- **0.6.0** `resolveUser` argument: `accountId`, `avatarUrl`, `email`, `name`, `username`
+</VersionTimeline>

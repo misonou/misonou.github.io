@@ -28,6 +28,7 @@
     ],
     "/app/auth/AuthContext": [
         "app.user",
+        "app.getAllAccounts()",
         "app.resolveAuthProvider()",
         "app.acquireToken()",
         "app.login()",
@@ -39,10 +40,23 @@
     ],
     "/app/auth/AuthProvider": [
         "AuthProvider",
-        "AuthProvider.from()"
+        "AuthProvider.from()",
+        "AuthProvider.key",
+        "AuthProvider.authType",
+        "AuthProvider.providerType",
+        "AuthProvider.init()",
+        "AuthProvider.getAllAccounts()",
+        "AuthProvider.getActiveAccount()",
+        "AuthProvider.setActiveAccount()",
+        "AuthProvider.handleLoginRedirect()",
+        "AuthProvider.login()",
+        "AuthProvider.logout()",
+        "AuthProvider.refresh()",
+        "AuthProvider.isHandleable()"
     ],
     "/app/auth/AuthProviderContext": [
         "AuthProviderContext",
+        "AuthProviderContext.interaction",
         "AuthProviderContext.redirectUri",
         "AuthProviderContext.revokeSession()"
     ],
@@ -51,7 +65,11 @@
         "AuthProviderResult.account",
         "AuthProviderResult.accountId",
         "AuthProviderResult.accessToken",
-        "AuthProviderResult.expiresOn"
+        "AuthProviderResult.expiresOn",
+        "AuthProviderResult.avatarUrl",
+        "AuthProviderResult.email",
+        "AuthProviderResult.name",
+        "AuthProviderResult.username"
     ],
     "/app/auth/createAxiosMiddleware": [
         "createAxiosMiddleware()"
@@ -75,7 +93,7 @@
         "MsalAuthProvider.setDefault()",
         "MsalAuthProvider.create()"
     ],
-    "/app/auth/overview": [
+    "/app/auth/useAuth": [
         [
             "app.useAuth()",
             ""

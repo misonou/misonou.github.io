@@ -1,44 +1,47 @@
 {
     "@misonou/brew-extension-auth": {
-        "baseUrl": "https://github.com/misonou/brew-extension-auth/blob/e82b466e0f38f530dac237b4282ef2bd3b988dd3",
+        "baseUrl": "https://github.com/misonou/brew-extension-auth/blob/6e4eb8aa98e60b5152b1b69856227a0572b833ad",
         "symbols": {
             "Auth": [
                 "src/entry.js#L5",
-                "src/extension.d.ts#L325",
+                "src/extension.d.ts#L442",
                 "src/index.d.ts#L8",
                 "src/index.js#L5"
             ],
             "AuthClient": "src/provider.d.ts#L5",
             "AuthClientCachedResult": "src/provider.d.ts#L3",
-            "AuthContext": "src/extension.d.ts#L276",
+            "AuthContext": "src/extension.d.ts#L378",
             "AuthEvent": "src/extension.d.ts#L4",
-            "AuthEventMap": "src/extension.d.ts#L36",
+            "AuthEventMap": "src/extension.d.ts#L57",
             "AuthExtension": "src/extension.d.ts#L3",
+            "AuthIdentity": "src/extension.d.ts#L229",
             "AuthLoginEvent": "src/extension.d.ts#L8",
-            "AuthLogoutEvent": "src/extension.d.ts#L25",
-            "AuthOptions": "src/extension.d.ts#L174",
+            "AuthLogoutEvent": "src/extension.d.ts#L37",
+            "AuthOptions": "src/extension.d.ts#L275",
             "AuthProvider": [
-                "src/extension.d.ts#L125",
+                "src/extension.d.ts#L187",
                 "src/provider.d.ts#L52",
-                "src/provider.js#L4"
+                "src/provider.js#L5"
             ],
-            "AuthProviderContext": "src/extension.d.ts#L92",
+            "AuthProviderAccountInfo": "src/extension.d.ts#L63",
+            "AuthProviderContext": "src/extension.d.ts#L150",
             "AuthProviderFactory": "src/provider.d.ts#L43",
-            "AuthProviderHint": "src/extension.d.ts#L232",
-            "AuthProviderInfo": "src/extension.d.ts#L108",
-            "AuthProviderLoginRequest": "src/extension.d.ts#L62",
-            "AuthProviderLogoutRequest": "src/extension.d.ts#L77",
-            "AuthProviderResult": "src/extension.d.ts#L42",
-            "AuthResult": "src/extension.d.ts#L159",
-            "AuthSimpleOptions": "src/extension.d.ts#L209",
-            "AuthSimpleOptionsWithResolve": "src/extension.d.ts#L221",
-            "AuthSingleProviderOptions": "src/extension.d.ts#L203",
+            "AuthProviderHint": "src/extension.d.ts#L333",
+            "AuthProviderInfo": "src/extension.d.ts#L170",
+            "AuthProviderLoginRequest": "src/extension.d.ts#L102",
+            "AuthProviderLogoutRequest": "src/extension.d.ts#L122",
+            "AuthProviderResult": "src/extension.d.ts#L90",
+            "AuthProviderTokenRequest": "src/extension.d.ts#L139",
+            "AuthResult": "src/extension.d.ts#L240",
+            "AuthSimpleOptions": "src/extension.d.ts#L310",
+            "AuthSimpleOptionsWithResolve": "src/extension.d.ts#L322",
+            "AuthSingleProviderOptions": "src/extension.d.ts#L304",
             "AuthType": "src/extension.d.ts#L5",
             "Axios": "src/middleware.d.ts#L4",
             "axiosMiddleware": "src/middleware.js#L31",
             "AxiosRequestConfig": "src/middleware.d.ts#L5",
-            "clearInteractionStatus": "src/msal.js#L21",
-            "CommonOptions": "src/extension.d.ts#L207",
+            "clearInteractionStatus": "src/msal.js#L22",
+            "CommonOptions": "src/extension.d.ts#L308",
             "createAxiosMiddleware": [
                 "src/middleware.d.ts#L22",
                 "src/middleware.js#L61"
@@ -47,7 +50,7 @@
                 "src/middleware.d.ts#L14",
                 "src/middleware.js#L57"
             ],
-            "createProvider": "src/msal.js#L41",
+            "createProvider": "src/msal.js#L42",
             "DirectusAuthClient": [
                 "src/examples/directus.js#L6",
                 "src/examples/directus.ts#L30"
@@ -56,8 +59,8 @@
             "Fetch": "src/middleware.d.ts#L3",
             "fetchMiddleware": "src/middleware.js#L9",
             "FetchMiddleware": "src/middleware.d.ts#L7",
-            "getIssuerURL": "src/msal.js#L25",
-            "invalidCredential": "src/errorCode.js#L3",
+            "getIssuerURL": "src/msal.js#L26",
+            "invalidCredential": "src/errorCode.js#L4",
             "JSONClient": [
                 "src/util/JSONClient.d.ts#L25",
                 "src/util/JSONClient.js#L5"
@@ -65,18 +68,19 @@
             "JSONRequestError": "src/util/JSONClient.d.ts#L6",
             "JSONRequestMiddleware": "src/util/JSONClient.d.ts#L1",
             "loggedIn": "src/errorCode.js#L1",
-            "LoginOptions": "src/extension.d.ts#L254",
-            "LogoutOptions": "src/extension.d.ts#L265",
+            "LoginOptions": "src/extension.d.ts#L355",
+            "LogoutOptions": "src/extension.d.ts#L366",
             "MsalAuthProvider": [
                 "src/msal.d.ts#L4",
-                "src/msal.js#L8"
+                "src/msal.js#L9"
             ],
             "MsalAuthProviderFactory": "src/msal.d.ts#L18",
             "MsalAuthProviderOptions": "src/msal.d.ts#L6",
             "noProvider": "src/errorCode.js#L2",
             "ResolveUserCallback": "src/extension.d.ts#L6",
             "Result": "src/examples/directus.ts#L28",
-            "retryOrEnd": "src/middleware.js#L5"
+            "retryOrEnd": "src/middleware.js#L5",
+            "userNotLoggedIn": "src/errorCode.js#L3"
         }
     },
     "@misonou/react-app-utils": {

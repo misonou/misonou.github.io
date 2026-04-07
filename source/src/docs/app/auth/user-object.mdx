@@ -26,3 +26,29 @@ brew.with(Router, Auth as AuthExtension<User>)(app => {
     });
 });
 ```
+
+## Getting all accounts
+
+~~0.6.0~~
+
+It is able to retrieve all cached sessions from providers using [`app.getAllAccounts`](:):
+
+```javascript
+await app.getAllAccounts() // -> [{ provider: 'xx', accountId: 'yy' }, ...]
+```
+
+> When using implementing custom authentication provider or client, it is recommended to fill in
+  normalized user detail in `login` and `refresh` method.
+
+Resulting objects for the identities can be passed to [`app.login`](:):
+
+```tsx
+function AccountSwitch() {
+    const [accounts] = useAsync(() => app.getAllAccounts(), []);
+    return <>
+        {accounts && accounts.map((v, i) => (
+            <div key={i} onClick={() => app.login(v)}>{v.name}</div>
+        ))}
+    </>;
+}
+```

@@ -13,6 +13,7 @@ export interface ImportHintProps {
     global?: string;
     expanded?: boolean;
     typeOnly?: boolean;
+    noLocation?: boolean;
     source?: { name: string, content: Source }[];
     location?: { type: string, url: string }[];
 };

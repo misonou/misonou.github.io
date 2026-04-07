@@ -2,6 +2,32 @@
 
 # Change log
 
+## v0.6.0 (2026/04/07)
+
+**Breaking changes**
+
+- Providers are now required to implement `getAllAccounts`, `setActiveAccount` method
+- First argument passed to [`AuthProvider.refresh`](:) may only contain `accountId` property
+- First argument passed to [`AuthClient.logout`](:) has been changed to last authentication result previously returned by the client
+
+See [[link]](/docs/upgrade-guide#s-upgrading-to-brew-extension-auth-0-6-x) for more details.
+
+#### Core
+
+- Add [`app.getAllAccounts`](:) to retrieve all accounts from providers
+- [`app.acquireToken`](:) and [`app.login`](:) accepts object containing `provider` and `accountId` as argument
+- `sessionResumed` and `sessionChanged` conditions are updated in [`login` event](/docs/app/auth/AuthContext#s-login-event)
+- `interaction` property added for [`login`](/docs/app/auth/AuthContext#s-login-event) and [`logout` event](/docs/app/auth/AuthContext#s-logout-event)
+
+#### Deprecations
+
+- `interaction` parameter provided to [`AuthProvider.login`](:) and [`AuthProvider.logout`](:), use [`AuthProviderContext.interaction`](:) instead
+- `singleLogout` option in [`app.logout`](:)
+
+## v0.5.4 (2026/04/05)
+
+- <kbd>fix</kbd> prevent concurrent calls to [`AuthProvider.refresh`](:)
+
 ## v0.5.3 (2026/03/18)
 
 #### Core

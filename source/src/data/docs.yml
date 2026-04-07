@@ -197,6 +197,10 @@
               path: /app/auth/createFetchMiddleware
               class: code
               module: brew-extension-auth
+            - title: useAuth
+              path: /app/auth/useAuth
+              class: code
+              module: brew-extension-auth
 - title: Router
   pages:
     - title: Configuring router

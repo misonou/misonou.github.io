@@ -62,7 +62,7 @@ isHandleable(loginHint)
 
 Returns whether the authentication provider can process the request given the login hint.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `loginHint`
@@ -78,20 +78,22 @@ login(params, context)
 
 Performs login.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `params`
     An object with the following properties:
 
     <dl>
-        #### `interaction` <Badge.ReadOnly />
+        #### `interaction` <Badge.ReadOnly /> <Badge.Deprecated />
         Specifies the preferred way to login. It can be one of the following value:
 
         <dl>
             #### `redirect`
             #### `popup`
         </dl>
+
+        > Use [`AuthProviderContext.interaction`](:) instead.
 
         #### `loginHint` <Badge.ReadOnly />
         Login hint, usually user email, to be passed to external authentication provider.
@@ -100,9 +102,12 @@ Performs login.
         Password to be passed to authentication provider.
     </dl>
 
+    #### `context`
+    An [`AuthProviderContext`](:) object.
+
 </dl>
 
-### Return value
+#### Return value
 
 When implemented, it is expected to return a promise that fulfills with properties from
 [`AuthProviderResult`](:) interface.
@@ -117,7 +122,7 @@ logout(params, context)
 
 Performs logout.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `params`
@@ -127,7 +132,7 @@ Performs logout.
         #### `accountId` <Badge.ReadOnly />
         Account to logout.
 
-        #### `interaction` <Badge.ReadOnly />
+        #### `interaction` <Badge.ReadOnly /> <Badge.Deprecated />
         Specifies the preferred way to logout. It can be one of the following value:
 
         <dl>
@@ -135,13 +140,18 @@ Performs logout.
             #### `popup`
         </dl>
 
-        #### `singleLogout` <Badge.ReadOnly />
+        > Use [`AuthProviderContext.interaction`](:) instead.
+
+        #### `singleLogout` <Badge.ReadOnly />  <Badge.Deprecated />
         Whether user should be logged out completely from other applications for the same single sign-on session.
     </dl>
 
+    #### `context`
+    An [`AuthProviderContext`](:) object.
+
 </dl>
 
-### Return value
+#### Return value
 
 When implemented, it is expected to return a promise that fulfills when user is logged out successfully.
 
@@ -155,17 +165,19 @@ refresh(current, context)
 
 Refreshes current login session.
 
-### Parameters
+#### Parameters
 
 <dl>
     #### `current`
     Last authentication result returned by this provider.
 
+    > Before 0.6.0, this argument is contains `accountId`, `interaction` and `singleLogout` properties.
+
     #### `context` <Badge.Version />
     An [`AuthProviderContext`](:) object.
 </dl>
 
-### Return value
+#### Return value
 
 When implemented, it is expected to return a promise that fulfills with properties from
 [`AuthProviderResult`](:) interface.

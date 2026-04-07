@@ -8,5 +8,5 @@
     "waterpipe-parser": "2.10.1",
     "@misonou/react-app-utils": "1.8.0",
     "@misonou/react-css-utils": "1.5.1",
-    "@misonou/brew-extension-auth": "0.5.3"
+    "@misonou/brew-extension-auth": "0.6.0"
 }

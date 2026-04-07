@@ -9,7 +9,7 @@ object with these properties, such as [`AuthClient.login`](:) and [`AuthClient.r
 
 <MemberList
     i="AuthProviderResult"
-    ip={['account', 'accountId', 'accessToken', 'expiresOn']}
+    ip={['account', 'accountId', 'accessToken', 'expiresOn', 'avatarUrl', 'email', 'name', 'username']}
 />
 
 ## Instance properties
@@ -26,6 +26,29 @@ Account info that will be passed to `resolveUser`.
 
 A string representating the user, usually user ID, to be cached in local storage.
 
+### `AuthProviderResult.avatarUrl` <Badge.Optional />
+
+URL for user's avatar, which can be used in UI to represent user.
+
+### `AuthProviderResult.email` <Badge.Optional />
+
+Email address for user.
+
 ### `AuthProviderResult.expiresOn` <Badge.Required />
 
 A `Date` object or a JavaScript timestamp indicating when the access token will expire.
+
+### `AuthProviderResult.name` <Badge.Optional />
+
+Display name for user.
+
+### `AuthProviderResult.username` <Badge.Optional />
+
+Username for user.
+
+## Version information
+
+<VersionTimeline module="@misonou/brew-extension-auth">
+- **0.1.0** Introduced
+- **0.6.0** `AuthProviderResult.avatarUrl` <br/> `AuthProviderResult.email` <br/> `AuthProviderResult.name` <br/> `AuthProviderResult.username`
+</VersionTimeline>
