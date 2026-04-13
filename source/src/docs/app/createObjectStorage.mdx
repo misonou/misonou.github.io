@@ -76,6 +76,13 @@ All limitations with native JSON serialization applies (except for circular refe
 - Non-plain object is converted to plain object by enumerating its properties or value returned by `toJSON()` if it is defined on the object,
   except (since v0.6.9) when the constructor is registered through [`ObjectStorage.registerType()`](:)
 
+In version 0.7.4 or before, similar to native JSON serialization the following limitations also apply:
+
+- Big integers are not allowed
+- `NaN` and `Infinity` are treated as `null`; whereas `-0` is treated as `0`
+- Object property having value `undefined` is ignored
+- Array member having value `undefined` and array hole (or "empty slot") are treated as `null`
+
 In addition, properties with these values are also ignored, due to commonly large amount of data:
 
 - `Blob` objects

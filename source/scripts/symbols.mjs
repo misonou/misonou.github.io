@@ -72,7 +72,7 @@ function processPackage(pkg, version, dir) {
         }
     }
     return {
-        baseUrl: `https://github.com/${repo}/blob/${commitId}`,
+        baseUrl: `https://github.com/${repo}/blob/${tag}`,
         symbols: sortObject(symbols)
     };
 }

@@ -1,6 +1,6 @@
 {
     "@misonou/brew-extension-auth": {
-        "baseUrl": "https://github.com/misonou/brew-extension-auth/blob/6e4eb8aa98e60b5152b1b69856227a0572b833ad",
+        "baseUrl": "https://github.com/misonou/brew-extension-auth/blob/v0.6.0",
         "symbols": {
             "Auth": [
                 "src/entry.js#L5",
@@ -84,7 +84,7 @@
         }
     },
     "@misonou/react-app-utils": {
-        "baseUrl": "https://github.com/misonou/react-app-utils/blob/0fd91cf7bf5b9cd737ca19dc5598f5b29aea4767",
+        "baseUrl": "https://github.com/misonou/react-app-utils/blob/v1.8.0",
         "symbols": {
             "ApiErrorEvent": "lib/createApi.d.ts#L5",
             "ApiEventListener": "lib/createApi.d.ts#L19",
@@ -208,7 +208,7 @@
         }
     },
     "@misonou/react-css-utils": {
-        "baseUrl": "https://github.com/misonou/react-css-utils/blob/47901f18c37d2ce25e149e92693c468e57a305c1",
+        "baseUrl": "https://github.com/misonou/react-css-utils/blob/v1.5.1",
         "symbols": {
             "AnimatedIndicator": "index.d.ts#L86",
             "AnimatedIndicatorOptions": "index.d.ts#L79",
@@ -252,7 +252,7 @@
         }
     },
     "brew-js": {
-        "baseUrl": "https://github.com/misonou/brew-js/blob/fd3e72d3c7f665bcc86d4a3821c8444894399710",
+        "baseUrl": "https://github.com/misonou/brew-js/blob/v0.7.5",
         "symbols": {
             "addAnimateIn": [
                 "src/anim.d.ts#L36",
@@ -373,7 +373,7 @@
             "createContextClass": "src/directive.js#L41",
             "createObjectStorage": [
                 "src/util/storage.d.ts#L128",
-                "src/util/storage.js#L14"
+                "src/util/storage.js#L47"
             ],
             "createRequest": "src/util/fetch.js#L34",
             "createRouteState": "src/extension/router.js#L142",
@@ -552,7 +552,7 @@
                 "src/domAction.d.ts#L39",
                 "src/domAction.js#L53"
             ],
-            "isObject": "src/util/storage.js#L6",
+            "isObject": "src/util/storage.js#L15",
             "isSameWindow": "src/domAction.js#L41",
             "isSubPathOf": [
                 "src/util/path.d.ts#L72",
@@ -610,6 +610,7 @@
                 "src/util/path.d.ts#L34",
                 "src/util/path.js#L51"
             ],
+            "normalizeValue": "src/util/storage.js#L19",
             "ObjectStorage": "src/util/storage.d.ts#L1",
             "openDeferredURL": [
                 "src/util/common.d.ts#L226",
@@ -722,7 +723,6 @@
                 "src/var.d.ts#L13",
                 "src/var.js#L95"
             ],
-            "shouldIgnore": "src/util/storage.js#L10",
             "StateChangeEvent": "src/types.d.ts#L162",
             "stringOrSymbol": "src/extension/router.js#L66",
             "template": [
@@ -799,7 +799,7 @@
         }
     },
     "brew-js-react": {
-        "baseUrl": "https://github.com/misonou/brew-js-react/blob/6c4c71e2e8ba54e837a9794cd257658ad0fc27c7",
+        "baseUrl": "https://github.com/misonou/brew-js-react/blob/v0.7.1",
         "symbols": {
             "AnimateMixin": [
                 "src/mixins/AnimateMixin.d.ts#L38",
@@ -1082,7 +1082,7 @@
         }
     },
     "jq-scrollable": {
-        "baseUrl": "https://github.com/misonou/jquery-scrollable/blob/05eafb7ccad3ea8dae35625976e46524234b9945",
+        "baseUrl": "https://github.com/misonou/jquery-scrollable/blob/v1.18.0",
         "symbols": {
             "JQuery": "types.d.ts#L1",
             "JQueryScrollable": "types.d.ts#L20",
@@ -1098,7 +1098,7 @@
         }
     },
     "waterpipe": {
-        "baseUrl": "https://github.com/misonou/waterpipe/blob/fa144d09d1b81c6c6215a6b0d5d0bd1178a28e08",
+        "baseUrl": "https://github.com/misonou/waterpipe/blob/v2.10.0",
         "symbols": {
             "Pipe": "typings/waterpipe.d.ts#L102",
             "PipeEvaluator": "typings/waterpipe.d.ts#L127",
@@ -1110,7 +1110,7 @@
         }
     },
     "waterpipe-parser": {
-        "baseUrl": "https://github.com/misonou/waterpipe-parser/blob/d5cdcb16ecd336956756c706d0a54dcb1166844e",
+        "baseUrl": "https://github.com/misonou/waterpipe-parser/blob/v2.10.1",
         "symbols": {
             "addFunctionDefinitions": [
                 "src/signatures.d.ts#L129",
@@ -1361,7 +1361,7 @@
         }
     },
     "zeta-dom": {
-        "baseUrl": "https://github.com/misonou/zeta-dom/blob/8c0578dba3cdfbb6f01232be1f2bc10a21197ef1",
+        "baseUrl": "https://github.com/misonou/zeta-dom/blob/v0.6.4",
         "symbols": {
             "acceptNode": [
                 "src/domUtil.d.ts#L69",
@@ -2340,9 +2340,10 @@
         }
     },
     "zeta-dom-react": {
-        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/0fbf76409d1fc5cea14fdf7ab2e50df3a6e95304",
+        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.1",
         "symbols": {
             "adjustMonth": "src/fields/DateField.js#L33",
+            "assertFormContext": "src/form.js#L59",
             "AsyncContentEventMap": "src/hooks.d.ts#L105",
             "AsyncContentLoadEvent": "src/hooks.d.ts#L110",
             "AsyncContentState": "src/hooks.d.ts#L114",
@@ -2365,15 +2366,16 @@
                 "src/util.d.ts#L45",
                 "src/util.js#L47"
             ],
+            "clearUnusedFields": "src/form.js#L350",
             "clearUnusedSingletons": "src/hooks.js#L28",
-            "cloneValue": "src/form.js#L65",
+            "cloneValue": "src/form.js#L71",
             "combineRef": [
                 "src/util.d.ts#L70",
                 "src/util.js#L81"
             ],
             "combineValidators": [
                 "src/form.d.ts#L617",
-                "src/form.js#L715"
+                "src/form.js#L737"
             ],
             "compare": "src/dataView.js#L11",
             "createAsyncScope": [
@@ -2384,7 +2386,7 @@
                 "src/css.d.ts#L30",
                 "src/css.js#L17"
             ],
-            "createDataObject": "src/form.js#L170",
+            "createDataObject": "src/form.js#L176",
             "createDependency": [
                 "src/hooks.d.ts#L443",
                 "src/hooks.js#L369"
@@ -2393,8 +2395,8 @@
                 "src/hooks.d.ts#L413",
                 "src/hooks.js#L294"
             ],
-            "createFieldState": "src/form.js#L269",
-            "createHookHelper": "src/form.js#L33",
+            "createFieldState": "src/form.js#L277",
+            "createHookHelper": "src/form.js#L35",
             "createRefInitCallback": "src/hooks.js#L71",
             "DataChangeEvent": "src/form.d.ts#L352",
             "DataView": [
@@ -2418,7 +2420,7 @@
                 "src/util.d.ts#L35",
                 "src/util.js#L19"
             ],
-            "emitDataChangeEvent": "src/form.js#L127",
+            "emitDataChangeEvent": "src/form.js#L133",
             "ErrorContext": "src/hooks.d.ts#L24",
             "ErrorHandler": "src/hooks.d.ts#L39",
             "ErrorHandlerWithRef": "src/hooks.d.ts#L89",
@@ -2438,44 +2440,44 @@
             "FieldValueType": "src/form.d.ts#L9",
             "Form": [
                 "src/form.d.ts#L2",
-                "src/form.js#L737"
+                "src/form.js#L759"
             ],
             "FormArray": [
                 "src/form.d.ts#L105",
-                "src/form.js#L759"
+                "src/form.js#L782"
             ],
             "FormatErrorCallback": "src/form.d.ts#L6",
             "FormBeforeLeaveEvent": "src/form.d.ts#L368",
             "FormContext": [
                 "src/form.d.ts#L400",
-                "src/form.js#L459"
+                "src/form.js#L482"
             ],
             "FormContextOptions": "src/form.d.ts#L372",
             "FormContextProvider": [
                 "src/form.d.ts#L1",
-                "src/form.js#L755"
+                "src/form.js#L777"
             ],
             "FormEventMap": "src/form.d.ts#L344",
             "FormFieldProps": "src/form.d.ts#L206",
             "FormFieldState": "src/form.d.ts#L284",
             "FormObject": [
                 "src/form.d.ts#L91",
-                "src/form.js#L763"
+                "src/form.js#L786"
             ],
             "FormObjectHelper": "src/form.d.ts#L56",
             "FormObjectProps": "src/form.d.ts#L74",
-            "formPersist": "src/form.js#L455",
+            "formPersist": "src/form.js#L478",
             "FormProps": "src/form.d.ts#L340",
             "FormValidateEvent": "src/form.d.ts#L356",
             "FormValidationChangeEvent": "src/form.d.ts#L362",
-            "getAllAncestorPaths": "src/form.js#L118",
-            "getField": "src/form.js#L100",
-            "getPath": "src/form.js#L106",
-            "handleDataChange": "src/form.js#L160",
-            "hasImplicitError": "src/form.js#L61",
+            "getAllAncestorPaths": "src/form.js#L124",
+            "getField": "src/form.js#L106",
+            "getPath": "src/form.js#L112",
+            "handleDataChange": "src/form.js#L166",
+            "hasImplicitError": "src/form.js#L67",
             "HiddenField": [
                 "src/form.d.ts#L122",
-                "src/form.js#L801"
+                "src/form.js#L824"
             ],
             "HiddenFieldProps": "src/form.d.ts#L107",
             "HintablePath": "src/form.d.ts#L24",
@@ -2484,16 +2486,13 @@
                 "src/util.d.ts#L51",
                 "src/util.js#L70"
             ],
-            "IS_DEV": [
-                "src/env.js#L1",
-                "src/env.umd.js#L20"
-            ],
-            "isEmpty": "src/form.js#L57",
+            "IS_DEV": "src/env.umd.js#L20",
+            "isEmpty": "src/form.js#L63",
             "isSingletonDisposed": [
                 "src/hooks.d.ts#L359",
                 "src/hooks.js#L275"
             ],
-            "keyFor": "src/form.js#L69",
+            "keyFor": "src/form.js#L75",
             "LegacyFieldPropsType": "src/form.d.ts#L16",
             "LegacyFieldStateType": "src/form.d.ts#L15",
             "MultiChoiceField": [
@@ -2505,7 +2504,7 @@
             "muteRejection": "src/hooks.js#L23",
             "normalizeChoiceItems": "src/fields/ChoiceField.js#L5",
             "normalizeDate": "src/fields/DateField.js#L81",
-            "normalizeOptions": "src/form.js#L442",
+            "normalizeOptions": "src/form.js#L465",
             "NumericField": [
                 "src/fields/NumericField.d.ts#L28",
                 "src/fields/NumericField.js#L3"
@@ -2518,15 +2517,15 @@
                 "src/util.d.ts#L57",
                 "src/util.js#L74"
             ],
-            "pathContains": "src/form.js#L95",
+            "pathContains": "src/form.js#L101",
             "PrimitiveClassName": "src/util.d.ts#L1",
             "PropertyType": "src/form.d.ts#L25",
             "PropertyTypeFromPath": "src/form.d.ts#L26",
             "registerFieldType": [
                 "src/form.d.ts#L625",
-                "src/form.js#L726"
+                "src/form.js#L748"
             ],
-            "resolvePathInfo": "src/form.js#L73",
+            "resolvePathInfo": "src/form.js#L79",
             "setPageCount": "src/dataView.js#L23",
             "SetPartialCallback": "src/util.d.ts#L8",
             "setPartialState": "src/util.js#L8",
@@ -2592,13 +2591,13 @@
             ],
             "useFormContext": [
                 "src/form.d.ts#L593",
-                "src/form.js#L610"
+                "src/form.js#L633"
             ],
             "useFormField": [
                 "src/form.d.ts#L605",
-                "src/form.js#L638"
+                "src/form.js#L661"
             ],
-            "useFormFieldInternal": "src/form.js#L342",
+            "useFormFieldInternal": "src/form.js#L361",
             "useMediaQuery": [
                 "src/css.d.ts#L24",
                 "src/css.js#L6"
@@ -2638,11 +2637,11 @@
                 "src/viewState.js#L10"
             ],
             "ValidateCallback": "src/form.d.ts#L5",
-            "validateFields": "src/form.js#L382",
+            "validateFields": "src/form.js#L405",
             "ValidateResult": "src/form.d.ts#L4",
             "ValidationError": [
                 "src/form.d.ts#L33",
-                "src/form.js#L27"
+                "src/form.js#L29"
             ],
             "ViewState": "src/viewState.d.ts#L1",
             "ViewStateProvider": [
@@ -2654,7 +2653,7 @@
                 "src/util.d.ts#L83",
                 "src/util.js#L94"
             ],
-            "wrapErrorResult": "src/form.js#L429"
+            "wrapErrorResult": "src/form.js#L452"
         }
     }
 }
