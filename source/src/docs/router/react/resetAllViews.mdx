@@ -1,0 +1,45 @@
+<Module name="brew-js-react" />
+
+# resetAllViews
+
+Resets all rendered views by unmounting and remounting the view components, or re-rendering the view components if they are currently replaced by error views.
+
+## Syntax
+
+```javascript
+resetAllViews()
+```
+
+<ImportHint
+    name="resetAllViews"
+    module="brew-js-react"
+    require="resetAllViews"
+    global="brew.react.resetAllViews" />
+
+## Return value
+
+This function does not return a value.
+
+## Example
+
+`resetAllViews` can be used to avoid the need to observe certain events or properties in every view component.
+
+```javascript
+import { resetAllViews } from "brew-js-react";
+import brew from "brew-js-react";
+
+brew(app => {
+    /* ... */
+    app.on('login', (e) => {
+        if (e.sessionChanged && app.readyState === 'ready') {
+            resetAllViews();
+        }
+    });
+});
+```
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.7.2** Introduced
+</VersionTimeline>

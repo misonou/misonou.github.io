@@ -9,30 +9,25 @@
 }
 
 #app-content-header,
-#app-content-search {
+#app-content-header-aux {
     display: flex;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     padding: 0.75em 1em 0.75em 2em;
-    background-color: #fffc;
+    background-color: var(--overlay-background-legacy);
+    background-color: var(--overlay-background);
     font-weight: 500;
     align-items: center;
     column-gap: 0.75em;
     transition: opacity 0.2s;
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--overlay-backdrop-filter);
     z-index: 1;
 }
 
-:root.dark-mode #app-content-header,
-:root.dark-mode #app-content-search {
-    background-color: #000c;
-    background-color: color-mix(in srgb, var(--page-bg) 80%, transparent);
-}
-
 #app-content-header {
-    padding-right: 3em;
+    padding-right: 4.25em;
     opacity: 0;
     pointer-events: none;
 }
@@ -48,33 +43,37 @@
     text-overflow: ellipsis;
 }
 
-#app-content-search {
+#app-content-header-aux {
     justify-content: right;
     --zui-color-outline: transparent;
 }
 
-#app-content-search:not(.active) {
+#app-content-header-aux:not(.active) {
     background-color: transparent !important;
     backdrop-filter: none;
 }
 
-#app-content-search .zui-text-field {
+#app-content-header-aux .zui-text-field {
     margin: -0.375em 0 -0.75em;
     min-width: 0;
     width: 300px;
     transition: width 0.2s;
 }
 
-#app-content-search:not(.active) .zui-text-field {
+#app-content-header-aux:not(.active) .zui-text-field {
     width: 16px;
 }
 
-#app-content-search:not(.active) .zui-text-field input {
+#app-content-header-aux:not(.active) .zui-text-field input {
     opacity: 0;
 }
 
-#app-content-search .zui-text-field .zui-icon {
+#app-content-header-aux .zui-text-field .zui-icon {
     cursor: pointer;
+}
+
+#app-content-toc-flyout-toggle {
+    z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -83,7 +82,7 @@
     }
 
     #app-content-header,
-    #app-content-search {
+    #app-content-header-aux {
         padding-left: 50px;
     }
 

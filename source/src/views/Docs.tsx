@@ -6,7 +6,7 @@ import dom from "zeta-dom/dom";
 import { getDirectiveComponent } from "brew-js/directive";
 import { parsePath } from "brew-js/util/path";
 import { Badge, CodeBlock, CodeBlockWithTab, Color, DemoBlock, DemoWithSource, ImportHint, Inline, MDXCodeElement, MDXTableElement, MemberList, Module, Snippets, SyntaxHighlight, VersionTimeline, WaterpipeExample } from "src/components/docs";
-import { PageSearch, TableOfContentItem, TableOfContents } from "src/components/main";
+import { PageToolbar, TableOfContentItem, TableOfContents } from "src/components/main";
 import { app } from "src/init";
 import { useUnloadEffect } from "zeta-dom-react";
 
@@ -154,7 +154,7 @@ function DocsView({ viewContext }: ViewProps<{}>) {
                 <Module name={state.module} />
                 <span>{state.title}</span>
             </div>
-            <PageSearch />
+            <PageToolbar />
             <div id="app-content" {...Mixin.use(Mixin.scrollableTarget)}>
                 {renderView({ className: 'app-docs' }, Content)}
             </div>

@@ -225,6 +225,10 @@
       pages:
         - title: Interfaces
           pages:
+            - title: HistoryStorageContainer
+              path: /router/HistoryStorageContainer
+              class: code
+              module: brew-js
             - title: NavigateResult
               path: /router/NavigateResult
               class: code
@@ -342,12 +346,20 @@
               path: /router/react/renderView
               class: code
               module: brew-js-react
+            - title: resetAllViews()
+              path: /router/react/resetAllViews
+              class: code
+              module: brew-js-react
             - title: resolvePath()
               path: /router/react/resolvePath
               class: code
               module: brew-js-react
         - title: Hooks
           pages:
+            - title: useAppSessionState()
+              path: /router/react/useAppSessionState
+              class: code
+              module: brew-js-react
             - title: useQueryParam()
               path: /router/react/useQueryParam
               class: code
@@ -416,6 +428,10 @@
           module: zeta-dom-react
     - title: Hooks
       pages:
+        - title: useAbortSignal()
+          path: /react/useAbortSignal
+          class: code
+          module: zeta-dom-react
         - title: useAnimatedIndicator()
           path: /react/useAnimatedIndicator
           class: code ext
@@ -462,6 +478,10 @@
           module: zeta-dom-react
         - title: useRefInitCallback()
           path: /react/useRefInitCallback
+          class: code
+          module: zeta-dom-react
+        - title: useSideEffect()
+          path: /react/useSideEffect
           class: code
           module: zeta-dom-react
         - title: useSingleton()

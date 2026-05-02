@@ -72,6 +72,15 @@ createDialog(options)
         #### `showCloseButton` <Badge.Optional />
         This option is not consumed by `createDialog`. It is added for common use, and should be handled in `wrapper` or `onRender`.
 
+        #### `signal` <Badge.Optional /> <Badge.Version />
+        An optional signal object to dismiss the dialog.
+
+        When signal is received, the dialog will be closed without invoking `onCommit`.
+        If the signal is already aborted before the dialog is open, the dialog will cease to be opened.
+
+        In either case, the promise returned from [`DialogState.open`](:) will always resolve to `undefined`
+        without the abort reason being propagated.
+
         #### `title` <Badge.Optional />
         This option is not consumed by `createDialog`. It is added for common use, and should be handled in `wrapper` or `onRender`.
 
@@ -98,4 +107,5 @@ A [`DialogState`](:) instance.
 - **0.5.2** `focus` option
 - **0.6.0** `onCommit` callback receive 2nd argument
 - **0.6.7** `container` `controller` option
+- **0.7.2** `signal` option
 </VersionTimeline>

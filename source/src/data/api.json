@@ -840,6 +840,9 @@
     "/react/partial": [
         "partial()"
     ],
+    "/react/useAbortSignal": [
+        "useAbortSignal()"
+    ],
     "/react/useAnimatedIndicator": [
         "useAnimatedIndicator()",
         [
@@ -912,6 +915,9 @@
     "/react/useRefInitCallback": [
         "useRefInitCallback()"
     ],
+    "/react/useSideEffect": [
+        "useSideEffect()"
+    ],
     "/react/useSingleton": [
         "useSingleton()"
     ],
@@ -970,6 +976,12 @@
         ],
         "HashChangeEvent.oldHash",
         "HashChangeEvent.newHash"
+    ],
+    "/router/HistoryStorageContainer": [
+        "HistoryStorageContainer",
+        "HistoryStorageContainer.current",
+        "HistoryStorageContainer.for()",
+        "HistoryStorageContainer.registerType()"
     ],
     "/router/navigate-event": [
         [
@@ -1047,8 +1059,14 @@
     "/router/react/renderView": [
         "renderView()"
     ],
+    "/router/react/resetAllViews": [
+        "resetAllViews()"
+    ],
     "/router/react/resolvePath": [
         "resolvePath()"
+    ],
+    "/router/react/useAppSessionState": [
+        "useAppSessionState()"
     ],
     "/router/react/useQueryParam": [
         "useQueryParam()"
@@ -1071,6 +1089,7 @@
         "ViewContext.page",
         "ViewContext.getChildren()",
         "ViewContext.setErrorView()",
+        "ViewContext.resetView()",
         "ViewContext.on()",
         "ViewContext.root",
         "ViewContext: error event",

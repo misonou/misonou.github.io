@@ -1,14 +1,34 @@
 import BasicExample from "src/components/examples/dialog-basic";
+import AbortExample from "src/components/examples/dialog-abort";
 
 <Module name="brew-js-react" />
 
 # Dialogs
 
-Dialog can be displayed easily by [`createDialog`](:).
+Dialog can be displayed easily by [`openDialog`](:):
 
 ```tsx
-const dialog = createDialog(options);
-dialog.open();
+openDialog(options)
 ```
 
 <BasicExample />
+
+> [`openDialog`](:) is introduced as a shorthand in 0.7.0. Before that, use [`createDialog`](:) seeing the next section.
+
+## Manual control
+
+To manually open or close dialog, you can use [`createDialog`](:):
+
+```javascript
+const dialog = createDialog(options);
+dialog.open()
+dialog.close()
+```
+
+## Abort signal
+
+~~0.7.2~~
+
+It is also possible to pass an `AbortSignal` object to dismiss the dialog:
+
+<AbortExample />

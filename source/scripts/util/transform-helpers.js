@@ -18,7 +18,7 @@ const React = require('react');
 const ReactDOM = require('react-dom/server');
 const { Highlight, Prism } = require('prism-react-renderer');
 const { dirname, join, extname } = require('path');
-const { readFileSync } = require('fs');
+const { readFileSync, existsSync } = require('fs');
 
 /**
  * @param {babel.NodePath<babel.types.CallExpression>} path
@@ -227,8 +227,13 @@ function getRawContentFromImport(path, state) {
     const resource = source.value.replace('!raw-loader!', '');
     try {
         let filename = resource.startsWith('src/') ? join(state.cwd, resource) : resource.startsWith('./') ? join(dirname(state.filename), resource) : resource;
-        if (extname(filename) === '') {
-            filename += '.tsx';
+        if (!existsSync(filename) && !/\.[tj]sx?$/i.test(filename)) {
+            for (const ext of ['.tsx', '.ts', '.jsx', '.js']) {
+                if (existsSync(filename + ext)) {
+                    filename += ext;
+                    break;
+                }
+            }
         }
         dict[specifiers[0].local.name] = readFileSync(filename, 'utf8');
     } catch {

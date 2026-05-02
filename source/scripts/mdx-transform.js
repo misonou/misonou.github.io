@@ -244,7 +244,7 @@ function transformCode(component, path, props, t, state, jsx) {
             v.content = getParsedSource(v.language, v.content);
             return v;
         });
-        path.replaceWith(jsx('CodeBlockWithTab', t.valueToNode({ language, source })));
+        path.replaceWith(jsx('CodeBlockWithTab', t.valueToNode({ language, source, expandable: true })));
     } else {
         const source = getParsedSource(language, children);
         path.replaceWith(jsx('SyntaxHighlight', t.valueToNode({ language, source })));

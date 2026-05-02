@@ -2,6 +2,26 @@
 
 # Change log
 
+## v0.7.6 (2026/05/02)
+
+#### Core
+
+- Animate `filter` CSS property when `fade-in` is specified in `animate-in` directive with CSS variable `--animate-fade-filter`
+- <kbd>fix</kbd> [`createApiClient`](:) should call `error` trap for all non-abortion error with the original error as `cause`
+
+#### Router
+
+- Add [`HistoryStorageContainer.registerType`](:) for allowing custom type in history storage, including
+  [`app.sessionStorage`](:) and [`app.cache`](:)
+
+#### I18n
+
+- <kbd>fix</kbd> missing router in extension dependency
+
+#### Scrollable
+
+- <kbd>fix</kbd> unwanted scrolling due to scroll padding incorrectly applied for elements
+
 ## v0.7.5 (2026/04/13)
 
 Fixes and improvements to object storage:

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { combineFn, deepFreeze, is, setTimeoutOnce } from "zeta-dom/util";
 import { containsOrEquals, scrollIntoView, toPlainRect } from "zeta-dom/domUtil";
-import { classNames, combineRef, domEventRef, partial, useObservableProperty } from "zeta-dom-react";
+import { combineRef, domEventRef, partial } from "zeta-dom-react";
 import { TextInput } from "src/components/controls";
 import dom, { focus } from "zeta-dom/dom";
 import { FaSearch } from "react-icons/fa";
@@ -51,7 +51,6 @@ function findHits(input: HTMLInputElement) {
 }
 
 function PageSearchImpl() {
-    const textSearchEnabled = useObservableProperty(app, 'textSearchEnabled');
     const ref = useRef<HTMLLabelElement>(null);
     const [{ hits, index }, setState] = useState(emptyState);
 
@@ -77,7 +76,7 @@ function PageSearchImpl() {
     }, []);
 
     return (
-        <div id="app-content-search" className={classNames({ active: textSearchEnabled })}>
+        <div id="app-content-search">
             <TextInput ref={combineRef(ref, domEventRef({ enter: traverse, shiftEnter: traverse, focusin, focusout }))}
                 icon={FaSearch} placeholder="Search in page"
                 onChange={() => setTimeoutOnce(findByText)} />

@@ -1,5 +1,5 @@
-import { useEffect, useLayoutEffect, useReducer, useState } from "react";
-import { Mixin, useFocusStateMixin, useScrollableMixin } from "brew-js-react";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { Mixin, useAppSessionState, useFocusStateMixin, useScrollableMixin } from "brew-js-react";
 import { FaAdjust, FaMoon, FaSun } from "react-icons/fa";
 import dom from "zeta-dom/dom";
 import { setClass } from "zeta-dom/domUtil";
@@ -35,7 +35,7 @@ export function Nav() {
     const scrollable = useScrollableMixin();
     const focusStateMixin = useFocusStateMixin();
     const [searchOpen, setSearchOpen] = useState(false);
-    const [module, setModule] = useReducer((_: string, v: string) => (app.sessionStorage.set('module', v), v), app.sessionStorage.get('module') || '');
+    const [module, setModule] = useAppSessionState('module', '');
 
     useEffect(() => {
         return app.on('navigate', () => {
@@ -58,10 +58,12 @@ export function Nav() {
         <nav {...Mixin.use(focusStateMixin, classNames({ 'search-open': searchOpen }))}>
             <div id="app-nav-header">
                 <span>misonou/docs</span>
-                <Dropdown variant="button" icon={FaAdjust} alwaysShowLabel
-                    items={themeItems} value={darkMode} onChange={v => app.darkMode = v} />
-                <Dropdown variant="button" className="app-nav-dropdown-code"
-                    items={packages} value={module} onChange={setModule} />
+                <div className="app-nav-header-spacer">
+                    <Dropdown variant="button" icon={FaAdjust} alwaysShowLabel
+                        items={themeItems} value={darkMode} onChange={v => app.darkMode = v} />
+                    <Dropdown variant="button" className="app-nav-dropdown-code"
+                        items={packages} value={module} onChange={setModule} />
+                </div>
                 <NavSearchBox module={module} onToggle={setSearchOpen} />
             </div>
             <div id="app-nav-content" {...Mixin.use(scrollable)}>

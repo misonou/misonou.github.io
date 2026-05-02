@@ -30,10 +30,18 @@ function processPackage(pkg, version, dir) {
     const commitId = execSync(`git rev-list -n 1 ${tag}`, execOpts).trim();
     const symbols = {};
 
+    function getContent(repoPath) {
+        try {
+            return execSync(`git show ${commitId}:${repoPath}`, execOpts);
+        } catch {
+            return '';
+        }
+    }
+
     fs.globSync('**/*.{js,ts,tsx}', { cwd: dir, exclude: ['**/{node_modules,dev,dist,build,coverage,tests}/**'], }).forEach((file) => {
         const re = new RegExp(`^(export ${file.endsWith('.d.ts') ? '|    ' : ''})?((?:default |declare )?(?:function\*?|async function\*?|interface|class|abstract class|type|const)|default) (\\w[^(< ;:]*)`);
         const repoPath = file.replace(/\\/g, '/');
-        const content = execSync(`git show ${commitId}:${repoPath}`, execOpts);
+        const content = getContent(repoPath);
         const dict = {};
         const names = {};
 

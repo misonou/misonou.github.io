@@ -1,0 +1,52 @@
+<Module name="brew-js-react" />
+
+# useAppSessionState
+
+Returns a stateful value, and a function to update it.
+Same as `React.useState`, but the state is persisted in `app.sessionStorage`.
+
+## Syntax
+
+```javascript
+useAppSessionState(key)
+useAppSessionState(key, initialState)
+```
+
+<ImportHint
+    name="useAppSessionState"
+    module="brew-js-react"
+    require="useAppSessionState"
+    global="brew.react.useAppSessionState" />
+
+
+### Parameters
+
+<dl>
+    #### `key`
+    The key used to store the state in `app.sessionStorage`.
+
+    #### `initialState`
+    The initial state value or a callback to generate the initial state if the key does not exist in `app.sessionStorage`.
+
+</dl>
+
+### Return value
+
+`[state, setState]`
+
+<dl>
+    #### `state`
+    The current state value.
+
+    #### `setState`
+    A function that updates the state value and persists it in `app.sessionStorage`.
+
+    The function works the same as the updater function returned by `React.useState`.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js-react">
+- **0.7.2** Introduced
+</VersionTimeline>

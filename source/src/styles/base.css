@@ -22,6 +22,9 @@
     --border-radius: 4px;
     --overlay-border-radius: 4px;
     --overlay-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1), 0px 3px 7px rgba(0, 0, 0, 0.03);
+    --overlay-background-legacy: #fffc;
+    --overlay-background: color-mix(in srgb, var(--page-bg) 80%, transparent);
+    --overlay-backdrop-filter: blur(10px);
 
     --jqs-scrollbar-opacity: 0.4;
     --jqs-scrollbar-radius: 5px;
@@ -45,6 +48,7 @@
     --color-comment-bg: #665544;
 
     --page-bg: #222;
+    --overlay-background-legacy: #000c;
 
     --jqs-scrollbar-color: white;
 

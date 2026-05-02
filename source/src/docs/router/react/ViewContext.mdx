@@ -18,7 +18,7 @@ by [`ViewProps.viewContext`](:) property or by [`useViewContext`](:) hook.
 <MemberList
     i="ViewContext"
     ip={['parent', 'container', 'view', 'active', 'page']}
-    im={['getChildren()', 'setErrorView()', 'on()']}
+    im={['getChildren()', 'setErrorView()', 'resetView()', 'on()']}
     sp={['root']}
     ev={['error', 'pagechange']}
 />
@@ -87,6 +87,14 @@ Register event handlers.
     A dictionary where each entry represents the event name and callback to be invoked on such event.
 
 </dl>
+
+### `ViewContext.resetView()` <Badge.Version />
+
+```javascript
+resetView()
+```
+
+Unmounts and remounts the view component, or re-renders the view component if it is currently replaced by an error view.
 
 ### `ViewContext.setErrorView()` <Badge.Version />
 
@@ -191,4 +199,5 @@ The `pagechange` event is fired when the current view remains active after navig
 - **0.5.5** `ViewContext.parent` <br/> `ViewContext.getChildren()`
 - **0.5.7** `pagechange` event: `page`, `navigationType` and `waitFor()`
 - **0.6.5** `ViewContext.root` static property <br/> `ViewContext.setErrorView()` <br/> `error` event
+- **0.7.2** `ViewContext.resetView()`
 </VersionTimeline>

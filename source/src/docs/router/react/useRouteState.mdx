@@ -18,11 +18,31 @@ useRouteState(key, initialState, snapshotOnUpdate)
 
 <dl>
     #### `key`
+    A key identifying the state.
+
     #### `initialState`
+    The initial state value or a callback to generate the initial state if the key does not exist in current history storage.
+
     #### `snapshotOnUpdate` <Badge.Optional />
+    Whether to snapshot the state in history on every update, so that previous state can be restored when user
+    traverse back in browser history.
+
 </dl>
 
 ### Return value
+
+`[state, setState]`
+
+<dl>
+    #### `state`
+    The current state value.
+
+    #### `setState`
+    A function that updates the state value and persists it in `app.sessionStorage`.
+
+    The function works the same as the updater function returned by `React.useState`.
+
+</dl>
 
 ## Example
 

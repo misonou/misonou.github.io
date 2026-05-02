@@ -67,6 +67,12 @@ nav {
     line-height: 1;
 }
 
+#app-nav-header .app-nav-header-spacer {
+    display: flex;
+    column-gap: 1em;
+    align-items: center;
+}
+
 #app-nav-header .zui-toggle {
     margin-top: 0.5em;
 }
@@ -315,6 +321,7 @@ nav a.current:before {
     margin-top: 6.25em;
     width: 200px;
     max-height: calc(100vh - 8em);
+    max-height: calc(100dvh - 8em);
     color: var(--color-aux);
     align-self: stretch;
     overflow: hidden;
@@ -368,9 +375,28 @@ nav a.current:before {
 }
 
 @media (max-width: 1080px) {
-    .app-toc {
+    .app-content-container > .app-toc {
         display: none;
     }
+}
+
+#app-content-toc-flyout {
+    position: absolute;
+    top: 3em;
+    right: 1em;
+    border-left: 2px solid var(--color-primary);
+    border-radius: var(--overlay-border-radius);
+    background-color: var(--overlay-background-legacy);
+    background-color: var(--overlay-background);
+    backdrop-filter: var(--overlay-backdrop-filter);
+    box-shadow: 0 10px 20px #0003;
+    --transition-duration: 0.15s;
+    --animate-fade-filter: blur(10px);
+}
+
+#app-content-toc-flyout > .app-toc {
+    margin-top: 0;
+    padding: 0.75em 1em;
 }
 
 main {

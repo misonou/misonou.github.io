@@ -26,7 +26,7 @@ export function MDXCodeElement({ className, children }: MDXCodeElementProps) {
     const language = className.match(/language-(\w.*?)\b/)?.[1] || "javascript";
     if (files[0]) {
         return (
-            <CodeBlockWithTab language={language} source={files} />
+            <CodeBlockWithTab language={language} source={files} expandable />
         );
     }
     return (

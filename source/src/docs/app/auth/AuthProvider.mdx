@@ -76,7 +76,7 @@ Restores existing login session.
 
 <dl>
     #### `context`
-    Add [`AuthProviderContext`](:) object.
+    An [`AuthProviderContext`](:) object.
 </dl>
 
 ### `AuthProvider.getAllAccounts()`
@@ -130,7 +130,7 @@ Handles authentication result returned from external authentication provider dur
 
 <dl>
     #### `context`
-    Add [`AuthProviderContext`](:) object.
+    An [`AuthProviderContext`](:) object.
 </dl>
 
 #### Return value
@@ -149,7 +149,7 @@ Performs initialization.
 
 <dl>
     #### `context`
-    Add [`AuthProviderContext`](:) object.
+    An [`AuthProviderContext`](:) object.
 </dl>
 
 ### `AuthProvider.isHandleable()`
@@ -192,19 +192,19 @@ Performs login.
 
         > Retrievable from the [`AuthProviderContext`](:) object which is passed to provider as the last argument.
 
-        #### `accountId`
+        #### `accountId` <Badge.Optional />
         Account to login. Introduced in 0.6.0.
 
-        #### `loginHint`
+        #### `loginHint` <Badge.Optional />
         Login hint, usually user email, to be passed to external authentication provider.
 
-        #### `password`
+        #### `password` <Badge.Optional />
         Password to be passed to authentication provider.
 
     </dl>
 
     #### `context`
-    Add [`AuthProviderContext`](:) object.
+    An [`AuthProviderContext`](:) object.
 </dl>
 
 #### Return value
@@ -248,7 +248,7 @@ Performs logout.
     </dl>
 
     #### `context`
-    Add [`AuthProviderContext`](:) object.
+    An [`AuthProviderContext`](:) object.
 </dl>
 
 ### `AuthProvider.refresh()`
@@ -257,7 +257,7 @@ Performs logout.
 refresh(params, context)
 ```
 
-Refreshes current login session.
+Refreshes a login session.
 
 #### Parameters
 
@@ -265,10 +265,18 @@ Refreshes current login session.
     #### `params`
     The last authentication result returned by this provider.
 
+    <dl>
+        #### `account` <Badge.Optional />
+        Account object.
+
+        #### `accountId`
+        A string representating the user, usually user ID, to be cached in local storage.
+    </dl>
+
     > Since 0.6.0, it may only contains `accountId` property without other properties.
 
     #### `context`
-    Add [`AuthProviderContext`](:) object.
+    An [`AuthProviderContext`](:) object.
 </dl>
 
 #### Return value
@@ -290,7 +298,7 @@ Sets active account, so that current login session can be restored in the future
     The account to set as active. If `null` is passed, the active account should be cleared.
 
     #### `context`
-    Add [`AuthProviderContext`](:) object.
+    An [`AuthProviderContext`](:) object.
 </dl>
 
 ## Version information

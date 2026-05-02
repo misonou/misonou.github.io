@@ -1,0 +1,28 @@
+<Module name="zeta-dom-react" />
+
+# useSideEffect
+
+Runs side effect, with guarantee that it is only executed once in development strict mode, for side effect that cannot be undone.
+
+## Syntax
+
+```javascript
+useSideEffect(callback, deps)
+```
+
+### Parameters
+
+<dl>
+    #### `callback`
+    A callback that contains side effect.
+
+    #### `deps`
+    Side effect is triggered when any values in the list changes. If the list is empty, the side effect is only triggered once when component is mounted.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="zeta-dom-react">
+- **0.6.2** Introduced
+</VersionTimeline>

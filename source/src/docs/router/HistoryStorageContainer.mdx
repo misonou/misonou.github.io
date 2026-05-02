@@ -1,0 +1,78 @@
+<Module name="brew-js" />
+
+# HistoryStorageContainer
+
+The `HistoryStorageContainer` instance is returned by `app.historyStorage` and provides access to storage for page steps in history.
+
+<MemberList
+    i="HistoryStorageContainer"
+    ip={['current']}
+    im={['for()', 'registerType()']}
+/>
+
+## Instance properties
+
+### `HistoryStorageContainer.current` <Badge.ReadOnly />
+
+Gets the storage instance for current page step.
+
+## Instance methods
+
+### `HistoryStorageContainer.for()`
+
+```javascript
+for(stateId)
+```
+
+Gets the storage for a specific page step in history.
+
+#### Parameters
+
+<dl>
+    #### `stateId`
+    A unique string identifying the point in history, exposed in properties like `history.state` or [`NavigateResult.id`](:).
+
+</dl>
+
+#### Return value
+
+The storage instance associated to the specific page step; or `null` if `stateId` is invalid.
+
+### `HistoryStorageContainer.registerType()`
+
+```javascript
+registerType(key, ctor, callback)
+```
+
+Enables deserialization of object as custom class.
+
+Note that the constructor should instantiate with or without deserialized data, depending on whether data is fully deserialized.
+Also inherited classes must be registered explicitly.
+
+It also applies to [`app.sessionStorage`](:) and [`app.cache`](:) as they share the same backing object storage.
+See [`ObjectStorage.registerType`](:) for more details.
+
+#### Parameters
+
+<dl>
+    #### `key`
+    A key identifying the class. It should be unique and contain only alphanumeric characters.
+
+    #### `ctor`
+    A constructible function or class.
+
+    #### `callback`
+    A callback to initialize object with deserialized data when data is not available during instantiation.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.5.0** Introduced
+- **0.7.6** `HistoryStorageContainer.registerType()`
+</VersionTimeline>
+
+## See also
+
+- [Persisting states](/docs/router/persisting-state#s-history-storage)

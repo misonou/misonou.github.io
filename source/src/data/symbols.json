@@ -1,6 +1,6 @@
 {
     "@misonou/brew-extension-auth": {
-        "baseUrl": "https://github.com/misonou/brew-extension-auth/blob/v0.6.0",
+        "baseUrl": "https://github.com/misonou/brew-extension-auth/blob/v0.6.1",
         "symbols": {
             "Auth": [
                 "src/entry.js#L5",
@@ -14,34 +14,34 @@
             "AuthEvent": "src/extension.d.ts#L4",
             "AuthEventMap": "src/extension.d.ts#L57",
             "AuthExtension": "src/extension.d.ts#L3",
-            "AuthIdentity": "src/extension.d.ts#L229",
+            "AuthIdentity": "src/extension.d.ts#L228",
             "AuthLoginEvent": "src/extension.d.ts#L8",
             "AuthLogoutEvent": "src/extension.d.ts#L37",
-            "AuthOptions": "src/extension.d.ts#L275",
+            "AuthOptions": "src/extension.d.ts#L274",
             "AuthProvider": [
-                "src/extension.d.ts#L187",
-                "src/provider.d.ts#L52",
+                "src/extension.d.ts#L186",
+                "src/provider.d.ts#L53",
                 "src/provider.js#L5"
             ],
             "AuthProviderAccountInfo": "src/extension.d.ts#L63",
             "AuthProviderContext": "src/extension.d.ts#L150",
-            "AuthProviderFactory": "src/provider.d.ts#L43",
-            "AuthProviderHint": "src/extension.d.ts#L333",
+            "AuthProviderFactory": "src/provider.d.ts#L44",
+            "AuthProviderHint": "src/extension.d.ts#L332",
             "AuthProviderInfo": "src/extension.d.ts#L170",
             "AuthProviderLoginRequest": "src/extension.d.ts#L102",
             "AuthProviderLogoutRequest": "src/extension.d.ts#L122",
             "AuthProviderResult": "src/extension.d.ts#L90",
             "AuthProviderTokenRequest": "src/extension.d.ts#L139",
-            "AuthResult": "src/extension.d.ts#L240",
-            "AuthSimpleOptions": "src/extension.d.ts#L310",
-            "AuthSimpleOptionsWithResolve": "src/extension.d.ts#L322",
-            "AuthSingleProviderOptions": "src/extension.d.ts#L304",
+            "AuthResult": "src/extension.d.ts#L239",
+            "AuthSimpleOptions": "src/extension.d.ts#L309",
+            "AuthSimpleOptionsWithResolve": "src/extension.d.ts#L321",
+            "AuthSingleProviderOptions": "src/extension.d.ts#L303",
             "AuthType": "src/extension.d.ts#L5",
             "Axios": "src/middleware.d.ts#L4",
             "axiosMiddleware": "src/middleware.js#L31",
             "AxiosRequestConfig": "src/middleware.d.ts#L5",
             "clearInteractionStatus": "src/msal.js#L22",
-            "CommonOptions": "src/extension.d.ts#L308",
+            "CommonOptions": "src/extension.d.ts#L307",
             "createAxiosMiddleware": [
                 "src/middleware.d.ts#L22",
                 "src/middleware.js#L61"
@@ -60,27 +60,44 @@
             "fetchMiddleware": "src/middleware.js#L9",
             "FetchMiddleware": "src/middleware.d.ts#L7",
             "getIssuerURL": "src/msal.js#L26",
-            "invalidCredential": "src/errorCode.js#L4",
+            "invalidCredential": [
+                "src/errorCode.d.ts#L31",
+                "src/errorCode.js#L5"
+            ],
             "JSONClient": [
                 "src/util/JSONClient.d.ts#L25",
                 "src/util/JSONClient.js#L5"
             ],
             "JSONRequestError": "src/util/JSONClient.d.ts#L6",
             "JSONRequestMiddleware": "src/util/JSONClient.d.ts#L1",
-            "loggedIn": "src/errorCode.js#L1",
+            "loggedIn": [
+                "src/errorCode.d.ts#L4",
+                "src/errorCode.js#L1"
+            ],
             "LoginOptions": "src/extension.d.ts#L355",
             "LogoutOptions": "src/extension.d.ts#L366",
+            "missingCredential": [
+                "src/errorCode.d.ts#L26",
+                "src/errorCode.js#L4"
+            ],
             "MsalAuthProvider": [
                 "src/msal.d.ts#L4",
                 "src/msal.js#L9"
             ],
             "MsalAuthProviderFactory": "src/msal.d.ts#L18",
             "MsalAuthProviderOptions": "src/msal.d.ts#L6",
-            "noProvider": "src/errorCode.js#L2",
+            "noProvider": [
+                "src/errorCode.d.ts#L9",
+                "src/errorCode.js#L2"
+            ],
+            "passKeyUnavailable": "src/errorCode.d.ts#L21",
             "ResolveUserCallback": "src/extension.d.ts#L6",
             "Result": "src/examples/directus.ts#L28",
             "retryOrEnd": "src/middleware.js#L5",
-            "userNotLoggedIn": "src/errorCode.js#L3"
+            "userNotLoggedIn": [
+                "src/errorCode.d.ts#L14",
+                "src/errorCode.js#L3"
+            ]
         }
     },
     "@misonou/react-app-utils": {
@@ -252,7 +269,7 @@
         }
     },
     "brew-js": {
-        "baseUrl": "https://github.com/misonou/brew-js/blob/v0.7.5",
+        "baseUrl": "https://github.com/misonou/brew-js/blob/v0.7.6",
         "symbols": {
             "addAnimateIn": [
                 "src/anim.d.ts#L36",
@@ -302,27 +319,27 @@
                 "src/anim.d.ts#L30",
                 "src/anim.js#L128"
             ],
-            "AnimationEvent": "src/types.d.ts#L150",
+            "AnimationEvent": "src/types.d.ts#L151",
             "api": [
                 "src/util/common.d.ts#L164",
                 "src/util/common.js#L201"
             ],
-            "API": "src/types.d.ts#L126",
+            "API": "src/types.d.ts#L127",
             "ApiClient": "src/util/fetch.d.ts#L65",
             "ApiClientError": "src/util/fetch.d.ts#L7",
             "ApiClientTraps": "src/util/fetch.d.ts#L30",
             "apiError": [
-                "src/errorCode.d.ts#L3",
+                "src/errorCode.d.ts#L13",
                 "src/errorCode.js#L3"
             ],
-            "APIMethod": "src/types.d.ts#L111",
-            "APIOptions": "src/types.d.ts#L89",
+            "APIMethod": "src/types.d.ts#L112",
+            "APIOptions": "src/types.d.ts#L90",
             "App": [
                 "src/app.js#L81",
-                "src/types.d.ts#L191"
+                "src/types.d.ts#L192"
             ],
             "AppInit": "src/app.d.ts#L6",
-            "AppInstance": "src/types.d.ts#L16",
+            "AppInstance": "src/types.d.ts#L17",
             "batch": [
                 "src/dom.d.ts#L44",
                 "src/dom.js#L295"
@@ -333,8 +350,8 @@
                 "src/core.js#L45",
                 "src/index.js#L2"
             ],
-            "BrewEventMap": "src/types.d.ts#L142",
-            "BrewEventName": "src/types.d.ts#L140",
+            "BrewEventMap": "src/types.d.ts#L143",
+            "BrewEventName": "src/types.d.ts#L141",
             "closeFlyout": [
                 "src/domAction.d.ts#L47",
                 "src/domAction.js#L62"
@@ -368,14 +385,14 @@
             ],
             "createApiClient": [
                 "src/util/fetch.d.ts#L154",
-                "src/util/fetch.js#L77"
+                "src/util/fetch.js#L75"
             ],
             "createContextClass": "src/directive.js#L41",
             "createObjectStorage": [
                 "src/util/storage.d.ts#L128",
                 "src/util/storage.js#L47"
             ],
-            "createRequest": "src/util/fetch.js#L34",
+            "createRequest": "src/util/fetch.js#L32",
             "createRouteState": "src/extension/router.js#L142",
             "declareVar": [
                 "src/var.d.ts#L38",
@@ -393,14 +410,14 @@
             "Directive": "src/directive.d.ts#L32",
             "DirectiveComponent": [
                 "src/extension/withScrollable.d.ts#L39",
-                "src/types.d.ts#L45"
+                "src/types.d.ts#L46"
             ],
             "DirectiveInit": "src/directive.d.ts#L20",
             "DirectiveType": "src/directive.d.ts#L1",
             "DirectiveTypeMap": "src/directive.d.ts#L3",
             "disableEvent": "src/domAction.js#L36",
-            "DOMProcessorCallback": "src/types.d.ts#L18",
-            "DOMUpdateState": "src/types.d.ts#L20",
+            "DOMProcessorCallback": "src/types.d.ts#L19",
+            "DOMUpdateState": "src/types.d.ts#L21",
             "emitAppEvent": [
                 "src/app.d.ts#L94",
                 "src/app.js#L237"
@@ -422,16 +439,16 @@
                 "src/var.d.ts#L85",
                 "src/var.js#L177"
             ],
-            "EventDispatcher": "src/types.d.ts#L55",
-            "EventHandler": "src/types.d.ts#L13",
-            "EventHandlers": "src/types.d.ts#L14",
+            "EventDispatcher": "src/types.d.ts#L56",
+            "EventHandler": "src/types.d.ts#L14",
+            "EventHandlers": "src/types.d.ts#L15",
             "exactTargetWrapper": "src/app.js#L28",
-            "executeRequest": "src/util/fetch.js#L53",
+            "executeRequest": "src/util/fetch.js#L51",
             "exportAppToGlobal": [
                 "src/entry-slim.js#L34",
                 "src/entry.js#L14"
             ],
-            "ExtendedEventMap": "src/types.d.ts#L15",
+            "ExtendedEventMap": "src/types.d.ts#L16",
             "Extension": [
                 "src/core.d.ts#L20",
                 "src/types.d.ts#L5"
@@ -512,13 +529,13 @@
             "HashChangeEvent": "src/extension/withRouter.d.ts#L68",
             "HistoryStorage": [
                 "src/extension/router.js#L60",
-                "src/extension/withRouter.d.ts#L332"
+                "src/extension/withRouter.d.ts#L346"
             ],
             "hookBeforeUpdate": [
                 "src/dom.d.ts#L20",
                 "src/dom.js#L151"
             ],
-            "HTTPMethod": "src/types.d.ts#L12",
+            "HTTPMethod": "src/types.d.ts#L13",
             "i18n": "src/extension/i18n.d.ts#L5",
             "I18nOptions": "src/extension/withI18n.d.ts#L34",
             "idleTimeout": "src/extension/idleTimeout.d.ts#L5",
@@ -594,16 +611,16 @@
                 "src/domAction.js#L25"
             ],
             "navigationCancelled": [
-                "src/errorCode.d.ts#L5",
+                "src/errorCode.d.ts#L21",
                 "src/errorCode.js#L5"
             ],
             "navigationRejected": [
-                "src/errorCode.d.ts#L6",
+                "src/errorCode.d.ts#L27",
                 "src/errorCode.js#L6"
             ],
             "NavigationType": "src/extension/withRouter.d.ts#L13",
             "networkError": [
-                "src/errorCode.d.ts#L1",
+                "src/errorCode.d.ts#L5",
                 "src/errorCode.js#L1"
             ],
             "normalizePath": [
@@ -611,7 +628,10 @@
                 "src/util/path.js#L51"
             ],
             "normalizeValue": "src/util/storage.js#L19",
-            "ObjectStorage": "src/util/storage.d.ts#L1",
+            "ObjectStorage": [
+                "src/types.d.ts#L8",
+                "src/util/storage.d.ts#L1"
+            ],
             "openDeferredURL": [
                 "src/util/common.d.ts#L226",
                 "src/util/common.js#L356"
@@ -633,9 +653,9 @@
             "parseRoute": "src/extension/router.js#L111",
             "peekBody": [
                 "src/util/fetch.d.ts#L165",
-                "src/util/fetch.js#L104"
+                "src/util/fetch.js#L102"
             ],
-            "PersistedStorage": "src/extension/withRouter.d.ts#L325",
+            "PersistedStorage": "src/extension/withRouter.d.ts#L339",
             "PopStateEvent": "src/extension/withRouter.d.ts#L73",
             "preloadImage": "src/extension/preloadImage.d.ts#L3",
             "preloadImages": [
@@ -653,8 +673,8 @@
                 "src/dom.js#L180"
             ],
             "processTransform": "src/dom.js#L63",
-            "PromiseOrEmpty": "src/types.d.ts#L17",
-            "readBody": "src/util/fetch.js#L16",
+            "PromiseOrEmpty": "src/types.d.ts#L18",
+            "readBody": "src/util/fetch.js#L14",
             "registerDirective": [
                 "src/directive.d.ts#L49",
                 "src/directive.js#L107"
@@ -675,18 +695,18 @@
             ],
             "ResizeEvent": "src/extension/withViewport.d.ts#L19",
             "resourceError": [
-                "src/errorCode.d.ts#L2",
+                "src/errorCode.d.ts#L9",
                 "src/errorCode.js#L2"
             ],
             "Route": [
                 "src/extension/router.js#L199",
-                "src/extension/withRouter.d.ts#L384"
+                "src/extension/withRouter.d.ts#L398"
             ],
             "routeCommitParams": "src/extension/router.js#L228",
-            "RouteParam": "src/extension/withRouter.d.ts#L375",
+            "RouteParam": "src/extension/withRouter.d.ts#L389",
             "RoutePattern": [
                 "src/extension/router.js#L88",
-                "src/extension/withRouter.d.ts#L334"
+                "src/extension/withRouter.d.ts#L348"
             ],
             "router": [
                 "src/extension/htmlRouter.d.ts#L5",
@@ -694,7 +714,7 @@
             ],
             "RouterEvent": "src/extension/withRouter.d.ts#L15",
             "RouterEventMap": "src/extension/withRouter.d.ts#L2",
-            "RouterOptions": "src/extension/withRouter.d.ts#L442",
+            "RouterOptions": "src/extension/withRouter.d.ts#L456",
             "scrollable": "src/extension/scrollable.d.ts#L5",
             "ScrollableEvent": "src/extension/withScrollable.d.ts#L13",
             "ScrollableEventMap": "src/extension/withScrollable.d.ts#L5",
@@ -723,7 +743,7 @@
                 "src/var.d.ts#L13",
                 "src/var.js#L95"
             ],
-            "StateChangeEvent": "src/types.d.ts#L162",
+            "StateChangeEvent": "src/types.d.ts#L163",
             "stringOrSymbol": "src/extension/router.js#L66",
             "template": [
                 "src/extension/formVar.d.ts#L2",
@@ -731,7 +751,7 @@
                 "src/extension/template.d.ts#L5"
             ],
             "timeout": [
-                "src/errorCode.d.ts#L7",
+                "src/errorCode.d.ts#L31",
                 "src/errorCode.js#L7"
             ],
             "toAbsoluteUrl": [
@@ -758,23 +778,23 @@
                 "src/util/path.js#L123"
             ],
             "truncateJSON": "src/util/console.js#L7",
-            "UnloadEvent": "src/types.d.ts#L168",
+            "UnloadEvent": "src/types.d.ts#L169",
             "updateDOM": "src/dom.js#L32",
             "updateRouteState": "src/extension/router.js#L153",
             "Util": "src/core.d.ts#L29",
-            "ValidateEvent": "src/types.d.ts#L172",
+            "ValidateEvent": "src/types.d.ts#L173",
             "validationFailed": [
-                "src/errorCode.d.ts#L4",
+                "src/errorCode.d.ts#L17",
                 "src/errorCode.js#L4"
             ],
             "VarContext": [
-                "src/types.d.ts#L40",
+                "src/types.d.ts#L41",
                 "src/var.js#L31"
             ],
             "viewport": "src/extension/viewport.d.ts#L5",
             "ViewportEvent": "src/extension/withViewport.d.ts#L10",
             "ViewportEventMap": "src/extension/withViewport.d.ts#L5",
-            "Watchable": "src/types.d.ts#L175",
+            "Watchable": "src/types.d.ts#L176",
             "waterpipe": "src/include/waterpipe.js#L2",
             "withBaseUrl": [
                 "src/util/path.d.ts#L53",
@@ -799,7 +819,7 @@
         }
     },
     "brew-js-react": {
-        "baseUrl": "https://github.com/misonou/brew-js-react/blob/v0.7.1",
+        "baseUrl": "https://github.com/misonou/brew-js-react/blob/v0.7.2",
         "symbols": {
             "AnimateMixin": [
                 "src/mixins/AnimateMixin.d.ts#L38",
@@ -831,37 +851,37 @@
             ],
             "createCallback": "src/i18n.js#L19",
             "createDialog": [
-                "src/dialog.d.ts#L196",
+                "src/dialog.d.ts#L206",
                 "src/dialog.js#L61"
             ],
             "createDialogElement": "src/dialog.js#L26",
             "createDialogQueue": [
-                "src/dialog.d.ts#L190",
-                "src/dialog.js#L110"
+                "src/dialog.d.ts#L200",
+                "src/dialog.js#L119"
             ],
             "createUseFunction": "src/mixin.js#L23",
-            "createViewComponent": "src/view.js#L309",
+            "createViewComponent": "src/view.js#L317",
             "CustomAttributeProvider": "src/mixins/Mixin.d.ts#L15",
             "debounceAsync": "src/dialog.js#L13",
             "Dialog": [
-                "src/dialog.d.ts#L223",
-                "src/dialog.js#L178"
+                "src/dialog.d.ts#L233",
+                "src/dialog.js#L187"
             ],
             "DialogBaseProps": "src/dialog.d.ts#L13",
             "DialogCloseCallback": "src/dialog.d.ts#L6",
-            "DialogContext": "src/dialog.d.ts#L148",
+            "DialogContext": "src/dialog.d.ts#L158",
             "DialogController": "src/dialog.d.ts#L36",
             "DialogControllerAdvancedOptions": "src/dialog.d.ts#L19",
             "DialogControllerOptions": "src/dialog.d.ts#L17",
             "DialogOptions": "src/dialog.d.ts#L72",
             "DialogOptionsStrict": "src/dialog.d.ts#L10",
-            "DialogProps": "src/dialog.d.ts#L175",
+            "DialogProps": "src/dialog.d.ts#L185",
             "DialogRenderComponentProps": "src/dialog.d.ts#L15",
             "DialogResult": "src/dialog.d.ts#L9",
             "DialogState": "src/dialog.d.ts#L52",
             "disposeUnmountedStates": "src/mixins/StatefulMixin.js#L7",
-            "ErrorBoundary": "src/view.js#L80",
-            "ErrorViewProps": "src/view.d.ts#L134",
+            "ErrorBoundary": "src/view.js#L87",
+            "ErrorViewProps": "src/view.d.ts#L139",
             "extendSelf": "src/mixin.js#L19",
             "FlyoutMixin": [
                 "src/mixins/FlyoutMixin.d.ts#L47",
@@ -876,21 +896,21 @@
                 "src/mixins/FocusStateMixin.d.ts#L11",
                 "src/mixins/FocusStateMixin.js#L8"
             ],
-            "getCurrentParams": "src/view.js#L265",
+            "getCurrentParams": "src/view.js#L273",
             "getCurrentStates": "src/hooks.js#L12",
             "HintedType": "src/mixins/FlyoutMixin.d.ts#L7",
             "isViewMatched": [
-                "src/view.d.ts#L195",
-                "src/view.js#L341"
+                "src/view.d.ts#L200",
+                "src/view.js#L349"
             ],
             "isViewRendered": [
-                "src/view.d.ts#L201",
-                "src/view.js#L346"
+                "src/view.d.ts#L206",
+                "src/view.js#L354"
             ],
             "JQueryScrollableMethods": "src/mixins/ScrollableMixin.d.ts#L8",
             "linkTo": [
-                "src/view.d.ts#L292",
-                "src/view.js#L411"
+                "src/view.d.ts#L302",
+                "src/view.js#L423"
             ],
             "LoadingStateMixin": [
                 "src/mixins/LoadingStateMixin.d.ts#L11",
@@ -901,10 +921,10 @@
                 "src/i18n.js#L38"
             ],
             "matchView": [
-                "src/view.d.ts#L207",
-                "src/view.js#L350"
+                "src/view.d.ts#L212",
+                "src/view.js#L358"
             ],
-            "matchViewParams": "src/view.js#L301",
+            "matchViewParams": "src/view.js#L309",
             "Mixin": [
                 "src/mixins/Mixin.d.ts#L19",
                 "src/mixins/Mixin.js#L5"
@@ -919,13 +939,13 @@
             ],
             "MixinTypes": "src/mixins/Mixin.d.ts#L8",
             "navigateTo": [
-                "src/view.d.ts#L301",
-                "src/view.js#L415"
+                "src/view.d.ts#L311",
+                "src/view.js#L427"
             ],
-            "normalizePart": "src/view.js#L261",
+            "normalizePart": "src/view.js#L269",
             "onAppInit": "src/app.js#L10",
             "openDialog": [
-                "src/dialog.d.ts#L210",
+                "src/dialog.d.ts#L220",
                 "src/dialog.js#L54"
             ],
             "PageChangeEvent": "src/view.d.ts#L19",
@@ -933,24 +953,28 @@
             "ParamsWithURLParts": "src/view.d.ts#L17",
             "PartialRequired": "src/dialog.d.ts#L3",
             "redirectTo": [
-                "src/view.d.ts#L310",
-                "src/view.js#L419"
+                "src/view.d.ts#L320",
+                "src/view.js#L431"
             ],
             "registerErrorView": [
-                "src/view.d.ts#L188",
-                "src/view.js#L385"
+                "src/view.d.ts#L193",
+                "src/view.js#L393"
             ],
             "registerView": [
-                "src/view.d.ts#L181",
-                "src/view.js#L362"
+                "src/view.d.ts#L186",
+                "src/view.js#L370"
             ],
             "renderView": [
-                "src/view.d.ts#L247",
-                "src/view.js#L389"
+                "src/view.d.ts#L252",
+                "src/view.js#L397"
+            ],
+            "resetAllViews": [
+                "src/view.d.ts#L264",
+                "src/view.js#L410"
             ],
             "resolvePath": [
-                "src/view.d.ts#L277",
-                "src/view.js#L402"
+                "src/view.d.ts#L287",
+                "src/view.js#L414"
             ],
             "ResourceGlobalKey": "src/i18n.d.ts#L1",
             "ResourceKey": "src/i18n.d.ts#L2",
@@ -965,7 +989,7 @@
             ],
             "SetQueryParamAction": "src/hooks.d.ts#L1",
             "showDialog": "src/dialog.js#L43",
-            "sortViews": "src/view.js#L297",
+            "sortViews": "src/view.js#L305",
             "StatefulMixin": [
                 "src/mixins/StatefulMixin.d.ts#L27",
                 "src/mixins/StatefulMixin.js#L35"
@@ -997,11 +1021,15 @@
             ],
             "useAppReady": [
                 "src/hooks.d.ts#L11",
-                "src/hooks.js#L71"
+                "src/hooks.js#L85"
             ],
             "useAppReadyState": [
                 "src/hooks.d.ts#L17",
-                "src/hooks.js#L75"
+                "src/hooks.js#L89"
+            ],
+            "useAppSessionState": [
+                "src/hooks.d.ts#L46",
+                "src/hooks.js#L133"
             ],
             "useClassNameToggleMixin": [
                 "src/mixin.d.ts#L101",
@@ -1031,17 +1059,18 @@
                 "src/mixin.d.ts#L120",
                 "src/mixin.js#L45"
             ],
+            "usePersistedState": "src/hooks.js#L71",
             "useQueryParam": [
-                "src/hooks.d.ts#L51",
-                "src/hooks.js#L119"
+                "src/hooks.d.ts#L63",
+                "src/hooks.js#L140"
             ],
             "useRouteParam": [
                 "src/hooks.d.ts#L28",
-                "src/hooks.js#L83"
+                "src/hooks.js#L97"
             ],
             "useRouteState": [
                 "src/hooks.d.ts#L34",
-                "src/hooks.js#L102"
+                "src/hooks.js#L116"
             ],
             "useScrollableMixin": [
                 "src/mixin.d.ts#L54",
@@ -1055,15 +1084,15 @@
                 "src/mixin.d.ts#L94",
                 "src/mixin.js#L35"
             ],
-            "useViewContainerState": "src/view.d.ts#L172",
+            "useViewContainerState": "src/view.d.ts#L177",
             "useViewContext": [
-                "src/view.d.ts#L167",
-                "src/view.js#L337"
+                "src/view.d.ts#L172",
+                "src/view.js#L345"
             ],
             "useViewContextWithEffect": "src/hooks.js#L59",
             "ViewComponent": "src/view.d.ts#L6",
-            "ViewComponentRootProps": "src/view.d.ts#L149",
-            "ViewContainer": "src/view.js#L141",
+            "ViewComponentRootProps": "src/view.d.ts#L154",
+            "ViewContainer": "src/view.js#L149",
             "ViewContainerState": "src/view.d.ts#L11",
             "ViewContext": [
                 "src/view.d.ts#L46",
@@ -1071,11 +1100,11 @@
             ],
             "ViewContextEventMap": "src/view.d.ts#L41",
             "ViewParamMatchers": "src/view.d.ts#L7",
-            "ViewProps": "src/view.d.ts#L111",
+            "ViewProps": "src/view.d.ts#L116",
             "ViewState": "src/hooks.js#L16",
             "ViewStateContainer": [
                 "src/hooks.d.ts#L3",
-                "src/hooks.js#L170"
+                "src/hooks.js#L191"
             ],
             "VoidOrOptional": "src/dialog.d.ts#L4",
             "WithOptions": "src/mixin.d.ts#L17"
@@ -1361,7 +1390,7 @@
         }
     },
     "zeta-dom": {
-        "baseUrl": "https://github.com/misonou/zeta-dom/blob/v0.6.4",
+        "baseUrl": "https://github.com/misonou/zeta-dom/blob/v0.6.5",
         "symbols": {
             "acceptNode": [
                 "src/domUtil.d.ts#L69",
@@ -1374,13 +1403,13 @@
                 "src/observe.js#L77"
             ],
             "always": [
-                "src/util.d.ts#L535",
-                "src/util.js#L550"
+                "src/util.d.ts#L537",
+                "src/util.js#L571"
             ],
             "animatableValue": "src/cssUtil.js#L38",
             "any": [
                 "src/util.d.ts#L208",
-                "src/util.js#L231"
+                "src/util.js#L236"
             ],
             "AnyConstructor": "src/types.d.ts#L54",
             "AnyConstructorOrClass": "src/types.d.ts#L55",
@@ -1390,7 +1419,7 @@
             "ArrayMember": "src/types.d.ts#L13",
             "arrRemove": [
                 "src/util.d.ts#L344",
-                "src/util.js#L324"
+                "src/util.js#L329"
             ],
             "assertDescendantOfTree": "src/tree.js#L34",
             "assertSameTree": "src/tree.js#L29",
@@ -1423,11 +1452,11 @@
             "BoxCorner": "src/types.d.ts#L148",
             "BoxSide": "src/types.d.ts#L147",
             "camel": [
-                "src/util.d.ts#L467",
-                "src/util.js#L487"
+                "src/util.d.ts#L469",
+                "src/util.js#L508"
             ],
             "cancellationRejected": [
-                "src/errorCode.d.ts#L1",
+                "src/errorCode.d.ts#L4",
                 "src/errorCode.js#L1"
             ],
             "CancellationRequest": [
@@ -1435,7 +1464,7 @@
                 "src/domLock.js#L15"
             ],
             "cancelled": [
-                "src/errorCode.d.ts#L2",
+                "src/errorCode.d.ts#L8",
                 "src/errorCode.js#L2"
             ],
             "cancelLock": [
@@ -1443,14 +1472,14 @@
                 "src/domLock.js#L183"
             ],
             "catchAsync": [
-                "src/util.d.ts#L577",
-                "src/util.js#L601"
+                "src/util.d.ts#L579",
+                "src/util.js#L622"
             ],
             "checkNodeState": "src/tree.js#L102",
             "cleanupFocusPath": "src/dom.js#L147",
             "clearImmediateOnce": [
                 "src/util.d.ts#L411",
-                "src/util.js#L406"
+                "src/util.js#L411"
             ],
             "clearLock": "src/domLock.js#L44",
             "ClickName": "src/types.d.ts#L173",
@@ -1458,7 +1487,7 @@
             "CollectionValueOf": "src/util.d.ts#L25",
             "combineFn": [
                 "src/util.d.ts#L385",
-                "src/util.js#L351"
+                "src/util.js#L356"
             ],
             "combineNodeFilters": [
                 "src/domUtil.d.ts#L78",
@@ -1490,7 +1519,7 @@
             ],
             "createPrivateStore": [
                 "src/util.d.ts#L403",
-                "src/util.js#L373"
+                "src/util.js#L378"
             ],
             "createTreeWalker": [
                 "src/domUtil.d.ts#L141",
@@ -1498,47 +1527,47 @@
             ],
             "Date": "src/types.d.ts#L664",
             "deepFreeze": [
-                "src/util.d.ts#L686",
-                "src/util.js#L702"
+                "src/util.d.ts#L688",
+                "src/util.js#L723"
             ],
             "DeepReadonly": "src/types.d.ts#L34",
             "Default": "src/types.d.ts#L50",
             "deferrable": [
-                "src/util.d.ts#L575",
-                "src/util.js#L587"
+                "src/util.d.ts#L577",
+                "src/util.js#L608"
             ],
             "Deferrable": "src/types.d.ts#L210",
             "define": [
-                "src/util.d.ts#L624",
-                "src/util.js#L650"
+                "src/util.d.ts#L626",
+                "src/util.js#L671"
             ],
             "defineAliasProperty": [
-                "src/util.d.ts#L758",
-                "src/util.js#L819"
+                "src/util.d.ts#L760",
+                "src/util.js#L840"
             ],
             "defineGetterProperty": [
-                "src/util.d.ts#L642",
-                "src/util.js#L668"
+                "src/util.d.ts#L644",
+                "src/util.js#L689"
             ],
             "defineHiddenProperty": [
-                "src/util.d.ts#L651",
-                "src/util.js#L677"
+                "src/util.d.ts#L653",
+                "src/util.js#L698"
             ],
             "defineObservableProperty": [
-                "src/util.d.ts#L769",
-                "src/util.js#L836"
+                "src/util.d.ts#L771",
+                "src/util.js#L857"
             ],
             "defineOwnProperty": [
-                "src/util.d.ts#L633",
-                "src/util.js#L659"
+                "src/util.d.ts#L635",
+                "src/util.js#L680"
             ],
             "definePrototype": [
-                "src/util.d.ts#L659",
-                "src/util.js#L686"
+                "src/util.d.ts#L661",
+                "src/util.js#L707"
             ],
             "delay": [
-                "src/util.d.ts#L588",
-                "src/util.js#L615"
+                "src/util.d.ts#L590",
+                "src/util.js#L636"
             ],
             "DetachHandlerState": "src/observe.js#L14",
             "Dictionary": "src/types.d.ts#L12",
@@ -1564,11 +1593,11 @@
             ],
             "each": [
                 "src/util.d.ts#L166",
-                "src/util.js#L155"
+                "src/util.js#L157"
             ],
             "either": [
                 "src/util.d.ts#L50",
-                "src/util.js#L49"
+                "src/util.js#L50"
             ],
             "elementFromPoint": [
                 "src/domUtil.d.ts#L388",
@@ -1584,18 +1613,18 @@
             "emitterCallHandlers": "src/events.js#L218",
             "emitterHandleResult": "src/events.js#L257",
             "emitterIterateTargets": "src/events.js#L205",
-            "ensureAliasTargetObserved": "src/util.js#L784",
+            "ensureAliasTargetObserved": "src/util.js#L805",
             "ensureLock": "src/domLock.js#L28",
-            "ensurePropertyObserved": "src/util.js#L796",
+            "ensurePropertyObserved": "src/util.js#L817",
             "EntryKey": "src/util.d.ts#L15",
             "EntryValue": "src/util.d.ts#L16",
             "equal": [
                 "src/util.d.ts#L358",
-                "src/util.js#L337"
+                "src/util.js#L342"
             ],
             "errorWithCode": [
-                "src/util.d.ts#L441",
-                "src/util.js#L460"
+                "src/util.d.ts#L443",
+                "src/util.js#L475"
             ],
             "EventContainerOptions": [
                 "src/events.d.ts#L91",
@@ -1611,16 +1640,16 @@
             ],
             "exclude": [
                 "src/util.d.ts#L279",
-                "src/util.js#L286"
+                "src/util.js#L291"
             ],
-            "execFirstParen": "src/util.js#L517",
+            "execFirstParen": "src/util.js#L538",
             "executeOnce": [
                 "src/util.d.ts#L397",
-                "src/util.js#L362"
+                "src/util.js#L367"
             ],
             "extend": [
                 "src/util.d.ts#L139",
-                "src/util.js#L111"
+                "src/util.js#L113"
             ],
             "ExtractAny": [
                 "src/types.d.ts#L51",
@@ -1628,7 +1657,7 @@
             ],
             "fill": [
                 "src/util.d.ts#L232",
-                "src/util.js#L258"
+                "src/util.js#L263"
             ],
             "findNode": "src/tree.js#L73",
             "findParent": "src/tree.js#L79",
@@ -1644,7 +1673,7 @@
                 "src/dom.d.ts#L137",
                 "src/dom.js#L175"
             ],
-            "freeze": "src/util.d.ts#L611",
+            "freeze": "src/util.d.ts#L613",
             "GestureName": "src/types.d.ts#L174",
             "getActiveElement": "src/dom.js#L156",
             "getBoxValues": "src/domUtil.js#L341",
@@ -1674,12 +1703,12 @@
             ],
             "getFocusableWithin": "src/dom.js#L189",
             "getInnerBoxValues": "src/domUtil.js#L350",
-            "getMatchWordRegex": "src/util.js#L513",
+            "getMatchWordRegex": "src/util.js#L534",
             "getModalElement": "src/dom.js#L163",
-            "getObservableState": "src/util.js#L718",
+            "getObservableState": "src/util.js#L739",
             "getOwnPropertyDescriptors": [
-                "src/util.d.ts#L616",
-                "src/util.js#L642"
+                "src/util.d.ts#L618",
+                "src/util.js#L663"
             ],
             "getRect": [
                 "src/domUtil.d.ts#L287",
@@ -1709,7 +1738,7 @@
             "getTextInputMode": "src/dom.js#L86",
             "grep": [
                 "src/util.d.ts#L191",
-                "src/util.js#L210"
+                "src/util.js#L215"
             ],
             "handleMutations": "src/tree.js#L333",
             "handlePromise": "src/domLock.js#L52",
@@ -1730,21 +1759,21 @@
             "HintedStringKeyOf": "src/types.d.ts#L31",
             "HtmlContent": "src/types.d.ts#L9",
             "htmlDecode": [
-                "src/util.d.ts#L517",
-                "src/util.js#L533"
+                "src/util.d.ts#L519",
+                "src/util.js#L554"
             ],
             "hyphenate": [
-                "src/util.d.ts#L474",
-                "src/util.js#L493"
+                "src/util.d.ts#L476",
+                "src/util.js#L514"
             ],
             "iequal": [
-                "src/util.d.ts#L450",
-                "src/util.js#L475"
+                "src/util.d.ts#L452",
+                "src/util.js#L496"
             ],
             "If": "src/types.d.ts#L44",
             "inherit": [
-                "src/util.d.ts#L673",
-                "src/util.js#L696"
+                "src/util.d.ts#L675",
+                "src/util.js#L717"
             ],
             "InheritedNode": [
                 "src/tree.d.ts#L94",
@@ -1772,12 +1801,12 @@
             "Inset": "src/types.d.ts#L246",
             "InstanceTypeOrObject": "src/util.d.ts#L39",
             "invalidOperation": [
-                "src/errorCode.d.ts#L3",
+                "src/errorCode.d.ts#L12",
                 "src/errorCode.js#L3"
             ],
             "is": [
                 "src/util.d.ts#L65",
-                "src/util.js#L57"
+                "src/util.js#L58"
             ],
             "IS_IE": "src/env.js#L18",
             "IS_IE10": "src/env.js#L17",
@@ -1788,41 +1817,46 @@
             "IsAnyOrUnknown": "src/types.d.ts#L47",
             "isArray": [
                 "src/util.d.ts#L78",
-                "src/util.js#L65"
+                "src/util.js#L66"
             ],
             "isArrayLike": [
                 "src/util.d.ts#L122",
-                "src/util.js#L86"
+                "src/util.js#L92"
             ],
+            "isArrayLikeImpl": "src/util.js#L87",
             "isCssUrlValue": [
                 "src/cssUtil.d.ts#L5",
                 "src/cssUtil.js#L19"
             ],
             "isError": [
                 "src/util.d.ts#L92",
-                "src/util.js#L73"
+                "src/util.js#L74"
             ],
             "isErrorWithCode": [
-                "src/util.d.ts#L443",
-                "src/util.js#L466"
+                "src/util.d.ts#L445",
+                "src/util.js#L487"
             ],
             "isFunction": [
                 "src/util.d.ts#L85",
-                "src/util.js#L69"
+                "src/util.js#L70"
             ],
             "isMouseDown": "src/dom.js#L101",
             "IsNever": "src/types.d.ts#L49",
+            "isObservableProperty": [
+                "src/util.d.ts#L827",
+                "src/util.js#L887"
+            ],
             "isPlainObject": [
                 "src/util.d.ts#L106",
-                "src/util.js#L81"
+                "src/util.js#L82"
             ],
             "isThenable": [
                 "src/util.d.ts#L99",
-                "src/util.js#L77"
+                "src/util.js#L78"
             ],
             "isUndefinedOrNull": [
                 "src/util.d.ts#L71",
-                "src/util.js#L61"
+                "src/util.js#L62"
             ],
             "IsUnknown": "src/types.d.ts#L48",
             "isVisible": [
@@ -1850,14 +1884,14 @@
             "KeyNameSingleCharacter": "src/types.d.ts#L172",
             "KeyNameSpecial": "src/types.d.ts#L164",
             "KeyOf": "src/types.d.ts#L14",
-            "keys": "src/util.d.ts#L605",
+            "keys": "src/util.d.ts#L607",
             "kv": [
                 "src/util.d.ts#L225",
-                "src/util.js#L252"
+                "src/util.js#L257"
             ],
             "lcfirst": [
-                "src/util.d.ts#L488",
-                "src/util.js#L504"
+                "src/util.d.ts#L490",
+                "src/util.js#L525"
             ],
             "listenDOMEvent": [
                 "src/events.d.ts#L365",
@@ -1873,11 +1907,11 @@
             ],
             "makeArray": [
                 "src/util.d.ts#L130",
-                "src/util.js#L97"
+                "src/util.js#L99"
             ],
             "makeAsync": [
-                "src/util.d.ts#L597",
-                "src/util.js#L623"
+                "src/util.d.ts#L599",
+                "src/util.js#L644"
             ],
             "makeSelection": [
                 "src/domUtil.d.ts#L397",
@@ -1885,19 +1919,19 @@
             ],
             "map": [
                 "src/util.d.ts#L182",
-                "src/util.js#L195"
+                "src/util.js#L200"
             ],
             "mapGet": [
                 "src/util.d.ts#L296",
-                "src/util.js#L311"
+                "src/util.js#L316"
             ],
             "mapObject": [
                 "src/util.d.ts#L288",
-                "src/util.js#L303"
+                "src/util.js#L308"
             ],
             "mapRemove": [
                 "src/util.d.ts#L336",
-                "src/util.js#L318"
+                "src/util.js#L323"
             ],
             "MapResultValue": "src/types.d.ts#L41",
             "matchSelector": [
@@ -1905,12 +1939,12 @@
                 "src/domUtil.js#L94"
             ],
             "matchWord": [
-                "src/util.d.ts#L503",
-                "src/util.js#L521"
+                "src/util.d.ts#L505",
+                "src/util.js#L542"
             ],
             "matchWordMulti": [
-                "src/util.d.ts#L511",
-                "src/util.js#L525"
+                "src/util.d.ts#L513",
+                "src/util.js#L546"
             ],
             "MaybeFunctionOrConstructor": "src/util.d.ts#L40",
             "measureLine": "src/dom.js#L75",
@@ -1946,7 +1980,7 @@
             ],
             "noop": [
                 "src/util.d.ts#L46",
-                "src/util.js#L43"
+                "src/util.js#L44"
             ],
             "normalizeCSSValue": "src/cssUtil.js#L23",
             "normalizeEventOptions": "src/events.js#L65",
@@ -1957,7 +1991,7 @@
                 "src/domLock.d.ts#L111",
                 "src/domLock.js#L139"
             ],
-            "notifyPropertyChange": "src/util.js#L772",
+            "notifyPropertyChange": "src/util.js#L793",
             "observe": [
                 "src/observe.d.ts#L22",
                 "src/observe.js#L19"
@@ -1974,11 +2008,11 @@
             ],
             "pick": [
                 "src/util.d.ts#L270",
-                "src/util.js#L268"
+                "src/util.js#L273"
             ],
             "pipe": [
                 "src/util.d.ts#L48",
-                "src/util.js#L45"
+                "src/util.js#L46"
             ],
             "Point": "src/types.d.ts#L236",
             "PointerTracking": "src/types.d.ts#L347",
@@ -2003,8 +2037,8 @@
             "PropertyChangeRecord": "src/types.d.ts#L178",
             "PropertyTypeOrAny": "src/types.d.ts#L28",
             "randomId": [
-                "src/util.d.ts#L452",
-                "src/util.js#L479"
+                "src/util.d.ts#L454",
+                "src/util.js#L500"
             ],
             "RangeLike": "src/types.d.ts#L5",
             "Rect": [
@@ -2030,8 +2064,8 @@
                 "src/observe.js#L51"
             ],
             "reject": [
-                "src/util.d.ts#L528",
-                "src/util.js#L546"
+                "src/util.d.ts#L530",
+                "src/util.js#L567"
             ],
             "releaseFocus": [
                 "src/dom.d.ts#L211",
@@ -2055,8 +2089,8 @@
             "removeVendorPrefix": "src/cssUtil.js#L42",
             "reorderTraversableChildNodes": "src/tree.js#L254",
             "repeat": [
-                "src/util.d.ts#L460",
-                "src/util.js#L483"
+                "src/util.d.ts#L462",
+                "src/util.js#L504"
             ],
             "reportError": [
                 "src/dom.d.ts#L116",
@@ -2064,20 +2098,20 @@
                 "src/env.js#L10"
             ],
             "resolve": [
-                "src/util.d.ts#L525",
-                "src/util.js#L542"
+                "src/util.d.ts#L527",
+                "src/util.js#L563"
             ],
             "resolveAll": [
-                "src/util.d.ts#L545",
-                "src/util.js#L559"
+                "src/util.d.ts#L547",
+                "src/util.js#L580"
             ],
             "retainFocus": [
                 "src/dom.d.ts#L205",
                 "src/dom.js#L384"
             ],
             "retryable": [
-                "src/util.d.ts#L566",
-                "src/util.js#L577"
+                "src/util.d.ts#L568",
+                "src/util.js#L598"
             ],
             "root": "src/env.js#L7",
             "runAsync": [
@@ -2092,7 +2126,7 @@
             "sameValue": "src/util.d.ts#L55",
             "sameValueZero": [
                 "src/util.d.ts#L57",
-                "src/util.js#L53"
+                "src/util.js#L54"
             ],
             "scrollBy": [
                 "src/domUtil.d.ts#L228",
@@ -2112,7 +2146,7 @@
             ],
             "setAdd": [
                 "src/util.d.ts#L351",
-                "src/util.js#L331"
+                "src/util.js#L336"
             ],
             "setClass": [
                 "src/domUtil.d.ts#L210",
@@ -2122,20 +2156,20 @@
             "setFocusUnsafe": "src/dom.js#L296",
             "setImmediate": [
                 "src/util.d.ts#L405",
-                "src/util.js#L383"
+                "src/util.js#L388"
             ],
             "setImmediateOnce": [
                 "src/util.d.ts#L407",
-                "src/util.js#L394"
+                "src/util.js#L399"
             ],
-            "setImmediateOnceCallback": "src/util.js#L390",
+            "setImmediateOnceCallback": "src/util.js#L395",
             "setInterval": [
                 "src/util.d.ts#L423",
-                "src/util.js#L417"
+                "src/util.js#L422"
             ],
             "setIntervalSafe": [
                 "src/util.d.ts#L431",
-                "src/util.js#L424"
+                "src/util.js#L429"
             ],
             "setLastEventSource": [
                 "src/events.d.ts#L339",
@@ -2147,8 +2181,8 @@
             ],
             "setParentNode": "src/tree.js#L97",
             "setPromiseTimeout": [
-                "src/util.d.ts#L582",
-                "src/util.js#L606"
+                "src/util.d.ts#L584",
+                "src/util.js#L627"
             ],
             "setShortcut": [
                 "src/dom.d.ts#L221",
@@ -2161,19 +2195,19 @@
             "setTextData": "src/dom.js#L123",
             "setTimeout": [
                 "src/util.d.ts#L417",
-                "src/util.js#L410"
+                "src/util.js#L415"
             ],
             "setTimeoutOnce": [
                 "src/util.d.ts#L409",
-                "src/util.js#L400"
+                "src/util.js#L405"
             ],
             "single": [
                 "src/util.d.ts#L217",
-                "src/util.js#L243"
+                "src/util.js#L248"
             ],
             "splice": [
                 "src/util.d.ts#L199",
-                "src/util.js#L221"
+                "src/util.js#L226"
             ],
             "StringKeyOf": "src/types.d.ts#L27",
             "styleToJSON": "src/cssUtil.js#L30",
@@ -2189,15 +2223,19 @@
                 "src/dom.d.ts#L122",
                 "src/dom.js#L97"
             ],
+            "throwIfAborted": [
+                "src/util.d.ts#L441",
+                "src/util.js#L465"
+            ],
             "throwNotFunction": [
                 "src/util.d.ts#L439",
-                "src/util.js#L453"
+                "src/util.js#L458"
             ],
-            "throwNotOwnDataProperty": "src/util.js#L812",
+            "throwNotOwnDataProperty": "src/util.js#L833",
             "throwOrReturn": "src/tree.js#L22",
             "throws": [
                 "src/util.d.ts#L437",
-                "src/util.js#L449"
+                "src/util.js#L454"
             ],
             "toPlainRect": [
                 "src/domUtil.d.ts#L323",
@@ -2230,12 +2268,12 @@
             "triggerFocusEvent": "src/dom.js#L206",
             "triggerModalChangeEvent": "src/dom.js#L217",
             "trim": [
-                "src/util.d.ts#L495",
-                "src/util.js#L509"
+                "src/util.d.ts#L497",
+                "src/util.js#L530"
             ],
             "ucfirst": [
-                "src/util.d.ts#L481",
-                "src/util.js#L499"
+                "src/util.d.ts#L483",
+                "src/util.js#L520"
             ],
             "Union": "src/util.d.ts#L34",
             "UnionAll": "src/util.d.ts#L38",
@@ -2248,19 +2286,19 @@
             "updateTabRoot": "src/dom.js#L223",
             "updateTree": "src/tree.js#L288",
             "ValueOf": "src/types.d.ts#L20",
-            "values": "src/util.d.ts#L608",
+            "values": "src/util.d.ts#L610",
             "VersionState": "src/tree.js#L43",
             "VirtualNode": [
                 "src/tree.d.ts#L79",
                 "src/tree.js#L368"
             ],
             "watch": [
-                "src/util.d.ts#L705",
-                "src/util.js#L866"
+                "src/util.d.ts#L707",
+                "src/util.js#L891"
             ],
             "watchable": [
-                "src/util.d.ts#L742",
-                "src/util.js#L933"
+                "src/util.d.ts#L744",
+                "src/util.js#L958"
             ],
             "Watchable": "src/types.d.ts#L183",
             "WatchableInstance": "src/types.d.ts#L37",
@@ -2273,8 +2311,8 @@
                 "src/observe.js#L114"
             ],
             "watchOnce": [
-                "src/util.d.ts#L728",
-                "src/util.js#L914"
+                "src/util.d.ts#L730",
+                "src/util.js#L939"
             ],
             "watchOwnAttributes": [
                 "src/observe.d.ts#L59",
@@ -2340,7 +2378,7 @@
         }
     },
     "zeta-dom-react": {
-        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.1",
+        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.2",
         "symbols": {
             "adjustMonth": "src/fields/DateField.js#L33",
             "assertFormContext": "src/form.js#L59",
@@ -2374,7 +2412,7 @@
                 "src/util.js#L81"
             ],
             "combineValidators": [
-                "src/form.d.ts#L617",
+                "src/form.d.ts#L626",
                 "src/form.js#L737"
             ],
             "compare": "src/dataView.js#L11",
@@ -2388,8 +2426,8 @@
             ],
             "createDataObject": "src/form.js#L176",
             "createDependency": [
-                "src/hooks.d.ts#L443",
-                "src/hooks.js#L369"
+                "src/hooks.d.ts#L455",
+                "src/hooks.js#L391"
             ],
             "createErrorHandler": [
                 "src/hooks.d.ts#L413",
@@ -2522,7 +2560,7 @@
             "PropertyType": "src/form.d.ts#L25",
             "PropertyTypeFromPath": "src/form.d.ts#L26",
             "registerFieldType": [
-                "src/form.d.ts#L625",
+                "src/form.d.ts#L634",
                 "src/form.js#L748"
             ],
             "resolvePathInfo": "src/form.js#L79",
@@ -2549,6 +2587,10 @@
                 "src/util.d.ts#L76",
                 "src/util.js#L85"
             ],
+            "useAbortSignal": [
+                "src/hooks.d.ts#L450",
+                "src/hooks.js#L382"
+            ],
             "useAsync": [
                 "src/hooks.d.ts#L310",
                 "src/hooks.js#L159"
@@ -2558,12 +2600,12 @@
                 "src/hooks.js#L89"
             ],
             "useDataView": [
-                "src/dataView.d.ts#L157",
+                "src/dataView.d.ts#L165",
                 "src/dataView.js#L169"
             ],
             "useDependency": [
-                "src/hooks.d.ts#L455",
-                "src/hooks.js#L387"
+                "src/hooks.d.ts#L467",
+                "src/hooks.js#L409"
             ],
             "useDispose": [
                 "src/hooks.d.ts#L353",
@@ -2590,11 +2632,11 @@
                 "src/hooks.js#L131"
             ],
             "useFormContext": [
-                "src/form.d.ts#L593",
+                "src/form.d.ts#L602",
                 "src/form.js#L633"
             ],
             "useFormField": [
-                "src/form.d.ts#L605",
+                "src/form.d.ts#L614",
                 "src/form.js#L661"
             ],
             "useFormFieldInternal": "src/form.js#L361",
@@ -2614,6 +2656,10 @@
                 "src/hooks.d.ts#L332",
                 "src/hooks.js#L254"
             ],
+            "useSideEffect": [
+                "src/hooks.d.ts#L439",
+                "src/hooks.js#L360"
+            ],
             "useSingleton": [
                 "src/hooks.d.ts#L396",
                 "src/hooks.js#L279"
@@ -2621,8 +2667,8 @@
             "useSingletonEffectImpl": "src/hooks.js#L38",
             "useSingletonEffectImplDev": "src/hooks.js#L49",
             "useUnloadEffect": [
-                "src/hooks.d.ts#L438",
-                "src/hooks.js#L360"
+                "src/hooks.d.ts#L445",
+                "src/hooks.js#L373"
             ],
             "useUpdateTrigger": [
                 "src/hooks.d.ts#L221",

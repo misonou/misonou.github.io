@@ -10,7 +10,7 @@ export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
     icon?: IconType;
     variant?: 'primary' | 'outlined' | 'link';
     disabled?: boolean;
-    onClick?: (e: React.UIEvent) => any;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => any;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
@@ -22,7 +22,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
         <button {..._props} {...Mixin.use(ref, mixin, classNames('zui-button', props.className, { variant: variant || 'outlined' }))}
             onClick={handleUserAction(props.onClick)} disabled={disabled}>
             {icon ?
-                <><Icon icon={icon} className="zui-button-icon" /><span>{label}</span></> :
+                <><Icon icon={icon} className="zui-button-icon" />{label && <span>{label}</span>}</> :
                 <span>{label}</span>}
         </button>
     );
