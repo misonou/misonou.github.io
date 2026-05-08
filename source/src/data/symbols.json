@@ -269,7 +269,7 @@
         }
     },
     "brew-js": {
-        "baseUrl": "https://github.com/misonou/brew-js/blob/v0.7.6",
+        "baseUrl": "https://github.com/misonou/brew-js/blob/v0.7.7",
         "symbols": {
             "addAnimateIn": [
                 "src/anim.d.ts#L36",
@@ -285,11 +285,11 @@
             ],
             "addDetect": [
                 "src/app.d.ts#L92",
-                "src/app.js#L233"
+                "src/app.js#L259"
             ],
             "addExtension": [
                 "src/app.d.ts#L58",
-                "src/app.js#L221"
+                "src/app.js#L240"
             ],
             "addRenderer": [
                 "src/dom.d.ts#L80",
@@ -335,7 +335,7 @@
             "APIMethod": "src/types.d.ts#L112",
             "APIOptions": "src/types.d.ts#L90",
             "App": [
-                "src/app.js#L81",
+                "src/app.js#L84",
                 "src/types.d.ts#L192"
             ],
             "AppInit": "src/app.d.ts#L6",
@@ -401,7 +401,7 @@
             "decodeValue": "src/util/common.js#L22",
             "decompressFromUTF16": "src/include/lz-string.js#L4",
             "defaults": "src/defaults.js#L2",
-            "defineUseMethod": "src/app.js#L74",
+            "defineUseMethod": "src/app.js#L77",
             "deleteCookie": [
                 "src/util/common.d.ts#L149",
                 "src/util/common.js#L175"
@@ -420,7 +420,7 @@
             "DOMUpdateState": "src/types.d.ts#L21",
             "emitAppEvent": [
                 "src/app.d.ts#L94",
-                "src/app.js#L237"
+                "src/app.js#L263"
             ],
             "encodeNameValue": "src/util/common.js#L18",
             "evalAttr": [
@@ -442,7 +442,7 @@
             "EventDispatcher": "src/types.d.ts#L56",
             "EventHandler": "src/types.d.ts#L14",
             "EventHandlers": "src/types.d.ts#L15",
-            "exactTargetWrapper": "src/app.js#L28",
+            "exactTargetWrapper": "src/app.js#L22",
             "executeRequest": "src/util/fetch.js#L51",
             "exportAppToGlobal": [
                 "src/entry-slim.js#L34",
@@ -543,14 +543,14 @@
             "IdleTimeoutOptions": "src/extension/withIdleTimeout.d.ts#L15",
             "init": [
                 "src/app.d.ts#L24",
-                "src/app.js#L176"
+                "src/app.js#L192"
             ],
-            "initExtension": "src/app.js#L46",
+            "initExtension": "src/app.js#L44",
             "initHtmlRouter": "src/extension/htmlRouter.js#L55",
             "initStorage": "src/extension/router.js#L53",
             "install": [
                 "src/app.d.ts#L51",
-                "src/app.js#L217"
+                "src/app.js#L236"
             ],
             "isBoolAttr": [
                 "src/util/common.d.ts#L37",
@@ -562,7 +562,7 @@
             ],
             "isElementActive": [
                 "src/app.d.ts#L98",
-                "src/app.js#L241",
+                "src/app.js#L267",
                 "src/extension/htmlRouter.js#L28"
             ],
             "isFlyoutOpen": [
@@ -694,6 +694,7 @@
                 "src/var.js#L145"
             ],
             "ResizeEvent": "src/extension/withViewport.d.ts#L19",
+            "resolveDependency": "src/app.js#L40",
             "resourceError": [
                 "src/errorCode.d.ts#L9",
                 "src/errorCode.js#L2"
@@ -811,7 +812,7 @@
             "WithScrollable": "src/extension/withScrollable.d.ts#L31",
             "WithTemplate": "src/extension/withTemplate.d.ts#L2",
             "WithViewport": "src/extension/withViewport.d.ts#L21",
-            "wrapEventHandlers": "src/app.js#L36",
+            "wrapEventHandlers": "src/app.js#L30",
             "writeLog": [
                 "src/util/console.d.ts#L1",
                 "src/util/console.js#L22"
