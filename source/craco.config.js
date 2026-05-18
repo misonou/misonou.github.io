@@ -141,6 +141,7 @@ module.exports = async ({ env }) => {
                             'jq-scrollable': '../jquery-scrollable',
                             'waterpipe': '../waterpipe',
                             'waterpipe-parser': '../waterpipe-parser',
+                            '@misonou/brew-extension-auth': '../brew-extension-auth/src',
                             '@misonou/waterpipe-editor': '../waterpipe-editor/src',
                             '@misonou/react-app-utils': '../react-app-utils',
                             '@misonou/react-css-utils': '../react-css-utils',

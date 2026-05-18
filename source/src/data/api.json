@@ -15,6 +15,12 @@
         "app: ready event",
         "app: unload event"
     ],
+    "/app/auth/AuthChallenge": [
+        "AuthChallenge",
+        "AuthChallenge.challenge",
+        "AuthChallenge.value",
+        "AuthChallenge.continueWith()"
+    ],
     "/app/auth/AuthClient": [
         "AuthClient",
         "AuthClient.authType",
@@ -58,6 +64,7 @@
         "AuthProviderContext",
         "AuthProviderContext.interaction",
         "AuthProviderContext.redirectUri",
+        "AuthProviderContext.challenge()",
         "AuthProviderContext.revokeSession()"
     ],
     "/app/auth/AuthProviderResult": [
@@ -77,6 +84,9 @@
     "/app/auth/createFetchMiddleware": [
         "createFetchMiddleware()"
     ],
+    "/app/auth/createPasskey": [
+        "createPasskey()"
+    ],
     "/app/auth/JSONClient": [
         "JSONClient",
         "JSONClient.baseUrl",
@@ -93,11 +103,17 @@
         "MsalAuthProvider.setDefault()",
         "MsalAuthProvider.create()"
     ],
+    "/app/auth/requestPasskey": [
+        "requestPasskey()"
+    ],
     "/app/auth/useAuth": [
         [
             "app.useAuth()",
             ""
         ]
+    ],
+    "/app/brew-disposable": [
+        "brew.disposableWith()"
     ],
     "/app/createObjectStorage": [
         "createObjectStorage()",

@@ -1,0 +1,47 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# Passkeys
+
+~~0.7.0~~
+
+The `passkey` option is added for [`app.login`](:) which will be
+passed to authentication client:
+
+```javascript
+import { errorWithCode } from "zeta-dom/util";
+import { createApiClient } from "brew-js/util/fetch";
+import { AuthError } from "@misonou/brew-extension-auth";
+import { requestPasskey } from "@misonou/brew-extension-auth/util";
+
+export default class MyClient {
+    client = createApiClient(BASE_URL);
+
+    async login(params) {
+        if (params.passkey) {
+            const options = await this.client.post('/api/login/options', {
+                username: params.loginHint // optional depending on server
+            });
+            const payload = await requestPasskey(options);
+            return this.client.post('/api/login/verify', payload);
+        }
+        if (params.password) {
+            return this.client.post('/api/login', {
+                username: params.loginHint,
+                password: params.password
+            });
+        }
+        throw errorWithCode(AuthError.missingCredentials);
+    }
+    /* ... */
+}
+```
+
+Now `passkey` option can be specified in event handler to trigger the passkey authentication flow:
+
+```tsx
+<button onClick={() => app.login({ passkey: true })}>Signin with Passkey</button>
+```
+
+## See also
+
+- [`requestPasskey()`](:)

@@ -98,8 +98,12 @@ Performs login.
         #### `loginHint` <Badge.Optional />
         Login hint, usually user email, to be passed to external authentication provider.
 
+        #### `passkey` <Badge.Optional /> <Badge.Version />
+        A boolean indicating the use of passkey.
+
         #### `password` <Badge.Optional />
         Password to be passed to authentication provider.
+
     </dl>
 
     #### `context`
@@ -191,4 +195,5 @@ Examples are in use [`src/examples`](https://github.com/misonou/brew-extension-a
 <VersionTimeline module="@misonou/brew-extension-auth">
 - **0.1.0** Introduced
 - **0.4.0** `AuthClient.handleLoginRedirect()` <br/> `AuthClient.init()` <br/> `AuthClient.login()`, `AuthClient.logout()`, `AuthClient.refresh()`: `context` argument
+- **0.7.0** `AuthClient.login()`: `passkey` options
 </VersionTimeline>

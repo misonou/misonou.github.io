@@ -1,0 +1,51 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# AuthChallenge interface
+
+The `AuthChallenge` interface represents a challenge initiated by the authentication provider that requires user interaction to proceed with authentication.
+
+It is returned by [`app.login()`](:) when the authentication provider calls [`AuthProviderContext.challenge()`](:) during the login process. 
+
+<MemberList
+    i="AuthChallenge"
+    ip={['challenge', 'value']}
+    im={['continueWith()']}
+/>
+
+## Instance properties
+
+### `AuthChallenge.challenge` <Badge.ReadOnly />
+
+Type of challenge initiated by authentication provider.
+
+### `AuthChallenge.value` <Badge.ReadOnly />
+
+Value associated with the challenge, which typically contains options or hints that can be used to render appropriate UI for user to respond.
+
+## Instance methods
+
+### `AuthChallenge.continueWith()`
+
+```javascript
+continueWith(response)
+```
+
+Continues to process the challenge with user response.
+
+### Parameters
+
+<dl>
+    #### `response`
+    User response to the challenge, which will be passed to authentication provider for verification. The type of response required depends on provider's implementation.
+
+</dl>
+
+### Return value
+
+A promise that resolves to another challenge if additional steps are needed, or resolves to `void` if the process is completed.
+
+## Version information
+
+<VersionTimeline module="@misonou/brew-extension-auth">
+- **0.7.0** Introduced
+</VersionTimeline>

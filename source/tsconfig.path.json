@@ -6,6 +6,7 @@
             "../@types"
         ],
         "paths": {
+            "@misonou/brew-extension-auth": ["../brew-extension-auth/src", "node_modules/@misonou/brew-extension-auth"],
             "@misonou/react-app-utils": ["../react-app-utils", "node_modules/@misonou/react-app-utils"],
             "@misonou/react-css-utils": ["../react-css-utils", "node_modules/@misonou/react-css-utils"],
             "@misonou/waterpipe-editor": ["../waterpipe-editor", "node_modules/@misonou/waterpipe-editor"],

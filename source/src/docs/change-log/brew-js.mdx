@@ -2,6 +2,17 @@
 
 # Change log
 
+## v0.7.8 (2026/05/18)
+
+- Add [`brew.disposableWith`](:)
+- Improved error handling during app initialization
+  - [`brew()`](:) will always return app object instead of throwing
+  - [`app.readyState`](:) will turn `error`
+    - instead of `init` when extension throws during initialization
+    - instead of `ready` when required extension dependency is missing
+  - Multiple initialization errors are now all reported to DOM and console
+- <kbd>fix</kbd> unable to infer app type when importing `brew-js/core` or `brew-js/app` <Badge.TS/>
+
 ## v0.7.7 (2026/05/08)
 
 #### Core

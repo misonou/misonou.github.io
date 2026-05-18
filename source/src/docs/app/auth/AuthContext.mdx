@@ -81,6 +81,9 @@ Logs in using one of the authentication providers.
         Login hint, usually user email, to determine which authentication provider should be used when `provider` is not specified.
         Supplied value will be passed to authentication provider.
 
+        #### `passkey` <Badge.Optional /> <Badge.Version />
+        A boolean indicating the use of passkey.
+
         #### `password` <Badge.Optional />
         Password to be passed to authentication provider.
 
@@ -92,6 +95,14 @@ Logs in using one of the authentication providers.
 
         #### `returnPath` <Badge.Optional />
         Path to visit after logged in.
+
+        #### `silent` <Badge.Optional /> <Badge.Version />
+        Whether challenges that requires user interaction should be avoided.
+
+        #### `state` <Badge.Optional /> <Badge.Version />
+        State that will be passed to `login` event after login is successful.
+
+        In case of redirection, the state will be recovered from browser cache.
 
     </dl>
 
@@ -125,6 +136,11 @@ Logs out the current user.
 
         #### `singleLogout` <Badge.Optional /> <Badge.Deprecated />
         Whether to also log out from other applications for the same single sign-on session.
+
+        #### `state` <Badge.Optional /> <Badge.Version />
+        State that will be passed to `logout` event after logout is successful.
+
+        In case of redirection, the state will be recovered from browser cache.
 
     </dl>
 </dl>
@@ -257,6 +273,9 @@ Fired when user is logged in.
 
     > Prior to 0.6.0, `sessionResumed` is always `false` in the first visit in the current tab.
 
+    #### `state` <Badge.ReadOnly /> <Badge.Version />
+    Gets the state passed in `state` option when login action is triggered. Default is `null` when no state is passed.
+
     #### `user` <Badge.ReadOnly />
     Gets the user that is currently or has been logged in.
 </dl>
@@ -287,6 +306,9 @@ Fired when user is logged out.
 
     </dl>
 
+    #### `state` <Badge.ReadOnly /> <Badge.Version />
+    Gets the state passed in `state` option when logout action is triggered. Default is `null` when no state is passed.
+
     #### `user` <Badge.ReadOnly />
     Gets the user that was logged in.
 
@@ -316,4 +338,5 @@ No additional properties.
 - **0.3.0** `app.resolveAuthProvider()` and `app.login()`: `authType` and `providerType` options
 - **0.4.0** `login` event: `sessionChanged` and `sessionResumed` properties
 - **0.6.0** `app.getAllAccounts()` <br/> `login` event: `interaction` property <br/> `logout` event: `interaction` property
+- **0.7.0** `app.login()`: `passkey` `silent` and `state` options <br/> `app.logout()`: `state` option <br/> `login` event: `state` property <br/> `logout` event: `state` property
 </VersionTimeline>

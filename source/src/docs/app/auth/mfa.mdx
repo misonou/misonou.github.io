@@ -1,0 +1,149 @@
+import Example from "src/components/examples/auth-login-challenge";
+
+<Module name="@misonou/brew-extension-auth" />
+
+# Multi-factor authentication
+
+~~0.7.0~~
+
+Here is an example for implementating a two-step login flow involving multi-factor authentication (MFA).
+
+## App setup
+
+In the authentication client, implements MFA handling in [`AuthClient.login`](:) or [`AuthProvider.login`](:) method:
+
+```typescript
+/// client.ts
+import { errorWithCode } from "zeta-dom/util";
+import { createApiClient } from "brew-js/util/fetch";
+import { LoginOptions, AuthError, AuthProviderContext, AuthProviderLoginRequest, AuthProviderResult } from "@misonou/brew-extension-auth";
+
+export interface User { /* ... */ }
+
+export default class MyClient<'custom', AuthProviderResult<User>> {
+    readonly client = createApiClient();
+
+    async login(params: AuthProviderLoginRequest, context: AuthProviderContext) {
+        const { loginHint, password } = params;
+        if (!password) {
+            throw errorWithCode(AuthError.missingCredentials);
+        }
+        const response = await this.client.post('/api/login', { loginHint, password });
+        const { mfaRequired, otpSession, taintedEmail } = response;
+        if (!mfaRequired) {
+            return response as AuthProviderResult<User>;
+        }
+        return context.challenge('otp-email', taintedEmail, (otpValue: string) => {
+            // when otp verification failed, the rejected error will be propagated to the caller of `challenge.continueWith`
+            // caller can decide to retry with another otp value or give up
+            return this.client.post('/api/login/otp', { otpSession, otpValue }) as AuthProviderResult<User>;
+        });
+    }
+    /* ... */
+}
+
+/// app.ts
+import brew from "brew-js";
+import Auth from "@misonou/brew-extension-auth";
+import MyClient from "./client";
+
+brew.with(Auth)(app => {
+    app.useAuth({
+        provider: AuthProvider.from('default', new MyClient()),
+        /* ... */
+    });
+});
+```
+
+## UI handling
+
+In the layout component, it handles the [`AuthChallenge`](:) object returned from [`app.login`](:) when MFA is required.
+
+```tsx
+/// Login.tsx
+import { isErrorWithCode } from "zeta-dom/util";
+import { AuthError } from "@misonou/brew-extension-auth";
+
+export default function Login() {
+    const [loginHint, setLoginHint] = useState('');
+    const [password, setPassword] = useState('');
+    const [otp, setOtp] = useState('');
+    const [challenge, setChallenge] = useState<AuthChallenge | null>(null);
+
+    return (
+        <div>
+            {!challenge && (<>
+                {/* Login form */}
+            </>)}
+            {challenge && (<>
+                {/* MFA form */}
+            </>)}
+        </div>
+    );
+
+    async function handleLogin() {
+        const challenge = await auth.login({ loginHint, password });
+        if (challenge) {
+            // MFA challenge received, user is not logged in yet
+            setChallenge(challenge);
+            return;
+        }
+        // login successful, `app.user` should be available now
+    }
+
+    async function handleVerifyOtp() {
+        await challenge?.continueWith(otp);
+    }
+}
+```
+
+In this example we assume there is only one step, so if [`AuthChallenge.continueWith`](:) resolves without error,
+we consider the login process completed and [`app.user`](:) should be available.
+
+> When there are more steps in the MFA flow, [`AuthChallenge.continueWith`](:) may resolve to another challenge and you can update the UI accordingly.
+
+## Challenge types
+
+There are several pre-defined challenge types that can be used out of box, including:
+
+- `biometric`: ask user to complete biometric verification, e.g. Face ID or fingerprint
+- `captcha`: ask user to complete a captcha challenge
+- `magic-link`: send user a magic link to complete login
+- `mobile-app`: prompt user to complete login on their mobile device, e.g. via push notification
+- `otp-email`: send OTP to user's email
+- `otp-sms`: send OTP to user's phone via SMS
+- `security-question`: prompt user with previous selected security question and ask for the answer
+- `select-channel`: let user select a channel to receive OTP, e.g. email or SMS
+- `totp`: time-based one-time password, e.g. from Google Authenticator.
+
+However it is not limited to these types. Custom challenge type can be used for different scenarios,
+e.g. requiring user to upload a photo for identity verification.
+
+## Challenge value and response type
+
+By default, challenge value and response does not have a fixed type.
+
+To add type safety, a derived challenge type can be defined for both consumer and provider:
+
+```typescript
+type OtpEmailChallenge = AuthChallenge<'otp-email', string, string>;
+
+context.challenge<OtpEmailChallenge, OtpValidationResponse>('otp-email', taintedEmail, (otpValue: string) => {
+    /* ... */
+});
+```
+
+Then when handling the challenge result, it can be properly typed:
+
+```typescript
+const challenge = await auth.login({ loginHint, password });
+if (challenge?.type === 'otp-email') {
+    const otpChallenge = challenge as OtpEmailChallenge;
+    otpChallenge.value; // string
+    otpChallenge.continueWith(otpValue); // otpValue: string
+}
+```
+
+## Example
+
+<Example />

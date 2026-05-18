@@ -1,12 +1,12 @@
 {
     "zeta-dom": "0.6.5",
     "zeta-dom-react": "0.6.2",
-    "brew-js": "0.7.7",
+    "brew-js": "0.7.8",
     "brew-js-react": "0.7.2",
     "jq-scrollable": "1.18.0",
     "waterpipe": "2.10.0",
     "waterpipe-parser": "2.10.1",
-    "@misonou/react-app-utils": "1.8.0",
+    "@misonou/react-app-utils": "1.8.1",
     "@misonou/react-css-utils": "1.5.1",
-    "@misonou/brew-extension-auth": "0.6.1"
+    "@misonou/brew-extension-auth": "0.7.0"
 }

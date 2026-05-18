@@ -198,6 +198,9 @@ Performs login.
         #### `loginHint` <Badge.Optional />
         Login hint, usually user email, to be passed to external authentication provider.
 
+        #### `passkey` <Badge.Optional />  <Badge.Version />
+        A boolean indicating the use of passkey.
+
         #### `password` <Badge.Optional />
         Password to be passed to authentication provider.
 
@@ -307,4 +310,5 @@ Sets active account, so that current login session can be restored in the future
 - **0.1.0** Introduced
 - **0.4.0** `AuthProvider.handleLoginRedirect()`
 - **0.6.0** `AuthProvider.getAllAccounts()` <br/> `AuthProvider.setActiveAccount()`
+- **0.7.0** `AuthProvider.login()`: `passkey` options
 </VersionTimeline>

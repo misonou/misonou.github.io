@@ -1,0 +1,60 @@
+<Module name="brew-js/disposable" />
+
+# Disposable module
+
+The `brew/disposable` module provides the `disposableWith` method to create temporary app instances that extend a base app instance with additional extensions.
+
+> It is only available on ES module.
+
+<ImportHint
+    name="brew"
+    module="brew-js/disaposable"
+    import="default"
+    expanded
+/>
+
+<MemberList
+    i="brew"
+    im={['disposableWith()']}
+    noRoot
+/>
+
+## Instance methods
+
+### `brew.disposableWith()`
+
+```javascript
+disposableWith()
+disposableWith(args0)
+disposableWith(args0, args1)
+disposableWith(args0, args1, /* … ,*/ argsN)
+disposableWith(baseApp)
+disposableWith(baseApp, args0)
+disposableWith(baseApp, args0, args1)
+disposableWith(baseApp, args0, args1, /* … ,*/ argsN)
+```
+
+Creates a temporary app instance.
+
+> Use this feature with caution when the extensions have side effects such as registering global resources or DOM events, as the cleanup of these side effects is not guaranteed,
+which may result in conflicting or unexpected behaviors.
+
+### Parameters
+
+<dl>
+    #### `baseApp` <Badge.Optional />
+    An app instance to be extended. It will not be modified.
+
+    The created app instance will automatically listen for events emitted on the base app instance.
+    Enabling extensions that have already been enabled on the base app would result in exceptions.
+
+    #### `args0` … `argsN` <Badge.Optional />
+    A list of extensions and a callback to initialize the disposable app instance.
+
+</dl>
+
+## Version information
+
+<VersionTimeline module="brew-js">
+- **0.7.8** Introduced
+</VersionTimeline>

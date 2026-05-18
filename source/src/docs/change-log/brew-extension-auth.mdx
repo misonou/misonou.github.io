@@ -2,6 +2,17 @@
 
 # Change log
 
+## v0.7.0 (2026/05/18)
+
+- Login challenge capability for multi-factor authentication [[link]](/docs/app/auth/mfa)
+- Add `state` option for [`app.login`](:) and [`app.logout`](:)
+- Add `passkey` and `silent` options for [`app.login`](:)
+- Add [`createPasskey`](:) and [`requestPasskey`](:) utilities
+
+## v0.6.2 (2026/05/17)
+
+- <kbd>fix</kbd> add `AuthError.passkeyUnavailable` as type definition was erroneously added in previous version
+
 ## v0.6.1 (2026/05/02)
 
 - Add error code `brew/auth-missing-credential` as `AuthError.missingCredential`

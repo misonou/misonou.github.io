@@ -5,7 +5,7 @@
 <MemberList
     i="AuthProviderContext"
     ip={['interaction', 'redirectUri']}
-    im={['revokeSession()']}
+    im={['challenge()', 'revokeSession()']}
 />
 
 ## Instance properties
@@ -24,6 +24,35 @@ Specifies the preferred way to login. It can be one of the following value:
 Fully qualified URL for redirection after logging in or out through external authentication provider.
 
 ## Instance methods
+
+### `AuthProviderContext.challenge()`
+
+```javascript
+challenge(challenge, value)
+challenge(challenge, value, callback)
+```
+
+Initiates a login challenge, typically when multi-factor authentication is required.
+
+### Parameters
+
+<dl>
+    #### `challenge`
+    Type of challenge to initiate.
+
+    #### `value`
+    Value associated with the challenge.
+
+    #### `callback`
+    A callback function to handle the challenge response. It should throw or returns a rejected promise if the response is invalid, in this case, caller can retry with another response. To end the challenge without retry, callback should return a dedicated value and handle outside of the callback.
+
+</dl>
+
+### Return value
+
+Returns a promise that resolves to
+- when `callback` is not provided, the value being passed to [`AuthChallenge.continueWith`](:) or
+- when `callback` is provided, the value returned by the callback.
 
 ### `AuthProviderContext.revokeSession()`
 
@@ -48,4 +77,5 @@ It has no effect if user is not currently logged in with this provider or the `a
 <VersionTimeline module="@misonou/brew-extension-auth">
 - **0.1.0** Introduced
 - **0.6.0** `AuthProviderContext.interaction`
+- **0.7.0** `AuthProviderContext.challenge()`
 </VersionTimeline>

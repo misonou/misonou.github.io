@@ -26,6 +26,7 @@ async function initSearchData() {
             return v.pages ? flatten([...parent, v.title], v.pages) : {
                 displayText: v.pageTitle || v.title,
                 breadcrumb: parent.join(' \u25b8 '),
+                matchingText: [v.path],
                 value: v
             };
         });

@@ -1,0 +1,55 @@
+<Module name="@misonou/brew-extension-auth" />
+
+# createPasskey
+
+Creates a new passkey.
+
+It is a wrapper of `CredentialsContainer.create` that transforms base64-encoded values to
+array buffers for use with the Credential Management API and back to base64-encoded values for transmission to server.
+
+## Syntax
+
+```javascript
+createPasskey(options)
+createPasskey(options, signal)
+```
+
+<ImportHint
+    name="createPasskey"
+    module="@misonou/brew-extension-auth/util"
+    require="default.Auth.createPasskey"
+    global="brew.Auth.createPasskey"
+/>
+
+### Parameters
+
+<dl>
+    #### `options`
+    Configuration options received from server for passkey creation.
+
+    #### `signal` <Badge.Optional />
+    An optional signal object to abort the passkey creation request.
+
+</dl>
+
+### Return value
+
+A promise that resolves to the result of the passkey creation that can be sent to server for registration.
+
+## Example
+
+```javascript
+import { createApiClient } from "brew-js/util/fetch";
+import { createPasskey } from "@misonou/brew-extension-auth/util";
+
+const client = createApiClient(BASE_URL);
+const options = await client.get('/api/register/options');
+const payload = await createPasskey(options);
+await client.post('/api/register/verify', payload);
+```
+
+## Version information
+
+<VersionTimeline module="@misonou/brew-extension-auth">
+- **0.7.0** Introduced
+</VersionTimeline>

@@ -130,6 +130,11 @@
           path: /app/App
           class: code
           module: brew-js
+        - title: brew.disposable()
+          path: /app/brew-disposable
+          class: code
+          module: brew-js
+          pageTitle: Disposable module
     - title: Extensions
       pages:
         - title: I18n
@@ -159,8 +164,18 @@
         - title: Middleware
           path: /app/auth/middleware
           module: brew-extension-auth
+        - title: Passkeys
+          path: /app/auth/passkey
+          module: brew-extension-auth
+        - title: Multi-factor authentication
+          path: /app/auth/mfa
+          module: brew-extension-auth
         - title: References
           pages:
+            - title: AuthChallenge
+              path: /app/auth/AuthChallenge
+              class: code
+              module: brew-extension-auth
             - title: AuthClient
               path: /app/auth/AuthClient
               class: code
@@ -195,6 +210,14 @@
               module: brew-extension-auth
             - title: createFetchMiddleware
               path: /app/auth/createFetchMiddleware
+              class: code
+              module: brew-extension-auth
+            - title: createPasskey
+              path: /app/auth/createPasskey
+              class: code
+              module: brew-extension-auth
+            - title: requestPasskey
+              path: /app/auth/requestPasskey
               class: code
               module: brew-extension-auth
             - title: useAuth
