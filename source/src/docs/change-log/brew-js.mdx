@@ -2,6 +2,18 @@
 
 # Change log
 
+## v0.7.9 (2026/06/03)
+
+#### IdleTimeout
+
+- Add `elapsed` property for [`idle` event](/docs/app/useIdleTimeout#s-idle-event)
+- Improvement on timer
+  - timer now starts after app ready, avoiding `idle` event during app setup
+  - timer now has sub-second precision instead of 10 second polling
+- <kbd>fix</kbd> `idle` event may be triggered early or immediately after
+  - previous `idle` event is handled with a promise
+  - opening in new tab when `crossFrame` option is enabled
+
 ## v0.7.8 (2026/05/18)
 
 - Add [`brew.disposableWith`](:)

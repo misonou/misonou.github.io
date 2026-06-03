@@ -295,7 +295,7 @@
         }
     },
     "brew-js": {
-        "baseUrl": "https://github.com/misonou/brew-js/blob/v0.7.8",
+        "baseUrl": "https://github.com/misonou/brew-js/blob/v0.7.9",
         "symbols": {
             "addAnimateIn": [
                 "src/anim.d.ts#L38",
@@ -318,23 +318,23 @@
                 "src/app.js#L353"
             ],
             "addRenderer": [
-                "src/dom.d.ts#L82",
+                "src/dom.d.ts#L104",
                 "src/dom.js#L379"
             ],
             "addSelectHandlers": [
-                "src/dom.d.ts#L11",
+                "src/dom.d.ts#L33",
                 "src/dom.js#L111"
             ],
             "addStyleSheet": [
-                "src/util/common.d.ts#L198",
+                "src/util/common.d.ts#L246",
                 "src/util/common.js#L304"
             ],
             "addTemplate": [
-                "src/dom.d.ts#L78",
+                "src/dom.d.ts#L100",
                 "src/dom.js#L371"
             ],
             "addTransformer": [
-                "src/dom.d.ts#L80",
+                "src/dom.d.ts#L102",
                 "src/dom.js#L375"
             ],
             "animateIn": [
@@ -345,41 +345,63 @@
                 "src/anim.d.ts#L32",
                 "src/anim.js#L128"
             ],
-            "AnimationEvent": "src/types.d.ts#L158",
+            "AnimationEvent": "src/types.d.ts#L82",
             "api": [
-                "src/util/common.d.ts#L166",
+                "src/util/common.d.ts#L214",
                 "src/util/common.js#L201"
             ],
-            "API": "src/types.d.ts#L130",
-            "ApiClient": "src/util/fetch.d.ts#L67",
-            "ApiClientError": "src/util/fetch.d.ts#L9",
-            "ApiClientTraps": "src/util/fetch.d.ts#L32",
+            "API": [
+                "src/types.d.ts#L207",
+                "src/util/common.d.ts#L40"
+            ],
+            "ApiClient": [
+                "src/types.d.ts#L212",
+                "src/util/fetch.d.ts#L67"
+            ],
+            "ApiClientError": [
+                "src/types.d.ts#L213",
+                "src/util/fetch.d.ts#L9"
+            ],
+            "ApiClientTraps": [
+                "src/types.d.ts#L214",
+                "src/util/fetch.d.ts#L32"
+            ],
             "apiError": [
                 "src/errorCode.d.ts#L13",
                 "src/errorCode.js#L3"
             ],
-            "APIMethod": "src/types.d.ts#L115",
-            "APIOptions": "src/types.d.ts#L93",
+            "APIMethod": [
+                "src/types.d.ts#L208",
+                "src/util/common.d.ts#L25"
+            ],
+            "APIOptions": [
+                "src/types.d.ts#L209",
+                "src/util/common.d.ts#L3"
+            ],
             "App": [
                 "src/app.js#L86",
-                "src/types.d.ts#L199"
+                "src/types.d.ts#L107"
             ],
-            "AppInit": "src/app.d.ts#L7",
-            "AppInstance": "src/types.d.ts#L19",
+            "AppInit": [
+                "src/app.d.ts#L7",
+                "src/types.d.ts#L197"
+            ],
+            "AppInstance": "src/types.d.ts#L12",
             "batch": [
-                "src/dom.d.ts#L46",
+                "src/dom.d.ts#L68",
                 "src/dom.js#L296"
             ],
             "BeforePageLoadEvent": "src/extension/withRouter.d.ts#L58",
             "brew": [
+                "src/app.d.ts#L25",
                 "src/core.d.ts#L52",
                 "src/core.js#L45",
                 "src/disposable.d.ts#L40",
                 "src/disposable.js#L3",
                 "src/index.js#L2"
             ],
-            "BrewEventMap": "src/types.d.ts#L150",
-            "BrewEventName": "src/types.d.ts#L148",
+            "BrewEventMap": "src/types.d.ts#L74",
+            "BrewEventName": "src/types.d.ts#L72",
             "closeFlyout": [
                 "src/domAction.d.ts#L49",
                 "src/domAction.js#L62"
@@ -391,7 +413,8 @@
             "Component": "src/directive.js#L28",
             "ComponentContext": [
                 "src/directive.d.ts#L15",
-                "src/directive.js#L32"
+                "src/directive.js#L32",
+                "src/types.d.ts#L201"
             ],
             "ComponentContextEventMap": "src/directive.d.ts#L11",
             "compressToUTF16": "src/include/lz-string.js#L3",
@@ -399,16 +422,19 @@
             "ConfigOptions": "src/extension/withConfig.d.ts#L20",
             "configureRouter": "src/extension/router.js#L304",
             "cookie": [
-                "src/util/common.d.ts#L156",
+                "src/util/common.d.ts#L204",
                 "src/util/common.js#L183"
             ],
-            "CookieAccessor": "src/util/common.d.ts#L22",
+            "CookieAccessor": [
+                "src/types.d.ts#L210",
+                "src/util/common.d.ts#L70"
+            ],
             "CookieAttributes": [
-                "src/types.d.ts#L9",
-                "src/util/common.d.ts#L3"
+                "src/types.d.ts#L211",
+                "src/util/common.d.ts#L51"
             ],
             "copyAttr": [
-                "src/util/common.d.ts#L77",
+                "src/util/common.d.ts#L125",
                 "src/util/common.js#L59"
             ],
             "createApiClient": [
@@ -433,25 +459,40 @@
             "defaults": "src/defaults.js#L4",
             "defineUseMethod": "src/app.js#L79",
             "deleteCookie": [
-                "src/util/common.d.ts#L151",
+                "src/util/common.d.ts#L199",
                 "src/util/common.js#L175"
             ],
             "detectLanguage": "src/extension/i18n.js#L21",
-            "Directive": "src/directive.d.ts#L34",
+            "Directive": [
+                "src/directive.d.ts#L34",
+                "src/types.d.ts#L202"
+            ],
             "DirectiveComponent": [
                 "src/extension/withScrollable.d.ts#L41",
-                "src/types.d.ts#L49"
+                "src/types.d.ts#L21"
             ],
-            "DirectiveInit": "src/directive.d.ts#L22",
+            "DirectiveInit": [
+                "src/directive.d.ts#L22",
+                "src/types.d.ts#L203"
+            ],
             "DirectiveType": "src/directive.d.ts#L3",
             "DirectiveTypeMap": "src/directive.d.ts#L5",
             "disableEvent": "src/domAction.js#L36",
-            "Disposable": "src/types.d.ts#L141",
+            "Disposable": "src/types.d.ts#L65",
             "DisposableAppFactory": "src/disposable.d.ts#L15",
-            "DisposableAppInit": "src/disposable.d.ts#L5",
-            "DisposableAppInstance": "src/types.d.ts#L20",
-            "DOMProcessorCallback": "src/types.d.ts#L22",
-            "DOMUpdateState": "src/types.d.ts#L24",
+            "DisposableAppInit": [
+                "src/disposable.d.ts#L5",
+                "src/types.d.ts#L200"
+            ],
+            "DisposableAppInstance": "src/types.d.ts#L13",
+            "DOMProcessorCallback": [
+                "src/dom.d.ts#L3",
+                "src/types.d.ts#L204"
+            ],
+            "DOMUpdateState": [
+                "src/dom.d.ts#L5",
+                "src/types.d.ts#L205"
+            ],
             "emitAppEvent": [
                 "src/app.d.ts#L97",
                 "src/app.js#L376"
@@ -473,43 +514,52 @@
                 "src/var.d.ts#L87",
                 "src/var.js#L177"
             ],
-            "EventDispatcher": "src/types.d.ts#L59",
-            "EventHandler": "src/types.d.ts#L16",
-            "EventHandlers": "src/types.d.ts#L17",
+            "EventDispatcher": "src/types.d.ts#L31",
+            "EventHandler": "src/types.d.ts#L9",
+            "EventHandlers": "src/types.d.ts#L10",
             "exactTargetWrapper": "src/app.js#L22",
             "executeRequest": "src/util/fetch.js#L51",
             "exportAppToGlobal": [
                 "src/entry-slim.js#L34",
                 "src/entry.js#L14"
             ],
-            "ExtendedEventMap": "src/types.d.ts#L18",
+            "ExtendedEventMap": "src/types.d.ts#L11",
             "Extension": [
                 "src/core.d.ts#L22",
-                "src/types.d.ts#L7"
+                "src/types.d.ts#L198"
             ],
             "ExtensionEventMap": [
                 "src/core.d.ts#L27",
-                "src/types.d.ts#L8"
+                "src/types.d.ts#L199"
             ],
             "fetchImpl": "src/util/fetch.js#L7",
-            "FetchLayer": "src/util/fetch.d.ts#L5",
-            "FetchMiddleware": "src/util/fetch.d.ts#L6",
+            "FetchLayer": [
+                "src/types.d.ts#L216",
+                "src/util/fetch.d.ts#L5"
+            ],
+            "FetchMiddleware": [
+                "src/types.d.ts#L215",
+                "src/util/fetch.d.ts#L6"
+            ],
             "findVarContext": "src/var.js#L70",
-            "FlyoutOptions": "src/domAction.d.ts#L51",
+            "FlyoutOptions": [
+                "src/domAction.d.ts#L51",
+                "src/types.d.ts#L206"
+            ],
             "formatMessage": "src/util/console.js#L11",
             "fromRoutePath": "src/extension/router.d.ts#L18",
             "getAttr": [
-                "src/util/common.d.ts#L54",
+                "src/util/common.d.ts#L102",
                 "src/util/common.js#L42"
             ],
             "getAttrValues": [
-                "src/util/common.d.ts#L32",
+                "src/util/common.d.ts#L80",
                 "src/util/common.js#L26"
             ],
             "getBrowserLanguages": "src/extension/i18n.js#L17",
             "getComponentState": "src/dom.js#L27",
             "getCookie": [
-                "src/util/common.d.ts#L129",
+                "src/util/common.d.ts#L177",
                 "src/util/common.js#L148"
             ],
             "getCurrentPathAndQuery": "src/extension/router.js#L49",
@@ -520,12 +570,12 @@
                 "src/directive.js#L82"
             ],
             "getFormValues": [
-                "src/util/common.d.ts#L87",
+                "src/util/common.d.ts#L135",
                 "src/util/common.js#L75"
             ],
             "getIndexOfQueryAndHash": "src/util/path.js#L8",
             "getJSON": [
-                "src/util/common.d.ts#L181",
+                "src/util/common.d.ts#L229",
                 "src/util/common.js#L257"
             ],
             "getQueryAndHash": [
@@ -533,7 +583,7 @@
                 "src/util/path.js#L79"
             ],
             "getQueryParam": [
-                "src/util/common.d.ts#L94",
+                "src/util/common.d.ts#L142",
                 "src/util/common.js#L111"
             ],
             "getShouldAnimate": "src/anim.js#L15",
@@ -551,12 +601,12 @@
             ],
             "handleAnimation": "src/anim.js#L32",
             "handleAsync": [
-                "src/dom.d.ts#L30",
+                "src/dom.d.ts#L52",
                 "src/dom.js#L161"
             ],
             "handleMutations": "src/anim.js#L22",
             "hasAttr": [
-                "src/util/common.d.ts#L46",
+                "src/util/common.d.ts#L94",
                 "src/util/common.js#L38"
             ],
             "hasDataAttributes": "src/var.js#L46",
@@ -566,19 +616,17 @@
                 "src/extension/withRouter.d.ts#L348"
             ],
             "hookBeforeUpdate": [
-                "src/dom.d.ts#L22",
+                "src/dom.d.ts#L44",
                 "src/dom.js#L152"
             ],
-            "HTTPMethod": "src/types.d.ts#L15",
+            "HTTPMethod": "src/types.d.ts#L7",
             "i18n": "src/extension/i18n.d.ts#L5",
             "I18nOptions": "src/extension/withI18n.d.ts#L36",
+            "IdleEvent": "src/extension/withIdleTimeout.d.ts#L8",
             "idleTimeout": "src/extension/idleTimeout.d.ts#L5",
             "IdleTimeoutEventMap": "src/extension/withIdleTimeout.d.ts#L4",
-            "IdleTimeoutOptions": "src/extension/withIdleTimeout.d.ts#L17",
-            "init": [
-                "src/app.d.ts#L25",
-                "src/app.js#L221"
-            ],
+            "IdleTimeoutOptions": "src/extension/withIdleTimeout.d.ts#L24",
+            "init": "src/app.js#L221",
             "initApp": "src/app.js#L199",
             "initDefaults": "src/defaults.js#L7",
             "initExtension": "src/app.js#L44",
@@ -593,11 +641,11 @@
                 "src/app.js#L334"
             ],
             "isBoolAttr": [
-                "src/util/common.d.ts#L39",
+                "src/util/common.d.ts#L87",
                 "src/util/common.js#L34"
             ],
             "isDirective": [
-                "src/dom.d.ts#L6",
+                "src/dom.d.ts#L28",
                 "src/dom.js#L107"
             ],
             "isElementActive": [
@@ -617,7 +665,7 @@
             ],
             "jQuery": "src/include/jquery.js#L2",
             "loadScript": [
-                "src/util/common.d.ts#L188",
+                "src/util/common.d.ts#L236",
                 "src/util/common.js#L265"
             ],
             "login": "src/extension/login.d.ts#L5",
@@ -625,11 +673,11 @@
             "LoginEventMap": "src/extension/withLogin.d.ts#L7",
             "LoginOptions": "src/extension/withLogin.d.ts#L46",
             "markUpdated": [
-                "src/dom.d.ts#L35",
+                "src/dom.d.ts#L57",
                 "src/dom.js#L172"
             ],
             "matchElement": [
-                "src/dom.d.ts#L17",
+                "src/dom.d.ts#L39",
                 "src/dom.js#L137"
             ],
             "matchRoute": [
@@ -640,7 +688,7 @@
             "matchRouteByPath": "src/extension/router.js#L189",
             "mergeDOMUpdates": "src/dom.js#L53",
             "mountElement": [
-                "src/dom.d.ts#L59",
+                "src/dom.d.ts#L81",
                 "src/dom.js#L314"
             ],
             "NamedNodeMap": "typings/lib.dom.d.ts#L1",
@@ -669,11 +717,11 @@
             ],
             "normalizeValue": "src/util/storage.js#L19",
             "ObjectStorage": [
-                "src/types.d.ts#L10",
+                "src/types.d.ts#L218",
                 "src/util/storage.d.ts#L1"
             ],
             "openDeferredURL": [
-                "src/util/common.d.ts#L228",
+                "src/util/common.d.ts#L276",
                 "src/util/common.js#L356"
             ],
             "openFlyout": [
@@ -699,21 +747,21 @@
             "PopStateEvent": "src/extension/withRouter.d.ts#L75",
             "preloadImage": "src/extension/preloadImage.d.ts#L3",
             "preloadImages": [
-                "src/util/common.d.ts#L206",
+                "src/util/common.d.ts#L254",
                 "src/util/common.js#L318"
             ],
             "preventLeave": [
-                "src/dom.d.ts#L70",
+                "src/dom.d.ts#L92",
                 "src/dom.js#L367"
             ],
             "processQueryString": "src/util/common.js#L88",
             "processRender": "src/dom.js#L86",
             "processStateChange": [
-                "src/dom.d.ts#L40",
+                "src/dom.d.ts#L62",
                 "src/dom.js#L181"
             ],
             "processTransform": "src/dom.js#L63",
-            "PromiseOrEmpty": "src/types.d.ts#L21",
+            "PromiseOrEmpty": "src/types.d.ts#L14",
             "readBody": "src/util/fetch.js#L14",
             "registerDirective": [
                 "src/directive.d.ts#L51",
@@ -728,7 +776,10 @@
                 "src/util/path.d.ts#L46",
                 "src/util/path.js#L84"
             ],
-            "RequestOptions": "src/util/fetch.d.ts#L7",
+            "RequestOptions": [
+                "src/types.d.ts#L217",
+                "src/util/fetch.d.ts#L7"
+            ],
             "resetVar": [
                 "src/var.d.ts#L56",
                 "src/var.js#L145"
@@ -761,11 +812,11 @@
             "ScrollableEventMap": "src/extension/withScrollable.d.ts#L7",
             "ScrollableIndexChangeEvent": "src/extension/withScrollable.d.ts#L28",
             "selectorForAttr": [
-                "src/util/common.d.ts#L82",
+                "src/util/common.d.ts#L130",
                 "src/util/common.js#L65"
             ],
             "setAttr": [
-                "src/util/common.d.ts#L62",
+                "src/util/common.d.ts#L110",
                 "src/util/common.js#L46"
             ],
             "setBaseUrl": [
@@ -773,18 +824,18 @@
                 "src/util/path.js#L17"
             ],
             "setCookie": [
-                "src/util/common.d.ts#L137",
+                "src/util/common.d.ts#L185",
                 "src/util/common.js#L160"
             ],
             "setQueryParam": [
-                "src/util/common.d.ts#L109",
+                "src/util/common.d.ts#L157",
                 "src/util/common.js#L120"
             ],
             "setVar": [
                 "src/var.d.ts#L15",
                 "src/var.js#L95"
             ],
-            "StateChangeEvent": "src/types.d.ts#L170",
+            "StateChangeEvent": "src/types.d.ts#L94",
             "stringOrSymbol": "src/extension/router.js#L66",
             "template": [
                 "src/extension/formVar.d.ts#L2",
@@ -806,7 +857,7 @@
                 "src/domAction.js#L94"
             ],
             "toQueryString": [
-                "src/util/common.d.ts#L123",
+                "src/util/common.d.ts#L171",
                 "src/util/common.js#L138"
             ],
             "toRelativeUrl": [
@@ -819,34 +870,34 @@
                 "src/util/path.js#L123"
             ],
             "truncateJSON": "src/util/console.js#L7",
-            "UnloadEvent": "src/types.d.ts#L176",
+            "UnloadEvent": "src/types.d.ts#L100",
             "updateDOM": "src/dom.js#L32",
             "updateRouteState": "src/extension/router.js#L153",
             "Util": "src/core.d.ts#L31",
-            "ValidateEvent": "src/types.d.ts#L180",
+            "ValidateEvent": "src/types.d.ts#L104",
             "validationFailed": [
                 "src/errorCode.d.ts#L17",
                 "src/errorCode.js#L4"
             ],
             "VarContext": [
-                "src/types.d.ts#L44",
+                "src/types.d.ts#L16",
                 "src/var.js#L31"
             ],
             "viewport": "src/extension/viewport.d.ts#L5",
             "ViewportEvent": "src/extension/withViewport.d.ts#L12",
             "ViewportEventMap": "src/extension/withViewport.d.ts#L7",
-            "Watchable": "src/types.d.ts#L183",
+            "Watchable": "src/types.d.ts#L8",
             "waterpipe": "src/include/waterpipe.js#L2",
             "withBaseUrl": [
                 "src/util/path.d.ts#L53",
                 "src/util/path.js#L92"
             ],
             "WithConfig": "src/extension/withConfig.d.ts#L7",
-            "WithDispose": "src/types.d.ts#L273",
+            "WithDispose": "src/types.d.ts#L181",
             "WithExtension": "src/app.d.ts#L5",
             "WithHtmlRouter": "src/extension/withHtmlRouter.d.ts#L4",
             "WithI18n": "src/extension/withI18n.d.ts#L7",
-            "WithIdleTimeout": "src/extension/withIdleTimeout.d.ts#L8",
+            "WithIdleTimeout": "src/extension/withIdleTimeout.d.ts#L15",
             "WithLogin": "src/extension/withLogin.d.ts#L19",
             "WithRouter": "src/extension/withRouter.d.ts#L144",
             "WithScrollable": "src/extension/withScrollable.d.ts#L33",

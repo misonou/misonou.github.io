@@ -73,8 +73,17 @@ The `idle` event will be fired after a specified amount time without any user in
 > If the `idle` event is handled with a promise, the count down will not be restarted
   until the promise is resolved. This prevents mulitple triggering of UI notifications.
 
+#### Event properties
+
+<dl>
+    #### `elapsed` <Badge.ReadOnly /> <Badge.Version />
+    Get the elapsed time in milliseconds since the user becomes idle.
+
+</dl>
+
 ## Version information
 
 <VersionTimeline module="brew-js">
 - **0.5.11** Introduced
+- **0.7.9** `idle` event: `elapsed` property
 </VersionTimeline>

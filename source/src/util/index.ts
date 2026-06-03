@@ -4,6 +4,9 @@ import { useSingleton } from "zeta-dom-react";
 import { noop } from "zeta-dom/util";
 
 export function generateAnchor(v: string) {
+    if (/:(.+ event)$/.test(v)) {
+        v = RegExp.$1;
+    }
     return v.toLowerCase().replace(/\W+/g, '-').replace(/^-|-$/g, '');
 }
 
