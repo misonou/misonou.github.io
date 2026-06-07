@@ -2,6 +2,12 @@
 
 # Change log
 
+## v0.6.3 (2026/06/07)
+
+- <kbd>fix</kbd> [`useAsync`](:) did not refresh for data after hot reload in React 19
+- <kbd>fix</kbd> singletons may be disposed early prior to unmount when a shared dispose callback is passed to [`useSingleton`](:) in development mode
+- <kbd>fix</kbd> replace references of `JSX.Element` removed from React 19 in type definitions <Badge.TS/>
+
 ## v0.6.2 (2026/05/02)
 
 - Add [`useAbortSignal`](:) and [`useSideEffect`](:)

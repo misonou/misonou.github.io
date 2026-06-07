@@ -911,7 +911,7 @@
         }
     },
     "brew-js-react": {
-        "baseUrl": "https://github.com/misonou/brew-js-react/blob/v0.7.2",
+        "baseUrl": "https://github.com/misonou/brew-js-react/blob/v0.7.3",
         "symbols": {
             "AnimateMixin": [
                 "src/mixins/AnimateMixin.d.ts#L38",
@@ -972,7 +972,7 @@
             "DialogResult": "src/dialog.d.ts#L9",
             "DialogState": "src/dialog.d.ts#L52",
             "disposeUnmountedStates": "src/mixins/StatefulMixin.js#L7",
-            "ErrorBoundary": "src/view.js#L87",
+            "ErrorBoundary": "src/view.js#L86",
             "ErrorViewProps": "src/view.d.ts#L139",
             "extendSelf": "src/mixin.js#L19",
             "FlyoutMixin": [
@@ -1184,11 +1184,11 @@
             "useViewContextWithEffect": "src/hooks.js#L59",
             "ViewComponent": "src/view.d.ts#L6",
             "ViewComponentRootProps": "src/view.d.ts#L154",
-            "ViewContainer": "src/view.js#L149",
+            "ViewContainer": "src/view.js#L148",
             "ViewContainerState": "src/view.d.ts#L11",
             "ViewContext": [
                 "src/view.d.ts#L46",
-                "src/view.js#L45"
+                "src/view.js#L44"
             ],
             "ViewContextEventMap": "src/view.d.ts#L41",
             "ViewParamMatchers": "src/view.d.ts#L7",
@@ -2470,7 +2470,7 @@
         }
     },
     "zeta-dom-react": {
-        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.2",
+        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.3",
         "symbols": {
             "adjustMonth": "src/fields/DateField.js#L33",
             "assertFormContext": "src/form.js#L59",
@@ -2519,11 +2519,11 @@
             "createDataObject": "src/form.js#L176",
             "createDependency": [
                 "src/hooks.d.ts#L455",
-                "src/hooks.js#L391"
+                "src/hooks.js#L393"
             ],
             "createErrorHandler": [
                 "src/hooks.d.ts#L413",
-                "src/hooks.js#L294"
+                "src/hooks.js#L296"
             ],
             "createFieldState": "src/form.js#L277",
             "createHookHelper": "src/form.js#L35",
@@ -2620,7 +2620,7 @@
             "isEmpty": "src/form.js#L63",
             "isSingletonDisposed": [
                 "src/hooks.d.ts#L359",
-                "src/hooks.js#L275"
+                "src/hooks.js#L277"
             ],
             "keyFor": "src/form.js#L75",
             "LegacyFieldPropsType": "src/form.d.ts#L16",
@@ -2681,7 +2681,7 @@
             ],
             "useAbortSignal": [
                 "src/hooks.d.ts#L450",
-                "src/hooks.js#L382"
+                "src/hooks.js#L384"
             ],
             "useAsync": [
                 "src/hooks.d.ts#L310",
@@ -2697,11 +2697,11 @@
             ],
             "useDependency": [
                 "src/hooks.d.ts#L467",
-                "src/hooks.js#L409"
+                "src/hooks.js#L411"
             ],
             "useDispose": [
                 "src/hooks.d.ts#L353",
-                "src/hooks.js#L260"
+                "src/hooks.js#L262"
             ],
             "useEagerReducer": [
                 "src/hooks.d.ts#L208",
@@ -2713,11 +2713,11 @@
             ],
             "useErrorHandler": [
                 "src/hooks.d.ts#L432",
-                "src/hooks.js#L349"
+                "src/hooks.js#L351"
             ],
             "useErrorHandlerRef": [
                 "src/hooks.d.ts#L420",
-                "src/hooks.js#L290"
+                "src/hooks.js#L292"
             ],
             "useEventTrigger": [
                 "src/hooks.d.ts#L236",
@@ -2746,21 +2746,21 @@
             ],
             "useRefInitCallback": [
                 "src/hooks.d.ts#L332",
-                "src/hooks.js#L254"
+                "src/hooks.js#L256"
             ],
             "useSideEffect": [
                 "src/hooks.d.ts#L439",
-                "src/hooks.js#L360"
+                "src/hooks.js#L362"
             ],
             "useSingleton": [
                 "src/hooks.d.ts#L396",
-                "src/hooks.js#L279"
+                "src/hooks.js#L281"
             ],
             "useSingletonEffectImpl": "src/hooks.js#L38",
             "useSingletonEffectImplDev": "src/hooks.js#L49",
             "useUnloadEffect": [
                 "src/hooks.d.ts#L445",
-                "src/hooks.js#L373"
+                "src/hooks.js#L375"
             ],
             "useUpdateTrigger": [
                 "src/hooks.d.ts#L221",
