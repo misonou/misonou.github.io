@@ -380,6 +380,7 @@
     ],
     "/react/dialog/DialogContext": [
         "DialogContext",
+        "DialogContext.dialogElement",
         "DialogContext.errorHandler",
         "DialogContext.closeDialog()",
         "DialogContext.commitDialog()",

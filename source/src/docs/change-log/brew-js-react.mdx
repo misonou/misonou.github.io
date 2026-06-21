@@ -2,6 +2,21 @@
 
 # Change log
 
+## v0.7.4 (2026/06/21)
+
+#### Views
+
+- <kbd>fix</kbd> [`linkTo`](:) and [`navigateTo`](:) did not correctly resolve destination path from a matching route
+  when the view are not registered with some optional parameter
+- <kbd>fix</kbd> navigation halted when nested view container are unmounted during navigation
+
+#### Dialog
+
+- Add [`DialogContext.dialogElement`](:)
+- <kbd>fix</kbd> container element of the dialog controller is detached before the last dialog finishes closing
+  with outro animation
+- <kbd>fix</kbd> type inference issue due to breaking change in react 19 <Badge.TS/>
+
 ## v0.7.3 (2026/06/07)
 
 - <kbd>fix</kbd> reliably fire [`pageenter` event](/docs/router/WithRouter#s-pageenter-event) after component unmounted

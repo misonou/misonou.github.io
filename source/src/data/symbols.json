@@ -295,7 +295,7 @@
         }
     },
     "brew-js": {
-        "baseUrl": "https://github.com/misonou/brew-js/blob/v0.7.9",
+        "baseUrl": "https://github.com/misonou/brew-js/blob/v0.7.10",
         "symbols": {
             "addAnimateIn": [
                 "src/anim.d.ts#L38",
@@ -307,7 +307,7 @@
             ],
             "addAsyncAction": [
                 "src/domAction.d.ts#L31",
-                "src/domAction.js#L49"
+                "src/domAction.js#L50"
             ],
             "addDetect": [
                 "src/app.d.ts#L95",
@@ -404,7 +404,7 @@
             "BrewEventName": "src/types.d.ts#L72",
             "closeFlyout": [
                 "src/domAction.d.ts#L49",
-                "src/domAction.js#L62"
+                "src/domAction.js#L68"
             ],
             "combinePath": [
                 "src/util/path.d.ts#L20",
@@ -477,7 +477,7 @@
             ],
             "DirectiveType": "src/directive.d.ts#L3",
             "DirectiveTypeMap": "src/directive.d.ts#L5",
-            "disableEvent": "src/domAction.js#L36",
+            "disableEvent": "src/domAction.js#L37",
             "Disposable": "src/types.d.ts#L65",
             "DisposableAppFactory": "src/disposable.d.ts#L15",
             "DisposableAppInit": [
@@ -655,10 +655,10 @@
             ],
             "isFlyoutOpen": [
                 "src/domAction.d.ts#L41",
-                "src/domAction.js#L53"
+                "src/domAction.js#L54"
             ],
             "isObject": "src/util/storage.js#L15",
-            "isSameWindow": "src/domAction.js#L41",
+            "isSameWindow": "src/domAction.js#L42",
             "isSubPathOf": [
                 "src/util/path.d.ts#L72",
                 "src/util/path.js#L115"
@@ -696,7 +696,7 @@
             "NavigateResult": "src/extension/withRouter.d.ts#L86",
             "NavigationCancellationRequest": [
                 "src/domAction.d.ts#L5",
-                "src/domAction.js#L25"
+                "src/domAction.js#L26"
             ],
             "navigationCancelled": [
                 "src/errorCode.d.ts#L21",
@@ -726,7 +726,7 @@
             ],
             "openFlyout": [
                 "src/domAction.d.ts#L112",
-                "src/domAction.js#L105"
+                "src/domAction.js#L110"
             ],
             "OrientationChangeEvent": "src/extension/withViewport.d.ts#L19",
             "PageEvent": "src/extension/withRouter.d.ts#L62",
@@ -780,6 +780,7 @@
                 "src/types.d.ts#L217",
                 "src/util/fetch.d.ts#L7"
             ],
+            "resetFlyoutElement": "src/domAction.js#L59",
             "resetVar": [
                 "src/var.d.ts#L56",
                 "src/var.js#L145"
@@ -854,7 +855,7 @@
             "toElementTag": "src/util/console.js#L3",
             "toggleFlyout": [
                 "src/domAction.d.ts#L139",
-                "src/domAction.js#L94"
+                "src/domAction.js#L99"
             ],
             "toQueryString": [
                 "src/util/common.d.ts#L171",
@@ -911,7 +912,7 @@
         }
     },
     "brew-js-react": {
-        "baseUrl": "https://github.com/misonou/brew-js-react/blob/v0.7.3",
+        "baseUrl": "https://github.com/misonou/brew-js-react/blob/v0.7.4",
         "symbols": {
             "AnimateMixin": [
                 "src/mixins/AnimateMixin.d.ts#L38",
@@ -943,36 +944,36 @@
             ],
             "createCallback": "src/i18n.js#L19",
             "createDialog": [
-                "src/dialog.d.ts#L206",
-                "src/dialog.js#L61"
+                "src/dialog.d.ts#L211",
+                "src/dialog.js#L62"
             ],
             "createDialogElement": "src/dialog.js#L26",
             "createDialogQueue": [
-                "src/dialog.d.ts#L200",
-                "src/dialog.js#L119"
+                "src/dialog.d.ts#L205",
+                "src/dialog.js#L121"
             ],
             "createUseFunction": "src/mixin.js#L23",
-            "createViewComponent": "src/view.js#L317",
+            "createViewComponent": "src/view.js#L320",
             "CustomAttributeProvider": "src/mixins/Mixin.d.ts#L15",
             "debounceAsync": "src/dialog.js#L13",
             "Dialog": [
-                "src/dialog.d.ts#L233",
-                "src/dialog.js#L187"
+                "src/dialog.d.ts#L238",
+                "src/dialog.js#L191"
             ],
-            "DialogBaseProps": "src/dialog.d.ts#L13",
-            "DialogCloseCallback": "src/dialog.d.ts#L6",
-            "DialogContext": "src/dialog.d.ts#L158",
-            "DialogController": "src/dialog.d.ts#L36",
-            "DialogControllerAdvancedOptions": "src/dialog.d.ts#L19",
-            "DialogControllerOptions": "src/dialog.d.ts#L17",
-            "DialogOptions": "src/dialog.d.ts#L72",
-            "DialogOptionsStrict": "src/dialog.d.ts#L10",
-            "DialogProps": "src/dialog.d.ts#L185",
-            "DialogRenderComponentProps": "src/dialog.d.ts#L15",
-            "DialogResult": "src/dialog.d.ts#L9",
-            "DialogState": "src/dialog.d.ts#L52",
+            "DialogBaseProps": "src/dialog.d.ts#L14",
+            "DialogCloseCallback": "src/dialog.d.ts#L7",
+            "DialogContext": "src/dialog.d.ts#L159",
+            "DialogController": "src/dialog.d.ts#L37",
+            "DialogControllerAdvancedOptions": "src/dialog.d.ts#L20",
+            "DialogControllerOptions": "src/dialog.d.ts#L18",
+            "DialogOptions": "src/dialog.d.ts#L73",
+            "DialogOptionsStrict": "src/dialog.d.ts#L11",
+            "DialogProps": "src/dialog.d.ts#L190",
+            "DialogRenderComponentProps": "src/dialog.d.ts#L16",
+            "DialogResult": "src/dialog.d.ts#L10",
+            "DialogState": "src/dialog.d.ts#L53",
             "disposeUnmountedStates": "src/mixins/StatefulMixin.js#L7",
-            "ErrorBoundary": "src/view.js#L86",
+            "ErrorBoundary": "src/view.js#L84",
             "ErrorViewProps": "src/view.d.ts#L139",
             "extendSelf": "src/mixin.js#L19",
             "FlyoutMixin": [
@@ -988,21 +989,21 @@
                 "src/mixins/FocusStateMixin.d.ts#L11",
                 "src/mixins/FocusStateMixin.js#L8"
             ],
-            "getCurrentParams": "src/view.js#L273",
+            "getCurrentParams": "src/view.js#L281",
             "getCurrentStates": "src/hooks.js#L12",
             "HintedType": "src/mixins/FlyoutMixin.d.ts#L7",
             "isViewMatched": [
                 "src/view.d.ts#L200",
-                "src/view.js#L349"
+                "src/view.js#L352"
             ],
             "isViewRendered": [
                 "src/view.d.ts#L206",
-                "src/view.js#L354"
+                "src/view.js#L357"
             ],
             "JQueryScrollableMethods": "src/mixins/ScrollableMixin.d.ts#L8",
             "linkTo": [
                 "src/view.d.ts#L302",
-                "src/view.js#L423"
+                "src/view.js#L426"
             ],
             "LoadingStateMixin": [
                 "src/mixins/LoadingStateMixin.d.ts#L11",
@@ -1014,9 +1015,9 @@
             ],
             "matchView": [
                 "src/view.d.ts#L212",
-                "src/view.js#L358"
+                "src/view.js#L361"
             ],
-            "matchViewParams": "src/view.js#L309",
+            "matchViewParams": "src/view.js#L312",
             "Mixin": [
                 "src/mixins/Mixin.d.ts#L19",
                 "src/mixins/Mixin.js#L5"
@@ -1032,41 +1033,41 @@
             "MixinTypes": "src/mixins/Mixin.d.ts#L8",
             "navigateTo": [
                 "src/view.d.ts#L311",
-                "src/view.js#L427"
+                "src/view.js#L430"
             ],
-            "normalizePart": "src/view.js#L269",
+            "normalizePart": "src/view.js#L277",
             "onAppInit": "src/app.js#L10",
             "openDialog": [
-                "src/dialog.d.ts#L220",
-                "src/dialog.js#L54"
+                "src/dialog.d.ts#L225",
+                "src/dialog.js#L55"
             ],
             "PageChangeEvent": "src/view.d.ts#L19",
             "PageEvent": "src/brew.d.ts#L2",
             "ParamsWithURLParts": "src/view.d.ts#L17",
-            "PartialRequired": "src/dialog.d.ts#L3",
+            "PartialRequired": "src/dialog.d.ts#L4",
             "redirectTo": [
                 "src/view.d.ts#L320",
-                "src/view.js#L431"
+                "src/view.js#L434"
             ],
             "registerErrorView": [
                 "src/view.d.ts#L193",
-                "src/view.js#L393"
+                "src/view.js#L396"
             ],
             "registerView": [
                 "src/view.d.ts#L186",
-                "src/view.js#L370"
+                "src/view.js#L373"
             ],
             "renderView": [
                 "src/view.d.ts#L252",
-                "src/view.js#L397"
+                "src/view.js#L400"
             ],
             "resetAllViews": [
                 "src/view.d.ts#L264",
-                "src/view.js#L410"
+                "src/view.js#L413"
             ],
             "resolvePath": [
                 "src/view.d.ts#L287",
-                "src/view.js#L414"
+                "src/view.js#L417"
             ],
             "ResourceGlobalKey": "src/i18n.d.ts#L1",
             "ResourceKey": "src/i18n.d.ts#L2",
@@ -1080,8 +1081,8 @@
                 "src/mixins/ScrollIntoViewMixin.js#L5"
             ],
             "SetQueryParamAction": "src/hooks.d.ts#L1",
-            "showDialog": "src/dialog.js#L43",
-            "sortViews": "src/view.js#L305",
+            "showDialog": "src/dialog.js#L44",
+            "sortViews": "src/view.js#L308",
             "StatefulMixin": [
                 "src/mixins/StatefulMixin.d.ts#L27",
                 "src/mixins/StatefulMixin.js#L35"
@@ -1179,16 +1180,17 @@
             "useViewContainerState": "src/view.d.ts#L177",
             "useViewContext": [
                 "src/view.d.ts#L172",
-                "src/view.js#L345"
+                "src/view.js#L348"
             ],
             "useViewContextWithEffect": "src/hooks.js#L59",
+            "VFC": "src/dialog.d.ts#L3",
             "ViewComponent": "src/view.d.ts#L6",
             "ViewComponentRootProps": "src/view.d.ts#L154",
-            "ViewContainer": "src/view.js#L148",
+            "ViewContainer": "src/view.js#L146",
             "ViewContainerState": "src/view.d.ts#L11",
             "ViewContext": [
                 "src/view.d.ts#L46",
-                "src/view.js#L44"
+                "src/view.js#L42"
             ],
             "ViewContextEventMap": "src/view.d.ts#L41",
             "ViewParamMatchers": "src/view.d.ts#L7",
@@ -1198,7 +1200,7 @@
                 "src/hooks.d.ts#L3",
                 "src/hooks.js#L191"
             ],
-            "VoidOrOptional": "src/dialog.d.ts#L4",
+            "VoidOrOptional": "src/dialog.d.ts#L5",
             "WithOptions": "src/mixin.d.ts#L17"
         }
     },

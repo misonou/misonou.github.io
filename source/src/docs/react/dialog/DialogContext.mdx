@@ -23,11 +23,15 @@ createDialog({
 
 <MemberList
     i="DialogContext"
-    ip={['errorHandler']}
+    ip={['dialogElement', 'errorHandler']}
     im={['closeDialog()', 'commitDialog()', 'dismissDialog()']}
 />
 
 ## Instance properties
+
+### `DialogContext.dialogElement` <Badge.Version />
+
+Gets the root element of the dialog.
 
 ### `DialogContext.errorHandler` <Badge.Version />
 
@@ -60,4 +64,5 @@ Closes the dialog without invoking `DialogOptions.onCommit`.
 <VersionTimeline module="brew-js-react">
 - **0.1.0** Introduced
 - **0.6.4** `DialogContext.errorHandler`<br/> `DialogContext.commitDialog()`<br/> `DialogContext.dismissDialog()`
+- **0.7.4** `DialogContext.dialogElement`
 </VersionTimeline>
