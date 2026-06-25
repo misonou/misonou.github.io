@@ -12,7 +12,7 @@
 
 <MemberList
     i="ZetaEventContainer"
-    ip={['element', 'context', 'event', 'autoDestroy', 'normalizeTouchEvents', 'captureDOMEvents']}
+    ip={['Target', 'element', 'context', 'event', 'autoDestroy', 'normalizeTouchEvents', 'captureDOMEvents']}
     im={['getContexts()', 'add()', 'delete()', 'destroy()', 'emit()', 'emitAsync()', 'tap()', 'flushEvents()', 'has()']}
 />
 
@@ -58,6 +58,12 @@ new ZetaEventContainer(root, context, options)
 </dl>
 
 ## Instance properties
+
+### `ZetaEventContainer.Target` <Badge.ReadOnly /> <Badge.Version />
+
+Gets the event target class associated with this container.
+
+The class will have the `on` method to register event handlers to this container.
 
 ### `ZetaEventContainer.autoDestroy` <Badge.ReadOnly />
 
@@ -326,4 +332,5 @@ Adds a handler to intercept event being fired within this container.
 - **0.5.6** `ZetaEventContainer.emit()`: `deferrable` option
 - **0.5.9** `willDestroy` option
 - **0.6.4** `ZetaEventContainer.has()`
+- **0.6.6** `ZetaEventContainer.Target`
 </VersionTimeline>

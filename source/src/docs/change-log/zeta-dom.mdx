@@ -2,9 +2,18 @@
 
 # Change log
 
+## v0.6.6 (2026/06/25)
+
+- Add [`ZetaEventContainer.Target`](:)
+- Improvement on observable property:
+  - callback returned from [`defineObservableProperty`](:) allow second `receiver` argument
+  - when inherited, it will be initialized if the given initial value is primitive
+  - `0` and `-0` are now considered different values
+- Invoke [`subscribeAsync`](:) callback immediately if async operation is already in progress
+
 ## v0.6.5 (2026/05/02)
 
-- Add [`isObseravableProperty`](:)
+- Add [`isObservableProperty`](:)
 - Add [`throwIfAborted`](:)
 - Accept error object as 2nd argument for [`errorWithCode`](:)
 

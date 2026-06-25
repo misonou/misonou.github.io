@@ -1,0 +1,35 @@
+<Module name="zeta-dom/util" />
+
+# defineAliasProperty
+
+Defines a property that gets and sets another property of the same or a different object
+and will also get notified on change if that property is also observable.
+
+## Syntax
+
+```javascript
+defineAliasProperty(obj, prop, target)
+defineAliasProperty(obj, prop, target, targetProp)
+```
+
+### Parameters
+
+<dl>
+    #### `obj`
+    An object which the new property is defined on.
+
+    #### `prop`
+    Property name.
+
+    #### `target`
+    An object which the new property will access.
+
+    #### `targetProp` <Badge.Optional />
+    Name of property to be accessed. If omitted, the property of the same name will be access.
+
+</dl>
+
+## See also
+
+- [`defineObservableProperty`](:)
+- [Watchables](/docs/util/watchable)

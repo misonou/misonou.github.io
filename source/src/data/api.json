@@ -1277,8 +1277,15 @@
         "ApiClientError.data",
         "ApiClientError.error"
     ],
+    "/util/defineAliasProperty": [
+        "defineAliasProperty()"
+    ],
+    "/util/defineObservableProperty": [
+        "defineObservableProperty()"
+    ],
     "/util/EventContainer": [
         "ZetaEventContainer",
+        "ZetaEventContainer.Target",
         "ZetaEventContainer.element",
         "ZetaEventContainer.context",
         "ZetaEventContainer.event",

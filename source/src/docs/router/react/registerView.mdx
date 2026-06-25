@@ -20,6 +20,23 @@ registerView(component, params)
     A React component.
 
     #### `params`
-    A dictionary containing route parameters.
+    A dictionary containing route parameters. Each key is a route parameter name, and each value is either
+    
+    <dl>
+        #### `null`
+        The route parameter must be empty.
+
+        #### `string`
+        A string that must match the parameter value. An empty string is equivalent to `null`.
+
+        #### `RegExp`
+        A regular expression that must match the parameter value. Starting from v0.7.5, a regular expression that returns true for an empty string is considered optional.
+
+        #### `Function`
+        A function accept a single argument and returns if the parameter value is valid.
+
+        #### `{ test, optional }`
+        Added in v0.7.5. An object with a `test` function that returns true if the parameter value is valid, and an `optional` boolean indicating if the parameter is optional.
+    </dl>
 
 </dl>

@@ -1,0 +1,133 @@
+<Module name="zeta-dom/util" />
+
+# defineObservableProperty
+
+Defines an observable property.
+
+## Syntax
+
+```javascript
+defineObservableProperty(obj, prop)
+defineObservableProperty(obj, prop, initialValue)
+defineObservableProperty(obj, prop, initialValue, callback)
+defineObservableProperty(obj, prop, initialValue, readonly)
+```
+
+### Parameters
+
+<dl>
+    #### `obj`
+    An object which the new property is defined on.
+
+    #### `prop`
+    Property name.
+
+    #### `initialValue` <Badge.Optional />
+    Initial value. It is ignored if property already exists; or when accessed as an inherited property unless the value is primitive.
+
+    #### `callback`
+    A callback to mangle on the new value being set. If the returned value is same as old value, no event will be triggered.
+
+    #### `readonly`
+</dl>
+
+### Return value
+
+A setter function to update the value.
+
+Starting from v0.6.6, it accepts a receiver parameter for objects inheriting the observable property.
+
+## Basic usage
+
+```javascript
+var obj = {};
+defineObservableProperty(obj, 'foo', 1);
+obj.foo // -> 1
+```
+
+Updating the property will notify subscribers registered by [`watch`](:) or [`watchOnce`](:):
+
+```javascript
+watch(obj, function ({ oldValues, newValues }) {
+    oldValues.foo // -> 1
+    newValues.foo // -> 2
+});
+watch(obj, 'foo', (newValue, oldValue, prop) => {
+    // 2, 1, 'foo'
+});
+obj.foo = 2; // triggers the watcher callbacks
+```
+
+If the property already exists as data property, it will be converted to an observable property with existing value,
+whereas the initial value will be ignored.
+
+> **Important** `defineObservableProperty` will throw on a property that is already defined as an accessor property.
+
+> **Note** Calling [`watch`](:) with specified property name automatically creates an observable property.
+  Therefore `defineObservableProperty` is more commonly used for scenarios below.
+
+## Filtering value on update
+
+By providing a callback, the value can be filtered before being set, which is suitable for guarding against invalid values.
+
+```javascript
+const obj = {};
+defineObservableProperty(obj, 'foo', 1, function (value) {
+    return value < 0 ? 0 : value;
+});
+obj.foo = -1;
+obj.foo // -> 0
+```
+
+## Working with inheritance
+
+It is possible to define an observable property on a prototype object, and the property will be inherited by its instances.
+
+```javascript
+function A() {}
+defineObservableProperty(A.prototype, 'foo', 1);
+
+const a = new A();
+a.foo // -> 1
+```
+
+> **Important** For backward compatibility, initial value with `object` type will be ignored and
+the property will be initialized to `null`.  So it is required to set in the constructor or after instantiation manually.
+
+> **Important** Before v0.6.6, the initial value for instantiated objects is always `undefined`.
+
+## Read-only property and setter callback
+
+When the forth parameter is set to `true`, the property will be read-only. Object owner can update the value using the setter function returned:
+
+```javascript
+const obj = {};
+const setFoo = defineObservableProperty(obj, 'foo', 1, true);
+obj.foo = 2; // throws an error
+
+setFoo(2); // sets the value to 2
+obj.foo // -> 2
+```
+
+Starting from v0.6.6, the setter function accepts a receiver parameter for objects inheriting the observable property.
+
+```javascript
+function A() {}
+const setFoo = defineObservableProperty(A.prototype, 'foo', 1, true);
+
+const a = new A();
+setFoo(2, a); // sets the value to 2 for instance a
+a.foo // -> 2
+```
+
+## Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.1.0** Introduced
+- **0.6.6** Returned callback: `receiver` argument
+</VersionTimeline>
+
+## See also
+
+- [`defineAliasProperty`](:)
+- [Watchables](/docs/util/watchable)

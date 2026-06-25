@@ -57,7 +57,7 @@ export function Nav() {
     return (
         <nav {...Mixin.use(focusStateMixin, classNames({ 'search-open': searchOpen }))}>
             <div id="app-nav-header">
-                <span>misonou/docs</span>
+                <span><a href="/">misonou/docs</a></span>
                 <div className="app-nav-header-spacer">
                     <Dropdown variant="button" icon={FaAdjust} alwaysShowLabel
                         items={themeItems} value={darkMode} onChange={v => app.darkMode = v} />
