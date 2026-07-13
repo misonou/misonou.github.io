@@ -8,7 +8,16 @@ Returns a abort signal that is aborted when the component is unmounted.
 
 ```javascript
 useAbortSignal()
+useAbortSignal(deps)
 ```
+
+### Parameters
+
+<dl>
+    #### `deps` <Badge.Version />
+    A list of dependencies that will trigger the abort signal when changed.
+
+</dl>
 
 ### Return value
 
@@ -18,4 +27,5 @@ An `AbortSignal` object.
 
 <VersionTimeline module="zeta-dom-react">
 - **0.6.2** Introduced
+- **0.6.4** `deps` parameter
 </VersionTimeline>

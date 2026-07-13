@@ -2,6 +2,19 @@
 
 # Change log
 
+## v0.6.4 (2026/07/13)
+
+#### Forms
+
+- <kbd>fix</kbd> unnamed field being reset after hot reload, bug introduced in 0.6.1
+- <kbd>fix</kbd> [`dataChange` event](/docs/react/form/FormContext#s-datachange-event) fired after calling [`FormContext.reset`](:) when there were pending changes
+- <kbd>fix</kbd> perform correct comparison on dependency list for hooks in [`FieldType.postHook`](:)
+
+#### Utilities
+
+- Accept dependency list to [`useAbortSignal`](:)
+- <kbd>fix</kbd> type inference issue due to breaking change in react 19 <Badge.TS/>
+
 ## v0.6.3 (2026/06/07)
 
 - <kbd>fix</kbd> [`useAsync`](:) did not refresh for data after hot reload in React 19

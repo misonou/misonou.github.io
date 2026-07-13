@@ -912,7 +912,7 @@
         }
     },
     "brew-js-react": {
-        "baseUrl": "https://github.com/misonou/brew-js-react/blob/v0.7.5",
+        "baseUrl": "https://github.com/misonou/brew-js-react/blob/v0.7.6",
         "symbols": {
             "AnimateMixin": [
                 "src/mixins/AnimateMixin.d.ts#L38",
@@ -953,7 +953,7 @@
                 "src/dialog.js#L121"
             ],
             "createUseFunction": "src/mixin.js#L23",
-            "createViewComponent": "src/view.js#L323",
+            "createViewComponent": "src/view.js#L362",
             "CustomAttributeProvider": "src/mixins/Mixin.d.ts#L15",
             "debounceAsync": "src/dialog.js#L13",
             "Dialog": [
@@ -973,7 +973,7 @@
             "DialogResult": "src/dialog.d.ts#L10",
             "DialogState": "src/dialog.d.ts#L53",
             "disposeUnmountedStates": "src/mixins/StatefulMixin.js#L7",
-            "ErrorBoundary": "src/view.js#L84",
+            "ErrorBoundary": "src/view.js#L82",
             "ErrorViewProps": "src/view.d.ts#L139",
             "extendSelf": "src/mixin.js#L19",
             "FlyoutMixin": [
@@ -989,21 +989,22 @@
                 "src/mixins/FocusStateMixin.d.ts#L11",
                 "src/mixins/FocusStateMixin.js#L8"
             ],
-            "getCurrentParams": "src/view.js#L285",
+            "getCurrentParams": "src/view.js#L324",
             "getCurrentStates": "src/hooks.js#L12",
+            "getDerivedStateFromProps": "src/view.js#L154",
             "HintedType": "src/mixins/FlyoutMixin.d.ts#L7",
             "isViewMatched": [
                 "src/view.d.ts#L200",
-                "src/view.js#L355"
+                "src/view.js#L394"
             ],
             "isViewRendered": [
                 "src/view.d.ts#L206",
-                "src/view.js#L360"
+                "src/view.js#L399"
             ],
             "JQueryScrollableMethods": "src/mixins/ScrollableMixin.d.ts#L8",
             "linkTo": [
                 "src/view.d.ts#L302",
-                "src/view.js#L431"
+                "src/view.js#L470"
             ],
             "LoadingStateMixin": [
                 "src/mixins/LoadingStateMixin.d.ts#L11",
@@ -1015,9 +1016,9 @@
             ],
             "matchView": [
                 "src/view.d.ts#L212",
-                "src/view.js#L364"
+                "src/view.js#L403"
             ],
-            "matchViewParams": "src/view.js#L316",
+            "matchViewParams": "src/view.js#L355",
             "Mixin": [
                 "src/mixins/Mixin.d.ts#L19",
                 "src/mixins/Mixin.js#L5"
@@ -1033,9 +1034,9 @@
             "MixinTypes": "src/mixins/Mixin.d.ts#L8",
             "navigateTo": [
                 "src/view.d.ts#L311",
-                "src/view.js#L435"
+                "src/view.js#L474"
             ],
-            "normalizePart": "src/view.js#L281",
+            "normalizePart": "src/view.js#L286",
             "onAppInit": "src/app.js#L10",
             "openDialog": [
                 "src/dialog.d.ts#L225",
@@ -1047,27 +1048,27 @@
             "PartialRequired": "src/dialog.d.ts#L4",
             "redirectTo": [
                 "src/view.d.ts#L320",
-                "src/view.js#L439"
+                "src/view.js#L478"
             ],
             "registerErrorView": [
                 "src/view.d.ts#L193",
-                "src/view.js#L401"
+                "src/view.js#L440"
             ],
             "registerView": [
                 "src/view.d.ts#L186",
-                "src/view.js#L376"
+                "src/view.js#L415"
             ],
             "renderView": [
                 "src/view.d.ts#L252",
-                "src/view.js#L405"
+                "src/view.js#L444"
             ],
             "resetAllViews": [
                 "src/view.d.ts#L264",
-                "src/view.js#L418"
+                "src/view.js#L457"
             ],
             "resolvePath": [
                 "src/view.d.ts#L287",
-                "src/view.js#L422"
+                "src/view.js#L461"
             ],
             "ResourceGlobalKey": "src/i18n.d.ts#L1",
             "ResourceKey": "src/i18n.d.ts#L2",
@@ -1082,7 +1083,7 @@
             ],
             "SetQueryParamAction": "src/hooks.d.ts#L1",
             "showDialog": "src/dialog.js#L44",
-            "sortViews": "src/view.js#L312",
+            "sortViews": "src/view.js#L351",
             "StatefulMixin": [
                 "src/mixins/StatefulMixin.d.ts#L27",
                 "src/mixins/StatefulMixin.js#L35"
@@ -1103,6 +1104,7 @@
                 "src/mixins/UnmanagedClassNameMixin.js#L4"
             ],
             "updatePersistedValue": "src/hooks.js#L37",
+            "updateViewContainers": "src/view.js#L298",
             "updateViewState": "src/hooks.js#L48",
             "useAnimateMixin": [
                 "src/mixin.d.ts#L70",
@@ -1180,17 +1182,17 @@
             "useViewContainerState": "src/view.d.ts#L177",
             "useViewContext": [
                 "src/view.d.ts#L172",
-                "src/view.js#L351"
+                "src/view.js#L390"
             ],
             "useViewContextWithEffect": "src/hooks.js#L59",
             "VFC": "src/dialog.d.ts#L3",
             "ViewComponent": "src/view.d.ts#L6",
             "ViewComponentRootProps": "src/view.d.ts#L154",
-            "ViewContainer": "src/view.js#L146",
+            "ViewContainer": "src/view.js#L144",
             "ViewContainerState": "src/view.d.ts#L11",
             "ViewContext": [
                 "src/view.d.ts#L46",
-                "src/view.js#L42"
+                "src/view.js#L40"
             ],
             "ViewContextEventMap": "src/view.d.ts#L41",
             "ViewParamMatchers": "src/view.d.ts#L7",
@@ -1200,6 +1202,7 @@
                 "src/hooks.d.ts#L3",
                 "src/hooks.js#L191"
             ],
+            "visitContainer": "src/view.js#L290",
             "VoidOrOptional": "src/dialog.d.ts#L5",
             "WithOptions": "src/mixin.d.ts#L17"
         }
@@ -2474,9 +2477,13 @@
         }
     },
     "zeta-dom-react": {
-        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.3",
+        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.4",
         "symbols": {
             "adjustMonth": "src/fields/DateField.js#L33",
+            "areHookInputsEqual": [
+                "src/util.d.ts#L81",
+                "src/util.js#L94"
+            ],
             "assertFormContext": "src/form.js#L59",
             "AsyncContentEventMap": "src/hooks.d.ts#L105",
             "AsyncContentLoadEvent": "src/hooks.d.ts#L110",
@@ -2509,7 +2516,7 @@
             ],
             "combineValidators": [
                 "src/form.d.ts#L626",
-                "src/form.js#L737"
+                "src/form.js#L738"
             ],
             "compare": "src/dataView.js#L11",
             "createAsyncScope": [
@@ -2522,7 +2529,7 @@
             ],
             "createDataObject": "src/form.js#L176",
             "createDependency": [
-                "src/hooks.d.ts#L455",
+                "src/hooks.d.ts#L461",
                 "src/hooks.js#L393"
             ],
             "createErrorHandler": [
@@ -2574,11 +2581,11 @@
             "FieldValueType": "src/form.d.ts#L9",
             "Form": [
                 "src/form.d.ts#L2",
-                "src/form.js#L759"
+                "src/form.js#L760"
             ],
             "FormArray": [
                 "src/form.d.ts#L105",
-                "src/form.js#L782"
+                "src/form.js#L783"
             ],
             "FormatErrorCallback": "src/form.d.ts#L6",
             "FormBeforeLeaveEvent": "src/form.d.ts#L368",
@@ -2589,14 +2596,14 @@
             "FormContextOptions": "src/form.d.ts#L372",
             "FormContextProvider": [
                 "src/form.d.ts#L1",
-                "src/form.js#L777"
+                "src/form.js#L778"
             ],
             "FormEventMap": "src/form.d.ts#L344",
             "FormFieldProps": "src/form.d.ts#L206",
             "FormFieldState": "src/form.d.ts#L284",
             "FormObject": [
                 "src/form.d.ts#L91",
-                "src/form.js#L786"
+                "src/form.js#L787"
             ],
             "FormObjectHelper": "src/form.d.ts#L56",
             "FormObjectProps": "src/form.d.ts#L74",
@@ -2611,7 +2618,7 @@
             "hasImplicitError": "src/form.js#L67",
             "HiddenField": [
                 "src/form.d.ts#L122",
-                "src/form.js#L824"
+                "src/form.js#L825"
             ],
             "HiddenFieldProps": "src/form.d.ts#L107",
             "HintablePath": "src/form.d.ts#L24",
@@ -2657,7 +2664,7 @@
             "PropertyTypeFromPath": "src/form.d.ts#L26",
             "registerFieldType": [
                 "src/form.d.ts#L634",
-                "src/form.js#L748"
+                "src/form.js#L749"
             ],
             "resolvePathInfo": "src/form.js#L79",
             "setPageCount": "src/dataView.js#L23",
@@ -2700,7 +2707,7 @@
                 "src/dataView.js#L169"
             ],
             "useDependency": [
-                "src/hooks.d.ts#L467",
+                "src/hooks.d.ts#L473",
                 "src/hooks.js#L411"
             ],
             "useDispose": [
@@ -2729,11 +2736,11 @@
             ],
             "useFormContext": [
                 "src/form.d.ts#L602",
-                "src/form.js#L633"
+                "src/form.js#L634"
             ],
             "useFormField": [
                 "src/form.d.ts#L614",
-                "src/form.js#L661"
+                "src/form.js#L662"
             ],
             "useFormFieldInternal": "src/form.js#L361",
             "useMediaQuery": [
@@ -2792,8 +2799,8 @@
             ],
             "WithFallback": "src/form.d.ts#L8",
             "withSuspense": [
-                "src/util.d.ts#L83",
-                "src/util.js#L94"
+                "src/util.d.ts#L88",
+                "src/util.js#L100"
             ],
             "wrapErrorResult": "src/form.js#L452"
         }
