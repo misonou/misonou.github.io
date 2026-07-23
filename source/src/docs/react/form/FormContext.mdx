@@ -4,7 +4,7 @@
 
 <MemberList
     i="FormContext"
-    ip={['isValid', 'data', 'ref', 'autoPersist', 'preventLeave', 'validateOnChange', 'enterKeyHint', 'formatError']}
+    ip={['isValid', 'data', 'ref', 'autoPersist', 'preventLeave', 'validateOnChange', 'enterKeyHint', 'formatError', 'disabled']}
     im={['element()', 'focus()', 'on()', 'persist()', 'restore()', 'clear()', 'reset()', 'getValue()', 'setValue()', 'getErrors()', 'getError()', 'setError()', 'validate()', 'toJSON()']}
     sp={['ERROR_FIELD', 'EMPTY_FIELD', 'formatError']}
     sm={['get()']}
@@ -21,6 +21,13 @@ Default is `true`.
 ### `FormContext.data` <Badge.ReadOnly />
 
 Gets a dictionary containing field values.
+
+### `FormContext.disabled` <Badge.Version />
+
+Forces all rendered fields to be in disabled state.
+
+This property does not affect the validity of the form and individual fields.
+It also requires field components to handle the disabled state exposed by [`FormFieldState.disabled`](:).
 
 ### `FormContext.enterKeyHint`
 
@@ -433,6 +440,7 @@ useEffect(() => {
 - **0.4.4** `FormContext.getErrors()`
 - **0.4.5** `FormContext.clear()`
 - **0.6.0** `beforeLeave` event: `reason` property
+- **0.6.5** `FormContext.disabled`
 </VersionTimeline>
 
 ## See also

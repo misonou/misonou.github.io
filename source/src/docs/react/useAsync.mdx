@@ -123,7 +123,7 @@ function Component(props) {
 
 <MemberList
     i="AsyncContentState"
-    ip={['value', 'loading', 'error', 'elementRef']}
+    ip={['value', 'loading', 'error', 'elementRef', 'staled']}
     im={['refresh()', 'onError()', 'abort()', 'reset()', 'on()']}
     ev={['load', 'error']} />
 
@@ -139,6 +139,12 @@ Gets the error if the init callback has thrown error or returned a rejected prom
 ### `AsyncContentState.loading` <Badge.ReadOnly />
 
 Gets whether the promise returned from init callback is still pending.
+
+### `AsyncContentState.staled` <Badge.ReadOnly /> <Badge.Version />
+
+Gets whether current value is returned before values in dependency list are changed.
+
+It is `false` in initial state, after reset, or if dependency list is empty or not supplied.
 
 ### `AsyncContentState.value` <Badge.ReadOnly />
 
@@ -246,4 +252,5 @@ Fired when value is resolved from the init callback.
 - **0.4.0** `debounce` parameter
 - **0.4.6** Abort signal <br/> `AsyncContentState.abort()`
 - **0.5.9** `AsyncContentState.reset()`
+- **0.6.5** `AsyncContentState.staled`
 </VersionTimeline>

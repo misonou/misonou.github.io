@@ -5,10 +5,14 @@
 <MemberList
     i="FormFieldState"
     extendsTo={['ChoiceFieldState', 'DateFieldState', 'MultiChoiceFieldState', 'NumericFieldState', 'TextFieldState', 'ToggleFieldState']}
-    ip={['elementRef', 'form', 'key', 'path', 'value', 'error', 'version', 'meta']}
+    ip={['elementRef', 'form', 'key', 'path', 'value', 'error', 'version', 'meta', 'disabled']}
     im={['setValue()', 'setError()', 'validate()']} />
 
 ## Instance properties
+
+### `FormFieldState.disabled` <Badge.ReadOnly /> <Badge.Version />
+
+Gets whether the field should be in disabled state.
 
 ### `FormFieldState.elementRef` <Badge.ReadOnly />
 
@@ -104,6 +108,7 @@ A callback to trigger validation of the field.
 - **0.5.7** `FormFieldState.version`
 - **0.5.11** `FormFieldState.elementRef`: `current` property
 - **0.6.0** `FormFieldState.meta`
+- **0.6.5** `FormFieldState.disabled`
 </VersionTimeline>
 
 ## See also

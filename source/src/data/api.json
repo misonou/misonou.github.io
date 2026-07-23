@@ -485,6 +485,7 @@
         "FormContext.validateOnChange",
         "FormContext.enterKeyHint",
         "FormContext.formatError",
+        "FormContext.disabled",
         "FormContext.element()",
         "FormContext.focus()",
         "FormContext.on()",
@@ -537,6 +538,7 @@
         "FormFieldState.error",
         "FormFieldState.version",
         "FormFieldState.meta",
+        "FormFieldState.disabled",
         "FormFieldState.setValue()",
         "FormFieldState.setError()",
         "FormFieldState.validate()"
@@ -879,6 +881,7 @@
         "AsyncContentState.loading",
         "AsyncContentState.error",
         "AsyncContentState.elementRef",
+        "AsyncContentState.staled",
         "AsyncContentState.refresh()",
         "AsyncContentState.onError()",
         "AsyncContentState.abort()",

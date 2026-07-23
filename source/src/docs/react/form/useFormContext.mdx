@@ -22,9 +22,15 @@ useFormContext()
 useFormContext(initialData)
 useFormContext(initialData, validateOnChange)
 useFormContext(initialData, options)
+useFormContext(initialData, deps)
+useFormContext(initialData, deps, validateOnChange)
+useFormContext(initialData, deps, options)
 useFormContext(persistKey, initialData)
 useFormContext(persistKey, initialData, validateOnChange)
 useFormContext(persistKey, initialData, options)
+useFormContext(persistKey, initialData, deps)
+useFormContext(persistKey, initialData, deps, validateOnChange)
+useFormContext(persistKey, initialData, deps, options)
 ```
 
 <ImportHint
@@ -42,6 +48,9 @@ useFormContext(persistKey, initialData, options)
 
     #### `initialData` <Badge.Optional />
     Initial form data, or a callback that returns initial form data.
+
+    #### `deps` <Badge.Optional /> <Badge.Version />
+    An array of dependencies that will be used to determine when to reset the form data.
 
     #### `validateOnChange` <Badge.Optional />
     Same effect as specifying `validateOnChange` in option object. Default is `true`.
@@ -102,7 +111,8 @@ Calling [`FormContext.reset()`](:) will reset all fields to initial values.
 <VersionTimeline module="zeta-dom-react">
 - **0.1.0** Introduced
 - **0.3.2** `option` parameter
-- **0.4.8** Accept callback for `initialData` parameter
+- **0.4.8** `initialData` parameter: callback
+- **0.6.5** `deps` parameter
 </VersionTimeline>
 
 ## See also

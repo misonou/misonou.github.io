@@ -2477,7 +2477,7 @@
         }
     },
     "zeta-dom-react": {
-        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.4",
+        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.5",
         "symbols": {
             "adjustMonth": "src/fields/DateField.js#L33",
             "areHookInputsEqual": [
@@ -2507,7 +2507,7 @@
                 "src/util.d.ts#L45",
                 "src/util.js#L47"
             ],
-            "clearUnusedFields": "src/form.js#L350",
+            "clearUnusedFields": "src/form.js#L371",
             "clearUnusedSingletons": "src/hooks.js#L28",
             "cloneValue": "src/form.js#L71",
             "combineRef": [
@@ -2515,31 +2515,32 @@
                 "src/util.js#L81"
             ],
             "combineValidators": [
-                "src/form.d.ts#L626",
-                "src/form.js#L738"
+                "src/form.d.ts#L661",
+                "src/form.js#L772"
             ],
+            "commitFieldValue": "src/form.js#L171",
             "compare": "src/dataView.js#L11",
             "createAsyncScope": [
-                "src/hooks.d.ts#L181",
+                "src/hooks.d.ts#L186",
                 "src/hooks.js#L80"
             ],
             "createBreakpointContext": [
                 "src/css.d.ts#L30",
                 "src/css.js#L17"
             ],
-            "createDataObject": "src/form.js#L176",
+            "createDataObject": "src/form.js#L190",
             "createDependency": [
-                "src/hooks.d.ts#L461",
-                "src/hooks.js#L393"
+                "src/hooks.d.ts#L466",
+                "src/hooks.js#L397"
             ],
             "createErrorHandler": [
-                "src/hooks.d.ts#L413",
-                "src/hooks.js#L296"
+                "src/hooks.d.ts#L418",
+                "src/hooks.js#L300"
             ],
-            "createFieldState": "src/form.js#L277",
+            "createFieldState": "src/form.js#L298",
             "createHookHelper": "src/form.js#L35",
             "createRefInitCallback": "src/hooks.js#L71",
-            "DataChangeEvent": "src/form.d.ts#L352",
+            "DataChangeEvent": "src/form.d.ts#L356",
             "DataView": [
                 "src/dataView.d.ts#L31",
                 "src/dataView.js#L27"
@@ -2552,10 +2553,10 @@
             ],
             "DateFieldProps": "src/fields/DateField.d.ts#L3",
             "DateFieldState": "src/fields/DateField.d.ts#L23",
-            "Dependency": "src/hooks.d.ts#L153",
-            "DependencyConsumer": "src/hooks.d.ts#L164",
-            "DependencyProvider": "src/hooks.d.ts#L167",
-            "DependencyProviderContext": "src/hooks.d.ts#L170",
+            "Dependency": "src/hooks.d.ts#L158",
+            "DependencyConsumer": "src/hooks.d.ts#L169",
+            "DependencyProvider": "src/hooks.d.ts#L172",
+            "DependencyProviderContext": "src/hooks.d.ts#L175",
             "DisposeCallback": "src/hooks.d.ts#L10",
             "domEventRef": [
                 "src/util.d.ts#L35",
@@ -2581,44 +2582,44 @@
             "FieldValueType": "src/form.d.ts#L9",
             "Form": [
                 "src/form.d.ts#L2",
-                "src/form.js#L760"
+                "src/form.js#L794"
             ],
             "FormArray": [
                 "src/form.d.ts#L105",
-                "src/form.js#L783"
+                "src/form.js#L817"
             ],
             "FormatErrorCallback": "src/form.d.ts#L6",
-            "FormBeforeLeaveEvent": "src/form.d.ts#L368",
+            "FormBeforeLeaveEvent": "src/form.d.ts#L372",
             "FormContext": [
-                "src/form.d.ts#L400",
-                "src/form.js#L482"
+                "src/form.d.ts#L411",
+                "src/form.js#L506"
             ],
-            "FormContextOptions": "src/form.d.ts#L372",
+            "FormContextOptions": "src/form.d.ts#L376",
             "FormContextProvider": [
                 "src/form.d.ts#L1",
-                "src/form.js#L778"
+                "src/form.js#L812"
             ],
-            "FormEventMap": "src/form.d.ts#L344",
+            "FormEventMap": "src/form.d.ts#L348",
             "FormFieldProps": "src/form.d.ts#L206",
             "FormFieldState": "src/form.d.ts#L284",
             "FormObject": [
                 "src/form.d.ts#L91",
-                "src/form.js#L787"
+                "src/form.js#L821"
             ],
             "FormObjectHelper": "src/form.d.ts#L56",
             "FormObjectProps": "src/form.d.ts#L74",
-            "formPersist": "src/form.js#L478",
-            "FormProps": "src/form.d.ts#L340",
-            "FormValidateEvent": "src/form.d.ts#L356",
-            "FormValidationChangeEvent": "src/form.d.ts#L362",
+            "formPersist": "src/form.js#L500",
+            "FormProps": "src/form.d.ts#L344",
+            "FormValidateEvent": "src/form.d.ts#L360",
+            "FormValidationChangeEvent": "src/form.d.ts#L366",
             "getAllAncestorPaths": "src/form.js#L124",
             "getField": "src/form.js#L106",
             "getPath": "src/form.js#L112",
-            "handleDataChange": "src/form.js#L166",
+            "handleDataChange": "src/form.js#L181",
             "hasImplicitError": "src/form.js#L67",
             "HiddenField": [
                 "src/form.d.ts#L122",
-                "src/form.js#L825"
+                "src/form.js#L859"
             ],
             "HiddenFieldProps": "src/form.d.ts#L107",
             "HintablePath": "src/form.d.ts#L24",
@@ -2630,8 +2631,8 @@
             "IS_DEV": "src/env.umd.js#L20",
             "isEmpty": "src/form.js#L63",
             "isSingletonDisposed": [
-                "src/hooks.d.ts#L359",
-                "src/hooks.js#L277"
+                "src/hooks.d.ts#L364",
+                "src/hooks.js#L281"
             ],
             "keyFor": "src/form.js#L75",
             "LegacyFieldPropsType": "src/form.d.ts#L16",
@@ -2645,7 +2646,7 @@
             "muteRejection": "src/hooks.js#L23",
             "normalizeChoiceItems": "src/fields/ChoiceField.js#L5",
             "normalizeDate": "src/fields/DateField.js#L81",
-            "normalizeOptions": "src/form.js#L465",
+            "normalizeOptions": "src/form.js#L486",
             "NumericField": [
                 "src/fields/NumericField.d.ts#L28",
                 "src/fields/NumericField.js#L3"
@@ -2663,8 +2664,8 @@
             "PropertyType": "src/form.d.ts#L25",
             "PropertyTypeFromPath": "src/form.d.ts#L26",
             "registerFieldType": [
-                "src/form.d.ts#L634",
-                "src/form.js#L749"
+                "src/form.d.ts#L669",
+                "src/form.js#L783"
             ],
             "resolvePathInfo": "src/form.js#L79",
             "setPageCount": "src/dataView.js#L23",
@@ -2691,15 +2692,15 @@
                 "src/util.js#L85"
             ],
             "useAbortSignal": [
-                "src/hooks.d.ts#L450",
-                "src/hooks.js#L384"
+                "src/hooks.d.ts#L455",
+                "src/hooks.js#L388"
             ],
             "useAsync": [
-                "src/hooks.d.ts#L310",
+                "src/hooks.d.ts#L315",
                 "src/hooks.js#L159"
             ],
             "useAutoSetRef": [
-                "src/hooks.d.ts#L187",
+                "src/hooks.d.ts#L192",
                 "src/hooks.js#L89"
             ],
             "useDataView": [
@@ -2707,78 +2708,78 @@
                 "src/dataView.js#L169"
             ],
             "useDependency": [
-                "src/hooks.d.ts#L473",
-                "src/hooks.js#L411"
+                "src/hooks.d.ts#L478",
+                "src/hooks.js#L415"
             ],
             "useDispose": [
-                "src/hooks.d.ts#L353",
-                "src/hooks.js#L262"
+                "src/hooks.d.ts#L358",
+                "src/hooks.js#L266"
             ],
             "useEagerReducer": [
-                "src/hooks.d.ts#L208",
+                "src/hooks.d.ts#L213",
                 "src/hooks.js#L95"
             ],
             "useEagerState": [
-                "src/hooks.d.ts#L194",
+                "src/hooks.d.ts#L199",
                 "src/hooks.js#L110"
             ],
             "useErrorHandler": [
-                "src/hooks.d.ts#L432",
-                "src/hooks.js#L351"
+                "src/hooks.d.ts#L437",
+                "src/hooks.js#L355"
             ],
             "useErrorHandlerRef": [
-                "src/hooks.d.ts#L420",
-                "src/hooks.js#L292"
+                "src/hooks.d.ts#L425",
+                "src/hooks.js#L296"
             ],
             "useEventTrigger": [
-                "src/hooks.d.ts#L236",
+                "src/hooks.d.ts#L241",
                 "src/hooks.js#L131"
             ],
             "useFormContext": [
-                "src/form.d.ts#L602",
-                "src/form.js#L634"
+                "src/form.d.ts#L620",
+                "src/form.js#L650"
             ],
             "useFormField": [
-                "src/form.d.ts#L614",
-                "src/form.js#L662"
+                "src/form.d.ts#L649",
+                "src/form.js#L699"
             ],
-            "useFormFieldInternal": "src/form.js#L361",
+            "useFormFieldInternal": "src/form.js#L382",
             "useMediaQuery": [
                 "src/css.d.ts#L24",
                 "src/css.js#L6"
             ],
             "useMemoizedFunction": [
-                "src/hooks.d.ts#L291",
+                "src/hooks.d.ts#L296",
                 "src/hooks.js#L142"
             ],
             "useObservableProperty": [
-                "src/hooks.d.ts#L300",
+                "src/hooks.d.ts#L305",
                 "src/hooks.js#L149"
             ],
             "useRefInitCallback": [
-                "src/hooks.d.ts#L332",
-                "src/hooks.js#L256"
+                "src/hooks.d.ts#L337",
+                "src/hooks.js#L260"
             ],
             "useSideEffect": [
-                "src/hooks.d.ts#L439",
-                "src/hooks.js#L362"
+                "src/hooks.d.ts#L444",
+                "src/hooks.js#L366"
             ],
             "useSingleton": [
-                "src/hooks.d.ts#L396",
-                "src/hooks.js#L281"
+                "src/hooks.d.ts#L401",
+                "src/hooks.js#L285"
             ],
             "useSingletonEffectImpl": "src/hooks.js#L38",
             "useSingletonEffectImplDev": "src/hooks.js#L49",
             "useUnloadEffect": [
-                "src/hooks.d.ts#L445",
-                "src/hooks.js#L375"
+                "src/hooks.d.ts#L450",
+                "src/hooks.js#L379"
             ],
             "useUpdateTrigger": [
-                "src/hooks.d.ts#L221",
+                "src/hooks.d.ts#L226",
                 "src/hooks.js#L116"
             ],
             "useValueTrigger": [
-                "src/hooks.d.ts#L229",
+                "src/hooks.d.ts#L234",
                 "src/hooks.js#L122"
             ],
             "useViewState": [
@@ -2786,7 +2787,7 @@
                 "src/viewState.js#L10"
             ],
             "ValidateCallback": "src/form.d.ts#L5",
-            "validateFields": "src/form.js#L405",
+            "validateFields": "src/form.js#L426",
             "ValidateResult": "src/form.d.ts#L4",
             "ValidationError": [
                 "src/form.d.ts#L33",
@@ -2802,7 +2803,7 @@
                 "src/util.d.ts#L88",
                 "src/util.js#L100"
             ],
-            "wrapErrorResult": "src/form.js#L452"
+            "wrapErrorResult": "src/form.js#L473"
         }
     }
 }
