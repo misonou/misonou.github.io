@@ -2477,7 +2477,7 @@
         }
     },
     "zeta-dom-react": {
-        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.5",
+        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.6",
         "symbols": {
             "adjustMonth": "src/fields/DateField.js#L33",
             "areHookInputsEqual": [
@@ -2705,7 +2705,7 @@
             ],
             "useDataView": [
                 "src/dataView.d.ts#L165",
-                "src/dataView.js#L169"
+                "src/dataView.js#L174"
             ],
             "useDependency": [
                 "src/hooks.d.ts#L478",
