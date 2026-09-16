@@ -493,6 +493,8 @@
         "FormContext.restore()",
         "FormContext.clear()",
         "FormContext.reset()",
+        "FormContext.isDirty()",
+        "FormContext.isTouched()",
         "FormContext.getValue()",
         "FormContext.setValue()",
         "FormContext.getErrors()",
@@ -539,6 +541,9 @@
         "FormFieldState.version",
         "FormFieldState.meta",
         "FormFieldState.disabled",
+        "FormFieldState.dirty",
+        "FormFieldState.touched",
+        "FormFieldState.reset()",
         "FormFieldState.setValue()",
         "FormFieldState.setError()",
         "FormFieldState.validate()"

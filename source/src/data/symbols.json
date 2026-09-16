@@ -2477,7 +2477,7 @@
         }
     },
     "zeta-dom-react": {
-        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.6",
+        "baseUrl": "https://github.com/misonou/zeta-dom-react/blob/v0.6.7",
         "symbols": {
             "adjustMonth": "src/fields/DateField.js#L33",
             "areHookInputsEqual": [
@@ -2507,7 +2507,7 @@
                 "src/util.d.ts#L45",
                 "src/util.js#L47"
             ],
-            "clearUnusedFields": "src/form.js#L371",
+            "clearUnusedFields": "src/form.js#L396",
             "clearUnusedSingletons": "src/hooks.js#L28",
             "cloneValue": "src/form.js#L71",
             "combineRef": [
@@ -2515,8 +2515,8 @@
                 "src/util.js#L81"
             ],
             "combineValidators": [
-                "src/form.d.ts#L661",
-                "src/form.js#L772"
+                "src/form.d.ts#L690",
+                "src/form.js#L807"
             ],
             "commitFieldValue": "src/form.js#L171",
             "compare": "src/dataView.js#L11",
@@ -2537,10 +2537,10 @@
                 "src/hooks.d.ts#L418",
                 "src/hooks.js#L300"
             ],
-            "createFieldState": "src/form.js#L298",
+            "createFieldState": "src/form.js#L315",
             "createHookHelper": "src/form.js#L35",
             "createRefInitCallback": "src/hooks.js#L71",
-            "DataChangeEvent": "src/form.d.ts#L356",
+            "DataChangeEvent": "src/form.d.ts#L371",
             "DataView": [
                 "src/dataView.d.ts#L31",
                 "src/dataView.js#L27"
@@ -2582,36 +2582,36 @@
             "FieldValueType": "src/form.d.ts#L9",
             "Form": [
                 "src/form.d.ts#L2",
-                "src/form.js#L794"
+                "src/form.js#L829"
             ],
             "FormArray": [
                 "src/form.d.ts#L105",
-                "src/form.js#L817"
+                "src/form.js#L852"
             ],
             "FormatErrorCallback": "src/form.d.ts#L6",
-            "FormBeforeLeaveEvent": "src/form.d.ts#L372",
+            "FormBeforeLeaveEvent": "src/form.d.ts#L387",
             "FormContext": [
-                "src/form.d.ts#L411",
-                "src/form.js#L506"
+                "src/form.d.ts#L426",
+                "src/form.js#L531"
             ],
-            "FormContextOptions": "src/form.d.ts#L376",
+            "FormContextOptions": "src/form.d.ts#L391",
             "FormContextProvider": [
                 "src/form.d.ts#L1",
-                "src/form.js#L812"
+                "src/form.js#L847"
             ],
-            "FormEventMap": "src/form.d.ts#L348",
+            "FormEventMap": "src/form.d.ts#L363",
             "FormFieldProps": "src/form.d.ts#L206",
             "FormFieldState": "src/form.d.ts#L284",
             "FormObject": [
                 "src/form.d.ts#L91",
-                "src/form.js#L821"
+                "src/form.js#L856"
             ],
             "FormObjectHelper": "src/form.d.ts#L56",
             "FormObjectProps": "src/form.d.ts#L74",
-            "formPersist": "src/form.js#L500",
-            "FormProps": "src/form.d.ts#L344",
-            "FormValidateEvent": "src/form.d.ts#L360",
-            "FormValidationChangeEvent": "src/form.d.ts#L366",
+            "formPersist": "src/form.js#L525",
+            "FormProps": "src/form.d.ts#L359",
+            "FormValidateEvent": "src/form.d.ts#L375",
+            "FormValidationChangeEvent": "src/form.d.ts#L381",
             "getAllAncestorPaths": "src/form.js#L124",
             "getField": "src/form.js#L106",
             "getPath": "src/form.js#L112",
@@ -2619,7 +2619,7 @@
             "hasImplicitError": "src/form.js#L67",
             "HiddenField": [
                 "src/form.d.ts#L122",
-                "src/form.js#L859"
+                "src/form.js#L894"
             ],
             "HiddenFieldProps": "src/form.d.ts#L107",
             "HintablePath": "src/form.d.ts#L24",
@@ -2646,7 +2646,7 @@
             "muteRejection": "src/hooks.js#L23",
             "normalizeChoiceItems": "src/fields/ChoiceField.js#L5",
             "normalizeDate": "src/fields/DateField.js#L81",
-            "normalizeOptions": "src/form.js#L486",
+            "normalizeOptions": "src/form.js#L511",
             "NumericField": [
                 "src/fields/NumericField.d.ts#L28",
                 "src/fields/NumericField.js#L3"
@@ -2664,8 +2664,8 @@
             "PropertyType": "src/form.d.ts#L25",
             "PropertyTypeFromPath": "src/form.d.ts#L26",
             "registerFieldType": [
-                "src/form.d.ts#L669",
-                "src/form.js#L783"
+                "src/form.d.ts#L698",
+                "src/form.js#L818"
             ],
             "resolvePathInfo": "src/form.js#L79",
             "setPageCount": "src/dataView.js#L23",
@@ -2736,14 +2736,14 @@
                 "src/hooks.js#L131"
             ],
             "useFormContext": [
-                "src/form.d.ts#L620",
-                "src/form.js#L650"
+                "src/form.d.ts#L649",
+                "src/form.js#L682"
             ],
             "useFormField": [
-                "src/form.d.ts#L649",
-                "src/form.js#L699"
+                "src/form.d.ts#L678",
+                "src/form.js#L731"
             ],
-            "useFormFieldInternal": "src/form.js#L382",
+            "useFormFieldInternal": "src/form.js#L407",
             "useMediaQuery": [
                 "src/css.d.ts#L24",
                 "src/css.js#L6"
@@ -2787,7 +2787,7 @@
                 "src/viewState.js#L10"
             ],
             "ValidateCallback": "src/form.d.ts#L5",
-            "validateFields": "src/form.js#L426",
+            "validateFields": "src/form.js#L451",
             "ValidateResult": "src/form.d.ts#L4",
             "ValidationError": [
                 "src/form.d.ts#L33",
@@ -2803,7 +2803,7 @@
                 "src/util.d.ts#L88",
                 "src/util.js#L100"
             ],
-            "wrapErrorResult": "src/form.js#L473"
+            "wrapErrorResult": "src/form.js#L498"
         }
     }
 }

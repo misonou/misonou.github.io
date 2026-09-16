@@ -1375,10 +1375,10 @@ button.variant-outlined.loading:after {
     caret-color: black;
     resize: none;
     field-sizing: content;
+    color: transparent;
 }
 
 .zui-code-highlight-field-outline:not(.rendering) .zui-code-highlight-field-code.is-fallback,
-.zui-code-highlight-field-outline.rendering .zui-code-highlight-field-code.is-highlight,
-.zui-code-highlight-field-outline > textarea {
-    color: transparent;
+.zui-code-highlight-field-outline.rendering .zui-code-highlight-field-code.is-highlight {
+    opacity: 0;
 }

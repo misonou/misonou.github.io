@@ -6,7 +6,7 @@ import { startPositioning } from "@misonou/react-css-utils";
 import { fuzzyMatch, useMenuKeystrokeMixin } from "@misonou/react-app-utils";
 import { combineFn } from "zeta-dom/util";
 import { Button, Checkbox, TextInput, validators } from ".";
-import { useIdleSignal } from "src/util";
+import { useIdleEffect } from "src/util";
 
 export interface MultiDropdownProps<T = string> extends MultiChoiceFieldProps<ChoiceItem<T>> {
     variant?: 'button' | 'textbox';
@@ -32,19 +32,23 @@ export function MultiDropdown<T = string>(props: MultiDropdownProps<T>) {
     const scrollable = useScrollableMixin({ direction: 'y-only' });
     const menuKeystroke = useMenuKeystrokeMixin('.zui-dropdown-flyout-container .zui-checkbox');
     const [search, setSearch] = useState('');
-    const [idled, setIdled] = useIdleSignal();
+    const [idled, setIdled] = useState(false);
     const { value, error, setValue, toggleValue, elementRef, items } = useFormField(MultiChoiceField, props);
 
     const displayItems = useMemo(() => {
         return search ? fuzzyMatch(items.map(v => ({ displayText: v.label, ...v })), search) : items;
     }, [items, search]);
 
+    useIdleEffect(() => {
+        setIdled(true);
+    }, []);
+
     useLayoutEffect(() => {
         return combineFn(
             flyout.onToggleState(v => rootClasses.set('active', v)),
             flyout.onVisibilityChanged(v => rootClasses.set('opened', v)),
             flyout.onOpen(() => {
-                setIdled();
+                setIdled(true);
                 setTimeout(() => {
                     scrollable.scrollToElement('.checked', 'center', 'center');
                 });

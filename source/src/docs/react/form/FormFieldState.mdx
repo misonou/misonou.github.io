@@ -5,10 +5,16 @@
 <MemberList
     i="FormFieldState"
     extendsTo={['ChoiceFieldState', 'DateFieldState', 'MultiChoiceFieldState', 'NumericFieldState', 'TextFieldState', 'ToggleFieldState']}
-    ip={['elementRef', 'form', 'key', 'path', 'value', 'error', 'version', 'meta', 'disabled']}
-    im={['setValue()', 'setError()', 'validate()']} />
+    ip={['elementRef', 'form', 'key', 'path', 'value', 'error', 'version', 'meta', 'disabled', 'dirty', 'touched']}
+    im={['reset()', 'setValue()', 'setError()', 'validate()']} />
 
 ## Instance properties
+
+### `FormFieldState.dirty` <Badge.ReadOnly /> <Badge.Version />
+
+Gets whether the associated value on the data object is different from the initial value.
+
+If the value is an object or array, it is considered dirty if any of its nested values is dirty.
 
 ### `FormFieldState.disabled` <Badge.ReadOnly /> <Badge.Version />
 
@@ -60,6 +66,13 @@ Gets the current data path to the associated value on the data object.
 > If there is no parent form context, or `name` is not supplied to `useFormField`,
   an empty string will be returned.
 
+### `FormFieldState.touched` <Badge.ReadOnly /> <Badge.Version />
+
+Get whether the associated value on the data object has been updated.
+
+It will remain `true` even if the value is reverted to the initial value unless the field is unmounted or the form is reset.
+If the value is an object or array, it is considered touched if any of its nested values is touched.
+
 ### `FormFieldState.value` <Badge.ReadOnly />
 
 Gets current field value.
@@ -69,6 +82,14 @@ Gets current field value.
 Gets a version number that changes whenever value or nested values changes.
 
 ## Instance methods
+
+### `FormFieldState.reset()` <Badge.Version />
+
+```javascript
+reset()
+```
+
+A callback to reset the field to its initial value and clear validation error.
 
 ### `FormFieldState.setError()`
 
@@ -109,6 +130,7 @@ A callback to trigger validation of the field.
 - **0.5.11** `FormFieldState.elementRef`: `current` property
 - **0.6.0** `FormFieldState.meta`
 - **0.6.5** `FormFieldState.disabled`
+- **0.6.7** `FormFieldState.dirty`<br/>`FormFieldState.touched`<br/>`FormFieldState.reset()`
 </VersionTimeline>
 
 ## See also

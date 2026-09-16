@@ -1,13 +1,12 @@
 import { themes } from "prism-react-renderer";
-import React, { useCallback, useEffect, useLayoutEffect, useRef } from "react";
-import { setClass } from "zeta-dom/domUtil";
-import { TextField, TextFieldProps, useFormField, useRefInitCallback } from "zeta-dom-react";
-import { each, setTimeout } from "zeta-dom/util";
+import React, { useCallback, useEffect, useLayoutEffect } from "react";
+import { classNames, TextField, TextFieldProps, useAsync, useFormField, useRefInitCallback } from "zeta-dom-react";
+import { each } from "zeta-dom/util";
 import dom, { insertText } from "zeta-dom/dom";
 import { Mixin } from "brew-js-react";
 import { useUndoableInputMixin } from "@misonou/react-app-utils";
 import { app } from "src/init";
-import { useDetachedRoot } from "src/util";
+import { useDebounce } from "src/util";
 import { HighlightWrapper } from "src/util/prism";
 
 export interface CodeHighlightTextFieldProps extends TextFieldProps {
@@ -42,39 +41,24 @@ function CodeHighlightInput(props: CodeHighlightInputProps) {
     const { value, onChange, onRender } = props;
     const undoableInput = useUndoableInputMixin(props.value);
     const textareaRef = useRefInitCallback(initTextAreaEvent);
-    const rendererRoot = useDetachedRoot();
-    const cancelRef = useRef(() => { });
+    const [node, state] = useAsync(() => onRender(value), [value, onRender]);
+    const rendering = useDebounce(state.loading, 100);
+
+    useLayoutEffect(() => {
+        syncScroll();
+    }, [node]);
 
     useEffect(() => {
         return undoableInput.onChange(onChange);
     }, [onChange]);
 
-    useEffect(() => {
-        setRenderState(true);
-        rendererRoot.render(onRender(value)).then(() => setRenderState(false));
-    }, [value, onRender]);
-
     return (
-        <div className="zui-code-highlight-field-outline">
+        <div className={classNames("zui-code-highlight-field-outline", { rendering })}>
             <div className="zui-code-highlight-field-code is-fallback">{value}</div>
-            <div className="zui-code-highlight-field-code is-highlight" ref={rendererRoot.ref}></div>
+            <div className="zui-code-highlight-field-code is-highlight">{node}</div>
             <textarea {...Mixin.use(textareaRef, undoableInput)} onScroll={syncScroll} autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" />
         </div>
     );
-
-    function setRenderState(rendering: boolean, isDeferred = false) {
-        cancelRef.current();
-        if (rendering && !isDeferred) {
-            cancelRef.current = setTimeout(() => {
-                setRenderState(true, true);
-            });
-            return;
-        }
-        if (!rendering) {
-            syncScroll();
-        }
-        setClass(undoableInput.elements()[0].parentElement!, { rendering });
-    }
 
     function syncScroll() {
         const textarea = undoableInput.elements()[0];
