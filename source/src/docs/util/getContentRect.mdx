@@ -13,6 +13,7 @@ By default, it will be the `padding-box` substracting `scroll-padding` from four
 
 ```javascript
 getContentRect(element)
+getContentRect(element, native)
 ```
 
 <ImportHint
@@ -26,6 +27,9 @@ getContentRect(element)
 <dl>
     #### `element`
     A DOM element.
+
+    #### `native` <Badge.Version />
+    Whether to suppress `getContentRect` event and return result from native calculation.
 </dl>
 
 ### Return value
@@ -41,3 +45,10 @@ dom.on(element, 'getContentRect', e => {
     return rect.expand(-50, 0, 0, 0);
 });
 ```
+
+### Version information
+
+<VersionTimeline module="zeta-dom">
+- **0.1.0** Introduced
+- **0.6.7** `native` argument
+</VersionTimeline>

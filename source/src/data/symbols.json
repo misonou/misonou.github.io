@@ -251,7 +251,7 @@
         }
     },
     "@misonou/react-css-utils": {
-        "baseUrl": "https://github.com/misonou/react-css-utils/blob/v1.5.1",
+        "baseUrl": "https://github.com/misonou/react-css-utils/blob/v1.6.0",
         "symbols": {
             "AnimatedIndicator": "index.d.ts#L86",
             "AnimatedIndicatorOptions": "index.d.ts#L79",
@@ -261,12 +261,12 @@
             ],
             "initSortable": [
                 "index.d.ts#L123",
-                "index.js#L317"
+                "index.js#L320"
             ],
             "InitSortableOptions": "index.d.ts#L105",
             "initStickable": [
                 "index.d.ts#L155",
-                "index.js#L370"
+                "index.js#L373"
             ],
             "intersectRect": "index.js#L28",
             "position": [
@@ -280,17 +280,17 @@
                 "Positioner.d.ts#L3",
                 "Positioner.js#L6"
             ],
-            "positionImpl": "index.js#L100",
+            "positionImpl": "index.js#L99",
             "PositionOptions": "index.d.ts#L42",
             "setStyle": "index.js#L32",
             "startPositioning": [
                 "index.d.ts#L40",
-                "index.js#L384"
+                "index.js#L387"
             ],
             "Stickable": "index.d.ts#L125",
             "useAnimatedIndicator": [
                 "index.d.ts#L103",
-                "index.js#L248"
+                "index.js#L251"
             ]
         }
     },
@@ -1487,13 +1487,13 @@
         }
     },
     "zeta-dom": {
-        "baseUrl": "https://github.com/misonou/zeta-dom/blob/v0.6.6",
+        "baseUrl": "https://github.com/misonou/zeta-dom/blob/v0.6.7",
         "symbols": {
             "acceptNode": [
                 "src/domUtil.d.ts#L69",
                 "src/domUtil.js#L139"
             ],
-            "AdditionalMembers": "src/types.d.ts#L56",
+            "AdditionalMembers": "src/types.d.ts#L57",
             "addOrRemoveEventListener": "src/domUtil.js#L248",
             "afterDetached": [
                 "src/observe.d.ts#L107",
@@ -1508,11 +1508,11 @@
                 "src/util.d.ts#L208",
                 "src/util.js#L239"
             ],
-            "AnyConstructor": "src/types.d.ts#L54",
-            "AnyConstructorOrClass": "src/types.d.ts#L55",
-            "AnyFunction": "src/types.d.ts#L53",
+            "AnyConstructor": "src/types.d.ts#L55",
+            "AnyConstructorOrClass": "src/types.d.ts#L56",
+            "AnyFunction": "src/types.d.ts#L54",
             "applyBoxValues": "src/domUtil.js#L366",
-            "approxMultipleOf": "src/dom.js#L71",
+            "approxMultipleOf": "src/dom.js#L72",
             "ArrayMember": "src/types.d.ts#L13",
             "arrRemove": [
                 "src/util.d.ts#L344",
@@ -1523,11 +1523,11 @@
             "attachHelperDiv": "src/domUtil.js#L83",
             "beginDrag": [
                 "src/dom.d.ts#L225",
-                "src/dom.js#L552"
+                "src/dom.js#L556"
             ],
             "beginPinchZoom": [
                 "src/dom.d.ts#L232",
-                "src/dom.js#L565"
+                "src/dom.js#L569"
             ],
             "bind": [
                 "src/domUtil.d.ts#L155",
@@ -1543,11 +1543,11 @@
             ],
             "blur": [
                 "src/dom.d.ts#L158",
-                "src/dom.js#L1054"
+                "src/dom.js#L1060"
             ],
-            "BoxAlign": "src/types.d.ts#L149",
-            "BoxCorner": "src/types.d.ts#L148",
-            "BoxSide": "src/types.d.ts#L147",
+            "BoxAlign": "src/types.d.ts#L150",
+            "BoxCorner": "src/types.d.ts#L149",
+            "BoxSide": "src/types.d.ts#L148",
             "camel": [
                 "src/util.d.ts#L469",
                 "src/util.js#L511"
@@ -1566,20 +1566,20 @@
             ],
             "cancelLock": [
                 "src/domLock.d.ts#L83",
-                "src/domLock.js#L184"
+                "src/domLock.js#L188"
             ],
             "catchAsync": [
                 "src/util.d.ts#L579",
                 "src/util.js#L625"
             ],
             "checkNodeState": "src/tree.js#L102",
-            "cleanupFocusPath": "src/dom.js#L147",
+            "cleanupFocusPath": "src/dom.js#L148",
             "clearImmediateOnce": [
                 "src/util.d.ts#L411",
                 "src/util.js#L414"
             ],
             "clearLock": "src/domLock.js#L44",
-            "ClickName": "src/types.d.ts#L173",
+            "ClickName": "src/types.d.ts#L174",
             "CollectionKeyOf": "src/util.d.ts#L17",
             "CollectionValueOf": "src/util.d.ts#L25",
             "combineFn": [
@@ -1623,18 +1623,18 @@
                 "src/domUtil.d.ts#L141",
                 "src/domUtil.js#L239"
             ],
-            "Date": "src/types.d.ts#L665",
+            "Date": "src/types.d.ts#L666",
             "deepFreeze": [
                 "src/util.d.ts#L688",
                 "src/util.js#L722"
             ],
-            "DeepReadonly": "src/types.d.ts#L34",
-            "Default": "src/types.d.ts#L50",
+            "DeepReadonly": "src/types.d.ts#L35",
+            "Default": "src/types.d.ts#L51",
             "deferrable": [
                 "src/util.d.ts#L577",
                 "src/util.js#L611"
             ],
-            "Deferrable": "src/types.d.ts#L210",
+            "Deferrable": "src/types.d.ts#L211",
             "define": [
                 "src/util.d.ts#L626",
                 "src/util.js#L670"
@@ -1669,22 +1669,22 @@
             ],
             "DetachHandlerState": "src/observe.js#L14",
             "Dictionary": "src/types.d.ts#L12",
-            "Direction": "src/types.d.ts#L152",
-            "Direction2D": "src/types.d.ts#L156",
+            "Direction": "src/types.d.ts#L153",
+            "Direction2D": "src/types.d.ts#L157",
             "dispatchDOMMouseEvent": [
                 "src/domUtil.d.ts#L182",
                 "src/domUtil.js#L279"
             ],
-            "dispatchInputEvent": "src/dom.js#L135",
+            "dispatchInputEvent": "src/dom.js#L136",
             "document": "src/env.js#L6",
-            "Document": "src/types.d.ts#L672",
+            "Document": "src/types.d.ts#L673",
             "dom": "src/dom.d.ts#L48",
             "DOMEventHandler": "src/domUtil.d.ts#L3",
             "DOMEventHandlers": "src/domUtil.d.ts#L4",
-            "DOMEventIDLProp": "src/types.d.ts#L143",
-            "DOMEventNames": "src/types.d.ts#L77",
-            "DOMEventsOf": "src/types.d.ts#L145",
-            "DOMEventType": "src/types.d.ts#L144",
+            "DOMEventIDLProp": "src/types.d.ts#L144",
+            "DOMEventNames": "src/types.d.ts#L78",
+            "DOMEventsOf": "src/types.d.ts#L146",
+            "DOMEventType": "src/types.d.ts#L145",
             "domReady": [
                 "src/domUtil.d.ts#L14",
                 "src/env.js#L13"
@@ -1702,7 +1702,7 @@
                 "src/domUtil.js#L623"
             ],
             "ElementLike": "src/types.d.ts#L8",
-            "ElementType": "src/types.d.ts#L72",
+            "ElementType": "src/types.d.ts#L73",
             "emitAsyncEvents": "src/events.js#L137",
             "emitDOMEvent": [
                 "src/events.d.ts#L376",
@@ -1726,15 +1726,15 @@
             ],
             "EventContainerOptions": [
                 "src/events.d.ts#L91",
-                "src/types.d.ts#L645"
+                "src/types.d.ts#L646"
             ],
             "EventEmitAlias": [
                 "src/events.d.ts#L8",
-                "src/types.d.ts#L643"
+                "src/types.d.ts#L644"
             ],
             "EventEmitOptions": [
                 "src/events.d.ts#L19",
-                "src/types.d.ts#L644"
+                "src/types.d.ts#L645"
             ],
             "exclude": [
                 "src/util.d.ts#L279",
@@ -1750,7 +1750,7 @@
                 "src/util.js#L116"
             ],
             "ExtractAny": [
-                "src/types.d.ts#L51",
+                "src/types.d.ts#L52",
                 "src/util.d.ts#L33"
             ],
             "fill": [
@@ -1761,19 +1761,19 @@
             "findParent": "src/tree.js#L79",
             "focus": [
                 "src/dom.d.ts#L151",
-                "src/dom.js#L1046"
+                "src/dom.js#L1052"
             ],
             "focusable": [
                 "src/dom.d.ts#L131",
-                "src/dom.js#L179"
+                "src/dom.js#L180"
             ],
             "focused": [
                 "src/dom.d.ts#L137",
-                "src/dom.js#L175"
+                "src/dom.js#L176"
             ],
             "freeze": "src/util.d.ts#L613",
-            "GestureName": "src/types.d.ts#L174",
-            "getActiveElement": "src/dom.js#L156",
+            "GestureName": "src/types.d.ts#L175",
+            "getActiveElement": "src/dom.js#L157",
             "getBoxValues": "src/domUtil.js#L341",
             "getClass": [
                 "src/domUtil.d.ts#L203",
@@ -1799,10 +1799,10 @@
                 "src/events.d.ts#L361",
                 "src/events.js#L37"
             ],
-            "getFocusableWithin": "src/dom.js#L189",
+            "getFocusableWithin": "src/dom.js#L190",
             "getInnerBoxValues": "src/domUtil.js#L350",
             "getMatchWordRegex": "src/util.js#L537",
-            "getModalElement": "src/dom.js#L163",
+            "getModalElement": "src/dom.js#L164",
             "getObservableState": "src/util.js#L747",
             "getOwnPropertyDescriptors": [
                 "src/util.d.ts#L618",
@@ -1831,29 +1831,29 @@
             "getSelection": "src/env.js#L8",
             "getShortcut": [
                 "src/dom.d.ts#L219",
-                "src/dom.js#L436"
+                "src/dom.js#L437"
             ],
-            "getTextInputMode": "src/dom.js#L86",
+            "getTextInputMode": "src/dom.js#L87",
             "grep": [
                 "src/util.d.ts#L191",
                 "src/util.js#L218"
             ],
             "handleMutations": "src/tree.js#L333",
             "handlePromise": "src/domLock.js#L52",
-            "HasElement": "src/types.d.ts#L310",
+            "HasElement": "src/types.d.ts#L311",
             "HasEntries": "src/util.d.ts#L7",
             "HasForEach": "src/util.d.ts#L11",
             "hasOwnProperty": [
                 null,
                 null
             ],
-            "HasParent": "src/types.d.ts#L317",
-            "HasParentNode": "src/types.d.ts#L321",
-            "HasRange": "src/types.d.ts#L296",
-            "HasRect": "src/types.d.ts#L303",
-            "HintedKeyOf": "src/types.d.ts#L30",
-            "HintedString": "src/types.d.ts#L29",
-            "HintedStringKeyOf": "src/types.d.ts#L31",
+            "HasParent": "src/types.d.ts#L318",
+            "HasParentNode": "src/types.d.ts#L322",
+            "HasRange": "src/types.d.ts#L297",
+            "HasRect": "src/types.d.ts#L304",
+            "HintedKeyOf": "src/types.d.ts#L31",
+            "HintedString": "src/types.d.ts#L30",
+            "HintedStringKeyOf": "src/types.d.ts#L32",
             "HtmlContent": "src/types.d.ts#L9",
             "htmlDecode": [
                 "src/util.d.ts#L519",
@@ -1867,7 +1867,7 @@
                 "src/util.d.ts#L452",
                 "src/util.js#L499"
             ],
-            "If": "src/types.d.ts#L44",
+            "If": "src/types.d.ts#L45",
             "inherit": [
                 "src/util.d.ts#L675",
                 "src/util.js#L716"
@@ -1882,20 +1882,20 @@
             ],
             "InheritedNodeTreeOptions": [
                 "src/tree.d.ts#L14",
-                "src/types.d.ts#L657"
+                "src/types.d.ts#L658"
             ],
             "initDetachWatcher": "src/observe.js#L172",
             "initNode": "src/tree.js#L47",
-            "inputValueImpl": "src/dom.js#L114",
+            "inputValueImpl": "src/dom.js#L115",
             "insertChildNode": "src/tree.js#L129",
             "insertInheritedNode": "src/tree.js#L185",
             "insertNode": "src/tree.js#L110",
             "insertText": [
                 "src/dom.d.ts#L244",
-                "src/dom.js#L577"
+                "src/dom.js#L581"
             ],
             "insertTraversableNode": "src/tree.js#L155",
-            "Inset": "src/types.d.ts#L246",
+            "Inset": "src/types.d.ts#L247",
             "InstanceTypeOrObject": "src/util.d.ts#L39",
             "invalidOperation": [
                 "src/errorCode.d.ts#L12",
@@ -1910,8 +1910,8 @@
             "IS_IOS": "src/env.js#L16",
             "IS_MAC": "src/env.js#L15",
             "IS_TOUCH": "src/env.js#L19",
-            "IsAny": "src/types.d.ts#L46",
-            "IsAnyOrUnknown": "src/types.d.ts#L47",
+            "IsAny": "src/types.d.ts#L47",
+            "IsAnyOrUnknown": "src/types.d.ts#L48",
             "isArray": [
                 "src/util.d.ts#L78",
                 "src/util.js#L69"
@@ -1938,8 +1938,8 @@
                 "src/util.js#L73"
             ],
             "isInheritedFrom": "src/util.js#L733",
-            "isMouseDown": "src/dom.js#L101",
-            "IsNever": "src/types.d.ts#L49",
+            "isMouseDown": "src/dom.js#L102",
+            "IsNever": "src/types.d.ts#L50",
             "isObservableProperty": [
                 "src/util.d.ts#L827",
                 "src/util.js#L902"
@@ -1956,15 +1956,15 @@
                 "src/util.d.ts#L71",
                 "src/util.js#L65"
             ],
-            "IsUnknown": "src/types.d.ts#L48",
+            "IsUnknown": "src/types.d.ts#L49",
             "isVisible": [
                 "src/domUtil.d.ts#L36",
                 "src/domUtil.js#L125"
             ],
-            "IterateCallbackOrNull": "src/types.d.ts#L42",
+            "IterateCallbackOrNull": "src/types.d.ts#L43",
             "iterateFocusPath": [
                 "src/dom.d.ts#L217",
-                "src/dom.js#L394"
+                "src/dom.js#L395"
             ],
             "iterateNode": [
                 "src/domUtil.d.ts#L87",
@@ -1974,13 +1974,13 @@
                 "src/domUtil.d.ts#L94",
                 "src/domUtil.js#L181"
             ],
-            "IteratorNodeFilter": "src/types.d.ts#L40",
-            "IteratorNodeFilterResult": "src/types.d.ts#L39",
+            "IteratorNodeFilter": "src/types.d.ts#L41",
+            "IteratorNodeFilterResult": "src/types.d.ts#L40",
             "jQuery": "src/include/jquery.js#L2",
-            "KeyNameModifier": "src/types.d.ts#L163",
+            "KeyNameModifier": "src/types.d.ts#L164",
             "KEYNAMES": "src/constants.js#L4",
-            "KeyNameSingleCharacter": "src/types.d.ts#L172",
-            "KeyNameSpecial": "src/types.d.ts#L164",
+            "KeyNameSingleCharacter": "src/types.d.ts#L173",
+            "KeyNameSpecial": "src/types.d.ts#L165",
             "KeyOf": "src/types.d.ts#L14",
             "keys": "src/util.d.ts#L607",
             "kv": [
@@ -1997,11 +1997,11 @@
             ],
             "lock": [
                 "src/domLock.d.ts#L29",
-                "src/domLock.js#L103"
+                "src/domLock.js#L107"
             ],
             "locked": [
                 "src/domLock.d.ts#L70",
-                "src/domLock.js#L173"
+                "src/domLock.js#L177"
             ],
             "makeArray": [
                 "src/util.d.ts#L130",
@@ -2031,7 +2031,7 @@
                 "src/util.d.ts#L336",
                 "src/util.js#L326"
             ],
-            "MapResultValue": "src/types.d.ts#L41",
+            "MapResultValue": "src/types.d.ts#L42",
             "matchSelector": [
                 "src/domUtil.d.ts#L29",
                 "src/domUtil.js#L94"
@@ -2045,36 +2045,36 @@
                 "src/util.js#L549"
             ],
             "MaybeFunctionOrConstructor": "src/util.d.ts#L40",
-            "measureLine": "src/dom.js#L75",
+            "measureLine": "src/dom.js#L76",
             "mergeRect": [
                 "src/domUtil.d.ts#L378",
                 "src/domUtil.js#L619"
             ],
             "muteAndReturn": "src/domLock.js#L23",
             "NodeIterator": [
-                "src/types.d.ts#L325",
+                "src/types.d.ts#L326",
                 "src/util.d.ts#L3"
             ],
-            "NodeOfType": "src/types.d.ts#L60",
+            "NodeOfType": "src/types.d.ts#L61",
             "NodeTree": [
                 "src/tree.d.ts#L51",
                 "src/tree.js#L403"
             ],
             "NodeTreeEventMap": [
                 "src/tree.d.ts#L17",
-                "src/types.d.ts#L658"
+                "src/types.d.ts#L659"
             ],
             "NodeTreeMutationRecord": [
                 "src/tree.d.ts#L29",
-                "src/types.d.ts#L660"
+                "src/types.d.ts#L661"
             ],
             "NodeTreeOptions": [
                 "src/tree.d.ts#L3",
-                "src/types.d.ts#L655"
+                "src/types.d.ts#L656"
             ],
             "NodeTreeUpdateEvent": [
                 "src/tree.d.ts#L21",
-                "src/types.d.ts#L659"
+                "src/types.d.ts#L660"
             ],
             "noop": [
                 "src/util.d.ts#L46",
@@ -2083,11 +2083,11 @@
             "normalizeCSSValue": "src/cssUtil.js#L23",
             "normalizeEventOptions": "src/events.js#L65",
             "normalizeEventTarget": "src/events.js#L61",
-            "normalizeKey": "src/dom.js#L105",
-            "Not": "src/types.d.ts#L45",
+            "normalizeKey": "src/dom.js#L106",
+            "Not": "src/types.d.ts#L46",
             "notifyAsync": [
                 "src/domLock.d.ts#L111",
-                "src/domLock.js#L140"
+                "src/domLock.js#L144"
             ],
             "notifyPropertyChange": "src/util.js#L801",
             "observe": [
@@ -2095,7 +2095,7 @@
                 "src/observe.js#L19"
             ],
             "ObserveCallback": "src/observe.d.ts#L3",
-            "Offset": "src/types.d.ts#L241",
+            "Offset": "src/types.d.ts#L242",
             "parentsAndSelf": [
                 "src/domUtil.d.ts#L119",
                 "src/domUtil.js#L199"
@@ -2112,8 +2112,8 @@
                 "src/util.d.ts#L48",
                 "src/util.js#L49"
             ],
-            "Point": "src/types.d.ts#L236",
-            "PointerTracking": "src/types.d.ts#L347",
+            "Point": "src/types.d.ts#L237",
+            "PointerTracking": "src/types.d.ts#L348",
             "pointInRect": [
                 "src/domUtil.d.ts#L370",
                 "src/domUtil.js#L614"
@@ -2125,15 +2125,15 @@
             ],
             "preventLeave": [
                 "src/domLock.d.ts#L139",
-                "src/domLock.js#L163"
+                "src/domLock.js#L167"
             ],
             "Primitive": "src/types.d.ts#L11",
-            "PrivateStore": "src/types.d.ts#L231",
+            "PrivateStore": "src/types.d.ts#L232",
             "Promise": "src/env.js#L5",
-            "PromiseResult": "src/types.d.ts#L36",
-            "PropertyChangeHandler": "src/types.d.ts#L176",
-            "PropertyChangeRecord": "src/types.d.ts#L178",
-            "PropertyTypeOrAny": "src/types.d.ts#L28",
+            "PromiseResult": "src/types.d.ts#L37",
+            "PropertyChangeHandler": "src/types.d.ts#L177",
+            "PropertyChangeRecord": "src/types.d.ts#L179",
+            "PropertyTypeOrAny": "src/types.d.ts#L29",
             "randomId": [
                 "src/util.d.ts#L454",
                 "src/util.js#L503"
@@ -2141,7 +2141,7 @@
             "RangeLike": "src/types.d.ts#L5",
             "Rect": [
                 "src/domUtil.js#L18",
-                "src/types.d.ts#L253"
+                "src/types.d.ts#L254"
             ],
             "rectCovers": [
                 "src/domUtil.d.ts#L358",
@@ -2167,15 +2167,15 @@
             ],
             "releaseFocus": [
                 "src/dom.d.ts#L211",
-                "src/dom.js#L390"
+                "src/dom.js#L391"
             ],
             "releaseModal": [
                 "src/dom.d.ts#L192",
-                "src/dom.js#L349"
+                "src/dom.js#L350"
             ],
             "removeAsyncEvent": "src/events.js#L126",
             "removeContainerForElement": "src/events.js#L46",
-            "removeFocusUnsafe": "src/dom.js#L316",
+            "removeFocusUnsafe": "src/dom.js#L317",
             "removeInheritedNode": "src/tree.js#L241",
             "removeNode": [
                 "src/domUtil.d.ts#L195",
@@ -2192,7 +2192,7 @@
             ],
             "reportError": [
                 "src/dom.d.ts#L116",
-                "src/dom.js#L1042",
+                "src/dom.js#L1048",
                 "src/env.js#L10"
             ],
             "resolve": [
@@ -2205,7 +2205,7 @@
             ],
             "retainFocus": [
                 "src/dom.d.ts#L205",
-                "src/dom.js#L384"
+                "src/dom.js#L385"
             ],
             "retryable": [
                 "src/util.d.ts#L568",
@@ -2214,9 +2214,9 @@
             "root": "src/env.js#L7",
             "runAsync": [
                 "src/domLock.d.ts#L119",
-                "src/domLock.js#L144"
+                "src/domLock.js#L148"
             ],
-            "RunAsyncContext": "src/types.d.ts#L220",
+            "RunAsyncContext": "src/types.d.ts#L221",
             "runCSSTransition": [
                 "src/cssUtil.d.ts#L16",
                 "src/cssUtil.js#L46"
@@ -2250,8 +2250,8 @@
                 "src/domUtil.d.ts#L210",
                 "src/domUtil.js#L311"
             ],
-            "setFocus": "src/dom.js#L246",
-            "setFocusUnsafe": "src/dom.js#L296",
+            "setFocus": "src/dom.js#L247",
+            "setFocusUnsafe": "src/dom.js#L297",
             "setImmediate": [
                 "src/util.d.ts#L405",
                 "src/util.js#L391"
@@ -2275,7 +2275,7 @@
             ],
             "setModal": [
                 "src/dom.d.ts#L186",
-                "src/dom.js#L329"
+                "src/dom.js#L330"
             ],
             "setParentNode": "src/tree.js#L97",
             "setPromiseTimeout": [
@@ -2284,13 +2284,13 @@
             ],
             "setShortcut": [
                 "src/dom.d.ts#L221",
-                "src/dom.js#L440"
+                "src/dom.js#L441"
             ],
             "setTabRoot": [
                 "src/dom.d.ts#L166",
-                "src/dom.js#L372"
+                "src/dom.js#L373"
             ],
-            "setTextData": "src/dom.js#L123",
+            "setTextData": "src/dom.js#L124",
             "setTimeout": [
                 "src/util.d.ts#L417",
                 "src/util.js#L418"
@@ -2307,11 +2307,11 @@
                 "src/util.d.ts#L199",
                 "src/util.js#L229"
             ],
-            "StringKeyOf": "src/types.d.ts#L27",
+            "StringKeyOf": "src/types.d.ts#L28",
             "styleToJSON": "src/cssUtil.js#L30",
             "subscribeAsync": [
                 "src/domLock.d.ts#L126",
-                "src/domLock.js#L123"
+                "src/domLock.js#L127"
             ],
             "tagName": [
                 "src/domUtil.d.ts#L21",
@@ -2319,7 +2319,7 @@
             ],
             "textInputAllowed": [
                 "src/dom.d.ts#L122",
-                "src/dom.js#L97"
+                "src/dom.js#L98"
             ],
             "throwIfAborted": [
                 "src/util.d.ts#L441",
@@ -2340,7 +2340,7 @@
                 "src/domUtil.js#L585"
             ],
             "trackElements": "src/observe.js#L93",
-            "trackPointer": "src/dom.js#L461",
+            "trackPointer": "src/dom.js#L462",
             "TraversableNode": [
                 "src/tree.d.ts#L83",
                 "src/tree.js#L371"
@@ -2351,9 +2351,9 @@
             ],
             "TraversableNodeTreeOptions": [
                 "src/tree.d.ts#L11",
-                "src/types.d.ts#L656"
+                "src/types.d.ts#L657"
             ],
-            "TreeTraverser": "src/types.d.ts#L339",
+            "TreeTraverser": "src/types.d.ts#L340",
             "TreeWalker": [
                 "src/tree.d.ts#L98",
                 "src/tree.js#L493"
@@ -2363,8 +2363,8 @@
             "treeWalkerNodeAccepted": "src/tree.js#L518",
             "treeWalkerTraverseChildren": "src/tree.js#L526",
             "treeWalkerTraverseSibling": "src/tree.js#L547",
-            "triggerFocusEvent": "src/dom.js#L206",
-            "triggerModalChangeEvent": "src/dom.js#L217",
+            "triggerFocusEvent": "src/dom.js#L207",
+            "triggerModalChangeEvent": "src/dom.js#L218",
             "trim": [
                 "src/util.d.ts#L497",
                 "src/util.js#L533"
@@ -2375,15 +2375,15 @@
             ],
             "Union": "src/util.d.ts#L34",
             "UnionAll": "src/util.d.ts#L38",
-            "UnregisterCallback": "src/types.d.ts#L58",
+            "UnregisterCallback": "src/types.d.ts#L59",
             "unsetTabRoot": [
                 "src/dom.d.ts#L172",
-                "src/dom.js#L378"
+                "src/dom.js#L379"
             ],
-            "updateTabIndex": "src/dom.js#L233",
-            "updateTabRoot": "src/dom.js#L223",
+            "updateTabIndex": "src/dom.js#L234",
+            "updateTabRoot": "src/dom.js#L224",
             "updateTree": "src/tree.js#L288",
-            "ValueOf": "src/types.d.ts#L20",
+            "ValueOf": "src/types.d.ts#L21",
             "values": "src/util.d.ts#L610",
             "VersionState": "src/tree.js#L43",
             "VirtualNode": [
@@ -2398,8 +2398,8 @@
                 "src/util.d.ts#L744",
                 "src/util.js#L973"
             ],
-            "Watchable": "src/types.d.ts#L183",
-            "WatchableInstance": "src/types.d.ts#L37",
+            "Watchable": "src/types.d.ts#L184",
+            "WatchableInstance": "src/types.d.ts#L38",
             "watchAttributes": [
                 "src/observe.d.ts#L51",
                 "src/observe.js#L137"
@@ -2416,64 +2416,64 @@
                 "src/observe.d.ts#L59",
                 "src/observe.js#L165"
             ],
-            "WhitespaceDelimited": "src/types.d.ts#L33",
+            "WhitespaceDelimited": "src/types.d.ts#L34",
             "window": "src/env.js#L4",
             "wrapSelectorHandler": "src/events.js#L91",
-            "ZetaAsyncHandleableEvent": "src/types.d.ts#L547",
-            "ZetaDeferrableEvent": "src/types.d.ts#L528",
-            "ZetaDelegatedEventTarget": "src/types.d.ts#L422",
-            "ZetaDOMEvent": "src/types.d.ts#L570",
-            "ZetaDOMEventHandler": "src/types.d.ts#L415",
-            "ZetaDOMEventHandlers": "src/types.d.ts#L417",
-            "ZetaDOMEventMap": "src/types.d.ts#L360",
-            "ZetaDOMEventName": "src/types.d.ts#L358",
-            "ZetaDragEvent": "src/types.d.ts#L597",
-            "ZetaErrorEvent": "src/types.d.ts#L566",
+            "ZetaAsyncHandleableEvent": "src/types.d.ts#L548",
+            "ZetaDeferrableEvent": "src/types.d.ts#L529",
+            "ZetaDelegatedEventTarget": "src/types.d.ts#L423",
+            "ZetaDOMEvent": "src/types.d.ts#L571",
+            "ZetaDOMEventHandler": "src/types.d.ts#L416",
+            "ZetaDOMEventHandlers": "src/types.d.ts#L418",
+            "ZetaDOMEventMap": "src/types.d.ts#L361",
+            "ZetaDOMEventName": "src/types.d.ts#L359",
+            "ZetaDragEvent": "src/types.d.ts#L598",
+            "ZetaErrorEvent": "src/types.d.ts#L567",
             "ZetaEvent": [
                 "src/events.js#L271",
-                "src/types.d.ts#L563"
+                "src/types.d.ts#L564"
             ],
-            "ZetaEventBase": "src/types.d.ts#L504",
+            "ZetaEventBase": "src/types.d.ts#L505",
             "ZetaEventContainer": [
                 "src/events.d.ts#L160",
                 "src/events.js#L310"
             ],
-            "ZetaEventContext": "src/types.d.ts#L426",
-            "ZetaEventContextBase": "src/types.d.ts#L420",
-            "ZetaEventData": "src/types.d.ts#L460",
-            "ZetaEventDispatcher": "src/types.d.ts#L438",
-            "ZetaEventEmitDataType": "src/types.d.ts#L388",
-            "ZetaEventEmitOptionType": "src/types.d.ts#L392",
-            "ZetaEventEmitReturnType": "src/types.d.ts#L397",
-            "ZetaEventEmitReturnTypeByOptions": "src/types.d.ts#L402",
+            "ZetaEventContext": "src/types.d.ts#L427",
+            "ZetaEventContextBase": "src/types.d.ts#L421",
+            "ZetaEventData": "src/types.d.ts#L461",
+            "ZetaEventDispatcher": "src/types.d.ts#L439",
+            "ZetaEventEmitDataType": "src/types.d.ts#L389",
+            "ZetaEventEmitOptionType": "src/types.d.ts#L393",
+            "ZetaEventEmitReturnType": "src/types.d.ts#L398",
+            "ZetaEventEmitReturnTypeByOptions": "src/types.d.ts#L403",
             "ZetaEventEmitter": "src/events.js#L156",
-            "ZetaEventGenericInit": "src/types.d.ts#L390",
-            "ZetaEventHandler": "src/types.d.ts#L411",
-            "ZetaEventHandlerReturnType": "src/types.d.ts#L407",
-            "ZetaEventHandlers": "src/types.d.ts#L413",
-            "ZetaEventInit": "src/types.d.ts#L389",
+            "ZetaEventGenericInit": "src/types.d.ts#L391",
+            "ZetaEventHandler": "src/types.d.ts#L412",
+            "ZetaEventHandlerReturnType": "src/types.d.ts#L408",
+            "ZetaEventHandlers": "src/types.d.ts#L414",
+            "ZetaEventInit": "src/types.d.ts#L390",
             "ZetaEventSource": [
                 "src/events.d.ts#L122",
                 "src/events.js#L23",
-                "src/types.d.ts#L632"
+                "src/types.d.ts#L633"
             ],
-            "ZetaEventSourceName": "src/types.d.ts#L356",
+            "ZetaEventSourceName": "src/types.d.ts#L357",
             "ZetaEventTarget": "src/events.d.ts#L138",
-            "ZetaEventType": "src/types.d.ts#L384",
-            "ZetaFocusEvent": "src/types.d.ts#L577",
-            "ZetaGestureEvent": "src/types.d.ts#L612",
-            "ZetaGetContentRectEvent": "src/types.d.ts#L629",
-            "ZetaHandleableEvent": "src/types.d.ts#L531",
-            "ZetaInputEvent": "src/types.d.ts#L620",
-            "ZetaKeystrokeEvent": "src/types.d.ts#L607",
-            "ZetaModalChangeEvent": "src/types.d.ts#L581",
-            "ZetaMouseEvent": "src/types.d.ts#L591",
-            "ZetaNativeUIEvent": "src/types.d.ts#L573",
-            "ZetaPointerEvent": "src/types.d.ts#L585",
-            "ZetaScrollByEvent": "src/types.d.ts#L623",
-            "ZetaTextInputEvent": "src/types.d.ts#L616",
-            "ZetaTouchEvent": "src/types.d.ts#L594",
-            "ZetaWheelEvent": "src/types.d.ts#L600"
+            "ZetaEventType": "src/types.d.ts#L385",
+            "ZetaFocusEvent": "src/types.d.ts#L578",
+            "ZetaGestureEvent": "src/types.d.ts#L613",
+            "ZetaGetContentRectEvent": "src/types.d.ts#L630",
+            "ZetaHandleableEvent": "src/types.d.ts#L532",
+            "ZetaInputEvent": "src/types.d.ts#L621",
+            "ZetaKeystrokeEvent": "src/types.d.ts#L608",
+            "ZetaModalChangeEvent": "src/types.d.ts#L582",
+            "ZetaMouseEvent": "src/types.d.ts#L592",
+            "ZetaNativeUIEvent": "src/types.d.ts#L574",
+            "ZetaPointerEvent": "src/types.d.ts#L586",
+            "ZetaScrollByEvent": "src/types.d.ts#L624",
+            "ZetaTextInputEvent": "src/types.d.ts#L617",
+            "ZetaTouchEvent": "src/types.d.ts#L595",
+            "ZetaWheelEvent": "src/types.d.ts#L601"
         }
     },
     "zeta-dom-react": {

@@ -1,5 +1,5 @@
 {
-    "zeta-dom": "0.6.6",
+    "zeta-dom": "0.6.7",
     "zeta-dom-react": "0.6.7",
     "brew-js": "0.7.10",
     "brew-js-react": "0.7.6",
@@ -7,6 +7,6 @@
     "waterpipe": "2.10.0",
     "waterpipe-parser": "2.10.1",
     "@misonou/react-app-utils": "1.8.1",
-    "@misonou/react-css-utils": "1.5.1",
+    "@misonou/react-css-utils": "1.6.0",
     "@misonou/brew-extension-auth": "0.7.0"
 }

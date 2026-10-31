@@ -2,6 +2,18 @@
 
 # Change log
 
+## v0.6.8 (2026/10/31)
+
+#### Forms
+
+- <kbd>fix</kbd> [`<FormObject>`](:) and [`<FormArray>`](:) did not rerender when reference to data object changes due to form reset
+- <kbd>fix</kbd> incorrect initial data and dirty state when a nested data object is deleted and later reassigned
+- <kbd>fix</kbd> updating detached data object caused unintended dirty state change
+
+#### Utilities
+
+- <kbd>fix</kbd> [`AsyncContentState.staled`](:) was not set in react 19 strict mode
+
 ## v0.6.7 (2026/09/16)
 
 #### Forms
